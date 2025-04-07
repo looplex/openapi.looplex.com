@@ -153,6 +153,8 @@ properties:
       type: integer
   CampoLivreHierarquiaAdm:
     type: string  
+  Pais:
+    type: string
 required:
   - idCliente
   - envolvimentoCliente

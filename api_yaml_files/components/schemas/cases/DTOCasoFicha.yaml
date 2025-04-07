@@ -69,3 +69,5 @@ properties:
     type: integer
   Instancia:
     type: integer
+  Pais:
+    type: string

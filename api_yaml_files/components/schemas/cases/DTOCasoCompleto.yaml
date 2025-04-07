@@ -199,3 +199,5 @@ properties:
     type: string
   Instancia:
     type: integer
+  Pais:
+    type: string

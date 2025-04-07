@@ -1,0 +1,31 @@
+title: DTOCaseInfo
+type: object
+properties:
+  cdProcesso:
+    type: integer
+  DataDeDistribuicao:
+    type: string
+  DataDeCitacao:
+    type: string
+  TipoRiscoPoloAtivo:
+    type: integer
+  TipoRiscoPoloPassivo:
+    type: integer
+  TipoRiscoPoloTerceiro:
+    type: integer
+  Titulo:
+    type: string
+  FaseProcesso:
+    type: string
+  NumeroExterno:
+    type: string
+  Foro:
+    type: string
+  TipoProcesso:
+    type: string
+  Instancia:
+    oneOf:
+      - type: null
+      - type: integer
+  Pais:
+    type: string
