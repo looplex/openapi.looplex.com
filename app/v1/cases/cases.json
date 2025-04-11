@@ -25039,6 +25039,9 @@
           "DataPrevistaDeEncerramento": {
             "type": "string"
           },
+          "DataTransitoEmJulgado": {
+            "type": "string"
+          },
           "DataDeCriacaoFormatada": {
             "type": "string"
           },

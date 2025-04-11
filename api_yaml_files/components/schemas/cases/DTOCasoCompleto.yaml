@@ -95,6 +95,8 @@ properties:
     type: string
   DataPrevistaDeEncerramento:
     type: string  
+  DataTransitoEmJulgado:
+    type: string
   DataDeCriacaoFormatada:
     type: string
   DataDeEntradaFormatada:
