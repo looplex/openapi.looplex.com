@@ -748,9 +748,14 @@ paths:
       $ref: './paths/cases/solicitacao/public@api@solicitacao@id-get.yaml'
     put:
       $ref: './paths/cases/solicitacao/public@api@solicitacao@id-put.yaml'
+    delete:
+      $ref: './paths/cases/solicitacao/public@api@solicitacao@id-delete.yaml'
   /api/solicitacao/lista:
     get:
-      $ref: './paths/cases/solicitacao/public@api@solicitacao@lista-get.yaml'  
+      $ref: './paths/cases/solicitacao/public@api@solicitacao@lista-get.yaml'
+  /api/solicitacao/inclui:
+    post:
+      $ref: './paths/cases/solicitacao/public@api@solicitacao@inclui-post.yaml'  
 
   # Tabela de preço
   /api/escritorios/{idEscritorio}/tabelaspreco:
