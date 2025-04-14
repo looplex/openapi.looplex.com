@@ -1,37 +1,22 @@
 'use client'
 
-import { Row, Col, Typography, Tabs, Divider, Tag } from "antd"
+import { Row, Col, Typography, Tabs, Divider, Tag, Card } from "antd"
 import Image from 'next/image'
 
 const { Text } = Typography
 
 const apis = [
   {
-    key: 'enums',
-    label: 'Lista de enums',
-    children:
-      <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Descrição dos enums
-        </Text>
-        <Divider />
-        <a href="/v1/enums" target="_blank">
-          Enums
-        </a>
-      </>
-  },
-  {
     key: 'actions',
     label: 'Actions',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints do Actions
-        </Text>
-        <Divider />
-        <a href="/v1/actions" target="_blank">
-          Actions v1
-        </a>
+        <Card
+          title="Endpoints do Actions"
+          actions={[]}
+        >
+          <a href="/v1/actions" target="_blank">Actions v1</a>
+        </Card>
       </>
   },
   {
@@ -39,13 +24,12 @@ const apis = [
     label: 'Assembler',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints do Assembler
-        </Text>
-        <Divider />
-        <a href="/v1/assembler" target="_blank">
-          Assembler v1
-        </a>
+        <Card
+          title="Endpoints do Assembler"
+          actions={[]}
+        >
+          <a href="/v1/assembler" target="_blank">Assembler v1</a>
+        </Card>
       </>
   },
   {
@@ -53,13 +37,13 @@ const apis = [
     label: 'Cases',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints do Looplex Cases
-        </Text>
-        <Divider />
-        <a href="/v1/cases" target="_blank">
-          Cases v1
-        </a>
+        <Card
+          title="Endpoints do Looplex Cases"
+          actions={[]}
+        >
+          <a href="/v1/cases" target="_blank">Cases v1</a> <br />
+          <a href="/v2/cases" target="_blank">Cases v2</a>
+        </Card>
       </>
   },
   {
@@ -67,13 +51,12 @@ const apis = [
     label: 'Looplex 365',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints do Looplex 365
-        </Text>
-        <Divider />
-        <a href="/v1/looplex365" target="_blank">
-          Looplex 365 v1
-        </a>
+        <Card
+          title="Endpoints do Looplex 365"
+          actions={[]}
+        >
+          <a href="/v1/looplex365" target="_blank">Looplex 365 v1</a>
+        </Card>
       </>
   },
   {
@@ -81,13 +64,12 @@ const apis = [
     label: 'Varas e Foros',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints de Varas e Foros
-        </Text>
-        <Divider />
-        <a href="/v2/varas_foros" target="_blank">
-          Varas e Foros v2
-        </a>
+        <Card
+          title="Endpoints de Varas e Foros"
+          actions={[]}
+        >
+          <a href="/v2/varas_foros" target="_blank">Varas e Foros v2</a>
+        </Card>
       </>
   },
   {
@@ -95,13 +77,12 @@ const apis = [
     label: 'Feriados',
     children:
       <>
-        <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-          Endpoints de Feriados
-        </Text>
-        <Divider />
-        <a href="/v1/recess" target="_blank">
-          Feriados
-        </a>
+        <Card
+          title="Endpoints de Feriados"
+          actions={[]}
+        >
+          <a href="/v1/recess" target="_blank">Feriados</a>
+        </Card>
       </>
   }
 ]
