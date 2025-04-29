@@ -16,15 +16,14 @@ info:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
-    Essa é a documentação do Cases v2
+    Essa é a documentação da API Case Management
 servers:
-  - url: "https://apim.looplex.com/cases/v2"
-    description: "Cases Server"
+  - url: "https://apim.looplex.com/case-management/v1"
+    description: "Case Management Server"
 paths:
-  # Cases
-  # /v2/court:
-  #   get:
-  #     $ref: './paths/varas_foros/public@v2@court@level-get.yaml'
+  /Cases/{uniqueId}:
+    get:
+      $ref: './paths/cases_v2/public@Case@uniqueId-get.yaml'
 
 components:
   securitySchemes:

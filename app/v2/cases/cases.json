@@ -17,16 +17,63 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "Essa é a documentação do Cases v2\n"
+    "description": "Essa é a documentação da API Case Management\n"
   },
   "servers": [
     {
-      "url": "https://apim.looplex.com/cases/v2",
-      "description": "Cases Server"
+      "url": "https://apim.looplex.com/case-management/v1",
+      "description": "Case Management Server"
     }
   ],
   "security": [],
-  "paths": null,
+  "paths": {
+    "/Cases/{uniqueId}": {
+      "get": {
+        "tags": [
+          "Case Management"
+        ],
+        "summary": "Case Retrieve",
+        "description": "Retrieve information about a case",
+        "operationId": "Case-uniqueId-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "name": "uniqueId",
+            "in": "path",
+            "required": true,
+            "description": "Case unique guid",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
   "components": {
     "securitySchemes": {
       "api_key": {
@@ -42,6 +89,104 @@
       "basic_auth": {
         "type": "http",
         "scheme": "basic"
+      }
+    },
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "Subscription key provided by Looplex",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "Client domain",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "Meta": {
+        "title": "Meta",
+        "type": "object",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "The resource type",
+            "example": "Case"
+          },
+          "Created": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ],
+            "format": "datetime",
+            "example": null,
+            "description": "The resource creation date"
+          },
+          "LastModified": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ],
+            "format": "datetime",
+            "example": null,
+            "description": "The resource last update time"
+          },
+          "Location": {
+            "type": "string",
+            "example": "https://apim.looplex.com/case-management/v1/case_unique_id",
+            "description": "The resource url"
+          },
+          "Version": {
+            "type": "string",
+            "example": "2.0",
+            "description": "The resource version"
+          }
+        }
+      },
+      "CaseEntity": {
+        "title": "CaseEntity",
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string",
+            "description": "Indicação do status do caso<br />`Ativo, Inativo, Arquivado, Excluído`"
+          },
+          "Type": {
+            "type": "string",
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nMilitar União<br />\nEleitoral<br />\nConsultivo<br />\nContrato<br />\nSocietário<br />\nCobrança Extrajudicial<br />\nDue Diligence e Análise Documental<br />\nAdministrativo<br />\nArbitragem\n"
+          },
+          "SubType": {
+            "type": "string",
+            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\nCaso<br />\nSubcaso<br />\nRecurso<br />\nIncidente\n"
+          },
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Case unique identifier"
+          },
+          "ExternalId": {
+            "type": "string"
+          },
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
       }
     }
   }

@@ -20,7 +20,7 @@ properties:
   Neighborhood:
     type: string
   Type:
-    description: "<b>Tipo de endereço<br />AllowedValues:</b> `"Residencial", "Trabalho", "Cobrança", "Entrega", "Outro"`"
+    description: "<b>Tipo de endereço<br />AllowedValues:</b> `Residencial, Trabalho, Cobrança, Entrega, Outro`"
     type: string
   Primary:
     example: Se é o endereço principal

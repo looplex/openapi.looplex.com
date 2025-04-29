@@ -1,0 +1,29 @@
+title: Meta
+type: object
+properties:
+  ResourceType:
+    type: string
+    description: "The resource type"
+    example: "Case"
+  Created:
+    oneOf:
+      - type: string
+      - type: null
+    format: datetime
+    example: null
+    description: "The resource creation date"
+  LastModified:
+    oneOf:
+      - type: string
+      - type: null
+    format: datetime
+    example: null
+    description: "The resource last update time"
+  Location:
+    type: string
+    example: "https://apim.looplex.com/case-management/v1/case_unique_id"
+    description: "The resource url"
+  Version:
+    type: string
+    example: "2.0"
+    description: "The resource version"

@@ -1,0 +1,42 @@
+title: CaseEntity
+type: object
+properties:
+  # Case
+  Status:
+    type: string
+    description: "Indicação do status do caso<br />`Ativo, Inativo, Arquivado, Excluído`"
+  Type:
+    type: string
+    description: | 
+      **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
+      Judicial Estadual<br />
+      Judicial Federal<br />
+      Judicial Trabalhista<br />
+      Militar Estadual<br />
+      Militar União<br />
+      Eleitoral<br />
+      Consultivo<br />
+      Contrato<br />
+      Societário<br />
+      Cobrança Extrajudicial<br />
+      Due Diligence e Análise Documental<br />
+      Administrativo<br />
+      Arbitragem
+  SubType:
+    type: string
+    description: |
+      **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
+      Caso<br />
+      Subcaso<br />
+      Recurso<br />
+      Incidente
+  
+  # SCIM properties
+  Id:
+    type: string
+    format: uuid
+    description: "Case unique identifier"
+  ExternalId:
+    type: string
+  Meta:
+    $ref: ../scim/Meta.yaml
