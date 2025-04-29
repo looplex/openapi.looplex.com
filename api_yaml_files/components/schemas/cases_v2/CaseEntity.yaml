@@ -4,6 +4,7 @@ properties:
   # Case
   Status:
     type: string
+    example: "Ativo"
     description: |
       **Indicação do status do caso**<br />
       Ativo<br />
@@ -12,6 +13,7 @@ properties:
       Excluído
   Type:
     type: string
+    example: "Judicial Estadual"
     description: | 
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       Judicial Estadual<br />
@@ -29,6 +31,7 @@ properties:
       Arbitragem
   SubType:
     type: string
+    example: "Caso"
     description: |
       **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
       Caso<br />
@@ -42,6 +45,9 @@ properties:
     format: uuid
     description: "Case unique identifier"
   ExternalId:
-    type: string
+    oneOf:
+      - type: string
+      - type: null
+    example: null
   Meta:
     $ref: ../scim/Meta.yaml

@@ -165,14 +165,17 @@
         "properties": {
           "Status": {
             "type": "string",
+            "example": "Ativo",
             "description": "**Indicação do status do caso**<br />\nAtivo<br />\nInativo<br />\nArquivado<br />\nExcluído\n"
           },
           "Type": {
             "type": "string",
+            "example": "Judicial Estadual",
             "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nMilitar União<br />\nEleitoral<br />\nConsultivo<br />\nContrato<br />\nSocietário<br />\nCobrança Extrajudicial<br />\nDue Diligence e Análise Documental<br />\nAdministrativo<br />\nArbitragem\n"
           },
           "SubType": {
             "type": "string",
+            "example": "Caso",
             "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\nCaso<br />\nSubcaso<br />\nRecurso<br />\nIncidente\n"
           },
           "Id": {
@@ -181,7 +184,15 @@
             "description": "Case unique identifier"
           },
           "ExternalId": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ],
+            "example": null
           },
           "Meta": {
             "$ref": "#/components/schemas/Meta"
