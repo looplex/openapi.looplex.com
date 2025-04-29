@@ -165,7 +165,7 @@
         "properties": {
           "Status": {
             "type": "string",
-            "description": "Indicação do status do caso<br />`Ativo, Inativo, Arquivado, Excluído`"
+            "description": "**Indicação do status do caso**<br />\nAtivo<br />\nInativo<br />\nArquivado<br />\nExcluído\n"
           },
           "Type": {
             "type": "string",

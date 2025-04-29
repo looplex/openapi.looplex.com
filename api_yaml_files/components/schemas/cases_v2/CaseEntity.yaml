@@ -4,7 +4,12 @@ properties:
   # Case
   Status:
     type: string
-    description: "Indicação do status do caso<br />`Ativo, Inativo, Arquivado, Excluído`"
+    description: |
+      **Indicação do status do caso**<br />
+      Ativo<br />
+      Inativo<br />
+      Arquivado<br />
+      Excluído
   Type:
     type: string
     description: | 
