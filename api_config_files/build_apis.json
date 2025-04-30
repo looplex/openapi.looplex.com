@@ -5,6 +5,6 @@
   "redocly bundle ./api_yaml_files/actions.yaml -o ./app/v1/actions/actions --ext json",
   "redocly bundle ./api_yaml_files/recess.yaml -o ./app/v1/recess/recess --ext json",
 
-  "redocly bundle ./api_yaml_files/cases_v2.yaml -o ./app/v2/cases/cases --ext json",
+  "redocly bundle ./api_yaml_files/cases_v2.yaml -o ./app/v1/case-management/cases --ext json",
   "redocly bundle ./api_yaml_files/varas_foros_v2.yaml -o ./app/v2/varas_foros/varas_foros --ext json"
 ]

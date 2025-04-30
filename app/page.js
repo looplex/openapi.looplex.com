@@ -42,7 +42,7 @@ const apis = [
           actions={[]}
         >
           <a href="/v1/cases" target="_blank">Cases v1</a> <br />
-          <a href="/v2/cases" target="_blank">Cases v2</a>
+          <a href="/v1/case-management" target="_blank">Case Management</a>
         </Card>
       </>
   },

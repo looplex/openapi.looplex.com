@@ -2,7 +2,8 @@
 tags:
   - Case Management
 summary: "Case Retrieve"
-description: "Retrieve information about a case"
+description: |
+  Retrieve information about a case
 operationId: Case-uniqueId-get
 # Parâmetros da requisição
 parameters:
