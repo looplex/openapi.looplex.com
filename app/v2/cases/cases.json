@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "Looplex Cases v2",
+    "title": "Looplex Case Managament",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -466,10 +466,324 @@
                     "format": "datetime"
                   }
                 ]
+              },
+              "Classification": {
+                "description": "**Classificação do andamento**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Description": {
+                "description": "**Texto do andamento**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "IsInternal": {
+                "description": "**Indica se o andamento é de uso interno**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "OfficialNotice": {
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                ]
               }
             }
           }
         ]
+      },
+      "Timesheet": {
+        "title": "Timesheet",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Classification": {
+                "description": "**Classificaçãon**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Owner": {
+                "description": "**Responsável**<br />\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Date": {
+                "description": "**Data**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  }
+                ]
+              },
+              "Hours": {
+                "description": "**Horas (quantidade de horas do lançamento)**<br />\nISO 8601 duration format\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "duration",
+                    "example": "PT0H45M0S"
+                  }
+                ]
+              },
+              "TaskCode": {
+                "description": "**Código da Tarefa**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "ActivityCode": {
+                "description": "**Código da Atividade**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Applicant": {
+                "description": "**Solicitante**<br />\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Description": {
+                "description": "**Descrição**<br /> \n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "IsInvoiced": {
+                "description": "**Faturado**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "CreatedAt": {
+                "description": "**Criado em**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "CreatedBy": {
+                "description": "**Criado por**<br />\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "UpdatedAt": {
+                "description": "**Atualizado em**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "UpdatedBy": {
+                "description": "**Atualizado por**<br />\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Case": {
+                "type": "object",
+                "description": "\"**The case unique identifier**\"\n",
+                "properties": {
+                  "Id": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CustomFieldEntity": {
+        "title": "CustomFieldEntity",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "description": "**Custom field unique identifier**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Name": {
+            "description": "**Custom field name**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Type": {
+            "description": "**Custom field type**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Value": {
+            "description": "**Value stored in the custom field**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          }
+        }
+      },
+      "TimelineEntity": {
+        "title": "TimelineEntity",
+        "type": "object",
+        "properties": {
+          "Type": {
+            "description": "**Tipo de evento**<br />\n**Valores possíveis:**<br />\nAndamento do Tribunal<br />\nDecisão<br />\nAndamento<br />\nGarantia<br />\nPublicação<br />\nCumprimento<br />\nTarefa<br />\nHora\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Id": {
+            "description": "**Identificador do item**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Date": {
+            "description": "**Data do evento**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              }
+            ]
+          },
+          "Title": {
+            "description": "**Título do evento**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Description": {
+            "description": "**Descrição do evento**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          }
+        }
       },
       "CaseEntity": {
         "title": "CaseEntity",
@@ -829,6 +1143,48 @@
                     "type": "array",
                     "items": {
                       "$ref": "#/components/schemas/EntryEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Timesheet": {
+                "description": "**Registro de horas trabalhadas**<br /> \n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Timesheet"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "CustomFields": {
+                "description": "**Campos personalizados criados pelo usuário**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CustomFieldEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Timeline": {
+                "description": "**Linha do Tempo**<br />\nLog de eventos\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TimelineEntity"
                     }
                   },
                   {

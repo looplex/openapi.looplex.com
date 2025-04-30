@@ -3,7 +3,7 @@ openapi: 3.0.2
 security: []
 info:
   version: 1.0.0
-  title: "Looplex Cases v2"
+  title: "Looplex Case Managament"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex

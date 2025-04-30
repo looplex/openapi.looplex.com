@@ -10,3 +10,26 @@ allOf:
         oneOf:
           - type: string
             format: datetime
+      Classification:
+        description: |
+          **Classificação do andamento**<br />
+        oneOf:
+          - type: string
+          - type: null
+      Description:
+        description: |
+          **Texto do andamento**<br />
+        oneOf:
+          - type: string
+          - type: null
+      IsInternal:
+        description: |
+          **Indica se o andamento é de uso interno**<br />
+        oneOf:
+          - type: boolean
+      OfficialNotice:
+        description: |
+          **Identificador da publicação que criou esse andamento (se houver)**<br />
+        oneOf:
+          - type: string
+            format: uuid

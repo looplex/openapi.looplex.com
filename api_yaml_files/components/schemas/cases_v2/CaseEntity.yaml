@@ -247,3 +247,30 @@ allOf:
           - type: null
       # Resolution: # TODO
       # PaymentOrDischarge: # TODO
+      # Guaranties: # TODO
+      # Tasks: # TODO
+      Timesheet:
+        description: |
+          **Registro de horas trabalhadas**<br /> 
+        oneOf:
+          - type: array
+            items:
+              $ref: Timesheet.yaml
+          - type: null
+      CustomFields:
+        description: |
+          **Campos personalizados criados pelo usuário**<br />
+        oneOf:
+          - type: array
+            items:
+              $ref: CustomFieldEntity.yaml
+          - type: null
+      Timeline:
+        description: |
+          **Linha do Tempo**<br />
+          Log de eventos
+        oneOf:
+          - type: array
+            items:
+              $ref: TimelineEntity.yaml
+          - type: null
