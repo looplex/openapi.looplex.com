@@ -1,0 +1,62 @@
+title: GlobalValues
+type: object
+properties: 
+  AgainstPosition:
+    description: |
+      **Contra polo ativo, passivo, terceiro...**
+    oneOf:
+      - type: string
+      - type: null
+  Perspective:
+    description: |
+      **Perpectiva**<br />
+      Indicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />
+      **Valores permitidos**<br />
+      Perda <br />
+      Êxito
+    oneOf:
+      - type: string
+      - type: null
+  Risk:
+    description: |
+      **Risco**<br />
+      Indicação do risco associado ao valor. <br />
+      Se a probabilidade for maior que 50% devemos considerar como Provável.  <br />
+      Se a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />
+      E se essa probabilidade for inferior a 10%, é então Remota. <br />
+      **Valores permitidos**<br />
+      possível<br />
+      provável<br />
+      remoto
+    oneOf:
+      - type: string
+      - type: null
+  Currency:
+    description: |
+      **Moeda usada para os valores do caso**<br />
+      e.g. BRL, USD, null
+    oneOf:
+      - type: string
+      - type: null
+  CaseDeclaredValue:
+    description: |
+      **Valor da causa**<br />
+      Valor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação
+    oneOf:
+      - type: number
+      - type: null
+  CaseForeseenValue:
+    description: |
+      **Valor previsto**<br />
+      Valor estimado para a resolução do caso, transação ou disputa
+    oneOf:
+      - type: number
+      - type: null
+  CaseContingencyValue:
+    description: |
+      **Valor de contingência**<br />
+      Valor de provisionamento vinculado a perspectiva e risco do caso. <br />
+      Para os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar
+    oneOf:
+      - type: number
+      - type: null

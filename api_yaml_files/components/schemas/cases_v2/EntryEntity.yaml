@@ -1,0 +1,12 @@
+title: EntryEntity
+type: object
+allOf:
+  - $ref: ../scim/Resource.yaml
+  - type: object
+    properties:
+      Date:
+        description: |
+          **Data do andamento**<br />
+        oneOf:
+          - type: string
+            format: datetime

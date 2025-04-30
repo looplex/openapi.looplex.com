@@ -1,0 +1,15 @@
+title: LegalServiceAgreement
+type: object
+properties: 
+  Id:
+    description: |
+      **The legal service agreement unique identifier**
+    oneOf:
+      - type: string
+        format: uuid
+  Name:
+    description: |
+      **The legal service agreement name**
+    oneOf:
+      - type: string
+      - type: null

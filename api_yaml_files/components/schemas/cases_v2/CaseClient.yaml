@@ -1,0 +1,23 @@
+title: CaseClient
+type: object
+properties: 
+  Id:
+    description: |
+      **The client unique identifier**
+    oneOf:
+      - type: string
+        format: uuid
+  Name:
+    description: |
+      **The client name**
+    oneOf:
+      - type: string
+      - type: null
+  Identities:
+    description: |
+      **The client identities**
+    oneOf:
+      - type: array
+        items:
+          $ref: IdentityEntity.yaml
+      - type: null

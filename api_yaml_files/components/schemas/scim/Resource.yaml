@@ -1,0 +1,14 @@
+title: Resource
+type: object
+properties:
+  Id:
+    type: string
+    format: uuid
+    description: "**Object unique identifier**"
+  ExternalId:
+    example: null
+    oneOf:
+      - type: string
+      - type: null
+  Meta:
+    $ref: Meta.yaml
