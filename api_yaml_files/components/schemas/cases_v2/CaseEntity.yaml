@@ -225,7 +225,12 @@ allOf:
         oneOf:
           - $ref: SimpleEntity.yaml
           - type: null
-      # Participants: # TODO
+      Participants:
+        desription: |
+          **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
+        oneOf:
+          - $ref: ParticipantNaturalPerson.yaml
+          - $ref: ParticipantLegalPerson.yaml
       GlobalValues: 
         description: |
           **Valores globais do caso, definidos por polo**

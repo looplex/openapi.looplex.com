@@ -1,0 +1,55 @@
+title: ParticipantNaturalPerson
+type: object
+allOf:
+  - $ref: Participant.yaml
+  - type: object
+    properties:
+      Dob:
+        description: |
+          **Data de Nascimento**<br />
+        oneOf:
+          - type: string
+            format: datetime
+          - type: null
+      Gender:
+        description: |
+          **Feminino | Masculino**<br />
+        oneOf:
+          - type: string
+          - type: null
+      Nationality:
+        description: |
+          **Nacionalidade**<br />
+        oneOf:
+          - type: string
+          - type: null
+      MaritalStatus:
+        description: |
+          **Estado civil**<br />
+          Solteiro<br />
+          Casado<br />
+          Separado<br />
+          Divorciado<br />
+          Viúvo
+        oneOf:
+          - type: string
+          - type: null
+      Occupation:
+        description: |
+          **Profissão**<br />
+        oneOf:
+          - type: string
+          - type: null
+      Role:
+        description: |
+          **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />
+          Os papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />
+          AUTOR<br />
+          REU<br />
+          ADVOGADO<br />
+          PERITO<br />
+          JUIZ<br />
+          TESTEMUNHA
+        oneOf:
+          - type: string
+          - type: null

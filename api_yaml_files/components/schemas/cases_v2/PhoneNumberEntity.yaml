@@ -1,0 +1,29 @@
+title: PhoneNumberEntity
+type: object
+properties: 
+  Value:
+    description: |
+      **Phone number of the User**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Type:
+    description: |
+      **A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />
+      **Valores permitidos:**<br />
+      work<br />
+      home<br />
+      mobile<br />
+      fax<br />
+      pager<br />
+      other
+    oneOf:
+      - type: string
+      - type: null
+  Primary:
+    description: |
+      **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />
+      The primary attribute value 'true' MUST appear no more than once.
+    oneOf:
+      - type: boolean
+      - type: null

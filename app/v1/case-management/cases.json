@@ -365,6 +365,429 @@
           }
         }
       },
+      "AddressEntity": {
+        "title": "AddressEntity",
+        "type": "object",
+        "properties": {
+          "Country": {
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "PostalCode": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "StreetAddress": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "StreetAddressNumber": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Pobox": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Locality": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Region": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Neighborhood": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Type": {
+            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\nResidencial<br />\nTrabalho<br />\nCobrança<br />\nEntrega<br />\nOutro\n",
+            "oneOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "Primary": {
+            "description": "**Se é o endereço principal**<br />\n",
+            "oneOf": [
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        }
+      },
+      "EmailEntity": {
+        "title": "EmailEntity",
+        "type": "object",
+        "properties": {
+          "Value": {
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n",
+            "oneOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "Type": {
+            "description": "**A label indicating the attribute's function, e.g., 'work' or 'home'**<br />\n**Valores permitidos:**<br />\nwork <br />\nhome <br />\nother\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Primary": {
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "oneOf": [
+              {
+                "type": "boolean"
+              }
+            ]
+          }
+        }
+      },
+      "PhoneNumberEntity": {
+        "title": "PhoneNumberEntity",
+        "type": "object",
+        "properties": {
+          "Value": {
+            "description": "**Phone number of the User**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Type": {
+            "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\n**Valores permitidos:**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Primary": {
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "oneOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": null
+              }
+            ]
+          }
+        }
+      },
+      "Participant": {
+        "title": "Participant",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "description": "**Partcipant id**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              }
+            ]
+          },
+          "Name": {
+            "description": "**Participant name**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Nickname": {
+            "description": "**Apelido**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "IsMainParty": {
+            "description": "**Indica se é a parte principal**<br />\n",
+            "oneOf": [
+              {
+                "type": "bool"
+              }
+            ]
+          },
+          "Represents": {
+            "description": "**UUID do participante que está sendo representado**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Nature": {
+            "description": "**Natureza**<br />\nPessoa Física<br />\nPessoa Jurídica\n",
+            "oneOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "Position": {
+            "description": "**Posição do participante**<br />\nAtivo<br />\nPassivo<br />\nTerceiro<br />\nOutro envolvido\n",
+            "oneOf": [
+              {
+                "type": "string"
+              }
+            ]
+          },
+          "Addresses": {
+            "description": "**Endereços**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntity"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Emails": {
+            "description": "**Emails**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntity"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Identities": {
+            "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "PhoneNumbers": {
+            "description": "**Telefones**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntity"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          }
+        }
+      },
+      "ParticipantNaturalPerson": {
+        "title": "ParticipantNaturalPerson",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Participant"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Dob": {
+                "description": "**Data de Nascimento**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Gender": {
+                "description": "**Feminino | Masculino**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Nationality": {
+                "description": "**Nacionalidade**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "MaritalStatus": {
+                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nSeparado<br />\nDivorciado<br />\nViúvo\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Occupation": {
+                "description": "**Profissão**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Role": {
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "ParticipantLegalPerson": {
+        "title": "ParticipantLegalPerson",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Participant"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "BusinessStructure": {
+                "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Role": {
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
       "GlobalValues": {
         "title": "GlobalValues",
         "type": "object",
@@ -1119,6 +1542,17 @@
                   },
                   {
                     "type": null
+                  }
+                ]
+              },
+              "Participants": {
+                "desription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ParticipantLegalPerson"
                   }
                 ]
               },

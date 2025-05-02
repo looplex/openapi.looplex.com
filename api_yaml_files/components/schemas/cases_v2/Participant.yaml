@@ -1,0 +1,82 @@
+title: Participant
+type: object
+properties: 
+  Id:
+    description: |
+      **Partcipant id**<br />
+    oneOf:
+      - type: string
+        format: uuid
+  Name:
+    description: |
+      **Participant name**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Nickname:
+    description: |
+      **Apelido**<br />
+    oneOf:
+      - type: string
+      - type: null
+  IsMainParty:
+    description: |
+      **Indica se é a parte principal**<br />
+    oneOf:
+      - type: bool
+  Represents:
+    description: |
+      **UUID do participante que está sendo representado**<br />
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - type: null
+  Nature:
+    description: |
+      **Natureza**<br />
+      Pessoa Física<br />
+      Pessoa Jurídica
+    oneOf:
+      - type: string
+  Position:
+    description: |
+      **Posição do participante**<br />
+      Ativo<br />
+      Passivo<br />
+      Terceiro<br />
+      Outro envolvido
+    oneOf:
+      - type: string
+  Addresses:
+    description: |
+      **Endereços**<br />
+    oneOf:
+      - type: array
+        items:
+          $ref: AddressEntity.yaml
+      - type: null
+  Emails:
+    description: |
+      **Emails**<br />
+    oneOf:
+      - type: array
+        items:
+          $ref: EmailEntity.yaml
+      - type: null
+  Identities:
+    description: |
+      **CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**<br />
+    oneOf:
+      - type: array
+        items:
+          $ref: IdentityEntity.yaml
+      - type: null
+  PhoneNumbers:
+    description: |
+      **Telefones**<br />
+    oneOf:
+      - type: array
+        items:
+          $ref: PhoneNumberEntity.yaml
+      - type: null

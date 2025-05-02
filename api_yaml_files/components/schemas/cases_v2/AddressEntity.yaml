@@ -1,0 +1,53 @@
+title: AddressEntity
+type: object
+properties: 
+  Country:
+    description: |
+      **ISO 3166-1 alpha2 value (2 caracteres)**<br />
+    oneOf:
+      - type: string
+      - type: null
+  PostalCode:
+    oneOf:
+      - type: string
+      - type: null
+  StreetAddress:
+    oneOf:
+      - type: string
+      - type: null
+  StreetAddressNumber:
+    oneOf:
+      - type: string
+      - type: null
+  Pobox:
+    oneOf:
+      - type: string
+      - type: null
+  Locality:
+    oneOf:
+      - type: string
+      - type: null
+  Region:
+    oneOf:
+      - type: string
+      - type: null
+  Neighborhood:
+    oneOf:
+      - type: string
+      - type: null
+  Type:
+    description: |
+      **Tipo de endereço**<br />
+      **Valores permitidos**<br />
+      Residencial<br />
+      Trabalho<br />
+      Cobrança<br />
+      Entrega<br />
+      Outro
+    oneOf:
+      - type: string
+  Primary:
+    description: |
+      **Se é o endereço principal**<br />
+    oneOf:
+      - type: boolean
