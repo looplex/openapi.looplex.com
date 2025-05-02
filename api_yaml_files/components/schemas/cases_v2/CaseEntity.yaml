@@ -253,7 +253,14 @@ allOf:
       # Resolution: # TODO
       # PaymentOrDischarge: # TODO
       # Guaranties: # TODO
-      # Tasks: # TODO
+      Tasks:
+        description: |
+          **Tarefas a serem realizadas**<br />
+        oneOf:
+          - type: array
+            items:
+              $ref: TaskEntity.yaml
+          - type: null  
       Timesheet:
         description: |
           **Registro de horas trabalhadas**<br /> 

@@ -1,0 +1,145 @@
+title: TaskContent
+type: object
+properties: 
+  Type:
+    description: |
+      **Tipo**<br />
+      **Valores permitidos:**<br />
+      Audiência (court hearing)<br />
+      Compromisso (meeting)<br />
+      Diligência (proceeding)<br />
+      Prazo (deadline)<br />
+      **Definições:**<br />
+      **court hearing:** A session in which a case is heard in court. <br />
+      **meeting:** An assembly of people for a particular purpose, especially for formal discussion<br />
+      **proceeding:** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+      **deadline:** A date or time by which you have to do or complete something. <br />
+    oneOf:
+      - type: string
+      - type: null
+  Title:
+    description: |
+      **Titulo**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Description:
+    description: |
+      **Descrição**<br />
+    oneOf:
+      - type: string
+      - type: null
+  StartDate:
+    description: |
+      **Data de Início**<br />
+    oneOf:
+      - type: string
+        format: datetime
+      - type: null
+  DueDate:
+    description: |
+      **Data de Vencimento**<br />
+    oneOf:
+      - type: string
+        format: datetime
+      - type: null
+  CreatedBy:
+    description: |
+      **Criado por**<br />
+    oneOf:
+      - $ref: SimpleEntity.yaml
+      - type: null
+  CreatedAt:
+    description: |
+      **Criado em**<br />
+    oneOf:
+      - type: string
+        format: datetime
+      - type: null
+  UpdatedAt:
+    description: |
+      **Atualizado em**<br />
+    oneOf:
+      - type: string
+        format: datetime
+      - type: null
+  UpdatedBy:
+    description: |
+      **Atualizado por**<br />
+    oneOf:
+      - $ref: SimpleEntity.yaml
+      - type: null
+  CompletedAt:
+    description: |
+      **Concluído em**<br />
+    oneOf:
+      - type: string
+        format: datetime
+      - type: null
+  CompletedBy:
+    description: |
+      **Concluído por**<br />
+    oneOf:
+      - $ref: SimpleEntity.yaml
+      - type: null
+  Locale:
+    description: |
+      **Local**<br />
+    oneOf:
+      - type: string
+      - type: null
+  TaskCode:
+    description: |
+      **Código da Tarefa**<br />
+    oneOf:
+      - type: string
+      - type: null
+  ActivityCode:
+    description: |
+      **Código da Atividade**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Owner:
+    description: |
+      **Responsável**<br />
+    oneOf:
+      - $ref: SimpleEntity.yaml
+      - type: null
+  OtherParticipants:
+    description: |
+      **Outros Participantes**<br />
+    oneOf:
+      - type: array
+        items:
+          $ref: SimpleEntity.yaml
+      - type: null
+  Status:
+    description: |
+      **Status**<br />
+      **Valores permitidos:**<br />
+      Cancelada<br />
+      Atribuída<br />
+      Criada<br />
+      Concluída<br />
+      Reagendada<br />
+      Suspensa
+    oneOf:
+      - type: string
+      - type: null
+  Priority:
+    description: |
+      **Prioridade**<br />
+      **Valores permitidos:**<br />
+      Baixa<br />
+      Média<br />
+      Alta
+    oneOf:
+      - type: string
+      - type: null
+  ConclusionNotes:
+    description: |
+      **Notas de Conclusão**<br />
+    oneOf:
+      - type: string
+      - type: null

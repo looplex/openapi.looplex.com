@@ -32,7 +32,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "Case Retrieve",
+        "summary": "Case",
         "description": "Retrieve information about a case\n",
         "operationId": "Case-uniqueId-get",
         "parameters": [
@@ -46,7 +46,7 @@
             "name": "uniqueId",
             "in": "path",
             "required": true,
-            "description": "Case unique guid",
+            "description": "Case id",
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -933,6 +933,259 @@
           }
         ]
       },
+      "TaskContent": {
+        "title": "TaskContent",
+        "type": "object",
+        "properties": {
+          "Type": {
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência (court hearing)<br />\nCompromisso (meeting)<br />\nDiligência (proceeding)<br />\nPrazo (deadline)<br />\n**Definições:**<br />\n**court hearing:** A session in which a case is heard in court. <br />\n**meeting:** An assembly of people for a particular purpose, especially for formal discussion<br />\n**proceeding:** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**deadline:** A date or time by which you have to do or complete something. <br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Title": {
+            "description": "**Titulo**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Description": {
+            "description": "**Descrição**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "StartDate": {
+            "description": "**Data de Início**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "DueDate": {
+            "description": "**Data de Vencimento**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "CreatedBy": {
+            "description": "**Criado por**<br />\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntity"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "CreatedAt": {
+            "description": "**Criado em**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "UpdatedAt": {
+            "description": "**Atualizado em**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "UpdatedBy": {
+            "description": "**Atualizado por**<br />\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntity"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "CompletedAt": {
+            "description": "**Concluído em**<br />\n",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "datetime"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "CompletedBy": {
+            "description": "**Concluído por**<br />\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntity"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Locale": {
+            "description": "**Local**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "TaskCode": {
+            "description": "**Código da Tarefa**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "ActivityCode": {
+            "description": "**Código da Atividade**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Owner": {
+            "description": "**Responsável**<br />\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntity"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**<br />\n",
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                }
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Status": {
+            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCancelada<br />\nAtribuída<br />\nCriada<br />\nConcluída<br />\nReagendada<br />\nSuspensa\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "Priority": {
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nBaixa<br />\nMédia<br />\nAlta\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          },
+          "ConclusionNotes": {
+            "description": "**Notas de Conclusão**<br />\n",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": null
+              }
+            ]
+          }
+        }
+      },
+      "TaskEntity": {
+        "title": "TaskEntity",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Data": {
+                "$ref": "#/components/schemas/TaskContent"
+              },
+              "Children": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TaskContent"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
       "Timesheet": {
         "title": "Timesheet",
         "type": "object",
@@ -1577,6 +1830,20 @@
                     "type": "array",
                     "items": {
                       "$ref": "#/components/schemas/EntryEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Tasks": {
+                "description": "**Tarefas a serem realizadas**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/TaskEntity"
                     }
                   },
                   {

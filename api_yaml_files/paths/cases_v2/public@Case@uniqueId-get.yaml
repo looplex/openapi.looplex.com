@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
-summary: "Case Retrieve"
+summary: "Case"
 description: |
   Retrieve information about a case
 operationId: Case-uniqueId-get
@@ -12,7 +12,7 @@ parameters:
   - name: uniqueId
     in: path
     required: true
-    description: "Case unique guid"
+    description: "Case id"
     schema:
       type: string
       format: uuid
