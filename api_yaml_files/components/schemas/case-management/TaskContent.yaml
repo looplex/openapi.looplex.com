@@ -5,15 +5,15 @@ properties:
     description: |
       **Tipo**<br />
       **Valores permitidos:**<br />
-      Audiência (court hearing)<br />
-      Compromisso (meeting)<br />
-      Diligência (proceeding)<br />
-      Prazo (deadline)<br />
+      Audiência<br />
+      Compromisso<br />
+      Diligência<br />
+      Prazo<br />
       **Definições:**<br />
-      **court hearing:** A session in which a case is heard in court. <br />
-      **meeting:** An assembly of people for a particular purpose, especially for formal discussion<br />
-      **proceeding:** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
-      **deadline:** A date or time by which you have to do or complete something. <br />
+      **Court hearing (Audiência):** A session in which a case is heard in court. <br />
+      **Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
+      **Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+      **Deadline (Prazo):** A date or time by which you have to do or complete something. <br />
     oneOf:
       - type: string
       - type: null
@@ -118,12 +118,12 @@ properties:
     description: |
       **Status**<br />
       **Valores permitidos:**<br />
-      Cancelada<br />
-      Atribuída<br />
-      Criada<br />
-      Concluída<br />
-      Reagendada<br />
-      Suspensa
+      4: Cancelada<br />
+      5: Atribuída<br />
+      6: Criada<br />
+      7: Concluída<br />
+      8: Reagendada<br />
+      9: Suspensa
     oneOf:
       - type: string
       - type: null
@@ -131,9 +131,9 @@ properties:
     description: |
       **Prioridade**<br />
       **Valores permitidos:**<br />
-      Baixa<br />
-      Média<br />
-      Alta
+      1: Baixa<br />
+      2: Média<br />
+      3: Alta
     oneOf:
       - type: string
       - type: null

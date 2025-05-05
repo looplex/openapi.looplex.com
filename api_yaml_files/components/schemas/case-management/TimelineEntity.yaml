@@ -1,0 +1,42 @@
+title: TimelineEntity
+type: object
+properties: 
+  Type:
+    description: |
+      **Tipo de evento**<br />
+      **Valores possíveis:**<br />
+      Andamento do Tribunal<br />
+      Decisão<br />
+      Andamento<br />
+      Garantia<br />
+      Publicação<br />
+      Cumprimento<br />
+      Tarefa<br />
+      Hora
+    oneOf:
+      - type: string
+      - type: null
+  Id:
+    description: |
+      **Identificador do item**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Date:
+    description: |
+      **Data do evento**<br />
+    oneOf:
+      - type: string
+        format: datetime
+  Title:
+    description: |
+      **Título do evento**<br />
+    oneOf:
+      - type: string
+      - type: null
+  Description:
+    description: |
+      **Descrição do evento**<br />
+    oneOf:
+      - type: string
+      - type: null

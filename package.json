@@ -1,19 +1,15 @@
 {
-  "name": "looplex_openapi",
-  "version": "0.1.0",
+  "name": "@looplex/openapi",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "commit": "cz",
-    "actions": "redocly preview-docs api_yaml_files/actions.yaml",
-    "assembler": "redocly preview-doc sapi_yaml_files/assembler.yaml",
-    "cases": "redocly preview-docs api_yaml_files/cases.yaml",
-    "updateCases": "redocly bundle ./api_yaml_files/cases.yaml -o ./app/v1/cases/cases --ext json",
-    "looplex365": "redocly preview-docs api_yaml_files/looplex365.yaml",
-    "varas_foros_v2": "redocly preview-docs api_yaml_files/varas_foros_v2.yaml",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "log": "git log --all --graph",
+    "cp": "git cherry-pick --no-commit",
+    "af": "git add -i"
   },
   "dependencies": {
     "@redocly/cli": "1.14.0",

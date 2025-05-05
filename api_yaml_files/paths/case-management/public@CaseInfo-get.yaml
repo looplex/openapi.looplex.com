@@ -1,0 +1,41 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Case Management
+summary: "Case info"
+description: "Fetch cases paginated"
+operationId: CaseInfo-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../components/parameters/case-management/Tenant.yaml
+  - name: startIndex
+    in: query
+    required: true
+    description: |
+      **Index of search**
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/case-management/CaseInfoEntity.yaml"
+  "400":
+    description: "Bad Request"
+  "500":
+    description: "Internal Server Error"

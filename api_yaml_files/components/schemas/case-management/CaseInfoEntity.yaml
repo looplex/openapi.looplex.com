@@ -1,7 +1,7 @@
-title: CaseEntity
+title: CaseInfoEntity
 type: object
 allOf:
-  - $ref: '../scim/Resource.yaml'
+  - $ref: ../scim/Resource.yaml
   - type: object
     properties:
       Status:
@@ -9,43 +9,47 @@ allOf:
         example: "Ativo"
         description: |
           **Indicação do status do caso**<br />
-          Ativo<br />
-          Inativo<br />
-          Arquivado<br />
-          Excluído
+          1: Ativo<br />
+          2: Arquivado<br />
+          3: Inativo<br />
+          99: Excluído
       Type:
         type: string
         example: "Judicial Estadual"
         description: | 
           **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
-          Judicial Estadual<br />
-          Judicial Federal<br />
-          Judicial Trabalhista<br />
-          Militar Estadual<br />
-          Militar União<br />
-          Eleitoral<br />
-          Consultivo<br />
-          Contrato<br />
-          Societário<br />
+          1: Administrativo<br />
+          2: Consultivo<br />
+          3: Judicial Estadual<br />
+          4: Judicial Federal<br />
+          5: Judicial Trabalhista<br />
+          7: Militar Estadual<br />
+          8: Eleitoral<br />
+          9: Militar União<br />
+          10: Contrato<br />
+          11: Due Diligence e Análise Documental<br />
+          13: Societário<br />
           Cobrança Extrajudicial<br />
-          Due Diligence e Análise Documental<br />
-          Administrativo<br />
           Arbitragem
       SubType:
         type: string
         example: "Caso"
         description: |
           **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
-          Caso<br />
-          Subcaso<br />
-          Recurso<br />
-          Incidente
-      CaseHierarchy:
+          1: Caso<br />
+          2: Subcaso<br />
+          3: Recurso<br />
+          4: Incidente
+      HasAncestor:
+        description: |
+          **Indica se o caso possui um caso primário**<br />
         oneOf:
-          - type: array
-            items:
-              $ref: CaseHierarchy.yaml
-          - type: null
+          - type: boolean
+      HasDescendants:
+        description: |
+          **Indica se o caso possui casos filhos**<br />
+        oneOf:
+          - type: boolean
       Identities:
         description: |
           **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
@@ -70,8 +74,8 @@ allOf:
           - type: null
         description: |
           **Utilizado em casos consultivos**<br />
-          Formato: País - Estado - Cidade<br />
-          Local da Jurisdição de um caso, ou cumprimento da obrigação. Utilizado para casos consultivos
+          **Formato: País - Estado - Cidade**<br />
+          Local da Jurisdição de um caso, ou cumprimento da obrigação.
       CourtVenue:
         oneOf:
           - type: string
@@ -91,13 +95,6 @@ allOf:
         description: | 
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
-      Nature:
-        description: "**Indica os assuntos tratados no caso**"
-        oneOf:
-          - type: array
-            items:
-              type: string
-          - type: null
       RetentionDate:
         oneOf:
           - type: string
@@ -181,15 +178,6 @@ allOf:
         oneOf:
           - type: string
           - type: null
-      Product:
-        description: |
-          **Produto**<br />
-          Produto ou serviço do cliente que está relacionado ao caso
-        oneOf:
-          - type: array
-            items:
-              type: string
-          - type: null
       CaseClient:
         description: |
           **Cliente**<br />
@@ -238,51 +226,4 @@ allOf:
           - type: array
             items:
               $ref: GlobalValues.yaml
-          - type: null
-      # Claims: # TODO
-      # OppositionToClaims: # TODO
-      # ProceduralObjections: # TODO
-      Entry:
-        description: |
-          **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: EntryEntity.yaml
-          - type: null
-      # Resolution: # TODO
-      # PaymentOrDischarge: # TODO
-      # Guaranties: # TODO
-      Tasks:
-        description: |
-          **Tarefas a serem realizadas**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: TaskEntity.yaml
-          - type: null  
-      Timesheet:
-        description: |
-          **Registro de horas trabalhadas**<br /> 
-        oneOf:
-          - type: array
-            items:
-              $ref: Timesheet.yaml
-          - type: null
-      CustomFields:
-        description: |
-          **Campos personalizados criados pelo usuário**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: CustomFieldEntity.yaml
-          - type: null
-      Timeline:
-        description: |
-          **Linha do Tempo**<br />
-          Log de eventos
-        oneOf:
-          - type: array
-            items:
-              $ref: TimelineEntity.yaml
           - type: null

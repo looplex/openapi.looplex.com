@@ -1,14 +1,14 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
-summary: "Case"
+summary: Case
 description: |
   Retrieve information about a case
 operationId: Case-uniqueId-get
 # Parâmetros da requisição
 parameters:
   - $ref: ../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../components/parameters/cases_v2/Tenant.yaml
+  - $ref: ../../components/parameters/case-management/Tenant.yaml
   - name: uniqueId
     in: path
     required: true
@@ -25,7 +25,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/cases_v2/CaseEntity.yaml"
+          $ref: "../../components/schemas/case-management/CaseEntity.yaml"
   "400":
     description: "Bad Request"
   "500":

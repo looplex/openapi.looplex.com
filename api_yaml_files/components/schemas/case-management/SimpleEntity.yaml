@@ -1,0 +1,13 @@
+title: SimpleEntity
+type: object
+properties: 
+  Id:
+    description: "**The object unique identifier**"
+    oneOf:
+      - type: string
+      - type: null
+  Name:
+    description: "**The object name**"
+    oneOf:
+      - type: string
+      - type: null

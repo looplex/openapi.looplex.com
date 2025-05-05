@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "Looplex Case Managament",
+    "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -60,6 +60,62 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CaseEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/CaseInfo": {
+      "get": {
+        "tags": [
+          "Case Management"
+        ],
+        "summary": "Case info",
+        "description": "Fetch cases paginated",
+        "operationId": "CaseInfo-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseInfoEntity"
                 }
               }
             }
@@ -451,7 +507,7 @@
             ]
           },
           "Type": {
-            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\nResidencial<br />\nTrabalho<br />\nCobrança<br />\nEntrega<br />\nOutro\n",
+            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\n1: Residencial<br />\n2: Trabalho<br />\n3: Outro<br />\n4: Cobrança<br />\n5: Entrega\n",
             "oneOf": [
               {
                 "type": "string"
@@ -546,12 +602,8 @@
         "properties": {
           "Id": {
             "description": "**Partcipant id**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              }
-            ]
+            "type": "string",
+            "format": "uuid"
           },
           "Name": {
             "description": "**Participant name**<br />\n",
@@ -577,11 +629,7 @@
           },
           "IsMainParty": {
             "description": "**Indica se é a parte principal**<br />\n",
-            "oneOf": [
-              {
-                "type": "bool"
-              }
-            ]
+            "type": "bool"
           },
           "Represents": {
             "description": "**UUID do participante que está sendo representado**<br />\n",
@@ -598,20 +646,12 @@
             ]
           },
           "Nature": {
-            "description": "**Natureza**<br />\nPessoa Física<br />\nPessoa Jurídica\n",
-            "oneOf": [
-              {
-                "type": "string"
-              }
-            ]
+            "description": "**Natureza**<br />\n1: Pessoa Física<br />\n2: Pessoa Jurídica\n",
+            "type": "string"
           },
           "Position": {
-            "description": "**Posição do participante**<br />\nAtivo<br />\nPassivo<br />\nTerceiro<br />\nOutro envolvido\n",
-            "oneOf": [
-              {
-                "type": "string"
-              }
-            ]
+            "description": "**Posição do participante**<br />\n1: Ativo<br />\n2: Passivo<br />\n3: Terceiro<br />\n4: Nenhum<br />\n5: Outro envolvido\n",
+            "type": "string"
           },
           "Addresses": {
             "description": "**Endereços**<br />\n",
@@ -694,7 +734,7 @@
                 ]
               },
               "Gender": {
-                "description": "**Feminino | Masculino**<br />\n",
+                "description": "1: Feminino<br />\n2: Masculino\n",
                 "oneOf": [
                   {
                     "type": "string"
@@ -716,7 +756,7 @@
                 ]
               },
               "MaritalStatus": {
-                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nSeparado<br />\nDivorciado<br />\nViúvo\n",
+                "description": "**Estado civil**<br />\n1: Solteiro<br />\n2: Casado<br />\n3: Viúvo<br />\n4: Separado<br />\n5: Divorciado\n",
                 "oneOf": [
                   {
                     "type": "string"
@@ -727,7 +767,7 @@
                 ]
               },
               "Occupation": {
-                "description": "**Profissão**<br />\n",
+                "description": "**Profissão**",
                 "oneOf": [
                   {
                     "type": "string"
@@ -804,7 +844,7 @@
             ]
           },
           "Perspective": {
-            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\nPerda <br />\nÊxito\n",
+            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\n1: Perda <br />\n2: Êxito\n",
             "oneOf": [
               {
                 "type": "string"
@@ -815,7 +855,7 @@
             ]
           },
           "Risk": {
-            "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos**<br />\npossível<br />\nprovável<br />\nremoto\n",
+            "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos**<br />\n1: Provável<br />\n2: Possível<br />\n3: Remoto\n",
             "oneOf": [
               {
                 "type": "string"
@@ -882,13 +922,9 @@
             "type": "object",
             "properties": {
               "Date": {
-                "description": "**Data do andamento**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  }
-                ]
+                "description": "**Data do andamento**",
+                "type": "string",
+                "format": "datetime"
               },
               "Classification": {
                 "description": "**Classificação do andamento**<br />\n",
@@ -913,12 +949,8 @@
                 ]
               },
               "IsInternal": {
-                "description": "**Indica se o andamento é de uso interno**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "boolean"
-                  }
-                ]
+                "description": "**Indica se o andamento é de uso interno**",
+                "type": "boolean"
               },
               "OfficialNotice": {
                 "description": "**Identificador da publicação que criou esse andamento (se houver)**<br />\n",
@@ -926,6 +958,9 @@
                   {
                     "type": "string",
                     "format": "uuid"
+                  },
+                  {
+                    "type": null
                   }
                 ]
               }
@@ -938,7 +973,7 @@
         "type": "object",
         "properties": {
           "Type": {
-            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência (court hearing)<br />\nCompromisso (meeting)<br />\nDiligência (proceeding)<br />\nPrazo (deadline)<br />\n**Definições:**<br />\n**court hearing:** A session in which a case is heard in court. <br />\n**meeting:** An assembly of people for a particular purpose, especially for formal discussion<br />\n**proceeding:** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**deadline:** A date or time by which you have to do or complete something. <br />\n",
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência<br />\nCompromisso<br />\nDiligência<br />\nPrazo<br />\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n",
             "oneOf": [
               {
                 "type": "string"
@@ -1122,7 +1157,7 @@
             ]
           },
           "Status": {
-            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCancelada<br />\nAtribuída<br />\nCriada<br />\nConcluída<br />\nReagendada<br />\nSuspensa\n",
+            "description": "**Status**<br />\n**Valores permitidos:**<br />\n4: Cancelada<br />\n5: Atribuída<br />\n6: Criada<br />\n7: Concluída<br />\n8: Reagendada<br />\n9: Suspensa\n",
             "oneOf": [
               {
                 "type": "string"
@@ -1133,7 +1168,7 @@
             ]
           },
           "Priority": {
-            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nBaixa<br />\nMédia<br />\nAlta\n",
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\n1: Baixa<br />\n2: Média<br />\n3: Alta\n",
             "oneOf": [
               {
                 "type": "string"
@@ -1197,7 +1232,7 @@
             "type": "object",
             "properties": {
               "Classification": {
-                "description": "**Classificaçãon**<br />\n",
+                "description": "**Classificação**<br />\n",
                 "oneOf": [
                   {
                     "type": "string"
@@ -1379,7 +1414,7 @@
             ]
           },
           "Type": {
-            "description": "**Custom field type**<br />\n",
+            "description": "**Custom field type**<br />\n1: text<br />\n2: decimal<br />\n3: integer<br />\n4: date-time<br />\n5: text-multi-line<br />\n7: checkbox<br />\n6, 8, 9, 10, 11, 15, 16: dropdown<br />\n12, 13, 14: select<br />\n17: json<br />\n",
             "oneOf": [
               {
                 "type": "string"
@@ -1474,17 +1509,17 @@
               "Status": {
                 "type": "string",
                 "example": "Ativo",
-                "description": "**Indicação do status do caso**<br />\nAtivo<br />\nInativo<br />\nArquivado<br />\nExcluído\n"
+                "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
               },
               "Type": {
                 "type": "string",
                 "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nMilitar União<br />\nEleitoral<br />\nConsultivo<br />\nContrato<br />\nSocietário<br />\nCobrança Extrajudicial<br />\nDue Diligence e Análise Documental<br />\nAdministrativo<br />\nArbitragem\n"
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n13: Societário<br />\nCobrança Extrajudicial<br />\nArbitragem\n"
               },
               "SubType": {
                 "type": "string",
                 "example": "Caso",
-                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\nCaso<br />\nSubcaso<br />\nRecurso<br />\nIncidente\n"
+                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
               },
               "CaseHierarchy": {
                 "oneOf": [
@@ -1544,7 +1579,7 @@
                     "type": null
                   }
                 ],
-                "description": "**Utilizado em casos consultivos**<br />\nFormato: País - Estado - Cidade<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação. Utilizado para casos consultivos\n"
+                "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "CourtVenue": {
                 "oneOf": [
@@ -1886,6 +1921,347 @@
                     "type": "array",
                     "items": {
                       "$ref": "#/components/schemas/TimelineEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CaseInfoEntity": {
+        "title": "CaseInfoEntity",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Status": {
+                "type": "string",
+                "example": "Ativo",
+                "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
+              },
+              "Type": {
+                "type": "string",
+                "example": "Judicial Estadual",
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n13: Societário<br />\nCobrança Extrajudicial<br />\nArbitragem\n"
+              },
+              "SubType": {
+                "type": "string",
+                "example": "Caso",
+                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
+              },
+              "HasAncestor": {
+                "description": "**Indica se o caso possui um caso primário**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "HasDescendants": {
+                "description": "**Indica se o caso possui casos filhos**<br />\n",
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              },
+              "Identities": {
+                "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/IdentityEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Title": {
+                "description": "**Nome Jurídico do caso**",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Summary": {
+                "description": "**Breve descrição sobre o caso**",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Locale": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+              },
+              "CourtVenue": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
+              },
+              "CaseProcedure": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Rito ou procedimento do caso**"
+              },
+              "Phase": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
+              },
+              "RetentionDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
+              },
+              "StartDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
+              },
+              "FormationDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
+              },
+              "ResJudicataDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
+              },
+              "ForecastedEndDate": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
+              },
+              "CreatedAt": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ],
+                "description": "**Data de criação do caso**\n"
+              },
+              "CreatedBy": {
+                "description": "**Usuário que criou o caso**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "UpdatedAt": {
+                "description": "**Atualizado em**",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "UpdatedBy": {
+                "description": "**Atualizado por**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "ClosedAt": {
+                "description": "**Data de encerramento**",
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "ClosedBy": {
+                "description": "**Usuário que encerrou o caso**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Group": {
+                "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "CaseClient": {
+                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CaseClient"
+                  }
+                ]
+              },
+              "LegalServiceAgreement": {
+                "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/LegalServiceAgreement"
+                  }
+                ]
+              },
+              "Owner": {
+                "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Coowners": {
+                "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SimpleEntity"
+                    }
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "ExternalServiceProvider": {
+                "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntity"
+                  },
+                  {
+                    "type": null
+                  }
+                ]
+              },
+              "Participants": {
+                "desription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ParticipantLegalPerson"
+                  }
+                ]
+              },
+              "GlobalValues": {
+                "description": "**Valores globais do caso, definidos por polo**\n",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/GlobalValues"
                     }
                   },
                   {

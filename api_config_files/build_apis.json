@@ -1,10 +1,30 @@
 [
-  "redocly bundle ./api_yaml_files/looplex365.yaml -o ./app/v1/looplex365/looplex365 --ext json",
-  "redocly bundle ./api_yaml_files/cases.yaml -o ./app/v1/cases/cases --ext json",
-  "redocly bundle ./api_yaml_files/assembler.yaml -o ./app/v1/assembler/assembler --ext json",
-  "redocly bundle ./api_yaml_files/actions.yaml -o ./app/v1/actions/actions --ext json",
-  "redocly bundle ./api_yaml_files/recess.yaml -o ./app/v1/recess/recess --ext json",
-
-  "redocly bundle ./api_yaml_files/cases_v2.yaml -o ./app/v1/case-management/cases --ext json",
-  "redocly bundle ./api_yaml_files/varas_foros_v2.yaml -o ./app/v2/varas_foros/varas_foros --ext json"
+  {
+    "api_name": "Looplex 365",
+    "command": "redocly bundle ./api_yaml_files/looplex365.yaml -o ./app/v1/looplex365/looplex365 --ext json"
+  },
+  {
+    "api_name": "API MobileService",
+    "command": "redocly bundle ./api_yaml_files/cases.yaml -o ./app/v1/cases/cases --ext json"
+  },
+  {
+    "api_name": "Assembler",
+    "command": "redocly bundle ./api_yaml_files/assembler.yaml -o ./app/v1/assembler/assembler --ext json"
+  },
+  {
+    "api_name": "Actions",
+    "command": "redocly bundle ./api_yaml_files/actions.yaml -o ./app/v1/actions/actions --ext json"
+  },
+  {
+    "api_name": "API Recess (feriados)",
+    "command": "redocly bundle ./api_yaml_files/recess.yaml -o ./app/v1/recess/recess --ext json"
+  },
+  {
+    "api_name": "API Case Management",
+    "command": "redocly bundle ./api_yaml_files/case-management.yaml -o ./app/v1/case-management/cases --ext json"
+  },
+  {
+    "api_name": "API Varas e Foros",
+    "command": "redocly bundle ./api_yaml_files/varas_foros_v2.yaml -o ./app/v2/varas_foros/varas_foros --ext json"
+  }
 ]

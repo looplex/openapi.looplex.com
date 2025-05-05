@@ -4,9 +4,8 @@ properties:
   Id:
     description: |
       **Partcipant id**<br />
-    oneOf:
-      - type: string
-        format: uuid
+    type: string
+    format: uuid
   Name:
     description: |
       **Participant name**<br />
@@ -22,8 +21,7 @@ properties:
   IsMainParty:
     description: |
       **Indica se é a parte principal**<br />
-    oneOf:
-      - type: bool
+    type: bool
   Represents:
     description: |
       **UUID do participante que está sendo representado**<br />
@@ -35,19 +33,18 @@ properties:
   Nature:
     description: |
       **Natureza**<br />
-      Pessoa Física<br />
-      Pessoa Jurídica
-    oneOf:
-      - type: string
+      1: Pessoa Física<br />
+      2: Pessoa Jurídica
+    type: string
   Position:
     description: |
       **Posição do participante**<br />
-      Ativo<br />
-      Passivo<br />
-      Terceiro<br />
-      Outro envolvido
-    oneOf:
-      - type: string
+      1: Ativo<br />
+      2: Passivo<br />
+      3: Terceiro<br />
+      4: Nenhum<br />
+      5: Outro envolvido
+    type: string
   Addresses:
     description: |
       **Endereços**<br />

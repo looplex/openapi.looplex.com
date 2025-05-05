@@ -3,7 +3,7 @@ openapi: 3.0.2
 security: []
 info:
   version: 1.0.0
-  title: "Looplex Case Managament"
+  title: "Looplex Case Management"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex
@@ -23,7 +23,10 @@ servers:
 paths:
   /Cases/{uniqueId}:
     get:
-      $ref: './paths/cases_v2/public@Case@uniqueId-get.yaml'
+      $ref: './paths/case-management/public@Case@uniqueId-get.yaml'
+  /CaseInfo:
+    get:
+      $ref: './paths/case-management/public@CaseInfo-get.yaml'
 
 components:
   securitySchemes:
