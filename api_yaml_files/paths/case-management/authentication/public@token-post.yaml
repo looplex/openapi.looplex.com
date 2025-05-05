@@ -1,0 +1,50 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Authentication
+summary: "Authentication"
+description: "Authentication endpoint"
+operationId: token-post
+# Parâmetros da requisição
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          grant_type:
+            type: string
+            required: true
+            description: "**The grant type**"
+            example: 'urn:ietf:params:oauth:grant-type:token-exchange'
+          subject_token:
+            type: string
+            required: true
+            description: '**The access token returned by the identity provider**'
+            example: 'access_token_example'
+          subject_token_type:
+            type: string
+            required: true
+            description: "**The token type**"
+            example: 'urn:ietf:params:oauth:token-type:access_token'
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            access_token:
+              type: string
+              description: '**The token to use in all other requests**'
+              example: 'access_token_example'
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/schemas/responses/InternalServerErrorResponse.yaml"

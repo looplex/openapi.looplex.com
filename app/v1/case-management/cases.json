@@ -27,6 +27,79 @@
   ],
   "security": [],
   "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Authentication",
+        "description": "Authentication endpoint",
+        "operationId": "token-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "required": true,
+                    "description": "**The grant type**",
+                    "example": "urn:ietf:params:oauth:grant-type:token-exchange"
+                  },
+                  "subject_token": {
+                    "type": "string",
+                    "required": true,
+                    "description": "**The access token returned by the identity provider**",
+                    "example": "access_token_example"
+                  },
+                  "subject_token_type": {
+                    "type": "string",
+                    "required": true,
+                    "description": "**The token type**",
+                    "example": "urn:ietf:params:oauth:token-type:access_token"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "description": "**The token to use in all other requests**",
+                      "example": "access_token_example"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Cases/{uniqueId}": {
       "get": {
         "tags": [
@@ -41,6 +114,9 @@
           },
           {
             "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
           },
           {
             "name": "uniqueId",
@@ -87,6 +163,9 @@
           },
           {
             "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
           },
           {
             "name": "startIndex",
@@ -151,7 +230,7 @@
       "OcpApimSubscriptionKey": {
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
-        "description": "Subscription key provided by Looplex",
+        "description": "**Subscription key provided by Looplex**",
         "required": true,
         "schema": {
           "type": "string"
@@ -160,7 +239,16 @@
       "Tenant": {
         "name": "x-looplex-tenant",
         "in": "header",
-        "description": "Client domain",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
         "required": true,
         "schema": {
           "type": "string"
@@ -168,6 +256,23 @@
       }
     },
     "schemas": {
+      "InternalServerErrorResponse": {
+        "type": "object",
+        "properties": {
+          "Message": {
+            "type": "string",
+            "description": "Erro"
+          },
+          "ExceptionMessage": {
+            "type": "string",
+            "description": "Indica um erro interno ocorrido no servidor."
+          },
+          "ExceptionCode": {
+            "type": "string",
+            "description": "O identificador do tipo de exception"
+          }
+        }
+      },
       "Meta": {
         "title": "Meta",
         "type": "object",

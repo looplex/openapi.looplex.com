@@ -7,8 +7,9 @@ description: |
 operationId: Case-uniqueId-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../components/parameters/case-management/BearerToken.yaml
   - name: uniqueId
     in: path
     required: true
@@ -25,7 +26,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/case-management/CaseEntity.yaml"
+          $ref: "../../../components/schemas/case-management/CaseEntity.yaml"
   "400":
     description: "Bad Request"
   "500":

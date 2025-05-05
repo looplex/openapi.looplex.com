@@ -21,12 +21,17 @@ servers:
   - url: "https://apim.looplex.com/case-management/v1"
     description: "Case Management Server"
 paths:
+  # Authentication
+  /token:
+    post:
+      $ref: '.\paths\case-management\authentication\public@token-post.yaml'
+  # Case
   /Cases/{uniqueId}:
     get:
-      $ref: './paths/case-management/public@Case@uniqueId-get.yaml'
+      $ref: '.\paths\case-management\case\public@Case@uniqueId-get.yaml'
   /CaseInfo:
     get:
-      $ref: './paths/case-management/public@CaseInfo-get.yaml'
+      $ref: '.\paths\case-management\case\public@CaseInfo-get.yaml'
 
 components:
   securitySchemes:

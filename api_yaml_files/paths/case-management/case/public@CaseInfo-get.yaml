@@ -6,8 +6,9 @@ description: "Fetch cases paginated"
 operationId: CaseInfo-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../components/parameters/case-management/BearerToken.yaml
   - name: startIndex
     in: query
     required: true
@@ -34,7 +35,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../../components/schemas/case-management/CaseInfoEntity.yaml"
+          $ref: "../../../components/schemas/case-management/CaseInfoEntity.yaml"
   "400":
     description: "Bad Request"
   "500":
