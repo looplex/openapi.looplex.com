@@ -1619,7 +1619,7 @@
               "Type": {
                 "type": "string",
                 "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n13: Societário<br />\nCobrança Extrajudicial<br />\nArbitragem\n"
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
               },
               "SubType": {
                 "type": "string",
@@ -2055,7 +2055,7 @@
               "Type": {
                 "type": "string",
                 "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n13: Societário<br />\nCobrança Extrajudicial<br />\nArbitragem\n"
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
               },
               "SubType": {
                 "type": "string",

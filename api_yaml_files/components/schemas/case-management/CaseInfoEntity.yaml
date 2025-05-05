@@ -28,8 +28,8 @@ allOf:
           9: Militar União<br />
           10: Contrato<br />
           11: Due Diligence e Análise Documental<br />
+          12: Cobrança Extrajudicial<br />
           13: Societário<br />
-          Cobrança Extrajudicial<br />
           Arbitragem
       SubType:
         type: string
