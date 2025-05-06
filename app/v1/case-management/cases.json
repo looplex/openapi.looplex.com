@@ -100,14 +100,14 @@
         }
       }
     },
-    "/cases/{uniqueId}": {
+    "/cases/:case_id": {
       "get": {
         "tags": [
           "Case Management"
         ],
         "summary": "Case",
         "description": "Retrieve information about a case\n",
-        "operationId": "Case-uniqueId-get",
+        "operationId": "cases-case_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -119,10 +119,10 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "uniqueId",
+            "name": "case_id",
             "in": "path",
             "required": true,
-            "description": "Case id",
+            "description": "**Case id**",
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -156,7 +156,7 @@
         ],
         "summary": "Case info",
         "description": "Fetch cases paginated",
-        "operationId": "CaseInfo-get",
+        "operationId": "cases-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"

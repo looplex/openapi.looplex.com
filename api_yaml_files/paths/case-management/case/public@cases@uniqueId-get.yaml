@@ -4,16 +4,16 @@ tags:
 summary: Case
 description: |
   Retrieve information about a case
-operationId: Case-uniqueId-get
+operationId: cases-case_id-get
 # Parâmetros da requisição
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../components/parameters/case-management/Tenant.yaml
   - $ref: ../../../components/parameters/case-management/BearerToken.yaml
-  - name: uniqueId
+  - name: case_id
     in: path
     required: true
-    description: "Case id"
+    description: "**Case id**"
     schema:
       type: string
       format: uuid

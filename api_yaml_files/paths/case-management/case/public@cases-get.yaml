@@ -3,7 +3,7 @@ tags:
   - Case Management
 summary: "Case info"
 description: "Fetch cases paginated"
-operationId: CaseInfo-get
+operationId: cases-get
 # Parâmetros da requisição
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
