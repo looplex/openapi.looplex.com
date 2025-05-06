@@ -100,7 +100,7 @@
         }
       }
     },
-    "/Cases/{uniqueId}": {
+    "/cases/{uniqueId}": {
       "get": {
         "tags": [
           "Case Management"
@@ -149,7 +149,7 @@
         }
       }
     },
-    "/CaseInfo": {
+    "/cases": {
       "get": {
         "tags": [
           "Case Management"
