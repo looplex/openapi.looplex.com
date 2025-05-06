@@ -1,3 +1,337 @@
 {
-  "name": "looplex_openapi"
+  "name": "looplex_openapi",
+  "apis": [
+    {
+      "index": 1,
+      "label": "API MobileService",
+      "option": {
+        "build_command": "redocly bundle ./api_yaml_files/cases.yaml -o ./app/v1/cases/cases --ext json",
+        "folder_name": "cases",
+        "path_components": "/api_yaml_files/components/schemas/cases",
+        "path_parameters": "/api_yaml_files/components/parameters/cases",
+        "path_enums": "/api_yaml_files/components/schemas/cases/enums",
+        "path_templates": "/api_yaml_files/components/schemas/cases/templates",
+        "path_routes": "/api_yaml_files/paths/cases",
+        "tags": [
+          "Autenticação",
+          "Advogado",
+          "Andamento",
+          "Área",
+          "Busca",
+          "Cálculo Monetário",
+          "Casos",
+          "Fase do caso",
+          "Categoria",
+          "Cliente",
+          "Contato",
+          "Conteúdo Julgamento",
+          "Contrato",
+          "Cumprimentos",
+          "Decisões",
+          "Despesas",
+          "Expectativa reivindicação",
+          "Funcionário",
+          "Garantia",
+          "Hierarquia",
+          "Informações adicionais",
+          "Informações adicionais (valor)",
+          "Liabilities Calculation",
+          "Motivo de pedir",
+          "Natureza",
+          "País",
+          "Partes",
+          "Pedidos",
+          "Produtos",
+          "Push",
+          "Push de andamentos",
+          "Push de publicação",
+          "Questões Processuais",
+          "Solicitação",
+          "Tabela de preço",
+          "Tabela preço categoria",
+          "Tipo Decisão",
+          "Tipo Julgamento",
+          "Tarefa",
+          "Timeline",
+          "Timesheet",
+          "Valores apurados"
+        ],
+        "folders": [
+          {
+            "label": "Advogado",
+            "detail": "Endpoints de advogado",
+            "opcao": "cases/advogado/"
+          },
+          {
+            "label": "Andamento",
+            "detail": "Endpoints de andamento",
+            "opcao": "cases/andamento/"
+          },
+          {
+            "label": "Área",
+            "detail": "Endpoints de área",
+            "opcao": "cases/area/"
+          },
+          {
+            "label": "Busca",
+            "detail": "Endpoints de busca",
+            "opcao": "cases/busca/"
+          },
+          {
+            "label": "Cálculo Monetário",
+            "detail": "Endpoints de calculo monetário",
+            "opcao": "cases/calculo_monetario/"
+          },
+          {
+            "label": "Casos",
+            "detail": "Endpoints de casos",
+            "opcao": "cases/casos/"
+          },
+          {
+            "label": "Categoria",
+            "detail": "Endpoints de categoria",
+            "opcao": "cases/categoria/"
+          },
+          {
+            "label": "Cliente",
+            "detail": "Endpoints de cliente",
+            "opcao": "cases/cliente/"
+          },
+          {
+            "label": "Conta de acesso",
+            "detail": "Endpoints de conta de acesso",
+            "opcao": "cases/conta_de_acesso/"
+          },
+          {
+            "label": "Contato",
+            "detail": "Endpoints de contato",
+            "opcao": "cases/contato/"
+          },
+          {
+            "label": "Conteúdo Julgamento",
+            "detail": "Endpoints de Conteúdo Julgamento",
+            "opcao": "cases/conteudo_julgamento/"
+          },
+          {
+            "label": "Contrato",
+            "detail": "Endpoints de contrato",
+            "opcao": "cases/contrato/"
+          },
+          {
+            "label": "Decisões",
+            "detail": "Endpoints de decisões",
+            "opcao": "cases/decisoes/"
+          },
+          {
+            "label": "Despesas",
+            "detail": "Endpoints de despesa",
+            "opcao": "cases/despesa/"
+          },
+          {
+            "label": "Expectativa reivindicação",
+            "detail": "Endpoints de expectativa reivindicação",
+            "opcao": "cases/expectativa_reivindicacao/"
+          },
+          {
+            "label": "Fase do caso",
+            "detail": "Endpoints de fase do caso",
+            "opcao": "cases/fase_caso/"
+          },
+          {
+            "label": "Funcionário",
+            "detail": "Endpoints de funcionário",
+            "opcao": "cases/funcionario/"
+          },
+          {
+            "label": "Garantia",
+            "detail": "Endpoints de garantia",
+            "opcao": "cases/garantia/"
+          },
+          {
+            "label": "Hierarquia",
+            "detail": "Endpoints de hierarquia",
+            "opcao": "cases/hierarquia/"
+          },
+          {
+            "label": "Informações adicionais",
+            "detail": "Endpoints de Informações adicionais",
+            "opcao": "cases/informacoes_adicionais/"
+          },
+          {
+            "label": "Informações adicionais (valor)",
+            "detail": "Endpoints de Informações adicionais (Valor)",
+            "opcao": "cases/informacoes_adicionais_valor/"
+          },
+          {
+            "label": "Natureza",
+            "detail": "Endpoints de natureza",
+            "opcao": "cases/natureza/"
+          },
+          {
+            "label": "País",
+            "detail": "Endpoints de país",
+            "opcao": "cases/pais/"
+          },
+          {
+            "label": "Envolvimento das partes",
+            "detail": "Endpoints de nvolvimento das partes",
+            "opcao": "cases/parte_papel/"
+          },
+          {
+            "label": "Liabilities calculation",
+            "detail": "Endpoints de Liabilities Calculation",
+            "opcao": "cases/liabilities_calculation/"
+          },
+          {
+            "label": "Partes",
+            "detail": "Endpoints de partes",
+            "opcao": "cases/partes/"
+          },
+          {
+            "label": "Pedidos",
+            "detail": "Endpoints de pedidos",
+            "opcao": "cases/pedidos/"
+          },
+          {
+            "label": "Permissão",
+            "detail": "Endpoints de permissão",
+            "opcao": "cases/permissao/"
+          },
+          {
+            "label": "Produtos",
+            "detail": "Endpoints de produtos",
+            "opcao": "cases/produtos/"
+          },
+          {
+            "label": "Push",
+            "detail": "Endpoints de push",
+            "opcao": "cases/push/"
+          },
+          {
+            "label": "Push de andamentos",
+            "detail": "Endpoints de push de andamentos",
+            "opcao": "cases/push_andamentos/"
+          },
+          {
+            "label": "Push de publicação",
+            "detail": "Endpoints de push de publicação",
+            "opcao": "cases/push_publicacao/"
+          },
+          {
+            "label": "Render",
+            "detail": "Endpoints do Render",
+            "opcao": "cases/render/"
+          },
+          {
+            "label": "Autenticação",
+            "detail": "Endpoints de autenticação",
+            "opcao": "cases/login/"
+          },
+          {
+            "label": "Solicitação",
+            "detail": "Endpoints de Solicitação",
+            "opcao": "cases/solicitacao/"
+          },
+          {
+            "label": "Tabela preço categoria",
+            "detail": "Endpoints de tabela preço categoria",
+            "opcao": "cases/tabela_preco_categoria/"
+          },
+          {
+            "label": "Tabela preço",
+            "detail": "Endpoints de tabela de preço",
+            "opcao": "cases/tabela_preco/"
+          },
+          {
+            "label": "Tarefa",
+            "detail": "Endpoints de tarefa",
+            "opcao": "cases/tarefa/"
+          },
+          {
+            "label": "Timeline",
+            "detail": "Endpoints de timeline",
+            "opcao": "cases/timeline/"
+          },
+          {
+            "label": "Timesheet",
+            "detail": "Endpoints de timesheet",
+            "opcao": "cases/timesheet/"
+          },
+          {
+            "label": "Valores apurados",
+            "detail": "Endpoints de valores apurados",
+            "opcao": "cases/valores_apurados/"
+          },
+          {
+            "label": "Varas e Foros",
+            "detail": "Endpoints de varas e foros",
+            "opcao": "varas_foros/"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "label": "API Case Management",
+      "option": {
+        "build_command": "redocly bundle ./api_yaml_files/case-management.yaml -o ./app/v1/case-management/cases --ext json",
+        "folder_name": "case-management",
+        "path_components": "/api_yaml_files/components/schemas/case-management",
+        "path_parameters": "/api_yaml_files/components/parameters/case-management",
+        "path_enums": "/api_yaml_files/components/schemas/case-management/enums",
+        "path_templates": "/api_yaml_files/components/schemas/case-management/templates",
+        "path_routes": "/api_yaml_files/paths/case-management",
+        "tags": [
+          "Authentication",
+          "Case Management"
+        ],
+        "folders": []
+      }
+    },
+    {
+      "index": 3,
+      "label": "Varas e Foros",
+      "option": {
+        "build_command": "redocly bundle ./api_yaml_files/varas_foros_v2.yaml -o ./app/v2/varas_foros/varas_foros --ext json",
+        "folder_name": "varas_foros",
+        "path_components": "/api_yaml_files/components/schemas/varas_foros",
+        "path_parameters": "/api_yaml_files/components/parameters/varas_foros",
+        "path_enums": "/api_yaml_files/components/schemas/varas_foros/enums",
+        "path_templates": "/api_yaml_files/components/schemas/varas_foros/templates",
+        "path_routes": "/api_yaml_files/paths/varas_foros",
+        "tags": [],
+        "folders": []
+      }
+    },
+    {
+      "index": 4,
+      "label": "Recess (API de feriados)",
+      "option": {
+        "build_command": "redocly bundle ./api_yaml_files/recess.yaml -o ./app/v1/recess/recess --ext json",
+        "folder_name": "recess",
+        "path_components": "/api_yaml_files/components/schemas/recess",
+        "path_parameters": "/api_yaml_files/components/parameters/recess",
+        "path_enums": "/api_yaml_files/components/schemas/recess/enums",
+        "path_templates": "/api_yaml_files/components/schemas/recess/templates",
+        "path_routes": "/api_yaml_files/paths/recess",
+        "tags": [],
+        "folders": []
+      }
+    },
+    {
+      "index": 5,
+      "label": "SCIM",
+      "option": {
+        "build_command": null,
+        "folder_name": "scim",
+        "path_components": "/api_yaml_files/components/schemas/scim",
+        "path_parameters": null,
+        "path_enums": null,
+        "path_templates": null,
+        "path_routes": null,
+        "tags": null,
+        "folders": null
+      }
+    }
+  ]
 }
