@@ -1,0 +1,62 @@
+[
+  {
+    "index": 1,
+    "label": "MobileService",
+    "option": {
+      "folder_name": "cases",
+      "path_components": "/api_yaml_files/components/schemas/cases",
+      "path_parameters": "/api_yaml_files/components/parameters/cases",
+      "path_enums": "/api_yaml_files/components/schemas/cases/enums",
+      "path_templates": "/api_yaml_files/components/schemas/cases/templates",
+      "path_routes": "/api_yaml_files/paths/cases"
+    }
+  },
+  {
+    "index": 2,
+    "label": "API Case Management",
+    "option": {
+      "folder_name": "case-management",
+      "path_components": "/api_yaml_files/components/schemas/case-management",
+      "path_parameters": "/api_yaml_files/components/parameters/case-management",
+      "path_enums": "/api_yaml_files/components/schemas/case-management/enums",
+      "path_templates": "/api_yaml_files/components/schemas/case-management/templates",
+      "path_routes": "/api_yaml_files/paths/case-management"
+    }
+  },
+  {
+    "index": 3,
+    "label": "Varas e Foros",
+    "option": {
+      "folder_name": "varas_foros",
+      "path_components": "/api_yaml_files/components/schemas/varas_foros",
+      "path_parameters": "/api_yaml_files/components/parameters/varas_foros",
+      "path_enums": "/api_yaml_files/components/schemas/varas_foros/enums",
+      "path_templates": "/api_yaml_files/components/schemas/varas_foros/templates",
+      "path_routes": "/api_yaml_files/paths/varas_foros"
+    }
+  },
+  {
+    "index": 4,
+    "label": "Recess (API de feriados)",
+    "option": {
+      "folder_name": "recess",
+      "path_components": "/api_yaml_files/components/schemas/recess",
+      "path_parameters": "/api_yaml_files/components/parameters/recess",
+      "path_enums": "/api_yaml_files/components/schemas/recess/enums",
+      "path_templates": "/api_yaml_files/components/schemas/recess/templates",
+      "path_routes": "/api_yaml_files/paths/recess"
+    }
+  },
+  {
+    "index": 5,
+    "label": "SCIM",
+    "option": {
+      "folder_name": "scim",
+      "path_components": "/api_yaml_files/components/schemas/scim",
+      "path_parameters": null,
+      "path_enums": null,
+      "path_templates": null,
+      "path_routes": null
+    }
+  }
+]

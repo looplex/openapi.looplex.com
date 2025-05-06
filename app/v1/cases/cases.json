@@ -23644,7 +23644,7 @@
       "OcpApimSubscriptionKey": {
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
-        "description": "Subscription key provided by Looplex",
+        "description": "**Subscription key provided by Looplex**",
         "required": true,
         "schema": {
           "type": "string"

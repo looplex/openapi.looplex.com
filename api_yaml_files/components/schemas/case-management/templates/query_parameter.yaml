@@ -1,0 +1,6 @@
+- name: {{PARAMETER_NAME}}
+  in: query
+  required: {{REQUIRED}}
+  description: {{DESCRIPTION}}
+  schema:
+    type: {{TYPE}}
