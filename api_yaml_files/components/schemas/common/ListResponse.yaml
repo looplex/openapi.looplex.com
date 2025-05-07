@@ -1,0 +1,13 @@
+title: ListResponse
+type: object
+properties:
+  startIndex:
+    description: "**Index of search**"
+    type: integer
+  itemsPerPage:
+    description: "**Total count of items to return**"
+    type: integer
+  totalResults:
+    description: "**Total count of items in the filter**"
+    type: integer
+  # resources (implementado com allOf em cada endpoint de query devido à mudança de type do retorno)

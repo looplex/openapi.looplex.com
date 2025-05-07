@@ -1,9 +1,9 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
-  - Case Management
-summary: "Cases"
-description: "Fetch cases paginated"
-operationId: cases-get
+  - Tasks
+summary: "Tasks"
+description: "Fetch tasks paginated"
+operationId: tasks-get
 # Parâmetros da requisição
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
@@ -12,17 +12,14 @@ parameters:
   - name: startIndex
     in: query
     required: true
-    description: |
-      **Index of search**
+    description: "**Index of search**"
     example: 1
     schema:
       type: integer
   - name: count
     in: query
     required: true
-    description: |
-      **Total count of items to return**<br />
-      `Max of 120`
+    description: "**Total count of items to return**<br />`Max of 120`"
     example: 50
     schema:
       type: integer
@@ -30,6 +27,7 @@ parameters:
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  # Preencha o path do schema de retorno '<response_dto_relative_path_and_name>'
   "200":
     description: "OK"
     content:
@@ -42,8 +40,10 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: "../../../components/schemas/case-management/CaseInfoEntity.yaml"
-  "400":
-    description: "Bad Request"
+                    $ref: ../../../components/schemas/case-management/TaskEntity.yaml
   "500":
     description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/schemas/responses/InternalServerErrorResponse.yaml"

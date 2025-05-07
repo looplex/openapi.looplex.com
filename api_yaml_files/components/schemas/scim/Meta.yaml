@@ -3,8 +3,10 @@ type: object
 properties:
   ResourceType:
     type: string
-    description: "**The resource type**"
-    example: "Case"
+    description: |
+      **The resource type**<br />
+      e.g. Case, Task, Entry, etc.
+    example: "Entity"
   Created:
     oneOf:
       - type: string
@@ -21,7 +23,7 @@ properties:
     description: "**The resource last update time**"
   Location:
     type: string
-    example: "https://apim.looplex.com/case-management/v1/case_unique_id"
+    example: "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>"
     description: "**The resource url**"
   Version:
     type: string

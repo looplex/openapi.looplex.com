@@ -154,7 +154,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "Case info",
+        "summary": "Cases",
         "description": "Fetch cases paginated",
         "operationId": "cases-get",
         "parameters": [
@@ -194,7 +194,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CaseInfoEntity"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseInfoEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -204,6 +219,137 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/tasks/:task_id": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Task",
+        "description": "Retrieve a task by id",
+        "operationId": "tasks-task_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "**Task id**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Tasks",
+        "description": "Fetch tasks paginated",
+        "operationId": "tasks-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />`Max of 120`",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TaskEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -279,8 +425,8 @@
         "properties": {
           "ResourceType": {
             "type": "string",
-            "description": "**The resource type**",
-            "example": "Case"
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "Entity"
           },
           "Created": {
             "oneOf": [
@@ -310,7 +456,7 @@
           },
           "Location": {
             "type": "string",
-            "example": "https://apim.looplex.com/case-management/v1/case_unique_id",
+            "example": "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>",
             "description": "**The resource url**"
           },
           "Version": {
@@ -2036,6 +2182,24 @@
             }
           }
         ]
+      },
+      "ListResponse": {
+        "title": "ListResponse",
+        "type": "object",
+        "properties": {
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer"
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer"
+          },
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer"
+          }
+        }
       },
       "CaseInfoEntity": {
         "title": "CaseInfoEntity",

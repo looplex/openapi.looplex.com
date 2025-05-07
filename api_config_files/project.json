@@ -295,8 +295,14 @@
           {
             "option": 2,
             "label": "Case Management",
-            "detail": "Case management endpoints",
+            "detail": "Cases endpoints",
             "folder": "case"
+          },
+          {
+            "option": 2,
+            "label": "Tasks",
+            "detail": "Tasks endpoints",
+            "folder": "task"
           }
         ]
       }
