@@ -305,6 +305,12 @@
             "label": "Tasks",
             "detail": "Tasks endpoints",
             "folder": "task"
+          },
+          {
+            "option": 3,
+            "label": "Entries",
+            "detail": "Entries endpoints",
+            "folder": "entry"
           }
         ]
       }

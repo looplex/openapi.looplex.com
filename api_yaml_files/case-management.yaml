@@ -43,6 +43,14 @@ paths:
     get:
       $ref: '.\paths\case-management\task\public@tasks-get.yaml'
 
+  # Entry
+  /entries/:entry_id:
+    get:
+      $ref: .\paths\case-management\entry\public@entries@entry_id-get.yaml
+  /entries:
+    get:
+      $ref: .\paths\case-management\entry\public@entries-get.yaml
+
 components:
   securitySchemes:
     api_key:

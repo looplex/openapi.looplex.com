@@ -1,0 +1,40 @@
+tags:
+  - Entries
+summary: Entries
+description: |
+  Fetch entries paginated
+operationId: entries-get
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+  - name: startIndex
+    in: query
+    required: true
+    description: "**Index of search**"
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../../components/schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../../components/schemas/case-management/EntryEntity.yaml
+  "500":
+    description: "Internal Server Error"
