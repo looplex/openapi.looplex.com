@@ -272,10 +272,6 @@
             "detail": "Endpoints do Render",
             "folder": "render"
           }
-        ],
-        "defaultHeaders": [
-          "- $ref: ../../../components/parameters/cases/Profile.yaml",
-          "- $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml"
         ]
       }
     },
@@ -310,11 +306,6 @@
             "detail": "Tasks endpoints",
             "folder": "task"
           }
-        ],
-        "defaultHeaders": [
-          "- $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml",
-          "- $ref: ../../../components/parameters/case-management/Tenant.yaml",
-          "- $ref: ../../../components/parameters/case-management/BearerToken.yaml"
         ]
       }
     },
@@ -337,9 +328,6 @@
             "detail": "Varas e Foros endpoints",
             "folder": ""
           }
-        ],
-        "defaultHeaders": [
-          "- $ref: ../../components/parameters/OcpApimSubscriptionKey.yaml"
         ]
       }
     },
@@ -355,8 +343,7 @@
         "path_templates": "/api_yaml_files/components/schemas/recess/templates",
         "path_routes": "/api_yaml_files/paths/recess",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
-        "tags": [],
-        "defaultHeaders": []
+        "tags": []
       }
     },
     {
@@ -371,8 +358,7 @@
         "path_templates": null,
         "path_routes": null,
         "path_http_responses": null,
-        "tags": null,
-        "defaultHeaders": null
+        "tags": null
       }
     }
   ]

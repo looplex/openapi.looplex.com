@@ -6,7 +6,7 @@ description: |
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: {{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: {{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../../../{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../../../{{PATH_PARAMETERS}}/BearerToken.yaml
 {{PATH_QUERY_PARAMETERS}}
 {{HTTP_RESPONSES}}

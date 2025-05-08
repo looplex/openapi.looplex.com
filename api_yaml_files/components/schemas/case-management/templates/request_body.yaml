@@ -1,0 +1,5 @@
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: {{PATH_COMPONENTS}}/{{COMPONENT_NAME}}.yaml

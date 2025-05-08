@@ -1,6 +1,0 @@
-- name: {{PARAMETER_NAME}}
-  in: path
-  required: {{REQUIRED}}
-  description: {{DESCRIPTION}}
-  schema:
-    type: {{TYPE}}

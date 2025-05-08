@@ -1,0 +1,8 @@
+- name: {{PARAMETER_NAME}}
+  in: {{PATH_OR_QUERY}}
+  required: {{REQUIRED}}
+  description: {{DESCRIPTION}}
+  schema:
+    type: array
+    items:
+      type: {{TYPE}}
