@@ -8,16 +8,5 @@ parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: {{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: {{PATH_PARAMETERS}}/BearerToken.yaml
-  # Outros parâmetros (query | path)
-# Responses
-responses:
-  "200":
-    description: "OK"
-    content:
-      application/json:
-        schema:
-          $ref: {{PATH_COMPONENTS}}/{{COMPONENT_NAME}}.yaml
-  "400":
-    description: "Bad Request"
-  "500":
-    description: "Internal Server Error"
+{{PATH_QUERY_PARAMETERS}}
+{{HTTP_RESPONSES}}

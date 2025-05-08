@@ -12,6 +12,7 @@
         "path_enums": "/api_yaml_files/components/schemas/cases/enums",
         "path_templates": "/api_yaml_files/components/schemas/cases/templates",
         "path_routes": "/api_yaml_files/paths/cases",
+        "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
           {
             "option": 1,
@@ -289,6 +290,7 @@
         "path_enums": "/api_yaml_files/components/schemas/case-management/enums",
         "path_templates": "/api_yaml_files/components/schemas/case-management/templates",
         "path_routes": "/api_yaml_files/paths/case-management",
+        "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
           {
             "option": 1,
@@ -327,6 +329,7 @@
         "path_enums": "/api_yaml_files/components/schemas/varas_foros/enums",
         "path_templates": "/api_yaml_files/components/schemas/varas_foros/templates",
         "path_routes": "/api_yaml_files/paths/varas_foros",
+        "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
           {
             "option": 1,
@@ -351,6 +354,7 @@
         "path_enums": "/api_yaml_files/components/schemas/recess/enums",
         "path_templates": "/api_yaml_files/components/schemas/recess/templates",
         "path_routes": "/api_yaml_files/paths/recess",
+        "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [],
         "defaultHeaders": []
       }
@@ -366,6 +370,7 @@
         "path_enums": null,
         "path_templates": null,
         "path_routes": null,
+        "path_http_responses": null,
         "tags": null,
         "defaultHeaders": null
       }
