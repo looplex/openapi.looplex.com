@@ -3,7 +3,7 @@ tags:
   - Case Management
 summary: Case
 description: |
-  Retrieve information about a case
+  **Retrieve information about a case**
 operationId: cases-case_id-get
 # Parâmetros da requisição
 parameters:

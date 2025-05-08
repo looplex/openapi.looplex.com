@@ -2,7 +2,8 @@
 tags:
   - Case Management
 summary: "Cases"
-description: "Fetch cases paginated"
+description: |
+  **Fetch cases paginated**
 operationId: cases-get
 # Parâmetros da requisição
 parameters:

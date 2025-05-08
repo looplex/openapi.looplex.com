@@ -311,6 +311,12 @@
             "label": "Entries",
             "detail": "Entries endpoints",
             "folder": "entry"
+          },
+          {
+            "option": 4,
+            "label": "Debug (não utilizar essa tag em endpoints oficiais)",
+            "detail": "Debug endpoints",
+            "folder": "debug"
           }
         ]
       }

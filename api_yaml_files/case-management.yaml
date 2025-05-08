@@ -25,23 +25,23 @@ paths:
   # Authentication
   /token:
     post:
-      $ref: '.\paths\case-management\authentication\public@token-post.yaml'
+      $ref: .\paths\case-management\authentication\public@token-post.yaml
   
   # Case
   /cases/:case_id:
     get:
-      $ref: '.\paths\case-management\case\public@cases@uniqueId-get.yaml'
+      $ref: .\paths\case-management\case\public@cases@uniqueId-get.yaml
   /cases:
     get:
-      $ref: '.\paths\case-management\case\public@cases-get.yaml'
+      $ref: .\paths\case-management\case\public@cases-get.yaml
   
   # Task
   /tasks/:task_id:
     get:
-      $ref: '.\paths\case-management\task\public@tasks@task_id-get.yaml'
+      $ref: .\paths\case-management\task\public@tasks@task_id-get.yaml
   /tasks:
     get:
-      $ref: '.\paths\case-management\task\public@tasks-get.yaml'
+      $ref: .\paths\case-management\task\public@tasks-get.yaml
 
   # Entry
   /entries/:entry_id:

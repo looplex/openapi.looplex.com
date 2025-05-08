@@ -2,7 +2,8 @@
 tags:
   - Tasks
 summary: Task
-description: "Retrieve a task by id"
+description: |
+  **Retrieve a task by id**
 operationId: tasks-task_id-get
 # Parâmetros da requisição
 parameters:

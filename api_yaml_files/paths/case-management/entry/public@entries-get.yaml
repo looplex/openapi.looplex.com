@@ -2,7 +2,7 @@ tags:
   - Entries
 summary: Entries
 description: |
-  Fetch entries paginated
+  **Fetch entries paginated**
 operationId: entries-get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml

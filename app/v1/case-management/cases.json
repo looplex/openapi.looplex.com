@@ -33,7 +33,7 @@
           "Authentication"
         ],
         "summary": "Authentication",
-        "description": "Authentication endpoint",
+        "description": "**Authentication endpoint**\n",
         "operationId": "token-post",
         "parameters": [
           {
@@ -106,7 +106,7 @@
           "Case Management"
         ],
         "summary": "Case",
-        "description": "Retrieve information about a case\n",
+        "description": "**Retrieve information about a case**\n",
         "operationId": "cases-case_id-get",
         "parameters": [
           {
@@ -155,7 +155,7 @@
           "Case Management"
         ],
         "summary": "Cases",
-        "description": "Fetch cases paginated",
+        "description": "**Fetch cases paginated**\n",
         "operationId": "cases-get",
         "parameters": [
           {
@@ -229,7 +229,7 @@
           "Tasks"
         ],
         "summary": "Task",
-        "description": "Retrieve a task by id",
+        "description": "**Retrieve a task by id**\n",
         "operationId": "tasks-task_id-get",
         "parameters": [
           {
@@ -282,7 +282,7 @@
           "Tasks"
         ],
         "summary": "Tasks",
-        "description": "Fetch tasks paginated",
+        "description": "**Fetch tasks paginated**\n",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -405,7 +405,7 @@
           "Entries"
         ],
         "summary": "Entries",
-        "description": "Fetch entries paginated\n",
+        "description": "**Fetch entries paginated**\n",
         "operationId": "entries-get",
         "parameters": [
           {

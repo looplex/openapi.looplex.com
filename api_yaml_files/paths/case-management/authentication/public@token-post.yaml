@@ -2,7 +2,8 @@
 tags:
   - Authentication
 summary: "Authentication"
-description: "Authentication endpoint"
+description: |
+  **Authentication endpoint**
 operationId: token-post
 # Parâmetros da requisição
 parameters:

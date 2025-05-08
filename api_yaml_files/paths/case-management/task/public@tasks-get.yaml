@@ -2,7 +2,8 @@
 tags:
   - Tasks
 summary: "Tasks"
-description: "Fetch tasks paginated"
+description: |
+  **Fetch tasks paginated**
 operationId: tasks-get
 # Parâmetros da requisição
 parameters:
