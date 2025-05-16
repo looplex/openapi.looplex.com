@@ -27,9 +27,10 @@ parameters:
       **Search term**<br />
       **This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**
       **term (string)**: the term to search<br />
+      **hierarchy (string): the hierarchy to search**<br />
       **cnj (string)**: part of cnj number to search<br />
       **level (integer)**: filter items by level<br /> <br/>
-      **Example of use: term co "Cível" or cnj co "8." and level eq 6**
+      **Example of use: (term co "Cível" or cnj co "8." or hierarchy co ".3.10") and level eq 6**
     schema:
       type: string
 responses:

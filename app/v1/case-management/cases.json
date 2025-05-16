@@ -489,21 +489,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EntryEntity"
+                "$ref": "#/components/schemas/EntryEntityWrite"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EntryEntity"
-                }
-              }
-            }
+          "201": {
+            "description": "OK"
           },
           "500": {
             "description": "Internal Server Error"
@@ -1330,12 +1323,13 @@
             "type": "object",
             "properties": {
               "Date": {
-                "description": "**Data do andamento**",
                 "type": "string",
-                "format": "datetime"
+                "format": "datetime",
+                "required": true,
+                "description": "**Data do andamento**"
               },
               "Classification": {
-                "description": "**Classificação do andamento**<br />\n",
+                "description": "**Classificação do andamento**",
                 "oneOf": [
                   {
                     "type": "string"
@@ -1346,29 +1340,43 @@
                 ]
               },
               "Description": {
-                "description": "**Texto do andamento**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string",
+                "required": true,
+                "description": "**Texto do andamento**"
               },
               "IsInternal": {
-                "description": "**Indica se o andamento é de uso interno**",
-                "type": "boolean"
+                "type": "boolean",
+                "description": "**Indica se o andamento é de uso interno**"
+              },
+              "CreatedAt": {
+                "type": "string",
+                "format": "datetime",
+                "required": true,
+                "description": "**Entry creation date**"
               },
               "OfficialNotice": {
-                "description": "**Identificador da publicação que criou esse andamento (se houver)**<br />\n",
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**\n",
                 "oneOf": [
+                  {
+                    "type": null
+                  },
                   {
                     "type": "string",
                     "format": "uuid"
-                  },
+                  }
+                ]
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntity"
+              },
+              "ClassificationType": {
+                "oneOf": [
                   {
                     "type": null
+                  },
+                  {
+                    "type": "integer",
+                    "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
                   }
                 ]
               }
@@ -2346,15 +2354,18 @@
         "properties": {
           "startIndex": {
             "description": "**Index of search**",
-            "type": "integer"
+            "type": "integer",
+            "example": 1
           },
           "itemsPerPage": {
             "description": "**Total count of items to return**",
-            "type": "integer"
+            "type": "integer",
+            "example": 12
           },
           "totalResults": {
             "description": "**Total count of items in the filter**",
-            "type": "integer"
+            "type": "integer",
+            "example": 100
           }
         }
       },
@@ -2694,6 +2705,32 @@
                     "type": null
                   }
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "EntryEntityWrite": {
+        "title": "EntryEntityWrite",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntryEntity"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "CaseGuid": {
+                "type": "string",
+                "format": "uuid",
+                "required": true,
+                "description": "**Case unique id**"
+              },
+              "AuthorGuid": {
+                "type": "string",
+                "format": "uuid",
+                "required": true,
+                "description": "**Entry author unique id**"
               }
             }
           }

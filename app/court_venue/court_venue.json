@@ -67,7 +67,7 @@
             "name": "filter",
             "in": "query",
             "required": false,
-            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: term co \"Cível\" or cnj co \"8.\" and level eq 6**\n",
+            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**hierarchy (string): the hierarchy to search**<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: (term co \"Cível\" or cnj co \"8.\" or hierarchy co \".3.10\") and level eq 6**\n",
             "schema": {
               "type": "string"
             }
