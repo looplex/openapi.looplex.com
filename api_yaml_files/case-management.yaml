@@ -50,6 +50,8 @@ paths:
   /entries:
     get:
       $ref: .\paths\case-management\entry\public@entries-get.yaml
+    post:
+      $ref: .\paths\case-management\entry\public@entries-post.yaml
 
 components:
   securitySchemes:

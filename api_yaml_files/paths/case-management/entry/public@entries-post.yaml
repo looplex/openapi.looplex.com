@@ -1,0 +1,25 @@
+tags:
+  - Entries
+summary: "Create entry"
+description: |
+  **Create an entry**
+operationId: entries-post
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../../../components/schemas/case-management/EntryEntity.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/case-management/EntryEntity.yaml
+  "500":
+    description: "Internal Server Error"
+ 

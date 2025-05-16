@@ -466,6 +466,49 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Entries"
+        ],
+        "summary": "Create entry",
+        "description": "**Create an entry**\n",
+        "operationId": "entries-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntryEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntryEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   },
@@ -1179,7 +1222,7 @@
                 ]
               },
               "Role": {
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAutor<br />\nRéu<br />\nAdvogado<br />\nPerito<br />\nJuiz<br />\nTestemunha\n",
                 "oneOf": [
                   {
                     "type": "string"

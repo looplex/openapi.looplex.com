@@ -2,7 +2,7 @@
 openapi: 3.0.2
 security: []
 info:
-  version: 1.0.0
+  version: 2.0.0
   title: "Looplex Varas e Foros"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
@@ -18,35 +18,10 @@ info:
   description: >
     Essa é a documentação do Varas e Foros v2
 servers:
-  - url: "https://apim.looplex.com/varas_foros"
+  - url: "https://apim.looplex.com/courtVenue"
     description: "Varas e Foros Server"
 paths:
   # Varas e Foros
-  /v2/court:
-    get:
-      $ref: './paths/varas_foros/public@v2@court@level-get.yaml'
-    post:
-      $ref: './paths/varas_foros/public@v2@court-post.yaml'
-  /v2/court/list:
-    get:
-      $ref: './paths/varas_foros/public@v2@court@list-get.yaml'
-  /v2/court/search:
-    get:
-      $ref: './paths/varas_foros/public@v2@court@search-get.yaml'
-  /v2/court/children:
-    get:
-      $ref: './paths/varas_foros/public@v2@court@children-get.yaml'
-  
-  # Ritos
-  /v2/sequence/list:
-    get:
-      $ref: './paths/varas_foros/public@v2@sequence@list-get.yaml'
-  /v2/sequence:
-    post:
-      $ref: './paths/varas_foros/public@v2@sequence-post.yaml'
-  /v2/sequence/search:
-    get:
-      $ref: './paths/varas_foros/public@v2@sequence@search-get.yaml'
 
 components:
   securitySchemes:
