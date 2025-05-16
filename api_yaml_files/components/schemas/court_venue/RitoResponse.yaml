@@ -1,0 +1,33 @@
+title: RitoResponse
+type: object
+properties:
+  currentPage:
+    type: integer
+    description: "A página atual pesquisada."
+  pageSize:
+    type: integer
+    description: "A quantidade de itens retornados nessa página."
+  totalItems:
+    type: integer
+    description: "A quantidade de resultados dessa pesquisa.<br />`A resposta esperada pode estar em outra página, dependendo da quantidade de resultados da pesquisa.`"
+  result:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          description: "O identificador do rito"
+          example: 1
+          type: integer
+        idGroup:
+          description: "O identificador do grupo em que o rito está vinculado"
+          example: 2
+          type: integer
+        name:
+          description: "O nome do rito"
+          example: "Nome do rito"
+          type: string
+        status:
+          description: "Indica se o rito está ativo"
+          example: true
+          type: boolean

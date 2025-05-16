@@ -2,31 +2,11 @@ title: EntryEntity
 type: object
 allOf:
   - $ref: ../scim/Resource.yaml
-  - type: object
-    properties:
-      Date:
-        description: "**Data do andamento**"
-        type: string
-        format: datetime
-      Classification:
-        description: |
-          **Classificação do andamento**<br />
-        oneOf:
-          - type: string
-          - type: null
-      Description:
-        description: |
-          **Texto do andamento**<br />
-        oneOf:
-          - type: string
-          - type: null
-      IsInternal:
-        description: "**Indica se o andamento é de uso interno**"
-        type: boolean
-      OfficialNotice:
-        description: |
-          **Identificador da publicação que criou esse andamento (se houver)**<br />
-        oneOf:
-          - type: string
-            format: uuid
-          - type: null
+  - $ref: EntryEntityWrite.yaml
+  OfficialNotice:
+    description: |
+      **Identificador da publicação que criou esse andamento (se houver)**
+    oneOf:
+      - type: null
+      - type: string
+        format: uuid

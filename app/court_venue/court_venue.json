@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "2.0.0",
-    "title": "Looplex Varas e Foros",
+    "title": "Looplex Court Venue",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -17,12 +17,12 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "Essa é a documentação do Varas e Foros v2\n"
+    "description": "Essa é a documentação de Court Venue\n"
   },
   "servers": [
     {
       "url": "https://apim.looplex.com/courtVenue",
-      "description": "Varas e Foros Server"
+      "description": "Court Venue Server"
     }
   ],
   "security": [],

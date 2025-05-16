@@ -1,0 +1,48 @@
+title: EntryEntityWrite
+type: object
+properties:
+  CaseGuid:
+    type: string
+    format: uuid
+    required: true
+    description: "**Case unique id**"
+  AuthorGuid:
+    type: string
+    format: uuid
+    required: true
+    description: "**Entry author unique id**"
+  Date:
+    type: string
+    format: datetime
+    required: true
+    description: "**Data do andamento**"
+  Classification:
+    description: "**Classificação do andamento**"
+    oneOf:
+      - type: string
+      - type: null
+  Description:
+    type: string
+    required: true
+    description: "**Texto do andamento**"
+  IsInternal:
+    type: boolean
+    description: "**Indica se o andamento é de uso interno**"
+  CreatedAt:
+    type: string
+    format: datetime
+    required: true
+    description: "**Entry creation date**"
+  ClassificationType:
+    oneOf:
+      - type: null
+      - type: integer
+        description: |
+          **Tipo de classificação do andamento**<br />
+          null: Nenhum<br />
+          1: Planilha de horas<br />
+          2: Push de publicação<br />
+          3: Push de andamento<br />
+          4: Outlook<br />
+          5: Automático<br />
+          6: Manual

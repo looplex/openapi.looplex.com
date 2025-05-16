@@ -323,21 +323,21 @@
     },
     {
       "index": 3,
-      "label": "Varas e Foros",
+      "label": "Varas e Foros (Court Venue)",
       "option": {
-        "build_command": "redocly bundle ./api_yaml_files/varas_foros_v2.yaml -o ./app/v2/varas_foros/varas_foros --ext json",
-        "folder_name": "varas_foros",
-        "path_components": "/api_yaml_files/components/schemas/varas_foros",
-        "path_parameters": "/api_yaml_files/components/parameters/varas_foros",
-        "path_enums": "/api_yaml_files/components/schemas/varas_foros/enums",
-        "path_templates": "/api_yaml_files/components/schemas/varas_foros/templates",
-        "path_routes": "/api_yaml_files/paths/varas_foros",
+        "build_command": "redocly bundle ./api_yaml_files/court_venue.yaml -o ./app/court_venue/court_venue --ext json",
+        "folder_name": "court_venue",
+        "path_components": "/api_yaml_files/components/schemas/court_venue",
+        "path_parameters": "/api_yaml_files/components/parameters/court_venue",
+        "path_enums": "/api_yaml_files/components/schemas/court_venue/enums",
+        "path_templates": "/api_yaml_files/components/schemas/court_venue/templates",
+        "path_routes": "/api_yaml_files/paths/court_venue",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
           {
             "option": 1,
-            "label": "Varas e Foros",
-            "detail": "Varas e Foros endpoints",
+            "label": "Court Venue",
+            "detail": "Court Venue endpoints",
             "folder": ""
           }
         ]

@@ -60,15 +60,15 @@ const apis = [
       </>
   },
   {
-    key: 'varas_foros',
-    label: 'Varas e Foros',
+    key: 'court_venue',
+    label: 'Court Venue',
     children:
       <>
         <Card
-          title="Endpoints de Varas e Foros"
+          title="Endpoints de Court Venue"
           actions={[]}
         >
-          <a href="/v2/varas_foros" target="_blank">Varas e Foros v2</a>
+          <a href="/court_venue" target="_blank">Court Venue</a>
         </Card>
       </>
   },
