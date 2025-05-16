@@ -45,50 +45,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        description: "**The court venue id**"
-                        example: 10
-                      parentId:
-                        type: integer
-                        description: "**The parent court venue id**"
-                        example: 3
-                      order:
-                        type: integer
-                        description: "**The order of appearance**"
-                        example: 1
-                      name:
-                        type: string
-                        description: "**The court venue name**"
-                        example: "Court venue example name"
-                      hierarchy:
-                        type: string
-                        description: "**The complete hierarchy of this court venue**"
-                        example: "3.10"
-                      level:
-                        type: integer
-                        description: "**The level of this court venue**"
-                        example: 2
-                      active:
-                        type: boolean
-                        description: "**Indicates if it is active**"
-                        example: true
-                      tags:
-                        type: array
-                        description: "**Tags binded to this court venue**"
-                        items:
-                          type: object
-                          properties:
-                            tagId:
-                              type: integer
-                              description: "**The tag id**"
-                              example: 1
-                            name:
-                              type: string
-                              description: "**The tag name**"
-                              example: "example tag name"
+                    $ref: ../../components/schemas/court_venue/CourtVenue.yaml
   "500":
     description: "Internal Server Error"
  

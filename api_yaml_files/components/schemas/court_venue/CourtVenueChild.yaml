@@ -1,0 +1,8 @@
+title: CourtVenueChild
+type: object
+properties:
+  Children:
+    type: array
+    description: "**The items related to this court venue**"
+    items: 
+      $ref: CourtVenue.yaml
