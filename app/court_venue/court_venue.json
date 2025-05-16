@@ -26,7 +26,142 @@
     }
   ],
   "security": [],
-  "paths": null,
+  "paths": {
+    "/search": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Court venue search",
+        "description": "**search court venue by params**\n",
+        "operationId": "search-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "description": "**The page**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": true,
+            "description": "**The page size**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: term co \"Cível\" or cnj co \"8.\" and level eq 6**\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "description": "**The court venue id**",
+                                "example": 10
+                              },
+                              "parentId": {
+                                "type": "integer",
+                                "description": "**The parent court venue id**",
+                                "example": 3
+                              },
+                              "order": {
+                                "type": "integer",
+                                "description": "**The order of appearance**",
+                                "example": 1
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "**The court venue name**",
+                                "example": "Court venue example name"
+                              },
+                              "hierarchy": {
+                                "type": "string",
+                                "description": "**The complete hierarchy of this court venue**",
+                                "example": "3.10"
+                              },
+                              "level": {
+                                "type": "integer",
+                                "description": "**The level of this court venue**",
+                                "example": 2
+                              },
+                              "active": {
+                                "type": "boolean",
+                                "description": "**Indicates if it is active**",
+                                "example": true
+                              },
+                              "tags": {
+                                "type": "array",
+                                "description": "**Tags binded to this court venue**",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "tagId": {
+                                      "type": "integer",
+                                      "description": "**The tag id**",
+                                      "example": 1
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "description": "**The tag name**",
+                                      "example": "example tag name"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
   "components": {
     "securitySchemes": {
       "api_key": {
@@ -42,6 +177,58 @@
       "basic_auth": {
         "type": "http",
         "scheme": "basic"
+      }
+    },
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "ListResponse": {
+        "title": "ListResponse",
+        "type": "object",
+        "properties": {
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          },
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          }
+        }
       }
     }
   }

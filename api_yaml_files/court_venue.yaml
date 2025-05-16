@@ -22,6 +22,9 @@ servers:
     description: "Court Venue Server"
 paths:
   # Court Venue (Varas e Foros)
+  /search:
+    get:
+      $ref: .\paths\court_venue\public@search-get.yaml
 
 components:
   securitySchemes:
