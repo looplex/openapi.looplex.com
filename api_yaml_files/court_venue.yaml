@@ -24,7 +24,10 @@ paths:
   # Court Venue (Varas e Foros)
   /search:
     get:
-      $ref: .\paths\court_venue\public@search-get.yaml
+      $ref: .\paths\court_venue\court_venue\public@search-get.yaml
+  /leaves/:id:
+    get:
+      $ref: .\paths\court_venue\court_venue\public@leaves@id-get.yaml
 
 components:
   securitySchemes:

@@ -67,7 +67,7 @@
             "name": "filter",
             "in": "query",
             "required": false,
-            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**hierarchy (string): the hierarchy to search**<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: (term co \"Cível\" or cnj co \"8.\" or hierarchy co \".3.10\") and level eq 6**\n",
+            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**hierarchy (string)**: the hierarchy to search<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: (term co \"Cível\" or cnj co \"8.\" or hierarchy co \".3.10\") and level eq 6**\n",
             "schema": {
               "type": "string"
             }
@@ -95,6 +95,54 @@
                       }
                     }
                   ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/leaves/:id": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Search leaves by node id",
+        "description": "**Search leaves by node id**\n",
+        "operationId": "leaves-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**Node id**",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CourtVenueLeaf"
+                  }
                 }
               }
             }
@@ -246,12 +294,33 @@
         "title": "CourtVenueChild",
         "type": "object",
         "properties": {
-          "Children": {
+          "children": {
             "type": "array",
             "description": "**The items related to this court venue**",
             "items": {
               "$ref": "#/components/schemas/CourtVenue"
             }
+          }
+        }
+      },
+      "CourtVenueLeaf": {
+        "title": "CourtVenueLeaf",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "**Leaf identifier**",
+            "example": 10,
+            "type": "integer"
+          },
+          "level": {
+            "description": "**Leaf level**<br />\n",
+            "example": 1,
+            "type": "integer"
+          },
+          "path": {
+            "type": "string",
+            "example": "Judicial Estadual - 1ª Instância - SP...",
+            "description": "**Leaf complete path**"
           }
         }
       }

@@ -1,0 +1,16 @@
+title: CourtVenueLeaf
+type: object
+properties:
+  id:
+    description: "**Leaf identifier**"
+    example: 10
+    type: integer
+  level:
+    description: |
+      **Leaf level**<br />
+    example: 1
+    type: integer
+  path:
+    type: string
+    example: "Judicial Estadual - 1ª Instância - SP..."
+    description: "**Leaf complete path**"

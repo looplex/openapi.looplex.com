@@ -1,7 +1,7 @@
 title: CourtVenueChild
 type: object
 properties:
-  Children:
+  children:
     type: array
     description: "**The items related to this court venue**"
     items: 

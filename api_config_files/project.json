@@ -338,7 +338,13 @@
             "option": 1,
             "label": "Court Venue",
             "detail": "Court Venue endpoints",
-            "folder": ""
+            "folder": "court_venue"
+          },
+          {
+            "option": 1,
+            "label": "Case Procedure",
+            "detail": "Procedure endpoints",
+            "folder": "procedure"
           }
         ]
       }
