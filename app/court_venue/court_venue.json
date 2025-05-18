@@ -153,6 +153,51 @@
         }
       }
     },
+    "/:id": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Retrieve leaf by id",
+        "description": "**Retrieve leaf by id**\n",
+        "operationId": "id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The node id**",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourtVenueLeaf"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/procedures/search": {
       "get": {
         "tags": [
