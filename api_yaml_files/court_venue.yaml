@@ -29,6 +29,11 @@ paths:
     get:
       $ref: .\paths\court_venue\court_venue\public@leaves@id-get.yaml
 
+  # Procedures (Ritos)
+  /procedures/search:
+    get:
+      $ref: .\paths\court_venue\procedure\public@procedures@search-get.yaml
+      
 components:
   securitySchemes:
     api_key:

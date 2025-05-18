@@ -8,13 +8,13 @@ parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/Tenant.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
-  - name: page
+  - name: startIndex
     in: query
     required: true
     description: "**The page**"
     schema:
       type: integer
-  - name: page_size
+  - name: count
     in: query
     required: true
     description: "**The page size**"

@@ -46,7 +46,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "page",
+            "name": "startIndex",
             "in": "query",
             "required": true,
             "description": "**The page**",
@@ -55,7 +55,7 @@
             }
           },
           {
-            "name": "page_size",
+            "name": "count",
             "in": "query",
             "required": true,
             "description": "**The page size**",
@@ -143,6 +143,84 @@
                   "items": {
                     "$ref": "#/components/schemas/CourtVenueLeaf"
                   }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/procedures/search": {
+      "get": {
+        "tags": [
+          "Case Procedure"
+        ],
+        "summary": "Procedure search",
+        "description": "**search procedure by params**\n",
+        "operationId": "procedures-search-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**The page**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**The page size**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**procedure (string)**: the term to search<br />\n**Example of use: (procedure co \"Embargos\")**\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Procedure"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -315,12 +393,49 @@
           "level": {
             "description": "**Leaf level**<br />\n",
             "example": 1,
-            "type": "integer"
+            "oneOf": [
+              {
+                "type": null
+              },
+              {
+                "type": "integer"
+              }
+            ]
           },
           "path": {
             "type": "string",
             "example": "Judicial Estadual - 1ª Instância - SP...",
             "description": "**Leaf complete path**"
+          }
+        }
+      },
+      "Procedure": {
+        "title": "Procedure",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "**The procedure id**"
+          },
+          "name": {
+            "type": "string",
+            "description": "**The procedure name**"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "**The tag id**"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "**The tag name**"
+                }
+              }
+            }
           }
         }
       }

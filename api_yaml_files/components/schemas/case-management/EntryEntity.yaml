@@ -4,6 +4,16 @@ allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
+      CaseGuid:
+        type: string
+        format: uuid
+        required: true
+        description: "**Case unique id**"
+      AuthorGuid:
+        type: string
+        format: uuid
+        required: true
+        description: "**Entry author unique id**"
       Date:
         type: string
         format: datetime
@@ -27,6 +37,7 @@ allOf:
         required: true
         description: "**Entry creation date**"
       OfficialNotice:
+        example: null
         description: |
           **Identificador da publicação que criou esse andamento (se houver)**
         oneOf:

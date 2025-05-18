@@ -12,7 +12,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../components/schemas/case-management/EntryEntityWrite.yaml
+        $ref: ../../../components/schemas/case-management/EntryEntity.yaml
 responses:
   "201":
     description: "OK"

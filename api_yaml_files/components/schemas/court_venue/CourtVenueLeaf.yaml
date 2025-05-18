@@ -9,7 +9,9 @@ properties:
     description: |
       **Leaf level**<br />
     example: 1
-    type: integer
+    oneOf:
+      - type: null
+      - type: integer
   path:
     type: string
     example: "Judicial Estadual - 1ª Instância - SP..."
