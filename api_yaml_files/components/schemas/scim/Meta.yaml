@@ -8,21 +8,17 @@ properties:
       e.g. Case, Task, Entry, etc.
     example: "Entity"
   Created:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
     format: datetime
     example: null
     description: "**The resource creation date**"
   LastModified:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
     format: datetime
     example: null
     description: "**The resource last update time**"
   Location:
-    type: string
+    type: string <nullable>
     example: "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>"
     description: "**The resource url**"
   Version:

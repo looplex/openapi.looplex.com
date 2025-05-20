@@ -20,10 +20,8 @@ allOf:
         required: true
         description: "**Data do andamento**"
       Classification:
+        type: string <nullable>
         description: "**Classificação do andamento**"
-        oneOf:
-          - type: string
-          - type: null
       Description:
         type: string
         required: true
@@ -37,25 +35,21 @@ allOf:
         required: true
         description: "**Entry creation date**"
       OfficialNotice:
+        type: string <nullable>
+        format: uuid
         example: null
-        description: |
-          **Identificador da publicação que criou esse andamento (se houver)**
-        oneOf:
-          - type: null
-          - type: string
-            format: uuid
+        description: "**Identificador da publicação que criou esse andamento (se houver)**"
       CreatedBy:
         $ref: SimpleEntity.yaml
       ClassificationType:
-        oneOf:
-          - type: null
-          - type: integer
-            description: |
-              **Tipo de classificação do andamento**<br />
-              null: Nenhum<br />
-              1: Planilha de horas<br />
-              2: Push de publicação<br />
-              3: Push de andamento<br />
-              4: Outlook<br />
-              5: Automático<br />
-              6: Manual
+        type: integer <nullable>
+        example: null
+        description: |
+          **Tipo de classificação do andamento**<br />
+          null: Nenhum<br />
+          1: Planilha de horas<br />
+          2: Push de publicação<br />
+          3: Push de andamento<br />
+          4: Outlook<br />
+          5: Automático<br />
+          6: Manual

@@ -7,8 +7,6 @@ properties:
     description: "**Object unique identifier**"
   ExternalId:
     example: null
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Meta:
     $ref: Meta.yaml

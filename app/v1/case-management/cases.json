@@ -516,7 +516,7 @@
           "Entries"
         ],
         "summary": "Create entry",
-        "description": "**Create an entry**\n",
+        "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "entries-post",
         "parameters": [
           {
@@ -540,7 +540,7 @@
         },
         "responses": {
           "201": {
-            "description": "OK"
+            "description": "No Content"
           },
           "500": {
             "description": "Internal Server Error"
@@ -623,33 +623,19 @@
             "example": "Entity"
           },
           "Created": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ],
+            "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ],
+            "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string",
+            "type": "string <nullable>",
             "example": "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>",
             "description": "**The resource url**"
           },
@@ -671,14 +657,7 @@
           },
           "ExternalId": {
             "example": null,
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Meta": {
             "$ref": "#/components/schemas/Meta"
@@ -1385,15 +1364,8 @@
                 "description": "**Data do andamento**"
               },
               "Classification": {
-                "description": "**Classificação do andamento**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Classificação do andamento**"
               },
               "Description": {
                 "type": "string",
@@ -1411,31 +1383,18 @@
                 "description": "**Entry creation date**"
               },
               "OfficialNotice": {
+                "type": "string <nullable>",
+                "format": "uuid",
                 "example": null,
-                "description": "**Identificador da publicação que criou esse andamento (se houver)**\n",
-                "oneOf": [
-                  {
-                    "type": null
-                  },
-                  {
-                    "type": "string",
-                    "format": "uuid"
-                  }
-                ]
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**"
               },
               "CreatedBy": {
                 "$ref": "#/components/schemas/SimpleEntity"
               },
               "ClassificationType": {
-                "oneOf": [
-                  {
-                    "type": null
-                  },
-                  {
-                    "type": "integer",
-                    "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
-                  }
-                ]
+                "type": "integer <nullable>",
+                "example": null,
+                "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
               }
             }
           }

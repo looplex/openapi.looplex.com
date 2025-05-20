@@ -2,7 +2,8 @@ tags:
   - Entries
 summary: "Create entry"
 description: |
-  **Create an entry**
+  **Create an entry**<br />
+  Item created's guid is returned in **Location header**
 operationId: entries-post
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
@@ -15,7 +16,6 @@ requestBody:
         $ref: ../../../components/schemas/case-management/EntryEntity.yaml
 responses:
   "201":
-    description: "OK"
+    description: "No Content"
   "500":
     description: "Internal Server Error"
- 
