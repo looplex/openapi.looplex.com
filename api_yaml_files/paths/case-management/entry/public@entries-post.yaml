@@ -13,7 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../components/schemas/case-management/EntryEntity.yaml
+        $ref: ../../../components/schemas/case-management/EntryEntityWrite.yaml
 responses:
   "201":
     description: "No Content"

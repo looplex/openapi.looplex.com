@@ -37,7 +37,6 @@ allOf:
       OfficialNotice:
         type: string <nullable>
         format: uuid
-        example: null
         description: "**Identificador da publicação que criou esse andamento (se houver)**"
       CreatedBy:
         $ref: SimpleEntity.yaml

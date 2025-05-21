@@ -533,7 +533,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EntryEntity"
+                "$ref": "#/components/schemas/EntryEntityWrite"
               }
             }
           }
@@ -756,26 +756,14 @@
         "type": "object",
         "properties": {
           "Id": {
-            "description": "**The object unique identifier**",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
           },
           "Name": {
-            "description": "**The object name**",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "example": null,
+            "description": "**The object name**"
           }
         }
       },
@@ -1385,7 +1373,6 @@
               "OfficialNotice": {
                 "type": "string <nullable>",
                 "format": "uuid",
-                "example": null,
                 "description": "**Identificador da publicação que criou esse andamento (se houver)**"
               },
               "CreatedBy": {
@@ -2725,6 +2712,62 @@
             }
           }
         ]
+      },
+      "EntryEntityWrite": {
+        "title": "EntryEntity",
+        "type": "object",
+        "properties": {
+          "CaseGuid": {
+            "type": "string",
+            "format": "uuid",
+            "required": true,
+            "description": "**Case unique id**"
+          },
+          "AuthorGuid": {
+            "type": "string",
+            "format": "uuid",
+            "required": true,
+            "description": "**Entry author unique id**"
+          },
+          "Date": {
+            "type": "string",
+            "format": "datetime",
+            "required": true,
+            "description": "**Data do andamento**"
+          },
+          "Classification": {
+            "type": "string <nullable>",
+            "description": "**Classificação do andamento**"
+          },
+          "Description": {
+            "type": "string",
+            "required": true,
+            "description": "**Texto do andamento**"
+          },
+          "IsInternal": {
+            "type": "boolean",
+            "description": "**Indica se o andamento é de uso interno**"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "required": true,
+            "description": "**Entry creation date**"
+          },
+          "OfficialNotice": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntity"
+          },
+          "ClassificationType": {
+            "type": "integer <nullable>",
+            "example": null,
+            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
+          }
+        }
       }
     }
   }

@@ -2,12 +2,10 @@ title: SimpleEntity
 type: object
 properties: 
   Id:
+    type: string
+    format: uuid
     description: "**The object unique identifier**"
-    oneOf:
-      - type: string
-      - type: null
   Name:
+    type: string <nullable>
+    example: null
     description: "**The object name**"
-    oneOf:
-      - type: string
-      - type: null
