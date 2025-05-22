@@ -18,6 +18,7 @@ allOf:
         type: string
         format: datetime
         required: true
+        example: "2025-05-21T12:00:00.000Z"
         description: "**Data do andamento**"
       Classification:
         type: string <nullable>
@@ -33,6 +34,7 @@ allOf:
         type: string
         format: datetime
         required: true
+        example: "2025-05-21T12:00:00.000Z"
         description: "**Entry creation date**"
       OfficialNotice:
         type: string <nullable>

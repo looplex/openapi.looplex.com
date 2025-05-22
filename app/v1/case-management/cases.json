@@ -1349,6 +1349,7 @@
                 "type": "string",
                 "format": "datetime",
                 "required": true,
+                "example": "2025-05-21T12:00:00.000Z",
                 "description": "**Data do andamento**"
               },
               "Classification": {
@@ -1368,6 +1369,7 @@
                 "type": "string",
                 "format": "datetime",
                 "required": true,
+                "example": "2025-05-21T12:00:00.000Z",
                 "description": "**Entry creation date**"
               },
               "OfficialNotice": {
@@ -2733,6 +2735,7 @@
             "type": "string",
             "format": "datetime",
             "required": true,
+            "example": "2025-05-21T15:00:00.000Z",
             "description": "**Data do andamento**"
           },
           "Classification": {
@@ -2742,17 +2745,12 @@
           "Description": {
             "type": "string",
             "required": true,
+            "example": "<Texto do andamento>",
             "description": "**Texto do andamento**"
           },
           "IsInternal": {
             "type": "boolean",
             "description": "**Indica se o andamento é de uso interno**"
-          },
-          "CreatedAt": {
-            "type": "string",
-            "format": "datetime",
-            "required": true,
-            "description": "**Entry creation date**"
           },
           "OfficialNotice": {
             "type": "string <nullable>",
@@ -2764,7 +2762,7 @@
           },
           "ClassificationType": {
             "type": "integer <nullable>",
-            "example": null,
+            "example": 6,
             "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
           }
         }

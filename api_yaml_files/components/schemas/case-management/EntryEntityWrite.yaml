@@ -15,6 +15,7 @@ properties:
     type: string
     format: datetime
     required: true
+    example: "2025-05-21T15:00:00.000Z"
     description: "**Data do andamento**"
   Classification:
     type: string <nullable>
@@ -22,15 +23,11 @@ properties:
   Description:
     type: string
     required: true
+    example: "<Texto do andamento>"
     description: "**Texto do andamento**"
   IsInternal:
     type: boolean
     description: "**Indica se o andamento é de uso interno**"
-  CreatedAt:
-    type: string
-    format: datetime
-    required: true
-    description: "**Entry creation date**"
   OfficialNotice:
     type: string <nullable>
     format: uuid
@@ -39,7 +36,7 @@ properties:
     $ref: SimpleEntity.yaml
   ClassificationType:
     type: integer <nullable>
-    example: null
+    example: 6
     description: |
       **Tipo de classificação do andamento**<br />
       null: Nenhum<br />
