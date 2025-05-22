@@ -2,6 +2,7 @@ title: TaskContent
 type: object
 properties: 
   Type:
+    type: string <nullable>
     description: |
       **Tipo**<br />
       **Valores permitidos:**<br />
@@ -14,107 +15,67 @@ properties:
       **Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
       **Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
       **Deadline (Prazo):** A date or time by which you have to do or complete something. <br />
-    oneOf:
-      - type: string
-      - type: null
   Title:
-    description: |
-      **Titulo**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Titulo**"
+    type: string <nullable>
   Description:
-    description: |
-      **Descrição**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Descrição**"
+    type: string <nullable>
   StartDate:
-    description: |
-      **Data de Início**<br />
-    oneOf:
-      - type: string
-        format: datetime
-      - type: null
+    description: "**Data de Início**"
+    type: string <nullable>
+    format: datetime
   DueDate:
-    description: |
-      **Data de Vencimento**<br />
-    oneOf:
-      - type: string
-        format: datetime
-      - type: null
+    description: "**Data de Vencimento**"
+    type: string <nullable>
+    format: datetime
   CreatedBy:
-    description: |
-      **Criado por**<br />
+    description: "**Criado por**"
     oneOf:
       - $ref: SimpleEntity.yaml
       - type: null
   CreatedAt:
-    description: |
-      **Criado em**<br />
-    oneOf:
-      - type: string
-        format: datetime
-      - type: null
+    description: "**Criado em**"
+    type: string <nullable>
+    format: datetime
   UpdatedAt:
-    description: |
-      **Atualizado em**<br />
-    oneOf:
-      - type: string
-        format: datetime
-      - type: null
+    description: "**Atualizado em**"
+    type: string <nullable>
+    format: datetime
   UpdatedBy:
-    description: |
-      **Atualizado por**<br />
+    description: "**Atualizado por**"
     oneOf:
       - $ref: SimpleEntity.yaml
       - type: null
   CompletedAt:
     description: |
       **Concluído em**<br />
-    oneOf:
-      - type: string
-        format: datetime
-      - type: null
+    type: string <nullable>
+    format: datetime
   CompletedBy:
-    description: |
-      **Concluído por**<br />
+    description: "**Concluído por**"
     oneOf:
       - $ref: SimpleEntity.yaml
       - type: null
   Locale:
-    description: |
-      **Local**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Local**"
+    type: string <nullable>
   TaskCode:
-    description: |
-      **Código da Tarefa**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Código da Tarefa**"
+    type: string <nullable>
   ActivityCode:
-    description: |
-      **Código da Atividade**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Código da Atividade**"
+    type: string <nullable>
   Owner:
-    description: |
-      **Responsável**<br />
-    oneOf:
-      - $ref: SimpleEntity.yaml
-      - type: null
+    description: "**Responsável**"
+    $ref: SimpleEntity.yaml
   OtherParticipants:
-    description: |
-      **Outros Participantes**<br />
-    oneOf:
-      - type: array
-        items:
-          $ref: SimpleEntity.yaml
-      - type: null
+    description: "**Outros Participantes**"
+    type: array
+    items:
+      $ref: SimpleEntity.yaml
   Status:
+    type: string <nullable>
     description: |
       **Status**<br />
       **Valores permitidos:**<br />
@@ -124,22 +85,14 @@ properties:
       7: Concluída<br />
       8: Reagendada<br />
       9: Suspensa
-    oneOf:
-      - type: string
-      - type: null
   Priority:
+    type: string <nullable>
     description: |
       **Prioridade**<br />
       **Valores permitidos:**<br />
       1: Baixa<br />
       2: Média<br />
       3: Alta
-    oneOf:
-      - type: string
-      - type: null
   ConclusionNotes:
-    description: |
-      **Notas de Conclusão**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
+    description: "**Notas de Conclusão**"

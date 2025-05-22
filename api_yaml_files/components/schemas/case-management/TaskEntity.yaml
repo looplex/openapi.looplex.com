@@ -7,8 +7,6 @@ allOf:
       Data:
         $ref: TaskContent.yaml
       Children:
-        oneOf:
-          - type: array
-            items:
-              $ref: TaskContent.yaml
-          - type: null
+        type: array
+        items:
+          $ref: TaskContent.yaml

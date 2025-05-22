@@ -352,6 +352,42 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Create task",
+        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "tasks-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/entries/:entry_id": {
@@ -540,7 +576,7 @@
         },
         "responses": {
           "201": {
-            "description": "No Content"
+            "description": "Created"
           },
           "500": {
             "description": "Internal Server Error"
@@ -1394,64 +1430,29 @@
         "type": "object",
         "properties": {
           "Type": {
-            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência<br />\nCompromisso<br />\nDiligência<br />\nPrazo<br />\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência<br />\nCompromisso<br />\nDiligência<br />\nPrazo<br />\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n"
           },
           "Title": {
-            "description": "**Titulo**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Titulo**",
+            "type": "string <nullable>"
           },
           "Description": {
-            "description": "**Descrição**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Descrição**",
+            "type": "string <nullable>"
           },
           "StartDate": {
-            "description": "**Data de Início**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "datetime"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Data de Início**",
+            "type": "string <nullable>",
+            "format": "datetime"
           },
           "DueDate": {
-            "description": "**Data de Vencimento**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "datetime"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Data de Vencimento**",
+            "type": "string <nullable>",
+            "format": "datetime"
           },
           "CreatedBy": {
-            "description": "**Criado por**<br />\n",
+            "description": "**Criado por**",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/SimpleEntity"
@@ -1462,31 +1463,17 @@
             ]
           },
           "CreatedAt": {
-            "description": "**Criado em**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "datetime"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Criado em**",
+            "type": "string <nullable>",
+            "format": "datetime"
           },
           "UpdatedAt": {
-            "description": "**Atualizado em**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "datetime"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Atualizado em**",
+            "type": "string <nullable>",
+            "format": "datetime"
           },
           "UpdatedBy": {
-            "description": "**Atualizado por**<br />\n",
+            "description": "**Atualizado por**",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/SimpleEntity"
@@ -1498,18 +1485,11 @@
           },
           "CompletedAt": {
             "description": "**Concluído em**<br />\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "datetime"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "format": "datetime"
           },
           "CompletedBy": {
-            "description": "**Concluído por**<br />\n",
+            "description": "**Concluído por**",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/SimpleEntity"
@@ -1520,95 +1500,39 @@
             ]
           },
           "Locale": {
-            "description": "**Local**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Local**",
+            "type": "string <nullable>"
           },
           "TaskCode": {
-            "description": "**Código da Tarefa**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Código da Tarefa**",
+            "type": "string <nullable>"
           },
           "ActivityCode": {
-            "description": "**Código da Atividade**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Código da Atividade**",
+            "type": "string <nullable>"
           },
           "Owner": {
-            "description": "**Responsável**<br />\n",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SimpleEntity"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Responsável**",
+            "$ref": "#/components/schemas/SimpleEntity"
           },
           "OtherParticipants": {
-            "description": "**Outros Participantes**<br />\n",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
-                }
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntity"
+            }
           },
           "Status": {
-            "description": "**Status**<br />\n**Valores permitidos:**<br />\n4: Cancelada<br />\n5: Atribuída<br />\n6: Criada<br />\n7: Concluída<br />\n8: Reagendada<br />\n9: Suspensa\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**Status**<br />\n**Valores permitidos:**<br />\n4: Cancelada<br />\n5: Atribuída<br />\n6: Criada<br />\n7: Concluída<br />\n8: Reagendada<br />\n9: Suspensa\n"
           },
           "Priority": {
-            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\n1: Baixa<br />\n2: Média<br />\n3: Alta\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\n1: Baixa<br />\n2: Média<br />\n3: Alta\n"
           },
           "ConclusionNotes": {
-            "description": "**Notas de Conclusão**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**Notas de Conclusão**"
           }
         }
       },
@@ -1626,17 +1550,10 @@
                 "$ref": "#/components/schemas/TaskContent"
               },
               "Children": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/TaskContent"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskContent"
+                }
               }
             }
           }
@@ -2714,6 +2631,21 @@
             }
           }
         ]
+      },
+      "TaskEntityWrite": {
+        "title": "TaskEntity",
+        "type": "object",
+        "properties": {
+          "Data": {
+            "$ref": "#/components/schemas/TaskContent"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskContent"
+            }
+          }
+        }
       },
       "EntryEntityWrite": {
         "title": "EntryEntity",

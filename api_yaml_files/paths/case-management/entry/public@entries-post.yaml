@@ -16,6 +16,6 @@ requestBody:
         $ref: ../../../components/schemas/case-management/EntryEntityWrite.yaml
 responses:
   "201":
-    description: "No Content"
+    description: "Created"
   "500":
     description: "Internal Server Error"
