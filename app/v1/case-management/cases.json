@@ -352,42 +352,6 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Create task",
-        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "tasks-post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskEntityWrite"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       }
     },
     "/entries/:entry_id": {
@@ -2631,21 +2595,6 @@
             }
           }
         ]
-      },
-      "TaskEntityWrite": {
-        "title": "TaskEntity",
-        "type": "object",
-        "properties": {
-          "Data": {
-            "$ref": "#/components/schemas/TaskContent"
-          },
-          "Children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskContent"
-            }
-          }
-        }
       },
       "EntryEntityWrite": {
         "title": "EntryEntity",
