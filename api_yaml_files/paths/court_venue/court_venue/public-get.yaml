@@ -1,12 +1,25 @@
 tags:
   - Court Venue
-summary: "Get first level items"
+summary: "Query court venue by filters"
 description: |
-  **Get first level items**
+  **Query court venue by filters**
 operationId: -get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **Search term**<br />
+      **This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**
+      **label (string)**: the term to search<br />
+      **cnj (string)**: cnj number to search<br />
+      **level (integer)**: filter items by level<br />
+      **path (string)**: the path to search<br />
+      **Example of use: (label co "Estadual" or cnj eq "8." or path eq "/2/") and level eq 1**
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"

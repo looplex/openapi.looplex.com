@@ -32,8 +32,8 @@
         "tags": [
           "Court Venue"
         ],
-        "summary": "Get first level items",
-        "description": "**Get first level items**\n",
+        "summary": "Query court venue by filters",
+        "description": "**Query court venue by filters**\n",
         "operationId": "-get",
         "parameters": [
           {
@@ -41,6 +41,15 @@
           },
           {
             "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**label (string)**: the term to search<br />\n**cnj (string)**: cnj number to search<br />\n**level (integer)**: filter items by level<br />\n**path (string)**: the path to search<br />\n**Example of use: (label co \"Estadual\" or cnj eq \"8.\" or path eq \"/2/\") and level eq 1**\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -107,29 +116,29 @@
         "type": "object",
         "properties": {
           "uuid": {
-            "description": "Item's unique identifier",
+            "description": "**Item's unique identifier**",
             "type": "string",
             "format": "uuid"
           },
           "level": {
             "type": "integer",
-            "description": "Item's level"
+            "description": "**Item's level**"
           },
           "label": {
             "type": "string",
-            "description": "Item's name"
+            "description": "**Item's name**"
           },
           "active": {
             "type": "boolean",
-            "description": "Indicate if the item is active"
+            "description": "**Indicate if the item is active**"
           },
           "jtroooo": {
             "type": "string",
-            "description": "CNJ"
+            "description": "**CNJ**"
           },
           "path": {
             "type": "string",
-            "description": "Item's path in tree"
+            "description": "**Item's path in tree**"
           },
           "serventia": {
             "type": "integer <nullable>",

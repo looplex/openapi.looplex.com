@@ -2,24 +2,24 @@ title: Hierarchy
 type: object
 properties:
   uuid:
-    description: "Item's unique identifier"
+    description: "**Item's unique identifier**"
     type: string
     format: uuid
   level:
     type: integer
-    description: "Item's level"
+    description: "**Item's level**"
   label:
     type: string
-    description: "Item's name"
+    description: "**Item's name**"
   active:
     type: boolean
-    description: "Indicate if the item is active"
+    description: "**Indicate if the item is active**"
   jtroooo:
     type: string
-    description: "CNJ"
+    description: "**CNJ**"
   path:
     type: string
-    description: "Item's path in tree"
+    description: "**Item's path in tree**"
   serventia:
     type: integer <nullable>
     description: ""
