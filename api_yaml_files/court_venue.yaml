@@ -22,21 +22,10 @@ servers:
     description: "Court Venue Server"
 paths:
   # Court Venue (Varas e Foros)
-  /search:
+  /:
     get:
-      $ref: .\paths\court_venue\court_venue\public@search-get.yaml
-  /leaves/:id:
-    get:
-      $ref: .\paths\court_venue\court_venue\public@leaves@id-get.yaml
-
-  # Procedures (Ritos)
-  /:id:
-    get:
-      $ref: .\paths\court_venue\court_venue\public@id-get.yaml
-  /procedures/search:
-    get:
-      $ref: .\paths\court_venue\procedure\public@procedures@search-get.yaml
-
+      $ref: .\paths\court_venue\court_venue\public-get.yaml
+      
 components:
   securitySchemes:
     api_key:

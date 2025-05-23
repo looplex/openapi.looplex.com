@@ -27,110 +27,20 @@
   ],
   "security": [],
   "paths": {
-    "/search": {
+    "/": {
       "get": {
         "tags": [
           "Court Venue"
         ],
-        "summary": "Court venue search",
-        "description": "**search court venue by params**\n",
-        "operationId": "search-get",
+        "summary": "Get first level items",
+        "description": "**Get first level items**\n",
+        "operationId": "-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
             "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**The page**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**The page size**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**term (string)**: the term to search<br />\n**hierarchy (string)**: the hierarchy to search<br />\n**cnj (string)**: part of cnj number to search<br />\n**level (integer)**: filter items by level<br /> <br/>\n**Example of use: (term co \"Cível\" or cnj co \"8.\" or hierarchy co \".3.10\") and level eq 6**\n",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/CourtVenue"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/leaves/:id": {
-      "get": {
-        "tags": [
-          "Court Venue"
-        ],
-        "summary": "Search leaves by node id",
-        "description": "**Search leaves by node id**\n",
-        "operationId": "leaves-id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**Node id**",
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
@@ -141,131 +51,8 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CourtVenueLeaf"
+                    "$ref": "#/components/schemas/Hierarchy"
                   }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/:id": {
-      "get": {
-        "tags": [
-          "Court Venue"
-        ],
-        "summary": "Retrieve leaf by id",
-        "description": "**Retrieve leaf by id**\n",
-        "operationId": "id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The node id**",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CourtVenueLeaf"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/procedures/search": {
-      "get": {
-        "tags": [
-          "Case Procedure"
-        ],
-        "summary": "Procedure search",
-        "description": "**search procedure by params**\n",
-        "operationId": "procedures-search-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**The page**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**The page size**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**procedure (string)**: the term to search<br />\n**Example of use: (procedure co \"Embargos\")**\n",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Procedure"
-                          }
-                        }
-                      }
-                    }
-                  ]
                 }
               }
             }
@@ -304,15 +91,6 @@
           "type": "string"
         }
       },
-      "Tenant": {
-        "name": "x-looplex-tenant",
-        "in": "header",
-        "description": "**Client domain**",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
-      },
       "BearerToken": {
         "name": "Authorization",
         "in": "header",
@@ -324,163 +102,50 @@
       }
     },
     "schemas": {
-      "ListResponse": {
-        "title": "ListResponse",
+      "Hierarchy": {
+        "title": "Hierarchy",
         "type": "object",
         "properties": {
-          "startIndex": {
-            "description": "**Index of search**",
-            "type": "integer",
-            "example": 1
-          },
-          "itemsPerPage": {
-            "description": "**Total count of items to return**",
-            "type": "integer",
-            "example": 12
-          },
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
-          }
-        }
-      },
-      "CourtVenue": {
-        "title": "CourtVenue",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CourtVenueChild"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer",
-                "description": "**The court venue id**",
-                "example": 10
-              },
-              "parentId": {
-                "type": "integer",
-                "description": "**The parent court venue id**",
-                "example": 3
-              },
-              "order": {
-                "type": "integer",
-                "description": "**The order of appearance**",
-                "example": 1
-              },
-              "name": {
-                "type": "string",
-                "description": "**The court venue name**",
-                "example": "Court venue example name"
-              },
-              "hierarchy": {
-                "type": "string",
-                "description": "**The complete hierarchy of this court venue**",
-                "example": "3.10"
-              },
-              "level": {
-                "type": "integer",
-                "description": "**The level of this court venue**",
-                "example": 2
-              },
-              "active": {
-                "type": "boolean",
-                "description": "**Indicates if it is active**",
-                "example": true
-              },
-              "tags": {
-                "type": "array",
-                "description": "**Tags binded to this court venue**",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "tagId": {
-                      "type": "integer",
-                      "description": "**The tag id**",
-                      "example": 1
-                    },
-                    "name": {
-                      "type": "string",
-                      "description": "**The tag name**",
-                      "example": "example tag name"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        ]
-      },
-      "CourtVenueChild": {
-        "title": "CourtVenueChild",
-        "type": "object",
-        "properties": {
-          "children": {
-            "type": "array",
-            "description": "**The items related to this court venue**",
-            "items": {
-              "$ref": "#/components/schemas/CourtVenue"
-            }
-          }
-        }
-      },
-      "CourtVenueLeaf": {
-        "title": "CourtVenueLeaf",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "**Leaf identifier**",
-            "example": 10,
-            "type": "integer"
+          "uuid": {
+            "description": "Item's unique identifier",
+            "type": "string",
+            "format": "uuid"
           },
           "level": {
-            "description": "**Leaf level**<br />\n",
-            "example": 1,
-            "oneOf": [
-              {
-                "type": null
-              },
-              {
-                "type": "integer"
-              }
-            ]
+            "type": "integer",
+            "description": "Item's level"
+          },
+          "label": {
+            "type": "string",
+            "description": "Item's name"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "Indicate if the item is active"
+          },
+          "jtroooo": {
+            "type": "string",
+            "description": "CNJ"
           },
           "path": {
             "type": "string",
-            "example": "Judicial Estadual - 1ª Instância - SP...",
-            "description": "**Leaf complete path**"
-          }
-        }
-      },
-      "Procedure": {
-        "title": "Procedure",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "description": "**The procedure id**"
+            "description": "Item's path in tree"
           },
-          "name": {
-            "type": "string",
-            "description": "**The procedure name**"
+          "serventia": {
+            "type": "integer <nullable>",
+            "description": ""
           },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "description": "**The tag id**"
-                },
-                "name": {
-                  "type": "string",
-                  "description": "**The tag name**"
-                }
-              }
-            }
+          "smallClaimsCourt": {
+            "type": "boolean <nulable>",
+            "description": ""
+          },
+          "adjucatingCourt": {
+            "type": "boolean <nullable>",
+            "description": ""
+          },
+          "ordering": {
+            "type": "integer <nullable>",
+            "description": ""
           }
         }
       }

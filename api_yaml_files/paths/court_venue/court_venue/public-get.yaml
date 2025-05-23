@@ -1,19 +1,12 @@
 tags:
   - Court Venue
-summary: "Search leaves by node id"
+summary: "Get first level items"
 description: |
-  **Search leaves by node id**
-operationId: leaves-id-get
+  **Get first level items**
+operationId: -get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../../../api_yaml_files/components/parameters/court_venue/Tenant.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
-  - name: id
-    in: path
-    required: true
-    description: "**Node id**"
-    schema:
-      type: integer
 responses:
   "200":
     description: "OK"
@@ -22,7 +15,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: ../../../components/schemas/court_venue/CourtVenueLeaf.yaml
+            $ref: ../../../components/schemas/court_venue/Hierarchy.yaml
   "500":
     description: "Internal Server Error"
  
