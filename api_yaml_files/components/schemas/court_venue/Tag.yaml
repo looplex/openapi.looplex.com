@@ -1,0 +1,13 @@
+title: Tag
+type: object
+properties:
+  uuid:
+    description: "**Tag's unique identifier**"
+    type: string
+    format: uuid
+  tag:
+    type: string
+    description: "**Tag's name**"
+  active:
+    type: boolean
+    description: "**Indicate if it is active**"

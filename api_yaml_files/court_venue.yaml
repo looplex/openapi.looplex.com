@@ -28,7 +28,9 @@ paths:
   /subjectTags:
     get:
       $ref: .\paths\court_venue\court_venue\public@subjectTags-get.yaml
-
+  /subjectTags/:uuid/tags:
+    get:
+      $ref: .\paths\court_venue\court_venue\public@subjectTags@uuid@tags-get.yaml
 components:
   securitySchemes:
     api_key:

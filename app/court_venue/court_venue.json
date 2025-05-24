@@ -107,6 +107,52 @@
           }
         }
       }
+    },
+    "/subjectTags/:uuid/tags": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "List tags by tag group",
+        "description": "**List tags by tag group**\n",
+        "operationId": "subjectTags-uuid-tags-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "description": "**Unique identifier of tag's group**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tag"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -206,6 +252,25 @@
           "label": {
             "type": "string",
             "description": "**The name of tag's group**"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "**Indicate if it is active**"
+          }
+        }
+      },
+      "Tag": {
+        "title": "Tag",
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "description": "**Tag's unique identifier**",
+            "type": "string",
+            "format": "uuid"
+          },
+          "tag": {
+            "type": "string",
+            "description": "**Tag's name**"
           },
           "active": {
             "type": "boolean",
