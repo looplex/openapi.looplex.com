@@ -25,7 +25,10 @@ paths:
   /:
     get:
       $ref: .\paths\court_venue\court_venue\public-get.yaml
-      
+  /subjectTags:
+    get:
+      $ref: .\paths\court_venue\court_venue\public@subjectTags-get.yaml
+
 components:
   securitySchemes:
     api_key:

@@ -31,4 +31,3 @@ responses:
             $ref: ../../../components/schemas/court_venue/Hierarchy.yaml
   "500":
     description: "Internal Server Error"
- 

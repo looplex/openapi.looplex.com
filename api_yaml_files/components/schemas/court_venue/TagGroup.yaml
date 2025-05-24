@@ -1,0 +1,13 @@
+title: TagGroup
+type: object
+properties:
+  uuid:
+    description: "**Unique identifier of tag's group**"
+    type: string
+    format: uuid
+  label:
+    type: string
+    description: "**The name of tag's group**"
+  active:
+    type: boolean
+    description: "**Indicate if it is active**"

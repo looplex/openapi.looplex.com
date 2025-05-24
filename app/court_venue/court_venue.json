@@ -71,6 +71,42 @@
           }
         }
       }
+    },
+    "/subjectTags": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Get all tag groups",
+        "description": "**Get all tag groups**\n",
+        "operationId": "subjectTags-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TagGroup"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -155,6 +191,25 @@
           "ordering": {
             "type": "integer <nullable>",
             "description": ""
+          }
+        }
+      },
+      "TagGroup": {
+        "title": "TagGroup",
+        "type": "object",
+        "properties": {
+          "uuid": {
+            "description": "**Unique identifier of tag's group**",
+            "type": "string",
+            "format": "uuid"
+          },
+          "label": {
+            "type": "string",
+            "description": "**The name of tag's group**"
+          },
+          "active": {
+            "type": "boolean",
+            "description": "**Indicate if it is active**"
           }
         }
       }
