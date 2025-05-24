@@ -1,6 +1,9 @@
 title: Hierarchy
 type: object
 properties:
+  id:
+    description: "**Item's identifier**"
+    type: integer
   uuid:
     description: "**Item's unique identifier**"
     type: string

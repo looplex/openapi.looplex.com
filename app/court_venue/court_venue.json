@@ -43,10 +43,81 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "filter",
+            "name": "label",
             "in": "query",
             "required": false,
-            "description": "**Search term**<br />\n**This search uses [SCIM filter](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2)<br />**\n**label (string)**: the term to search<br />\n**cnj (string)**: cnj number to search<br />\n**level (integer)**: filter items by level<br />\n**path (string)**: the path to search<br />\n**Example of use: (label co \"Estadual\" or cnj eq \"8.\" or path eq \"/2/\") and level eq 1**\n",
+            "example": "\"Estadual\"",
+            "description": "**the node name to search**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cnj",
+            "in": "query",
+            "required": false,
+            "example": "\"8.02\"",
+            "description": "**cnj number to search**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "required": false,
+            "example": 1,
+            "description": "**filter items by level**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": false,
+            "example": "\"/2/\"",
+            "description": "**the path to search**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "required": false,
+            "example": "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000",
+            "description": "**tags' unique ids separated by comma**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "depth",
+            "in": "query",
+            "required": false,
+            "example": 2,
+            "description": "**depth of descendant levels to include in the results.**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "uuids",
+            "in": "query",
+            "required": false,
+            "example": "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000",
+            "description": "**node's unique ids separated by comma**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "example": "−2147483648,−2147483648",
+            "description": "**node's ids separated by comma**",
             "schema": {
               "type": "string"
             }
@@ -197,6 +268,10 @@
         "title": "Hierarchy",
         "type": "object",
         "properties": {
+          "id": {
+            "description": "**Item's identifier**",
+            "type": "integer"
+          },
           "uuid": {
             "description": "**Item's unique identifier**",
             "type": "string",
