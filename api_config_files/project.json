@@ -1,5 +1,6 @@
 {
   "name": "looplex_openapi",
+  "path_templates": "/api_yaml_files/components/schemas/templates",
   "apis": [
     {
       "index": 1,
@@ -10,7 +11,6 @@
         "path_components": "/api_yaml_files/components/schemas/cases",
         "path_parameters": "/api_yaml_files/components/parameters/cases",
         "path_enums": "/api_yaml_files/components/schemas/cases/enums",
-        "path_templates": "/api_yaml_files/components/schemas/cases/templates",
         "path_routes": "/api_yaml_files/paths/cases",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
@@ -284,7 +284,6 @@
         "path_components": "/api_yaml_files/components/schemas/case-management",
         "path_parameters": "/api_yaml_files/components/parameters/case-management",
         "path_enums": "/api_yaml_files/components/schemas/case-management/enums",
-        "path_templates": "/api_yaml_files/components/schemas/case-management/templates",
         "path_routes": "/api_yaml_files/paths/case-management",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
@@ -330,7 +329,6 @@
         "path_components": "/api_yaml_files/components/schemas/court_venue",
         "path_parameters": "/api_yaml_files/components/parameters/court_venue",
         "path_enums": "/api_yaml_files/components/schemas/court_venue/enums",
-        "path_templates": "/api_yaml_files/components/schemas/court_venue/templates",
         "path_routes": "/api_yaml_files/paths/court_venue",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": [
@@ -358,7 +356,6 @@
         "path_components": "/api_yaml_files/components/schemas/recess",
         "path_parameters": "/api_yaml_files/components/parameters/recess",
         "path_enums": "/api_yaml_files/components/schemas/recess/enums",
-        "path_templates": "/api_yaml_files/components/schemas/recess/templates",
         "path_routes": "/api_yaml_files/paths/recess",
         "path_http_responses": "/api_yaml_files/components/schemas/http_responses",
         "tags": []
@@ -373,7 +370,6 @@
         "path_components": "/api_yaml_files/components/schemas/scim",
         "path_parameters": null,
         "path_enums": null,
-        "path_templates": null,
         "path_routes": null,
         "path_http_responses": null,
         "tags": null
