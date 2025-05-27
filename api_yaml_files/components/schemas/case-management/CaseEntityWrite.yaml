@@ -42,7 +42,7 @@ properties:
       **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
     type: array
     items:
-      $ref: IdentityEntity.yaml
+      $ref: IdentityEntityWrite.yaml
   Title:
     description: "**Nome Jurídico do caso**"
     type: string <nullable>
@@ -110,9 +110,9 @@ properties:
     type: string <nullable>
     format: datetime
     description: "**Data de criação do caso**"
-  # CreatedBy:
-  #   description: "**Usuário que criou o caso**"
-  #   $ref: SimpleEntity.yaml
+  CreatedBy:
+    description: "**Usuário que criou o caso**"
+    $ref: SimpleEntityWrite.yaml
   UpdatedAt:
     description: "**Atualizado em**"
     type: string <nullable>
@@ -138,23 +138,23 @@ properties:
   #     **Contrato**<br />
   #     Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
   #   $ref: LegalServiceAgreement.yaml
-  # Owner:
-  #   description: |
-  #     **Responsável**<br />
-  #     Advogado ou membro da equipe jurídica responsável pelo caso
-  #   $ref: SimpleEntity.yaml
-  # Coowners:
-  #   description: |
-  #     **Corresponsáveis**<br />
-  #     Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
-  #   type: array
-  #   items:
-  #     $ref: SimpleEntity.yaml
-  # ExternalServiceProvider:
-  #   description: |
-  #     **Escritório Responsável / Correspondente**<br />
-  #     Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-  #   $ref: SimpleEntity.yaml
+  Owner:
+    description: |
+      **Responsável**<br />
+      Advogado ou membro da equipe jurídica responsável pelo caso
+    $ref: SimpleEntityWrite.yaml
+  Coowners:
+    description: |
+      **Corresponsáveis**<br />
+      Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
+    type: array
+    items:
+      $ref: SimpleEntityWrite.yaml
+  ExternalServiceProvider:
+    description: |
+      **Escritório Responsável / Correspondente**<br />
+      Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
+    $ref: SimpleEntityWrite.yaml
   # Participants:
   #   desription: |
   #     **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**

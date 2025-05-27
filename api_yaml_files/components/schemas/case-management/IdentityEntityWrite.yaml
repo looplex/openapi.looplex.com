@@ -1,0 +1,17 @@
+title: Identidade
+type: object
+properties:
+  IdentityProviderType:
+    type: string
+    description: |
+      **The identity provider**<br />
+      **Alguns dos valores permitidos:<br />**
+      - RG<br />
+      - CPF<br  />
+      - CNPJ<br />
+      - CNJ<br />
+      - Inscrição municipal<br />
+      - Inscrição estadual
+  Value:
+    type: string
+    description: "**The identity value**"

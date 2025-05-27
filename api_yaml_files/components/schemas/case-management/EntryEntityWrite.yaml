@@ -33,7 +33,7 @@ properties:
     format: uuid
     description: "**Identificador da publicação que criou esse andamento (se houver)**"
   CreatedBy:
-    $ref: SimpleEntity.yaml
+    $ref: SimpleEntityWrite.yaml
   ClassificationType:
     type: integer <nullable>
     example: 6

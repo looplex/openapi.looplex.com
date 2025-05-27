@@ -1,0 +1,21 @@
+tags:
+  - Case Management
+summary: "Create case"
+description: |
+  **Create a new case**
+operationId: cases-post
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../../../../api_yaml_files/components/schemas/case-management/CaseEntityWrite.yaml
+responses:
+  "201":
+    description: "Created"
+  "500":
+    description: "Internal Server Error"
+ 

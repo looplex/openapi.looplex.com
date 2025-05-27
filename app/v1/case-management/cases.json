@@ -2315,6 +2315,17 @@
           }
         ]
       },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
+          }
+        }
+      },
       "EntryEntityWrite": {
         "title": "Dados de andamento para inclur",
         "type": "object",
@@ -2358,7 +2369,7 @@
             "description": "**Identificador da publicação que criou esse andamento (se houver)**"
           },
           "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntity"
+            "$ref": "#/components/schemas/SimpleEntityWrite"
           },
           "ClassificationType": {
             "type": "integer <nullable>",
