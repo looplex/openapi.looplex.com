@@ -665,19 +665,12 @@
         }
       },
       "IdentityEntity": {
-        "title": "IdentityEntity",
+        "title": "Identidade",
         "type": "object",
         "properties": {
           "Id": {
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "type": null
-              }
-            ],
+            "type": "string <nullable>",
+            "format": "uuid",
             "description": "**The unique identifier of this value**"
           },
           "IdentityProviderType": {
@@ -752,7 +745,7 @@
         }
       },
       "SimpleEntity": {
-        "title": "SimpleEntity",
+        "title": "Identificador",
         "type": "object",
         "properties": {
           "Id": {

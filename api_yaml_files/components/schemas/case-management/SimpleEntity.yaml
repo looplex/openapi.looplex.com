@@ -1,6 +1,6 @@
-title: SimpleEntity
+title: Identificador
 type: object
-properties: 
+properties:
   Id:
     type: string
     format: uuid
