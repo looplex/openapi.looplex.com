@@ -765,167 +765,74 @@
         "type": "object",
         "properties": {
           "Id": {
-            "description": "**The client unique identifier**\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              }
-            ]
+            "description": "**The client unique identifier**",
+            "type": "string",
+            "format": "uuid"
           },
           "Name": {
-            "description": "**The client name**\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**The client name**",
+            "type": "string <nullable>"
           },
           "Identities": {
-            "description": "**The client identities**\n",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
-                }
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**The client identities**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntity"
+            }
           }
         }
       },
       "LegalServiceAgreement": {
-        "title": "LegalServiceAgreement",
+        "title": "Dados do contrato",
         "type": "object",
         "properties": {
           "Id": {
-            "description": "**The legal service agreement unique identifier**\n",
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              }
-            ]
+            "type": "string",
+            "format": "uuid",
+            "description": "**The legal service agreement unique identifier**"
           },
           "Name": {
-            "description": "**The legal service agreement name**\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**The legal service agreement name**"
           }
         }
       },
       "AddressEntity": {
-        "title": "AddressEntity",
+        "title": "Endereço",
         "type": "object",
         "properties": {
           "Country": {
-            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**<br />",
+            "type": "string <nullable>"
           },
           "PostalCode": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "StreetAddress": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "StreetAddressNumber": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Pobox": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Locality": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Region": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Neighborhood": {
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Type": {
             "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\n1: Residencial<br />\n2: Trabalho<br />\n3: Outro<br />\n4: Cobrança<br />\n5: Entrega\n",
-            "oneOf": [
-              {
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "Primary": {
-            "description": "**Se é o endereço principal**<br />\n",
-            "oneOf": [
-              {
-                "type": "boolean"
-              }
-            ]
+            "description": "**Se é o endereço principal**<br />",
+            "type": "boolean"
           }
         }
       },

@@ -1,40 +1,23 @@
-title: AddressEntity
+title: Endereço
 type: object
-properties: 
+properties:
   Country:
-    description: |
-      **ISO 3166-1 alpha2 value (2 caracteres)**<br />
-    oneOf:
-      - type: string
-      - type: null
+    description: "**ISO 3166-1 alpha2 value (2 caracteres)**<br />"
+    type: string <nullable>
   PostalCode:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   StreetAddress:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   StreetAddressNumber:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Pobox:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Locality:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Region:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Neighborhood:
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Type:
     description: |
       **Tipo de endereço**<br />
@@ -44,10 +27,7 @@ properties:
       3: Outro<br />
       4: Cobrança<br />
       5: Entrega
-    oneOf:
-      - type: string
+    type: string
   Primary:
-    description: |
-      **Se é o endereço principal**<br />
-    oneOf:
-      - type: boolean
+    description: "**Se é o endereço principal**<br />"
+    type: boolean

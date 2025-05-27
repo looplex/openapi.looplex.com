@@ -1,15 +1,10 @@
-title: LegalServiceAgreement
+title: Dados do contrato
 type: object
-properties: 
+properties:
   Id:
-    description: |
-      **The legal service agreement unique identifier**
-    oneOf:
-      - type: string
-        format: uuid
+    type: string
+    format: uuid
+    description: "**The legal service agreement unique identifier**"
   Name:
-    description: |
-      **The legal service agreement name**
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
+    description: "**The legal service agreement name**"

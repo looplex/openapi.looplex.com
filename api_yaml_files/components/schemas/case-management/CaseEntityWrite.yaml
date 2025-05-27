@@ -128,16 +128,16 @@ properties:
     type: array
     items:
       type: string
-  # CaseClient:
-  #   description: |
-  #     **Cliente**<br />
-  #     Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-  #   $ref: CaseClient.yaml
-  # LegalServiceAgreement:
-  #   description: |
-  #     **Contrato**<br />
-  #     Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-  #   $ref: LegalServiceAgreement.yaml
+  CaseClient:
+    description: |
+      **Cliente**<br />
+      Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
+    $ref: SimpleEntityWrite.yaml
+  LegalServiceAgreement:
+    description: |
+      **Contrato**<br />
+      Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
+    $ref: SimpleEntityWrite.yaml
   Owner:
     description: |
       **Responsável**<br />
