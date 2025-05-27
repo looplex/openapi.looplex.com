@@ -18,7 +18,7 @@ parameters:
 {{PATH_QUERY_PARAMETERS}}
 {{REQUEST_BODY}}
 responses:
-{{HTTP_RESPONSES}}
+  {{HTTP_RESPONSES}}
   "204":
     description: "No Content"
   "404":

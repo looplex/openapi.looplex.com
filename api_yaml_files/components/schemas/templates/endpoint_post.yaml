@@ -16,4 +16,4 @@ responses:
     description: "Created"
   "500":
     description: "Internal Server Error"
-{{HTTP_RESPONSES}}
+  {{HTTP_RESPONSES}}

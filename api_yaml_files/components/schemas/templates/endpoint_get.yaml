@@ -14,7 +14,6 @@ parameters:
   #   required: true
   #   description: |
   #     **The item's unique identifier**
-  #   example: 1
   #   schema:
   #     type: string
   #     format: uuid
@@ -39,6 +38,6 @@ parameters:
   #     type: integer
 {{PATH_QUERY_PARAMETERS}}
 responses:
-{{HTTP_RESPONSES}}
+  {{HTTP_RESPONSES}}
   "500":
       description: "Internal Server Error"
