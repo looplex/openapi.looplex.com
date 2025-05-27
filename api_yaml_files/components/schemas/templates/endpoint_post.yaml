@@ -3,6 +3,7 @@ tags:
 summary: {{TITLE}}
 description: |
   {{DESCRIPTION}}
+  Item created's guid is returned in **Location header**
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
@@ -10,4 +11,9 @@ parameters:
   - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
 {{PATH_QUERY_PARAMETERS}}
 {{REQUEST_BODY}}
+responses:
+  "201":
+    description: "Created"
+  "500":
+    description: "Internal Server Error"
 {{HTTP_RESPONSES}}

@@ -2,7 +2,8 @@ tags:
   - Case Management
 summary: "Create case"
 description: |
-  **Create a new case**
+  **Create a new case**<br />
+  Item created's guid is returned in **Location header**
 operationId: cases-post
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml

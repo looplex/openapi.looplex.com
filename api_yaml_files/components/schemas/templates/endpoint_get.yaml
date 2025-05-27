@@ -8,5 +8,37 @@ parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../..{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  # Utilizado em endpoint retrieve
+  # - name: id
+  #   in: path
+  #   required: true
+  #   description: |
+  #     **The item's unique identifier**
+  #   example: 1
+  #   schema:
+  #     type: string
+  #     format: uuid
+
+  # utilizado em endpoint query
+  # - name: startIndex
+  #   in: query
+  #   required: true
+  #   description: |
+  #     **Index of search**<br />
+  #   example: 1
+  #   schema:
+  #     type: integer
+  # - name: count
+  #   in: query
+  #   required: true
+  #   description: |
+  #     **Total count of items to return**<br />
+  #     `Max of 120`
+  #   example: 50
+  #   schema:
+  #     type: integer
 {{PATH_QUERY_PARAMETERS}}
+responses:
 {{HTTP_RESPONSES}}
+  "500":
+      description: "Internal Server Error"
