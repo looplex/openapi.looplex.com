@@ -41,248 +41,181 @@ allOf:
           3: Recurso<br />
           4: Incidente
       CaseHierarchy:
-        oneOf:
-          - type: array
-            items:
-              $ref: CaseHierarchy.yaml
-          - type: null
+        type: array
+        items:
+          $ref: CaseHierarchy.yaml
       Identities:
         description: |
           **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
-        oneOf:
-          - type: array
-            items:
-              $ref: IdentityEntity.yaml
-          - type: null
+        type: array
+        items:
+          $ref: IdentityEntity.yaml
       Title:
         description: "**Nome Jurídico do caso**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Summary:
         description: "**Breve descrição sobre o caso**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Locale:
-        oneOf: 
-          - type: string
-          - type: null
+        type: string <nullable>
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
       CourtVenue:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
       CaseProcedure:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: "**Rito ou procedimento do caso**"
       Phase:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: | 
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
       Nature:
         description: "**Indica os assuntos tratados no caso**"
-        oneOf:
-          - type: array
-            items:
-              type: string
-          - type: null
+        type: array
+        items:
+          type: string
       RetentionDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
       StartDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
       FormationDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de citação**<br />
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
       ResJudicataDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de trânsito em julgado**<br />
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
       ForecastedEndDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data prevista para encerramento**<br />
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
       CreatedAt:
-        oneOf: 
-          - type: string
-            format: datetime
-          - type: null
-        description: |
-          **Data de criação do caso**
+        type: string <nullable>
+        format: datetime
+        description: "**Data de criação do caso**"
       CreatedBy:
         description: "**Usuário que criou o caso**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        $ref: SimpleEntity.yaml
       UpdatedAt:
         description: "**Atualizado em**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       UpdatedBy:
         description: "**Atualizado por**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        $ref: SimpleEntity.yaml
       ClosedAt:
         description: "**Data de encerramento**"
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
       ClosedBy:
         description: "**Usuário que encerrou o caso**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        $ref: SimpleEntity.yaml
       Group:
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Product:
         description: |
           **Produto**<br />
           Produto ou serviço do cliente que está relacionado ao caso
-        oneOf:
-          - type: array
-            items:
-              type: string
-          - type: null
+        type: array
+        items:
+          type: string
       CaseClient:
         description: |
           **Cliente**<br />
           Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-        oneOf:
-          - $ref: CaseClient.yaml
+        $ref: CaseClient.yaml
       LegalServiceAgreement:
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-        oneOf:
-          - $ref: LegalServiceAgreement.yaml
+        $ref: LegalServiceAgreement.yaml
       Owner:
         description: |
           **Responsável**<br />
           Advogado ou membro da equipe jurídica responsável pelo caso
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        $ref: SimpleEntity.yaml
       Coowners:
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
-        oneOf:
-          - type: array
-            items:
-              $ref: SimpleEntity.yaml
-          - type: null
+        type: array
+        items:
+          $ref: SimpleEntity.yaml
       ExternalServiceProvider:
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        $ref: SimpleEntity.yaml
       Participants:
         desription: |
           **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
         oneOf:
           - $ref: ParticipantNaturalPerson.yaml
           - $ref: ParticipantLegalPerson.yaml
-      GlobalValues: 
+      GlobalValues:
         description: |
           **Valores globais do caso, definidos por polo**
-        oneOf:
-          - type: array
-            items:
-              $ref: GlobalValues.yaml
-          - type: null
+        type: array
+        items:
+          $ref: GlobalValues.yaml
       # Claims: # TODO
       # OppositionToClaims: # TODO
       # ProceduralObjections: # TODO
       Entry:
         description: |
           **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: EntryEntity.yaml
-          - type: null
+        type: array
+        items:
+          $ref: EntryEntity.yaml
       # Resolution: # TODO
       # PaymentOrDischarge: # TODO
       # Guaranties: # TODO
       Tasks:
         description: |
           **Tarefas a serem realizadas**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: TaskEntity.yaml
-          - type: null  
+        type: array
+        items:
+          $ref: TaskEntity.yaml
       Timesheet:
-        description: |
-          **Registro de horas trabalhadas**<br /> 
-        oneOf:
-          - type: array
-            items:
-              $ref: Timesheet.yaml
-          - type: null
+        description: "**Registro de horas trabalhadas**<br />"
+        type: array
+        items:
+          $ref: Timesheet.yaml
       CustomFields:
-        description: |
-          **Campos personalizados criados pelo usuário**<br />
-        oneOf:
-          - type: array
-            items:
-              $ref: CustomFieldEntity.yaml
-          - type: null
+        description: "**Campos personalizados criados pelo usuário**<br />"
+        type: array
+        items:
+          $ref: CustomFieldEntity.yaml
       Timeline:
         description: |
           **Linha do Tempo**<br />
           Log de eventos
-        oneOf:
-          - type: array
-            items:
-              $ref: TimelineEntity.yaml
-          - type: null
+        type: array
+        items:
+          $ref: TimelineEntity.yaml

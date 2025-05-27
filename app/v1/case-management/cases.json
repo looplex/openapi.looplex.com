@@ -1824,316 +1824,133 @@
                 "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
               },
               "CaseHierarchy": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CaseHierarchy"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CaseHierarchy"
+                }
               },
               "Identities": {
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/IdentityEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                }
               },
               "Title": {
                 "description": "**Nome Jurídico do caso**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "Summary": {
                 "description": "**Breve descrição sobre o caso**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "Locale": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "CourtVenue": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
               "CaseProcedure": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Rito ou procedimento do caso**"
               },
               "Phase": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
               },
               "Nature": {
                 "description": "**Indica os assuntos tratados no caso**",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "RetentionDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
               },
               "StartDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
               },
               "FormationDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
               },
               "ResJudicataDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
               "ForecastedEndDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
               },
               "CreatedAt": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
-                "description": "**Data de criação do caso**\n"
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Data de criação do caso**"
               },
               "CreatedBy": {
                 "description": "**Usuário que criou o caso**",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "UpdatedAt": {
                 "description": "**Atualizado em**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "UpdatedBy": {
                 "description": "**Atualizado por**",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "ClosedAt": {
                 "description": "**Data de encerramento**",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "format": "datetime"
               },
               "ClosedBy": {
                 "description": "**Usuário que encerrou o caso**",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Group": {
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "Product": {
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "CaseClient": {
                 "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CaseClient"
-                  }
-                ]
+                "$ref": "#/components/schemas/CaseClient"
               },
               "LegalServiceAgreement": {
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/LegalServiceAgreement"
-                  }
-                ]
+                "$ref": "#/components/schemas/LegalServiceAgreement"
               },
               "Owner": {
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Coowners": {
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/SimpleEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                }
               },
               "ExternalServiceProvider": {
                 "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Participants": {
                 "desription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
@@ -2148,87 +1965,45 @@
               },
               "GlobalValues": {
                 "description": "**Valores globais do caso, definidos por polo**\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/GlobalValues"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GlobalValues"
+                }
               },
               "Entry": {
                 "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/EntryEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EntryEntity"
+                }
               },
               "Tasks": {
                 "description": "**Tarefas a serem realizadas**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/TaskEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskEntity"
+                }
               },
               "Timesheet": {
-                "description": "**Registro de horas trabalhadas**<br /> \n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Timesheet"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Registro de horas trabalhadas**<br />",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Timesheet"
+                }
               },
               "CustomFields": {
-                "description": "**Campos personalizados criados pelo usuário**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/CustomFieldEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Campos personalizados criados pelo usuário**<br />",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CustomFieldEntity"
+                }
               },
               "Timeline": {
                 "description": "**Linha do Tempo**<br />\nLog de eventos\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/TimelineEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TimelineEntity"
+                }
               }
             }
           }
