@@ -1,0 +1,44 @@
+tags:
+  - Timesheets
+summary: "Timesheets"
+description: |
+  **Fetch timesheets paginated**
+operationId: timesheets-get
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+  # utilizado em endpoint query
+  - name: startIndex
+    in: query
+    required: true
+    description: |
+      **Index of search**<br />
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../../components/schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../../components/schemas/case-management/Timesheet.yaml
+  "500":
+      description: "Internal Server Error"

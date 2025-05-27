@@ -397,50 +397,6 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Entries"
-        ],
-        "summary": "Update entry",
-        "description": "**Update entry**\n",
-        "operationId": "entries-entry_id-put",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "entry_id",
-            "in": "path",
-            "required": true,
-            "description": "**Entry unique id**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       }
     },
     "/entries": {
@@ -510,14 +466,16 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/timesheets": {
+      "get": {
         "tags": [
-          "Entries"
+          "Timesheets"
         ],
-        "summary": "Create entry",
-        "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "entries-post",
+        "summary": "Timesheets",
+        "description": "**Fetch timesheets paginated**\n",
+        "operationId": "timesheets-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -527,20 +485,53 @@
           },
           {
             "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EntryEntityWrite"
-              }
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
             }
           }
-        },
+        ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Timesheet"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -1385,150 +1376,65 @@
             "type": "object",
             "properties": {
               "Classification": {
-                "description": "**Classificação**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Classificação**",
+                "type": "string <nullable>"
               },
               "Owner": {
-                "description": "**Responsável**<br />\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Responsável**",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Date": {
-                "description": "**Data**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  }
-                ]
+                "description": "**Data**",
+                "type": "string",
+                "format": "datetime"
               },
               "Hours": {
                 "description": "**Horas (quantidade de horas do lançamento)**<br />\nISO 8601 duration format\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "duration",
-                    "example": "PT0H45M0S"
-                  }
-                ]
+                "type": "string",
+                "format": "duration",
+                "example": "01:00:00"
               },
               "TaskCode": {
-                "description": "**Código da Tarefa**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Código da Tarefa**",
+                "type": "string <nullable>"
               },
               "ActivityCode": {
-                "description": "**Código da Atividade**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Código da Atividade**<br />",
+                "type": "string <nullable>"
               },
               "Applicant": {
-                "description": "**Solicitante**<br />\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Solicitante**<br />",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Description": {
-                "description": "**Descrição**<br /> \n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Descrição**",
+                "type": "string <nullable>"
               },
               "IsInvoiced": {
-                "description": "**Faturado**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "boolean"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Faturado**",
+                "type": "boolean <nullable>"
               },
               "CreatedAt": {
-                "description": "**Criado em**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Criado em**",
+                "type": "string <nullable>",
+                "format": "datetime"
               },
               "CreatedBy": {
-                "description": "**Criado por**<br />\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Criado por**",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "UpdatedAt": {
-                "description": "**Atualizado em**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Atualizado em**",
+                "type": "string <nullable>",
+                "format": "datetime"
               },
               "UpdatedBy": {
-                "description": "**Atualizado por**<br />\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Atualizado por**",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Case": {
                 "type": "object",
-                "description": "\"**The case unique identifier**\"\n",
+                "description": "**The case unique identifier**",
                 "properties": {
                   "Id": {
                     "type": "string",
@@ -2221,69 +2127,6 @@
             }
           }
         ]
-      },
-      "SimpleEntityWrite": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**"
-          }
-        }
-      },
-      "EntryEntityWrite": {
-        "title": "Dados de andamento para inclur",
-        "type": "object",
-        "properties": {
-          "CaseGuid": {
-            "type": "string",
-            "format": "uuid",
-            "required": true,
-            "description": "**Case unique id**"
-          },
-          "AuthorGuid": {
-            "type": "string",
-            "format": "uuid",
-            "required": true,
-            "description": "**Entry author unique id**"
-          },
-          "Date": {
-            "type": "string",
-            "format": "datetime",
-            "required": true,
-            "example": "2025-05-21T15:00:00.000Z",
-            "description": "**Data do andamento**"
-          },
-          "Classification": {
-            "type": "string <nullable>",
-            "description": "**Classificação do andamento**"
-          },
-          "Description": {
-            "type": "string",
-            "required": true,
-            "example": "<Texto do andamento>",
-            "description": "**Texto do andamento**"
-          },
-          "IsInternal": {
-            "type": "boolean",
-            "description": "**Indica se o andamento é de uso interno**"
-          },
-          "OfficialNotice": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "ClassificationType": {
-            "type": "integer <nullable>",
-            "example": 6,
-            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
-          }
-        }
       }
     }
   }

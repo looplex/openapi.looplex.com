@@ -1,0 +1,45 @@
+title: Dados de timesheet para inclusão
+type: object
+properties:
+  Classification:
+    description: "**Classificação**"
+    type: string <nullable>
+  Owner:
+    description: "**Responsável**"
+    $ref: SimpleEntityWrite.yaml
+  Date:
+    description: "**Data**"
+    type: string
+    format: datetime
+  Hours:
+    description: |
+      **Horas (quantidade de horas do lançamento)**<br />
+      ISO 8601 duration format
+    type: string
+    format: duration
+    example: "PT0H45M0S"
+  TaskCode:
+    type: string <nullable>
+    description: "**Código da Tarefa**"
+  ActivityCode:
+    type: string <nullable>
+    description: "**Código da Atividade**<br />"
+  Applicant:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Solicitante**<br />"
+  Description:
+    type: string
+    description: "**Descrição**"
+  IsInvoiced:
+    type: boolean <nullable>
+    description: "**Faturado**"
+  CreatedAt:
+    type: string
+    format: datetime
+    description: "**Criado em**"
+  CreatedBy:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Criado por**"
+  Case:
+    $ref: SimpleEntityWrite.yaml
+    description: "**The case unique identifier**"

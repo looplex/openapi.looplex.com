@@ -5,91 +5,54 @@ allOf:
   - type: object
     properties:
       Classification:
-        description: |
-          **Classificação**<br />
-        oneOf:
-          - type: string
-          - type: null
+        description: "**Classificação**"
+        type: string <nullable>
       Owner:
-        description: |
-          **Responsável**<br />
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        description: "**Responsável**"
+        $ref: SimpleEntity.yaml
       Date:
-        description: |
-          **Data**<br />
-        oneOf:
-          - type: string
-            format: datetime
+        description: "**Data**"
+        type: string
+        format: datetime
       Hours:
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
           ISO 8601 duration format
-        oneOf:
-          - type: string
-            format: duration
-            example: "PT0H45M0S"
+        type: string
+        format: duration
+        example: "01:00:00"
       TaskCode:
-        description: |
-          **Código da Tarefa**<br />
-        oneOf:
-          - type: string
-          - type: null
+        description: "**Código da Tarefa**"
+        type: string <nullable>
       ActivityCode:
-        description: |
-          **Código da Atividade**<br />
-        oneOf:
-          - type: string
-          - type: null
+        description: "**Código da Atividade**<br />"
+        type: string <nullable>
       Applicant:
-        description: |
-          **Solicitante**<br />
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        description: "**Solicitante**<br />"
+        $ref: SimpleEntity.yaml
       Description:
-        description: |
-          **Descrição**<br /> 
-        oneOf:
-          - type: string
-          - type: null
+        description: "**Descrição**"
+        type: string <nullable>
       IsInvoiced:
-        description: |
-          **Faturado**<br />
-        oneOf:
-          - type: boolean
-          - type: null
+        description: "**Faturado**"
+        type: boolean <nullable>
       CreatedAt:
-        description: |
-          **Criado em**<br />
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        description: "**Criado em**"
+        type: string <nullable>
+        format: datetime
       CreatedBy:
-        description: |
-          **Criado por**<br />
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        description: "**Criado por**"
+        $ref: SimpleEntity.yaml
       UpdatedAt:
-        description: |
-          **Atualizado em**<br />
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        description: "**Atualizado em**"
+        type: string <nullable>
+        format: datetime
       UpdatedBy:
-        description: |
-          **Atualizado por**<br />
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
+        description: "**Atualizado por**"
+        $ref: SimpleEntity.yaml
       Case:
         type: object
-        description: |
-          "**The case unique identifier**"
+        description: "**The case unique identifier**"
         properties:
           Id:
             type: string

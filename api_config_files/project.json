@@ -313,6 +313,12 @@
           },
           {
             "option": 4,
+            "label": "Timesheets",
+            "detail": "Timesheet endpoints",
+            "folder": "timesheet"
+          },
+          {
+            "option": 5,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",
             "folder": "debug"

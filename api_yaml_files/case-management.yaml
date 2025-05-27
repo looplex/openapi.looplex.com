@@ -51,13 +51,19 @@ paths:
   /entries/:entry_id:
     get:
       $ref: .\paths\case-management\entry\public@entries@entry_id-get.yaml
-    put:
-      $ref: .\paths\case-management\entry\public@entries@entry_id-put.yaml
+    # put:
+    #   $ref: .\paths\case-management\entry\public@entries@entry_id-put.yaml
   /entries:
     get:
       $ref: .\paths\case-management\entry\public@entries-get.yaml
-    post:
-      $ref: .\paths\case-management\entry\public@entries-post.yaml
+    # post:
+    #   $ref: .\paths\case-management\entry\public@entries-post.yaml
+
+  # Timesheet
+  /timesheets:
+    get:
+      $ref: .\paths\case-management\timesheet\public@timesheets-get.yaml
+      
 components:
   securitySchemes:
     api_key:
