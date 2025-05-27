@@ -1,4 +1,4 @@
-title: EntryEntity
+title: Dados de andamento
 type: object
 allOf:
   - $ref: ../scim/Resource.yaml

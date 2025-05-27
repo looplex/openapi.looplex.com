@@ -1245,86 +1245,37 @@
         "type": "object",
         "properties": {
           "AgainstPosition": {
-            "description": "**Contra polo ativo, passivo, terceiro...**\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "description": "**Contra polo ativo, passivo, terceiro...**",
+            "type": "string <nullable>"
           },
           "Perspective": {
             "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\n1: Perda <br />\n2: Êxito\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Risk": {
             "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos**<br />\n1: Provável<br />\n2: Possível<br />\n3: Remoto\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "Currency": {
             "description": "**Moeda usada para os valores do caso**<br />\ne.g. BRL, USD, null\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>"
           },
           "CaseDeclaredValue": {
             "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "number <nullable>"
           },
           "CaseForeseenValue": {
             "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "number <nullable>"
           },
           "CaseContingencyValue": {
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "number <nullable>"
           }
         }
       },
       "EntryEntity": {
-        "title": "EntryEntity",
+        "title": "Dados de andamento",
         "type": "object",
         "allOf": [
           {
@@ -1799,7 +1750,7 @@
         }
       },
       "CaseEntity": {
-        "title": "CaseEntity",
+        "title": "Dados de caso",
         "type": "object",
         "allOf": [
           {
@@ -2372,7 +2323,7 @@
         ]
       },
       "EntryEntityWrite": {
-        "title": "EntryEntity",
+        "title": "Dados de andamento para inclur",
         "type": "object",
         "properties": {
           "CaseGuid": {

@@ -2,11 +2,8 @@ title: GlobalValues
 type: object
 properties: 
   AgainstPosition:
-    description: |
-      **Contra polo ativo, passivo, terceiro...**
-    oneOf:
-      - type: string
-      - type: null
+    description: "**Contra polo ativo, passivo, terceiro...**"
+    type: string <nullable>
   Perspective:
     description: |
       **Perpectiva**<br />
@@ -14,9 +11,7 @@ properties:
       **Valores permitidos**<br />
       1: Perda <br />
       2: Êxito
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Risk:
     description: |
       **Risco**<br />
@@ -28,35 +23,25 @@ properties:
       1: Provável<br />
       2: Possível<br />
       3: Remoto
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   Currency:
     description: |
       **Moeda usada para os valores do caso**<br />
       e.g. BRL, USD, null
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
   CaseDeclaredValue:
     description: |
       **Valor da causa**<br />
       Valor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação
-    oneOf:
-      - type: number
-      - type: null
+    type: number <nullable>
   CaseForeseenValue:
     description: |
       **Valor previsto**<br />
       Valor estimado para a resolução do caso, transação ou disputa
-    oneOf:
-      - type: number
-      - type: null
+    type: number <nullable>
   CaseContingencyValue:
     description: |
       **Valor de contingência**<br />
       Valor de provisionamento vinculado a perspectiva e risco do caso. <br />
       Para os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar
-    oneOf:
-      - type: number
-      - type: null
+    type: number <nullable>

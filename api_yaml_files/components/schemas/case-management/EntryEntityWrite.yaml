@@ -1,4 +1,4 @@
-title: EntryEntity
+title: Dados de andamento para inclur
 type: object
 properties:
   CaseGuid:

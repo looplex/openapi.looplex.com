@@ -1,4 +1,4 @@
-title: CaseEntity
+title: Dados de caso
 type: object
 allOf:
   - $ref: '../scim/Resource.yaml'
