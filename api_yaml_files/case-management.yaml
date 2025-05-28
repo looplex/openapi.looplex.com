@@ -63,7 +63,12 @@ paths:
   /timesheets:
     get:
       $ref: .\paths\case-management\timesheet\public@timesheets-get.yaml
-      
+    post:
+      $ref: .\paths\case-management\timesheet\public@timesheets-post.yaml
+  /timesheets/:id:
+    get:
+      $ref: .\paths\case-management\timesheet\public@timesheets@id-get.yaml
+
 components:
   securitySchemes:
     api_key:

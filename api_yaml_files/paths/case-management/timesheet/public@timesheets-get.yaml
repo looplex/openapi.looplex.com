@@ -8,7 +8,6 @@ parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
-  # utilizado em endpoint query
   - name: startIndex
     in: query
     required: true

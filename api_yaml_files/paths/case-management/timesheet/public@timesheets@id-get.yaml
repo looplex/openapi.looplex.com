@@ -1,0 +1,26 @@
+tags:
+  - Timesheets
+summary: "Timesheet"
+description: |
+  **Retrieve a timesheet by id**
+operationId: timesheets-id-get
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/case-management/Timesheet.yaml
+  "500":
+      description: "Internal Server Error"

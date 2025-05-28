@@ -2,7 +2,7 @@ tags:
   - {{TAG_NAME}}
 summary: {{TITLE}}
 description: |
-  {{DESCRIPTION}}
+  {{DESCRIPTION}}<br />
   Item created's guid is returned in **Location header**
 operationId: {{OPERATION_ID}}
 parameters:

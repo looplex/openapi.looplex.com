@@ -4,6 +4,10 @@ allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
+      ClientGuid:
+        type: string
+        format: uuid
+        description: "**Client unique identifier**"
       Classification:
         description: "**Classificação**"
         type: string <nullable>
@@ -17,9 +21,8 @@ allOf:
       Hours:
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
-          ISO 8601 duration format
+          `Format: hh:mm:ss`
         type: string
-        format: duration
         example: "01:00:00"
       TaskCode:
         description: "**Código da Tarefa**"

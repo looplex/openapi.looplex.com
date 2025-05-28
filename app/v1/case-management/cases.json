@@ -537,6 +537,88 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Timesheets"
+        ],
+        "summary": "Timesheet",
+        "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "timesheets-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TimesheetWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/timesheets/:id": {
+      "get": {
+        "tags": [
+          "Timesheets"
+        ],
+        "summary": "Timesheet",
+        "description": "**Retrieve a timesheet by id**\n",
+        "operationId": "timesheets-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Timesheet"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   },
@@ -1375,6 +1457,11 @@
           {
             "type": "object",
             "properties": {
+              "ClientGuid": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Client unique identifier**"
+              },
               "Classification": {
                 "description": "**Classificação**",
                 "type": "string <nullable>"
@@ -1389,9 +1476,8 @@
                 "format": "datetime"
               },
               "Hours": {
-                "description": "**Horas (quantidade de horas do lançamento)**<br />\nISO 8601 duration format\n",
+                "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n",
                 "type": "string",
-                "format": "duration",
                 "example": "01:00:00"
               },
               "TaskCode": {
@@ -2127,6 +2213,71 @@
             }
           }
         ]
+      },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
+          }
+        }
+      },
+      "TimesheetWrite": {
+        "title": "Dados de timesheet para inclusão",
+        "type": "object",
+        "properties": {
+          "ClientGuid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client unique identifier**"
+          },
+          "Classification": {
+            "description": "**Classificação**",
+            "type": "string <nullable>"
+          },
+          "Owner": {
+            "description": "**Responsável**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Date": {
+            "description": "**Data**",
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-01-01T12:00:00.000Z"
+          },
+          "Hours": {
+            "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n",
+            "type": "string",
+            "example": "01:00:00"
+          },
+          "TaskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**"
+          },
+          "ActivityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**<br />"
+          },
+          "Applicant": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Solicitante**<br />"
+          },
+          "Description": {
+            "type": "string",
+            "description": "**Descrição**"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Criado por**"
+          },
+          "Case": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**The case unique identifier**"
+          }
+        }
       }
     }
   }

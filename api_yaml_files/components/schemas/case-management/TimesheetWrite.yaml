@@ -1,6 +1,10 @@
 title: Dados de timesheet para inclusão
 type: object
 properties:
+  ClientGuid:
+    type: string
+    format: uuid
+    description: "**Client unique identifier**"
   Classification:
     description: "**Classificação**"
     type: string <nullable>
@@ -11,13 +15,13 @@ properties:
     description: "**Data**"
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000Z"
   Hours:
     description: |
       **Horas (quantidade de horas do lançamento)**<br />
-      ISO 8601 duration format
+      `Format: hh:mm:ss`
     type: string
-    format: duration
-    example: "PT0H45M0S"
+    example: "01:00:00"
   TaskCode:
     type: string <nullable>
     description: "**Código da Tarefa**"
@@ -30,13 +34,6 @@ properties:
   Description:
     type: string
     description: "**Descrição**"
-  IsInvoiced:
-    type: boolean <nullable>
-    description: "**Faturado**"
-  CreatedAt:
-    type: string
-    format: datetime
-    description: "**Criado em**"
   CreatedBy:
     $ref: SimpleEntityWrite.yaml
     description: "**Criado por**"
