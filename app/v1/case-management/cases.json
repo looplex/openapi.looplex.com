@@ -388,6 +388,42 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Task",
+        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "tasks-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/entries/:entry_id": {
@@ -1377,14 +1413,7 @@
           },
           "CreatedBy": {
             "description": "**Criado por**",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SimpleEntity"
-              },
-              {
-                "type": null
-              }
-            ]
+            "$ref": "#/components/schemas/SimpleEntity"
           },
           "CreatedAt": {
             "description": "**Criado em**",
@@ -1398,14 +1427,7 @@
           },
           "UpdatedBy": {
             "description": "**Atualizado por**",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SimpleEntity"
-              },
-              {
-                "type": null
-              }
-            ]
+            "$ref": "#/components/schemas/SimpleEntity"
           },
           "CompletedAt": {
             "description": "**Concluído em**<br />\n",
@@ -1414,14 +1436,7 @@
           },
           "CompletedBy": {
             "description": "**Concluído por**",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SimpleEntity"
-              },
-              {
-                "type": null
-              }
-            ]
+            "$ref": "#/components/schemas/SimpleEntity"
           },
           "Locale": {
             "description": "**Local**",
@@ -2281,11 +2296,6 @@
         "title": "Dados de caso para inclusão",
         "type": "object",
         "properties": {
-          "Status": {
-            "type": "string",
-            "example": "Ativo",
-            "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
-          },
           "Type": {
             "type": "string",
             "example": "Judicial Estadual",
@@ -2315,11 +2325,12 @@
           },
           "Locale": {
             "type": "string <nullable>",
-            "example": "Brasil - São Paulo - SP",
+            "example": null,
             "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
           },
           "CourtVenue": {
             "type": "string <nullable>",
+            "example": "Brasil - São Paulo - SP",
             "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
           },
           "CaseProcedure": {
@@ -2415,6 +2426,109 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/GlobalValues"
+            }
+          }
+        }
+      },
+      "TaskContentWrite": {
+        "title": "TaskContent",
+        "type": "object",
+        "properties": {
+          "Type": {
+            "type": "string",
+            "example": "Court hearing",
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nCourt hearing<br />\nMeeting<br />\nProceeding<br />\nDeadline<br /><br />\n\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n"
+          },
+          "Title": {
+            "description": "**Titulo**",
+            "type": "string",
+            "example": "Titulo da tarefa"
+          },
+          "Description": {
+            "description": "**Descrição**",
+            "type": "string <nullable>",
+            "example": "Descrição da tarefa"
+          },
+          "StartDate": {
+            "description": "**Data de Início**",
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z"
+          },
+          "DueDate": {
+            "description": "**Data de Vencimento**",
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z"
+          },
+          "CreatedBy": {
+            "description": "**Criado por**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Locale": {
+            "description": "**Local**",
+            "type": "string <nullable>",
+            "example": "Local da tarefa"
+          },
+          "TaskCode": {
+            "description": "**Código da Tarefa**",
+            "type": "string <nullable>",
+            "example": "Task1"
+          },
+          "ActivityCode": {
+            "description": "**Código da Atividade**",
+            "type": "string <nullable>",
+            "example": "Act1"
+          },
+          "Owner": {
+            "description": "**Responsável**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            }
+          },
+          "Status": {
+            "type": "string",
+            "example": "Criada",
+            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCriada<br />\nAtribuída\n"
+          },
+          "Priority": {
+            "type": "string",
+            "example": "Baixa",
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nBaixa<br />\nMédia<br />\nAlta\n"
+          },
+          "ConclusionNotes": {
+            "type": "string <nullable>",
+            "description": "**Notas de Conclusão**",
+            "example": "Notas de conclusão"
+          }
+        },
+        "required": [
+          "Type",
+          "Title",
+          "Priority",
+          "StartDate",
+          "DueDate",
+          "CreatedBy",
+          "Owner",
+          "Status"
+        ]
+      },
+      "TaskEntityWrite": {
+        "title": "TaskEntity",
+        "type": "object",
+        "properties": {
+          "Data": {
+            "$ref": "#/components/schemas/TaskContentWrite"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskContentWrite"
             }
           }
         }

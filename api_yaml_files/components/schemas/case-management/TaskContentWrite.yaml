@@ -1,0 +1,90 @@
+title: TaskContent
+type: object
+properties: 
+  Type:
+    type: string
+    example: "Court hearing"
+    description: |
+      **Tipo**<br />
+      **Valores permitidos:**<br />
+      Court hearing<br />
+      Meeting<br />
+      Proceeding<br />
+      Deadline<br /><br />
+
+      **Definições:**<br />
+      **Court hearing (Audiência):** A session in which a case is heard in court. <br />
+      **Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
+      **Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+      **Deadline (Prazo):** A date or time by which you have to do or complete something. <br />
+  Title:
+    description: "**Titulo**"
+    type: string
+    example: "Titulo da tarefa"
+  Description:
+    description: "**Descrição**"
+    type: string <nullable>
+    example: "Descrição da tarefa"
+  StartDate:
+    description: "**Data de Início**"
+    type: string
+    format: datetime
+    example: "2025-05-29T12:00:00.000Z"
+  DueDate:
+    description: "**Data de Vencimento**"
+    type: string
+    format: datetime
+    example: "2025-05-29T12:00:00.000Z"
+  CreatedBy:
+    description: "**Criado por**"
+    $ref: SimpleEntityWrite.yaml
+  Locale:
+    description: "**Local**"
+    type: string <nullable>
+    example: "Local da tarefa"
+  TaskCode:
+    description: "**Código da Tarefa**"
+    type: string <nullable>
+    example: "Task1"
+  ActivityCode:
+    description: "**Código da Atividade**"
+    type: string <nullable>
+    example: "Act1"
+  Owner:
+    description: "**Responsável**"
+    $ref: SimpleEntityWrite.yaml
+  OtherParticipants:
+    description: "**Outros Participantes**"
+    type: array
+    items:
+      $ref: SimpleEntityWrite.yaml
+  Status:
+    type: string
+    example: "Criada"
+    description: |
+      **Status**<br />
+      **Valores permitidos:**<br />
+      Criada<br />
+      Atribuída
+  Priority:
+    type: string
+    example: "Baixa"
+    description: |
+      **Prioridade**<br />
+      **Valores permitidos:**<br />
+      Baixa<br />
+      Média<br />
+      Alta
+  ConclusionNotes:
+    type: string <nullable>
+    description: "**Notas de Conclusão**"
+    example: "Notas de conclusão"
+required:
+  - Type
+  - Title
+  - Priority
+  - StartDate
+  - DueDate
+  - CreatedBy
+  - Owner
+  - Status

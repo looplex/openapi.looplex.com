@@ -1,19 +1,10 @@
 title: Dados de caso para inclusão
 type: object
 properties:
-  Status:
-    type: string
-    example: "Ativo"
-    description: |
-      **Indicação do status do caso**<br />
-      1: Ativo<br />
-      2: Arquivado<br />
-      3: Inativo<br />
-      99: Excluído
   Type:
     type: string
     example: "Judicial Estadual"
-    description: | 
+    description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       1: Administrativo<br />
       2: Consultivo<br />
@@ -53,13 +44,14 @@ properties:
     example: "Descrição do caso"
   Locale:
     type: string <nullable>
-    example: "Brasil - São Paulo - SP"
+    example: null
     description: |
       **Utilizado em casos consultivos**<br />
       **Formato: País - Estado - Cidade**<br />
       Local da Jurisdição de um caso, ou cumprimento da obrigação.
   CourtVenue:
     type: string <nullable>
+    example: "Brasil - São Paulo - SP"
     description: |
       **Utilizado para casos contenciosos, judiciais ou não**<br />
       Foro do caso, local onde o caso será julgado

@@ -31,9 +31,7 @@ properties:
     format: datetime
   CreatedBy:
     description: "**Criado por**"
-    oneOf:
-      - $ref: SimpleEntity.yaml
-      - type: null
+    $ref: SimpleEntity.yaml
   CreatedAt:
     description: "**Criado em**"
     type: string <nullable>
@@ -44,9 +42,7 @@ properties:
     format: datetime
   UpdatedBy:
     description: "**Atualizado por**"
-    oneOf:
-      - $ref: SimpleEntity.yaml
-      - type: null
+    $ref: SimpleEntity.yaml
   CompletedAt:
     description: |
       **Concluído em**<br />
@@ -54,9 +50,7 @@ properties:
     format: datetime
   CompletedBy:
     description: "**Concluído por**"
-    oneOf:
-      - $ref: SimpleEntity.yaml
-      - type: null
+    $ref: SimpleEntity.yaml
   Locale:
     description: "**Local**"
     type: string <nullable>

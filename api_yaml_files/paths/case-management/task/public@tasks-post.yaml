@@ -1,6 +1,6 @@
 tags:
   - Tasks
-summary: "Create task"
+summary: "Task"
 description: |
   **Create a task**<br />
   Item created's guid is returned in **Location header**
