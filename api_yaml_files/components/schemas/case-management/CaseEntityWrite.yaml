@@ -37,10 +37,8 @@ properties:
     items:
       $ref: IdentityEntityWrite.yaml
     example:
-      - IdentityProviderType: "RG"
-        Value: "00.000.000-A"
-      - IdentityProviderType: "CPF"
-        Value: "000.000.000-00"
+      - IdentityProviderType: "CNJ"
+        Value: "0000000-00.0000.0.00.0000"
   Title:
     description: "**Nome Jurídico do caso**"
     type: string <nullable>
