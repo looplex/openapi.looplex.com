@@ -155,43 +155,9 @@ properties:
       **Escritório Responsável / Correspondente**<br />
       Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
     $ref: SimpleEntityWrite.yaml
-  # Participants:
-  #   desription: |
-  #     **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
-  #   oneOf:
-  #     - $ref: ParticipantNaturalPerson.yaml
-  #     - $ref: ParticipantLegalPerson.yaml
   GlobalValues:
     description: |
       **Valores globais do caso, definidos por polo**
     type: array
     items:
       $ref: GlobalValues.yaml
-  # Claims: # TODO
-  # OppositionToClaims: # TODO
-  # ProceduralObjections: # TODO
-  Entry:
-    description: |
-      **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
-    type: array
-    items:
-      $ref: EntryEntityWrite.yaml
-  # Resolution: # TODO
-  # PaymentOrDischarge: # TODO
-  # Guaranties: # TODO
-  # Tasks:
-  #   description: |
-  #     **Tarefas a serem realizadas**<br />
-  #   type: array
-  #   items:
-  #     $ref: TaskEntity.yaml
-  # Timesheet:
-  #   description: "**Registro de horas trabalhadas**<br />"
-  #   type: array
-  #   items:
-  #     $ref: Timesheet.yaml
-  # CustomFields:
-  #   description: "**Campos personalizados criados pelo usuário**<br />"
-  #   type: array
-  #   items:
-  #     $ref: CustomFieldEntity.yaml
