@@ -46,11 +46,14 @@ properties:
   Title:
     description: "**Nome Jurídico do caso**"
     type: string <nullable>
+    example: "Titulo do caso"
   Summary:
     description: "**Breve descrição sobre o caso**"
     type: string <nullable>
+    example: "Descrição do caso"
   Locale:
     type: string <nullable>
+    example: "Brasil - São Paulo - SP"
     description: |
       **Utilizado em casos consultivos**<br />
       **Formato: País - Estado - Cidade**<br />
@@ -62,32 +65,38 @@ properties:
       Foro do caso, local onde o caso será julgado
   CaseProcedure:
     type: string <nullable>
+    example: "Rito do caso"
     description: "**Rito ou procedimento do caso**"
   Phase:
     type: string <nullable>
+    example: "Fase do caso"
     description: | 
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
   Nature:
     description: "**Indica os assuntos tratados no caso**"
+    example: ["Natureza"]
     type: array
     items:
       type: string
   RetentionDate:
     type: string <nullable>
     format: datetime
+    example: "2025-05-29T12:00:00.000Z"
     description: |
       **Data de entrada** <br />
       Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
   StartDate:
     type: string <nullable>
     format: datetime
+    example: "2025-05-29T12:00:00.000Z"
     description: |
       **Data de distribuição**<br />
       Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
   FormationDate:
     type: string <nullable>
     format: datetime
+    example: "2025-05-29T12:00:00.000Z"
     description: |
       **Data de citação**<br />
       Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
@@ -95,6 +104,7 @@ properties:
   ResJudicataDate:
     type: string <nullable>
     format: datetime
+    example: "2025-05-29T12:00:00.000Z"
     description: |
       **Data de trânsito em julgado**<br />
       Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
@@ -102,29 +112,22 @@ properties:
   ForecastedEndDate:
     type: string <nullable>
     format: datetime
+    example: "2025-05-29T12:00:00.000Z"
     description: |
       **Data prevista para encerramento**<br />
       Data estimada para a conclusão de um caso, transação ou disputa. <br />
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
-  CreatedAt:
-    type: string <nullable>
-    format: datetime
-    description: "**Data de criação do caso**"
-  CreatedBy:
-    description: "**Usuário que criou o caso**"
-    $ref: SimpleEntityWrite.yaml
-  UpdatedAt:
-    description: "**Atualizado em**"
-    type: string <nullable>
   Group:
+    type: string <nullable>
+    example: "Área"
     description: |
       **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-    type: string <nullable>
   Product:
     description: |
       **Produto**<br />
       Produto ou serviço do cliente que está relacionado ao caso
+    example: ["Produto"]
     type: array
     items:
       type: string

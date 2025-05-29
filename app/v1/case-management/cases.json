@@ -2256,10 +2256,12 @@
         "properties": {
           "IdentityProviderType": {
             "type": "string",
+            "example": "CPF",
             "description": "**The identity provider**<br />\n**Alguns dos valores permitidos:<br />**\n- RG<br />\n- CPF<br  />\n- CNPJ<br />\n- CNJ<br />\n- Inscrição municipal<br />\n- Inscrição estadual\n"
           },
           "Value": {
             "type": "string",
+            "example": "000.000.000-00",
             "description": "**The identity value**"
           }
         }
@@ -2303,14 +2305,17 @@
           },
           "Title": {
             "description": "**Nome Jurídico do caso**",
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "example": "Titulo do caso"
           },
           "Summary": {
             "description": "**Breve descrição sobre o caso**",
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "example": "Descrição do caso"
           },
           "Locale": {
             "type": "string <nullable>",
+            "example": "Brasil - São Paulo - SP",
             "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
           },
           "CourtVenue": {
@@ -2319,14 +2324,19 @@
           },
           "CaseProcedure": {
             "type": "string <nullable>",
+            "example": "Rito do caso",
             "description": "**Rito ou procedimento do caso**"
           },
           "Phase": {
             "type": "string <nullable>",
+            "example": "Fase do caso",
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
           },
           "Nature": {
             "description": "**Indica os assuntos tratados no caso**",
+            "example": [
+              "Natureza"
+            ],
             "type": "array",
             "items": {
               "type": "string"
@@ -2335,47 +2345,43 @@
           "RetentionDate": {
             "type": "string <nullable>",
             "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z",
             "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
           },
           "StartDate": {
             "type": "string <nullable>",
             "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z",
             "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
           },
           "FormationDate": {
             "type": "string <nullable>",
             "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z",
             "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
           },
           "ResJudicataDate": {
             "type": "string <nullable>",
             "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z",
             "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
           },
           "ForecastedEndDate": {
             "type": "string <nullable>",
             "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z",
             "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
           },
-          "CreatedAt": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "description": "**Data de criação do caso**"
-          },
-          "CreatedBy": {
-            "description": "**Usuário que criou o caso**",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "UpdatedAt": {
-            "description": "**Atualizado em**",
-            "type": "string <nullable>"
-          },
           "Group": {
-            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "example": "Área",
+            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
           },
           "Product": {
             "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
+            "example": [
+              "Produto"
+            ],
             "type": "array",
             "items": {
               "type": "string"
