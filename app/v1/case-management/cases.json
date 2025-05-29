@@ -2292,6 +2292,47 @@
           }
         }
       },
+      "GlobalValuesWrite": {
+        "title": "GlobalValues",
+        "type": "object",
+        "properties": {
+          "AgainstPosition": {
+            "description": "**Contra polo Ativo, Passivo, Terceiro...**<br />\n**Valores permitidos:**<br />\nAtivo<br />\nPassivo<br />\nTerceiro\n",
+            "type": "string",
+            "example": "Ativo"
+          },
+          "Perspective": {
+            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\nPerda <br />\nÊxito\n",
+            "type": "string <nullable>",
+            "example": "Êxito"
+          },
+          "Risk": {
+            "description": "**Risco**<br />\nIndicação do risco associado ao valor.<br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.<br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota.<br />\n**Valores permitidos**<br />\nProvável<br />\nPossível<br />\nRemoto\n",
+            "type": "string",
+            "example": "Possível"
+          },
+          "Currency": {
+            "description": "**Moeda usada para os valores do caso**<br />\n**Valores permitidos:**<br />\nBRL<br />\nUSD<br />\nEUR\n",
+            "type": "string",
+            "example": "BRL"
+          },
+          "CaseDeclaredValue": {
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
+            "type": "number <nullable>",
+            "example": 1
+          },
+          "CaseForeseenValue": {
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "type": "number <nullable>",
+            "example": 1
+          },
+          "CaseContingencyValue": {
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "type": "number <nullable>",
+            "example": 1
+          }
+        }
+      },
       "CaseEntityWrite": {
         "title": "Dados de caso para inclusão",
         "type": "object",
@@ -2299,12 +2340,12 @@
           "Type": {
             "type": "string",
             "example": "Judicial Estadual",
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nAdministrativo<br />\nConsultivo<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nEleitoral<br />\nMilitar União<br />\nContrato<br />\nDue Diligence e Análise Documental<br />\nCobrança Extrajudicial<br />\nSocietário<br />\nArbitragem\n"
           },
           "SubType": {
             "type": "string",
             "example": "Caso",
-            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
+            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCaso<br />\nSubcaso<br />\nRecurso<br />\nIncidente\n"
           },
           "Identities": {
             "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
@@ -2425,7 +2466,7 @@
             "description": "**Valores globais do caso, definidos por polo**\n",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GlobalValues"
+              "$ref": "#/components/schemas/GlobalValuesWrite"
             }
           }
         }

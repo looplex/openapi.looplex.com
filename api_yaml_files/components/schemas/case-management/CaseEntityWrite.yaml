@@ -6,28 +6,30 @@ properties:
     example: "Judicial Estadual"
     description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
-      1: Administrativo<br />
-      2: Consultivo<br />
-      3: Judicial Estadual<br />
-      4: Judicial Federal<br />
-      5: Judicial Trabalhista<br />
-      7: Militar Estadual<br />
-      8: Eleitoral<br />
-      9: Militar União<br />
-      10: Contrato<br />
-      11: Due Diligence e Análise Documental<br />
-      12: Cobrança Extrajudicial<br />
-      13: Societário<br />
+      **Valores permitidos:**<br />
+      Administrativo<br />
+      Consultivo<br />
+      Judicial Estadual<br />
+      Judicial Federal<br />
+      Judicial Trabalhista<br />
+      Militar Estadual<br />
+      Eleitoral<br />
+      Militar União<br />
+      Contrato<br />
+      Due Diligence e Análise Documental<br />
+      Cobrança Extrajudicial<br />
+      Societário<br />
       Arbitragem
   SubType:
     type: string
     example: "Caso"
     description: |
       **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
-      1: Caso<br />
-      2: Subcaso<br />
-      3: Recurso<br />
-      4: Incidente
+      **Valores permitidos:**<br />
+      Caso<br />
+      Subcaso<br />
+      Recurso<br />
+      Incidente
   Identities:
     description: |
       **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
@@ -155,4 +157,4 @@ properties:
       **Valores globais do caso, definidos por polo**
     type: array
     items:
-      $ref: GlobalValues.yaml
+      $ref: GlobalValuesWrite.yaml
