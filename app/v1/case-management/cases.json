@@ -221,6 +221,42 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Case Management"
+        ],
+        "summary": "Case",
+        "description": "**Create a new case**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "cases-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaseEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/tasks/:task_id": {
@@ -2214,6 +2250,20 @@
           }
         ]
       },
+      "IdentityEntityWrite": {
+        "title": "Identidade",
+        "type": "object",
+        "properties": {
+          "IdentityProviderType": {
+            "type": "string",
+            "description": "**The identity provider**<br />\n**Alguns dos valores permitidos:<br />**\n- RG<br />\n- CPF<br  />\n- CNPJ<br />\n- CNJ<br />\n- Inscrição municipal<br />\n- Inscrição estadual\n"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
       "SimpleEntityWrite": {
         "title": "Identificador",
         "type": "object",
@@ -2222,6 +2272,144 @@
             "type": "string",
             "format": "uuid",
             "description": "**The object unique identifier**"
+          }
+        }
+      },
+      "CaseEntityWrite": {
+        "title": "Dados de caso para inclusão",
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string",
+            "example": "Ativo",
+            "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
+          },
+          "Type": {
+            "type": "string",
+            "example": "Judicial Estadual",
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
+          },
+          "SubType": {
+            "type": "string",
+            "example": "Caso",
+            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
+          },
+          "Identities": {
+            "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntityWrite"
+            }
+          },
+          "Title": {
+            "description": "**Nome Jurídico do caso**",
+            "type": "string <nullable>"
+          },
+          "Summary": {
+            "description": "**Breve descrição sobre o caso**",
+            "type": "string <nullable>"
+          },
+          "Locale": {
+            "type": "string <nullable>",
+            "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+          },
+          "CourtVenue": {
+            "type": "string <nullable>",
+            "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
+          },
+          "CaseProcedure": {
+            "type": "string <nullable>",
+            "description": "**Rito ou procedimento do caso**"
+          },
+          "Phase": {
+            "type": "string <nullable>",
+            "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
+          },
+          "Nature": {
+            "description": "**Indica os assuntos tratados no caso**",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "RetentionDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
+          },
+          "StartDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
+          },
+          "FormationDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
+          },
+          "ResJudicataDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
+          },
+          "ForecastedEndDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
+          },
+          "CreatedAt": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de criação do caso**"
+          },
+          "CreatedBy": {
+            "description": "**Usuário que criou o caso**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "UpdatedAt": {
+            "description": "**Atualizado em**",
+            "type": "string <nullable>"
+          },
+          "Group": {
+            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+            "type": "string <nullable>"
+          },
+          "Product": {
+            "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "CaseClient": {
+            "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "LegalServiceAgreement": {
+            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Owner": {
+            "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Coowners": {
+            "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            }
+          },
+          "ExternalServiceProvider": {
+            "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "GlobalValues": {
+            "description": "**Valores globais do caso, definidos por polo**\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GlobalValues"
+            }
           }
         }
       },

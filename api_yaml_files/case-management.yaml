@@ -34,8 +34,8 @@ paths:
   /cases:
     get:
       $ref: .\paths\case-management\case\public@cases-get.yaml
-    # post:
-    #   $ref: .\paths\case-management\case\public@cases-post.yaml
+    post:
+      $ref: .\paths\case-management\case\public@cases-post.yaml
   
   # Task
   /tasks/:task_id:
