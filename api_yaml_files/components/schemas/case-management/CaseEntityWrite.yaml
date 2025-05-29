@@ -36,6 +36,11 @@ properties:
     type: array
     items:
       $ref: IdentityEntityWrite.yaml
+    example:
+      - IdentityProviderType: "RG"
+        Value: "00.000.000-A"
+      - IdentityProviderType: "CPF"
+        Value: "000.000.000-00"
   Title:
     description: "**Nome Jurídico do caso**"
     type: string <nullable>
@@ -158,3 +163,25 @@ properties:
     type: array
     items:
       $ref: GlobalValuesWrite.yaml
+    example:
+      - AgainstPosition: "Ativo"
+        Perspective: "Êxito"
+        Risk: "Provável"
+        Currency: "BRL"
+        CaseDeclaredValue: 1
+        CaseForeseenValue: 1
+        CaseContingencyValue: 1
+      - AgainstPosition: "Passivo"
+        Perspective: "Êxito"
+        Risk: "Provável"
+        Currency: "BRL"
+        CaseDeclaredValue: 1
+        CaseForeseenValue: 1
+        CaseContingencyValue: 1
+      - AgainstPosition: "Terceiro"
+        Perspective: "Êxito"
+        Risk: "Provável"
+        Currency: "BRL"
+        CaseDeclaredValue: 1
+        CaseForeseenValue: 1
+        CaseContingencyValue: 1
