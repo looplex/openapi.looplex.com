@@ -1,4 +1,4 @@
-title: TaskContent
+title: Dados da tarefa
 type: object
 properties: 
   Type:

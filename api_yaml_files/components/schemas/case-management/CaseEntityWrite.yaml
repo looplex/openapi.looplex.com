@@ -41,7 +41,7 @@ properties:
         Value: "0000000-00.0000.0.00.0000"
   Title:
     description: "**Nome Jurídico do caso**"
-    type: string <nullable>
+    type: string
     example: "Titulo do caso"
   Summary:
     description: "**Breve descrição sobre o caso**"
@@ -123,7 +123,7 @@ properties:
       Data estimada para a conclusão de um caso, transação ou disputa. <br />
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
   Group:
-    type: string <nullable>
+    type: string
     example: "Área"
     description: |
       **Área** <br />
@@ -137,10 +137,10 @@ properties:
     items:
       type: string
   CaseClient:
+    $ref: SimpleEntityWrite.yaml
     description: |
       **Cliente**<br />
       Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-    $ref: SimpleEntityWrite.yaml
   LegalServiceAgreement:
     description: |
       **Contrato**<br />
@@ -191,3 +191,11 @@ properties:
         CaseDeclaredValue: 1
         CaseForeseenValue: 1
         CaseContingencyValue: 1
+required:
+  - Type
+  - SubType
+  - Title
+  - CaseClient
+  - LegalServiceAgreement
+  - Owner
+  - Group

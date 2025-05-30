@@ -2362,7 +2362,7 @@
           },
           "Title": {
             "description": "**Nome Jurídico do caso**",
-            "type": "string <nullable>",
+            "type": "string",
             "example": "Titulo do caso"
           },
           "Summary": {
@@ -2441,7 +2441,7 @@
             "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
           },
           "Group": {
-            "type": "string <nullable>",
+            "type": "string",
             "example": "Área",
             "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
           },
@@ -2456,8 +2456,8 @@
             }
           },
           "CaseClient": {
-            "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
           },
           "LegalServiceAgreement": {
             "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
@@ -2514,7 +2514,16 @@
               }
             ]
           }
-        }
+        },
+        "required": [
+          "Type",
+          "SubType",
+          "Title",
+          "CaseClient",
+          "LegalServiceAgreement",
+          "Owner",
+          "Group"
+        ]
       },
       "EntryEntityWrite": {
         "title": "Dados de andamento para inclusão",

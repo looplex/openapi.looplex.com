@@ -1,4 +1,4 @@
-title: TaskEntity
+title: Tarefa para inclusão
 type: object
 properties:
   Data:
