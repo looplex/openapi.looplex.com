@@ -44,8 +44,8 @@ paths:
   /tasks:
     get:
       $ref: .\paths\case-management\task\public@tasks-get.yaml
-    post:
-      $ref: .\paths\case-management\task\public@tasks-post.yaml
+    # post:
+    #   $ref: .\paths\case-management\task\public@tasks-post.yaml
 
   # Entry
   /entries/:entry_id:
@@ -56,8 +56,8 @@ paths:
   /entries:
     get:
       $ref: .\paths\case-management\entry\public@entries-get.yaml
-    # post:
-    #   $ref: .\paths\case-management\entry\public@entries-post.yaml
+    post:
+      $ref: .\paths\case-management\entry\public@entries-post.yaml
 
   # Timesheet
   /timesheets:

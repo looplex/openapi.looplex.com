@@ -47,6 +47,14 @@ properties:
     description: "**Breve descrição sobre o caso**"
     type: string <nullable>
     example: "Descrição do caso"
+  Folder:
+    type: string <nullable>
+    format: uuid
+    description: "**Folder identifier**"
+  ParentCase:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifier of the parent case**"
   Locale:
     type: string <nullable>
     example: null

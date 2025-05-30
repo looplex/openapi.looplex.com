@@ -388,42 +388,6 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Tasks"
-        ],
-        "summary": "Task",
-        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "tasks-post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaskEntityWrite"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       }
     },
     "/entries/:entry_id": {
@@ -533,6 +497,42 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entries"
+        ],
+        "summary": "Entry",
+        "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "entries-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntryEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
           },
           "500": {
             "description": "Internal Server Error"
@@ -2370,6 +2370,16 @@
             "type": "string <nullable>",
             "example": "Descrição do caso"
           },
+          "Folder": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Folder identifier**"
+          },
+          "ParentCase": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of the parent case**"
+          },
           "Locale": {
             "type": "string <nullable>",
             "example": null,
@@ -2506,106 +2516,55 @@
           }
         }
       },
-      "TaskContentWrite": {
-        "title": "TaskContent",
+      "EntryEntityWrite": {
+        "title": "Dados de andamento para inclusão",
         "type": "object",
         "properties": {
-          "Type": {
+          "CaseGuid": {
             "type": "string",
-            "example": "Court hearing",
-            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nCourt hearing<br />\nMeeting<br />\nProceeding<br />\nDeadline<br /><br />\n\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n"
+            "format": "uuid",
+            "required": true,
+            "description": "**Case unique id**"
           },
-          "Title": {
-            "description": "**Titulo**",
+          "AuthorGuid": {
             "type": "string",
-            "example": "Titulo da tarefa"
+            "format": "uuid",
+            "required": true,
+            "description": "**Entry author unique id**"
+          },
+          "Date": {
+            "type": "string",
+            "format": "datetime",
+            "required": true,
+            "example": "2025-05-21T15:00:00.000Z",
+            "description": "**Data do andamento**"
+          },
+          "Classification": {
+            "type": "string <nullable>",
+            "description": "**Classificação do andamento**"
           },
           "Description": {
-            "description": "**Descrição**",
+            "type": "string",
+            "required": true,
+            "example": "<Texto do andamento>",
+            "description": "**Texto do andamento**"
+          },
+          "IsInternal": {
+            "type": "boolean",
+            "description": "**Indica se o andamento é de uso interno**"
+          },
+          "OfficialNotice": {
             "type": "string <nullable>",
-            "example": "Descrição da tarefa"
-          },
-          "StartDate": {
-            "description": "**Data de Início**",
-            "type": "string",
-            "format": "datetime",
-            "example": "2025-05-29T12:00:00.000Z"
-          },
-          "DueDate": {
-            "description": "**Data de Vencimento**",
-            "type": "string",
-            "format": "datetime",
-            "example": "2025-05-29T12:00:00.000Z"
+            "format": "uuid",
+            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
           },
           "CreatedBy": {
-            "description": "**Criado por**",
             "$ref": "#/components/schemas/SimpleEntityWrite"
           },
-          "Locale": {
-            "description": "**Local**",
-            "type": "string <nullable>",
-            "example": "Local da tarefa"
-          },
-          "TaskCode": {
-            "description": "**Código da Tarefa**",
-            "type": "string <nullable>",
-            "example": "Task1"
-          },
-          "ActivityCode": {
-            "description": "**Código da Atividade**",
-            "type": "string <nullable>",
-            "example": "Act1"
-          },
-          "Owner": {
-            "description": "**Responsável**",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "OtherParticipants": {
-            "description": "**Outros Participantes**",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SimpleEntityWrite"
-            }
-          },
-          "Status": {
-            "type": "string",
-            "example": "Criada",
-            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCriada<br />\nAtribuída\n"
-          },
-          "Priority": {
-            "type": "string",
-            "example": "Baixa",
-            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nBaixa<br />\nMédia<br />\nAlta\n"
-          },
-          "ConclusionNotes": {
-            "type": "string <nullable>",
-            "description": "**Notas de Conclusão**",
-            "example": "Notas de conclusão"
-          }
-        },
-        "required": [
-          "Type",
-          "Title",
-          "Priority",
-          "StartDate",
-          "DueDate",
-          "CreatedBy",
-          "Owner",
-          "Status"
-        ]
-      },
-      "TaskEntityWrite": {
-        "title": "TaskEntity",
-        "type": "object",
-        "properties": {
-          "Data": {
-            "$ref": "#/components/schemas/TaskContentWrite"
-          },
-          "Children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskContentWrite"
-            }
+          "ClassificationType": {
+            "type": "integer <nullable>",
+            "example": 6,
+            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
           }
         }
       },
