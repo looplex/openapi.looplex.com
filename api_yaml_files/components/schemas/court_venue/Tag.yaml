@@ -1,13 +1,24 @@
 title: Tag
 type: object
 properties:
-  uuid:
+  Id:
+    description: "**Item's identifier**"
+    type: integer
+  UUID:
     description: "**Tag's unique identifier**"
     type: string
     format: uuid
-  tag:
+  Label:
     type: string
     description: "**Tag's name**"
-  active:
+  Active:
     type: boolean
     description: "**Indicate if it is active**"
+  Status:
+    type: integer
+    description: "**Tag's status**"
+  ExternalId:
+    description: "**Item's external identifier**"
+    type: string
+  Meta:
+    $ref: ../scim/Meta.yaml

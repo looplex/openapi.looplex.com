@@ -7,22 +7,26 @@ operationId: subjectTags-uuid-tags-get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
-  - name: uuid
-    in: path
+  - name: Filter
+    in: query
     required: true
     description: "**Unique identifier of tag's group**"
     schema:
       type: string
-      format: uuid
 responses:
   "200":
     description: "OK"
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: ../../../components/schemas/court_venue/Tag.yaml
+            allOf:
+              - $ref: '../../../components/schemas/common/ListResponse.yaml'
+              - type: object
+                properties:
+                  resources:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/court_venue/Tag.yaml
   "500":
     description: "Internal Server Error"
  

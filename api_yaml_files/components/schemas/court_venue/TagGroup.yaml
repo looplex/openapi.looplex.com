@@ -11,3 +11,5 @@ properties:
   active:
     type: boolean
     description: "**Indicate if it is active**"
+  Meta:
+    $ref: ../scim/Meta.yaml

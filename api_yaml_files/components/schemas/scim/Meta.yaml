@@ -19,7 +19,7 @@ properties:
     description: "**The resource last update time**"
   Location:
     type: string <nullable>
-    example: "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>"
+    example: "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>"
     description: "**The resource url**"
   Version:
     type: string

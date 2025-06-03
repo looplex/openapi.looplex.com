@@ -1,0 +1,44 @@
+tags:
+  - Court Venue
+summary: "Query court venue by filter"
+description: |
+  **Query court venue by filter**
+operationId: hierarchy-get
+parameters:
+  - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
+  - name: Filter
+    in: query
+    required: false
+    example: |
+      label=Estadual and cnj=8.02 and level=1 and path=/2/ and tags=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000 and depth=2 and uuids=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000
+    description: |
+      **The filter to search**<br /><br />
+      **NOTE: Concatenate every parameter with 'and'**<br />
+      **Valid options:**<br />
+      - **label (string)**: the node name to search<br />
+      - **cnj (string)**: cnj number to search<br />
+      - **level (integer)**: filter items by level <br />
+      - **path (string)**: the path to search <br />
+      - **tags (string)**: tags' unique ids separated by comma <br />
+      - **depth (integer)**: depth of descendant levels to include in the results <br />
+      - **uuids (string)**: node's unique ids separated by comma <br /> 
+      - **ids (string)**: node's ids separated by comma
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../../components/schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../../components/schemas/court_venue/Hierarchy.yaml
+  "500":
+    description: "Internal Server Error"

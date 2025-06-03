@@ -27,14 +27,14 @@
   ],
   "security": [],
   "paths": {
-    "/": {
+    "/hierarchy": {
       "get": {
         "tags": [
           "Court Venue"
         ],
-        "summary": "Query court venue by filters",
-        "description": "**Query court venue by filters**\n",
-        "operationId": "-get",
+        "summary": "Query court venue by filter",
+        "description": "**Query court venue by filter**\n",
+        "operationId": "hierarchy-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -43,81 +43,11 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "label",
+            "name": "Filter",
             "in": "query",
             "required": false,
-            "example": "\"Estadual\"",
-            "description": "**the node name to search**",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "cnj",
-            "in": "query",
-            "required": false,
-            "example": "\"8.02\"",
-            "description": "**cnj number to search**",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "level",
-            "in": "query",
-            "required": false,
-            "example": 1,
-            "description": "**filter items by level**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "path",
-            "in": "query",
-            "required": false,
-            "example": "\"/2/\"",
-            "description": "**the path to search**",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "tags",
-            "in": "query",
-            "required": false,
-            "example": "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000",
-            "description": "**tags' unique ids separated by comma**",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "depth",
-            "in": "query",
-            "required": false,
-            "example": 2,
-            "description": "**depth of descendant levels to include in the results.**",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "uuids",
-            "in": "query",
-            "required": false,
-            "example": "00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000",
-            "description": "**node's unique ids separated by comma**",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "ids",
-            "in": "query",
-            "required": false,
-            "example": "−2147483648,−2147483648",
-            "description": "**node's ids separated by comma**",
+            "example": "label=Estadual and cnj=8.02 and level=1 and path=/2/ and tags=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000 and depth=2 and uuids=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000\n",
+            "description": "**The filter to search**<br /><br />\n**NOTE: Concatenate every parameter with 'and'**<br />\n**Valid options:**<br />\n- **label (string)**: the node name to search<br />\n- **cnj (string)**: cnj number to search<br />\n- **level (integer)**: filter items by level <br />\n- **path (string)**: the path to search <br />\n- **tags (string)**: tags' unique ids separated by comma <br />\n- **depth (integer)**: depth of descendant levels to include in the results <br />\n- **uuids (string)**: node's unique ids separated by comma <br /> \n- **ids (string)**: node's ids separated by comma\n",
             "schema": {
               "type": "string"
             }
@@ -129,10 +59,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Hierarchy"
-                  }
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Hierarchy"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -179,7 +121,7 @@
         }
       }
     },
-    "/subjectTags/:uuid/tags": {
+    "/tags": {
       "get": {
         "tags": [
           "Court Venue"
@@ -195,13 +137,12 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "uuid",
-            "in": "path",
+            "name": "Filter",
+            "in": "query",
             "required": true,
             "description": "**Unique identifier of tag's group**",
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -211,10 +152,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tag"
-                  }
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Tag"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -264,54 +217,119 @@
       }
     },
     "schemas": {
+      "ListResponse": {
+        "title": "ListResponse",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "Meta": {
+        "title": "Meta",
+        "type": "object",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "Entity"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "2.0",
+            "description": "**The resource version**"
+          }
+        }
+      },
       "Hierarchy": {
         "title": "Hierarchy",
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "description": "**Item's identifier**",
             "type": "integer"
           },
-          "uuid": {
+          "UUID": {
             "description": "**Item's unique identifier**",
             "type": "string",
             "format": "uuid"
           },
-          "level": {
+          "Level": {
             "type": "integer",
             "description": "**Item's level**"
           },
-          "label": {
+          "Label": {
             "type": "string",
             "description": "**Item's name**"
           },
-          "active": {
+          "Active": {
             "type": "boolean",
             "description": "**Indicate if the item is active**"
           },
-          "jtroooo": {
+          "Status": {
+            "type": "integer",
+            "description": "**Item's status**"
+          },
+          "JTROOOO": {
             "type": "string",
             "description": "**CNJ**"
           },
-          "path": {
+          "Path": {
             "type": "string",
             "description": "**Item's path in tree**"
           },
-          "serventia": {
+          "Serventia": {
             "type": "integer <nullable>",
             "description": ""
           },
-          "smallClaimsCourt": {
+          "SmallClaimsCourt": {
             "type": "boolean <nulable>",
             "description": ""
           },
-          "adjucatingCourt": {
+          "AdjucatingCourt": {
             "type": "boolean <nullable>",
             "description": ""
           },
-          "ordering": {
+          "Ordering": {
             "type": "integer <nullable>",
             "description": ""
+          },
+          "ExternalId": {
+            "description": "**Item's external identifier**",
+            "type": "string"
+          },
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
           }
         }
       },
@@ -331,6 +349,9 @@
           "active": {
             "type": "boolean",
             "description": "**Indicate if it is active**"
+          },
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
           }
         }
       },
@@ -338,18 +359,33 @@
         "title": "Tag",
         "type": "object",
         "properties": {
-          "uuid": {
+          "Id": {
+            "description": "**Item's identifier**",
+            "type": "integer"
+          },
+          "UUID": {
             "description": "**Tag's unique identifier**",
             "type": "string",
             "format": "uuid"
           },
-          "tag": {
+          "Label": {
             "type": "string",
             "description": "**Tag's name**"
           },
-          "active": {
+          "Active": {
             "type": "boolean",
             "description": "**Indicate if it is active**"
+          },
+          "Status": {
+            "type": "integer",
+            "description": "**Tag's status**"
+          },
+          "ExternalId": {
+            "description": "**Item's external identifier**",
+            "type": "string"
+          },
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
           }
         }
       }

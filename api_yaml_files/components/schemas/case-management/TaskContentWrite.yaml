@@ -1,6 +1,10 @@
 title: Dados da tarefa
 type: object
-properties: 
+properties:
+  ParentId:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifir of parent task**"
   Type:
     type: string
     example: "Court hearing"
@@ -75,10 +79,6 @@ properties:
       Baixa<br />
       Média<br />
       Alta
-  ConclusionNotes:
-    type: string <nullable>
-    description: "**Notas de Conclusão**"
-    example: "Notas de conclusão"
 required:
   - Type
   - Title

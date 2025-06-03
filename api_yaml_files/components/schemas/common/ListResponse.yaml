@@ -1,6 +1,11 @@
 title: ListResponse
 type: object
 properties:
+  totalResults:
+    description: "**Total count of items in the filter**"
+    type: integer
+    example: 100
+  # resources (implementado com allOf em cada endpoint de query devido à mudança de type do retorno)
   startIndex:
     description: "**Index of search**"
     type: integer
@@ -9,8 +14,3 @@ properties:
     description: "**Total count of items to return**"
     type: integer
     example: 12
-  totalResults:
-    description: "**Total count of items in the filter**"
-    type: integer
-    example: 100
-  # resources (implementado com allOf em cada endpoint de query devido à mudança de type do retorno)

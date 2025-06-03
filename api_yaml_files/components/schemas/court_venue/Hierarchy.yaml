@@ -1,37 +1,45 @@
 title: Hierarchy
 type: object
 properties:
-  id:
+  Id:
     description: "**Item's identifier**"
     type: integer
-  uuid:
+  UUID:
     description: "**Item's unique identifier**"
     type: string
     format: uuid
-  level:
+  Level:
     type: integer
     description: "**Item's level**"
-  label:
+  Label:
     type: string
     description: "**Item's name**"
-  active:
+  Active:
     type: boolean
     description: "**Indicate if the item is active**"
-  jtroooo:
+  Status:
+    type: integer
+    description: "**Item's status**"
+  JTROOOO:
     type: string
     description: "**CNJ**"
-  path:
+  Path:
     type: string
     description: "**Item's path in tree**"
-  serventia:
+  Serventia:
     type: integer <nullable>
     description: ""
-  smallClaimsCourt:
+  SmallClaimsCourt:
     type: boolean <nulable>
     description: ""
-  adjucatingCourt:
+  AdjucatingCourt:
     type: boolean <nullable>
     description: ""
-  ordering:
+  Ordering:
     type: integer <nullable>
     description: ""
+  ExternalId:
+    description: "**Item's external identifier**"
+    type: string
+  Meta:
+    $ref: ../scim/Meta.yaml

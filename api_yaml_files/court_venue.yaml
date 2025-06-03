@@ -22,15 +22,15 @@ servers:
     description: "Court Venue Server"
 paths:
   # Court Venue (Varas e Foros)
-  /:
+  /hierarchy:
     get:
-      $ref: .\paths\court_venue\court_venue\public-get.yaml
+      $ref: .\paths\court_venue\court_venue\public@hierarchy-get.yaml
   /subjectTags:
     get:
       $ref: .\paths\court_venue\court_venue\public@subjectTags-get.yaml
-  /subjectTags/:uuid/tags:
+  /tags:
     get:
-      $ref: .\paths\court_venue\court_venue\public@subjectTags@uuid@tags-get.yaml
+      $ref: .\paths\court_venue\court_venue\public@tags-get.yaml
 components:
   securitySchemes:
     api_key:
