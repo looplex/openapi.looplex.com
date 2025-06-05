@@ -2,19 +2,21 @@ title: TaskContent
 type: object
 properties: 
   Type:
-    type: string <nullable>
+    type: string
+    example: "COURT_HEARING"
     description: |
       **Tipo**<br />
       **Valores permitidos:**<br />
-      Audiência<br />
-      Compromisso<br />
-      Diligência<br />
-      Prazo<br />
+      COURT_HEARING<br />
+      MEETING<br />
+      PROCEEDING<br />
+      DEADLINE<br />
+
       **Definições:**<br />
-      **Court hearing (Audiência):** A session in which a case is heard in court. <br />
-      **Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
-      **Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
-      **Deadline (Prazo):** A date or time by which you have to do or complete something. <br />
+      **COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />
+      **MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
+      **PROCEEDING (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+      **DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />
   Title:
     description: "**Titulo**"
     type: string <nullable>
@@ -70,23 +72,37 @@ properties:
       $ref: SimpleEntity.yaml
   Status:
     type: string <nullable>
+    example: "CREATED"
     description: |
       **Status**<br />
-      **Valores permitidos:**<br />
-      4: Cancelada<br />
-      5: Atribuída<br />
-      6: Criada<br />
-      7: Concluída<br />
-      8: Reagendada<br />
-      9: Suspensa
+      CANCELED<br />
+      CLAIMED<br />
+      CREATED<br />
+      COMPLETED<br />
+      RESCHEDULED<br />
+      SUSPENDED<br />
+
+      **Definições:**<br />
+      **CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />
+      **CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />
+      **CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />
+      **COMPLETED (Concluída):** Tarefa realizada<br />
+      **RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />
+      **SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura
   Priority:
-    type: string <nullable>
+    type: string
+    example: "LOW"
     description: |
       **Prioridade**<br />
       **Valores permitidos:**<br />
-      1: Baixa<br />
-      2: Média<br />
-      3: Alta
+      LOW<br />
+      MEDIUM<br />
+      HIGH<br />
+
+      **Definições:**<br />
+      **LOW (Baixa)**<br />
+      **MEDIUM (Média)**<br />
+      **HIGH (Alta)**
   ConclusionNotes:
     type: string <nullable>
     description: "**Notas de Conclusão**"

@@ -388,6 +388,42 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Task",
+        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "tasks-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/entries/:entry_id": {
@@ -781,7 +817,7 @@
           },
           "Location": {
             "type": "string <nullable>",
-            "example": "https://apim.looplex.com/case-management/v1/<entity>/<item_unique_id>",
+            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
             "description": "**The resource url**"
           },
           "Version": {
@@ -1390,8 +1426,9 @@
         "type": "object",
         "properties": {
           "Type": {
-            "type": "string <nullable>",
-            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nAudiência<br />\nCompromisso<br />\nDiligência<br />\nPrazo<br />\n**Definições:**<br />\n**Court hearing (Audiência):** A session in which a case is heard in court. <br />\n**Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**Deadline (Prazo):** A date or time by which you have to do or complete something. <br />\n"
+            "type": "string",
+            "example": "COURT_HEARING",
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nCOURT_HEARING<br />\nMEETING<br />\nPROCEEDING<br />\nDEADLINE<br />\n\n**Definições:**<br />\n**COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />\n**MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**PROCEEDING (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />\n"
           },
           "Title": {
             "description": "**Titulo**",
@@ -1463,11 +1500,13 @@
           },
           "Status": {
             "type": "string <nullable>",
-            "description": "**Status**<br />\n**Valores permitidos:**<br />\n4: Cancelada<br />\n5: Atribuída<br />\n6: Criada<br />\n7: Concluída<br />\n8: Reagendada<br />\n9: Suspensa\n"
+            "example": "CREATED",
+            "description": "**Status**<br />\nCANCELED<br />\nCLAIMED<br />\nCREATED<br />\nCOMPLETED<br />\nRESCHEDULED<br />\nSUSPENDED<br />\n\n**Definições:**<br />\n**CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />\n**COMPLETED (Concluída):** Tarefa realizada<br />\n**RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />\n**SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura\n"
           },
           "Priority": {
-            "type": "string <nullable>",
-            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\n1: Baixa<br />\n2: Média<br />\n3: Alta\n"
+            "type": "string",
+            "example": "LOW",
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nLOW<br />\nMEDIUM<br />\nHIGH<br />\n\n**Definições:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
           },
           "ConclusionNotes": {
             "type": "string <nullable>",
@@ -1907,6 +1946,11 @@
         "title": "ListResponse",
         "type": "object",
         "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
           "startIndex": {
             "description": "**Index of search**",
             "type": "integer",
@@ -1916,11 +1960,6 @@
             "description": "**Total count of items to return**",
             "type": "integer",
             "example": 12
-          },
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
           }
         }
       },
@@ -2524,6 +2563,103 @@
           "Owner",
           "Group"
         ]
+      },
+      "TaskContentWrite": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "properties": {
+          "ParentId": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of parent task**"
+          },
+          "Type": {
+            "type": "string",
+            "example": "COURT_HEARING",
+            "description": "**Tipo**<br />\n**Valores permitidos:**<br />\nCOURT_HEARING<br />\nMEETING<br />\nPROCEEDING<br />\nDEADLINE<br />\n\n**Definições:**<br />\n**COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />\n**MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**PROCEEDING (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />\n"
+          },
+          "Title": {
+            "description": "**Titulo**",
+            "type": "string",
+            "example": "Titulo da tarefa"
+          },
+          "Description": {
+            "description": "**Descrição**",
+            "type": "string <nullable>",
+            "example": "Descrição da tarefa"
+          },
+          "StartDate": {
+            "description": "**Data de Início**",
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z"
+          },
+          "DueDate": {
+            "description": "**Data de Vencimento**",
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-05-29T12:00:00.000Z"
+          },
+          "CreatedBy": {
+            "description": "**Criado por**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Locale": {
+            "description": "**Local**",
+            "type": "string <nullable>",
+            "example": "Local da tarefa"
+          },
+          "TaskCode": {
+            "description": "**Código da Tarefa**",
+            "type": "string <nullable>",
+            "example": "Task1"
+          },
+          "ActivityCode": {
+            "description": "**Código da Atividade**",
+            "type": "string <nullable>",
+            "example": "Act1"
+          },
+          "Owner": {
+            "description": "**Responsável**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            }
+          },
+          "Status": {
+            "type": "string",
+            "example": "CREATED",
+            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCLAIMED<br />\nCREATED<br />\n\n**Definições:**<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido\n"
+          },
+          "Priority": {
+            "type": "string",
+            "example": "LOW",
+            "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nLOW<br />\nMEDIUM<br />\nHIGH<br />\n\n**Definições:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
+          }
+        },
+        "required": [
+          "Type",
+          "Title",
+          "Priority",
+          "StartDate",
+          "DueDate",
+          "CreatedBy",
+          "Owner",
+          "Status"
+        ]
+      },
+      "TaskEntityWrite": {
+        "title": "Tarefa para inclusão",
+        "type": "object",
+        "properties": {
+          "Data": {
+            "$ref": "#/components/schemas/TaskContentWrite"
+          }
+        }
       },
       "EntryEntityWrite": {
         "title": "Dados de andamento para inclusão",

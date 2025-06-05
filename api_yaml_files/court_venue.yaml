@@ -34,6 +34,9 @@ paths:
   /tags:
     get:
       $ref: .\paths\court_venue\tags\public@tags-get.yaml
+  /tags/:tag_id:
+    get:
+      $ref: .\paths\court_venue\court_venue\public@tags@tag_id-get.yaml
 components:
   securitySchemes:
     api_key:

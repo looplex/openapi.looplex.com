@@ -4,23 +4,23 @@ properties:
   ParentId:
     type: string <nullable>
     format: uuid
-    description: "**Unique identifir of parent task**"
+    description: "**Unique identifier of parent task**"
   Type:
     type: string
-    example: "Court hearing"
+    example: "COURT_HEARING"
     description: |
       **Tipo**<br />
       **Valores permitidos:**<br />
-      Court hearing<br />
-      Meeting<br />
-      Proceeding<br />
-      Deadline<br /><br />
+      COURT_HEARING<br />
+      MEETING<br />
+      PROCEEDING<br />
+      DEADLINE<br />
 
       **Definições:**<br />
-      **Court hearing (Audiência):** A session in which a case is heard in court. <br />
-      **Meeting (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
-      **Proceeding (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
-      **Deadline (Prazo):** A date or time by which you have to do or complete something. <br />
+      **COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />
+      **MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
+      **PROCEEDING (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+      **DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />
   Title:
     description: "**Titulo**"
     type: string
@@ -64,21 +64,30 @@ properties:
       $ref: SimpleEntityWrite.yaml
   Status:
     type: string
-    example: "Criada"
+    example: "CREATED"
     description: |
       **Status**<br />
       **Valores permitidos:**<br />
-      Criada<br />
-      Atribuída
+      CLAIMED<br />
+      CREATED<br />
+
+      **Definições:**<br />
+      **CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />
+      **CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido
   Priority:
     type: string
-    example: "Baixa"
+    example: "LOW"
     description: |
       **Prioridade**<br />
       **Valores permitidos:**<br />
-      Baixa<br />
-      Média<br />
-      Alta
+      LOW<br />
+      MEDIUM<br />
+      HIGH<br />
+
+      **Definições:**<br />
+      **LOW (Baixa)**<br />
+      **MEDIUM (Média)**<br />
+      **HIGH (Alta)**
 required:
   - Type
   - Title

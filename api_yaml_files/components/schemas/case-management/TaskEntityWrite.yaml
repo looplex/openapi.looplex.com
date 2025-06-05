@@ -3,7 +3,3 @@ type: object
 properties:
   Data:
     $ref: TaskContentWrite.yaml
-  Children:
-    type: array
-    items:
-      $ref: TaskContentWrite.yaml
