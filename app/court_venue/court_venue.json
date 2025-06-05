@@ -27,14 +27,60 @@
   ],
   "security": [],
   "paths": {
-    "/hierarchy": {
+    "/venues/:venue_id": {
       "get": {
         "tags": [
           "Court Venue"
         ],
-        "summary": "Query court venue by filter",
+        "summary": "Venue",
+        "description": "**Retrieve information about a venue**\n",
+        "operationId": "venues-venue_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "venue_id",
+            "in": "path",
+            "required": true,
+            "description": "**The venue identifier**",
+            "schema": {
+              "type": "string",
+              "frmat": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venue"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/venues": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Venues",
         "description": "**Query court venue by filter**\n",
-        "operationId": "hierarchy-get",
+        "operationId": "venues-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -69,7 +115,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/Hierarchy"
+                            "$ref": "#/components/schemas/Venue"
                           }
                         }
                       }
@@ -88,9 +134,9 @@
     "/subjectTags": {
       "get": {
         "tags": [
-          "Court Venue"
+          "Tags"
         ],
-        "summary": "Get all tag groups",
+        "summary": "Tag groups",
         "description": "**Get all tag groups**\n",
         "operationId": "subjectTags-get",
         "parameters": [
@@ -107,10 +153,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TagGroup"
-                  }
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TagGroup"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -124,9 +182,9 @@
     "/tags": {
       "get": {
         "tags": [
-          "Court Venue"
+          "Tags"
         ],
-        "summary": "List tags by tag group",
+        "summary": "Tags",
         "description": "**List tags by tag group**\n",
         "operationId": "subjectTags-uuid-tags-get",
         "parameters": [
@@ -206,6 +264,15 @@
           "type": "string"
         }
       },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
       "BearerToken": {
         "name": "Authorization",
         "in": "header",
@@ -217,27 +284,6 @@
       }
     },
     "schemas": {
-      "ListResponse": {
-        "title": "ListResponse",
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
-          },
-          "startIndex": {
-            "description": "**Index of search**",
-            "type": "integer",
-            "example": 1
-          },
-          "itemsPerPage": {
-            "description": "**Total count of items to return**",
-            "type": "integer",
-            "example": 12
-          }
-        }
-      },
       "Meta": {
         "title": "Meta",
         "type": "object",
@@ -271,8 +317,8 @@
           }
         }
       },
-      "Hierarchy": {
-        "title": "Hierarchy",
+      "Venue": {
+        "title": "Venue",
         "type": "object",
         "properties": {
           "Id": {
@@ -333,22 +379,55 @@
           }
         }
       },
-      "TagGroup": {
-        "title": "TagGroup",
+      "ListResponse": {
+        "title": "ListResponse",
         "type": "object",
         "properties": {
-          "uuid": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "TagGroup": {
+        "title": "Tag group",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "description": "**Item's identifier**",
+            "type": "integer"
+          },
+          "UUID": {
             "description": "**Unique identifier of tag's group**",
             "type": "string",
             "format": "uuid"
           },
-          "label": {
+          "Label": {
             "type": "string",
             "description": "**The name of tag's group**"
           },
-          "active": {
+          "Active": {
             "type": "boolean",
             "description": "**Indicate if it is active**"
+          },
+          "Status": {
+            "type": "integer",
+            "description": "**Tag's status**"
+          },
+          "ExternalId": {
+            "description": "**Item's external identifier**",
+            "type": "string"
           },
           "Meta": {
             "$ref": "#/components/schemas/Meta"
@@ -368,7 +447,7 @@
             "type": "string",
             "format": "uuid"
           },
-          "Label": {
+          "Tag": {
             "type": "string",
             "description": "**Tag's name**"
           },

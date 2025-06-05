@@ -8,7 +8,7 @@ properties:
     description: "**Tag's unique identifier**"
     type: string
     format: uuid
-  Label:
+  Tag:
     type: string
     description: "**Tag's name**"
   Active:

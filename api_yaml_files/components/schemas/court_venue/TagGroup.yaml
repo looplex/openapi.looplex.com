@@ -1,15 +1,24 @@
-title: TagGroup
+title: Tag group
 type: object
 properties:
-  uuid:
+  Id:
+    description: "**Item's identifier**"
+    type: integer
+  UUID:
     description: "**Unique identifier of tag's group**"
     type: string
     format: uuid
-  label:
+  Label:
     type: string
     description: "**The name of tag's group**"
-  active:
+  Active:
     type: boolean
     description: "**Indicate if it is active**"
+  Status:
+    type: integer
+    description: "**Tag's status**"
+  ExternalId:
+    description: "**Item's external identifier**"
+    type: string
   Meta:
     $ref: ../scim/Meta.yaml

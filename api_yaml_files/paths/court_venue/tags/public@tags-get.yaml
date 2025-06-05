@@ -1,6 +1,6 @@
 tags:
-  - Court Venue
-summary: "List tags by tag group"
+  - Tags
+summary: "Tags"
 description: |
   **List tags by tag group**
 operationId: subjectTags-uuid-tags-get
@@ -19,14 +19,14 @@ responses:
     content:
       application/json:
         schema:
-            allOf:
-              - $ref: '../../../components/schemas/common/ListResponse.yaml'
-              - type: object
-                properties:
-                  resources:
-                    type: array
-                    items:
-                      $ref: ../../../components/schemas/court_venue/Tag.yaml
+          allOf:
+            - $ref: '../../../components/schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../../components/schemas/court_venue/Tag.yaml
   "500":
     description: "Internal Server Error"
  

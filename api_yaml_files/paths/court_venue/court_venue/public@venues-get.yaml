@@ -1,9 +1,9 @@
 tags:
   - Court Venue
-summary: "Query court venue by filter"
+summary: "Venues"
 description: |
   **Query court venue by filter**
-operationId: hierarchy-get
+operationId: venues-get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../../api_yaml_files/components/parameters/court_venue/BearerToken.yaml
@@ -39,6 +39,6 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../../../components/schemas/court_venue/Hierarchy.yaml
+                    $ref: ../../../components/schemas/court_venue/Venue.yaml
   "500":
     description: "Internal Server Error"
