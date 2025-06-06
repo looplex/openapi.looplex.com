@@ -15,6 +15,7 @@ parameters:
       
       **NOTE 1: Concatenate every parameter with 'and'**<br />
       **NOTE 2: Set the value of a filter using 'eq'**<br />
+      **NOTE 3: It is not possible to filter by 'ancestors' and 'descendants' at the same time**
 
       **Example 1**:<br />
       level eq 2 and ancestors eq true and depth eq 1<br />
@@ -28,7 +29,7 @@ parameters:
       **Example 4**:<br />
       cnj eq 8.05
 
-      **Example 5**<br />
+      **Example 5**:<br />
       path eq /4/2/
 
       **Valid options:**<br />
