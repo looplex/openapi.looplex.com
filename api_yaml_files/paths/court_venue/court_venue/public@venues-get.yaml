@@ -10,11 +10,24 @@ parameters:
   - name: Filter
     in: query
     required: false
-    example: |
-      label=Estadual and cnj=8.02 and level=1 and path=/2/ and tags=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000 and depth=2 and uuids=00000000-0000-0000-0000-000000000000,00000000-0000-0000-0000-000000000000
     description: |
-      **The filter to search**<br /><br />
-      **NOTE: Concatenate every parameter with 'and'**<br />
+      **The filter to search**
+      
+      **NOTE 1: Concatenate every parameter with 'and'**<br />
+      **NOTE 2: Set the value of a filter using 'eq'**<br />
+
+      **Example 1**:<br />
+      level eq 2 and ancestors eq true and depth eq 1<br />
+      
+      **Example 2**:<br />
+      level eq 1 and descendants eq true and depth eq 2<br />
+
+      **Example 3**:<br />
+      label eq "Estadual"<br />
+
+      **Example 4**:<br />
+      cnj eq 8.05
+
       **Valid options:**<br />
       - **label (string)**: the node name to search<br />
       - **cnj (string)**: cnj number to search<br />
