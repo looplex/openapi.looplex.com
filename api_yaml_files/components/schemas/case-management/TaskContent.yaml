@@ -106,3 +106,6 @@ properties:
   ConclusionNotes:
     type: string <nullable>
     description: "**Notas de Conclusão**"
+  Case:
+    description: "Caso de uma tarefa"
+    $ref: TaskCase.yaml

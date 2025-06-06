@@ -1421,6 +1421,31 @@
           }
         ]
       },
+      "TaskCase": {
+        "title": "Caso de uma tarefa",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case's unique identifier**"
+          },
+          "Title": {
+            "type": "string",
+            "description": "**Case title**"
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntity"
+            }
+          },
+          "Group": {
+            "type": "string",
+            "description": "Case's group"
+          }
+        }
+      },
       "TaskContent": {
         "title": "TaskContent",
         "type": "object",
@@ -1511,6 +1536,10 @@
           "ConclusionNotes": {
             "type": "string <nullable>",
             "description": "**Notas de Conclusão**"
+          },
+          "Case": {
+            "description": "Caso de uma tarefa",
+            "$ref": "#/components/schemas/TaskCase"
           }
         }
       },
@@ -2568,7 +2597,7 @@
         "title": "Dados da tarefa",
         "type": "object",
         "properties": {
-          "ParentId": {
+          "ParentTaskId": {
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**Unique identifier of parent task**"
@@ -2630,15 +2659,14 @@
               "$ref": "#/components/schemas/SimpleEntityWrite"
             }
           },
-          "Status": {
-            "type": "string",
-            "example": "CREATED",
-            "description": "**Status**<br />\n**Valores permitidos:**<br />\nCLAIMED<br />\nCREATED<br />\n\n**Definições:**<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido\n"
-          },
           "Priority": {
             "type": "string",
             "example": "LOW",
             "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nLOW<br />\nMEDIUM<br />\nHIGH<br />\n\n**Definições:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
+          },
+          "Case": {
+            "description": "Task's case",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
           }
         },
         "required": [
@@ -2649,7 +2677,8 @@
           "DueDate",
           "CreatedBy",
           "Owner",
-          "Status"
+          "Status",
+          "Case"
         ]
       },
       "TaskEntityWrite": {

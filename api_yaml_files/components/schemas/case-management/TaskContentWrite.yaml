@@ -1,7 +1,7 @@
 title: Dados da tarefa
 type: object
 properties:
-  ParentId:
+  ParentTaskId:
     type: string <nullable>
     format: uuid
     description: "**Unique identifier of parent task**"
@@ -62,18 +62,6 @@ properties:
     type: array
     items:
       $ref: SimpleEntityWrite.yaml
-  Status:
-    type: string
-    example: "CREATED"
-    description: |
-      **Status**<br />
-      **Valores permitidos:**<br />
-      CLAIMED<br />
-      CREATED<br />
-
-      **Definições:**<br />
-      **CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />
-      **CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido
   Priority:
     type: string
     example: "LOW"
@@ -88,6 +76,9 @@ properties:
       **LOW (Baixa)**<br />
       **MEDIUM (Média)**<br />
       **HIGH (Alta)**
+  Case:
+    description: "Task's case"
+    $ref: SimpleEntityWrite.yaml
 required:
   - Type
   - Title
@@ -97,3 +88,4 @@ required:
   - CreatedBy
   - Owner
   - Status
+  - Case
