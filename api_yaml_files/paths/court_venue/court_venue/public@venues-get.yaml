@@ -21,9 +21,11 @@ parameters:
       - **level (integer)**: filter items by level <br />
       - **path (string)**: the path to search <br />
       - **tags (string)**: tags' unique ids separated by comma <br />
-      - **depth (integer)**: depth of descendant levels to include in the results <br />
+      - **depth (integer)**: depth of descendant or ascendents levels to include in the results <br />
       - **uuids (string)**: node's unique ids separated by comma <br /> 
       - **ids (string)**: node's ids separated by comma
+      - **ancestors (boolean)**: indicates the search for ancestors<br />
+      - **descendants (boolean)**: indicates the search for descendants
     schema:
       type: string
 responses:
