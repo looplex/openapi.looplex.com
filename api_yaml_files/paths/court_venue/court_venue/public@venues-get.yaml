@@ -28,6 +28,9 @@ parameters:
       **Example 4**:<br />
       cnj eq 8.05
 
+      **Example 5**<br />
+      path eq /4/2/
+
       **Valid options:**<br />
       - **label (string)**: the node name to search<br />
       - **cnj (string)**: cnj number to search<br />
