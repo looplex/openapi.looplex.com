@@ -18,7 +18,7 @@ info:
   description: >
     Essa é a documentação de Court Venue
 servers:
-  - url: "https://apim.looplex.com/courtVenue"
+  - url: "https://apim.looplex.com/court-venue"
     description: "Court Venue Server"
 paths:
   # Court Venue (Varas e Foros)

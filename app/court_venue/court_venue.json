@@ -21,7 +21,7 @@
   },
   "servers": [
     {
-      "url": "https://apim.looplex.com/courtVenue",
+      "url": "https://apim.looplex.com/court-venue",
       "description": "Court Venue Server"
     }
   ],
