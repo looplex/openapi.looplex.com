@@ -1,6 +1,6 @@
 tags:
   - Tags
-summary: "Tag groups"
+summary: "/subjectTags"
 description: |
   **Get all tag groups**
 operationId: subjectTags-get

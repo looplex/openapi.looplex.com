@@ -1,6 +1,6 @@
 tags:
   - Court Venue
-summary: "Venues"
+summary: "/venues"
 description: |
   **Query court venue by filter**
 operationId: venues-get

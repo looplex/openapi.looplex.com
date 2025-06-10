@@ -1,6 +1,6 @@
 tags:
   - Tags
-summary: "Tags"
+summary: "/tags"
 description: |
   **List tags by tag group**
 operationId: subjectTags-uuid-tags-get

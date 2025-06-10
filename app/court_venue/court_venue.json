@@ -32,7 +32,7 @@
         "tags": [
           "Court Venue"
         ],
-        "summary": "Venue",
+        "summary": "/venues/:venue_id",
         "description": "**Retrieve information about a venue**\n",
         "operationId": "venues-venue_id-get",
         "parameters": [
@@ -78,7 +78,7 @@
         "tags": [
           "Court Venue"
         ],
-        "summary": "Venues",
+        "summary": "/venues",
         "description": "**Query court venue by filter**\n",
         "operationId": "venues-get",
         "parameters": [
@@ -135,7 +135,7 @@
         "tags": [
           "Tags"
         ],
-        "summary": "Tag groups",
+        "summary": "/subjectTags",
         "description": "**Get all tag groups**\n",
         "operationId": "subjectTags-get",
         "parameters": [
@@ -183,7 +183,7 @@
         "tags": [
           "Tags"
         ],
-        "summary": "Tags",
+        "summary": "/tags",
         "description": "**List tags by tag group**\n",
         "operationId": "subjectTags-uuid-tags-get",
         "parameters": [
@@ -240,7 +240,7 @@
         "tags": [
           "Tags"
         ],
-        "summary": "Tag",
+        "summary": "/tags/:tag_id",
         "description": "**Retrieve information about a tag**\n",
         "operationId": "tags-tag_id-get",
         "parameters": [

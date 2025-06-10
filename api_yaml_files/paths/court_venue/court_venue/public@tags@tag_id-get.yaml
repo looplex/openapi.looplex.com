@@ -1,6 +1,6 @@
 tags:
   - Tags
-summary: "Tag"
+summary: "/tags/:tag_id"
 description: |
   **Retrieve information about a tag**
 operationId: tags-tag_id-get

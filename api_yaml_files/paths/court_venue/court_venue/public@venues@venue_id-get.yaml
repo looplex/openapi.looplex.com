@@ -1,6 +1,6 @@
 tags:
   - Court Venue
-summary: "Venue"
+summary: "/venues/:venue_id"
 description: |
   **Retrieve information about a venue**
 operationId: venues-venue_id-get
