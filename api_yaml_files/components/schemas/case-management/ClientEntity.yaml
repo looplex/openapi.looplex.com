@@ -73,7 +73,7 @@ properties:
   Identities:
     type: array
     items:
-      $ref: IdentityEntityWrite.yaml
+      $ref: IdentityEntity.yaml
 required:
   - Name
   - NickName

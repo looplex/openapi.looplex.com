@@ -42,29 +42,36 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
                   "grant_type": {
                     "type": "string",
                     "required": true,
-                    "description": "**The grant type**",
-                    "example": "urn:ietf:params:oauth:grant-type:token-exchange"
+                    "description": "**The grant type**"
                   },
                   "subject_token": {
                     "type": "string",
                     "required": true,
-                    "description": "**The access token returned by the identity provider**",
-                    "example": "access_token_example"
+                    "description": "**The access token returned by the identity provider**"
                   },
                   "subject_token_type": {
                     "type": "string",
                     "required": true,
-                    "description": "**The token type**",
-                    "example": "urn:ietf:params:oauth:token-type:access_token"
+                    "description": "**The token type**"
                   }
-                }
+                },
+                "required": [
+                  "grant_type",
+                  "subject_token",
+                  "subject_token_type"
+                ]
+              },
+              "example": {
+                "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
+                "subject_token": "access_token_example",
+                "subject_token_type": "urn:ietf:params:oauth:token-type:access_token"
               }
             }
           }
@@ -2961,7 +2968,7 @@
           "Identities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntityWrite"
+              "$ref": "#/components/schemas/IdentityEntity"
             }
           }
         },
