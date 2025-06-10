@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Tasks
-summary: Task
+summary: "/tasks/:task_id"
 description: |
   **Retrieve a task by id**
 operationId: tasks-task_id-get

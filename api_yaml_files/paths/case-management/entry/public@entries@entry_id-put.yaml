@@ -1,6 +1,6 @@
 tags:
   - Entries
-summary: "Update entry"
+summary: "/entries/:entry_id"
 description: |
   **Update entry**
 operationId: entries-entry_id-put

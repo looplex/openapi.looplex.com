@@ -1,0 +1,78 @@
+title: Client to create
+type: object
+properties:
+  Name:
+    type: string
+    description: "The client's name"
+    example: "Example name"
+  NickName:
+    type: string
+    description: "The client's nickname"
+    example: "Example"
+  Type:
+    type: string
+    description: |
+      **The client type**<br />
+      **Valores permitidos:**<br />
+      NATURAL_PERSON<br />
+      LEGAL_PERSON
+
+      **Definições:**<br />
+      NATURAL_PERSON = (Pessoa física)<br />
+      LEGAL_PERSON = (Pessoa juridica)
+    example: "NATURAL_PERSON"
+  Email:
+    type: string <nullable>
+    description: "The client's email address"
+    example: null
+  Website:
+    type: string <nullable>
+    description: "The client's website page"
+    example: null
+  Comments:
+    type: string <nullable>
+    description: "Comments about the client"
+    example: null
+  Dob:
+    type: string <nullable>
+    format: datetime
+    description: |
+      Client's date of birth<br />
+      **(used only when Type is NATURAL_PERSON)**
+    example: "2025-01-01T12:00:00.000Z"
+  Gender:
+    type: string <nullable>
+    description: |
+      Client's gender<br />
+      **(used only when Type is NATURAL_PERSON)**<br />
+      **Valores permitidos:**<br/>
+      FEMALE<br />
+      MALE
+    example: null
+  MaritalStatus:
+    type: string <nullable>
+    description: |
+      Client's marital status<br />
+      **(used only when Type is NATURAL_PERSON)**<br />
+      **Valores permitidos:**<br />
+      SINGLE<br />
+      MARRIED<br />
+      WIDOWED<br />
+      LEGALLYSEPARATED<br />
+      DIVORCED
+
+      **Descrição:**<br />
+      SINGLE = Solteiro<br />
+      MARRIED = Casado<br />
+      WIDOWED = Viúvo<br />
+      LEGALLYSEPARATED = Separado<br />
+      DIVORCED = Divorciado
+    example: null
+  Identities:
+    type: array
+    items:
+      $ref: IdentityEntityWrite.yaml
+required:
+  - Name
+  - NickName
+  - Type

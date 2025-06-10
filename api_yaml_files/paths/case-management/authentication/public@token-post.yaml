@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Authentication
-summary: "Authentication"
+summary: "/token"
 description: |
   **Authentication endpoint**
 operationId: token-post

@@ -1,20 +1,19 @@
-# Linhas com # são comentários e podem ser removidas.
 tags:
-  - Case Management
-summary: "/cases"
+  - Client
+summary: "/clients"
 description: |
-  **Fetch cases paginated**
-operationId: cases-get
-# Parâmetros da requisição
+  **Fetch clients paginated**
+operationId: clients-get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../../components/parameters/case-management/Tenant.yaml
-  - $ref: ../../../components/parameters/case-management/BearerToken.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/Tenant.yaml
+  - $ref: ../../../../api_yaml_files/components/parameters/case-management/BearerToken.yaml
+  # utilizado em endpoint query
   - name: startIndex
     in: query
     required: true
     description: |
-      **Index of search**
+      **Index of search**<br />
     example: 1
     schema:
       type: integer
@@ -27,10 +26,7 @@ parameters:
     example: 50
     schema:
       type: integer
-# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
-# Responses
 responses:
-  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
   "200":
     description: "OK"
     content:
@@ -43,8 +39,6 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: "../../../components/schemas/case-management/CaseInfoEntity.yaml"
-  "400":
-    description: "Bad Request"
+                    $ref: ../../../components/schemas/case-management/ClientEntity.yaml
   "500":
-    description: "Internal Server Error"
+      description: "Internal Server Error"

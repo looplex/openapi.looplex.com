@@ -32,7 +32,7 @@
         "tags": [
           "Authentication"
         ],
-        "summary": "Authentication",
+        "summary": "/token",
         "description": "**Authentication endpoint**\n",
         "operationId": "token-post",
         "parameters": [
@@ -105,7 +105,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "Case",
+        "summary": "/cases/:case_id",
         "description": "**Retrieve information about a case**\n",
         "operationId": "cases-case_id-get",
         "parameters": [
@@ -154,7 +154,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "Cases",
+        "summary": "/cases",
         "description": "**Fetch cases paginated**\n",
         "operationId": "cases-get",
         "parameters": [
@@ -226,7 +226,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "Case",
+        "summary": "/cases",
         "description": "**Create a new case**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "cases-post",
         "parameters": [
@@ -264,7 +264,7 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "Task",
+        "summary": "/tasks/:task_id",
         "description": "**Retrieve a task by id**\n",
         "operationId": "tasks-task_id-get",
         "parameters": [
@@ -317,7 +317,7 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "Tasks",
+        "summary": "/tasks",
         "description": "**Fetch tasks paginated**\n",
         "operationId": "tasks-get",
         "parameters": [
@@ -393,7 +393,7 @@
         "tags": [
           "Tasks"
         ],
-        "summary": "Task",
+        "summary": "/tasks",
         "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "tasks-post",
         "parameters": [
@@ -431,7 +431,7 @@
         "tags": [
           "Entries"
         ],
-        "summary": "Entry",
+        "summary": "/entries/:entry_id",
         "description": "**Retrieve an entry by id**\n",
         "operationId": "entries-entry_id-get",
         "parameters": [
@@ -476,7 +476,7 @@
         "tags": [
           "Entries"
         ],
-        "summary": "Entries",
+        "summary": "/entries",
         "description": "**Fetch entries paginated**\n",
         "operationId": "entries-get",
         "parameters": [
@@ -543,7 +543,7 @@
         "tags": [
           "Entries"
         ],
-        "summary": "Entry",
+        "summary": "/entries",
         "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "entries-post",
         "parameters": [
@@ -581,7 +581,7 @@
         "tags": [
           "Timesheets"
         ],
-        "summary": "Timesheets",
+        "summary": "/timesheets",
         "description": "**Fetch timesheets paginated**\n",
         "operationId": "timesheets-get",
         "parameters": [
@@ -650,7 +650,7 @@
         "tags": [
           "Timesheets"
         ],
-        "summary": "Timesheet",
+        "summary": "/timesheets",
         "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "timesheets-post",
         "parameters": [
@@ -688,7 +688,7 @@
         "tags": [
           "Timesheets"
         ],
-        "summary": "Timesheet",
+        "summary": "/timesheets/:timesheet_id",
         "description": "**Retrieve a timesheet by id**\n",
         "operationId": "timesheets-id-get",
         "parameters": [
@@ -722,6 +722,113 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/clients": {
+      "get": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "/clients",
+        "description": "**Fetch clients paginated**\n",
+        "operationId": "clients-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ClientEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "/clients",
+        "description": "**Create a client**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "clients-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
           },
           "500": {
             "description": "Internal Server Error"
@@ -2795,6 +2902,137 @@
             "description": "**The case unique identifier**"
           }
         }
+      },
+      "ClientEntity": {
+        "title": "Client",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          }
+        ],
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The client's name",
+            "example": "Example name"
+          },
+          "NickName": {
+            "type": "string",
+            "description": "The client's nickname",
+            "example": "Example"
+          },
+          "Type": {
+            "type": "string",
+            "description": "**The client type**<br />\n**Valores permitidos:**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n\n**Definições:**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
+            "example": "NATURAL_PERSON"
+          },
+          "Email": {
+            "type": "string <nullable>",
+            "description": "The client's email address",
+            "example": null
+          },
+          "Website": {
+            "type": "string <nullable>",
+            "description": "The client's website page",
+            "example": null
+          },
+          "Comments": {
+            "type": "string <nullable>",
+            "description": "Comments about the client",
+            "example": null
+          },
+          "Dob": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "Client's date of birth<br />\n**(serialized only when Type is NATURAL_PERSON)**\n",
+            "example": "2025-01-01T12:00:00.000Z"
+          },
+          "Gender": {
+            "type": "string <nullable>",
+            "description": "Client's gender<br />\n**(serialized only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br/>\nFEMALE<br />\nMALE\n",
+            "example": null
+          },
+          "MaritalStatus": {
+            "type": "string <nullable>",
+            "description": "Client's marital status<br />\n**(serialized only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br />\nSINGLE<br />\nMARRIED<br />\nWIDOWED<br />\nLEGALLYSEPARATED<br />\nDIVORCED\n\n**Descrição:**<br />\nSINGLE = Solteiro<br />\nMARRIED = Casado<br />\nWIDOWED = Viúvo<br />\nLEGALLYSEPARATED = Separado<br />\nDIVORCED = Divorciado\n",
+            "example": null
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntityWrite"
+            }
+          }
+        },
+        "required": [
+          "Name",
+          "NickName",
+          "Type"
+        ]
+      },
+      "ClientEntityWrite": {
+        "title": "Client to create",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The client's name",
+            "example": "Example name"
+          },
+          "NickName": {
+            "type": "string",
+            "description": "The client's nickname",
+            "example": "Example"
+          },
+          "Type": {
+            "type": "string",
+            "description": "**The client type**<br />\n**Valores permitidos:**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n\n**Definições:**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
+            "example": "NATURAL_PERSON"
+          },
+          "Email": {
+            "type": "string <nullable>",
+            "description": "The client's email address",
+            "example": null
+          },
+          "Website": {
+            "type": "string <nullable>",
+            "description": "The client's website page",
+            "example": null
+          },
+          "Comments": {
+            "type": "string <nullable>",
+            "description": "Comments about the client",
+            "example": null
+          },
+          "Dob": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "Client's date of birth<br />\n**(used only when Type is NATURAL_PERSON)**\n",
+            "example": "2025-01-01T12:00:00.000Z"
+          },
+          "Gender": {
+            "type": "string <nullable>",
+            "description": "Client's gender<br />\n**(used only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br/>\nFEMALE<br />\nMALE\n",
+            "example": null
+          },
+          "MaritalStatus": {
+            "type": "string <nullable>",
+            "description": "Client's marital status<br />\n**(used only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br />\nSINGLE<br />\nMARRIED<br />\nWIDOWED<br />\nLEGALLYSEPARATED<br />\nDIVORCED\n\n**Descrição:**<br />\nSINGLE = Solteiro<br />\nMARRIED = Casado<br />\nWIDOWED = Viúvo<br />\nLEGALLYSEPARATED = Separado<br />\nDIVORCED = Divorciado\n",
+            "example": null
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntityWrite"
+            }
+          }
+        },
+        "required": [
+          "Name",
+          "NickName",
+          "Type"
+        ]
       }
     }
   }

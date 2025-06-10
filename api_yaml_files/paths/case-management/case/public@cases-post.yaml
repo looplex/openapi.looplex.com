@@ -1,6 +1,6 @@
 tags:
   - Case Management
-summary: "Case"
+summary: "/cases"
 description: |
   **Create a new case**<br />
   Item created's guid is returned in **Location header**

@@ -69,6 +69,13 @@ paths:
     get:
       $ref: .\paths\case-management\timesheet\public@timesheets@id-get.yaml
 
+  # Client
+  /clients:
+    get:
+      $ref: .\paths\case-management\client\public@clients-get.yaml
+    post:
+      $ref: .\paths\case-management\client\public@clients-post.yaml
+
 components:
   securitySchemes:
     api_key:

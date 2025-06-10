@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
-summary: Case
+summary: "/cases/:case_id"
 description: |
   **Retrieve information about a case**
 operationId: cases-case_id-get

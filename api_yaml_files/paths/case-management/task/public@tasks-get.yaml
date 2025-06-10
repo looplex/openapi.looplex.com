@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Tasks
-summary: "Tasks"
+summary: "/tasks"
 description: |
   **Fetch tasks paginated**
 operationId: tasks-get

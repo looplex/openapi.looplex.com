@@ -319,6 +319,12 @@
           },
           {
             "option": 5,
+            "label": "Client",
+            "detail": "Client endpoints",
+            "folder": "client"
+          },
+          {
+            "option": -1,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",
             "folder": "debug"
