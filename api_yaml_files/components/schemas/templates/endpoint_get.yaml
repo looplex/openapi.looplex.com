@@ -2,7 +2,9 @@ tags:
   - {{TAG_NAME}}
 summary: {{TITLE}}
 description: |
-  {{DESCRIPTION}}
+  {{DESCRIPTION}}<br />
+# Utilizado em endpoint query**
+# **Fetch items paginated**
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
