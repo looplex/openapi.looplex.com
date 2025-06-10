@@ -1,0 +1,107 @@
+title: "Legal service agreement to create"
+type: object
+properties:
+  ClientId:
+    type: string
+    format: uuid
+    description: "**Client's unique identifier**"
+  Name:
+    type: string
+    description: "Legal service agreement's title"
+  Summary:
+    type: string
+    description: "Legal service agreement's summary"
+  StartDate:
+    type: string
+    format: uuid
+    description: "Legal service agreement's start date"
+  ForecastedEndDate:
+    type: string
+    format: uuid
+    description: "Legal service agreement's forecasted end date"
+  DueDate:
+    type: string
+    format: uuid
+    description: "Legal service agreement's due date"
+  IsSameReviewerAttorneyFeesAndExpenses:
+    type: boolean
+  IsSamePayerAttorneyFeesAndExpenses:
+    type: boolean
+  KilometersReimbursement:
+    type: integer
+    description: |
+      **Valores permitidos:**<br/>
+      1<br />
+      2
+
+      **Definições:**<br />
+      Escritorio = 1<br />
+      Contrato = 2
+  ExpenseRuleLocal:
+    type: integer
+    description: |
+      **Valores permitidos:**<br/>
+      1<br/>
+      2<br/>
+      3<br/>
+      4<br/>
+      5<br/>
+      6
+
+      **Definições:**<br />
+      RegraEscritorio = 1<br/>
+      RegraEmpresa = 2<br/>
+      RegraCliente = 3<br/>
+      RegraContrato = 4<br/>
+      RegraProcesso = 5<br/>
+      RegraVazia = 6
+  BillingCompanyId:
+    type: string
+    format: uuid
+  OwnerId:
+    type: string
+    format: uuid
+  BillingRule:
+    type: integer
+    description: |
+      ***Valores permitidos:*<br/>
+      1<br/>
+      2<br/>
+      3
+
+      **Definições:**<br/>
+      Cliente = 1<br/>
+      Contrato = 2<br/>
+      Processo = 3
+  BillingRuleExpense:
+    type: integer
+    description: |
+      **Valores permitidos:**<br/>
+      1<br/>
+      2<br/>
+      3<br/>
+      
+      **Definições:**<br/>
+      Cliente = 1,
+      Contrato = 2,
+      Processo = 3
+  AllocationMethod:
+    type: integer
+    decription: |
+      **Valores permitidos:**<br />
+      1<br/>
+      2<br/>
+      3<br/>
+
+      ***Definições:**<br/>
+      Fixo = 1,
+      OrigemDoCaso = 2,
+      AreaDoProfissional = 3
+  Status:
+    type: integer
+    description: |
+      **Valores permitidos:**<br/>
+      1
+
+      **Definições:**<br/>
+      Ativo = 1
