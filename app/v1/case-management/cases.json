@@ -1474,7 +1474,7 @@
         ]
       },
       "GlobalValues": {
-        "title": "GlobalValues",
+        "title": "Valores globais do caso por polo",
         "type": "object",
         "properties": {
           "AgainstPosition": {
@@ -1482,15 +1482,16 @@
             "type": "string <nullable>"
           },
           "Perspective": {
-            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\n1: Perda <br />\n2: Êxito\n",
+            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nSUCCESS\n\n**Descrição:**<br />\nLOSS = (1: Perda)<br />\nSUCCESS = (2: Êxito)\n",
             "type": "string <nullable>"
           },
           "Risk": {
-            "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos**<br />\n1: Provável<br />\n2: Possível<br />\n3: Remoto\n",
+            "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nLIKELY<br/>\nPOSSIBLE<br/>\nREMOTE\n\n**Definições:**<br />\nLIKELY = (1: Provável)<br />\nPOSSIBLE = (2: Possível)<br />\nREMOTE = (3: Remoto)\n",
             "type": "string <nullable>"
           },
           "Currency": {
-            "description": "**Moeda usada para os valores do caso**<br />\ne.g. BRL, USD, null\n",
+            "example": "BRL",
+            "description": "**Moeda usada para os valores do caso**<br />\n**Valores permitidos atualmente:**<br/>\nBRL<br/>\nUSD<br/>\nEUR<br/>\n\n**Definições:**<br/>\nBRL = (1: Real)<br/>\nUSD = (2: Dólar americano)<br/>\nEUR = (3: Euro)\n",
             "type": "string <nullable>"
           },
           "CaseDeclaredValue": {
@@ -2468,18 +2469,11 @@
                 ]
               },
               "GlobalValues": {
-                "description": "**Valores globais do caso, definidos por polo**\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/GlobalValues"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Valores globais do caso, definidos por polo**",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GlobalValues"
+                }
               }
             }
           }
@@ -3094,7 +3088,7 @@
             "example": "Example name"
           },
           "Summary": {
-            "type": "string",
+            "type": "string <nullable>",
             "description": "**Legal service agreement's summary**",
             "example": "Example summary"
           },
@@ -3105,14 +3099,14 @@
             "example": "2025-01-01T12:00:00.000Z"
           },
           "ForecastedEndDate": {
-            "type": "string",
+            "type": "string <nullable>",
             "format": "datetime",
             "description": "**Legal service agreement's forecasted end date**",
             "example": "2025-01-25T12:00:00.000Z"
           },
           "DueDate": {
-            "type": "string",
-            "format": "uuid",
+            "type": "string <nullable>",
+            "format": "datetime",
             "description": "**Legal service agreement's due date**",
             "example": "2025-01-30T12:00:00.000Z"
           },
@@ -3151,19 +3145,24 @@
             "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n\n**Definições:**<br/>\nCliente = 1<br/>\nContrato = 2<br/>\nProcesso = 3\n"
           },
           "AllocationMethod": {
-            "type": "integer",
+            "type": "integer <nullable>",
             "example": 1,
-            "description": "**Valores permitidos:**<br />\n1<br/>\n2<br/>\n3<br/>\n\n***Definições:**<br/>\nFixo = 1<br />\nOrigemDoCaso = 2<br />\nAreaDoProfissional = 3\n"
-          },
-          "Status": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Valores permitidos:**<br/>\n1\n\n**Definições:**<br/>\nAtivo = 1\n"
-          },
-          "Number": {
-            "type": "integer"
+            "description": "**Valores permitidos:**<br />\n1<br/>\n2<br/>\n3<br/>\n\n**Definições:**<br/>\nFixo = 1<br />\nOrigemDoCaso = 2<br />\nAreaDoProfissional = 3\n"
           }
-        }
+        },
+        "required": [
+          "ClientId",
+          "Name",
+          "StartDate",
+          "IsSameReviewerAttorneyFeesAndExpenses",
+          "IsSamePayerAttorneyFeesAndExpenses",
+          "KilometersReimbursement",
+          "ExpenseRuleLocal",
+          "BillingCompanyId",
+          "OwnerId",
+          "BillingRule",
+          "BillingRuleExpense"
+        ]
       }
     }
   }

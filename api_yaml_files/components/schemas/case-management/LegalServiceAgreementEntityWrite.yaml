@@ -10,22 +10,22 @@ properties:
     description: "**Legal service agreement's title**"
     example: "Example name"
   Summary:
-    type: string
+    type: string <nullable>
     description: "**Legal service agreement's summary**"
     example: "Example summary"
   StartDate:
-    type: string
+    type: string 
     format: datetime
     description: "**Legal service agreement's start date**"
     example: "2025-01-01T12:00:00.000Z"
   ForecastedEndDate:
-    type: string
+    type: string <nullable>
     format: datetime
     description: "**Legal service agreement's forecasted end date**"
     example: "2025-01-25T12:00:00.000Z"
   DueDate:
-    type: string
-    format: uuid
+    type: string <nullable>
+    format: datetime
     description: "**Legal service agreement's due date**"
     example: "2025-01-30T12:00:00.000Z"
   IsSameReviewerAttorneyFeesAndExpenses:
@@ -95,7 +95,7 @@ properties:
       Contrato = 2<br/>
       Processo = 3
   AllocationMethod:
-    type: integer
+    type: integer <nullable>
     example: 1
     description: |
       **Valores permitidos:**<br />
@@ -103,18 +103,19 @@ properties:
       2<br/>
       3<br/>
 
-      ***Definições:**<br/>
+      **Definições:**<br/>
       Fixo = 1<br />
       OrigemDoCaso = 2<br />
       AreaDoProfissional = 3
-  Status:
-    type: integer
-    example: 1
-    description: |
-      **Valores permitidos:**<br/>
-      1
-
-      **Definições:**<br/>
-      Ativo = 1
-  Number:
-    type: integer
+required:
+  - ClientId
+  - Name
+  - StartDate
+  - IsSameReviewerAttorneyFeesAndExpenses
+  - IsSamePayerAttorneyFeesAndExpenses
+  - KilometersReimbursement
+  - ExpenseRuleLocal
+  - BillingCompanyId
+  - OwnerId
+  - BillingRule
+  - BillingRuleExpense

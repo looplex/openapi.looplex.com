@@ -220,10 +220,7 @@ allOf:
           - $ref: ParticipantNaturalPerson.yaml
           - $ref: ParticipantLegalPerson.yaml
       GlobalValues: 
-        description: |
-          **Valores globais do caso, definidos por polo**
-        oneOf:
-          - type: array
-            items:
-              $ref: GlobalValues.yaml
-          - type: null
+        description: "**Valores globais do caso, definidos por polo**"
+        type: array
+        items:
+          $ref: GlobalValues.yaml

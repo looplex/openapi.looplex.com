@@ -1,4 +1,4 @@
-title: GlobalValues
+title: "Valores globais do caso por polo"
 type: object
 properties: 
   AgainstPosition:
@@ -8,9 +8,13 @@ properties:
     description: |
       **Perpectiva**<br />
       Indicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />
-      **Valores permitidos**<br />
-      1: Perda <br />
-      2: Êxito
+      **Valores permitidos:**<br />
+      LOSS <br />
+      SUCCESS
+
+      **Descrição:**<br />
+      LOSS = (1: Perda)<br />
+      SUCCESS = (2: Êxito)
     type: string <nullable>
   Risk:
     description: |
@@ -19,15 +23,29 @@ properties:
       Se a probabilidade for maior que 50% devemos considerar como Provável.  <br />
       Se a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />
       E se essa probabilidade for inferior a 10%, é então Remota. <br />
-      **Valores permitidos**<br />
-      1: Provável<br />
-      2: Possível<br />
-      3: Remoto
+      **Valores permitidos:**<br />
+      LIKELY<br/>
+      POSSIBLE<br/>
+      REMOTE
+
+      **Definições:**<br />
+      LIKELY = (1: Provável)<br />
+      POSSIBLE = (2: Possível)<br />
+      REMOTE = (3: Remoto)
     type: string <nullable>
   Currency:
+    example: "BRL"
     description: |
       **Moeda usada para os valores do caso**<br />
-      e.g. BRL, USD, null
+      **Valores permitidos atualmente:**<br/>
+      BRL<br/>
+      USD<br/>
+      EUR<br/>
+
+      **Definições:**<br/>
+      BRL = (1: Real)<br/>
+      USD = (2: Dólar americano)<br/>
+      EUR = (3: Euro)
     type: string <nullable>
   CaseDeclaredValue:
     description: |
