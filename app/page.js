@@ -4,7 +4,13 @@ import React from 'react'
 import { Row, Col, Typography, Card, Input, Divider } from "antd"
 import Image from 'next/image'
 
-import { AudioOutlined } from '@ant-design/icons';
+import { 
+  AudioOutlined, 
+  FacebookOutlined, 
+  LinkedinOutlined, 
+  InstagramOutlined,
+  ApiOutlined
+} from '@ant-design/icons'
 
 const { Search } = Input;
 const { Text } = Typography
@@ -98,9 +104,9 @@ export default function Home() {
     <div style={{ backgroundColor: '#F5FBFE' }}>
 
       <Row 
-        style={{ 
-          padding: 0, 
-          backgroundColor: '#F0F4F6', 
+        style={{
+          padding: 0,
+          backgroundColor: '#F0F4F6',
           borderBottom: "0.5px solid grey",
           boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.2)",
           marginBottom: 80
@@ -111,11 +117,11 @@ export default function Home() {
 
           <Image
             src={'/logo.png'}
-            width={200}
-            height={100}
+            width={160}
+            height={80}
             alt='Looplex'
           />
-          
+
         </Col>
 
         <Col span={10} style={{ marginTop: 30 }}>
@@ -133,8 +139,10 @@ export default function Home() {
           />
         </Col>
 
-        <Col span={5} style={{ marginLeft: 30, marginTop: 30 }}>
-          Redes sociais Looplex
+        <Col span={5} style={{ marginLeft: 120, marginTop: 30 }}>
+          <FacebookOutlined style={{ fontSize: 26, color: '#1677FF' }} />
+          <LinkedinOutlined style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }} />
+          <InstagramOutlined style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }} />
         </Col>
 
       </Row>
@@ -174,7 +182,21 @@ export default function Home() {
 
         <Col span={7}>
           
-          <Card title="Actions">
+          <Card style={{ height: 220 }}>
+
+            <div>
+              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                <Text 
+                  style={{ 
+                    marginLeft: 15,
+                    fontSize: 22, 
+                    fontWeight: 'bold' 
+                  }}
+                >
+                  Actions
+                </Text>
+            </div>
+
             <p>
               É o grupo de APIs usado pelos <b>templates</b> relacionados ao <b>fluxo de documentos.</b>
             </p>
@@ -196,9 +218,23 @@ export default function Home() {
 
         </Col>
 
-        <Col span={7} offset={1}>
+        <Col span={7} style={{ marginLeft: 20 }}>
 
-          <Card title="Court Venue">
+          <Card style={{ height: 220 }}>
+
+          <div>
+              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                <Text 
+                  style={{ 
+                    marginLeft: 15,
+                    fontSize: 22, 
+                    fontWeight: 'bold' 
+                  }}
+                >
+                  Court Venue
+                </Text>
+            </div>
+
             <p>
               É o grupo de APIs responsável por definir <b>a cidade ou 
               tribunal</b> onde o <b>processo será julgado</b>, com base nos dados 
@@ -222,9 +258,22 @@ export default function Home() {
 
         </Col>
 
-        <Col span={7} offset={1}>
+        <Col span={7} style={{ marginLeft: 20 }}>
 
-          <Card title="Feriado">
+          <Card style={{ height: 220 }}>
+            <div>
+                <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                  <Text 
+                    style={{ 
+                      marginLeft: 15,
+                      fontSize: 22, 
+                      fontWeight: 'bold' 
+                    }}
+                  >
+                    Feriado
+                  </Text>
+              </div>
+
             <p>
               API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
             </p>
@@ -258,7 +307,21 @@ export default function Home() {
 
         <Col span={7}>
           
-          <Card title="Cases">
+          <Card style={{ height: 220 }}>
+
+            <div>
+              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                <Text 
+                  style={{ 
+                    marginLeft: 15,
+                    fontSize: 22, 
+                    fontWeight: 'bold' 
+                  }}
+                >
+                  Cases
+                </Text>
+            </div>
+
             <p>
               API de casos gerencia dados e status de processos.<br/>
               Permite consultar e atualizar informações automaticamente.
@@ -297,10 +360,22 @@ export default function Home() {
 
         </Col>
 
-        <Col span={7} offset={1}>
+        <Col span={7} style={{ marginLeft: 20 }}>
           
-          <Card title="Assembler">
+          <Card style={{ height: 220 }}>
 
+          <div>
+              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                <Text 
+                  style={{ 
+                    marginLeft: 15,
+                    fontSize: 22, 
+                    fontWeight: 'bold' 
+                  }}
+                >
+                  Assembler
+                </Text>
+            </div>
             <p>
               É o grupo de APIs usado pela <b>interface web do Looplex</b>, relacionado ao <b>fluxo de documentos, templates e tarefas.</b>
             </p>
@@ -322,10 +397,22 @@ export default function Home() {
 
         </Col>
 
-        <Col span={7} offset={1}>
+        <Col span={7} style={{ marginLeft: 20 }}>
           
-          <Card title="Looplex 365">
+          <Card style={{ height: 220 }}>
 
+          <div>
+              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
+                <Text 
+                  style={{ 
+                    marginLeft: 15,
+                    fontSize: 22, 
+                    fontWeight: 'bold' 
+                  }}
+                >
+                  Looplex 365
+                </Text>
+            </div>
             <p>
               Ciclo de vida de aplicativos da microsoft e renderizações.
             </p>
