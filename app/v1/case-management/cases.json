@@ -842,6 +842,44 @@
           }
         }
       }
+    },
+    "/legalServiceAgreement": {
+      "post": {
+        "tags": [
+          "Legal a service agreement"
+        ],
+        "summary": "/legalServiceAgreement",
+        "description": "**Create Legal service agreement**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "LegalServiceAgreement-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalServiceAgreementEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3040,6 +3078,92 @@
           "NickName",
           "Type"
         ]
+      },
+      "LegalServiceAgreementEntityWrite": {
+        "title": "Legal service agreement to create",
+        "type": "object",
+        "properties": {
+          "ClientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client's unique identifier**"
+          },
+          "Name": {
+            "type": "string",
+            "description": "**Legal service agreement's title**",
+            "example": "Example name"
+          },
+          "Summary": {
+            "type": "string",
+            "description": "**Legal service agreement's summary**",
+            "example": "Example summary"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Legal service agreement's start date**",
+            "example": "2025-01-01T12:00:00.000Z"
+          },
+          "ForecastedEndDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Legal service agreement's forecasted end date**",
+            "example": "2025-01-25T12:00:00.000Z"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Legal service agreement's due date**",
+            "example": "2025-01-30T12:00:00.000Z"
+          },
+          "IsSameReviewerAttorneyFeesAndExpenses": {
+            "type": "boolean"
+          },
+          "IsSamePayerAttorneyFeesAndExpenses": {
+            "type": "boolean"
+          },
+          "KilometersReimbursement": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br/>\n1<br />\n2\n\n**Definições:**<br />\nEscritorio = 1<br />\nContrato = 2\n"
+          },
+          "ExpenseRuleLocal": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n4<br/>\n5<br/>\n6\n\n**Definições:**<br />\nRegraEscritorio = 1<br/>\nRegraEmpresa = 2<br/>\nRegraCliente = 3<br/>\nRegraContrato = 4<br/>\nRegraProcesso = 5<br/>\nRegraVazia = 6\n"
+          },
+          "BillingCompanyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "OwnerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "BillingRule": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3\n\n**Definições:**<br/>\nCliente = 1<br/>\nContrato = 2<br/>\nProcesso = 3\n"
+          },
+          "BillingRuleExpense": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n\n**Definições:**<br/>\nCliente = 1<br/>\nContrato = 2<br/>\nProcesso = 3\n"
+          },
+          "AllocationMethod": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br />\n1<br/>\n2<br/>\n3<br/>\n\n***Definições:**<br/>\nFixo = 1<br />\nOrigemDoCaso = 2<br />\nAreaDoProfissional = 3\n"
+          },
+          "Status": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Valores permitidos:**<br/>\n1\n\n**Definições:**<br/>\nAtivo = 1\n"
+          },
+          "Number": {
+            "type": "integer"
+          }
+        }
       }
     }
   }

@@ -7,28 +7,34 @@ properties:
     description: "**Client's unique identifier**"
   Name:
     type: string
-    description: "Legal service agreement's title"
+    description: "**Legal service agreement's title**"
+    example: "Example name"
   Summary:
     type: string
-    description: "Legal service agreement's summary"
+    description: "**Legal service agreement's summary**"
+    example: "Example summary"
   StartDate:
     type: string
-    format: uuid
-    description: "Legal service agreement's start date"
+    format: datetime
+    description: "**Legal service agreement's start date**"
+    example: "2025-01-01T12:00:00.000Z"
   ForecastedEndDate:
     type: string
-    format: uuid
-    description: "Legal service agreement's forecasted end date"
+    format: datetime
+    description: "**Legal service agreement's forecasted end date**"
+    example: "2025-01-25T12:00:00.000Z"
   DueDate:
     type: string
     format: uuid
-    description: "Legal service agreement's due date"
+    description: "**Legal service agreement's due date**"
+    example: "2025-01-30T12:00:00.000Z"
   IsSameReviewerAttorneyFeesAndExpenses:
     type: boolean
   IsSamePayerAttorneyFeesAndExpenses:
     type: boolean
   KilometersReimbursement:
     type: integer
+    example: 1
     description: |
       **Valores permitidos:**<br/>
       1<br />
@@ -39,6 +45,7 @@ properties:
       Contrato = 2
   ExpenseRuleLocal:
     type: integer
+    example: 1
     description: |
       **Valores permitidos:**<br/>
       1<br/>
@@ -63,8 +70,9 @@ properties:
     format: uuid
   BillingRule:
     type: integer
+    example: 1
     description: |
-      ***Valores permitidos:*<br/>
+      **Valores permitidos:**<br/>
       1<br/>
       2<br/>
       3
@@ -75,6 +83,7 @@ properties:
       Processo = 3
   BillingRuleExpense:
     type: integer
+    example: 1
     description: |
       **Valores permitidos:**<br/>
       1<br/>
@@ -82,26 +91,30 @@ properties:
       3<br/>
       
       **Definições:**<br/>
-      Cliente = 1,
-      Contrato = 2,
+      Cliente = 1<br/>
+      Contrato = 2<br/>
       Processo = 3
   AllocationMethod:
     type: integer
-    decription: |
+    example: 1
+    description: |
       **Valores permitidos:**<br />
       1<br/>
       2<br/>
       3<br/>
 
       ***Definições:**<br/>
-      Fixo = 1,
-      OrigemDoCaso = 2,
+      Fixo = 1<br />
+      OrigemDoCaso = 2<br />
       AreaDoProfissional = 3
   Status:
     type: integer
+    example: 1
     description: |
       **Valores permitidos:**<br/>
       1
 
       **Definições:**<br/>
       Ativo = 1
+  Number:
+    type: integer

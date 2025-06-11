@@ -324,6 +324,12 @@
             "folder": "client"
           },
           {
+            "option": 6,
+            "label": "Legal service agreement",
+            "detail": "Legal service agreement endpoints",
+            "folder": "legal_service_agreement"
+          },
+          {
             "option": -1,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",

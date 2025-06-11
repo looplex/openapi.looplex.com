@@ -78,3 +78,5 @@ properties:
       **Definições:**<br/>
       Ativo = 1<br/>
       Encerrado = 3
+  Number:
+    type: integer
