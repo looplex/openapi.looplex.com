@@ -1,6 +1,7 @@
 'use client'
 
-import { Row, Col, Typography, Tabs, Divider, Tag, Card } from "antd"
+import React from 'react'
+import { Row, Col, Typography, Card, Input, Button } from "antd"
 import Image from 'next/image'
 
 const { Text } = Typography
@@ -91,31 +92,136 @@ export default function Home() {
 
   return (
     <>
-      <Row>
-        <Col span={4}>
+      <Row style={{ border: 1, borderColor: 'blue' }}>
+
+        <Col span={6}>
           <Image
             src={'/logo.png'}
-            width={250}
-            height={120}
+            width={200}
+            height={100}
             alt='Looplex'
           />
-
-        </Col>
-        <Col span={18} style={{ marginTop: 30 }}>
-          <Text style={{ fontWeight: 'bold', fontSize: 18 }}>
-            Bem vindo à página de documentações das APIs da Looplex
-          </Text>
         </Col>
 
-        <Col span={18} offset={4}>
-          <Tabs
-            tabPosition="left"
-            items={apis}
-          />
+        <Col span={12} style={{ marginTop: 30 }}>
+          <Input placeholder="Pesquise na Looplex OpenAPI" />
+        </Col>
+
+        <Col span={5} style={{ marginLeft: 30, marginTop: 30 }}>
+          Redes sociais Looplex
         </Col>
 
       </Row>
 
+      <Row>
+
+        <Col span={16}>
+          <Text style={{ fontSize: 32, fontWeight: 'bold', marginLeft: 100, marginTop: 50 }}>
+            Documentação - APIs Looplex
+          </Text>
+        </Col>
+
+      </Row>
+
+      <Row>
+      
+        <Col span={16}>
+          <div style={{ fontSize: 20, marginLeft: 100, marginTop: 30 }}>
+            Seja bem-vindo à página oficial de <b>documentação das APIs da Looplex.</b>
+          </div>
+          <br />
+          <div style={{ fontSize: 20, marginLeft: 100 }}>
+            Aqui você encontrará informações detalhadas, guias e exemplos para auxiliar na 
+            integração eficiente dos nossos serviços.
+          </div>
+        </Col>
+
+      </Row>
+
+      <Row style={{ marginTop: 50, marginLeft: 100, fontWeight: 'bold' }}>
+        <div style={{ fontSize: 24 }}>
+          Funcionalidades
+        </div>
+      </Row>
+
+      <Row style={{ marginTop: 30, marginLeft: 100 }}>
+
+        <Col span={8}>
+          
+        <Card title="Court Venue">
+          <p>
+            É o grupo de APIs responsável por definir <b>a cidade ou 
+            tribunal</b> onde o <b>processo será julgado</b>, com base nos dados 
+            fornecidos.
+          </p>
+
+          <a 
+            href='/court_venue' 
+            target='_blank'
+            style={{
+              backgroundColor: 'green',
+              height: 50
+            }}
+          >
+            <div style={{ textAlign: 'left' }}>
+              Court Venue
+            </div>
+          </a>
+            
+        </Card>
+
+        </Col>
+      </Row>
+
+      <Row style={{ marginTop: 50, marginLeft: 100, fontWeight: 'bold' }}>
+        <div style={{ fontSize: 24 }}>
+          Plataforma
+        </div>
+      </Row>
+
+      <Row style={{ marginTop: 30, marginLeft: 100 }}>
+
+        <Col span={8}>
+          
+        <Card title="Cases">
+          <p>
+            API de casos gerencia dados e status de processos.<br/>
+            Permite consultar e atualizar informações automaticamente.
+          </p>
+
+          <a 
+            href='/v1/cases' 
+            target='_blank'
+            style={{
+              backgroundColor: 'green',
+              height: 50
+            }}
+          >
+            <div style={{ textAlign: 'left' }}>
+              Cases V1 (legado)
+            </div>
+          </a>
+
+          <a 
+            href='/v1/case-management' 
+            target='_blank'
+            style={{
+              marginTop: 15, 
+              width: '100%', 
+              height: 50, 
+              borderWidth: 10, 
+              borderColor: 'grey' 
+            }}
+          >
+            <div style={{ textAlign: 'left' }}>
+              Cases Management
+            </div>
+          </a>
+            
+        </Card>
+
+        </Col>
+      </Row>
     </>
   )
 }

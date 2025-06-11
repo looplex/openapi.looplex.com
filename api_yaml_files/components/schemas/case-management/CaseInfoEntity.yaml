@@ -9,15 +9,17 @@ allOf:
         example: "Ativo"
         description: |
           **Indicação do status do caso**<br />
-          1: Ativo<br />
-          2: Arquivado<br />
-          3: Inativo<br />
-          99: Excluído
+          **Definições:**<br/>
+          ACTIVE = (1: Ativo)<br />
+          ARCHIVED = (2: Arquivado)<br />
+          INACTIVE = (3: Inativo)<br />
+          DELETED = (99: Excluído)
       Type:
         type: string
         example: "Judicial Estadual"
         description: | 
           **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
+          **Definições:**<br/>
           1: Administrativo<br />
           2: Consultivo<br />
           3: Judicial Estadual<br />

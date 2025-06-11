@@ -2158,12 +2158,12 @@
               "Status": {
                 "type": "string",
                 "example": "Ativo",
-                "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
+                "description": "**Indicação do status do caso**<br />\n**Definições:**<br/>\nACTIVE = (1: Ativo)<br />\nARCHIVED = (2: Arquivado)<br />\nINACTIVE = (3: Inativo)<br />\nDELETED = (99: Excluído)\n"
               },
               "Type": {
                 "type": "string",
                 "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Definições:**<br/>\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
               },
               "SubType": {
                 "type": "string",
