@@ -9,11 +9,17 @@ import {
   FacebookOutlined,
   LinkedinOutlined,
   InstagramOutlined,
-  ApiOutlined
+  ApiOutlined,
+  BookOutlined,
+  CalendarOutlined,
+  GlobalOutlined,
+  ProfileOutlined
 } from '@ant-design/icons'
 
 const { Search } = Input;
 const { Text } = Typography
+
+const iconStyle = { fontSize: 28, color: '#161719', padding: 4 }
 
 export default function Home() {
 
@@ -65,6 +71,11 @@ export default function Home() {
           />
 
           <InstagramOutlined
+            onClick={() => { }}
+            style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
+          />
+
+          <GlobalOutlined
             onClick={() => { }}
             style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
           />
@@ -135,18 +146,10 @@ export default function Home() {
 
           <Card style={{ height: 250 }}>
 
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Actions
-              </Text>
-            </div>
+            <HeaderAPI
+              title={'Actions'}
+              icon={<ApiOutlined style={iconStyle} />}
+            />
 
             <p>
               É o grupo de APIs usado pelos <b>templates</b> relacionados ao <b>fluxo de documentos.</b>
@@ -165,18 +168,17 @@ export default function Home() {
 
           <Card style={{ height: 250 }}>
 
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Court Venue
-              </Text>
-            </div>
+            <HeaderAPI
+              title={'Court Venue'}
+              image={
+                <Image
+                  src={'/logo_justice.png'}
+                  width={38}
+                  height={35}
+                  alt='Looplex'
+                />
+              }
+            />
 
             <p>
               É o grupo de APIs responsável por definir <b>a cidade ou
@@ -196,18 +198,11 @@ export default function Home() {
         <Col span={7} style={{ marginLeft: 20 }}>
 
           <Card style={{ height: 250 }}>
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Feriado
-              </Text>
-            </div>
+
+            <HeaderAPI
+              title={'Feriado'}
+              icon={<CalendarOutlined style={iconStyle} />}
+            />
 
             <p>
               API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
@@ -236,18 +231,10 @@ export default function Home() {
 
           <Card style={{ height: 280 }}>
 
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Cases
-              </Text>
-            </div>
+            <HeaderAPI
+              title={'Cases'}
+              icon={<BookOutlined style={iconStyle} />}
+            />
 
             <p>
               API de casos gerencia dados e status de processos.<br />
@@ -272,18 +259,11 @@ export default function Home() {
 
           <Card style={{ height: 280 }}>
 
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Assembler
-              </Text>
-            </div>
+            <HeaderAPI
+              title={'Assembler'}
+              icon={<ProfileOutlined style={iconStyle} />}
+            />
+
             <p>
               É o grupo de APIs usado pela <b>interface web do Looplex</b>, relacionado ao <b>fluxo de documentos, templates e tarefas.</b>
             </p>
@@ -301,24 +281,24 @@ export default function Home() {
 
           <Card style={{ height: 280 }}>
 
-            <div>
-              <ApiOutlined style={{ fontSize: 40, color: '#1677FF' }} />
-              <Text
-                style={{
-                  marginLeft: 15,
-                  fontSize: 22,
-                  fontWeight: 'bold'
-                }}
-              >
-                Looplex 365
-              </Text>
-            </div>
+            <HeaderAPI
+              title={'Looplex 365'}
+              image={
+                <Image
+                  src={'/logo_looplex.png'}
+                  width={36}
+                  height={36}
+                  alt='Looplex'
+                />
+              }
+            />
+
             <p>
               Ciclo de vida de aplicativos da microsoft e renderizações.
             </p>
 
             <BorderedLink
-              link='/v1/looplex365'
+              link={'/v1/looplex365'}
               text={'Looplex 365 v1'}
             />
 
@@ -328,6 +308,38 @@ export default function Home() {
 
       </Row>
     </div>
+  )
+}
+
+const HeaderAPI = ({ title, icon, image }) => {
+  return (
+    <Row>
+
+      <div
+        style={{
+          backgroundColor: '#E6F4FF',
+          border: "0.5px solid #8AC2FF",
+          borderRadius: 8,
+          width: 36,
+          height: 36,
+          padding: 5
+        }}
+      >
+        {icon ?? image}
+      </div>
+
+      <Text
+        style={{
+          marginLeft: 20,
+          marginTop: 5,
+          fontSize: 22,
+          fontWeight: 'bold'
+        }}
+      >
+        {title}
+      </Text>
+
+    </Row>
   )
 }
 
