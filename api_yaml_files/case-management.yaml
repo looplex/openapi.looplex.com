@@ -80,6 +80,8 @@ paths:
   /legalServiceAgreement:
     post:
       $ref: .\paths\case-management\legal_service_agreement\public@LegalServiceAgreement-post.yaml
+    get:
+      $ref: .\paths\case-management\legal_service_agreement\public@legalServiceAgreement-get.yaml
 
 components:
   securitySchemes:

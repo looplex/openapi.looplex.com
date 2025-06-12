@@ -13,70 +13,53 @@ properties:
   Summary:
     type: string
     description: "Legal service agreement's summary"
+  CreatedAt:
+    type: string
+    format: datetime
+    description: "Legal service agreement's created date"
   StartDate:
     type: string
-    format: uuid
+    format: datetime
     description: "Legal service agreement's start date"
   ForecastedEndDate:
     type: string
-    format: uuid
+    format: datetime
     description: "Legal service agreement's forecasted end date"
   DueDate:
     type: string
-    format: uuid
+    format: datetime
     description: "Legal service agreement's due date"
   IsSameReviewerAttorneyFeesAndExpenses:
     type: boolean
   IsSamePayerAttorneyFeesAndExpenses:
     type: boolean
-  KilometersReimbursement:
-    type: integer
-    description: |
-      **Definições:**<br />
-      Escritorio = 1<br />
-      Contrato = 2
-  ExpenseRuleLocal:
-    type: integer
-    description: |
-      **Definições:**<br />
-      RegraEscritorio = 1<br/>
-      RegraEmpresa = 2<br/>
-      RegraCliente = 3<br/>
-      RegraContrato = 4<br/>
-      RegraProcesso = 5<br/>
-      RegraVazia = 6
   BillingCompanyId:
     type: string
     format: uuid
   OwnerId:
     type: string
     format: uuid
-  BillingRule:
+  Number:
+    type: integer
+  KilometersReimbursement:
     type: integer
     description: |
-      **Definições:**<br/>
-      Cliente = 1<br/>
-      Contrato = 2<br/>
-      Processo = 3
-  BillingRuleExpense:
-    type: integer
+      **Definições:**<br />
+      ESCRITORIO = 1<br />
+      CONTRATO = 2
+  ExpenseRuleLocal:
+    type: string
     description: |
-      **Definições:**<br/>
-      Cliente = 1,
-      Contrato = 2,
-      Processo = 3
-  AllocationMethod:
-    type: integer
-    decription: |
-      **Definições:**<br/>
-      Fixo = 1,
-      OrigemDoCaso = 2,
-      AreaDoProfissional = 3
+      **Definições:**<br />
+      REGRAESCRITORIO = 1<br/>
+      REGRAEMPRESA = 2<br/>
+      REGRACLIENTE = 3<br/>
+      REGRACONTRATO = 4<br/>
+      REGRAPROCESSO = 5<br/>
+      REGRAVAZIA = 6
   Status:
     type: integer
     description: |
       **Definições:**<br/>
-      Ativo = 1<br/>
-      Encerrado = 3
-  Number:
-    type: integer
+      ATIVO = 1<br/>
+      ENCERRADO = 3

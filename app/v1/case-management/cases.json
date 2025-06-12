@@ -846,7 +846,7 @@
     "/legalServiceAgreement": {
       "post": {
         "tags": [
-          "Legal a service agreement"
+          "Legal service agreement"
         ],
         "summary": "/legalServiceAgreement",
         "description": "**Create Legal service agreement**<br />\nItem created's guid is returned in **Location header**\n",
@@ -874,6 +874,75 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Legal service agreement"
+        ],
+        "summary": "/legalServiceAgreement",
+        "description": "**Fetch items paginated**\n",
+        "operationId": "legalServiceAgreement-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/LegalServiceAgreementEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -3073,6 +3142,79 @@
           "Type"
         ]
       },
+      "LegalServiceAgreementEntity": {
+        "title": "Legal service agreement",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          }
+        ],
+        "properties": {
+          "ClientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client's unique identifier**"
+          },
+          "Name": {
+            "type": "string",
+            "description": "Legal service agreement's title"
+          },
+          "Summary": {
+            "type": "string",
+            "description": "Legal service agreement's summary"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Legal service agreement's created date"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Legal service agreement's start date"
+          },
+          "ForecastedEndDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Legal service agreement's forecasted end date"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "Legal service agreement's due date"
+          },
+          "IsSameReviewerAttorneyFeesAndExpenses": {
+            "type": "boolean"
+          },
+          "IsSamePayerAttorneyFeesAndExpenses": {
+            "type": "boolean"
+          },
+          "BillingCompanyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "OwnerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "Number": {
+            "type": "integer"
+          },
+          "KilometersReimbursement": {
+            "type": "integer",
+            "description": "**Definições:**<br />\nESCRITORIO = 1<br />\nCONTRATO = 2\n"
+          },
+          "ExpenseRuleLocal": {
+            "type": "string",
+            "description": "**Definições:**<br />\nREGRAESCRITORIO = 1<br/>\nREGRAEMPRESA = 2<br/>\nREGRACLIENTE = 3<br/>\nREGRACONTRATO = 4<br/>\nREGRAPROCESSO = 5<br/>\nREGRAVAZIA = 6\n"
+          },
+          "Status": {
+            "type": "integer",
+            "description": "**Definições:**<br/>\nATIVO = 1<br/>\nENCERRADO = 3\n"
+          }
+        }
+      },
       "LegalServiceAgreementEntityWrite": {
         "title": "Legal service agreement to create",
         "type": "object",
@@ -3084,47 +3226,32 @@
           },
           "Name": {
             "type": "string",
-            "description": "**Legal service agreement's title**",
-            "example": "Example name"
+            "description": "Legal service agreement's title"
           },
           "Summary": {
-            "type": "string <nullable>",
-            "description": "**Legal service agreement's summary**",
-            "example": "Example summary"
+            "type": "string",
+            "description": "Legal service agreement's summary"
           },
           "StartDate": {
             "type": "string",
             "format": "datetime",
-            "description": "**Legal service agreement's start date**",
-            "example": "2025-01-01T12:00:00.000Z"
+            "description": "Legal service agreement's start date"
           },
           "ForecastedEndDate": {
-            "type": "string <nullable>",
+            "type": "string",
             "format": "datetime",
-            "description": "**Legal service agreement's forecasted end date**",
-            "example": "2025-01-25T12:00:00.000Z"
+            "description": "Legal service agreement's forecasted end date"
           },
           "DueDate": {
-            "type": "string <nullable>",
+            "type": "string",
             "format": "datetime",
-            "description": "**Legal service agreement's due date**",
-            "example": "2025-01-30T12:00:00.000Z"
+            "description": "Legal service agreement's due date"
           },
           "IsSameReviewerAttorneyFeesAndExpenses": {
             "type": "boolean"
           },
           "IsSamePayerAttorneyFeesAndExpenses": {
             "type": "boolean"
-          },
-          "KilometersReimbursement": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Valores permitidos:**<br/>\n1<br />\n2\n\n**Definições:**<br />\nEscritorio = 1<br />\nContrato = 2\n"
-          },
-          "ExpenseRuleLocal": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n4<br/>\n5<br/>\n6\n\n**Definições:**<br />\nRegraEscritorio = 1<br/>\nRegraEmpresa = 2<br/>\nRegraCliente = 3<br/>\nRegraContrato = 4<br/>\nRegraProcesso = 5<br/>\nRegraVazia = 6\n"
           },
           "BillingCompanyId": {
             "type": "string",
@@ -3134,20 +3261,16 @@
             "type": "string",
             "format": "uuid"
           },
-          "BillingRule": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3\n\n**Definições:**<br/>\nCliente = 1<br/>\nContrato = 2<br/>\nProcesso = 3\n"
+          "Number": {
+            "type": "integer"
           },
-          "BillingRuleExpense": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n\n**Definições:**<br/>\nCliente = 1<br/>\nContrato = 2<br/>\nProcesso = 3\n"
+          "KilometersReimbursement": {
+            "type": "string",
+            "description": "ESCRITORIO<br/>\nCONTRATO\n\n**Definições:**<br />\nESCRITORIO = 1<br />\nCONTRATO = 2\n"
           },
-          "AllocationMethod": {
-            "type": "integer <nullable>",
-            "example": 1,
-            "description": "**Valores permitidos:**<br />\n1<br/>\n2<br/>\n3<br/>\n\n**Definições:**<br/>\nFixo = 1<br />\nOrigemDoCaso = 2<br />\nAreaDoProfissional = 3\n"
+          "ExpenseRuleLocal": {
+            "type": "string",
+            "description": "**Valores permitidos:**<br/>\n1<br/>\n2<br/>\n3<br/>\n4<br/>\n5<br/>\n6\n\n**Definições:**<br />\nREGRAESCRITORIO = 1<br/>\nREGRAEMPRESA = 2<br/>\nREGRACLIENTE = 3<br/>\nREGRACONTRATO = 4<br/>\nREGRAPROCESSO = 5<br/>\nREGRAVAZIA = 6\n"
           }
         },
         "required": [
@@ -3159,9 +3282,7 @@
           "KilometersReimbursement",
           "ExpenseRuleLocal",
           "BillingCompanyId",
-          "OwnerId",
-          "BillingRule",
-          "BillingRuleExpense"
+          "OwnerId"
         ]
       }
     }
