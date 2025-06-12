@@ -355,7 +355,7 @@ const BorderedLink = ({ text, link }) => {
         marginTop: 10
       }}
     >
-      <Col span={22} offset={1}>
+      <Col span={21} offset={1}>
 
         <a
           href={link}
