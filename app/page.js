@@ -13,7 +13,8 @@ import {
   BookOutlined,
   CalendarOutlined,
   GlobalOutlined,
-  ProfileOutlined
+  ProfileOutlined,
+  RightOutlined
 } from '@ant-design/icons'
 
 const { Search } = Input;
@@ -345,23 +346,29 @@ const HeaderAPI = ({ title, icon, image }) => {
 
 const BorderedLink = ({ text, link }) => {
   return (
-    <div
+    <Row
       style={{
+        width: '100%',
         border: "0.5px solid lightgrey",
         borderRadius: 8,
         padding: 10,
         marginTop: 10
       }}
     >
-      <a
-        href={link}
-        target='_blank'
-      >
-        <div style={{ textAlign: 'left' }}>
-          {text}
-        </div>
-      </a>
+      <Col span={22} offset={1}>
 
-    </div>
+        <a
+          href={link}
+          target='_blank'
+        >
+          <div style={{ textAlign: 'left', color: 'black' }}>
+            {text}
+          </div>
+        </a>
+      </Col>
+
+      <RightOutlined style={{ fontSize: 18, color: 'grey' }} />
+
+    </Row>
   )
 }
