@@ -280,6 +280,67 @@
           }
         }
       }
+    },
+    "/subjectWithTags": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "/subjectWithTags",
+        "description": "**Fetch subjectTags with respective tags by filter type**<br />\n",
+        "operationId": "subjectWithTags-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "filterType",
+            "in": "query",
+            "required": true,
+            "description": "**Group's type**<br />\n**Valid values:**<br/>\n1<br/>\n2<br/>\n3<br/>\n\n**Definitions:**<br/>\nINSTANCIA = 1<br/>\nESTADO_COMARCA = 2<br/>\nRITO = 3\n",
+            "example": 2,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TagGroup"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -445,45 +506,12 @@
           }
         }
       },
-      "TagGroup": {
-        "title": "Tag group",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "description": "**Item's identifier**",
-            "type": "integer"
-          },
-          "UUID": {
-            "description": "**Unique identifier of tag's group**",
-            "type": "string",
-            "format": "uuid"
-          },
-          "Label": {
-            "type": "string",
-            "description": "**The name of tag's group**"
-          },
-          "Active": {
-            "type": "boolean",
-            "description": "**Indicate if it is active**"
-          },
-          "Status": {
-            "type": "integer",
-            "description": "**Tag's status**"
-          },
-          "ExternalId": {
-            "description": "**Item's external identifier**",
-            "type": "string"
-          },
-          "Meta": {
-            "$ref": "#/components/schemas/Meta"
-          }
-        }
-      },
       "Tag": {
         "title": "Tag",
         "type": "object",
         "properties": {
           "Id": {
+            "example": -2147483648,
             "description": "**Item's identifier**",
             "type": "integer"
           },
@@ -494,19 +522,71 @@
           },
           "Tag": {
             "type": "string",
+            "example": "Tag name",
             "description": "**Tag's name**"
           },
           "Active": {
             "type": "boolean",
+            "example": true,
             "description": "**Indicate if it is active**"
           },
           "Status": {
             "type": "integer",
+            "example": 1,
             "description": "**Tag's status**"
           },
           "ExternalId": {
             "description": "**Item's external identifier**",
-            "type": "string"
+            "type": "string <nullable>"
+          },
+          "Meta": {
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "TagGroup": {
+        "title": "Tag group",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "example": -2147483648,
+            "description": "**Item's identifier**",
+            "type": "integer"
+          },
+          "UUID": {
+            "description": "**Unique identifier of tag's group**",
+            "type": "string",
+            "format": "uuid"
+          },
+          "Label": {
+            "type": "string",
+            "example": "SP",
+            "description": "**The name of tag's group**"
+          },
+          "Active": {
+            "type": "boolean",
+            "example": true,
+            "description": "**Indicate if it is active**"
+          },
+          "Status": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Tag's status**"
+          },
+          "Type": {
+            "type": "string",
+            "example": "ESTADO_COMARCA",
+            "description": "**Indicate the group's type**<br/>\n**Possible values:**<br/>\nINSTANCIA = 1<br/>\nESTADO_COMARCA = 2<br/>\nRITO = 3\n"
+          },
+          "Tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            }
+          },
+          "ExternalId": {
+            "description": "**Item's external identifier**",
+            "type": "string <nullable>"
           },
           "Meta": {
             "$ref": "#/components/schemas/Meta"

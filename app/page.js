@@ -6,9 +6,9 @@ import Image from 'next/image'
 
 import {
   AudioOutlined,
-  FacebookOutlined,
-  LinkedinOutlined,
-  InstagramOutlined,
+  FacebookFilled,
+  LinkedinFilled,
+  InstagramFilled,
   ApiOutlined,
   BookOutlined,
   CalendarOutlined,
@@ -61,17 +61,17 @@ export default function Home() {
 
         <Col span={5} style={{ marginTop: 30 }} offset={3}>
 
-          <FacebookOutlined
+          <FacebookFilled
             onClick={() => { }}
             style={{ fontSize: 26, color: '#1677FF' }}
           />
 
-          <LinkedinOutlined
+          <LinkedinFilled
             onClick={() => { }}
             style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
           />
 
-          <InstagramOutlined
+          <InstagramFilled
             onClick={() => { }}
             style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
           />
