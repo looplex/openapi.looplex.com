@@ -3,23 +3,38 @@ type: object
 properties:
   Type:
     type: string
-    example: "Judicial Estadual"
+    example: "STATE_COURT"
     description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       **Valores permitidos:**<br />
-      Administrativo<br />
-      Consultivo<br />
-      Judicial Estadual<br />
-      Judicial Federal<br />
-      Judicial Trabalhista<br />
-      Militar Estadual<br />
-      Eleitoral<br />
-      Militar União<br />
-      Contrato<br />
-      Due Diligence e Análise Documental<br />
-      Cobrança Extrajudicial<br />
-      Societário<br />
-      Arbitragem
+      ADMINISTRATIVE_SUIT<br />
+      ADVISORY<br />
+      STATE_COURT<br />
+      FEDERAL_COURT<br />
+      LABOR_COURT<br />
+      MILITARY_STATE_COURT<br />
+      ELECTORAL_COURT<br />
+      MILITARY_FEDERAL_COURT<br />
+      CONTRACT<br />
+      DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT<br />
+      OUT_OF_COURT_DEBT_COLLECTION<br />
+      CORPORATE_TRANSACTIONS<br />
+      ARBITRATION
+      
+      **Definições:**<br/>
+      ADMINISTRATIVE_SUIT = (1: Administrativo)<br />
+      ADVISORY = (2: Consultivo)<br />
+      STATE_COURT = (3: Judicial Estadual)<br />
+      FEDERAL_COURT = (4: Judicial Federal)<br />
+      LABOR_COURT = (5: Judicial Trabalhista)<br />
+      MILITARY_STATE_COURT = (7: Militar Estadual)<br />
+      ELECTORAL_COURT = (8: Eleitoral)<br />
+      MILITARY_FEDERAL_COURT = (9: Militar União)<br />
+      CONTRACT = (10: Contrato)<br />
+      DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />
+      OUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />
+      CORPORATE_TRANSACTIONS = (13: Societário)<br />
+      ARBITRATION = (Arbitragem)
   SubType:
     type: string
     example: "Caso"
@@ -163,6 +178,20 @@ properties:
       **Escritório Responsável / Correspondente**<br />
       Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
     $ref: SimpleEntityWrite.yaml
+  Entries:
+    description: |
+      **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
+    type: array
+    items:
+      $ref: EntryEntityWrite.yaml
+  Participants:
+    type: array
+    items:
+      oneOf:
+        - $ref: ParticipantNaturalPerson.yaml
+        - $ref: ParticipantLegalPerson.yaml
+    description: |
+      **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
   GlobalValues:
     description: |
       **Valores globais do caso, definidos por polo**

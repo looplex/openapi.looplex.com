@@ -90,7 +90,7 @@ properties:
       **RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />
       **SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura
   Priority:
-    type: string
+    type: string <nullable>
     example: "LOW"
     description: |
       **Prioridade**<br />

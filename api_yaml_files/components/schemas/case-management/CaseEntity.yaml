@@ -173,7 +173,7 @@ allOf:
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
         $ref: SimpleEntity.yaml
       Participants:
-        desription: |
+        description: |
           **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
         oneOf:
           - $ref: ParticipantNaturalPerson.yaml
@@ -187,7 +187,7 @@ allOf:
       # Claims: # TODO
       # OppositionToClaims: # TODO
       # ProceduralObjections: # TODO
-      Entry:
+      Entries:
         description: |
           **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
         type: array

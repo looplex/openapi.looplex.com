@@ -13,8 +13,8 @@ allOf:
           - type: null
       Gender:
         description: |
-          1: Feminino<br />
-          2: Masculino
+          Feminino<br />
+          Masculino
         oneOf:
           - type: string
           - type: null
@@ -27,11 +27,11 @@ allOf:
       MaritalStatus:
         description: |
           **Estado civil**<br />
-          1: Solteiro<br />
-          2: Casado<br />
-          3: Viúvo<br />
-          4: Separado<br />
-          5: Divorciado
+          Solteiro<br />
+          Casado<br />
+          Viúvo<br />
+          Separado<br />
+          Divorciado
         oneOf:
           - type: string
           - type: null

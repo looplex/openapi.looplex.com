@@ -1,4 +1,4 @@
-title: CaseClient
+title: Cliente do caso
 type: object
 properties: 
   Id:

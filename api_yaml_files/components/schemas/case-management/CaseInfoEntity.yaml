@@ -6,7 +6,7 @@ allOf:
     properties:
       Status:
         type: string
-        example: "Ativo"
+        example: "ACTIVE"
         description: |
           **Indicação do status do caso**<br />
           **Definições:**<br/>
@@ -16,23 +16,23 @@ allOf:
           DELETED = (99: Excluído)
       Type:
         type: string
-        example: "Judicial Estadual"
-        description: | 
+        example: "STATE_COURT"
+        description: |
           **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
           **Definições:**<br/>
-          1: Administrativo<br />
-          2: Consultivo<br />
-          3: Judicial Estadual<br />
-          4: Judicial Federal<br />
-          5: Judicial Trabalhista<br />
-          7: Militar Estadual<br />
-          8: Eleitoral<br />
-          9: Militar União<br />
-          10: Contrato<br />
-          11: Due Diligence e Análise Documental<br />
-          12: Cobrança Extrajudicial<br />
-          13: Societário<br />
-          Arbitragem
+          ADMINISTRATIVE_SUIT = (1: Administrativo)<br />
+          ADVISORY = (2: Consultivo)<br />
+          STATE_COURT = (3: Judicial Estadual)<br />
+          FEDERAL_COURT = (4: Judicial Federal)<br />
+          LABOR_COURT = (5: Judicial Trabalhista)<br />
+          MILITARY_STATE_COURT = (7: Militar Estadual)<br />
+          ELECTORAL_COURT = (8: Eleitoral)<br />
+          MILITARY_FEDERAL_COURT = (9: Militar União)<br />
+          CONTRACT = (10: Contrato)<br />
+          DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />
+          OUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />
+          CORPORATE_TRANSACTIONS = (13: Societário)<br />
+          ARBITRATION = (Arbitragem)
       SubType:
         type: string
         example: "Caso"
@@ -43,15 +43,13 @@ allOf:
           3: Recurso<br />
           4: Incidente
       HasAncestor:
+        type: boolean
         description: |
           **Indica se o caso possui um caso primário**<br />
-        oneOf:
-          - type: boolean
       HasDescendants:
+        type: boolean
         description: |
           **Indica se o caso possui casos filhos**<br />
-        oneOf:
-          - type: boolean
       Identities:
         description: |
           **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
@@ -62,89 +60,65 @@ allOf:
           - type: null
       Title:
         description: "**Nome Jurídico do caso**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Summary:
         description: "**Breve descrição sobre o caso**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Locale:
-        oneOf: 
-          - type: string
-          - type: null
+        type: string <nullable>
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
       CourtVenue:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
       CaseProcedure:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: "**Rito ou procedimento do caso**"
       Phase:
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
         description: | 
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
       RetentionDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
       StartDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
       FormationDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de citação**<br />
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
       ResJudicataDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de trânsito em julgado**<br />
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
       ForecastedEndDate:
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data prevista para encerramento**<br />
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
       CreatedAt:
-        oneOf: 
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
         description: |
           **Data de criação do caso**
       CreatedBy:
@@ -154,9 +128,8 @@ allOf:
           - type: null
       UpdatedAt:
         description: "**Atualizado em**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
+        format: datetime
       UpdatedBy:
         description: "**Atualizado por**"
         oneOf:
@@ -164,22 +137,18 @@ allOf:
           - type: null
       ClosedAt:
         description: "**Data de encerramento**"
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        type: string <nullable>
+        format: datetime
       ClosedBy:
         description: "**Usuário que encerrou o caso**"
         oneOf:
           - $ref: SimpleEntity.yaml
           - type: null
       Group:
+        type: string <nullable>
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-        oneOf:
-          - type: string
-          - type: null
       CaseClient:
         description: |
           **Cliente**<br />

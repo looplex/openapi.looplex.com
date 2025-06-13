@@ -1163,7 +1163,7 @@
         }
       },
       "CaseClient": {
-        "title": "CaseClient",
+        "title": "Cliente do caso",
         "type": "object",
         "properties": {
           "Id": {
@@ -1319,6 +1319,21 @@
             "type": "string",
             "format": "uuid"
           },
+          "ClientGuid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Se a parte for um cliente"
+          },
+          "EmployeeGuid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Se a parte for um funcionário"
+          },
+          "CreatedBy": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Cliente que está efetuando o cadastro"
+          },
           "Name": {
             "description": "**Participant name**<br />\n",
             "oneOf": [
@@ -1360,11 +1375,11 @@
             ]
           },
           "Nature": {
-            "description": "**Natureza**<br />\n1: Pessoa Física<br />\n2: Pessoa Jurídica\n",
+            "description": "**Natureza**<br />\nPessoa Física<br />\nPessoa Jurídica\n",
             "type": "string"
           },
           "Position": {
-            "description": "**Posição do participante**<br />\n1: Ativo<br />\n2: Passivo<br />\n3: Terceiro<br />\n4: Nenhum<br />\n5: Outro envolvido\n",
+            "description": "**Posição do participante**<br />\nAtivo<br />\nPassivo<br />\nTerceiro<br />\nNenhum<br />\nOutro envolvido\n",
             "type": "string"
           },
           "Addresses": {
@@ -1448,7 +1463,7 @@
                 ]
               },
               "Gender": {
-                "description": "1: Feminino<br />\n2: Masculino\n",
+                "description": "Feminino<br />\nMasculino\n",
                 "oneOf": [
                   {
                     "type": "string"
@@ -1470,7 +1485,7 @@
                 ]
               },
               "MaritalStatus": {
-                "description": "**Estado civil**<br />\n1: Solteiro<br />\n2: Casado<br />\n3: Viúvo<br />\n4: Separado<br />\n5: Divorciado\n",
+                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n",
                 "oneOf": [
                   {
                     "type": "string"
@@ -1751,7 +1766,7 @@
             "description": "**Status**<br />\nCANCELED<br />\nCLAIMED<br />\nCREATED<br />\nCOMPLETED<br />\nRESCHEDULED<br />\nSUSPENDED<br />\n\n**Definições:**<br />\n**CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />\n**COMPLETED (Concluída):** Tarefa realizada<br />\n**RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />\n**SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura\n"
           },
           "Priority": {
-            "type": "string",
+            "type": "string <nullable>",
             "example": "LOW",
             "description": "**Prioridade**<br />\n**Valores permitidos:**<br />\nLOW<br />\nMEDIUM<br />\nHIGH<br />\n\n**Definições:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
           },
@@ -2137,7 +2152,7 @@
                 "$ref": "#/components/schemas/SimpleEntity"
               },
               "Participants": {
-                "desription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
+                "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/ParticipantNaturalPerson"
@@ -2154,7 +2169,7 @@
                   "$ref": "#/components/schemas/GlobalValues"
                 }
               },
-              "Entry": {
+              "Entries": {
                 "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />\n",
                 "type": "array",
                 "items": {
@@ -2226,13 +2241,13 @@
             "properties": {
               "Status": {
                 "type": "string",
-                "example": "Ativo",
+                "example": "ACTIVE",
                 "description": "**Indicação do status do caso**<br />\n**Definições:**<br/>\nACTIVE = (1: Ativo)<br />\nARCHIVED = (2: Arquivado)<br />\nINACTIVE = (3: Inativo)<br />\nDELETED = (99: Excluído)\n"
               },
               "Type": {
                 "type": "string",
-                "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Definições:**<br/>\n1: Administrativo<br />\n2: Consultivo<br />\n3: Judicial Estadual<br />\n4: Judicial Federal<br />\n5: Judicial Trabalhista<br />\n7: Militar Estadual<br />\n8: Eleitoral<br />\n9: Militar União<br />\n10: Contrato<br />\n11: Due Diligence e Análise Documental<br />\n12: Cobrança Extrajudicial<br />\n13: Societário<br />\nArbitragem\n"
+                "example": "STATE_COURT",
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Definições:**<br/>\nADMINISTRATIVE_SUIT = (1: Administrativo)<br />\nADVISORY = (2: Consultivo)<br />\nSTATE_COURT = (3: Judicial Estadual)<br />\nFEDERAL_COURT = (4: Judicial Federal)<br />\nLABOR_COURT = (5: Judicial Trabalhista)<br />\nMILITARY_STATE_COURT = (7: Militar Estadual)<br />\nELECTORAL_COURT = (8: Eleitoral)<br />\nMILITARY_FEDERAL_COURT = (9: Militar União)<br />\nCONTRACT = (10: Contrato)<br />\nDUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />\nOUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />\nCORPORATE_TRANSACTIONS = (13: Societário)<br />\nARBITRATION = (Arbitragem)\n"
               },
               "SubType": {
                 "type": "string",
@@ -2240,20 +2255,12 @@
                 "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
               },
               "HasAncestor": {
-                "description": "**Indica se o caso possui um caso primário**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "boolean"
-                  }
-                ]
+                "type": "boolean",
+                "description": "**Indica se o caso possui um caso primário**<br />\n"
               },
               "HasDescendants": {
-                "description": "**Indica se o caso possui casos filhos**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "boolean"
-                  }
-                ]
+                "type": "boolean",
+                "description": "**Indica se o caso possui casos filhos**<br />\n"
               },
               "Identities": {
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
@@ -2271,140 +2278,56 @@
               },
               "Title": {
                 "description": "**Nome Jurídico do caso**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "Summary": {
                 "description": "**Breve descrição sobre o caso**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>"
               },
               "Locale": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "CourtVenue": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
               "CaseProcedure": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Rito ou procedimento do caso**"
               },
               "Phase": {
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
               },
               "RetentionDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
               },
               "StartDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
               },
               "FormationDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
               },
               "ResJudicataDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
               "ForecastedEndDate": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
               },
               "CreatedAt": {
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ],
+                "type": "string <nullable>",
+                "format": "datetime",
                 "description": "**Data de criação do caso**\n"
               },
               "CreatedBy": {
@@ -2420,14 +2343,8 @@
               },
               "UpdatedAt": {
                 "description": "**Atualizado em**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "format": "datetime"
               },
               "UpdatedBy": {
                 "description": "**Atualizado por**",
@@ -2442,15 +2359,8 @@
               },
               "ClosedAt": {
                 "description": "**Data de encerramento**",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "format": "datetime"
               },
               "ClosedBy": {
                 "description": "**Usuário que encerrou o caso**",
@@ -2464,15 +2374,8 @@
                 ]
               },
               "Group": {
-                "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
               },
               "CaseClient": {
                 "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
@@ -2575,6 +2478,58 @@
           }
         }
       },
+      "EntryEntityWrite": {
+        "title": "Dados de andamento para inclusão",
+        "type": "object",
+        "properties": {
+          "CaseGuid": {
+            "type": "string",
+            "format": "uuid",
+            "required": true,
+            "description": "**Case unique id**"
+          },
+          "AuthorGuid": {
+            "type": "string",
+            "format": "uuid",
+            "required": true,
+            "description": "**Entry author unique id**"
+          },
+          "Date": {
+            "type": "string",
+            "format": "datetime",
+            "required": true,
+            "example": "2025-05-21T15:00:00.000Z",
+            "description": "**Data do andamento**"
+          },
+          "Classification": {
+            "type": "string <nullable>",
+            "description": "**Classificação do andamento**"
+          },
+          "Description": {
+            "type": "string",
+            "required": true,
+            "example": "<Texto do andamento>",
+            "description": "**Texto do andamento**"
+          },
+          "IsInternal": {
+            "type": "boolean",
+            "description": "**Indica se o andamento é de uso interno**"
+          },
+          "OfficialNotice": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "ClassificationType": {
+            "type": "integer <nullable>",
+            "example": 6,
+            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
+          }
+        }
+      },
       "GlobalValuesWrite": {
         "title": "GlobalValues",
         "type": "object",
@@ -2622,8 +2577,8 @@
         "properties": {
           "Type": {
             "type": "string",
-            "example": "Judicial Estadual",
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nAdministrativo<br />\nConsultivo<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nEleitoral<br />\nMilitar União<br />\nContrato<br />\nDue Diligence e Análise Documental<br />\nCobrança Extrajudicial<br />\nSocietário<br />\nArbitragem\n"
+            "example": "STATE_COURT",
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVE_SUIT<br />\nADVISORY<br />\nSTATE_COURT<br />\nFEDERAL_COURT<br />\nLABOR_COURT<br />\nMILITARY_STATE_COURT<br />\nELECTORAL_COURT<br />\nMILITARY_FEDERAL_COURT<br />\nCONTRACT<br />\nDUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT<br />\nOUT_OF_COURT_DEBT_COLLECTION<br />\nCORPORATE_TRANSACTIONS<br />\nARBITRATION\n\n**Definições:**<br/>\nADMINISTRATIVE_SUIT = (1: Administrativo)<br />\nADVISORY = (2: Consultivo)<br />\nSTATE_COURT = (3: Judicial Estadual)<br />\nFEDERAL_COURT = (4: Judicial Federal)<br />\nLABOR_COURT = (5: Judicial Trabalhista)<br />\nMILITARY_STATE_COURT = (7: Militar Estadual)<br />\nELECTORAL_COURT = (8: Eleitoral)<br />\nMILITARY_FEDERAL_COURT = (9: Militar União)<br />\nCONTRACT = (10: Contrato)<br />\nDUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />\nOUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />\nCORPORATE_TRANSACTIONS = (13: Societário)<br />\nARBITRATION = (Arbitragem)\n"
           },
           "SubType": {
             "type": "string",
@@ -2760,6 +2715,27 @@
           "ExternalServiceProvider": {
             "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
             "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
+          "Entries": {
+            "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntryEntityWrite"
+            }
+          },
+          "Participants": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                },
+                {
+                  "$ref": "#/components/schemas/ParticipantLegalPerson"
+                }
+              ]
+            },
+            "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n"
           },
           "GlobalValues": {
             "description": "**Valores globais do caso, definidos por polo**\n",
@@ -2902,58 +2878,6 @@
         "properties": {
           "Data": {
             "$ref": "#/components/schemas/TaskContentWrite"
-          }
-        }
-      },
-      "EntryEntityWrite": {
-        "title": "Dados de andamento para inclusão",
-        "type": "object",
-        "properties": {
-          "CaseGuid": {
-            "type": "string",
-            "format": "uuid",
-            "required": true,
-            "description": "**Case unique id**"
-          },
-          "AuthorGuid": {
-            "type": "string",
-            "format": "uuid",
-            "required": true,
-            "description": "**Entry author unique id**"
-          },
-          "Date": {
-            "type": "string",
-            "format": "datetime",
-            "required": true,
-            "example": "2025-05-21T15:00:00.000Z",
-            "description": "**Data do andamento**"
-          },
-          "Classification": {
-            "type": "string <nullable>",
-            "description": "**Classificação do andamento**"
-          },
-          "Description": {
-            "type": "string",
-            "required": true,
-            "example": "<Texto do andamento>",
-            "description": "**Texto do andamento**"
-          },
-          "IsInternal": {
-            "type": "boolean",
-            "description": "**Indica se o andamento é de uso interno**"
-          },
-          "OfficialNotice": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "ClassificationType": {
-            "type": "integer <nullable>",
-            "example": 6,
-            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
           }
         }
       },

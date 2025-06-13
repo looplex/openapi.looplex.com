@@ -6,6 +6,18 @@ properties:
       **Partcipant id**<br />
     type: string
     format: uuid
+  ClientGuid: 
+    type: string
+    format: uuid
+    description: "Se a parte for um cliente"
+  EmployeeGuid: 
+    type: string
+    format: uuid
+    description: "Se a parte for um funcionário"
+  CreatedBy: 
+    type: string
+    format: uuid
+    description: "Cliente que está efetuando o cadastro"
   Name:
     description: |
       **Participant name**<br />
@@ -33,17 +45,17 @@ properties:
   Nature:
     description: |
       **Natureza**<br />
-      1: Pessoa Física<br />
-      2: Pessoa Jurídica
+      Pessoa Física<br />
+      Pessoa Jurídica
     type: string
   Position:
     description: |
       **Posição do participante**<br />
-      1: Ativo<br />
-      2: Passivo<br />
-      3: Terceiro<br />
-      4: Nenhum<br />
-      5: Outro envolvido
+      Ativo<br />
+      Passivo<br />
+      Terceiro<br />
+      Nenhum<br />
+      Outro envolvido
     type: string
   Addresses:
     description: |
