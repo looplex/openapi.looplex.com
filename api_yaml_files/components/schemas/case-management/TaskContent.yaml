@@ -71,7 +71,7 @@ properties:
     items:
       $ref: SimpleEntity.yaml
   Status:
-    type: string <nullable>
+    type: string
     example: "CREATED"
     description: |
       **Status**<br />

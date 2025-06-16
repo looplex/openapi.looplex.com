@@ -1761,7 +1761,7 @@
             }
           },
           "Status": {
-            "type": "string <nullable>",
+            "type": "string",
             "example": "CREATED",
             "description": "**Status**<br />\nCANCELED<br />\nCLAIMED<br />\nCREATED<br />\nCOMPLETED<br />\nRESCHEDULED<br />\nSUSPENDED<br />\n\n**Definições:**<br />\n**CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />\n**COMPLETED (Concluída):** Tarefa realizada<br />\n**RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />\n**SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura\n"
           },
@@ -2524,9 +2524,9 @@
             "$ref": "#/components/schemas/SimpleEntityWrite"
           },
           "ClassificationType": {
-            "type": "integer <nullable>",
-            "example": 6,
-            "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
+            "type": "string",
+            "example": "MANUAL",
+            "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
           }
         }
       },
