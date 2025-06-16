@@ -6,11 +6,6 @@ properties:
     format: uuid
     required: true
     description: "**Case unique id**"
-  AuthorGuid:
-    type: string
-    format: uuid
-    required: true
-    description: "**Entry author unique id**"
   Date:
     type: string
     format: datetime
