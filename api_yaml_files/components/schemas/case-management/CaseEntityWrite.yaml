@@ -7,34 +7,34 @@ properties:
     description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       **Valores permitidos:**<br />
-      ADMINISTRATIVE_SUIT<br />
-      ADVISORY<br />
-      STATE_COURT<br />
-      FEDERAL_COURT<br />
-      LABOR_COURT<br />
-      MILITARY_STATE_COURT<br />
-      ELECTORAL_COURT<br />
-      MILITARY_FEDERAL_COURT<br />
-      CONTRACT<br />
-      DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT<br />
-      OUT_OF_COURT_DEBT_COLLECTION<br />
-      CORPORATE_TRANSACTIONS<br />
-      ARBITRATION
-      
-      **Definições:**<br/>
-      ADMINISTRATIVE_SUIT = (1: Administrativo)<br />
-      ADVISORY = (2: Consultivo)<br />
-      STATE_COURT = (3: Judicial Estadual)<br />
-      FEDERAL_COURT = (4: Judicial Federal)<br />
-      LABOR_COURT = (5: Judicial Trabalhista)<br />
-      MILITARY_STATE_COURT = (7: Militar Estadual)<br />
-      ELECTORAL_COURT = (8: Eleitoral)<br />
-      MILITARY_FEDERAL_COURT = (9: Militar União)<br />
-      CONTRACT = (10: Contrato)<br />
-      DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />
-      OUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />
-      CORPORATE_TRANSACTIONS = (13: Societário)<br />
-      ARBITRATION = (Arbitragem)
+      Administrativo<br />
+      Consultivo<br />
+      Judicial Estadual<br />
+      Judicial Federal<br />
+      Judicial Trabalhista<br />
+      Militar Estadual<br />
+      Eleitoral<br />
+      Militar União<br />
+      Contrato<br />
+      Due Diligence e Análise Documental<br />
+      Cobrança Extrajudicial<br />
+      Societário<br />
+      Arbitragem
+
+      "**Definições:**<br/>"
+      "ADMINISTRATIVE_SUIT = (1: Administrativo)<br />"
+      "ADVISORY = (2: Consultivo)<br />"
+      "STATE_COURT = (3: Judicial Estadual)<br />"
+      "FEDERAL_COURT = (4: Judicial Federal)<br />"
+      "LABOR_COURT = (5: Judicial Trabalhista)<br />"
+      "MILITARY_STATE_COURT = (7: Militar Estadual)<br />"
+      "ELECTORAL_COURT = (8: Eleitoral)<br />"
+      "MILITARY_FEDERAL_COURT = (9: Militar União)<br />"
+      "CONTRACT = (10: Contrato)<br />"
+      "DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />"
+      "OUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />"
+      "CORPORATE_TRANSACTIONS = (13: Societário)<br />"
+      "ARBITRATION = (Arbitragem)"
   SubType:
     type: string
     example: "Caso"
