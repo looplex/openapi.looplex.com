@@ -73,8 +73,9 @@ paths:
   /clients:
     get:
       $ref: .\paths\case-management\client\public@clients-get.yaml
-    post:
-      $ref: .\paths\case-management\client\public@clients-post.yaml
+  /clients/:client_id:
+    get:
+      $ref: .\paths\case-management\client\public@clients@client_id-get.yaml
 
   # Legal service agreement
   /legalServiceAgreement:

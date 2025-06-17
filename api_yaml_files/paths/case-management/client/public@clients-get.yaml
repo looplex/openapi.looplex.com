@@ -26,6 +26,14 @@ parameters:
     example: 50
     schema:
       type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g. Name co ltda**
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"

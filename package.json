@@ -9,7 +9,7 @@
     "start": "next start",
     "log": "git log --all --graph",
     "cp": "git cherry-pick --no-commit",
-    "af": "git add -i"
+    "af": "git add -i && cz"
   },
   "dependencies": {
     "@redocly/cli": "1.14.0",

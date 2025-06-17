@@ -773,6 +773,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g. Name co ltda**\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -805,14 +814,16 @@
             "description": "Internal Server Error"
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/clients/:client_id": {
+      "get": {
         "tags": [
           "Client"
         ],
-        "summary": "/clients",
-        "description": "**Create a client**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "clients-post",
+        "summary": "/client/client_id",
+        "description": "**Retrieve a client by id**\n",
+        "operationId": "clients-client_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -822,20 +833,28 @@
           },
           {
             "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ClientEntityWrite"
-              }
+          },
+          {
+            "name": "client_id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**\n",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
             }
           }
-        },
+        ],
         "responses": {
-          "201": {
-            "description": "Created"
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientEntity"
+                }
+              }
+            }
           },
           "500": {
             "description": "Internal Server Error"
@@ -2950,7 +2969,7 @@
           },
           "Type": {
             "type": "string",
-            "description": "**The client type**<br />\n**Valores permitidos:**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n\n**Definições:**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
+            "description": "**The client type**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
             "example": "NATURAL_PERSON"
           },
           "Email": {
@@ -2966,22 +2985,6 @@
           "Comments": {
             "type": "string <nullable>",
             "description": "Comments about the client",
-            "example": null
-          },
-          "Dob": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "description": "Client's date of birth<br />\n**(serialized only when Type is NATURAL_PERSON)**\n",
-            "example": "2025-01-01T12:00:00.000Z"
-          },
-          "Gender": {
-            "type": "string <nullable>",
-            "description": "Client's gender<br />\n**(serialized only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br/>\nFEMALE<br />\nMALE\n",
-            "example": null
-          },
-          "MaritalStatus": {
-            "type": "string <nullable>",
-            "description": "Client's marital status<br />\n**(serialized only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br />\nSINGLE<br />\nMARRIED<br />\nWIDOWED<br />\nLEGALLYSEPARATED<br />\nDIVORCED\n\n**Descrição:**<br />\nSINGLE = Solteiro<br />\nMARRIED = Casado<br />\nWIDOWED = Viúvo<br />\nLEGALLYSEPARATED = Separado<br />\nDIVORCED = Divorciado\n",
             "example": null
           },
           "Identities": {
@@ -2990,75 +2993,7 @@
               "$ref": "#/components/schemas/IdentityEntity"
             }
           }
-        },
-        "required": [
-          "Name",
-          "NickName",
-          "Type"
-        ]
-      },
-      "ClientEntityWrite": {
-        "title": "Client to create",
-        "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The client's name",
-            "example": "Example name"
-          },
-          "NickName": {
-            "type": "string",
-            "description": "The client's nickname",
-            "example": "Example"
-          },
-          "Type": {
-            "type": "string",
-            "description": "**The client type**<br />\n**Valores permitidos:**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n\n**Definições:**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
-            "example": "NATURAL_PERSON"
-          },
-          "Email": {
-            "type": "string <nullable>",
-            "description": "The client's email address",
-            "example": null
-          },
-          "Website": {
-            "type": "string <nullable>",
-            "description": "The client's website page",
-            "example": null
-          },
-          "Comments": {
-            "type": "string <nullable>",
-            "description": "Comments about the client",
-            "example": null
-          },
-          "Dob": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "description": "Client's date of birth<br />\n**(used only when Type is NATURAL_PERSON)**\n",
-            "example": "2025-01-01T12:00:00.000Z"
-          },
-          "Gender": {
-            "type": "string <nullable>",
-            "description": "Client's gender<br />\n**(used only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br/>\nFEMALE<br />\nMALE\n",
-            "example": null
-          },
-          "MaritalStatus": {
-            "type": "string <nullable>",
-            "description": "Client's marital status<br />\n**(used only when Type is NATURAL_PERSON)**<br />\n**Valores permitidos:**<br />\nSINGLE<br />\nMARRIED<br />\nWIDOWED<br />\nLEGALLYSEPARATED<br />\nDIVORCED\n\n**Descrição:**<br />\nSINGLE = Solteiro<br />\nMARRIED = Casado<br />\nWIDOWED = Viúvo<br />\nLEGALLYSEPARATED = Separado<br />\nDIVORCED = Divorciado\n",
-            "example": null
-          },
-          "Identities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IdentityEntityWrite"
-            }
-          }
-        },
-        "required": [
-          "Name",
-          "NickName",
-          "Type"
-        ]
+        }
       },
       "LegalServiceAgreementEntity": {
         "title": "Legal service agreement",
