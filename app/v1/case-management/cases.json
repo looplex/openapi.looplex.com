@@ -193,6 +193,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Title_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -356,6 +365,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Title_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -513,6 +531,15 @@
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -619,6 +646,15 @@
             "example": 50,
             "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -778,7 +814,7 @@
             "name": "filter",
             "in": "query",
             "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g. Name co ltda**\n",
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Name_ _co_ _search_term_\n",
             "schema": {
               "type": "string"
             }

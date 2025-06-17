@@ -24,6 +24,15 @@ parameters:
     example: 50
     schema:
       type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _Title_ _co_ _search_term_
+    schema:
+      type: string
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses
 responses:

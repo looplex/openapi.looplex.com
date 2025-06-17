@@ -31,7 +31,8 @@ parameters:
     required: false
     description: |
       **SCIM filter to search**<br />
-      **e.g. Name co ltda**
+      **e.g:**<br />
+      _Name_ _co_ _search_term_
     schema:
       type: string
 responses:

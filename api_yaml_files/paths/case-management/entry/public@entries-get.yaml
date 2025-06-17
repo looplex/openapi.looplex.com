@@ -22,6 +22,15 @@ parameters:
       `Max of 120`
     schema:
       type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _Description_ _co_ _search_term_
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"

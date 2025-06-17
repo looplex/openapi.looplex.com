@@ -3,14 +3,14 @@ tags:
 summary: {{TITLE}}
 description: |
   {{DESCRIPTION}}<br />
-# Utilizado em endpoint query**
-# **Fetch items paginated**
+# **Retrieve a <schema_name> by id** # retrieve
+# **Fetch items paginated** # query
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../../..{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
-  # Utilizado em endpoint retrieve
+  # endpoint retrieve
   # - name: id
   #   in: path
   #   required: true
@@ -20,7 +20,7 @@ parameters:
   #     type: string
   #     format: uuid
 
-  # utilizado em endpoint query
+  # endpoint query
   # - name: startIndex
   #   in: query
   #   required: true
@@ -38,6 +38,15 @@ parameters:
   #   example: 50
   #   schema:
   #     type: integer
+  # - name: filter
+  #   in: query
+  #   required: false
+  #   description: |
+  #     **SCIM filter to search**<br />
+  #     **e.g:**<br />
+  #     _PropertyName_ _co_ _search_term_
+  #   schema:
+  #     type: string
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}
