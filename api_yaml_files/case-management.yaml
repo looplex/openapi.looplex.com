@@ -84,6 +84,11 @@ paths:
     get:
       $ref: .\paths\case-management\legal_service_agreement\public@legalServiceAgreement-get.yaml
 
+  # Participant
+  /participants:
+    post:
+      $ref: .\paths\case-management\participant\public@participants-post.yaml
+
 components:
   securitySchemes:
     api_key:

@@ -336,6 +336,12 @@
             "folder": "employee"
           },
           {
+            "option": 8,
+            "label": "Participant",
+            "detail": "Participant endpoints",
+            "folder": "participant"
+          },
+          {
             "option": -1,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",

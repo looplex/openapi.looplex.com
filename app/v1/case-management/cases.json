@@ -1004,6 +1004,51 @@
           }
         }
       }
+    },
+    "/participants": {
+      "post": {
+        "tags": [
+          "Participant"
+        ],
+        "summary": "/participants",
+        "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "participants-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ParticipantNaturalPersonWrite"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ParticipantLegalPersonWrite"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
