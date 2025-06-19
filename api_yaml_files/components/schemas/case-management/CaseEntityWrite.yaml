@@ -7,19 +7,19 @@ properties:
     description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       **Valores permitidos:**<br />
-      Administrativo<br />
-      Consultivo<br />
-      Judicial Estadual<br />
-      Judicial Federal<br />
-      Judicial Trabalhista<br />
-      Militar Estadual<br />
-      Eleitoral<br />
-      Militar União<br />
-      Contrato<br />
-      Due Diligence e Análise Documental<br />
-      Cobrança Extrajudicial<br />
-      Societário<br />
-      Arbitragem
+      ADMINISTRATIVE_SUIT<br />
+      ADVISORY<br />
+      STATE_COURT<br />
+      FEDERAL_COURT<br />
+      LABOR_COURT<br />
+      MILITARY_STATE_COURT<br />
+      ELECTORAL_COURT<br />
+      MILITARY_FEDERAL_COURT<br />
+      CONTRACT<br />
+      DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT<br />
+      OUT_OF_COURT_DEBT_COLLECTION<br />
+      CORPORATE_TRANSACTIONS<br />
+      ARBITRATION
 
       **Definições:**<br/>
       ADMINISTRATIVE_SUIT = (1: Administrativo)<br />
@@ -41,10 +41,16 @@ properties:
     description: |
       **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
       **Valores permitidos:**<br />
-      Caso<br />
-      Subcaso<br />
-      Recurso<br />
-      Incidente
+      CASE<br/>
+      SUBCASE<br/>
+      APPEAL<br/>
+      INCIDENT
+
+      **Definições:**<br/>
+      CASE = (1: Caso)<br />
+      SUBCASE = (2: Subcaso)<br />
+      APPEAL = (3: Recurso)<br />
+      INCIDENT = (4: Incidente)
   Identities:
     description: |
       **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**

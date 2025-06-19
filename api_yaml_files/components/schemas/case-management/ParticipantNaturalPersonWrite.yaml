@@ -10,8 +10,13 @@ allOf:
         format: datetime
       Gender:
         description: |
-          Feminino<br />
-          Masculino
+          **Valores permitidos:<br/>**
+          FEMALE<br/>
+          MALE
+
+          **Definições<br />**
+          FEMALE = (Feminino)<br />
+          MALE = (Masculino)
         type: string <nullable>
       Nationality:
         description: |
