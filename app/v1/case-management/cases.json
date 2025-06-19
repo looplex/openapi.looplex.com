@@ -1432,7 +1432,7 @@
           "CreatedBy": {
             "type": "string",
             "format": "uuid",
-            "description": "Cliente que está efetuando o cadastro"
+            "description": "**Cliente que está efetuando o cadastro**"
           },
           "Name": {
             "description": "**Participant name**<br />\n",
@@ -2631,7 +2631,7 @@
           "CreatedBy": {
             "type": "string",
             "format": "uuid",
-            "description": "Cliente que está efetuando o cadastro"
+            "description": "**Cliente que está efetuando o cadastro**"
           },
           "Name": {
             "type": "string",
