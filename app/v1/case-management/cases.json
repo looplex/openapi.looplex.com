@@ -2793,12 +2793,12 @@
         "properties": {
           "Type": {
             "type": "string",
-            "example": "Judicial Estadual",
+            "example": "JUDICIAL_ESTADUAL",
             "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n\n**Definições:**<br/>\nADMINISTRATIVO = (1: Administrativo)<br />\nCONSULTIVO = (2: Consultivo)<br />\nJUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />\nJUDICIAL_FEDERAL = (4: Judicial Federal)<br />\nJUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />\nMILITAR_ESTADUAL = (7: Militar Estadual)<br />\nELEITORAL = (8: Eleitoral)<br />\nMILITAR_UNIAO = (9: Militar União)<br />\nCONTRATO = (10: Contrato)<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />\nCOBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />\nSOCIETARIO = (13: Societário)<br />\nARBITRAGEM = (Arbitragem)\n"
           },
           "SubType": {
             "type": "string",
-            "example": "Caso",
+            "example": "CASO",
             "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n\n**Definições:**<br/>\nCASO = (1: Caso)<br />\nSUBCASO = (2: Subcaso)<br />\nRECURSO = (3: Recurso)<br />\nINCIDENTE = (4: Incidente)\n"
           },
           "Identities": {
