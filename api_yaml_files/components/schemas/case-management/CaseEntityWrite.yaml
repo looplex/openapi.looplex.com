@@ -147,6 +147,10 @@ properties:
     type: array
     items:
       type: string
+  CustomFields:
+    type: string
+    example: "{}"
+    description: "**Case's custom fields**"
   CaseClient:
     $ref: SimpleEntityWrite.yaml
     description: |

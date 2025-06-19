@@ -61,6 +61,10 @@ properties:
     items:
       $ref: IdentityEntityWrite.yaml
     description: "**Identidades da parte**"
+  CustomFields:
+    type: string
+    example: "{}"
+    description: "**Participant's custom fields**"
   # PhoneNumbers:
   #   description: "**Telefones**"
   #   type: array

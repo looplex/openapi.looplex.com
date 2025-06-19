@@ -2632,6 +2632,11 @@
               "$ref": "#/components/schemas/IdentityEntityWrite"
             },
             "description": "**Identidades da parte**"
+          },
+          "CustomFields": {
+            "type": "string",
+            "example": "{}",
+            "description": "**Participant's custom fields**"
           }
         }
       },
@@ -2849,6 +2854,11 @@
             "items": {
               "type": "string"
             }
+          },
+          "CustomFields": {
+            "type": "string",
+            "example": "{}",
+            "description": "**Case's custom fields**"
           },
           "CaseClient": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
