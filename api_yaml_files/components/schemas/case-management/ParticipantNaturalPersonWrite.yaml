@@ -1,29 +1,22 @@
 title: Participante Pessoa Física
 type: object
 allOf:
-  - $ref: Participant.yaml
+  - $ref: ParticipantWrite.yaml
   - type: object
     properties:
       Dob:
-        description: |
-          **Data de Nascimento**<br />
-        oneOf:
-          - type: string
-            format: datetime
-          - type: null
+        description: "**Data de Nascimento**"
+        type: string <nullable>
+        format: datetime
       Gender:
         description: |
           Feminino<br />
           Masculino
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Nationality:
         description: |
           **Nacionalidade**<br />
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       MaritalStatus:
         description: |
           **Estado civil**<br />
@@ -32,14 +25,10 @@ allOf:
           Viúvo<br />
           Separado<br />
           Divorciado
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Occupation:
         description: "**Profissão**"
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>
       Role:
         description: |
           **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />
@@ -50,6 +39,4 @@ allOf:
           PERITO<br />
           JUIZ<br />
           TESTEMUNHA
-        oneOf:
-          - type: string
-          - type: null
+        type: string <nullable>

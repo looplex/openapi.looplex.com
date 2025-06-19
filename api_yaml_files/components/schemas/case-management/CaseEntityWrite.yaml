@@ -3,7 +3,7 @@ type: object
 properties:
   Type:
     type: string
-    example: "STATE_COURT"
+    example: "Judicial Estadual"
     description: |
       **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
       **Valores permitidos:**<br />
@@ -62,10 +62,6 @@ properties:
     description: "**Breve descrição sobre o caso**"
     type: string <nullable>
     example: "Descrição do caso"
-  Folder:
-    type: string <nullable>
-    format: uuid
-    description: "**Folder identifier**"
   ParentCase:
     type: string <nullable>
     format: uuid
@@ -95,7 +91,7 @@ properties:
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
   Nature:
     description: "**Indica os assuntos tratados no caso**"
-    example: ["Natureza"]
+    example: []
     type: array
     items:
       type: string
@@ -139,7 +135,7 @@ properties:
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
   Group:
     type: string
-    example: "Área"
+    example: "nome_da_area"
     description: |
       **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
@@ -147,7 +143,7 @@ properties:
     description: |
       **Produto**<br />
       Produto ou serviço do cliente que está relacionado ao caso
-    example: ["Produto"]
+    example: []
     type: array
     items:
       type: string
@@ -188,8 +184,8 @@ properties:
     type: array
     items:
       oneOf:
-        - $ref: ParticipantNaturalPerson.yaml
-        - $ref: ParticipantLegalPerson.yaml
+        - $ref: ParticipantNaturalPersonWrite.yaml
+        - $ref: ParticipantLegalPersonWrite.yaml
     description: |
       **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
   GlobalValues:
@@ -200,20 +196,6 @@ properties:
       $ref: GlobalValuesWrite.yaml
     example:
       - AgainstPosition: "Ativo"
-        Perspective: "Êxito"
-        Risk: "Provável"
-        Currency: "BRL"
-        CaseDeclaredValue: 1
-        CaseForeseenValue: 1
-        CaseContingencyValue: 1
-      - AgainstPosition: "Passivo"
-        Perspective: "Êxito"
-        Risk: "Provável"
-        Currency: "BRL"
-        CaseDeclaredValue: 1
-        CaseForeseenValue: 1
-        CaseContingencyValue: 1
-      - AgainstPosition: "Terceiro"
         Perspective: "Êxito"
         Risk: "Provável"
         Currency: "BRL"

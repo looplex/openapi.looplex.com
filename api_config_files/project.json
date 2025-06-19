@@ -330,6 +330,12 @@
             "folder": "legal_service_agreement"
           },
           {
+            "option": 7,
+            "label": "Employee",
+            "detail": "Employee endpoints",
+            "folder": "employee"
+          },
+          {
             "option": -1,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",

@@ -1496,7 +1496,7 @@
         }
       },
       "ParticipantNaturalPerson": {
-        "title": "ParticipantNaturalPerson",
+        "title": "Participante Pessoa Física",
         "type": "object",
         "allOf": [
           {
@@ -1577,7 +1577,7 @@
         ]
       },
       "ParticipantLegalPerson": {
-        "title": "ParticipantLegalPerson",
+        "title": "Participante Pessoa Jurídica",
         "type": "object",
         "allOf": [
           {
@@ -2513,7 +2513,7 @@
           "IdentityProviderType": {
             "type": "string",
             "example": "CPF",
-            "description": "**The identity provider**<br />\n**Alguns dos valores permitidos:<br />**\n- RG<br />\n- CPF<br  />\n- CNPJ<br />\n- CNJ<br />\n- Inscrição municipal<br />\n- Inscrição estadual\n"
+            "description": "**The identity provider**<br />\n**Alguns dos valores permitidos:<br />**\n- RG<br />\n- CPF<br  />\n- CNPJ<br />\n- CNJ<br />\n- OAB<br/>\n- Inscrição municipal<br />\n- Inscrição estadual\n"
           },
           "Value": {
             "type": "string",
@@ -2579,6 +2579,123 @@
           }
         }
       },
+      "ParticipantWrite": {
+        "title": "Participante",
+        "type": "object",
+        "properties": {
+          "CreatedBy": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Cliente que está efetuando o cadastro"
+          },
+          "Name": {
+            "type": "string",
+            "description": "**Participant name**"
+          },
+          "Nickname": {
+            "type": "string <nullable>",
+            "description": "**Apelido**"
+          },
+          "IsMainParty": {
+            "type": "bool",
+            "example": false,
+            "description": "**Indica se é a parte principal**"
+          },
+          "Represents": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "**UUID do participante que está sendo representado**"
+          },
+          "Nature": {
+            "type": "string",
+            "example": "NATURAL_PERSON",
+            "description": "**Natureza**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+          },
+          "Position": {
+            "type": "string",
+            "example": "OTHER",
+            "description": "**Posição do participante**<br />\n**Valores permitidos:<br/>**\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD<br/>\nNEITHER<br/>\nOTHER<br/>\n\n**Definições:<br/>**\nACTIVE = (Ativo)<br />\nPASSIVE = (Passivo)<br />\nTHIRD = (Terceiro)<br />\nNEITHER = (Nenhum)<br />\nOTHER = (Outro envolvido)\n"
+          },
+          "Emails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailEntity"
+            },
+            "description": "**Emails da parte**"
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntityWrite"
+            },
+            "description": "**Identidades da parte**"
+          }
+        }
+      },
+      "ParticipantNaturalPersonWrite": {
+        "title": "Participante Pessoa Física",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParticipantWrite"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Dob": {
+                "description": "**Data de Nascimento**",
+                "type": "string <nullable>",
+                "format": "datetime"
+              },
+              "Gender": {
+                "description": "Feminino<br />\nMasculino\n",
+                "type": "string <nullable>"
+              },
+              "Nationality": {
+                "description": "**Nacionalidade**<br />\n",
+                "type": "string <nullable>"
+              },
+              "MaritalStatus": {
+                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n",
+                "type": "string <nullable>"
+              },
+              "Occupation": {
+                "description": "**Profissão**",
+                "type": "string <nullable>"
+              },
+              "Role": {
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
+                "type": "string <nullable>"
+              }
+            }
+          }
+        ]
+      },
+      "ParticipantLegalPersonWrite": {
+        "title": "Participante Pessoa Jurídica",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParticipantWrite"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "BusinessStructure": {
+                "type": "string <nullable>",
+                "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
+              },
+              "Role": {
+                "type": "string <nullable>",
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAutor<br />\nRéu<br />\nAdvogado<br />\nPerito<br />\nJuiz<br />\nTestemunha\n"
+              }
+            }
+          }
+        ]
+      },
       "GlobalValuesWrite": {
         "title": "GlobalValues",
         "type": "object",
@@ -2626,7 +2743,7 @@
         "properties": {
           "Type": {
             "type": "string",
-            "example": "STATE_COURT",
+            "example": "Judicial Estadual",
             "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nAdministrativo<br />\nConsultivo<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nEleitoral<br />\nMilitar União<br />\nContrato<br />\nDue Diligence e Análise Documental<br />\nCobrança Extrajudicial<br />\nSocietário<br />\nArbitragem\n\n**Definições:**<br/>\nADMINISTRATIVE_SUIT = (1: Administrativo)<br />\nADVISORY = (2: Consultivo)<br />\nSTATE_COURT = (3: Judicial Estadual)<br />\nFEDERAL_COURT = (4: Judicial Federal)<br />\nLABOR_COURT = (5: Judicial Trabalhista)<br />\nMILITARY_STATE_COURT = (7: Militar Estadual)<br />\nELECTORAL_COURT = (8: Eleitoral)<br />\nMILITARY_FEDERAL_COURT = (9: Militar União)<br />\nCONTRACT = (10: Contrato)<br />\nDUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />\nOUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />\nCORPORATE_TRANSACTIONS = (13: Societário)<br />\nARBITRATION = (Arbitragem)\n"
           },
           "SubType": {
@@ -2657,11 +2774,6 @@
             "type": "string <nullable>",
             "example": "Descrição do caso"
           },
-          "Folder": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**Folder identifier**"
-          },
           "ParentCase": {
             "type": "string <nullable>",
             "format": "uuid",
@@ -2689,9 +2801,7 @@
           },
           "Nature": {
             "description": "**Indica os assuntos tratados no caso**",
-            "example": [
-              "Natureza"
-            ],
+            "example": [],
             "type": "array",
             "items": {
               "type": "string"
@@ -2729,14 +2839,12 @@
           },
           "Group": {
             "type": "string",
-            "example": "Área",
+            "example": "nome_da_area",
             "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
           },
           "Product": {
             "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
-            "example": [
-              "Produto"
-            ],
+            "example": [],
             "type": "array",
             "items": {
               "type": "string"
@@ -2777,10 +2885,10 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                  "$ref": "#/components/schemas/ParticipantNaturalPersonWrite"
                 },
                 {
-                  "$ref": "#/components/schemas/ParticipantLegalPerson"
+                  "$ref": "#/components/schemas/ParticipantLegalPersonWrite"
                 }
               ]
             },
@@ -2795,24 +2903,6 @@
             "example": [
               {
                 "AgainstPosition": "Ativo",
-                "Perspective": "Êxito",
-                "Risk": "Provável",
-                "Currency": "BRL",
-                "CaseDeclaredValue": 1,
-                "CaseForeseenValue": 1,
-                "CaseContingencyValue": 1
-              },
-              {
-                "AgainstPosition": "Passivo",
-                "Perspective": "Êxito",
-                "Risk": "Provável",
-                "Currency": "BRL",
-                "CaseDeclaredValue": 1,
-                "CaseForeseenValue": 1,
-                "CaseContingencyValue": 1
-              },
-              {
-                "AgainstPosition": "Terceiro",
                 "Perspective": "Êxito",
                 "Risk": "Provável",
                 "Currency": "BRL",
