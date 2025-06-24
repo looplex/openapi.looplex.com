@@ -1250,7 +1250,7 @@
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "Guid": {
             "type": "string",
             "format": "uuid",
             "description": "**The object unique identifier**"
@@ -2571,7 +2571,7 @@
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "Guid": {
             "type": "string",
             "format": "uuid",
             "description": "**The object unique identifier**"
@@ -2621,6 +2621,11 @@
             "type": "string",
             "example": "MANUAL",
             "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
+          },
+          "CustomFields": {
+            "type": "string",
+            "example": "{}",
+            "description": "**Entry's custom fields**"
           }
         }
       },
@@ -2629,9 +2634,8 @@
         "type": "object",
         "properties": {
           "CreatedBy": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Cliente que está efetuando o cadastro**"
+            "description": "**Cliente que está efetuando o cadastro**",
+            "$ref": "#/components/schemas/SimpleEntityWrite"
           },
           "Name": {
             "type": "string",

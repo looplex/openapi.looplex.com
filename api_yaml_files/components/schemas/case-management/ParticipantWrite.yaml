@@ -2,9 +2,8 @@ title: Participante
 type: object
 properties: 
   CreatedBy:
-    type: string
-    format: uuid
     description: "**Cliente que está efetuando o cadastro**"
+    $ref: SimpleEntityWrite.yaml
   Name:
     type: string
     description: "**Participant name**"

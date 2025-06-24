@@ -41,3 +41,7 @@ properties:
       EMAIL<br/>
       AUTOMATIC<br/>
       MANUAL
+  CustomFields:
+    type: string
+    example: "{}"
+    description: "**Entry's custom fields**"
