@@ -1049,6 +1049,122 @@
           }
         }
       }
+    },
+    "/natures": {
+      "get": {
+        "tags": [
+          "Nature"
+        ],
+        "summary": "/natures",
+        "description": "**Fetch items paginated**\n",
+        "operationId": "api-natures-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/NatureEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Nature"
+        ],
+        "summary": "/natures",
+        "description": "**Create nature**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "natures-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NatureEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3321,6 +3437,47 @@
           "ExpenseRuleLocal",
           "BillingCompanyId",
           "OwnerId"
+        ]
+      },
+      "NatureEntity": {
+        "title": "Natureza",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          }
+        ],
+        "properties": {
+          "Nature": {
+            "type": "string",
+            "description": "**The nature name**",
+            "example": "Nature name"
+          },
+          "Group": {
+            "type": "string",
+            "example": "PROCESSOS_JUDICIAIS_ESTADUAL",
+            "description": "**The case's group**<br/>\n**Definições:**<br/>\nPROCESSOS_ADMINISTRATIVOS = 1<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL = 2<br/>\nPROCESSOS_JUDICIAIS_FEDERAL = 3<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA = 4<br/>\nPROCESSOS_CONSULTIVO = 5<br/>\nPROCESSOS_ELEITORAL = 6<br/>\nPROCESSOS_MILITAR_ESTADUAL = 7<br/>\nPROCESSOS_MILITAR_UNIAO = 8<br/>\n"
+          }
+        }
+      },
+      "NatureEntityWrite": {
+        "title": "Natureza",
+        "type": "object",
+        "properties": {
+          "Nature": {
+            "type": "string",
+            "description": "**The nature name**",
+            "example": "Nature name"
+          },
+          "Group": {
+            "type": "string",
+            "example": "PROCESSOS_JUDICIAIS_ESTADUAL",
+            "description": "**The case's group**<br/>\n**Valores permitidos:**<br/>\nPROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO<br/>\n"
+          }
+        },
+        "required": [
+          "Nature",
+          "Group"
         ]
       }
     }

@@ -89,6 +89,13 @@ paths:
     post:
       $ref: .\paths\case-management\participant\public@participants-post.yaml
 
+  # Natures
+  /natures:
+    get:
+      $ref: .\paths\case-management\nature\public@api@natures-get.yaml
+    post:
+      $ref: .\paths\case-management\nature\public@natures-post.yaml
+
 components:
   securitySchemes:
     api_key:

@@ -1,0 +1,24 @@
+title: Natureza
+type: object
+properties:
+  Nature:
+    type: string
+    description: "**The nature name**"
+    example: "Nature name"
+  Group:
+    type: string
+    example: "PROCESSOS_JUDICIAIS_ESTADUAL"
+    description: |
+      **The case's group**<br/>
+      **Valores permitidos:**<br/>
+      PROCESSOS_ADMINISTRATIVOS<br/>
+      PROCESSOS_JUDICIAIS_ESTADUAL<br/>
+      PROCESSOS_JUDICIAIS_FEDERAL<br/>
+      PROCESSOS_JUDICIAIS_TRABALHISTA<br/>
+      PROCESSOS_CONSULTIVO<br/>
+      PROCESSOS_ELEITORAL<br/>
+      PROCESSOS_MILITAR_ESTADUAL<br/>
+      PROCESSOS_MILITAR_UNIAO<br/>
+required:
+  - Nature
+  - Group
