@@ -95,6 +95,9 @@ paths:
       $ref: .\paths\case-management\nature\public@api@natures-get.yaml
     post:
       $ref: .\paths\case-management\nature\public@natures-post.yaml
+  /natures/nature:id:
+    get:
+      $ref: .\paths\case-management\nature\public@natures@nature_id-get.yaml
 
 components:
   securitySchemes:

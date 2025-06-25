@@ -1165,6 +1165,52 @@
           }
         }
       }
+    },
+    "/natures/nature:id": {
+      "get": {
+        "tags": [
+          "Nature"
+        ],
+        "summary": "/natures/:nature_id",
+        "description": "**Retrieve a nature by id**\n",
+        "operationId": "natures-nature_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "nature_id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**\n",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NatureEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
