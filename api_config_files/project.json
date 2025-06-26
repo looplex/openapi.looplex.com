@@ -343,9 +343,9 @@
           },
           {
             "option": 9,
-            "label": "Nature",
-            "detail": "Nature endpoints",
-            "folder": "nature"
+            "label": "Legal category",
+            "detail": "Legal category endpoints",
+            "folder": "legal_category"
           },
           {
             "option": -1,

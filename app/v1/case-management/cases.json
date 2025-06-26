@@ -1050,14 +1050,14 @@
         }
       }
     },
-    "/natures": {
+    "/LegalCategories": {
       "get": {
         "tags": [
-          "Nature"
+          "Legal category"
         ],
-        "summary": "/natures",
+        "summary": "/legalCategories",
         "description": "**Fetch items paginated**\n",
-        "operationId": "api-natures-get",
+        "operationId": "legalCategories-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1114,7 +1114,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/NatureEntity"
+                            "$ref": "#/components/schemas/LegalCategoryEntity"
                           }
                         }
                       }
@@ -1131,11 +1131,11 @@
       },
       "post": {
         "tags": [
-          "Nature"
+          "Legal category"
         ],
-        "summary": "/natures",
-        "description": "**Create nature**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "natures-post",
+        "summary": "/legalCategories",
+        "description": "**Create legal category**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "legalCategories-post",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1151,7 +1151,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NatureEntityWrite"
+                "$ref": "#/components/schemas/LegalCategoryEntityWrite"
               }
             }
           }
@@ -1166,14 +1166,14 @@
         }
       }
     },
-    "/natures/nature:id": {
+    "/LegalCategories/legalCategory_id": {
       "get": {
         "tags": [
-          "Nature"
+          "Legal category"
         ],
-        "summary": "/natures/:nature_id",
-        "description": "**Retrieve a nature by id**\n",
-        "operationId": "natures-nature_id-get",
+        "summary": "/legalCategories/:legalCategory_id",
+        "description": "**Retrieve a legal category by id**\n",
+        "operationId": "legalCategories-legalCategory_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1185,7 +1185,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "nature_id",
+            "name": "legalCategory_id",
             "in": "path",
             "required": true,
             "description": "**The item's unique identifier**\n",
@@ -1201,7 +1201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NatureEntity"
+                  "$ref": "#/components/schemas/LegalCategoryEntity"
                 }
               }
             }
@@ -3485,8 +3485,8 @@
           "OwnerId"
         ]
       },
-      "NatureEntity": {
-        "title": "Natureza",
+      "LegalCategoryEntity": {
+        "title": "Legal category (Natureza)",
         "type": "object",
         "allOf": [
           {
@@ -3494,10 +3494,10 @@
           }
         ],
         "properties": {
-          "Nature": {
+          "LegalCategory": {
             "type": "string",
-            "description": "**The nature name**",
-            "example": "Nature name"
+            "description": "**The legal category name**",
+            "example": "legal category name"
           },
           "Group": {
             "type": "string",
@@ -3506,14 +3506,14 @@
           }
         }
       },
-      "NatureEntityWrite": {
-        "title": "Natureza",
+      "LegalCategoryEntityWrite": {
+        "title": "Legal category (Natureza)",
         "type": "object",
         "properties": {
-          "Nature": {
+          "LegalCategory": {
             "type": "string",
-            "description": "**The nature name**",
-            "example": "Nature name"
+            "description": "**The legal category name**",
+            "example": "legal category name"
           },
           "Group": {
             "type": "string",
@@ -3522,7 +3522,7 @@
           }
         },
         "required": [
-          "Nature",
+          "LegalCategory",
           "Group"
         ]
       }
