@@ -163,15 +163,13 @@ properties:
       **Cliente**<br />
       Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
   LegalServiceAgreement:
+    oneOf:
+      - $ref: SimpleEntityWrite.yaml
+      - type: null
     description: |
       **Contrato**<br />
-      Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-    $ref: SimpleEntityWrite.yaml
-  Owner:
-    description: |
-      **Responsável**<br />
-      Advogado ou membro da equipe jurídica responsável pelo caso
-    $ref: SimpleEntityWrite.yaml
+      Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br />
+      `Se nenhum contrato for informado, o contrato definido como padrão será utilizado (se houver)`
   Coowners:
     description: |
       **Corresponsáveis**<br />
@@ -218,5 +216,4 @@ required:
   - Title
   - CaseClient
   - LegalServiceAgreement
-  - Owner
   - Group

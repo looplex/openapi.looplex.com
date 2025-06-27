@@ -35,6 +35,9 @@ properties:
     format: uuid
   Number:
     type: integer
+  IsDefault: 
+    type: boolean
+    description: "Indica se é o contrato default do cliente"
   KilometersReimbursement:
     type: string
     description: |

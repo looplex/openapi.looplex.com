@@ -27,8 +27,6 @@ properties:
     type: string <nullable>
     format: uuid
     description: "**Identificador da publicação que criou esse andamento (se houver)**"
-  CreatedBy:
-    $ref: SimpleEntityWrite.yaml
   ClassificationType:
     type: string
     example: "MANUAL"

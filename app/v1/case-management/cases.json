@@ -2776,9 +2776,6 @@
             "format": "uuid",
             "description": "**Identificador da publicação que criou esse andamento (se houver)**"
           },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
           "ClassificationType": {
             "type": "string",
             "example": "MANUAL",
@@ -3076,12 +3073,15 @@
             "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
           },
           "LegalServiceAgreement": {
-            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "Owner": {
-            "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntityWrite"
+              },
+              {
+                "type": null
+              }
+            ],
+            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br />\n`Se nenhum contrato for informado, o contrato definido como padrão será utilizado (se houver)`\n"
           },
           "Coowners": {
             "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
@@ -3140,7 +3140,6 @@
           "Title",
           "CaseClient",
           "LegalServiceAgreement",
-          "Owner",
           "Group"
         ]
       },
@@ -3463,6 +3462,10 @@
           },
           "Number": {
             "type": "integer"
+          },
+          "IsDefault": {
+            "type": "boolean",
+            "description": "Indica se é o contrato default do cliente"
           },
           "KilometersReimbursement": {
             "type": "string",
