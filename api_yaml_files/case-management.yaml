@@ -98,6 +98,12 @@ paths:
   /LegalCategories/legalCategory_id:
     get:
       $ref: .\paths\case-management\legal_category\public@legalCategories@legalCategory_id-get.yaml
+
+  # Employees
+  /Employees:
+    get:
+      $ref: .\paths\case-management\employee\public@Employees-get.yaml
+
 components:
   securitySchemes:
     api_key:

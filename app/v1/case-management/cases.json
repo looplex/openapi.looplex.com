@@ -1211,6 +1211,86 @@
           }
         }
       }
+    },
+    "/Employees": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "/employees",
+        "description": "**Fetch items paginated** # query\n",
+        "operationId": "Employees-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/EmployeeEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3528,6 +3608,61 @@
           "LegalCategory",
           "Group"
         ]
+      },
+      "EmployeeEntity": {
+        "title": "Funcionário",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "NickName": {
+            "type": "string"
+          },
+          "Dob": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "Gender": {
+            "type": "string"
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntity"
+            }
+          },
+          "Nationality": {
+            "type": "string"
+          },
+          "MaritalStatus": {
+            "type": "string"
+          },
+          "Occupation": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
+          },
+          "Addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressEntity"
+            }
+          },
+          "Emails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailEntity"
+            }
+          },
+          "PhoneNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntity"
+            }
+          }
+        }
       }
     }
   }
