@@ -1218,7 +1218,7 @@
           "Employee"
         ],
         "summary": "/employees",
-        "description": "**Fetch items paginated** # query\n",
+        "description": "**Fetch items paginated**\n",
         "operationId": "Employees-get",
         "parameters": [
           {

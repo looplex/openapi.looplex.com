@@ -2,7 +2,7 @@ tags:
   - Employee
 summary: "/employees"
 description: |
-  **Fetch items paginated** # query
+  **Fetch items paginated**
 operationId: Employees-get
 parameters:
   - $ref: ../../../components/parameters/OcpApimSubscriptionKey.yaml
