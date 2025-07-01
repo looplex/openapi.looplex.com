@@ -72,6 +72,10 @@ properties:
     type: string <nullable>
     format: uuid
     description: "**Unique identifier of the parent case**"
+  Folder:
+    type: string <nullable>
+    format: uuid
+    description: "Case's folder"
   Locale:
     type: string <nullable>
     example: null
@@ -95,7 +99,7 @@ properties:
     description: | 
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
-  Nature:
+  LegalCategories:
     description: "**Indica os assuntos tratados no caso**"
     example: []
     type: array
@@ -154,8 +158,8 @@ properties:
     items:
       type: string
   CustomFields:
-    type: string
-    example: "{}"
+    type: object
+    example: {}
     description: "**Case's custom fields**"
   CaseClient:
     $ref: SimpleEntityWrite.yaml

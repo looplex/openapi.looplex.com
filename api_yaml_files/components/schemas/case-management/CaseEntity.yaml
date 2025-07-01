@@ -98,7 +98,7 @@ allOf:
         description: | 
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
-      Nature:
+      LegalCategories:
         description: "**Indica os assuntos tratados no caso**"
         type: array
         items:

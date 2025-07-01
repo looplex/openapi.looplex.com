@@ -2401,7 +2401,7 @@
                 "type": "string <nullable>",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
               },
-              "Nature": {
+              "LegalCategories": {
                 "description": "**Indica os assuntos tratados no caso**",
                 "type": "array",
                 "items": {
@@ -2862,8 +2862,8 @@
             "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
           },
           "CustomFields": {
-            "type": "string",
-            "example": "{}",
+            "type": "object",
+            "example": {},
             "description": "**Entry's custom fields**"
           }
         }
@@ -3072,6 +3072,11 @@
             "format": "uuid",
             "description": "**Unique identifier of the parent case**"
           },
+          "Folder": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "Case's folder"
+          },
           "Locale": {
             "type": "string <nullable>",
             "example": null,
@@ -3092,7 +3097,7 @@
             "example": "Fase do caso",
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
           },
-          "Nature": {
+          "LegalCategories": {
             "description": "**Indica os assuntos tratados no caso**",
             "example": [],
             "type": "array",
@@ -3144,8 +3149,8 @@
             }
           },
           "CustomFields": {
-            "type": "string",
-            "example": "{}",
+            "type": "object",
+            "example": {},
             "description": "**Case's custom fields**"
           },
           "CaseClient": {

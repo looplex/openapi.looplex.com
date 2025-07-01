@@ -40,6 +40,6 @@ properties:
       AUTOMATIC<br/>
       MANUAL
   CustomFields:
-    type: string
-    example: "{}"
+    type: object
+    example: {}
     description: "**Entry's custom fields**"
