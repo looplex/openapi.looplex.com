@@ -3,6 +3,7 @@
 import React from 'react'
 import { Row, Col, Typography, Card, Input } from "antd"
 import Image from 'next/image'
+import '../styles/globals.css'
 
 import {
   AudioOutlined,
