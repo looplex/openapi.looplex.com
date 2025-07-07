@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Row, Col, Typography, Card, Input } from "antd"
+import { Row, Col, Typography, Card, Input, ConfigProvider } from "antd"
 import Image from 'next/image'
 import '../styles/globals.css'
 
@@ -27,7 +27,7 @@ export default function Home() {
 
   return (
 
-    <div style={{ backgroundColor: '#F5FBFE' }}>
+    <ConfigProvider>
 
       <Row
         style={{
@@ -309,7 +309,7 @@ export default function Home() {
         </Col>
 
       </Row>
-    </div>
+    </ConfigProvider>
   )
 }
 
