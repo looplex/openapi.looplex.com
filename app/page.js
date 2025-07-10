@@ -21,12 +21,20 @@ const { Text, Title } = Typography
 const { Header, Footer, Content } = Layout
 const { useBreakpoint } = Grid
 
-const iconStyle = { fontSize: 24, color: '#161719' }
+const mobileTypographyTokens = {
+  fontSize: '0.875rem', // 14px
+  fontSizeHeading1: '2.375rem', // 38px
+  fontSizeHeading2: '1.875rem', // 30px
+  fontSizeHeading3: '1.5rem', // 24px
+  fontSizeHeading4: '1.25rem', // 20px
+  fontSizeHeading5: '1rem' // 16px
+}
 
 export default function Home () {
   const screens = useBreakpoint()
   const currentBreakPoint = getAntdCurrentBreakPoint(screens)
   const smallScreen = currentBreakPoint === 'xs' || currentBreakPoint === 'sm'
+  const iconStyle = { fontSize: smallScreen ? '1.5rem' : 24, color: '#161719' }
 
   const ColCard = ({ children }) => (
     <Col span={smallScreen ? 24 : 8}>
@@ -83,7 +91,7 @@ export default function Home () {
         <Text
           style={{
             marginLeft: 10,
-            fontSize: 22
+            fontSize: smallScreen ? '1.25rem' : 20
           }}
           strong
         >
@@ -115,7 +123,11 @@ export default function Home () {
 
   return (
 
-    <ConfigProvider>
+    <ConfigProvider
+      theme={{
+        token: smallScreen ? mobileTypographyTokens : {}
+      }}
+    >
 
       <Layout
         style={{
@@ -130,6 +142,7 @@ export default function Home () {
             borderBottom: '0.5px solid grey',
             boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
             zIndex: 999,
+            padding: smallScreen ? '0px 24px' : '0px 50px',
             position: 'fixed'
           }}
         >
@@ -177,17 +190,17 @@ export default function Home () {
                       Documentação - APIs Looplex
                     </Title>
 
-                    <Text style={{ fontSize: smallScreen ? 14 : 20 }}>
+                    <Text style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
                       Seja bem-vindo à página oficial de
                     </Text>
 
-                    <Text strong style={{ fontSize: smallScreen ? 14 : 20 }}>
+                    <Text strong style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
                       {' documentação das APIs da Looplex.'}
                     </Text>
 
                     <br />
 
-                    <Text style={{ fontSize: smallScreen ? 14 : 20 }}>
+                    <Text style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
                       Aqui você encontrará informações detalhadas, guias e exemplos para auxiliar na
                       integração eficiente dos nossos serviços.
                     </Text>
