@@ -186,7 +186,7 @@ export default function Home () {
                 <Row>
 
                   <Col span={24}>
-                    <Title level={1}>
+                    <Title level={smallScreen ? 3 : 1}>
                       Documentação - APIs Looplex
                     </Title>
 
@@ -223,7 +223,7 @@ export default function Home () {
 
               <Image
                 src='/api_image.png'
-                {...(smallScreen ? { width: 204, height: 137 } : { width: 408, height: 274 })}
+                {...(smallScreen ? { width: 293, height: 197 } : { width: 408, height: 274 })}
                 alt='Looplex'
               />
 
