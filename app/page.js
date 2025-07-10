@@ -42,7 +42,7 @@ export default function Home () {
       <Card
         size='small'
         {...smallScreen
-          ? { style: { marginBottom: 16 } }
+          ? {}
           : {
               style: { height: '100%' },
               styles: {
@@ -237,7 +237,7 @@ export default function Home () {
             </Title>
           </Row>
 
-          <Row gutter={24}>
+          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
             <ColCard>
               <CardHeader
                 title='Actions'
@@ -300,6 +300,21 @@ export default function Home () {
               />
             </ColCard>
 
+            <ColCard>
+              <CardHeader
+                title='Looplex 365'
+                icon={<FileWordOutlined style={iconStyle} />}
+              />
+
+              <Text>
+                Ciclo de vida de aplicativos da microsoft e renderizações.
+              </Text>
+
+              <BorderedLink
+                link='/v1/looplex365'
+                text='Looplex 365 v1'
+              />
+            </ColCard>
           </Row>
 
           <Row>
@@ -308,7 +323,7 @@ export default function Home () {
             </Title>
           </Row>
 
-          <Row gutter={24}>
+          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
 
             <ColCard>
               <CardHeader
@@ -349,22 +364,6 @@ export default function Home () {
               <BorderedLink
                 link='/v1/assembler'
                 text='Assembler v1'
-              />
-            </ColCard>
-
-            <ColCard>
-              <CardHeader
-                title='Looplex 365'
-                icon={<FileWordOutlined style={iconStyle} />}
-              />
-
-              <Text>
-                Ciclo de vida de aplicativos da microsoft e renderizações.
-              </Text>
-
-              <BorderedLink
-                link='/v1/looplex365'
-                text='Looplex 365 v1'
               />
             </ColCard>
           </Row>
