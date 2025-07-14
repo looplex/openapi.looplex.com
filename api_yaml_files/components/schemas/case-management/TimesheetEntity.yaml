@@ -1,0 +1,62 @@
+title: Timesheet
+type: object
+allOf:
+  - $ref: ../scim/Resource.yaml
+  - type: object
+    properties:
+      ClientId:
+        type: string
+        format: uuid
+        description: "**Client unique identifier**"
+      Classification:
+        description: "**Classificação**"
+        type: string <nullable>
+      Owner:
+        description: "**Responsável**"
+        $ref: SimpleEntity.yaml
+      Date:
+        description: "**Data**"
+        type: string
+        format: datetime
+      Hours:
+        description: |
+          **Horas (quantidade de horas do lançamento)**<br />
+          `Format: hh:mm:ss`
+        type: string
+        example: "01:00:00"
+      TaskCode:
+        description: "**Código da Tarefa**"
+        type: string <nullable>
+      ActivityCode:
+        description: "**Código da Atividade**<br />"
+        type: string <nullable>
+      Applicant:
+        description: "**Solicitante**<br />"
+        $ref: SimpleEntity.yaml
+      Description:
+        description: "**Descrição**"
+        type: string <nullable>
+      IsInvoiced:
+        description: "**Faturado**"
+        type: boolean <nullable>
+      CreatedAt:
+        description: "**Criado em**"
+        type: string <nullable>
+        format: datetime
+      CreatedBy:
+        description: "**Criado por**"
+        $ref: SimpleEntity.yaml
+      UpdatedAt:
+        description: "**Atualizado em**"
+        type: string <nullable>
+        format: datetime
+      UpdatedBy:
+        description: "**Atualizado por**"
+        $ref: SimpleEntity.yaml
+      Case:
+        type: object
+        description: "**The case unique identifier**"
+        properties:
+          Id:
+            type: string
+            format: uuid

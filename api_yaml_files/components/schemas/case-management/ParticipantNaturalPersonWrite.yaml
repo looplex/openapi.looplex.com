@@ -1,7 +1,7 @@
 title: Participante Pessoa Física
 type: object
 allOf:
-  - $ref: ParticipantWrite.yaml
+  - $ref: ParticipantEntityWrite.yaml
   - type: object
     properties:
       Dob:
@@ -19,9 +19,8 @@ allOf:
           MALE = (Masculino)
         type: string <nullable>
       Nationality:
-        description: |
-          **Nacionalidade**<br />
         type: string <nullable>
+        description: "**Nacionalidade**<br />"
       MaritalStatus:
         description: |
           **Estado civil**<br />
@@ -35,6 +34,7 @@ allOf:
         description: "**Profissão**"
         type: string <nullable>
       Role:
+        type: string <nullable>
         description: |
           **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />
           Os papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />
@@ -44,4 +44,3 @@ allOf:
           PERITO<br />
           JUIZ<br />
           TESTEMUNHA
-        type: string <nullable>

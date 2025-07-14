@@ -1,26 +1,22 @@
-title: EmailEntity
+title: Email
 type: object
 properties: 
-  Value:
-    description: |
-      **Email addresses for the user.**<br />
-      The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
-      Canonical type values of 'work', 'home', and 'other'.
-    oneOf:
-      - type: string
   Type:
+    type: string
     description: |
       **A label indicating the attribute's function, e.g., 'work' or 'home'**<br />
       **Valores permitidos:**<br />
       work <br />
       home <br />
       other
-    oneOf:
-      - type: string
-      - type: null
+  Value:
+    type: string
+    description: |
+      **Email addresses for the user.**<br />
+      The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
+      Canonical type values of 'work', 'home', and 'other'.
   Primary:
+    type: boolean
     description: |
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />
       The primary attribute value 'true' MUST appear no more than once.
-    oneOf:
-      - type: boolean

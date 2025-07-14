@@ -4,16 +4,10 @@ allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
-      CaseGuid:
+      CaseId:
         type: string
         format: uuid
-        required: true
-        description: "**Case unique id**"
-      AuthorGuid:
-        type: string
-        format: uuid
-        required: true
-        description: "**Entry author unique id**"
+        description: "**Case's unique identifier**"
       Date:
         type: string
         format: datetime
@@ -33,7 +27,6 @@ allOf:
       CreatedAt:
         type: string
         format: datetime
-        required: true
         example: "2025-05-21T12:00:00.000Z"
         description: "**Entry creation date**"
       OfficialNotice:
@@ -54,3 +47,7 @@ allOf:
           4: Outlook<br />
           5: Automático<br />
           6: Manual
+      CustomFields:
+        type: string
+        example: {}
+        description: "**Entry's custom fields**"

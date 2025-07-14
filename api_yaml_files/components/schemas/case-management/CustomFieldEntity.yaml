@@ -1,19 +1,15 @@
-title: CustomFieldEntity
+title: Dado complementar | Informação adicional
 type: object
 properties: 
   Id:
-    description: |
-      **Custom field unique identifier**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string
+    format: uuid
+    description: "**Custom field unique identifier**<br />"
   Name:
-    description: |
-      **Custom field name**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string
+    description: "**Custom field name**<br />"
   Type:
+    type: string
     description: |
       **Custom field type**<br />
       1: text<br />
@@ -24,13 +20,7 @@ properties:
       7: checkbox<br />
       6, 8, 9, 10, 11, 15, 16: dropdown<br />
       12, 13, 14: select<br />
-      17: json<br />
-    oneOf:
-      - type: string
-      - type: null
+      17: json
   Value:
-    description: |
-      **Value stored in the custom field**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string
+    description: "**Value stored in the custom field**<br />"

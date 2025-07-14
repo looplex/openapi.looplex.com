@@ -1,36 +1,39 @@
 title: Funcionário
 type: object
-properties:
-  Name:
-    type: string
-  NickName:
-    type: string
-  Dob:
-    type: string
-    format: datetime
-  Gender:
-    type: string
-  Identities:
-    type: array
-    items:
-      $ref: IdentityEntity.yaml
-  Nationality:
-    type: string
-  MaritalStatus:
-    type: string
-  Occupation:
-    type: string
-  Role:
-    type: string
-  Addresses:
-    type: array
-    items:
-      $ref: AddressEntity.yaml
-  Emails:
-    type: array
-    items:
-      $ref: EmailEntity.yaml
-  PhoneNumbers:
-    type: array
-    items:
-      $ref: PhoneNumberEntity.yaml
+allOf:
+  - $ref: ../scim/Resource.yaml
+  - type: object
+    properties:
+      Name:
+        type: string
+      NickName:
+        type: string
+      Dob:
+        type: string
+        format: datetime
+      Gender:
+        type: string
+      Identities:
+        type: array
+        items:
+          $ref: IdentityEntity.yaml
+      Nationality:
+        type: string
+      MaritalStatus:
+        type: string
+      Occupation:
+        type: string
+      Role:
+        type: string
+      Addresses:
+        type: array
+        items:
+          $ref: AddressEntity.yaml
+      Emails:
+        type: array
+        items:
+          $ref: EmailEntity.yaml
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: PhoneNumberEntity.yaml

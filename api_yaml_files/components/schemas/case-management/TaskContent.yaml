@@ -1,6 +1,10 @@
 title: TaskContent
 type: object
-properties: 
+properties:
+  ParentTaskId:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifier of parent task**"
   Type:
     type: string
     example: "COURT_HEARING"

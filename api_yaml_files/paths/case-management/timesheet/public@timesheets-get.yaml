@@ -47,6 +47,6 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../../../components/schemas/case-management/Timesheet.yaml
+                    $ref: ../../../components/schemas/case-management/TimesheetEntity.yaml
   "500":
       description: "Internal Server Error"

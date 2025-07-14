@@ -44,26 +44,22 @@ allOf:
           4: Incidente
       HasAncestor:
         type: boolean
-        description: |
-          **Indica se o caso possui um caso primário**<br />
+        description: "**Indica se o caso possui um caso primário**"
       HasDescendants:
         type: boolean
-        description: |
-          **Indica se o caso possui casos filhos**<br />
+        description: "**Indica se o caso possui casos filhos**"
       Identities:
+        type: array
+        items:
+          $ref: IdentityEntity.yaml
         description: |
           **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
-        oneOf:
-          - type: array
-            items:
-              $ref: IdentityEntity.yaml
-          - type: null
       Title:
+        type: string <nullable>
         description: "**Nome Jurídico do caso**"
-        type: string <nullable>
       Summary:
-        description: "**Breve descrição sobre o caso**"
         type: string <nullable>
+        description: "**Breve descrição sobre o caso**"
       Locale:
         type: string <nullable>
         description: |
@@ -127,18 +123,18 @@ allOf:
           - $ref: SimpleEntity.yaml
           - type: null
       UpdatedAt:
-        description: "**Atualizado em**"
         type: string <nullable>
         format: datetime
+        description: "**Atualizado em**"
       UpdatedBy:
         description: "**Atualizado por**"
         oneOf:
           - $ref: SimpleEntity.yaml
           - type: null
       ClosedAt:
-        description: "**Data de encerramento**"
         type: string <nullable>
         format: datetime
+        description: "**Data de encerramento**"
       ClosedBy:
         description: "**Usuário que encerrou o caso**"
         oneOf:
@@ -150,33 +146,27 @@ allOf:
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
       CaseClient:
+        $ref: CaseClient.yaml
         description: |
           **Cliente**<br />
           Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-        oneOf:
-          - $ref: CaseClient.yaml
       LegalServiceAgreement:
+        $ref: LegalServiceAgreement.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-        oneOf:
-          - $ref: LegalServiceAgreement.yaml
       Owner:
+        $ref: SimpleEntity.yaml
         description: |
           **Responsável**<br />
           Advogado ou membro da equipe jurídica responsável pelo caso
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
       Coowners:
+        type: array
+        items:
+          $ref: SimpleEntity.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
-        oneOf:
-          - type: array
-            items:
-              $ref: SimpleEntity.yaml
-          - type: null
       ExternalServiceProvider:
         description: |
           **Escritório Responsável / Correspondente**<br />
@@ -191,7 +181,7 @@ allOf:
           - $ref: ParticipantNaturalPerson.yaml
           - $ref: ParticipantLegalPerson.yaml
       GlobalValues: 
-        description: "**Valores globais do caso, definidos por polo**"
         type: array
         items:
           $ref: GlobalValues.yaml
+        description: "**Valores globais do caso, definidos por polo**"

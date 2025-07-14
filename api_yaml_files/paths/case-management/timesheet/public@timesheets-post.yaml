@@ -13,7 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../../api_yaml_files/components/schemas/case-management/TimesheetWrite.yaml
+        $ref: ../../../../api_yaml_files/components/schemas/case-management/TimesheetEntityWrite.yaml
 responses:
   "201":
     description: "Created"

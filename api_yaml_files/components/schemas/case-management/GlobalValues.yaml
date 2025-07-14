@@ -16,7 +16,7 @@ properties:
       LOSS = (1: Perda)<br />
       SUCCESS = (2: Êxito)
     type: string <nullable>
-  Risk:
+  RiskClassification:
     description: |
       **Risco**<br />
       Indicação do risco associado ao valor. <br />

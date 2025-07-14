@@ -2,8 +2,8 @@ title: Endereço
 type: object
 properties:
   Country:
-    description: "**ISO 3166-1 alpha2 value (2 caracteres)**<br />"
     type: string <nullable>
+    description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
   PostalCode:
     type: string <nullable>
   StreetAddress:
@@ -19,6 +19,7 @@ properties:
   Neighborhood:
     type: string <nullable>
   Type:
+    type: string
     description: |
       **Tipo de endereço**<br />
       **Valores permitidos**<br />
@@ -27,7 +28,6 @@ properties:
       3: Outro<br />
       4: Cobrança<br />
       5: Entrega
-    type: string
   Primary:
-    description: "**Se é o endereço principal**<br />"
     type: boolean
+    description: "**Se é o endereço principal**"

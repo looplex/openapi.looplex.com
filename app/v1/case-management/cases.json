@@ -674,7 +674,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/Timesheet"
+                            "$ref": "#/components/schemas/TimesheetEntity"
                           }
                         }
                       }
@@ -711,7 +711,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TimesheetWrite"
+                "$ref": "#/components/schemas/TimesheetEntityWrite"
               }
             }
           }
@@ -761,7 +761,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Timesheet"
+                  "$ref": "#/components/schemas/TimesheetEntity"
                 }
               }
             }
@@ -1492,7 +1492,7 @@
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Guid": {
+          "Id": {
             "type": "string",
             "format": "uuid",
             "description": "**The object unique identifier**"
@@ -1541,13 +1541,24 @@
           }
         }
       },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
+          }
+        }
+      },
       "AddressEntity": {
         "title": "Endereço",
         "type": "object",
         "properties": {
           "Country": {
-            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**<br />",
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
           },
           "PostalCode": {
             "type": "string <nullable>"
@@ -1571,45 +1582,30 @@
             "type": "string <nullable>"
           },
           "Type": {
-            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\n1: Residencial<br />\n2: Trabalho<br />\n3: Outro<br />\n4: Cobrança<br />\n5: Entrega\n",
-            "type": "string"
+            "type": "string",
+            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\n1: Residencial<br />\n2: Trabalho<br />\n3: Outro<br />\n4: Cobrança<br />\n5: Entrega\n"
           },
           "Primary": {
-            "description": "**Se é o endereço principal**<br />",
-            "type": "boolean"
+            "type": "boolean",
+            "description": "**Se é o endereço principal**"
           }
         }
       },
       "EmailEntity": {
-        "title": "EmailEntity",
+        "title": "Email",
         "type": "object",
         "properties": {
-          "Value": {
-            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n",
-            "oneOf": [
-              {
-                "type": "string"
-              }
-            ]
-          },
           "Type": {
-            "description": "**A label indicating the attribute's function, e.g., 'work' or 'home'**<br />\n**Valores permitidos:**<br />\nwork <br />\nhome <br />\nother\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string",
+            "description": "**A label indicating the attribute's function, e.g., 'work' or 'home'**<br />\n**Valores permitidos:**<br />\nwork <br />\nhome <br />\nother\n"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
           },
           "Primary": {
-            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
-            "oneOf": [
-              {
-                "type": "boolean"
-              }
-            ]
+            "type": "boolean",
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n"
           }
         }
       },
@@ -1652,212 +1648,154 @@
           }
         }
       },
-      "Participant": {
-        "title": "Participant",
+      "ParticipantEntity": {
+        "title": "Dados de Parte",
         "type": "object",
-        "properties": {
-          "Id": {
-            "description": "**Partcipant id**<br />\n",
-            "type": "string",
-            "format": "uuid"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
           },
-          "ClientGuid": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Se a parte for um cliente"
-          },
-          "EmployeeGuid": {
-            "type": "string",
-            "format": "uuid",
-            "description": "Se a parte for um funcionário"
-          },
-          "CreatedBy": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Cliente que está efetuando o cadastro**"
-          },
-          "Name": {
-            "description": "**Participant name**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
+          {
+            "type": "object",
+            "properties": {
+              "Id": {
+                "description": "**Partcipant's unique identifier**",
+                "type": "string",
+                "format": "uuid"
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Nickname": {
-            "description": "**Apelido**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
+              "ClientId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Se a parte for um cliente"
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "IsMainParty": {
-            "description": "**Indica se é a parte principal**<br />\n",
-            "type": "bool"
-          },
-          "Represents": {
-            "description": "**UUID do participante que está sendo representado**<br />\n",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
+              "EmployeeId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Se a parte for um funcionário"
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Nature": {
-            "description": "**Natureza**<br />\nPessoa Física<br />\nPessoa Jurídica\n",
-            "type": "string"
-          },
-          "Position": {
-            "description": "**Posição do participante**<br />\nAtivo<br />\nPassivo<br />\nTerceiro<br />\nNenhum<br />\nOutro envolvido\n",
-            "type": "string"
-          },
-          "Addresses": {
-            "description": "**Endereços**<br />\n",
-            "oneOf": [
-              {
+              "CaseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "Identificador único do caso"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityWrite"
+              },
+              "Name": {
+                "type": "string",
+                "description": "**Participant's name**"
+              },
+              "Nickname": {
+                "type": "string <nullable>",
+                "description": "**Apelido**"
+              },
+              "IsMainParty": {
+                "type": "bool",
+                "description": "**Indica se é a parte principal**"
+              },
+              "Represents": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": [
+                      {
+                        "type": "string",
+                        "description": "Documento da parte representada"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "Unique identifier da parte representada"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "LawyerOffice": {
+                "type": "string <nullable>",
+                "description": "Escritório do advogado (se houver)"
+              },
+              "Nature": {
+                "type": "string",
+                "example": "NATURAL_PERSON",
+                "description": "**Natureza**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+              },
+              "Position": {
+                "type": "string",
+                "example": "OTHER",
+                "description": "**Posição do participante**<br />\n**Valores permitidos:<br/>**\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD<br/>\nNEITHER<br/>\nOTHER<br/>\n\n**Definições:<br/>**\nACTIVE = (Ativo)<br />\nPASSIVE = (Passivo)<br />\nTHIRD = (Terceiro)<br />\nNEITHER = (Nenhum)<br />\nOTHER = (Outro envolvido)\n"
+              },
+              "Addresses": {
+                "description": "**Endereços**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntity"
                 }
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Emails": {
-            "description": "**Emails**<br />\n",
-            "oneOf": [
-              {
+              "Emails": {
+                "description": "**Emails**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntity"
                 }
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Identities": {
-            "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**<br />\n",
-            "oneOf": [
-              {
+              "Identities": {
+                "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/IdentityEntity"
                 }
               },
-              {
-                "type": null
-              }
-            ]
-          },
-          "PhoneNumbers": {
-            "description": "**Telefones**<br />\n",
-            "oneOf": [
-              {
+              "CustomFields": {
+                "type": "string",
+                "example": {},
+                "description": "**Participant's custom fields**"
+              },
+              "PhoneNumbers": {
+                "description": "**Telefones**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PhoneNumberEntity"
                 }
-              },
-              {
-                "type": null
               }
-            ]
+            }
           }
-        }
+        ]
       },
       "ParticipantNaturalPerson": {
         "title": "Participante Pessoa Física",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Participant"
+            "$ref": "#/components/schemas/ParticipantEntity"
           },
           {
             "type": "object",
             "properties": {
               "Dob": {
-                "description": "**Data de Nascimento**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "format": "datetime"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Data de Nascimento**<br />"
               },
               "Gender": {
-                "description": "Feminino<br />\nMasculino\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "Feminino<br />\nMasculino\n"
               },
               "Nationality": {
-                "description": "**Nacionalidade**<br />\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "description": "**Nacionalidade**<br />",
+                "type": "string <nullable>"
               },
               "MaritalStatus": {
-                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n"
               },
               "Occupation": {
-                "description": "**Profissão**",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Profissão**"
               },
               "Role": {
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
               }
             }
           }
@@ -1868,32 +1806,18 @@
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Participant"
+            "$ref": "#/components/schemas/ParticipantEntity"
           },
           {
             "type": "object",
             "properties": {
               "BusinessStructure": {
-                "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
               },
               "Role": {
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAutor<br />\nRéu<br />\nAdvogado<br />\nPerito<br />\nJuiz<br />\nTestemunha\n",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "string <nullable>",
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAutor<br />\nRéu<br />\nAdvogado<br />\nPerito<br />\nJuiz<br />\nTestemunha\n"
               }
             }
           }
@@ -1911,7 +1835,7 @@
             "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nSUCCESS\n\n**Descrição:**<br />\nLOSS = (1: Perda)<br />\nSUCCESS = (2: Êxito)\n",
             "type": "string <nullable>"
           },
-          "Risk": {
+          "RiskClassification": {
             "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nLIKELY<br/>\nPOSSIBLE<br/>\nREMOTE\n\n**Definições:**<br />\nLIKELY = (1: Provável)<br />\nPOSSIBLE = (2: Possível)<br />\nREMOTE = (3: Remoto)\n",
             "type": "string <nullable>"
           },
@@ -1944,17 +1868,10 @@
           {
             "type": "object",
             "properties": {
-              "CaseGuid": {
+              "CaseId": {
                 "type": "string",
                 "format": "uuid",
-                "required": true,
-                "description": "**Case unique id**"
-              },
-              "AuthorGuid": {
-                "type": "string",
-                "format": "uuid",
-                "required": true,
-                "description": "**Entry author unique id**"
+                "description": "**Case's unique identifier**"
               },
               "Date": {
                 "type": "string",
@@ -1979,7 +1896,6 @@
               "CreatedAt": {
                 "type": "string",
                 "format": "datetime",
-                "required": true,
                 "example": "2025-05-21T12:00:00.000Z",
                 "description": "**Entry creation date**"
               },
@@ -1995,6 +1911,11 @@
                 "type": "integer <nullable>",
                 "example": null,
                 "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
+              },
+              "CustomFields": {
+                "type": "string",
+                "example": {},
+                "description": "**Entry's custom fields**"
               }
             }
           }
@@ -2029,6 +1950,11 @@
         "title": "TaskContent",
         "type": "object",
         "properties": {
+          "ParentTaskId": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of parent task**"
+          },
           "Type": {
             "type": "string",
             "example": "COURT_HEARING",
@@ -2145,7 +2071,7 @@
           }
         ]
       },
-      "Timesheet": {
+      "TimesheetEntity": {
         "title": "Timesheet",
         "type": "object",
         "allOf": [
@@ -2155,7 +2081,7 @@
           {
             "type": "object",
             "properties": {
-              "ClientGuid": {
+              "ClientId": {
                 "type": "string",
                 "format": "uuid",
                 "description": "**Client unique identifier**"
@@ -2230,56 +2156,6 @@
           }
         ]
       },
-      "CustomFieldEntity": {
-        "title": "CustomFieldEntity",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "description": "**Custom field unique identifier**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Name": {
-            "description": "**Custom field name**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Type": {
-            "description": "**Custom field type**<br />\n1: text<br />\n2: decimal<br />\n3: integer<br />\n4: date-time<br />\n5: text-multi-line<br />\n7: checkbox<br />\n6, 8, 9, 10, 11, 15, 16: dropdown<br />\n12, 13, 14: select<br />\n17: json<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
-          },
-          "Value": {
-            "description": "**Value stored in the custom field**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
-          }
-        }
-      },
       "TimelineEntity": {
         "title": "TimelineEntity",
         "type": "object",
@@ -2296,15 +2172,8 @@
             ]
           },
           "Id": {
-            "description": "**Identificador do item**<br />\n",
-            "oneOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": null
-              }
-            ]
+            "type": "string <nullable>",
+            "description": "**Identificador do item**"
           },
           "Date": {
             "description": "**Data do evento**<br />\n",
@@ -2351,8 +2220,8 @@
             "properties": {
               "Status": {
                 "type": "string",
-                "example": "Ativo",
-                "description": "**Indicação do status do caso**<br />\n1: Ativo<br />\n2: Arquivado<br />\n3: Inativo<br />\n99: Excluído\n"
+                "example": "ATIVO",
+                "description": "**Indicação do status do caso**<br />\n1: ATIVO<br />\n1: EM_TRAMITACAO<br />\n2: ARQUIVO_MORTO<br />\n2: ARQUIVAMENTO_DEFINITIVO<br/>\n3: ENCERRADO<br />\n4: SUSPENSO<br />\n5: EM_GRAU_DE_RECURSO<br />\n6: ARQUIVAMENTO_PROVISORIO<br />\n7: ARQUIVADO_ADMINISTRATIVAMENTE<br />\n8: ARQUIVAMENTO<br />\n99: EXCLUIDO\n"
               },
               "Type": {
                 "type": "string",
@@ -2519,7 +2388,7 @@
                 }
               },
               "Tasks": {
-                "description": "**Tarefas a serem realizadas**<br />\n",
+                "description": "**Tarefas a serem realizadas**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TaskEntity"
@@ -2529,22 +2398,20 @@
                 "description": "**Registro de horas trabalhadas**<br />",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/Timesheet"
+                  "$ref": "#/components/schemas/TimesheetEntity"
                 }
               },
               "CustomFields": {
-                "description": "**Campos personalizados criados pelo usuário**<br />",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/CustomFieldEntity"
-                }
+                "type": "object",
+                "example": {},
+                "description": "**Case's custom fields**"
               },
               "Timeline": {
-                "description": "**Linha do Tempo**<br />\nLog de eventos\n",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TimelineEntity"
-                }
+                },
+                "description": "**Linha do Tempo**<br />\nLog de eventos\n"
               }
             }
           }
@@ -2598,33 +2465,26 @@
               },
               "HasAncestor": {
                 "type": "boolean",
-                "description": "**Indica se o caso possui um caso primário**<br />\n"
+                "description": "**Indica se o caso possui um caso primário**"
               },
               "HasDescendants": {
                 "type": "boolean",
-                "description": "**Indica se o caso possui casos filhos**<br />\n"
+                "description": "**Indica se o caso possui casos filhos**"
               },
               "Identities": {
-                "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/IdentityEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                },
+                "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n"
               },
               "Title": {
-                "description": "**Nome Jurídico do caso**",
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Nome Jurídico do caso**"
               },
               "Summary": {
-                "description": "**Breve descrição sobre o caso**",
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Breve descrição sobre o caso**"
               },
               "Locale": {
                 "type": "string <nullable>",
@@ -2684,9 +2544,9 @@
                 ]
               },
               "UpdatedAt": {
-                "description": "**Atualizado em**",
                 "type": "string <nullable>",
-                "format": "datetime"
+                "format": "datetime",
+                "description": "**Atualizado em**"
               },
               "UpdatedBy": {
                 "description": "**Atualizado por**",
@@ -2700,9 +2560,9 @@
                 ]
               },
               "ClosedAt": {
-                "description": "**Data de encerramento**",
                 "type": "string <nullable>",
-                "format": "datetime"
+                "format": "datetime",
+                "description": "**Data de encerramento**"
               },
               "ClosedBy": {
                 "description": "**Usuário que encerrou o caso**",
@@ -2720,45 +2580,23 @@
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
               },
               "CaseClient": {
-                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CaseClient"
-                  }
-                ]
+                "$ref": "#/components/schemas/CaseClient",
+                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
               },
               "LegalServiceAgreement": {
-                "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/LegalServiceAgreement"
-                  }
-                ]
+                "$ref": "#/components/schemas/LegalServiceAgreement",
+                "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
               "Owner": {
-                "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntity"
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "$ref": "#/components/schemas/SimpleEntity",
+                "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
               "Coowners": {
-                "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/SimpleEntity"
-                    }
-                  },
-                  {
-                    "type": null
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                },
+                "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
               "ExternalServiceProvider": {
                 "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
@@ -2783,11 +2621,11 @@
                 ]
               },
               "GlobalValues": {
-                "description": "**Valores globais do caso, definidos por polo**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/GlobalValues"
-                }
+                },
+                "description": "**Valores globais do caso, definidos por polo**"
               }
             }
           }
@@ -2809,31 +2647,18 @@
           }
         }
       },
-      "SimpleEntityWrite": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Guid": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**"
-          }
-        }
-      },
       "EntryEntityWrite": {
         "title": "Dados de andamento para inclusão",
         "type": "object",
         "properties": {
-          "CaseGuid": {
+          "CaseId": {
             "type": "string",
             "format": "uuid",
-            "required": true,
-            "description": "**Case unique id**"
+            "description": "**Case's unique identifier**"
           },
           "Date": {
             "type": "string",
             "format": "datetime",
-            "required": true,
             "example": "2025-05-21T15:00:00.000Z",
             "description": "**Data do andamento**"
           },
@@ -2843,7 +2668,6 @@
           },
           "Description": {
             "type": "string",
-            "required": true,
             "example": "<Texto do andamento>",
             "description": "**Texto do andamento**"
           },
@@ -2862,23 +2686,22 @@
             "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
           },
           "CustomFields": {
-            "type": "object",
+            "type": "string",
             "example": {},
             "description": "**Entry's custom fields**"
           }
         }
       },
-      "ParticipantWrite": {
+      "ParticipantEntityWrite": {
         "title": "Participante",
         "type": "object",
         "properties": {
           "CreatedBy": {
-            "description": "**Cliente que está efetuando o cadastro**",
             "$ref": "#/components/schemas/SimpleEntityWrite"
           },
           "Name": {
             "type": "string",
-            "description": "**Participant name**"
+            "description": "**Participant's name**"
           },
           "Nickname": {
             "type": "string <nullable>",
@@ -2886,16 +2709,25 @@
           },
           "IsMainParty": {
             "type": "bool",
-            "example": false,
             "description": "**Indica se é a parte principal**"
           },
           "Represents": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "**UUID do participante que está sendo representado**"
+            "oneOf": [
+              {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string",
+                    "description": "Documento da parte representada"
+                  },
+                  {
+                    "type": "string",
+                    "format": "uuid",
+                    "description": "Unique identifier da parte representada"
+                  }
+                ]
+              }
+            ]
           },
           "Nature": {
             "type": "string",
@@ -2907,23 +2739,16 @@
             "example": "OTHER",
             "description": "**Posição do participante**<br />\n**Valores permitidos:<br/>**\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD<br/>\nNEITHER<br/>\nOTHER<br/>\n\n**Definições:<br/>**\nACTIVE = (Ativo)<br />\nPASSIVE = (Passivo)<br />\nTHIRD = (Terceiro)<br />\nNEITHER = (Nenhum)<br />\nOTHER = (Outro envolvido)\n"
           },
-          "Emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailEntity"
-            },
-            "description": "**Emails da parte**"
-          },
           "Identities": {
+            "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IdentityEntityWrite"
-            },
-            "description": "**Identidades da parte**"
+            }
           },
           "CustomFields": {
             "type": "string",
-            "example": "{}",
+            "example": {},
             "description": "**Participant's custom fields**"
           }
         }
@@ -2933,7 +2758,7 @@
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ParticipantWrite"
+            "$ref": "#/components/schemas/ParticipantEntityWrite"
           },
           {
             "type": "object",
@@ -2948,8 +2773,8 @@
                 "type": "string <nullable>"
               },
               "Nationality": {
-                "description": "**Nacionalidade**<br />\n",
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Nacionalidade**<br />"
               },
               "MaritalStatus": {
                 "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n",
@@ -2960,8 +2785,8 @@
                 "type": "string <nullable>"
               },
               "Role": {
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n",
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
               }
             }
           }
@@ -2972,7 +2797,7 @@
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ParticipantWrite"
+            "$ref": "#/components/schemas/ParticipantEntityWrite"
           },
           {
             "type": "object",
@@ -3003,7 +2828,7 @@
             "type": "string <nullable>",
             "example": "Êxito"
           },
-          "Risk": {
+          "RiskClassification": {
             "description": "**Risco**<br />\nIndicação do risco associado ao valor.<br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.<br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota.<br />\n**Valores permitidos**<br />\nProvável<br />\nPossível<br />\nRemoto\n",
             "type": "string",
             "example": "Possível"
@@ -3031,7 +2856,7 @@
         }
       },
       "CaseEntityWrite": {
-        "title": "Dados de caso para inclusão",
+        "title": "case data",
         "type": "object",
         "properties": {
           "Type": {
@@ -3068,13 +2893,25 @@
             "example": "Descrição do caso"
           },
           "ParentCase": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**Unique identifier of the parent case**"
+            "type": "object <nullable>",
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "**uuid (string)**: Unique identifier of parent case<br/>"
+              },
+              {
+                "type": "string",
+                "description": "**jtroooo (string)**: Case number<br/>"
+              },
+              {
+                "type": "object",
+                "description": "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
+              }
+            ],
+            "description": "**Parent case**<br/>\nPermitted values:<br/>\n"
           },
           "Folder": {
-            "type": "string <nullable>",
-            "format": "uuid",
+            "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "Case's folder"
           },
           "Locale": {
@@ -3325,11 +3162,11 @@
           }
         }
       },
-      "TimesheetWrite": {
+      "TimesheetEntityWrite": {
         "title": "Dados de timesheet para inclusão",
         "type": "object",
         "properties": {
-          "ClientGuid": {
+          "ClientId": {
             "type": "string",
             "format": "uuid",
             "description": "**Client unique identifier**"
@@ -3617,57 +3454,65 @@
       "EmployeeEntity": {
         "title": "Funcionário",
         "type": "object",
-        "properties": {
-          "Name": {
-            "type": "string"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
           },
-          "NickName": {
-            "type": "string"
-          },
-          "Dob": {
-            "type": "string",
-            "format": "datetime"
-          },
-          "Gender": {
-            "type": "string"
-          },
-          "Identities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
-            }
-          },
-          "Nationality": {
-            "type": "string"
-          },
-          "MaritalStatus": {
-            "type": "string"
-          },
-          "Occupation": {
-            "type": "string"
-          },
-          "Role": {
-            "type": "string"
-          },
-          "Addresses": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AddressEntity"
-            }
-          },
-          "Emails": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EmailEntity"
-            }
-          },
-          "PhoneNumbers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PhoneNumberEntity"
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "NickName": {
+                "type": "string"
+              },
+              "Dob": {
+                "type": "string",
+                "format": "datetime"
+              },
+              "Gender": {
+                "type": "string"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                }
+              },
+              "Nationality": {
+                "type": "string"
+              },
+              "MaritalStatus": {
+                "type": "string"
+              },
+              "Occupation": {
+                "type": "string"
+              },
+              "Role": {
+                "type": "string"
+              },
+              "Addresses": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntity"
+                }
+              },
+              "Emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntity"
+                }
+              },
+              "PhoneNumbers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntity"
+                }
+              }
             }
           }
-        }
+        ]
       }
     }
   }

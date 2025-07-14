@@ -1,0 +1,57 @@
+title: Participante
+type: object
+properties: 
+  CreatedBy: 
+    $ref: "SimpleEntityWrite.yaml"
+  Name:
+    type: string
+    description: "**Participant's name**"
+  Nickname:
+    type: string <nullable>
+    description: "**Apelido**"
+  IsMainParty:
+    type: bool
+    description: "**Indica se é a parte principal**"
+  Represents:
+    oneOf:
+      - type: array
+        items:
+        - type: string
+          description: "Documento da parte representada"
+        - type: string
+          format: uuid
+          description: "Unique identifier da parte representada"
+  Nature:
+    type: string
+    example: "NATURAL_PERSON"
+    description: |
+      **Natureza**<br />
+      NATURAL_PERSON<br />
+      LEGAL_PERSON
+  Position:
+    type: string
+    example: "OTHER"
+    description: |
+      **Posição do participante**<br />
+      **Valores permitidos:<br/>**
+      ACTIVE<br/>
+      PASSIVE<br/>
+      THIRD<br/>
+      NEITHER<br/>
+      OTHER<br/>
+
+      **Definições:<br/>**
+      ACTIVE = (Ativo)<br />
+      PASSIVE = (Passivo)<br />
+      THIRD = (Terceiro)<br />
+      NEITHER = (Nenhum)<br />
+      OTHER = (Outro envolvido)
+  Identities:
+    description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+    type: array
+    items:
+      $ref: IdentityEntityWrite.yaml
+  CustomFields:
+    type: string
+    example: {}
+    description: "**Participant's custom fields**"

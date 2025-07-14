@@ -19,7 +19,7 @@ properties:
       Êxito
     type: string <nullable>
     example: "Êxito"
-  Risk:
+  RiskClassification:
     description: |
       **Risco**<br />
       Indicação do risco associado ao valor.<br />

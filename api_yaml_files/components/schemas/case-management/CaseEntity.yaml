@@ -1,18 +1,25 @@
 title: Dados de caso
 type: object
 allOf:
-  - $ref: '../scim/Resource.yaml'
+  - $ref: ../scim/Resource.yaml
   - type: object
     properties:
       Status:
         type: string
-        example: "Ativo"
+        example: "ATIVO"
         description: |
           **Indicação do status do caso**<br />
-          1: Ativo<br />
-          2: Arquivado<br />
-          3: Inativo<br />
-          99: Excluído
+          1: ATIVO<br />
+          1: EM_TRAMITACAO<br />
+          2: ARQUIVO_MORTO<br />
+          2: ARQUIVAMENTO_DEFINITIVO<br/>
+          3: ENCERRADO<br />
+          4: SUSPENSO<br />
+          5: EM_GRAU_DE_RECURSO<br />
+          6: ARQUIVAMENTO_PROVISORIO<br />
+          7: ARQUIVADO_ADMINISTRATIVAMENTE<br />
+          8: ARQUIVAMENTO<br />
+          99: EXCLUIDO
       Type:
         type: string
         example: "Judicial Estadual"
@@ -207,21 +214,14 @@ allOf:
         type: array
         items:
           $ref: GlobalValues.yaml
-      # Claims: # TODO
-      # OppositionToClaims: # TODO
-      # ProceduralObjections: # TODO
       Entries:
         description: |
           **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
         type: array
         items:
           $ref: EntryEntity.yaml
-      # Resolution: # TODO
-      # PaymentOrDischarge: # TODO
-      # Guaranties: # TODO
       Tasks:
-        description: |
-          **Tarefas a serem realizadas**<br />
+        description: "**Tarefas a serem realizadas**"
         type: array
         items:
           $ref: TaskEntity.yaml
@@ -229,16 +229,15 @@ allOf:
         description: "**Registro de horas trabalhadas**<br />"
         type: array
         items:
-          $ref: Timesheet.yaml
+          $ref: TimesheetEntity.yaml
       CustomFields:
-        description: "**Campos personalizados criados pelo usuário**<br />"
-        type: array
-        items:
-          $ref: CustomFieldEntity.yaml
+        type: object
+        example: {}
+        description: "**Case's custom fields**"
       Timeline:
-        description: |
-          **Linha do Tempo**<br />
-          Log de eventos
         type: array
         items:
           $ref: TimelineEntity.yaml
+        description: |
+          **Linha do Tempo**<br />
+          Log de eventos

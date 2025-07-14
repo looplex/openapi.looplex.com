@@ -1,4 +1,4 @@
-title: Dados de caso para inclusão
+title: case data
 type: object
 properties:
   Type:
@@ -69,12 +69,19 @@ properties:
     type: string <nullable>
     example: "Descrição do caso"
   ParentCase:
-    type: string <nullable>
-    format: uuid
-    description: "**Unique identifier of the parent case**"
+    type: object <nullable>
+    oneOf:
+      - type: string
+        description: "**uuid (string)**: Unique identifier of parent case<br/>"
+      - type: string
+        description: "**jtroooo (string)**: Case number<br/>"
+      - type: object
+        description: "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
+    description: |
+      **Parent case**<br/>
+      Permitted values:<br/>
   Folder:
-    type: string <nullable>
-    format: uuid
+    $ref: SimpleEntityWrite.yaml
     description: "Case's folder"
   Locale:
     type: string <nullable>
