@@ -1,0 +1,34 @@
+title: RamosJudicial
+type: string
+example: JUDICIAL_ESTADUAL
+description: |
+  **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
+  **Valores permitidos:**<br />
+  ADMINISTRATIVO<br />
+  CONSULTIVO<br />
+  JUDICIAL_ESTADUAL<br />
+  JUDICIAL_FEDERAL<br />
+  JUDICIAL_TRABALHISTA<br />
+  MILITAR_ESTADUAL<br />
+  ELEITORAL<br />
+  MILITAR_UNIAO<br />
+  CONTRATO<br />
+  DUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />
+  COBRANCA_EXTRAJUDICIAL<br />
+  SOCIETARIO<br />
+  ARBITRAGEM
+
+  **Definições:**<br/>
+  ADMINISTRATIVO = (1: Administrativo)<br />
+  CONSULTIVO = (2: Consultivo)<br />
+  JUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />
+  JUDICIAL_FEDERAL = (4: Judicial Federal)<br />
+  JUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />
+  MILITAR_ESTADUAL = (7: Militar Estadual)<br />
+  ELEITORAL = (8: Eleitoral)<br />
+  MILITAR_UNIAO = (9: Militar União)<br />
+  CONTRATO = (10: Contrato)<br />
+  DUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />
+  COBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />
+  SOCIETARIO = (13: Societário)<br />
+  ARBITRAGEM = (Arbitragem)

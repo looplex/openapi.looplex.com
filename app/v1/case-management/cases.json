@@ -1408,6 +1408,24 @@
           }
         }
       },
+      "SituacaoDoProcesso": {
+        "title": "SituacaoDoProcesso",
+        "type": "string",
+        "example": "ATIVO",
+        "description": "**Indicação do status do caso**<br />\n**Valores permitidos:**<br />\nATIVO<br />\nEM_TRAMITACAO<br />\nARQUIVO_MORTO<br />\nARQUIVAMENTO_DEFINITIVO<br/>\nENCERRADO<br />\nSUSPENSO<br />\nEM_GRAU_DE_RECURSO<br />\nARQUIVAMENTO_PROVISORIO<br />\nARQUIVADO_ADMINISTRATIVAMENTE<br />\nARQUIVAMENTO<br />\nEXCLUIDO\n\n**Definições:**<br/>\nATIVO (1)<br />\nEM_TRAMITACAO (1)<br />\nARQUIVO_MORTO (2)<br />\nARQUIVAMENTO_DEFINITIVO (2)<br/>\nENCERRADO (3)<br />\nSUSPENSO (4)<br />\nEM_GRAU_DE_RECURSO (5)<br />\nARQUIVAMENTO_PROVISORIO (6)<br />\nARQUIVADO_ADMINISTRATIVAMENTE (7)<br />\nARQUIVAMENTO (8)<br />\nEXCLUIDO (99)\n"
+      },
+      "RamosJudicial": {
+        "title": "RamosJudicial",
+        "type": "string",
+        "example": "JUDICIAL_ESTADUAL",
+        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n\n**Definições:**<br/>\nADMINISTRATIVO = (1: Administrativo)<br />\nCONSULTIVO = (2: Consultivo)<br />\nJUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />\nJUDICIAL_FEDERAL = (4: Judicial Federal)<br />\nJUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />\nMILITAR_ESTADUAL = (7: Militar Estadual)<br />\nELEITORAL = (8: Eleitoral)<br />\nMILITAR_UNIAO = (9: Militar União)<br />\nCONTRATO = (10: Contrato)<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />\nCOBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />\nSOCIETARIO = (13: Societário)<br />\nARBITRAGEM = (Arbitragem)\n"
+      },
+      "ClasseProcesso": {
+        "title": "ClasseProcesso",
+        "type": "string",
+        "example": "CASO",
+        "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n\n**Definições:**<br/>\nCASO = (1: Caso)<br />\nSUBCASO = (2: Subcaso)<br />\nRECURSO = (3: Recurso)<br />\nINCIDENTE = (4: Incidente)\n"
+      },
       "IdentityEntity": {
         "title": "Identidade",
         "type": "object",
@@ -2219,19 +2237,13 @@
             "type": "object",
             "properties": {
               "Status": {
-                "type": "string",
-                "example": "ATIVO",
-                "description": "**Indicação do status do caso**<br />\n1: ATIVO<br />\n1: EM_TRAMITACAO<br />\n2: ARQUIVO_MORTO<br />\n2: ARQUIVAMENTO_DEFINITIVO<br/>\n3: ENCERRADO<br />\n4: SUSPENSO<br />\n5: EM_GRAU_DE_RECURSO<br />\n6: ARQUIVAMENTO_PROVISORIO<br />\n7: ARQUIVADO_ADMINISTRATIVAMENTE<br />\n8: ARQUIVAMENTO<br />\n99: EXCLUIDO\n"
+                "$ref": "#/components/schemas/SituacaoDoProcesso"
               },
               "Type": {
-                "type": "string",
-                "example": "Judicial Estadual",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n\n**Definições:**<br/>\nADMINISTRATIVO = (1: Administrativo)<br />\nCONSULTIVO = (2: Consultivo)<br />\nJUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />\nJUDICIAL_FEDERAL = (4: Judicial Federal)<br />\nJUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />\nMILITAR_ESTADUAL = (7: Militar Estadual)<br />\nELEITORAL = (8: Eleitoral)<br />\nMILITAR_UNIAO = (9: Militar União)<br />\nCONTRATO = (10: Contrato)<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />\nCOBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />\nSOCIETARIO = (13: Societário)<br />\nARBITRAGEM = (Arbitragem)\n"
+                "$ref": "#/components/schemas/RamosJudicial"
               },
               "SubType": {
-                "type": "string",
-                "example": "Caso",
-                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n\n**Definições:**<br/>\nCASO = (1: Caso)<br />\nSUBCASO = (2: Subcaso)<br />\nRECURSO = (3: Recurso)<br />\nINCIDENTE = (4: Incidente)\n"
+                "$ref": "#/components/schemas/ClasseProcesso"
               },
               "CaseHierarchy": {
                 "type": "array",
@@ -2647,51 +2659,6 @@
           }
         }
       },
-      "EntryEntityWrite": {
-        "title": "Dados de andamento para inclusão",
-        "type": "object",
-        "properties": {
-          "CaseId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Case's unique identifier**"
-          },
-          "Date": {
-            "type": "string",
-            "format": "datetime",
-            "example": "2025-05-21T15:00:00.000Z",
-            "description": "**Data do andamento**"
-          },
-          "Classification": {
-            "type": "string <nullable>",
-            "description": "**Classificação do andamento**"
-          },
-          "Description": {
-            "type": "string",
-            "example": "<Texto do andamento>",
-            "description": "**Texto do andamento**"
-          },
-          "IsInternal": {
-            "type": "boolean",
-            "description": "**Indica se o andamento é de uso interno**"
-          },
-          "OfficialNotice": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
-          },
-          "ClassificationType": {
-            "type": "string",
-            "example": "MANUAL",
-            "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
-          },
-          "CustomFields": {
-            "type": "string",
-            "example": {},
-            "description": "**Entry's custom fields**"
-          }
-        }
-      },
       "ParticipantEntityWrite": {
         "title": "Participante",
         "type": "object",
@@ -2855,19 +2822,64 @@
           }
         }
       },
+      "EntryEntityWrite": {
+        "title": "Dados de andamento para inclusão",
+        "type": "object",
+        "properties": {
+          "CaseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case's unique identifier**"
+          },
+          "Date": {
+            "type": "string",
+            "format": "datetime",
+            "example": "2025-05-21T15:00:00.000Z",
+            "description": "**Data do andamento**"
+          },
+          "Classification": {
+            "type": "string <nullable>",
+            "description": "**Classificação do andamento**"
+          },
+          "Description": {
+            "type": "string",
+            "example": "<Texto do andamento>",
+            "description": "**Texto do andamento**"
+          },
+          "IsInternal": {
+            "type": "boolean",
+            "description": "**Indica se o andamento é de uso interno**"
+          },
+          "OfficialNotice": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Identificador da publicação que criou esse andamento (se houver)**"
+          },
+          "ClassificationType": {
+            "type": "string",
+            "example": "MANUAL",
+            "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
+          },
+          "CustomFields": {
+            "type": "string",
+            "example": {},
+            "description": "**Entry's custom fields**"
+          }
+        }
+      },
       "CaseEntityWrite": {
         "title": "case data",
         "type": "object",
         "properties": {
           "Type": {
-            "type": "string",
-            "example": "JUDICIAL_ESTADUAL",
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n\n**Definições:**<br/>\nADMINISTRATIVO = (1: Administrativo)<br />\nCONSULTIVO = (2: Consultivo)<br />\nJUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />\nJUDICIAL_FEDERAL = (4: Judicial Federal)<br />\nJUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />\nMILITAR_ESTADUAL = (7: Militar Estadual)<br />\nELEITORAL = (8: Eleitoral)<br />\nMILITAR_UNIAO = (9: Militar União)<br />\nCONTRATO = (10: Contrato)<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />\nCOBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />\nSOCIETARIO = (13: Societário)<br />\nARBITRAGEM = (Arbitragem)\n"
+            "$ref": "#/components/schemas/RamosJudicial"
           },
           "SubType": {
-            "type": "string",
-            "example": "CASO",
-            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n\n**Definições:**<br/>\nCASO = (1: Caso)<br />\nSUBCASO = (2: Subcaso)<br />\nRECURSO = (3: Recurso)<br />\nINCIDENTE = (4: Incidente)\n"
+            "$ref": "#/components/schemas/ClasseProcesso"
+          },
+          "Level": {
+            "type": "integer",
+            "description": "Instância"
           },
           "Identities": {
             "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**\n",
@@ -2891,28 +2903,6 @@
             "description": "**Breve descrição sobre o caso**",
             "type": "string <nullable>",
             "example": "Descrição do caso"
-          },
-          "ParentCase": {
-            "type": "object <nullable>",
-            "oneOf": [
-              {
-                "type": "string",
-                "description": "**uuid (string)**: Unique identifier of parent case<br/>"
-              },
-              {
-                "type": "string",
-                "description": "**jtroooo (string)**: Case number<br/>"
-              },
-              {
-                "type": "object",
-                "description": "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
-              }
-            ],
-            "description": "**Parent case**<br/>\nPermitted values:<br/>\n"
-          },
-          "Folder": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "Case's folder"
           },
           "Locale": {
             "type": "string <nullable>",
@@ -2985,11 +2975,6 @@
               "type": "string"
             }
           },
-          "CustomFields": {
-            "type": "object",
-            "example": {},
-            "description": "**Case's custom fields**"
-          },
           "CaseClient": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
@@ -3005,6 +2990,9 @@
             ],
             "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br />\n`Se nenhum contrato for informado, o contrato definido como padrão será utilizado (se houver)`\n"
           },
+          "Owner": {
+            "$ref": "#/components/schemas/SimpleEntityWrite"
+          },
           "Coowners": {
             "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n",
             "type": "array",
@@ -3014,14 +3002,14 @@
           },
           "ExternalServiceProvider": {
             "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n",
-            "$ref": "#/components/schemas/SimpleEntityWrite"
-          },
-          "Entries": {
-            "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />\n",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EntryEntityWrite"
-            }
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleEntityWrite"
+              },
+              {
+                "type": null
+              }
+            ]
           },
           "Participants": {
             "type": "array",
@@ -3054,6 +3042,40 @@
                 "CaseContingencyValue": 1
               }
             ]
+          },
+          "Entries": {
+            "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EntryEntityWrite"
+            }
+          },
+          "Folder": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "Case's folder"
+          },
+          "ParentCase": {
+            "type": "object <nullable>",
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "**uuid (string)**: Unique identifier of parent case<br/>"
+              },
+              {
+                "type": "string",
+                "description": "**jtroooo (string)**: Case number<br/>"
+              },
+              {
+                "type": "object",
+                "description": "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
+              }
+            ],
+            "description": "**Parent case**"
+          },
+          "CustomFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Case's custom fields**"
           }
         },
         "required": [
@@ -3061,7 +3083,6 @@
           "SubType",
           "Title",
           "CaseClient",
-          "LegalServiceAgreement",
           "Group"
         ]
       },

@@ -1,0 +1,16 @@
+title: ClasseProcesso
+type: string
+example: CASO
+description: |
+  **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
+  **Valores permitidos:**<br />
+  CASO<br/>
+  SUBCASO<br/>
+  RECURSO<br/>
+  INCIDENTE
+
+  **Definições:**<br/>
+  CASO = (1: Caso)<br />
+  SUBCASO = (2: Subcaso)<br />
+  RECURSO = (3: Recurso)<br />
+  INCIDENTE = (4: Incidente)

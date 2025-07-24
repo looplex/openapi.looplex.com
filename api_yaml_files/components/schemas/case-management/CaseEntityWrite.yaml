@@ -2,55 +2,12 @@ title: case data
 type: object
 properties:
   Type:
-    type: string
-    example: "JUDICIAL_ESTADUAL"
-    description: |
-      **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
-      **Valores permitidos:**<br />
-      ADMINISTRATIVO<br />
-      CONSULTIVO<br />
-      JUDICIAL_ESTADUAL<br />
-      JUDICIAL_FEDERAL<br />
-      JUDICIAL_TRABALHISTA<br />
-      MILITAR_ESTADUAL<br />
-      ELEITORAL<br />
-      MILITAR_UNIAO<br />
-      CONTRATO<br />
-      DUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />
-      COBRANCA_EXTRAJUDICIAL<br />
-      SOCIETARIO<br />
-      ARBITRAGEM
-
-      **Definições:**<br/>
-      ADMINISTRATIVO = (1: Administrativo)<br />
-      CONSULTIVO = (2: Consultivo)<br />
-      JUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />
-      JUDICIAL_FEDERAL = (4: Judicial Federal)<br />
-      JUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />
-      MILITAR_ESTADUAL = (7: Militar Estadual)<br />
-      ELEITORAL = (8: Eleitoral)<br />
-      MILITAR_UNIAO = (9: Militar União)<br />
-      CONTRATO = (10: Contrato)<br />
-      DUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />
-      COBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />
-      SOCIETARIO = (13: Societário)<br />
-      ARBITRAGEM = (Arbitragem)
+    $ref: enums/RamosJudicial.yaml
   SubType:
-    type: string
-    example: "CASO"
-    description: |
-      **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
-      **Valores permitidos:**<br />
-      CASO<br/>
-      SUBCASO<br/>
-      RECURSO<br/>
-      INCIDENTE
-
-      **Definições:**<br/>
-      CASO = (1: Caso)<br />
-      SUBCASO = (2: Subcaso)<br />
-      RECURSO = (3: Recurso)<br />
-      INCIDENTE = (4: Incidente)
+    $ref: enums/ClasseProcesso.yaml
+  Level:
+    type: integer
+    description: "Instância"
   Identities:
     description: |
       **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
@@ -68,21 +25,6 @@ properties:
     description: "**Breve descrição sobre o caso**"
     type: string <nullable>
     example: "Descrição do caso"
-  ParentCase:
-    type: object <nullable>
-    oneOf:
-      - type: string
-        description: "**uuid (string)**: Unique identifier of parent case<br/>"
-      - type: string
-        description: "**jtroooo (string)**: Case number<br/>"
-      - type: object
-        description: "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
-    description: |
-      **Parent case**<br/>
-      Permitted values:<br/>
-  Folder:
-    $ref: SimpleEntityWrite.yaml
-    description: "Case's folder"
   Locale:
     type: string <nullable>
     example: null
@@ -164,15 +106,12 @@ properties:
     type: array
     items:
       type: string
-  CustomFields:
-    type: object
-    example: {}
-    description: "**Case's custom fields**"
   CaseClient:
     $ref: SimpleEntityWrite.yaml
     description: |
       **Cliente**<br />
       Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
+  
   LegalServiceAgreement:
     oneOf:
       - $ref: SimpleEntityWrite.yaml
@@ -181,6 +120,8 @@ properties:
       **Contrato**<br />
       Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br />
       `Se nenhum contrato for informado, o contrato definido como padrão será utilizado (se houver)`
+  Owner:
+    $ref: SimpleEntityWrite.yaml
   Coowners:
     description: |
       **Corresponsáveis**<br />
@@ -192,13 +133,9 @@ properties:
     description: |
       **Escritório Responsável / Correspondente**<br />
       Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-    $ref: SimpleEntityWrite.yaml
-  Entries:
-    description: |
-      **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
-    type: array
-    items:
-      $ref: EntryEntityWrite.yaml
+    oneOf:
+      - $ref: SimpleEntityWrite.yaml
+      - type: null
   Participants:
     type: array
     items:
@@ -221,10 +158,32 @@ properties:
         CaseDeclaredValue: 1
         CaseForeseenValue: 1
         CaseContingencyValue: 1
+  Entries:
+    description: |
+      **Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**<br />
+    type: array
+    items:
+      $ref: EntryEntityWrite.yaml
+  Folder:
+    $ref: SimpleEntityWrite.yaml
+    description: "Case's folder"
+  ParentCase:
+    type: object <nullable>
+    oneOf:
+      - type: string
+        description: "**uuid (string)**: Unique identifier of parent case<br/>"
+      - type: string
+        description: "**jtroooo (string)**: Case number<br/>"
+      - type: object
+        description: "**case (case data)**: Case data **(not recursive, case data cannot have a ParentCase in [POST] /cases endpoint)**"
+    description: "**Parent case**"
+  CustomFields:
+    type: object
+    example: {}
+    description: "**Case's custom fields**"
 required:
   - Type
   - SubType
   - Title
   - CaseClient
-  - LegalServiceAgreement
   - Group
