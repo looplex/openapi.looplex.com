@@ -111,7 +111,6 @@ properties:
     description: |
       **Cliente**<br />
       Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-  
   LegalServiceAgreement:
     oneOf:
       - $ref: SimpleEntityWrite.yaml

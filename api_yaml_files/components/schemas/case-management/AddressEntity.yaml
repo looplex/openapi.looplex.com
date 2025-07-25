@@ -19,15 +19,7 @@ properties:
   Neighborhood:
     type: string <nullable>
   Type:
-    type: string
-    description: |
-      **Tipo de endereço**<br />
-      **Valores permitidos**<br />
-      1: Residencial<br />
-      2: Trabalho<br />
-      3: Outro<br />
-      4: Cobrança<br />
-      5: Entrega
+    $ref: enums/TipoDeEndereco.yaml
   Primary:
     type: boolean
     description: "**Se é o endereço principal**"

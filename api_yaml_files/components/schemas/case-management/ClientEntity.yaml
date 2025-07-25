@@ -12,12 +12,7 @@ properties:
     description: "The client's nickname"
     example: "Example"
   Type:
-    type: string
-    description: |
-      **The client type**<br />
-      NATURAL_PERSON = (Pessoa física)<br />
-      LEGAL_PERSON = (Pessoa juridica)
-    example: "NATURAL_PERSON"
+    $ref: enums/TipoPessoa.yaml
   Email:
     type: string <nullable>
     description: "The client's email address"

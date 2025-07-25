@@ -25423,10 +25423,10 @@
           }
         }
       },
-      "TipoItemAgenda": {
-        "type": "integer",
-        "example": 1,
-        "description": "1: Atividade externa\n\n2: Prazo\n\n4: Audiência\n\n8: Compromisso de trabalho\n\n9: Compromisso particular\n\n10: Compromisso (Compromisso de trabalho e Compromisso particular)\n\n11: Publicação\n"
+      "TipoTarefa": {
+        "title": "TipoTarefa",
+        "example": 2,
+        "description": "**O tipo da tarefa** <br />\n\n1: AtividadeExterna\n\n2: Prazo\n\n4: Audiencia\n\n8: Compromisso\n\n11: Publicacao\n"
       },
       "SituacaoDoItemAgenda": {
         "type": "integer",
@@ -25459,7 +25459,7 @@
             "type": "integer"
           },
           "Tipo": {
-            "$ref": "#/components/schemas/TipoItemAgenda"
+            "$ref": "#/components/schemas/TipoTarefa"
           },
           "Titulo": {
             "type": "string"
@@ -33356,6 +33356,11 @@
         "example": 1,
         "description": "1: Todos\n\n2: Finalizados\n\n3: Em aberto\n"
       },
+      "TipoItemAgenda": {
+        "type": "integer",
+        "example": 1,
+        "description": "1: Atividade externa\n\n2: Prazo\n\n4: Audiência\n\n8: Compromisso de trabalho\n\n9: Compromisso particular\n\n10: Compromisso (Compromisso de trabalho e Compromisso particular)\n\n11: Publicação\n"
+      },
       "TipoDeConsultaCalendario": {
         "type": "integer",
         "example": 1,
@@ -33823,11 +33828,6 @@
             "type": "string"
           }
         }
-      },
-      "TipoTarefa": {
-        "title": "TipoTarefa",
-        "example": 2,
-        "description": "**O tipo da tarefa** <br />\n\n1: AtividadeExterna\n\n2: Prazo\n\n4: Audiencia\n\n8: Compromisso\n\n11: Publicacao\n"
       },
       "DTOTarefa": {
         "title": "DTOTarefa",

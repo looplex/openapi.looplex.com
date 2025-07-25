@@ -13,7 +13,7 @@ properties:
   IDForoUnificado:
     type: integer
   Tipo:     
-    $ref: enums/TipoItemAgenda.yaml
+    $ref: enums/TipoTarefa.yaml
   Titulo: 
     type: string    
   IDTitulocobranca: 

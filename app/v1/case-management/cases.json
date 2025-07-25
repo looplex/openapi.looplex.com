@@ -1570,6 +1570,12 @@
           }
         }
       },
+      "TipoDeEndereco": {
+        "title": "TipoDeEndereco",
+        "type": "string",
+        "example": "RESIDENCIAL",
+        "description": "**Tipo do endereço**<br/>\n**Valores permitidos:**<br/>\nRESIDENCIAL<br/>\nCOMERCIAL<br/>\nOUTROS<br/>\nCOBRANCA<br/>\nENTREGA\n\n**Definições:**<br/>\nRESIDENCIAL = (1),\nCOMERCIAL = (2),\nOUTROS = (3),\nCOBRANCA = (4),\nENTREGA = (5)\n"
+      },
       "AddressEntity": {
         "title": "Endereço",
         "type": "object",
@@ -1600,8 +1606,7 @@
             "type": "string <nullable>"
           },
           "Type": {
-            "type": "string",
-            "description": "**Tipo de endereço**<br />\n**Valores permitidos**<br />\n1: Residencial<br />\n2: Trabalho<br />\n3: Outro<br />\n4: Cobrança<br />\n5: Entrega\n"
+            "$ref": "#/components/schemas/TipoDeEndereco"
           },
           "Primary": {
             "type": "boolean",
@@ -3237,6 +3242,12 @@
           }
         }
       },
+      "TipoPessoa": {
+        "title": "TipoPessoa",
+        "type": "string",
+        "example": "NATURAL_PERSON",
+        "description": "**The client type**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n"
+      },
       "ClientEntity": {
         "title": "Client",
         "type": "object",
@@ -3257,9 +3268,7 @@
             "example": "Example"
           },
           "Type": {
-            "type": "string",
-            "description": "**The client type**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n",
-            "example": "NATURAL_PERSON"
+            "$ref": "#/components/schemas/TipoPessoa"
           },
           "Email": {
             "type": "string <nullable>",
