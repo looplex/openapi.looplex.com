@@ -1,0 +1,8 @@
+title: Prioridade
+type: string
+example: LOW
+description: |
+  **Prioridade de uma tarefa**<br/>
+  LOW<br/>
+  MEDIUM<br/>
+  HIGH

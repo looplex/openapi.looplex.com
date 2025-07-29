@@ -25,6 +25,5 @@ responses:
         application/json:
           schema:
             $ref: ../../../components/schemas/case-management/ClientEntity.yaml
- 
   "500":
       description: "Internal Server Error"

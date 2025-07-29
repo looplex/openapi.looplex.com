@@ -15,16 +15,3 @@ description: |
   ARQUIVADO_ADMINISTRATIVAMENTE<br />
   ARQUIVAMENTO<br />
   EXCLUIDO
-
-  **Definições:**<br/>
-  ATIVO (1)<br />
-  EM_TRAMITACAO (1)<br />
-  ARQUIVO_MORTO (2)<br />
-  ARQUIVAMENTO_DEFINITIVO (2)<br/>
-  ENCERRADO (3)<br />
-  SUSPENSO (4)<br />
-  EM_GRAU_DE_RECURSO (5)<br />
-  ARQUIVAMENTO_PROVISORIO (6)<br />
-  ARQUIVADO_ADMINISTRATIVAMENTE (7)<br />
-  ARQUIVAMENTO (8)<br />
-  EXCLUIDO (99)

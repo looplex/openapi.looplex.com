@@ -1,7 +1,6 @@
 title: TipoPessoa
 type: string
-example: NATURAL_PERSON
 description: |
   **The client type**<br />
-  NATURAL_PERSON = (Pessoa física)<br />
-  LEGAL_PERSON = (Pessoa juridica)
+  NATURAL_PERSON<br />
+  LEGAL_PERSON

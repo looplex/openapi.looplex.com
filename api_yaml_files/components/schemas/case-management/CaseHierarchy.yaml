@@ -7,41 +7,16 @@ properties:
     format: uuid
     description: "**Case unique identifier**"
   Status:
-    type: string
-    example: "Ativo"
-    description: |
-      **Indicação do status do caso**<br />
-      Ativo<br />
-      Inativo<br />
-      Arquivado<br />
-      Excluído
+    $ref: enums/SituacaoDoProcesso.yaml
   Type:
-    type: string
-    example: Judicial Estadual
-    description: | 
-      **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
-      Judicial Estadual<br />
-      Judicial Federal<br />
-      Judicial Trabalhista<br />
-      Militar Estadual<br />
-      Militar União<br />
-      Eleitoral<br />
-      Consultivo<br />
-      Contrato<br />
-      Societário<br />
-      Cobrança Extrajudicial<br />
-      Due Diligence e Análise Documental<br />
-      Administrativo<br />
-      Arbitragem
+    $ref: enums/RamosJudicial.yaml
   SubType:
-    type: string
-    example: Caso
-    description: |
-      **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
-      Caso<br />
-      Subcaso<br />
-      Recurso<br />
-      Incidente
+    description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+    example: SUBCASO
+    oneOf:
+      - $ref: enums/ClasseProcessoContrato.yaml
+      - $ref: enums/ClasseProcessoSocietario.yaml
+      - $ref: enums/ClasseProcesso.yaml
   Title:
     type: string
     description: "**Nome Jurídico do caso**"

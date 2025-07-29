@@ -1,5 +1,8 @@
 title: "Client"
 type: object
+description: |
+  **Cliente**<br />
+  Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
 allOf:
   - $ref: '../scim/Resource.yaml'
 properties:

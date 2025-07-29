@@ -1,0 +1,8 @@
+title: TaskType
+type: string
+description: |
+  **Task type**<br/>
+  MEETING<br/>
+  COURT_HEARING<br/>
+  DEADLINE<br/>
+  FIELD_TASK<br/>

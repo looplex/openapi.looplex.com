@@ -1,0 +1,7 @@
+title: EmailType
+type: string
+description: |
+  **Tipo de email**<br/>
+  work<br/>
+  home<br/>
+  other

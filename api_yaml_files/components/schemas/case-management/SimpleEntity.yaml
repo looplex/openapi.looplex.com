@@ -8,4 +8,4 @@ properties:
   Name:
     type: string <nullable>
     example: null
-    description: "**The object name**" 
+    description: "**The object name**"

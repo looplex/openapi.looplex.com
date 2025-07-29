@@ -5,43 +5,18 @@ allOf:
   - type: object
     properties:
       Status:
-        type: string
-        example: "ACTIVE"
-        description: |
-          **Indicação do status do caso**<br />
-          **Definições:**<br/>
-          ACTIVE = (1: Ativo)<br />
-          ARCHIVED = (2: Arquivado)<br />
-          INACTIVE = (3: Inativo)<br />
-          DELETED = (99: Excluído)
+        example: ATIVO
+        $ref: enums/SituacaoDoProcesso.yaml
       Type:
-        type: string
-        example: "STATE_COURT"
-        description: |
-          **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
-          **Definições:**<br/>
-          ADMINISTRATIVE_SUIT = (1: Administrativo)<br />
-          ADVISORY = (2: Consultivo)<br />
-          STATE_COURT = (3: Judicial Estadual)<br />
-          FEDERAL_COURT = (4: Judicial Federal)<br />
-          LABOR_COURT = (5: Judicial Trabalhista)<br />
-          MILITARY_STATE_COURT = (7: Militar Estadual)<br />
-          ELECTORAL_COURT = (8: Eleitoral)<br />
-          MILITARY_FEDERAL_COURT = (9: Militar União)<br />
-          CONTRACT = (10: Contrato)<br />
-          DUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />
-          OUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />
-          CORPORATE_TRANSACTIONS = (13: Societário)<br />
-          ARBITRATION = (Arbitragem)
+        example: JUDICIAL_ESTADUAL
+        $ref: enums/RamosJudicial.yaml
       SubType:
-        type: string
-        example: "Caso"
-        description: |
-          **Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />
-          1: Caso<br />
-          2: Subcaso<br />
-          3: Recurso<br />
-          4: Incidente
+        description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+        example: SUBCASO
+        oneOf:
+          - $ref: enums/ClasseProcessoContrato.yaml
+          - $ref: enums/ClasseProcessoSocietario.yaml
+          - $ref: enums/ClasseProcesso.yaml
       HasAncestor:
         type: boolean
         description: "**Indica se o caso possui um caso primário**"
@@ -141,17 +116,14 @@ allOf:
           - $ref: SimpleEntity.yaml
           - type: null
       Group:
-        type: string <nullable>
+        type: string
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
       CaseClient:
-        $ref: CaseClient.yaml
-        description: |
-          **Cliente**<br />
-          Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
+        $ref: ClientEntity.yaml
       LegalServiceAgreement:
-        $ref: LegalServiceAgreement.yaml
+        $ref: SimpleEntity.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
@@ -175,11 +147,13 @@ allOf:
           - $ref: SimpleEntity.yaml
           - type: null
       Participants:
-        desription: |
+        description: |
           **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
-        oneOf:
-          - $ref: ParticipantNaturalPerson.yaml
-          - $ref: ParticipantLegalPerson.yaml
+        type: array
+        items:
+          oneOf:
+            - $ref: ParticipantNaturalPerson.yaml
+            - $ref: ParticipantLegalPerson.yaml
       GlobalValues: 
         type: array
         items:

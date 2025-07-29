@@ -1397,13 +1397,15 @@
           "Id": {
             "type": "string",
             "format": "uuid",
-            "description": "**Object unique identifier**"
+            "description": "**Object unique identifier (read only)**"
           },
           "ExternalId": {
             "example": null,
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "description": "**External identifier (optional, read only)**"
           },
           "Meta": {
+            "description": "**Informações relacionadas à essa entity (read only)**",
             "$ref": "#/components/schemas/Meta"
           }
         }
@@ -1412,19 +1414,29 @@
         "title": "SituacaoDoProcesso",
         "type": "string",
         "example": "ATIVO",
-        "description": "**Indicação do status do caso**<br />\n**Valores permitidos:**<br />\nATIVO<br />\nEM_TRAMITACAO<br />\nARQUIVO_MORTO<br />\nARQUIVAMENTO_DEFINITIVO<br/>\nENCERRADO<br />\nSUSPENSO<br />\nEM_GRAU_DE_RECURSO<br />\nARQUIVAMENTO_PROVISORIO<br />\nARQUIVADO_ADMINISTRATIVAMENTE<br />\nARQUIVAMENTO<br />\nEXCLUIDO\n\n**Definições:**<br/>\nATIVO (1)<br />\nEM_TRAMITACAO (1)<br />\nARQUIVO_MORTO (2)<br />\nARQUIVAMENTO_DEFINITIVO (2)<br/>\nENCERRADO (3)<br />\nSUSPENSO (4)<br />\nEM_GRAU_DE_RECURSO (5)<br />\nARQUIVAMENTO_PROVISORIO (6)<br />\nARQUIVADO_ADMINISTRATIVAMENTE (7)<br />\nARQUIVAMENTO (8)<br />\nEXCLUIDO (99)\n"
+        "description": "**Indicação do status do caso**<br />\n**Valores permitidos:**<br />\nATIVO<br />\nEM_TRAMITACAO<br />\nARQUIVO_MORTO<br />\nARQUIVAMENTO_DEFINITIVO<br/>\nENCERRADO<br />\nSUSPENSO<br />\nEM_GRAU_DE_RECURSO<br />\nARQUIVAMENTO_PROVISORIO<br />\nARQUIVADO_ADMINISTRATIVAMENTE<br />\nARQUIVAMENTO<br />\nEXCLUIDO\n"
       },
       "RamosJudicial": {
         "title": "RamosJudicial",
         "type": "string",
         "example": "JUDICIAL_ESTADUAL",
-        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Valores permitidos:**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n\n**Definições:**<br/>\nADMINISTRATIVO = (1: Administrativo)<br />\nCONSULTIVO = (2: Consultivo)<br />\nJUDICIAL_ESTADUAL = (3: Judicial Estadual)<br />\nJUDICIAL_FEDERAL = (4: Judicial Federal)<br />\nJUDICIAL_TRABALHISTA = (5: Judicial Trabalhista)<br />\nMILITAR_ESTADUAL = (7: Militar Estadual)<br />\nELEITORAL = (8: Eleitoral)<br />\nMILITAR_UNIAO = (9: Militar União)<br />\nCONTRATO = (10: Contrato)<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL = (11: Due Diligence e Análise Documental)<br />\nCOBRANCA_EXTRAJUDICIAL = (12: Cobrança Extrajudicial)<br />\nSOCIETARIO = (13: Societário)<br />\nARBITRAGEM = (Arbitragem)\n"
+        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n"
+      },
+      "ClasseProcessoContrato": {
+        "title": "Classe Processo Contrato",
+        "type": "string",
+        "description": "**Valores permitidos quando _Type_ é definido como _CONTRATO_**<br />\nCASO<br/>\nCONTRATO_CONEXO<br/>\nADITAMENTO<br/>\nTERMO_OU_DOCUMENTO_ANCILAR\n"
+      },
+      "ClasseProcessoSocietario": {
+        "title": "Classe Processo Societario",
+        "type": "string",
+        "description": "**Valores permitidos quando _Type_ é definido como _SOCIETARIO_**<br />\nCASO<br/>\nSUBSIDIARIAS_OU_AFILIADA<br/>\nORGAOS_DELIBERATIVOS<br/>\nCOMITES\n"
       },
       "ClasseProcesso": {
-        "title": "ClasseProcesso",
+        "title": "Classe Processo",
         "type": "string",
         "example": "CASO",
-        "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n**Valores permitidos:**<br />\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n\n**Definições:**<br/>\nCASO = (1: Caso)<br />\nSUBCASO = (2: Subcaso)<br />\nRECURSO = (3: Recurso)<br />\nINCIDENTE = (4: Incidente)\n"
+        "description": "**Valores permitidos quando _Type_ não é definido como _CONTRATO_ ou _SOCIETARIO_<br />**\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n"
       },
       "IdentityEntity": {
         "title": "Identidade",
@@ -1456,19 +1468,25 @@
             "description": "**Case unique identifier**"
           },
           "Status": {
-            "type": "string",
-            "example": "Ativo",
-            "description": "**Indicação do status do caso**<br />\nAtivo<br />\nInativo<br />\nArquivado<br />\nExcluído\n"
+            "$ref": "#/components/schemas/SituacaoDoProcesso"
           },
           "Type": {
-            "type": "string",
-            "example": "Judicial Estadual",
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nJudicial Estadual<br />\nJudicial Federal<br />\nJudicial Trabalhista<br />\nMilitar Estadual<br />\nMilitar União<br />\nEleitoral<br />\nConsultivo<br />\nContrato<br />\nSocietário<br />\nCobrança Extrajudicial<br />\nDue Diligence e Análise Documental<br />\nAdministrativo<br />\nArbitragem\n"
+            "$ref": "#/components/schemas/RamosJudicial"
           },
           "SubType": {
-            "type": "string",
-            "example": "Caso",
-            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\nCaso<br />\nSubcaso<br />\nRecurso<br />\nIncidente\n"
+            "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
+            "example": "SUBCASO",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ClasseProcessoContrato"
+              },
+              {
+                "$ref": "#/components/schemas/ClasseProcessoSocietario"
+              },
+              {
+                "$ref": "#/components/schemas/ClasseProcesso"
+              }
+            ]
           },
           "Title": {
             "type": "string",
@@ -1522,94 +1540,66 @@
           }
         }
       },
-      "CaseClient": {
-        "title": "Cliente do caso",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "description": "**The client unique identifier**",
-            "type": "string",
-            "format": "uuid"
-          },
-          "Name": {
-            "description": "**The client name**",
-            "type": "string <nullable>"
-          },
-          "Identities": {
-            "description": "**The client identities**",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
-            }
-          }
-        }
+      "TipoPessoa": {
+        "title": "TipoPessoa",
+        "type": "string",
+        "description": "**The client type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
-      "LegalServiceAgreement": {
-        "title": "Dados do contrato",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The legal service agreement unique identifier**"
-          },
-          "Name": {
-            "type": "string <nullable>",
-            "description": "**The legal service agreement name**"
-          }
-        }
-      },
-      "SimpleEntityWrite": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**"
-          }
-        }
+      "Position": {
+        "title": "Position",
+        "type": "string",
+        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
       },
       "TipoDeEndereco": {
         "title": "TipoDeEndereco",
         "type": "string",
         "example": "RESIDENCIAL",
-        "description": "**Tipo do endereço**<br/>\n**Valores permitidos:**<br/>\nRESIDENCIAL<br/>\nCOMERCIAL<br/>\nOUTROS<br/>\nCOBRANCA<br/>\nENTREGA\n\n**Definições:**<br/>\nRESIDENCIAL = (1),\nCOMERCIAL = (2),\nOUTROS = (3),\nCOBRANCA = (4),\nENTREGA = (5)\n"
+        "description": "**Tipo do endereço**<br/>\nRESIDENCIAL<br/>\nCOMERCIAL<br/>\nOUTROS<br/>\nCOBRANCA<br/>\nENTREGA\n"
       },
       "AddressEntity": {
         "title": "Endereço",
         "type": "object",
         "properties": {
           "Country": {
+            "example": "BR",
             "type": "string <nullable>",
             "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
           },
           "PostalCode": {
+            "example": "00000-000",
             "type": "string <nullable>"
           },
           "StreetAddress": {
+            "example": "Avenida exemplo",
             "type": "string <nullable>"
           },
           "StreetAddressNumber": {
+            "example": "10",
             "type": "string <nullable>"
           },
           "Pobox": {
+            "example": null,
             "type": "string <nullable>"
           },
           "Locality": {
+            "example": "SP",
             "type": "string <nullable>"
           },
           "Region": {
+            "example": "São Paulo",
             "type": "string <nullable>"
           },
           "Neighborhood": {
+            "example": "Centro",
             "type": "string <nullable>"
           },
           "Type": {
+            "example": "OUTROS",
             "$ref": "#/components/schemas/TipoDeEndereco"
           },
           "Primary": {
             "type": "boolean",
+            "example": true,
             "description": "**Se é o endereço principal**"
           }
         }
@@ -1702,7 +1692,7 @@
                 "description": "Identificador único do caso"
               },
               "CreatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityWrite"
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Name": {
                 "type": "string",
@@ -1723,6 +1713,7 @@
                     "items": [
                       {
                         "type": "string",
+                        "example": "000.000.000-00",
                         "description": "Documento da parte representada"
                       },
                       {
@@ -1739,14 +1730,12 @@
                 "description": "Escritório do advogado (se houver)"
               },
               "Nature": {
-                "type": "string",
                 "example": "NATURAL_PERSON",
-                "description": "**Natureza**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+                "$ref": "#/components/schemas/TipoPessoa"
               },
               "Position": {
-                "type": "string",
                 "example": "OTHER",
-                "description": "**Posição do participante**<br />\n**Valores permitidos:<br/>**\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD<br/>\nNEITHER<br/>\nOTHER<br/>\n\n**Definições:<br/>**\nACTIVE = (Ativo)<br />\nPASSIVE = (Passivo)<br />\nTHIRD = (Terceiro)<br />\nNEITHER = (Nenhum)<br />\nOTHER = (Outro envolvido)\n"
+                "$ref": "#/components/schemas/Position"
               },
               "Addresses": {
                 "description": "**Endereços**",
@@ -2248,7 +2237,19 @@
                 "$ref": "#/components/schemas/RamosJudicial"
               },
               "SubType": {
-                "$ref": "#/components/schemas/ClasseProcesso"
+                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
+                "example": "SUBCASO",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ClasseProcessoContrato"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClasseProcessoSocietario"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClasseProcesso"
+                  }
+                ]
               },
               "CaseHierarchy": {
                 "type": "array",
@@ -2358,11 +2359,11 @@
               },
               "CaseClient": {
                 "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
-                "$ref": "#/components/schemas/CaseClient"
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "LegalServiceAgreement": {
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n",
-                "$ref": "#/components/schemas/LegalServiceAgreement"
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "Owner": {
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n",
@@ -2455,6 +2456,52 @@
           }
         }
       },
+      "ClientEntity": {
+        "title": "Client",
+        "type": "object",
+        "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          }
+        ],
+        "properties": {
+          "Name": {
+            "type": "string",
+            "description": "The client's name",
+            "example": "Example name"
+          },
+          "NickName": {
+            "type": "string",
+            "description": "The client's nickname",
+            "example": "Example"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TipoPessoa"
+          },
+          "Email": {
+            "type": "string <nullable>",
+            "description": "The client's email address",
+            "example": null
+          },
+          "Website": {
+            "type": "string <nullable>",
+            "description": "The client's website page",
+            "example": null
+          },
+          "Comments": {
+            "type": "string <nullable>",
+            "description": "Comments about the client",
+            "example": null
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntity"
+            }
+          }
+        }
+      },
       "CaseInfoEntity": {
         "title": "CaseInfoEntity",
         "type": "object",
@@ -2466,19 +2513,27 @@
             "type": "object",
             "properties": {
               "Status": {
-                "type": "string",
-                "example": "ACTIVE",
-                "description": "**Indicação do status do caso**<br />\n**Definições:**<br/>\nACTIVE = (1: Ativo)<br />\nARCHIVED = (2: Arquivado)<br />\nINACTIVE = (3: Inativo)<br />\nDELETED = (99: Excluído)\n"
+                "example": "ATIVO",
+                "$ref": "#/components/schemas/SituacaoDoProcesso"
               },
               "Type": {
-                "type": "string",
-                "example": "STATE_COURT",
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\n**Definições:**<br/>\nADMINISTRATIVE_SUIT = (1: Administrativo)<br />\nADVISORY = (2: Consultivo)<br />\nSTATE_COURT = (3: Judicial Estadual)<br />\nFEDERAL_COURT = (4: Judicial Federal)<br />\nLABOR_COURT = (5: Judicial Trabalhista)<br />\nMILITARY_STATE_COURT = (7: Militar Estadual)<br />\nELECTORAL_COURT = (8: Eleitoral)<br />\nMILITARY_FEDERAL_COURT = (9: Militar União)<br />\nCONTRACT = (10: Contrato)<br />\nDUE_DILIGENCE_AND_EARLY_CASE_ASSESSMENT = (11: Due Diligence e Análise Documental)<br />\nOUT_OF_COURT_DEBT_COLLECTION = (12: Cobrança Extrajudicial)<br />\nCORPORATE_TRANSACTIONS = (13: Societário)<br />\nARBITRATION = (Arbitragem)\n"
+                "example": "JUDICIAL_ESTADUAL",
+                "$ref": "#/components/schemas/RamosJudicial"
               },
               "SubType": {
-                "type": "string",
-                "example": "Caso",
-                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**<br />\n1: Caso<br />\n2: Subcaso<br />\n3: Recurso<br />\n4: Incidente\n"
+                "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
+                "example": "SUBCASO",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ClasseProcessoContrato"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClasseProcessoSocietario"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ClasseProcesso"
+                  }
+                ]
               },
               "HasAncestor": {
                 "type": "boolean",
@@ -2593,15 +2648,14 @@
                 ]
               },
               "Group": {
-                "type": "string <nullable>",
+                "type": "string",
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
               },
               "CaseClient": {
-                "$ref": "#/components/schemas/CaseClient",
-                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
+                "$ref": "#/components/schemas/ClientEntity"
               },
               "LegalServiceAgreement": {
-                "$ref": "#/components/schemas/LegalServiceAgreement",
+                "$ref": "#/components/schemas/SimpleEntity",
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
               "Owner": {
@@ -2627,15 +2681,18 @@
                 ]
               },
               "Participants": {
-                "desription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/ParticipantNaturalPerson"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ParticipantLegalPerson"
-                  }
-                ]
+                "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**\n",
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ParticipantLegalPerson"
+                    }
+                  ]
+                }
               },
               "GlobalValues": {
                 "type": "array",
@@ -2661,6 +2718,17 @@
             "type": "string",
             "example": "000.000.000-00",
             "description": "**The identity value**"
+          }
+        }
+      },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
           }
         }
       },
@@ -2702,14 +2770,12 @@
             ]
           },
           "Nature": {
-            "type": "string",
             "example": "NATURAL_PERSON",
-            "description": "**Natureza**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+            "$ref": "#/components/schemas/TipoPessoa"
           },
           "Position": {
-            "type": "string",
             "example": "OTHER",
-            "description": "**Posição do participante**<br />\n**Valores permitidos:<br/>**\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD<br/>\nNEITHER<br/>\nOTHER<br/>\n\n**Definições:<br/>**\nACTIVE = (Ativo)<br />\nPASSIVE = (Passivo)<br />\nTHIRD = (Terceiro)<br />\nNEITHER = (Nenhum)<br />\nOTHER = (Outro envolvido)\n"
+            "$ref": "#/components/schemas/Position"
           },
           "Identities": {
             "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
@@ -3239,57 +3305,6 @@
           "Case": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**The case unique identifier**"
-          }
-        }
-      },
-      "TipoPessoa": {
-        "title": "TipoPessoa",
-        "type": "string",
-        "example": "NATURAL_PERSON",
-        "description": "**The client type**<br />\nNATURAL_PERSON = (Pessoa física)<br />\nLEGAL_PERSON = (Pessoa juridica)\n"
-      },
-      "ClientEntity": {
-        "title": "Client",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Resource"
-          }
-        ],
-        "properties": {
-          "Name": {
-            "type": "string",
-            "description": "The client's name",
-            "example": "Example name"
-          },
-          "NickName": {
-            "type": "string",
-            "description": "The client's nickname",
-            "example": "Example"
-          },
-          "Type": {
-            "$ref": "#/components/schemas/TipoPessoa"
-          },
-          "Email": {
-            "type": "string <nullable>",
-            "description": "The client's email address",
-            "example": null
-          },
-          "Website": {
-            "type": "string <nullable>",
-            "description": "The client's website page",
-            "example": null
-          },
-          "Comments": {
-            "type": "string <nullable>",
-            "description": "Comments about the client",
-            "example": null
-          },
-          "Identities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
-            }
           }
         }
       },

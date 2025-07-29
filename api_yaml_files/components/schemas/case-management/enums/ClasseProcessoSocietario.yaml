@@ -1,0 +1,8 @@
+title: Classe Processo Societario
+type: string
+description: |
+  **Valores permitidos quando _Type_ é definido como _SOCIETARIO_**<br />
+  CASO<br/>
+  SUBSIDIARIAS_OU_AFILIADA<br/>
+  ORGAOS_DELIBERATIVOS<br/>
+  COMITES

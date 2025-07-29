@@ -3,16 +3,8 @@ type: string
 example: RESIDENCIAL
 description: |
   **Tipo do endereço**<br/>
-  **Valores permitidos:**<br/>
   RESIDENCIAL<br/>
   COMERCIAL<br/>
   OUTROS<br/>
   COBRANCA<br/>
   ENTREGA
-
-  **Definições:**<br/>
-  RESIDENCIAL = (1),
-  COMERCIAL = (2),
-  OUTROS = (3),
-  COBRANCA = (4),
-  ENTREGA = (5)

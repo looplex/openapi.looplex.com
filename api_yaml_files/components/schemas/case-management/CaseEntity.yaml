@@ -9,7 +9,12 @@ allOf:
       Type:
         $ref: enums/RamosJudicial.yaml
       SubType:
-        $ref: enums/ClasseProcesso.yaml
+        description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+        example: SUBCASO
+        oneOf:
+          - $ref: enums/ClasseProcessoContrato.yaml
+          - $ref: enums/ClasseProcessoSocietario.yaml
+          - $ref: enums/ClasseProcesso.yaml
       CaseHierarchy:
         type: array
         items:
@@ -119,12 +124,12 @@ allOf:
         description: |
           **Cliente**<br />
           Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-        $ref: CaseClient.yaml
+        $ref: SimpleEntity.yaml
       LegalServiceAgreement:
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-        $ref: LegalServiceAgreement.yaml
+        $ref: SimpleEntity.yaml
       Owner:
         description: |
           **Responsável**<br />

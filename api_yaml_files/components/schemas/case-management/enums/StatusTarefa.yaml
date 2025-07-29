@@ -1,0 +1,14 @@
+title: Status Tarefa
+type: string
+example: OPENED
+description: |
+  **Status da tarefa**<br/>
+  OPENED<br/>
+  SCHEDULED<br/>
+  CLOSED<br/>
+  CREATED<br/>
+  CANCELED<br/>
+  RESCHEDULED<br/>
+  SUSPENDED<br/>
+  CLAIMED = OPENED,
+  COMPLETED = CLOSED

@@ -1,0 +1,8 @@
+title: Classe Processo Contrato
+type: string
+description: |
+  **Valores permitidos quando _Type_ é definido como _CONTRATO_**<br />
+  CASO<br/>
+  CONTRATO_CONEXO<br/>
+  ADITAMENTO<br/>
+  TERMO_OU_DOCUMENTO_ANCILAR
