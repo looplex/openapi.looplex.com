@@ -13,14 +13,14 @@ properties:
     type: bool
     description: "**Indica se é a parte principal**"
   Represents:
-    oneOf:
-      - type: array
-        items:
-        - type: string
-          description: "Documento da parte representada"
-        - type: string
-          format: uuid
-          description: "Unique identifier da parte representada"
+    type: array
+    items:
+    - type: string
+      description: "**Documento da parte representada**"
+      example: "000.000.000-00"
+    - type: string
+      format: uuid
+      description: "**Unique identifier da parte representada**"
   Nature:
     example: NATURAL_PERSON
     $ref: enums/TipoPessoa.yaml
