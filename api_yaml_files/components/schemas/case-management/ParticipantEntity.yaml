@@ -4,10 +4,6 @@ allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
-      Id:
-        description: "**Partcipant's unique identifier**"
-        type: string
-        format: uuid
       ClientId: 
         type: string
         format: uuid

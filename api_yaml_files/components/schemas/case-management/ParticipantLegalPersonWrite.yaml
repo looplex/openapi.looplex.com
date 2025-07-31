@@ -5,40 +5,6 @@ allOf:
   - type: object
     properties:
       BusinessStructure:
-        type: string <nullable>
-        description: |
-          Empresa Pública<br />
-          Sociedade de Economia Mista<br />
-          Sociedade Anônima Aberta<br />
-          Sociedade Anônima Fechada<br />
-          Sociedade Empresária Limitada<br />
-          Sociedade Empresária em Nome Coletivo<br />
-          Sociedade Empresária em Comandita Simples<br />
-          Sociedade Empresária em Comandita por Ações<br />
-          Sociedade em Conta de Participação<br />
-          Cooperativa<br />
-          Consórcio de Sociedades<br />
-          Grupo de Sociedades<br />
-          Sociedade Simples Pura<br />
-          Sociedade Simples Limitada<br />
-          Sociedade Simples em Nome Coletivo<br />
-          Sociedade Simples em Comandita Simples<br />
-          Consórcio Simples<br />
-          Empresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />
-          Empresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />
-          Fundação Privada<br />
-          Organização Religiosa<br />
-          Organização Social (OS)<br />
-          Associação Privada<br />
-          Produtor Rural (Pessoa Física)
+        $ref: enums/ParticipantBusinessStructure.yaml
       Role:
-        type: string <nullable>
-        description: |
-          **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />
-          Os papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />
-          Autor<br />
-          Réu<br />
-          Advogado<br />
-          Perito<br />
-          Juiz<br />
-          Testemunha
+        $ref: enums/ParticipantRole.yaml

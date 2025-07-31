@@ -1,0 +1,28 @@
+title: ParticipantBusinessStructure
+type: string <nullable>
+example: null
+description: |
+  Empresa Pública<br />
+  Sociedade de Economia Mista<br />
+  Sociedade Anônima Aberta<br />
+  Sociedade Anônima Fechada<br />
+  Sociedade Empresária Limitada<br />
+  Sociedade Empresária em Nome Coletivo<br />
+  Sociedade Empresária em Comandita Simples<br />
+  Sociedade Empresária em Comandita por Ações<br />
+  Sociedade em Conta de Participação<br />
+  Cooperativa<br />
+  Consórcio de Sociedades<br />
+  Grupo de Sociedades<br />
+  Sociedade Simples Pura<br />
+  Sociedade Simples Limitada<br />
+  Sociedade Simples em Nome Coletivo<br />
+  Sociedade Simples em Comandita Simples<br />
+  Consórcio Simples<br />
+  Empresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />
+  Empresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />
+  Fundação Privada<br />
+  Organização Religiosa<br />
+  Organização Social (OS)<br />
+  Associação Privada<br />
+  Produtor Rural (Pessoa Física)

@@ -36,18 +36,8 @@ allOf:
       CreatedBy:
         $ref: SimpleEntity.yaml
       ClassificationType:
-        type: integer <nullable>
-        example: null
-        description: |
-          **Tipo de classificação do andamento**<br />
-          null: Nenhum<br />
-          1: Planilha de horas<br />
-          2: Push de publicação<br />
-          3: Push de andamento<br />
-          4: Outlook<br />
-          5: Automático<br />
-          6: Manual
+        $ref: enums/TipoClassificacaoAutomatica.yaml
       CustomFields:
-        type: string
+        type: object
         example: {}
         description: "**Entry's custom fields**"

@@ -1,0 +1,12 @@
+title: ParticipantRole
+type: string <nullable>
+example: AUTOR
+description: |
+  **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />
+  Os papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />
+  AUTOR<br />
+  REU<br />
+  ADVOGADO<br />
+  PERITO<br />
+  JUIZ<br />
+  TESTEMUNHA

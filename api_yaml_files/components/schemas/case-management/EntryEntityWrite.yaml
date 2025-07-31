@@ -25,18 +25,8 @@ properties:
     format: uuid
     description: "**Identificador da publicação que criou esse andamento (se houver)**"
   ClassificationType:
-    type: string
-    example: "MANUAL"
-    description: |
-      **Tipo de classificação do andamento**<br />
-      **Valid values:**<br/>
-      TIMESHEET<br/>
-      COURT_NOTICES_AND_SERVICE<br/>
-      DOCKET_ENTRY<br/>
-      EMAIL<br/>
-      AUTOMATIC<br/>
-      MANUAL
+    $ref: enums/TipoClassificacaoAutomatica.yaml
   CustomFields:
-    type: string
+    type: object
     example: {}
     description: "**Entry's custom fields**"

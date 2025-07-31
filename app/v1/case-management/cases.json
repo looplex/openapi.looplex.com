@@ -1671,11 +1671,6 @@
           {
             "type": "object",
             "properties": {
-              "Id": {
-                "description": "**Partcipant's unique identifier**",
-                "type": "string",
-                "format": "uuid"
-              },
               "ClientId": {
                 "type": "string",
                 "format": "uuid",
@@ -1835,40 +1830,61 @@
           }
         ]
       },
+      "TipoExpectativaReivindicacao": {
+        "title": "TipoExpectativaReivindicacao",
+        "type": "string <nullable>",
+        "example": "GAIN",
+        "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nGAIN\n"
+      },
+      "ContingentLiabilityRiskClassification": {
+        "title": "ContingentLiabilityRiskClassification",
+        "type": "string <nullable>",
+        "example": "POSSIBLE",
+        "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
+      },
+      "Moeda": {
+        "title": "Moeda",
+        "type": "string",
+        "example": "BRL",
+        "description": "**Moeda**\nBRL<br />\nUSD<br />\nEUR\n"
+      },
       "GlobalValues": {
         "title": "Valores globais do caso por polo",
         "type": "object",
         "properties": {
           "AgainstPosition": {
-            "description": "**Contra polo ativo, passivo, terceiro...**",
-            "type": "string <nullable>"
+            "$ref": "#/components/schemas/Position",
+            "description": "**Contra polo ativo, passivo, terceiro...**"
           },
           "Perspective": {
-            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nSUCCESS\n\n**Descrição:**<br />\nLOSS = (1: Perda)<br />\nSUCCESS = (2: Êxito)\n",
-            "type": "string <nullable>"
+            "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
           },
           "RiskClassification": {
-            "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nLIKELY<br/>\nPOSSIBLE<br/>\nREMOTE\n\n**Definições:**<br />\nLIKELY = (1: Provável)<br />\nPOSSIBLE = (2: Possível)<br />\nREMOTE = (3: Remoto)\n",
-            "type": "string <nullable>"
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "Currency": {
-            "example": "BRL",
-            "description": "**Moeda usada para os valores do caso**<br />\n**Valores permitidos atualmente:**<br/>\nBRL<br/>\nUSD<br/>\nEUR<br/>\n\n**Definições:**<br/>\nBRL = (1: Real)<br/>\nUSD = (2: Dólar americano)<br/>\nEUR = (3: Euro)\n",
-            "type": "string <nullable>"
+            "$ref": "#/components/schemas/Moeda",
+            "description": "**Moeda usada para os valores do caso**"
           },
           "CaseDeclaredValue": {
-            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
-            "type": "number <nullable>"
+            "type": "number <nullable>",
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n"
           },
           "CaseForeseenValue": {
-            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
-            "type": "number <nullable>"
+            "type": "number <nullable>",
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n"
           },
           "CaseContingencyValue": {
-            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
-            "type": "number <nullable>"
+            "type": "number <nullable>",
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n"
           }
         }
+      },
+      "TipoClassificacaoAutomatica": {
+        "title": "Tipo de classificacao automática",
+        "type": "string",
+        "example": "DOCKET_ENTRY",
+        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
       },
       "EntryEntity": {
         "title": "Dados de andamento",
@@ -1920,12 +1936,10 @@
                 "$ref": "#/components/schemas/SimpleEntity"
               },
               "ClassificationType": {
-                "type": "integer <nullable>",
-                "example": null,
-                "description": "**Tipo de classificação do andamento**<br />\nnull: Nenhum<br />\n1: Planilha de horas<br />\n2: Push de publicação<br />\n3: Push de andamento<br />\n4: Outlook<br />\n5: Automático<br />\n6: Manual\n"
+                "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
               },
               "CustomFields": {
-                "type": "string",
+                "type": "object",
                 "example": {},
                 "description": "**Entry's custom fields**"
               }
@@ -2457,7 +2471,7 @@
         }
       },
       "ClientEntity": {
-        "title": "Client",
+        "title": "Cliente",
         "type": "object",
         "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
         "allOf": [
@@ -2791,6 +2805,24 @@
           }
         }
       },
+      "Gender": {
+        "title": "Gender",
+        "type": "string <nullable>",
+        "example": null,
+        "description": "FEMALE<br/>\nMALE\n"
+      },
+      "MaritalStatus": {
+        "title": "MaritalStatus",
+        "type": "string <nullable>",
+        "example": "SOLTEIRO",
+        "description": "**Estado civil**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
+      },
+      "ParticipantRole": {
+        "title": "ParticipantRole",
+        "type": "string <nullable>",
+        "example": "AUTOR",
+        "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
+      },
       "ParticipantNaturalPersonWrite": {
         "title": "Participante Pessoa Física",
         "type": "object",
@@ -2807,28 +2839,31 @@
                 "format": "datetime"
               },
               "Gender": {
-                "description": "**Valores permitidos:<br/>**\nFEMALE<br/>\nMALE\n\n**Definições<br />**\nFEMALE = (Feminino)<br />\nMALE = (Masculino)\n",
-                "type": "string <nullable>"
+                "$ref": "#/components/schemas/Gender"
               },
               "Nationality": {
                 "type": "string <nullable>",
                 "description": "**Nacionalidade**<br />"
               },
               "MaritalStatus": {
-                "description": "**Estado civil**<br />\nSolteiro<br />\nCasado<br />\nViúvo<br />\nSeparado<br />\nDivorciado\n",
-                "type": "string <nullable>"
+                "$ref": "#/components/schemas/MaritalStatus"
               },
               "Occupation": {
                 "description": "**Profissão**",
                 "type": "string <nullable>"
               },
               "Role": {
-                "type": "string <nullable>",
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
+                "$ref": "#/components/schemas/ParticipantRole"
               }
             }
           }
         ]
+      },
+      "ParticipantBusinessStructure": {
+        "title": "ParticipantBusinessStructure",
+        "type": "string <nullable>",
+        "example": null,
+        "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
       },
       "ParticipantLegalPersonWrite": {
         "title": "Participante Pessoa Jurídica",
@@ -2841,55 +2876,44 @@
             "type": "object",
             "properties": {
               "BusinessStructure": {
-                "type": "string <nullable>",
-                "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
+                "$ref": "#/components/schemas/ParticipantBusinessStructure"
               },
               "Role": {
-                "type": "string <nullable>",
-                "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito.**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso. <br />\nAutor<br />\nRéu<br />\nAdvogado<br />\nPerito<br />\nJuiz<br />\nTestemunha\n"
+                "$ref": "#/components/schemas/ParticipantRole"
               }
             }
           }
         ]
       },
       "GlobalValuesWrite": {
-        "title": "GlobalValues",
+        "title": "Valores globais do caso por polo",
         "type": "object",
         "properties": {
           "AgainstPosition": {
-            "description": "**Contra polo Ativo, Passivo, Terceiro...**<br />\n**Valores permitidos:**<br />\nAtivo<br />\nPassivo<br />\nTerceiro\n",
-            "type": "string",
-            "example": "Ativo"
+            "$ref": "#/components/schemas/Position",
+            "description": "**Contra polo ativo, passivo, terceiro...**"
           },
           "Perspective": {
-            "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos**<br />\nPerda <br />\nÊxito\n",
-            "type": "string <nullable>",
-            "example": "Êxito"
+            "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
           },
           "RiskClassification": {
-            "description": "**Risco**<br />\nIndicação do risco associado ao valor.<br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.<br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota.<br />\n**Valores permitidos**<br />\nProvável<br />\nPossível<br />\nRemoto\n",
-            "type": "string",
-            "example": "Possível"
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "Currency": {
-            "description": "**Moeda usada para os valores do caso**<br />\n**Valores permitidos:**<br />\nBRL<br />\nUSD<br />\nEUR\n",
-            "type": "string",
-            "example": "BRL"
+            "$ref": "#/components/schemas/Moeda",
+            "description": "**Moeda usada para os valores do caso**"
           },
           "CaseDeclaredValue": {
-            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
             "type": "number <nullable>",
-            "example": 1
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n"
           },
           "CaseForeseenValue": {
-            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
             "type": "number <nullable>",
-            "example": 1
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n"
           },
           "CaseContingencyValue": {
-            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "type": "number <nullable>",
-            "example": 1
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n"
           }
         }
       },
@@ -2927,12 +2951,10 @@
             "description": "**Identificador da publicação que criou esse andamento (se houver)**"
           },
           "ClassificationType": {
-            "type": "string",
-            "example": "MANUAL",
-            "description": "**Tipo de classificação do andamento**<br />\n**Valid values:**<br/>\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
+            "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
           },
           "CustomFields": {
-            "type": "string",
+            "type": "object",
             "example": {},
             "description": "**Entry's custom fields**"
           }
