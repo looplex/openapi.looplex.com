@@ -1,7 +1,0 @@
-title: Identificador
-type: object
-properties:
-  Id:
-    type: string
-    format: uuid
-    description: "**The object unique identifier**"

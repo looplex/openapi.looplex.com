@@ -1,8 +1,0 @@
-title: Participante Pessoa Jurídica
-type: object
-allOf:
-  - $ref: ParticipantEntity.yaml
-  - type: object
-    properties:
-      BusinessStructure:
-        $ref: enums/ParticipantBusinessStructure.yaml

@@ -1,0 +1,20 @@
+name: ListaPorNivelResponse
+type: object
+properties:
+  respostaAPI:
+    type: string
+    example: ""
+    description: "Resposta da API (quando necessário)"
+  conteudo:
+    type: object
+    properties:
+      grupos:
+        type: array
+        items:
+          $ref: Foro.yaml
+      categoriaFilhos:
+        type: string
+      nivel:
+        type: integer
+  tipoResposta: 
+    $ref: ../enums/TipoRespostaRequisicao.yaml

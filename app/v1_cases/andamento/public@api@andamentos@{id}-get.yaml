@@ -1,0 +1,45 @@
+tags: 
+  - Andamento 
+summary: Andamento por identificador
+description: Obtém o andamento de acordo com o identificador informado.
+operationId: api-andamentos-id
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDAndamento
+    in: path
+    required: true
+    description: "O identificador do andamento"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          $ref: ../schemas/DTOAndamento.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

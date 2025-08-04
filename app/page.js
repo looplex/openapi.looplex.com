@@ -158,7 +158,7 @@ export default function Home() {
 
             <BorderedLink
               text={'Actions v1'}
-              link={'/v1/actions'}
+              link={'/v1_actions'}
             />
 
           </Card>
@@ -189,7 +189,7 @@ export default function Home() {
 
             <BorderedLink
               text={'Court Venue'}
-              link={'/court_venue'}
+              link={'/v2_court_venue'}
             />
 
           </Card>
@@ -210,7 +210,7 @@ export default function Home() {
             </p>
 
             <BorderedLink
-              link='/v1/recess'
+              link='/v1_recess'
               text={'Feriado v1'}
             />
 
@@ -243,13 +243,18 @@ export default function Home() {
             </p>
 
             <BorderedLink
-              link='/v1/cases'
+              link='/v1_cases'
               text={'Cases V1 (legado)'}
             />
 
             <BorderedLink
-              link='/v1/case-management'
+              link='/v2_case-management'
               text={'Cases Management'}
+            />
+
+            <BorderedLink
+              link='/v2_tasks'
+              text={'Tasks Management'}
             />
 
           </Card>
@@ -270,7 +275,7 @@ export default function Home() {
             </p>
 
             <BorderedLink
-              link='/v1/assembler'
+              link='/v1_assembler'
               text={'Assembler v1'}
             />
 
@@ -299,7 +304,7 @@ export default function Home() {
             </p>
 
             <BorderedLink
-              link={'/v1/looplex365'}
+              link={'/v1_looplex365'}
               text={'Looplex 365 v1'}
             />
 

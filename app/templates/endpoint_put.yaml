@@ -1,0 +1,27 @@
+tags:
+  - {{TAG_NAME}}
+summary: {{TITLE}}
+description: |
+  {{DESCRIPTION}}
+operationId: {{OPERATION_ID}}
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+{{PATH_QUERY_PARAMETERS}}
+{{REQUEST_BODY}}
+responses:
+  {{HTTP_RESPONSES}}
+  "204":
+    description: "No Content"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"

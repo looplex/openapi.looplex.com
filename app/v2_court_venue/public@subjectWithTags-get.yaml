@@ -1,0 +1,47 @@
+tags:
+  - Tags
+summary: "/subjectWithTags"
+description: |
+  **Fetch subjectTags with respective tags by filter type**<br />
+# Utilizado em endpoint query**
+# **Fetch items paginated**
+operationId: subjectWithTags-get
+parameters:
+  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../common_parameters/Tenant.yaml
+  - $ref: ../common_parameters/BearerToken.yaml
+  # utilizado em endpoint query
+  - name: filterType
+    in: query
+    required: true
+    description: |
+      **Group's type**<br />
+      **Valid values:**<br/>
+      1<br/>
+      2<br/>
+      3<br/>
+
+      **Definitions:**<br/>
+      INSTANCIA = 1<br/>
+      ESTADO_COMARCA = 2<br/>
+      RITO = 3
+    example: 2
+    schema:
+      type: integer
+responses:
+  # Utilizado quando um array for retornado
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../common_schemas/ListResponse.yaml'
+              - type: object
+                properties:
+                  resources:
+                    type: array
+                    items:
+                      $ref: ./schemas/TagGroup.yaml
+  "500":
+      description: "Internal Server Error"

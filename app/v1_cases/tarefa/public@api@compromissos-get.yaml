@@ -1,0 +1,106 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Tarefa
+summary: "Lista paginada de itens de agenda por funcionários e filtro"
+operationId: api-compromissos-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: currentPage
+    in: query
+    required: false
+    description: "A página atual para pesquisa. `Default: 1`"
+    schema:
+      type: integer
+  - name: pageSize
+    in: query
+    required: false
+    description: "A quantidade de itens por página para retornar. `Default: 10`"
+    schema:
+      type: integer
+  - name: idsFuncionarios
+    in: query
+    example: "\"1,15,20\""
+    description: "Os identificadores dos funcionários separados por virgula"
+    required: true
+    schema:
+      type: string
+  - name: dataInicio
+    in: query
+    description: "A data inicial para pesquisa"
+    required: true
+    schema:
+      type: string
+  - name: dataFim
+    in: query
+    description: "A data final para pesquisa"
+    required: false
+    schema:
+      type: string
+  - name: listaPorExecutor
+    in: query
+    description: "Listar por executor?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listaPorParticipante
+    in: query
+    description: "Listar por participante?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listaPorDelegante
+    in: query
+    description: "Listar por delegante?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: typeMode
+    in: query
+    required: false
+    schema:
+      $ref: ../enums/TipoDeConsultaCalendario.yaml
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            Result:
+              type: array
+              description: "Os compromissos da página pesquisada"
+              items:
+                $ref: ../schemas/DTOCompromissoSimples.yaml
+            QuantidadeTarefasExistentes:
+              type: integer
+              description: "A quantidade de tarefas existentes para o filtro informado"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

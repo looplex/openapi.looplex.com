@@ -1,0 +1,55 @@
+title: Dados da tarefa
+type: object
+properties:
+  ParentTaskId:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifier of parent task**"
+  Type:
+    $ref: ../common_enums/TaskType.yaml
+    example: COURT_HEARING
+  Title:
+    type: string <nullable>
+    description: "**Titulo**"
+  Description:
+    type: string <nullable>
+    description: "**Descrição**"
+  StartDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Início**"
+  DueDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Vencimento**"
+  CreatedBy:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Criado por**"
+  Locale:
+    type: string <nullable>
+    description: "**Local**"
+  TaskCode:
+    type: string <nullable>
+    description: "**Código da Tarefa**"
+  ActivityCode:
+    type: string <nullable>
+    description: "**Código da Atividade**"
+  Owner:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Responsável**"
+  OtherParticipants:
+    description: "**Outros Participantes**"
+    type: array
+    items:
+      $ref: SimpleEntityWrite.yaml
+  Priority:
+    example: LOW
+    $ref: ../common_enums/Prioridade.yaml
+  Case:
+    description: "Caso de uma tarefa"
+    type: object
+    properties:
+      Id:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"

@@ -1,0 +1,58 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Push de publicação
+summary: "Cadastra termo de publicação"
+description: "**Sobre o cadastro de termos:<br/>Tem certeza que deseja cadastrar um novo termo?<br/>O cadastramento desse termo gerará uma cobrança adicional de R$ 30 por mês, a partir do mês atual.**"
+operationId: api-publicacao-termo-post
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDsTribunais
+    in: query
+    required: true
+    description: "Os identificadores dos tribunais"
+    example: [0]
+    schema:
+      type: array
+      items:
+        type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/TermoPublicacao.yaml
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/TermoPublicacao.yaml"
+  "400":
+    description: "Bad Request"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/BadRequestResponse.yaml"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/UnauthorizedResponse.yaml"
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/ForbiddenResponse.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/InternalServerErrorResponse.yaml"

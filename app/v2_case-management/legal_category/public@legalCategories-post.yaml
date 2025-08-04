@@ -1,0 +1,22 @@
+tags:
+  - Legal category
+summary: "/legalCategories"
+description: |
+  **Create legal category**<br />
+  Item created's guid is returned in **Location header**
+operationId: legalCategories-post
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/LegalCategoryEntityWrite.yaml
+responses:
+  "201":
+    description: "Created"
+  "500":
+    description: "Internal Server Error"
+ 

@@ -1,0 +1,78 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Push de andamentos
+summary: "Ativar push de andamentos nos casos"
+description: "Ativa o push de andamento para os casos informados"
+operationId: api-push-casos-ativar_push_andamentos-post
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items: 
+          type: integer
+          description: "Os identificadores dos casos"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            message: 
+              type: string
+              example: "Processo concluído com sucesso"
+            processos_cadastrados:
+              type: array
+              items:
+                type: object
+                properties:
+                  cadastrado:
+                    type: boolean
+                  cdProcesso:
+                    type: integer
+                  erro:
+                    type: string
+            processos_nao_cadastrados:
+              type: array
+              items:
+                type: object
+                properties:
+                  cadastrado:
+                    type: boolean
+                  cdProcesso:
+                    type: integer
+                  erro:
+                    type: string
+  "400":
+    description: "Bad Request"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/BadRequestResponse.yaml"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/UnauthorizedResponse.yaml"
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/ForbiddenResponse.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/InternalServerErrorResponse.yaml"

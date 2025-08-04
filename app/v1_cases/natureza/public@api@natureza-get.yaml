@@ -1,0 +1,56 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Natureza
+summary: "Lista naturezas"
+operationId: api-natureza-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: TipoCaso
+    in: query
+    required: true
+    schema:
+      $ref: ../enums/RamosJudicial.yaml
+  - name: IDCaso
+    in: query
+    required: false
+    description: "O identificador do caso.<br />Se for informado, retorna as naturezas em que o caso está vinculado."
+    schema: 
+      type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: ../schemas/DTONaturezaDoRamoJudicial.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

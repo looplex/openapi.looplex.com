@@ -1,0 +1,58 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Casos
+summary: "Atualiza informações do caso"
+description: "**As propriedades que podem ser editadas são as listadas na resposta 200 e devem ser enviadas com o respectivo nome**.<br />`Observação: Nem todas as propriedades podem ser atualizadas/editadas.`"
+
+operationId: api-casos-edit-put
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: id
+    in: query
+    description: "O identificador do caso"
+    required: true
+    schema:
+      type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items: 
+          $ref: ../schemas/DTOObjetoNomeValor.yaml
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/DTOCasoCompleto.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

@@ -1,0 +1,74 @@
+title: Dados de Parte
+type: object
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object
+    properties:
+      ClientId: 
+        type: string
+        format: uuid
+        description: "Se a parte for um cliente"
+      EmployeeId: 
+        type: string
+        format: uuid
+        description: "Se a parte for um funcionário"
+      CaseId: 
+        type: string
+        format: uuid
+        description: "**Identificador único do caso**"
+      CreatedBy: 
+        $ref: ../../common_schemas/SimpleEntity.yaml
+      Name:
+        type: string
+        description: "**Participant's name**"
+      Nickname:
+        type: string <nullable>
+        description: "**Apelido**"
+      IsMainParty:
+        type: bool
+        description: "**Indica se é a parte principal**"
+      Represents:
+        type: array
+        items:
+          oneOf:
+            - type: string (document)
+              example: "000.000.000-00"
+              description: "**Documento da parte representada**"
+            - type: string (unique identifier)
+              format: uuid
+              description: "**Unique identifier da parte representada**"
+      LawyerOffice:
+        type: string <nullable>
+        description: "**Escritório do advogado (se houver)**"
+      Nature:
+        example: NATURAL_PERSON
+        $ref: ../enums/TipoPessoa.yaml
+      Position:
+        example: OTHER
+        $ref: ../enums/Position.yaml
+      Addresses:
+        description: "**Endereços**"
+        type: array
+        items:
+          $ref: AddressEntity.yaml
+      Emails:
+        description: "**Emails**"
+        type: array
+        items:
+          $ref: EmailEntity.yaml
+      Identities:
+        description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+        type: array
+        items:
+          $ref: ../../common_schemas/IdentityEntity.yaml
+      PhoneNumbers:
+        description: "**Telefones**"
+        type: array
+        items:
+          $ref: PhoneNumberEntity.yaml
+      Role:
+        $ref: ../enums/ParticipantRole.yaml
+      CustomFields:
+        type: object
+        example: {}
+        description: "**Participant's custom fields**"

@@ -1,0 +1,45 @@
+title: Venue
+type: object
+properties:
+  Id:
+    description: "**Item's identifier**"
+    type: integer
+  UUID:
+    description: "**Item's unique identifier**"
+    type: string
+    format: uuid
+  Level:
+    type: integer
+    description: "**Item's level**"
+  Label:
+    type: string
+    description: "**Item's name**"
+  Active:
+    type: boolean
+    description: "**Indicate if the item is active**"
+  Status:
+    type: integer
+    description: "**Item's status**"
+  JTROOOO:
+    type: string
+    description: "**CNJ**"
+  Path:
+    type: string
+    description: "**Item's path in tree**"
+  Serventia:
+    type: integer <nullable>
+    description: ""
+  SmallClaimsCourt:
+    type: boolean <nulable>
+    description: ""
+  AdjucatingCourt:
+    type: boolean <nullable>
+    description: ""
+  Ordering:
+    type: integer <nullable>
+    description: ""
+  ExternalId:
+    description: "**Item's external identifier**"
+    type: string
+  Meta:
+    $ref: ../../scim/Meta.yaml

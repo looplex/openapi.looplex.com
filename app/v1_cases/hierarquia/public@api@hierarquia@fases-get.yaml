@@ -1,0 +1,48 @@
+tags: 
+  - Hierarquia 
+summary: "Lista as fases de processo por ramo judicial"
+
+operationId: api-hierarquia-fases
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: nrRamoJudicial
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOFaseProcesso.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+            

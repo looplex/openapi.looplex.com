@@ -1,0 +1,45 @@
+tags: 
+  - Contrato 
+summary: "Obtém o contrato por identificador"
+operationId: api-contratos-id
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDContrato
+    in: path
+    required: true
+    description: "O identificador do contrato"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          $ref: ../schemas/DTOContrato.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+          

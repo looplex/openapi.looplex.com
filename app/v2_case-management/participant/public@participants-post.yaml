@@ -1,0 +1,23 @@
+tags:
+  - Participant
+summary: "/participants"
+description: |
+  **Create participant**<br />
+  Item created's guid is returned in **Location header**
+operationId: participants-post
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - $ref: ../schemas/ParticipantNaturalPersonWrite.yaml
+          - $ref: ../schemas/ParticipantLegalPersonWrite.yaml
+responses:
+  "201":
+    description: "Created"
+  "500":
+    description: "Internal Server Error"

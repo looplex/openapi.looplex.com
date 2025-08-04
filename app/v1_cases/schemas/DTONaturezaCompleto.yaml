@@ -1,0 +1,19 @@
+title: DTONaturezaCompleto
+type: object
+properties:
+  IDNatureza:
+    description: "O identificador da natureza"
+    example: 1
+    type: integer
+  IDEscritorio:
+    description: "O identificador do escritório"
+    example: 1
+    type: integer
+  Natureza:
+    example: "Nome da natureza"
+    description: "O nome da natureza"
+    type: string
+  GrupoDaNatureza:
+    $ref: ../enums/GrupoNaturezaDaCausa.yaml
+required:
+  - IDNatureza

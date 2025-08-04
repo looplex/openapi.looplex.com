@@ -1,0 +1,45 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Solicitação
+summary: "Apaga uma solicitação"
+operationId: api-solicitacao-id-delete
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: id
+    in: path
+    required: true
+    description: "O identificador da solicitação"
+    schema:
+      type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/BadRequestResponse.yaml"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/UnauthorizedResponse.yaml"
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/ForbiddenResponse.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/InternalServerErrorResponse.yaml"

@@ -1,0 +1,16 @@
+title: RetornoCadastroDeCaso
+type: object
+properties:
+  HouveException:
+    type: boolean
+    description: "Indica se aconteceu pelo menos uma exception"
+  ProcessosNaoCadastrados:
+    type: array
+    description: "Os processos que não puderam ser cadastrados"
+    items:
+      $ref: ../schemas/DTOErroCadastroProcesso.yaml
+  ProcessosCadastrados:
+    type: array
+    description: "Os processos que foram cadastrados"
+    items:
+      $ref: ../schemas/ProcessosCadastradosResposta.yaml

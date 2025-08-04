@@ -1,0 +1,50 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Solicitação
+summary: "Obtem por ID"
+description: "Obtem solicitação por id"
+operationId: api-solicitacao-id-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: integer
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  # Preencha o path do schema de retorno <response_dto_relative_path_and_name>
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/DTOSolicitacaoResponse.yaml"
+  "400":
+    description: "Bad Request"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/BadRequestResponse.yaml"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/UnauthorizedResponse.yaml"
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/ForbiddenResponse.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/InternalServerErrorResponse.yaml"

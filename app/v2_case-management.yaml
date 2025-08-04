@@ -1,0 +1,109 @@
+# https://redocly.com/docs/openapi-visual-reference/info/
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: "Looplex Case Management"
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    Essa é a documentação da API Case Management
+servers:
+  - url: "https://apim.looplex.com/case-management/v1"
+    description: "Case Management Server"
+paths:
+  
+  # Authentication
+  /token:
+    post:
+      $ref: v2_case-management\authentication\public@token-post.yaml
+  
+  # Case
+  /cases/:case_id:
+    get:
+      $ref: v2_case-management\case\public@cases@uniqueId-get.yaml
+  /cases:
+    get:
+      $ref: v2_case-management\case\public@cases-get.yaml
+    post:
+      $ref: v2_case-management\case\public@cases-post.yaml
+
+  # Entry
+  /entries/:entry_id:
+    get:
+      $ref: v2_case-management\entry\public@entries@entry_id-get.yaml
+    # put:
+    #   $ref: v2_case-management\entry\public@entries@entry_id-put.yaml
+  /entries:
+    get:
+      $ref: v2_case-management\entry\public@entries-get.yaml
+    post:
+      $ref: v2_case-management\entry\public@entries-post.yaml
+
+  # Timesheet
+  /timesheets:
+    get:
+      $ref: v2_case-management\timesheet\public@timesheets-get.yaml
+    post:
+      $ref: v2_case-management\timesheet\public@timesheets-post.yaml
+  /timesheets/:id:
+    get:
+      $ref: v2_case-management\timesheet\public@timesheets@id-get.yaml
+
+  # Client
+  /clients:
+    get:
+      $ref: v2_case-management\client\public@clients-get.yaml
+  /clients/:client_id:
+    get:
+      $ref: v2_case-management\client\public@clients@client_id-get.yaml
+
+  # Legal service agreement
+  /legalServiceAgreement:
+    post:
+      $ref: v2_case-management\legal_service_agreement\public@LegalServiceAgreement-post.yaml
+    get:
+      $ref: v2_case-management\legal_service_agreement\public@legalServiceAgreement-get.yaml
+
+  # Participant
+  /participants:
+    post:
+      $ref: v2_case-management\participant\public@participants-post.yaml
+
+  # LegalCategory (Natures)
+  /LegalCategories:
+    get:
+      $ref: v2_case-management\legal_category\public@legalCategories-get.yaml
+    post:
+      $ref: v2_case-management\legal_category\public@legalCategories-post.yaml
+  /LegalCategories/legalCategory_id:
+    get:
+      $ref: v2_case-management\legal_category\public@legalCategories@legalCategory_id-get.yaml
+
+  # Employees
+  /Employees:
+    get:
+      $ref: v2_case-management\employee\public@Employees-get.yaml
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    auth_token:
+      type: apiKey
+      in: header
+      name: auth_token
+    basic_auth:
+      type: http
+      scheme: basic

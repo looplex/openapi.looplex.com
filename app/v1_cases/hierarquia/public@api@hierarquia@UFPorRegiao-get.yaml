@@ -1,0 +1,53 @@
+tags: 
+  - Hierarquia 
+summary: "Lista as UFs de acordo com a região e ramo judicial"
+
+operationId: statesByRegion
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: regiao
+    in: query
+    required: true
+    schema:
+      type: integer
+  - name: nrRamoJudicial
+    in: query
+    required: true
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        example: ["SP", "RJ"]
+        schema: 
+          type: array
+          items: 
+            type: string
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+        

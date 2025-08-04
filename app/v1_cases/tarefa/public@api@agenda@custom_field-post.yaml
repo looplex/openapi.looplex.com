@@ -1,0 +1,70 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Tarefa
+summary: "Inclui / atualiza Custom Fields"
+description: "Esse endpoint é `exclusivo para criar ou atualizar valores de custom fields`"
+operationId: api-agenda-custom_field-post
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: client_id
+    in: header
+    description: "O identificador do client que está efetuando a operação"
+    example: 0abc123...
+    required: true
+    schema:
+      type: string
+  - name: idCompromisso
+    in: query
+    example: 1
+    description: "O identificador da tarefa (item de agenda)"
+    required: true
+    schema:
+      type: integer
+  - name: tipoItemAgenda
+    in: query
+    required: true
+    schema:
+      $ref: ../enums/TipoItemAgenda.yaml
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items: 
+          $ref: ../schemas/DTOCustomFields.yaml
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/DTOItemAgenda.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

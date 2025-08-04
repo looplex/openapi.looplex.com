@@ -1,0 +1,71 @@
+tags: 
+  - Hierarquia 
+summary: "Lista os grupos foro por ramo de justiça, estado, grupo de família e tipo"
+operationId: api-hierarquia-grupoforoportipo
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: nrRamoJudicial
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: integer
+  - name: dsUF
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: string
+  - name: nrGrupoFamilia
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: integer
+  - name: cdRegiao
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: integer
+  - name: nrTipo
+    in: query
+    required: false
+    description: "`Default: null`"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOGrupoForo.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+            

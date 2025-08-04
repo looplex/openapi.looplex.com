@@ -1,0 +1,22 @@
+tags:
+  - Tasks
+summary: "/tasks"
+description: |
+  **Create a task**<br />
+  Item created's guid is returned in **Location header**
+operationId: tasks-post
+parameters:
+  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../common_parameters/Tenant.yaml
+  - $ref: ../common_parameters/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../common_schemas/TaskEntityWrite.yaml
+responses:
+  "201":
+    description: "Created"
+  "500":
+    description: "Internal Server Error"
+ 

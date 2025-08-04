@@ -1,0 +1,12 @@
+title: Tarefa
+type: object
+allOf:
+  - $ref: ../scim/Resource.yaml
+  - type: object
+    properties:
+      Data:
+        $ref: TaskContent.yaml
+      Children:
+        type: array
+        items:
+          $ref: TaskContent.yaml

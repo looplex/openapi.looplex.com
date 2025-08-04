@@ -1,0 +1,102 @@
+tags: 
+  - Casos 
+summary: "Lista casos por filtro"
+operationId: api-casos
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: idsCliente
+    in: query    
+    required: false
+    example: '[1,15,33,50]'
+    schema:
+      type: array
+      items: 
+        type: integer
+  - name: idsAreaCaso
+    in: query    
+    required: false
+    example: '[1,15,33,50]'
+    schema:
+      type: array
+      items: 
+        type: integer
+  - name: idsResponsaveis
+    in: query    
+    required: false
+    example: '[1,15,33,50]'
+    schema:
+      type: array
+      items: 
+        type: integer   
+  - name: dataCriacao
+    in: query    
+    required: false
+    schema:
+      type: string 
+  - name: dataCitacao
+    in: query    
+    required: false
+    schema:
+      type: string    
+  - name: dataDistribuicao
+    in: query    
+    required: false
+    schema:
+      type: string 
+  - name: dataEncerramento
+    in: query    
+    required: false
+    schema:
+      type: string  
+  - name: dataEntrada
+    in: query    
+    required: false
+    schema:
+      type: string
+  - name: dataUltimaAlteracao
+    in: query    
+    required: false
+    schema:
+      type: string   
+  - name: situacoes
+    in: query    
+    required: false
+    example: '[1,2,3]'
+    schema:
+      description: '`Enviar um array`'
+      $ref: ../enums/SituacaoDoProcesso.yaml       
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOCasoCompleto.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+            

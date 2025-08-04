@@ -1,0 +1,54 @@
+tags:
+  - {{TAG_NAME}}
+summary: {{TITLE}}
+description: |
+  {{DESCRIPTION}}<br />
+# **Retrieve a <schema_name> by id** # retrieve
+# **Fetch items paginated** # query
+operationId: {{OPERATION_ID}}
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  # endpoint retrieve
+  # - name: id
+  #   in: path
+  #   required: true
+  #   description: |
+  #     **The item's unique identifier**
+  #   schema:
+  #     type: string
+  #     format: uuid
+
+  # endpoint query
+  # - name: startIndex
+  #   in: query
+  #   required: true
+  #   description: |
+  #     **Index of search**<br />
+  #   example: 1
+  #   schema:
+  #     type: integer
+  # - name: count
+  #   in: query
+  #   required: true
+  #   description: |
+  #     **Total count of items to return**<br />
+  #     `Max of 120`
+  #   example: 50
+  #   schema:
+  #     type: integer
+  # - name: filter
+  #   in: query
+  #   required: false
+  #   description: |
+  #     **SCIM filter to search**<br />
+  #     **e.g:**<br />
+  #     _PropertyName_ _co_ _search_term_
+  #   schema:
+  #     type: string
+{{PATH_QUERY_PARAMETERS}}
+responses:
+  {{HTTP_RESPONSES}}
+  "500":
+      description: "Internal Server Error"

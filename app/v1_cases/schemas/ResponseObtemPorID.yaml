@@ -1,0 +1,11 @@
+name: ResponseObtemPorID
+type: object
+properties:
+  respostaAPI:
+    type: string
+    example: ""
+    description: "Resposta da API (quando necessário)"
+  conteudo:
+    $ref: Foro.yaml
+  tipoResposta:
+    $ref: ../enums/TipoRespostaRequisicao.yaml

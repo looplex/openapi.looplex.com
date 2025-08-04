@@ -1,0 +1,20 @@
+title: Participante Pessoa Física
+type: object
+allOf:
+  - $ref: ParticipantEntityWrite.yaml
+  - type: object
+    properties:
+      Dob:
+        type: string <nullable>
+        format: datetime
+        description: "**Data de Nascimento**<br />"
+      Gender:
+        $ref: ../enums/Gender.yaml
+      Nationality:
+        description: "**Nacionalidade**"
+        type: string <nullable>
+      MaritalStatus:
+        $ref: ../enums/MaritalStatus.yaml
+      Occupation:
+        type: string <nullable>
+        description: "**Profissão**"

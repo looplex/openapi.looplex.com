@@ -1,0 +1,23 @@
+title: ParteParaLO
+type: object
+properties:
+  IdParteNoLo:
+    example: -2147483648
+    type: integer
+  nomeParte:
+    type: string
+  tipoPessoa:
+    $ref: ../enums/TipoPessoa.yaml
+  polo:
+    $ref: ../enums/PoloLawOffice.yaml
+  principal:
+    type: boolean
+  tipoEnvolvimento:
+    example: -2147483648
+    type: integer
+  documento:
+    type: string
+  advogadosParte:
+    type: array
+    items:
+      $ref: "AdvogadoParte.yaml"
