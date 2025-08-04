@@ -42,24 +42,10 @@ properties:
   Number:
     type: integer
   KilometersReimbursement:
-    type: integer
-    description: |
-      **Definições:**<br />
-      ESCRITORIO = 1<br />
-      CONTRATO = 2
+    $ref: enums/ContratoReembolsoKM.yaml
   ExpenseRuleLocal:
-    type: string
-    description: |
-      **Definições:**<br />
-      REGRAESCRITORIO = 1<br/>
-      REGRAEMPRESA = 2<br/>
-      REGRACLIENTE = 3<br/>
-      REGRACONTRATO = 4<br/>
-      REGRAPROCESSO = 5<br/>
-      REGRAVAZIA = 6
+    $ref: enums/TipoRegraAprovacaoLimiteDespesas.yaml
   Status:
-    type: integer
-    description: |
-      **Definições:**<br/>
-      ATIVO = 1<br/>
-      ENCERRADO = 3
+    $ref: enums/ContratoSituacao.yaml
+  IsDefault:
+    type: boolean

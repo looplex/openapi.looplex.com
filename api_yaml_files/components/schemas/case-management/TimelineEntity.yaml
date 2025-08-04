@@ -2,38 +2,17 @@ title: TimelineEntity
 type: object
 properties: 
   Type:
-    description: |
-      **Tipo de evento**<br />
-      **Valores possíveis:**<br />
-      Andamento do Tribunal<br />
-      Decisão<br />
-      Andamento<br />
-      Garantia<br />
-      Publicação<br />
-      Cumprimento<br />
-      Tarefa<br />
-      Hora
-    oneOf:
-      - type: string
-      - type: null
+    $ref: enums/TimelineItemType.yaml
   Id:
     type: string <nullable>
     description: "**Identificador do item**"
   Date:
-    description: |
-      **Data do evento**<br />
-    oneOf:
-      - type: string
-        format: datetime
+    type: string
+    format: datetime
+    description: "**Data do evento**"
   Title:
-    description: |
-      **Título do evento**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
+    description: "**Título do evento**"
   Description:
-    description: |
-      **Descrição do evento**<br />
-    oneOf:
-      - type: string
-      - type: null
+    type: string <nullable>
+    description: "**Descrição do evento**"

@@ -8,26 +8,36 @@ allOf:
 properties:
   Name:
     type: string
-    description: "The client's name"
     example: "Example name"
+    description: "Client's name"
   NickName:
     type: string
-    description: "The client's nickname"
     example: "Example"
+    description: "Client's nickname"
   Type:
     $ref: enums/TipoPessoa.yaml
   Email:
     type: string <nullable>
-    description: "The client's email address"
     example: null
+    description: "Client's email address"
   Website:
     type: string <nullable>
-    description: "The client's website page"
     example: null
+    description: "The client's website page"
   Comments:
     type: string <nullable>
     description: "Comments about the client"
     example: null
+  Dob:
+    type: string <nullable>
+    format: datetime
+    description: "Client's date of birth (available when NATURAL_PERSON)"
+  Gender:
+    $ref: enums/Gender.yaml
+    description: "Client's gender (available when NATURAL_PERSON)"
+  MaritalStatus:
+    $ref: enums/MaritalStatus.yaml
+    description: "Client's marital status (available when NATURAL_PERSON)"
   Identities:
     type: array
     items:

@@ -15,9 +15,9 @@ allOf:
       CaseId: 
         type: string
         format: uuid
-        description: "Identificador único do caso"
+        description: "**Identificador único do caso**"
       CreatedBy: 
-        $ref: "SimpleEntity.yaml"
+        $ref: SimpleEntity.yaml
       Name:
         type: string
         description: "**Participant's name**"
@@ -28,18 +28,18 @@ allOf:
         type: bool
         description: "**Indica se é a parte principal**"
       Represents:
-        oneOf:
-          - type: array
-            items:
-            - type: string
+        type: array
+        items:
+          oneOf:
+            - type: string (document)
               example: "000.000.000-00"
-              description: "Documento da parte representada"
-            - type: string
+              description: "**Documento da parte representada**"
+            - type: string (unique identifier)
               format: uuid
-              description: "Unique identifier da parte representada"
+              description: "**Unique identifier da parte representada**"
       LawyerOffice:
         type: string <nullable>
-        description: "Escritório do advogado (se houver)"
+        description: "**Escritório do advogado (se houver)**"
       Nature:
         example: NATURAL_PERSON
         $ref: enums/TipoPessoa.yaml
@@ -61,12 +61,14 @@ allOf:
         type: array
         items:
           $ref: IdentityEntity.yaml
-      CustomFields:
-        type: string
-        example: {}
-        description: "**Participant's custom fields**"
       PhoneNumbers:
         description: "**Telefones**"
         type: array
         items:
           $ref: PhoneNumberEntity.yaml
+      Role:
+        $ref: enums/ParticipantRole.yaml
+      CustomFields:
+        type: object
+        example: {}
+        description: "**Participant's custom fields**"

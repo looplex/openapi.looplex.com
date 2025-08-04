@@ -1,4 +1,4 @@
-title: "Legal service agreement to create"
+title: Legal service agreement
 type: object
 properties:
   ClientId:
@@ -33,45 +33,9 @@ properties:
   OwnerId:
     type: string
     format: uuid
-  Number:
-    type: integer
-  IsDefault: 
-    type: boolean
-    description: "Indica se é o contrato default do cliente"
   KilometersReimbursement:
-    type: string
-    description: |
-      ESCRITORIO<br/>
-      CONTRATO
-
-      **Definições:**<br />
-      ESCRITORIO = 1<br />
-      CONTRATO = 2
+    $ref: enums/ContratoReembolsoKM.yaml
   ExpenseRuleLocal:
-    type: string
-    description: |
-      **Valores permitidos:**<br/>
-      1<br/>
-      2<br/>
-      3<br/>
-      4<br/>
-      5<br/>
-      6
-
-      **Definições:**<br />
-      REGRAESCRITORIO = 1<br/>
-      REGRAEMPRESA = 2<br/>
-      REGRACLIENTE = 3<br/>
-      REGRACONTRATO = 4<br/>
-      REGRAPROCESSO = 5<br/>
-      REGRAVAZIA = 6
-required:
-  - ClientId
-  - Name
-  - StartDate
-  - IsSameReviewerAttorneyFeesAndExpenses
-  - IsSamePayerAttorneyFeesAndExpenses
-  - KilometersReimbursement
-  - ExpenseRuleLocal
-  - BillingCompanyId
-  - OwnerId
+    $ref: enums/TipoRegraAprovacaoLimiteDespesas.yaml
+  IsDefault:
+    type: boolean

@@ -1,4 +1,4 @@
-title: TaskContent
+title: Dados da tarefa
 type: object
 properties:
   ParentTaskId:
@@ -6,110 +6,84 @@ properties:
     format: uuid
     description: "**Unique identifier of parent task**"
   Type:
-    type: string
-    example: "COURT_HEARING"
-    description: |
-      **Tipo**<br />
-      **Valores permitidos:**<br />
-      COURT_HEARING<br />
-      MEETING<br />
-      FIELD_TASK<br />
-      DEADLINE<br />
-
-      **Definições:**<br />
-      **COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />
-      **MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
-      **FIELD_TASK (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
-      **DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />
+    $ref: enums/TaskType.yaml
+    example: COURT_HEARING
   Title:
+    type: string <nullable>
     description: "**Titulo**"
-    type: string <nullable>
   Description:
+    type: string <nullable>
     description: "**Descrição**"
-    type: string <nullable>
   StartDate:
+    type: string <nullable>
+    format: datetime
     description: "**Data de Início**"
-    type: string <nullable>
-    format: datetime
   DueDate:
+    type: string <nullable>
+    format: datetime
     description: "**Data de Vencimento**"
-    type: string <nullable>
-    format: datetime
   CreatedBy:
+    $ref: SimpleEntity.yaml
     description: "**Criado por**"
-    $ref: SimpleEntity.yaml
   CreatedAt:
+    type: string <nullable>
+    format: datetime
     description: "**Criado em**"
-    type: string <nullable>
-    format: datetime
   UpdatedAt:
+    type: string <nullable>
+    format: datetime
     description: "**Atualizado em**"
-    type: string <nullable>
-    format: datetime
   UpdatedBy:
-    description: "**Atualizado por**"
     $ref: SimpleEntity.yaml
+    description: "**Atualizado por**"
   CompletedAt:
-    description: |
-      **Concluído em**<br />
     type: string <nullable>
     format: datetime
+    description: "**Concluído em**"
   CompletedBy:
+    $ref: SimpleEntity.yaml
     description: "**Concluído por**"
-    $ref: SimpleEntity.yaml
   Locale:
+    type: string <nullable>
     description: "**Local**"
-    type: string <nullable>
   TaskCode:
+    type: string <nullable>
     description: "**Código da Tarefa**"
-    type: string <nullable>
   ActivityCode:
-    description: "**Código da Atividade**"
     type: string <nullable>
+    description: "**Código da Atividade**"
   Owner:
-    description: "**Responsável**"
     $ref: SimpleEntity.yaml
+    description: "**Responsável**"
   OtherParticipants:
     description: "**Outros Participantes**"
     type: array
     items:
       $ref: SimpleEntity.yaml
   Status:
-    type: string
-    example: "CREATED"
-    description: |
-      **Status**<br />
-      CANCELED<br />
-      CLAIMED<br />
-      CREATED<br />
-      COMPLETED<br />
-      RESCHEDULED<br />
-      SUSPENDED<br />
-
-      **Definições:**<br />
-      **CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />
-      **CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />
-      **CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />
-      **COMPLETED (Concluída):** Tarefa realizada<br />
-      **RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />
-      **SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura
+    $ref: enums/StatusTarefa.yaml
+    example: CREATED
   Priority:
-    type: string <nullable>
-    example: "LOW"
-    description: |
-      **Prioridade**<br />
-      **Valores permitidos:**<br />
-      LOW<br />
-      MEDIUM<br />
-      HIGH<br />
-
-      **Definições:**<br />
-      **LOW (Baixa)**<br />
-      **MEDIUM (Média)**<br />
-      **HIGH (Alta)**
+    example: LOW
+    $ref: enums/Prioridade.yaml
   ConclusionNotes:
     type: string <nullable>
     description: "**Notas de Conclusão**"
   Case:
     description: "Caso de uma tarefa"
-    $ref: TaskCase.yaml
+    type: object
+    properties:
+      Id:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"
+      Title:
+        type: string
+        description: "**Case title**"
+      Identities:
+        type: array
+        items:
+          $ref: IdentityEntity.yaml
+      Group:
+        type: string
+        description: "Case's group"

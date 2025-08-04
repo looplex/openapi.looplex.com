@@ -1,18 +1,15 @@
-title: CaseInfoEntity
+title: Dados simplificados do caso
 type: object
 allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
       Status:
-        example: ATIVO
         $ref: enums/SituacaoDoProcesso.yaml
       Type:
-        example: JUDICIAL_ESTADUAL
         $ref: enums/RamosJudicial.yaml
       SubType:
         description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
-        example: SUBCASO
         oneOf:
           - $ref: enums/ClasseProcessoContrato.yaml
           - $ref: enums/ClasseProcessoSocietario.yaml
@@ -23,14 +20,17 @@ allOf:
       HasDescendants:
         type: boolean
         description: "**Indica se o caso possui casos filhos**"
+      Level:
+        type: integer
+        example: 1
+        description: "**Instância do caso**"
       Identities:
         type: array
         items:
           $ref: IdentityEntity.yaml
-        description: |
-          **Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**
+        description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
       Title:
-        type: string <nullable>
+        type: string
         description: "**Nome Jurídico do caso**"
       Summary:
         type: string <nullable>
@@ -51,7 +51,7 @@ allOf:
         description: "**Rito ou procedimento do caso**"
       Phase:
         type: string <nullable>
-        description: | 
+        description: |
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
       RetentionDate:
@@ -90,31 +90,24 @@ allOf:
       CreatedAt:
         type: string <nullable>
         format: datetime
-        description: |
-          **Data de criação do caso**
+        description: "**Data de criação do caso**"
       CreatedBy:
+        $ref: SimpleEntity.yaml
         description: "**Usuário que criou o caso**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
       UpdatedAt:
         type: string <nullable>
         format: datetime
         description: "**Atualizado em**"
       UpdatedBy:
+        $ref: SimpleEntity.yaml
         description: "**Atualizado por**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
       ClosedAt:
         type: string <nullable>
         format: datetime
         description: "**Data de encerramento**"
       ClosedBy:
+        $ref: SimpleEntity.yaml
         description: "**Usuário que encerrou o caso**"
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
       Group:
         type: string
         description: |
@@ -140,22 +133,18 @@ allOf:
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
       ExternalServiceProvider:
+        $ref: SimpleEntity.yaml
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-        oneOf:
-          - $ref: SimpleEntity.yaml
-          - type: null
       Participants:
-        description: |
-          **Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**
         type: array
         items:
           oneOf:
             - $ref: ParticipantNaturalPerson.yaml
             - $ref: ParticipantLegalPerson.yaml
-      GlobalValues: 
+        description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+      GlobalValues:
         type: array
         items:
           $ref: GlobalValues.yaml
-        description: "**Valores globais do caso, definidos por polo**"

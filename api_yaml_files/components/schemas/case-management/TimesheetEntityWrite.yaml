@@ -1,27 +1,23 @@
-title: Dados de timesheet para inclusão
+title: Timesheet
 type: object
 properties:
   ClientId:
     type: string
     format: uuid
     description: "**Client unique identifier**"
-  Classification:
-    description: "**Classificação**"
-    type: string <nullable>
   Owner:
-    description: "**Responsável**"
     $ref: SimpleEntityWrite.yaml
+    description: "**Responsável**"
   Date:
-    description: "**Data**"
     type: string
     format: datetime
-    example: "2025-01-01T12:00:00.000Z"
+    description: "**Data**"
   Hours:
+    type: string
+    example: "01:00:00"
     description: |
       **Horas (quantidade de horas do lançamento)**<br />
       `Format: hh:mm:ss`
-    type: string
-    example: "01:00:00"
   TaskCode:
     type: string <nullable>
     description: "**Código da Tarefa**"
@@ -32,11 +28,15 @@ properties:
     $ref: SimpleEntityWrite.yaml
     description: "**Solicitante**<br />"
   Description:
-    type: string
+    type: string <nullable>
     description: "**Descrição**"
   CreatedBy:
     $ref: SimpleEntityWrite.yaml
     description: "**Criado por**"
   Case:
-    $ref: SimpleEntityWrite.yaml
+    type: object
     description: "**The case unique identifier**"
+    properties:
+      Id:
+        type: string
+        format: uuid

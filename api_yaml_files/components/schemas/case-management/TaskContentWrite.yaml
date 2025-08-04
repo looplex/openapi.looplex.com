@@ -6,86 +6,50 @@ properties:
     format: uuid
     description: "**Unique identifier of parent task**"
   Type:
-    type: string
-    example: "COURT_HEARING"
-    description: |
-      **Tipo**<br />
-      **Valores permitidos:**<br />
-      COURT_HEARING<br />
-      MEETING<br />
-      FIELD_TASK<br />
-      DEADLINE<br />
-
-      **Definições:**<br />
-      **COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />
-      **MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
-      **FIELD_TASK (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
-      **DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />
+    $ref: enums/TaskType.yaml
+    example: COURT_HEARING
   Title:
+    type: string <nullable>
     description: "**Titulo**"
-    type: string
-    example: "Titulo da tarefa"
   Description:
+    type: string <nullable>
     description: "**Descrição**"
-    type: string <nullable>
-    example: "Descrição da tarefa"
   StartDate:
+    type: string <nullable>
+    format: datetime
     description: "**Data de Início**"
-    type: string
-    format: datetime
-    example: "2025-05-29T12:00:00.000Z"
   DueDate:
-    description: "**Data de Vencimento**"
-    type: string
+    type: string <nullable>
     format: datetime
-    example: "2025-05-29T12:00:00.000Z"
+    description: "**Data de Vencimento**"
   CreatedBy:
+    $ref: SimpleEntityWrite.yaml
     description: "**Criado por**"
-    $ref: SimpleEntityWrite.yaml
   Locale:
+    type: string <nullable>
     description: "**Local**"
-    type: string <nullable>
-    example: "Local da tarefa"
   TaskCode:
+    type: string <nullable>
     description: "**Código da Tarefa**"
-    type: string <nullable>
-    example: "Task1"
   ActivityCode:
-    description: "**Código da Atividade**"
     type: string <nullable>
-    example: "Act1"
+    description: "**Código da Atividade**"
   Owner:
-    description: "**Responsável**"
     $ref: SimpleEntityWrite.yaml
+    description: "**Responsável**"
   OtherParticipants:
     description: "**Outros Participantes**"
     type: array
     items:
       $ref: SimpleEntityWrite.yaml
   Priority:
-    type: string
-    example: "LOW"
-    description: |
-      **Prioridade**<br />
-      **Valores permitidos:**<br />
-      LOW<br />
-      MEDIUM<br />
-      HIGH<br />
-
-      **Definições:**<br />
-      **LOW (Baixa)**<br />
-      **MEDIUM (Média)**<br />
-      **HIGH (Alta)**
+    example: LOW
+    $ref: enums/Prioridade.yaml
   Case:
-    description: "Task's case"
-    $ref: SimpleEntityWrite.yaml
-required:
-  - Type
-  - Title
-  - Priority
-  - StartDate
-  - DueDate
-  - CreatedBy
-  - Owner
-  - Status
-  - Case
+    description: "Caso de uma tarefa"
+    type: object
+    properties:
+      Id:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"

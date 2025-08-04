@@ -2,19 +2,7 @@ title: Identidade
 type: object
 properties:
   IdentityProviderType:
-    type: string
-    example: "CPF"
-    description: |
-      **The identity provider**<br />
-      **Alguns dos valores permitidos:<br />**
-      - RG<br />
-      - CPF<br  />
-      - CNPJ<br />
-      - CNJ<br />
-      - OAB<br/>
-      - Inscrição municipal<br />
-      - Inscrição estadual
+    $ref: enums/IdentityProviderType.yaml
   Value:
     type: string
-    example: "000.000.000-00"
     description: "**The identity value**"

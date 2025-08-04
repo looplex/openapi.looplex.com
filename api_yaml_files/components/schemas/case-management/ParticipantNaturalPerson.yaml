@@ -18,5 +18,3 @@ allOf:
       Occupation:
         type: string <nullable>
         description: "**Profissão**"
-      Role:
-        $ref: enums/ParticipantRole.yaml

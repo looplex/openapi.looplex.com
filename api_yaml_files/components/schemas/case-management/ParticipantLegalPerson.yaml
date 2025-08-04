@@ -6,5 +6,3 @@ allOf:
     properties:
       BusinessStructure:
         $ref: enums/ParticipantBusinessStructure.yaml
-      Role:
-        $ref: enums/ParticipantRole.yaml

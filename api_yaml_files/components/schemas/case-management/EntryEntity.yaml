@@ -4,14 +4,9 @@ allOf:
   - $ref: ../scim/Resource.yaml
   - type: object
     properties:
-      CaseId:
-        type: string
-        format: uuid
-        description: "**Case's unique identifier**"
       Date:
         type: string
         format: datetime
-        required: true
         example: "2025-05-21T12:00:00.000Z"
         description: "**Data do andamento**"
       Classification:
@@ -19,24 +14,27 @@ allOf:
         description: "**Classificação do andamento**"
       Description:
         type: string
-        required: true
         description: "**Texto do andamento**"
       IsInternal:
         type: boolean
         description: "**Indica se o andamento é de uso interno**"
+      OfficialNotice:
+        type: string <nullable>
+        format: uuid
+        description: "**Identificador da publicação que criou esse andamento (se houver)**"
       CreatedAt:
         type: string
         format: datetime
         example: "2025-05-21T12:00:00.000Z"
         description: "**Entry creation date**"
-      OfficialNotice:
-        type: string <nullable>
-        format: uuid
-        description: "**Identificador da publicação que criou esse andamento (se houver)**"
       CreatedBy:
         $ref: SimpleEntity.yaml
       ClassificationType:
         $ref: enums/TipoClassificacaoAutomatica.yaml
+      CaseId:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"
       CustomFields:
         type: object
         example: {}

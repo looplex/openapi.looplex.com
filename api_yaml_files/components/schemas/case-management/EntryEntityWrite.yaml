@@ -1,31 +1,26 @@
-title: Dados de andamento para inclusão
+title: Dados de andamento
 type: object
 properties:
-  CaseId:
-    type: string
-    format: uuid
-    description: "**Case's unique identifier**"
   Date:
     type: string
     format: datetime
-    example: "2025-05-21T15:00:00.000Z"
+    example: "2025-05-21T12:00:00.000Z"
     description: "**Data do andamento**"
   Classification:
     type: string <nullable>
     description: "**Classificação do andamento**"
   Description:
     type: string
-    example: "<Texto do andamento>"
     description: "**Texto do andamento**"
   IsInternal:
     type: boolean
     description: "**Indica se o andamento é de uso interno**"
-  OfficialNotice:
-    type: string <nullable>
-    format: uuid
-    description: "**Identificador da publicação que criou esse andamento (se houver)**"
   ClassificationType:
     $ref: enums/TipoClassificacaoAutomatica.yaml
+  CaseId:
+    type: string
+    format: uuid
+    description: "**Case's unique identifier**"
   CustomFields:
     type: object
     example: {}

@@ -1,20 +1,14 @@
 title: Email
 type: object
 properties: 
-  Type:
-    type: string
-    description: |
-      **A label indicating the attribute's function, e.g., 'work' or 'home'**<br />
-      **Valores permitidos:**<br />
-      work <br />
-      home <br />
-      other
   Value:
     type: string
     description: |
       **Email addresses for the user.**<br />
       The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
       Canonical type values of 'work', 'home', and 'other'.
+  Type:
+    $ref: enums/EmailType.yaml
   Primary:
     type: boolean
     description: |

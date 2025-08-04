@@ -1,0 +1,5 @@
+title: ContratoReembolsoKM
+type: string
+description: |
+  ESCRITORIO = 1<br />
+  CONTRATO = 2

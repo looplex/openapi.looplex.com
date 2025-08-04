@@ -5,18 +5,16 @@ allOf:
   - type: object
     properties:
       Dob:
-        description: "**Data de Nascimento**"
         type: string <nullable>
         format: datetime
+        description: "**Data de Nascimento**<br />"
       Gender:
         $ref: enums/Gender.yaml
       Nationality:
+        description: "**Nacionalidade**"
         type: string <nullable>
-        description: "**Nacionalidade**<br />"
       MaritalStatus:
         $ref: enums/MaritalStatus.yaml
       Occupation:
-        description: "**Profissão**"
         type: string <nullable>
-      Role:
-        $ref: enums/ParticipantRole.yaml
+        description: "**Profissão**"

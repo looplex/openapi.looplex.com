@@ -1,8 +1,12 @@
-title: Participante
+title: Dados de Parte
 type: object
-properties: 
-  CreatedBy: 
-    $ref: "SimpleEntityWrite.yaml"
+properties:
+  CaseId: 
+    type: string
+    format: uuid
+    description: |
+      **Identificador único do caso**<br/>
+      `Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`
   Name:
     type: string
     description: "**Participant's name**"
@@ -15,24 +19,35 @@ properties:
   Represents:
     type: array
     items:
-    - type: string
-      description: "**Documento da parte representada**"
-      example: "000.000.000-00"
-    - type: string
-      format: uuid
-      description: "**Unique identifier da parte representada**"
+      oneOf:
+        - type: string (document)
+          example: "000.000.000-00"
+          description: "**Documento da parte representada**"
+        - type: string (unique identifier)
+          format: uuid
+          description: "**Unique identifier da parte representada**"
+  LawyerOffice:
+    type: string <nullable>
+    description: "**Escritório do advogado (se houver)**"
   Nature:
     example: NATURAL_PERSON
     $ref: enums/TipoPessoa.yaml
   Position:
     example: OTHER
     $ref: enums/Position.yaml
+  Emails:
+    description: "**Emails**"
+    type: array
+    items:
+      $ref: EmailEntityWrite.yaml
   Identities:
     description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
     type: array
     items:
       $ref: IdentityEntityWrite.yaml
+  Role:
+    $ref: enums/ParticipantRole.yaml
   CustomFields:
-    type: string
+    type: object
     example: {}
     description: "**Participant's custom fields**"

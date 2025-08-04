@@ -12,7 +12,6 @@ properties:
     $ref: enums/RamosJudicial.yaml
   SubType:
     description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
-    example: SUBCASO
     oneOf:
       - $ref: enums/ClasseProcessoContrato.yaml
       - $ref: enums/ClasseProcessoSocietario.yaml
@@ -21,13 +20,13 @@ properties:
     type: string
     description: "**Nome Jurídico do caso**"
   Locale:
-    type: string
+    type: string <nullable>
     description: |
       **Utilizado em casos consultivos**<br />
-      Formato: País - Estado - Cidade<br />
-      Local da Jurisdição de um caso, ou cumprimento da obrigação. Utilizado para casos consultivos
+      **Formato: País - Estado - Cidade**<br />
+      Local da Jurisdição de um caso, ou cumprimento da obrigação.
   CourtVenue:
-    type: string
+    type: string <nullable>
     description: |
       **Utilizado para casos contenciosos, judiciais ou não**<br />
       Foro do caso, local onde o caso será julgado
@@ -35,8 +34,8 @@ properties:
     type: string
     description: "**Rito ou procedimento do caso**"
   Phase:
-    type: string
-    description: | 
+    type: string <nullable>
+    description: |
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
   Identities:

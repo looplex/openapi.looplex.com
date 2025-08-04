@@ -9,50 +9,50 @@ allOf:
         format: uuid
         description: "**Client unique identifier**"
       Classification:
-        description: "**Classificação**"
         type: string <nullable>
+        description: "**Classificação**"
       Owner:
-        description: "**Responsável**"
         $ref: SimpleEntity.yaml
+        description: "**Responsável**"
       Date:
-        description: "**Data**"
         type: string
         format: datetime
+        description: "**Data**"
       Hours:
+        type: string
+        example: "01:00:00"
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
           `Format: hh:mm:ss`
-        type: string
-        example: "01:00:00"
       TaskCode:
+        type: string <nullable>
         description: "**Código da Tarefa**"
-        type: string <nullable>
       ActivityCode:
+        type: string <nullable>
         description: "**Código da Atividade**<br />"
-        type: string <nullable>
       Applicant:
+        $ref: SimpleEntity.yaml
         description: "**Solicitante**<br />"
-        $ref: SimpleEntity.yaml
       Description:
+        type: string <nullable>
         description: "**Descrição**"
-        type: string <nullable>
       IsInvoiced:
-        description: "**Faturado**"
         type: boolean <nullable>
+        description: "**Faturado**"
       CreatedAt:
+        type: string <nullable>
+        format: datetime
         description: "**Criado em**"
-        type: string <nullable>
-        format: datetime
       CreatedBy:
-        description: "**Criado por**"
         $ref: SimpleEntity.yaml
+        description: "**Criado por**"
       UpdatedAt:
-        description: "**Atualizado em**"
         type: string <nullable>
         format: datetime
+        description: "**Atualizado em**"
       UpdatedBy:
-        description: "**Atualizado por**"
         $ref: SimpleEntity.yaml
+        description: "**Atualizado por**"
       Case:
         type: object
         description: "**The case unique identifier**"
@@ -60,3 +60,5 @@ allOf:
           Id:
             type: string
             format: uuid
+      TaskType:
+        type: string <nullable>

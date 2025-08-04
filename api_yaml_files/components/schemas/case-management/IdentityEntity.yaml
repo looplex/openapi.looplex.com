@@ -6,8 +6,7 @@ properties:
     format: uuid
     description: "**The unique identifier of this value**"
   IdentityProviderType:
-    type: string
-    description: "**The identity provider**"
+    $ref: enums/IdentityProviderType.yaml
   Value:
     type: string
     description: "**The identity value**"

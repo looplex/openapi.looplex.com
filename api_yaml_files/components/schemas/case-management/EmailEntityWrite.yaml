@@ -1,0 +1,9 @@
+title: Email
+type: object
+properties: 
+  Value:
+    type: string
+    description: |
+      **Email addresses for the user.**<br />
+      The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
+      Canonical type values of 'work', 'home', and 'other'.

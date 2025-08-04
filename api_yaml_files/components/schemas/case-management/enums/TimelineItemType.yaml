@@ -1,0 +1,14 @@
+title: TimelineItemType
+type: string
+example: Andamento do Tribunal
+description: |
+  **Tipo de evento**<br />
+  **Valores possíveis:**<br />
+  Andamento do Tribunal<br />
+  Decisão<br />
+  Andamento<br />
+  Garantia<br />
+  Publicação<br />
+  Cumprimento<br />
+  Tarefa<br />
+  Hora

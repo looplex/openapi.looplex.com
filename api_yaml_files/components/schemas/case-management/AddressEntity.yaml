@@ -2,32 +2,31 @@ title: Endereço
 type: object
 properties:
   Country:
-    example: "BR"
     type: string <nullable>
+    example: "BR"
     description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
   PostalCode:
-    example: "00000-000"
     type: string <nullable>
+    example: "00000-000"
   StreetAddress:
     example: "Avenida exemplo"
     type: string <nullable>
   StreetAddressNumber:
+    type: string <nullable>
     example: "10"
-    type: string <nullable>
   Pobox:
+    type: string <nullable>
     example: null
-    type: string <nullable>
   Locality:
+    type: string <nullable>
     example: "SP"
-    type: string <nullable>
   Region:
+    type: string <nullable>
     example: "São Paulo"
-    type: string <nullable>
   Neighborhood:
-    example: "Centro"
     type: string <nullable>
+    example: "Centro"
   Type:
-    example: OUTROS
     $ref: enums/TipoDeEndereco.yaml
   Primary:
     type: boolean
