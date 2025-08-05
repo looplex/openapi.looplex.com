@@ -6,8 +6,8 @@ description: |
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../../..{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
   - name: id
     in: path
     required: true

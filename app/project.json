@@ -1,18 +1,18 @@
 {
   "name": "looplex_openapi",
-  "path_templates": "/components/schemas/templates",
+  "path_templates": "app/templates",
   "apis": [
     {
       "index": 1,
       "label": "API MobileService",
       "option": {
         "build_command": "redocly bundle app/v1_cases.yaml -o app/v1_cases/cases --ext json",
-        "folder_name": "v1_cases",
-        "path_components": "/schemas",
-        "path_parameters": "/parameters",
-        "path_enums": "enums",
-        "path_routes": "/",
-        "path_http_responses": "http_responses",
+        "folder_name": "/v1_cases",
+        "path_components": "app/v1_cases/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v1_cases/enums",
+        "path_routes": "app/v1_cases",
+        "path_http_responses": "/http_responses",
         "tags": [
           {
             "option": 1,
@@ -271,6 +271,12 @@
             "label": "Render",
             "detail": "Endpoints do Render",
             "folder": "render"
+          },
+          {
+            "option": -1,
+            "label": "Debug (não utilizar essa tag em endpoints oficiais)",
+            "detail": "Debug endpoints",
+            "folder": "debug"
           }
         ]
       }
@@ -280,11 +286,11 @@
       "label": "API Case Management",
       "option": {
         "build_command": "redocly bundle app/v2_case-management.yaml -o app/v2_case-management/cases --ext json",
-        "folder_name": "v2_case-management",
-        "path_components": "/schemas",
-        "path_parameters": "/parameters",
-        "path_enums": "/enums",
-        "path_routes": "/",
+        "folder_name": "/v2_case-management",
+        "path_components": "app/v2_case-management/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_case-management/enums",
+        "path_routes": "app/v2_case-management",
         "path_http_responses": "/http_responses",
         "tags": [
           {
@@ -361,11 +367,11 @@
       "label": "API Tasks Management",
       "option": {
         "build_command": "redocly bundle app/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
-        "folder_name": "tasks-management",
-        "path_components": "/schemas",
-        "path_parameters": "/parameters",
-        "path_enums": "/enums",
-        "path_routes": "/",
+        "folder_name": "/v2_tasks",
+        "path_components": "app/v2_tasks/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_tasks/enums",
+        "path_routes": "app/v2_tasks",
         "path_http_responses": "/http_responses",
         "tags": [
           {
@@ -388,11 +394,11 @@
       "label": "Varas e Foros (Court Venue)",
       "option": {
         "build_command": "redocly bundle app/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
-        "folder_name": "court_venue",
-        "path_components": "/schemas",
-        "path_parameters": "/parameters",
-        "path_enums": "/enums",
-        "path_routes": "/",
+        "folder_name": "/v2_court_venue",
+        "path_components": "app/v2_court_venue/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_court_venue/enums",
+        "path_routes": "app/v2_court_venue",
         "path_http_responses": "/http_responses",
         "tags": [
           {
@@ -415,11 +421,11 @@
       "label": "Recess (API de feriados)",
       "option": {
         "build_command": "redocly bundle app/v1_recess.yaml -o app/v1_recess/recess --ext json",
-        "folder_name": "recess",
-        "path_components": "/schemas",
-        "path_parameters": "/parameters",
-        "path_enums": "/enums",
-        "path_routes": "/",
+        "folder_name": "/v1_recess",
+        "path_components": "app/v1_recess/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v1_recess/enums",
+        "path_routes": "app/v1_recess",
         "path_http_responses": "/http_responses",
         "tags": []
       }
@@ -430,7 +436,7 @@
       "option": {
         "build_command": null,
         "folder_name": "scim",
-        "path_components": "/components/schemas/scim",
+        "path_components": "app/scim",
         "path_parameters": null,
         "path_enums": null,
         "path_routes": null,
