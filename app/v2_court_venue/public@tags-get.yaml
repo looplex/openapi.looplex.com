@@ -1,0 +1,32 @@
+tags:
+  - Tags
+summary: "/tags"
+description: |
+  **List tags by tag group**
+operationId: subjectTags-uuid-tags-get
+parameters:
+  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../common_parameters/BearerToken.yaml
+  - name: Filter
+    in: query
+    required: true
+    description: "**Unique identifier of tag's group**"
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ./schemas/Tag.yaml
+  "500":
+    description: "Internal Server Error"
+ 

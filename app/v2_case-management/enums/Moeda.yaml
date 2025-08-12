@@ -1,0 +1,8 @@
+title: Moeda
+type: string
+example: BRL
+description: |
+  **Moeda**
+  BRL<br />
+  USD<br />
+  EUR

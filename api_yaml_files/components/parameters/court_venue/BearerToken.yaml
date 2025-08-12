@@ -1,8 +1,0 @@
-name: 'Authorization'
-in: header
-description: |
-  **The authorization token**<br />
-  **Example:**<br />`Bearer <token_from_authentication_endpoint_response>`
-required: true
-schema:
-  type: string

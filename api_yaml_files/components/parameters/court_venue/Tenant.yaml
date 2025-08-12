@@ -1,6 +1,0 @@
-name: x-looplex-tenant
-in: header
-description: '**Client domain**'
-required: true
-schema:
-  type: string

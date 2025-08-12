@@ -1,0 +1,9 @@
+title: IdentityProviderType
+type: string
+description: |
+  **The identity provider**<br/>
+  CNJ<br/>
+  Law Office<br/>
+  Law Office ID<br/>
+  CPF<br/>
+  RG

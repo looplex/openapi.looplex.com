@@ -1,0 +1,17 @@
+title: SituacaoDoProcesso
+type: string
+example: ATIVO
+description: |
+  **Indicação do status do caso**<br />
+  **Valores permitidos:**<br />
+  ATIVO<br />
+  EM_TRAMITACAO<br />
+  ARQUIVO_MORTO<br />
+  ARQUIVAMENTO_DEFINITIVO<br/>
+  ENCERRADO<br />
+  SUSPENSO<br />
+  EM_GRAU_DE_RECURSO<br />
+  ARQUIVAMENTO_PROVISORIO<br />
+  ARQUIVADO_ADMINISTRATIVAMENTE<br />
+  ARQUIVAMENTO<br />
+  EXCLUIDO

@@ -1,0 +1,45 @@
+title: DTOTituloAgenda
+type: object
+properties:
+  IDTituloCobranca:
+    description: "O identificador do titulo de cobrança<br />`Required`<br />- **POST**: A propriedade deve ser enviada com o valor *0*<br />- **PUT**: Preencher com o valor da propriedade já existente."
+    type: integer
+    example: 0
+  TipoCobrancaEvento:
+    $ref: ../enums/TipoEventoDeCobranca.yaml
+  Titulo:
+    description: "O nome do título"
+    type: string
+    example: "Titulo de tarefa"
+  LinkEntrevistaTemplate:
+    type: string
+  DiasParaCumprimento:
+    type: integer
+    description: "Quantidade de dias para cumprimento da tarefa"
+  DiasCorridos:
+    type: boolean
+    description: "Indica se são dias corridos ou não"
+  HorasParaExecucaoDaTarefa:
+    type: integer
+    description: "A quantidade de horas para cumprimento da tarefa"
+  TipoVinculoComDocumento:
+    $ref: ../enums/TipoVinculoComDocumento.yaml
+  IdentificadorDocumento:
+    type: string
+    description: "O identificador do documento"
+  VinculoTiposDeProcesso:
+    example: [1, 3]
+    description: "1: Administrativo\n\n2: Interno (Consultivo)\n\n3: Judicial Estadual\n\n4: Judicial Federal\n\n5: Judicial Trabalhista\n\n6: Interno do escritório\n\n7: Militar Estadual\n\n8: Eleitoral\n\n9: Militar da União\n\n10: Consultivo contrato\n\n11: Análise Documental\n\n12: Gestão de Ativos\n\n13: Societário"
+    type: array
+    items:
+      $ref: ../enums/RamosJudicial.yaml
+  Subtarefas:
+    type: array 
+    items:
+      $ref: DTOTituloAgenda.yaml
+  IDArea:
+    description: "O identificador da área"
+    type: integer
+  PrecedenciaAoPaiEmDias:
+    description: "Quantidade em dias que o item filho precede o pai"
+    type: integer  

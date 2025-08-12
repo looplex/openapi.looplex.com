@@ -1,0 +1,22 @@
+# Deixar apenas 1 resposta 200 OK
+  # Utilizado quando um array for retornado
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../common_schemas/ListResponse.yaml'
+              - type: object
+                properties:
+                  resources:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/{{API_NAME}}/{{DTO_NAME}}.yaml
+  # Utilizado quando apenas um item for retornado
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: ../../../components/schemas/{{API_NAME}}/{{DTO_NAME}}.yaml

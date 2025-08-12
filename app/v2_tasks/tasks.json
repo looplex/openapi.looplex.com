@@ -1,0 +1,635 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "Looplex Tasks Management",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "API de Tarefas v2\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/case-management",
+      "description": "Tasks Management Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/tasks/:task_id": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "/tasks/:task_id",
+        "description": "**Retrieve a task by id**\n",
+        "operationId": "tasks-task_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "**Task id**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "/tasks",
+        "description": "**Fetch tasks paginated**\n",
+        "operationId": "tasks-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />`Max of 120`",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Title_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TaskEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "/tasks",
+        "description": "**Create a task**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "tasks-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "Meta": {
+        "title": "Meta",
+        "type": "object",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "Entity"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "2.0",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "Resource": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier (read only)**"
+          },
+          "ExternalId": {
+            "example": null,
+            "type": "string <nullable>",
+            "description": "**External identifier (optional, read only)**"
+          },
+          "Meta": {
+            "description": "**Informações relacionadas à essa entity (read only)**",
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "TaskType": {
+        "title": "TaskType",
+        "type": "string",
+        "description": "**Task type**<br/>\nMEETING<br/>\nCOURT_HEARING<br/>\nDEADLINE<br/>\nFIELD_TASK<br/>\n\n**Definitions:**<br />\n**COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />\n**MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**FIELD_TASK (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />\n"
+      },
+      "SimpleEntity": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
+          },
+          "Name": {
+            "type": "string <nullable>",
+            "example": null,
+            "description": "**The object name**"
+          }
+        }
+      },
+      "StatusTarefa": {
+        "title": "Status Tarefa",
+        "type": "string",
+        "example": "OPENED",
+        "description": "**Task status**<br/>\nOPENED<br/>\nSCHEDULED<br/>\nCLOSED<br/>\nCREATED<br/>\nCANCELED<br/>\nRESCHEDULED<br/>\nSUSPENDED<br/>\nCLAIMED = OPENED,\nCOMPLETED = CLOSED\n\n**Definitions:**<br />\n**CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />\n**CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />\n**CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />\n**COMPLETED (Concluída):** Tarefa realizada<br />\n**RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />\n**SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura\n"
+      },
+      "Prioridade": {
+        "title": "Prioridade",
+        "type": "string",
+        "example": "LOW",
+        "description": "**Prioridade de uma tarefa**<br/>\nLOW<br/>\nMEDIUM<br/>\nHIGH\n\n**Definitions:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
+      },
+      "IdentityProviderType": {
+        "title": "IdentityProviderType",
+        "type": "string",
+        "description": "**The identity provider**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\nCPF<br/>\nRG\n"
+      },
+      "IdentityEntity": {
+        "title": "Identidade",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/IdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
+      "TaskContent": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "properties": {
+          "ParentTaskId": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of parent task**"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TaskType",
+            "example": "COURT_HEARING"
+          },
+          "Title": {
+            "type": "string <nullable>",
+            "description": "**Titulo**"
+          },
+          "Description": {
+            "type": "string <nullable>",
+            "description": "**Descrição**"
+          },
+          "StartDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Início**"
+          },
+          "DueDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Vencimento**"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntity",
+            "description": "**Criado por**"
+          },
+          "CreatedAt": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Criado em**"
+          },
+          "UpdatedAt": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Atualizado em**"
+          },
+          "UpdatedBy": {
+            "$ref": "#/components/schemas/SimpleEntity",
+            "description": "**Atualizado por**"
+          },
+          "CompletedAt": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Concluído em**"
+          },
+          "CompletedBy": {
+            "$ref": "#/components/schemas/SimpleEntity",
+            "description": "**Concluído por**"
+          },
+          "Locale": {
+            "type": "string <nullable>",
+            "description": "**Local**"
+          },
+          "TaskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**"
+          },
+          "ActivityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/SimpleEntity",
+            "description": "**Responsável**"
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntity"
+            }
+          },
+          "Status": {
+            "$ref": "#/components/schemas/StatusTarefa",
+            "example": "CREATED"
+          },
+          "Priority": {
+            "example": "LOW",
+            "$ref": "#/components/schemas/Prioridade"
+          },
+          "ConclusionNotes": {
+            "type": "string <nullable>",
+            "description": "**Notas de Conclusão**"
+          },
+          "Case": {
+            "description": "Caso de uma tarefa",
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier**"
+              },
+              "Title": {
+                "type": "string",
+                "description": "**Case title**"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                }
+              },
+              "Group": {
+                "type": "string",
+                "description": "Case's group"
+              }
+            }
+          }
+        }
+      },
+      "TaskEntity": {
+        "title": "Tarefa",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Data": {
+                "$ref": "#/components/schemas/TaskContent"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskContent"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "InternalServerErrorResponse": {
+        "type": "object",
+        "properties": {
+          "Message": {
+            "type": "string",
+            "description": "Erro"
+          },
+          "ExceptionMessage": {
+            "type": "string",
+            "description": "Indica um erro interno ocorrido no servidor."
+          },
+          "ExceptionCode": {
+            "type": "string",
+            "description": "O identificador do tipo de exception"
+          }
+        }
+      },
+      "ListResponse": {
+        "title": "ListResponse",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**"
+          }
+        }
+      },
+      "TaskContentWrite": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "properties": {
+          "ParentTaskId": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of parent task**"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TaskType",
+            "example": "COURT_HEARING"
+          },
+          "Title": {
+            "type": "string <nullable>",
+            "description": "**Titulo**"
+          },
+          "Description": {
+            "type": "string <nullable>",
+            "description": "**Descrição**"
+          },
+          "StartDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Início**"
+          },
+          "DueDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Vencimento**"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Criado por**"
+          },
+          "Locale": {
+            "type": "string <nullable>",
+            "description": "**Local**"
+          },
+          "TaskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**"
+          },
+          "ActivityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Responsável**"
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            }
+          },
+          "Priority": {
+            "example": "LOW",
+            "$ref": "#/components/schemas/Prioridade"
+          },
+          "Case": {
+            "description": "Caso de uma tarefa",
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier**"
+              }
+            }
+          }
+        }
+      },
+      "TaskEntityWrite": {
+        "title": "Tarefa",
+        "type": "object",
+        "properties": {
+          "Data": {
+            "$ref": "#/components/schemas/TaskContentWrite"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskContentWrite"
+            }
+          }
+        }
+      }
+    }
+  }
+}

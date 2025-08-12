@@ -1,0 +1,22 @@
+title: Status Tarefa
+type: string
+example: OPENED
+description: |
+  **Task status**<br/>
+  OPENED<br/>
+  SCHEDULED<br/>
+  CLOSED<br/>
+  CREATED<br/>
+  CANCELED<br/>
+  RESCHEDULED<br/>
+  SUSPENDED<br/>
+  CLAIMED = OPENED,
+  COMPLETED = CLOSED
+
+  **Definitions:**<br />
+  **CANCELED (Cancelada):** Finalizada sem atuação, a tarefa não foi realizada ou não é mais necessária<br />
+  **CLAIMED (Atribuída):** Tarefa aberta e já tem um responsável (executor)<br />
+  **CREATED (Criada):** Tarefa aberta mas sem um responsável (executor) definido<br />
+  **COMPLETED (Concluída):** Tarefa realizada<br />
+  **RESCHEDULED (Reagendada):** Tarefa com a data limite ajustada para outra data<br />
+  **SUSPENDED (Suspensa):** Tarefa em espera, pode ser reaberta para uma conclusão futura

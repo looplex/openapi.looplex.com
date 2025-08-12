@@ -1,0 +1,44 @@
+tags:
+  - Legal service agreement
+summary: "/legalServiceAgreement"
+description: |
+  **Fetch items paginated**
+operationId: legalServiceAgreement-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  # utilizado em endpoint query
+  - name: startIndex
+    in: query
+    required: true
+    description: |
+      **Index of search**<br />
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: "../schemas/LegalServiceAgreementEntity.yaml"
+  "500":
+      description: "Internal Server Error"

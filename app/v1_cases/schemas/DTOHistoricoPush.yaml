@@ -1,0 +1,11 @@
+title: DTOHistoricoPush
+type: object
+properties:
+  Chave:
+    type: string
+  DataRegistro:
+    type: string
+  Tipo:
+    $ref: ../enums/TipoHistoricoPush.yaml
+  IDHistoricoPush:
+    type: integer

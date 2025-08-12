@@ -1,0 +1,25 @@
+title: DTOFiltroInformacaoAdicional
+type: object
+properties:
+  IDParametroDadoComplementar:
+    type: integer
+  IDCliente: 
+    type: integer
+  TipoCampoDadoComplementar:
+    $ref: ../enums\TipoDadoComplementar.yaml
+  TituloDadoComplementar:
+    type: string
+  TamanhoCampo:
+    type: integer
+  Obrigatorio:
+    type: boolean
+  Ativo: 
+    type: boolean
+  Ordem: 
+    type: integer
+  Schema:
+    type: string
+    description: "O schema do dado complementar (se o tipo do dado complementar for JSON)"
+  UISchema:
+    type: string
+    description: "O UI Schema do dado complementar (se o tipo do dado complementar for JSON e se houver)"

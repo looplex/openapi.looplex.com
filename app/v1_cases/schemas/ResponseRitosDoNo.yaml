@@ -1,0 +1,13 @@
+name: ResponseRitosDoNo
+type: object
+properties:
+  respostaAPI:
+    type: string
+    example: ""
+    description: "Resposta da API (quando necessário)"
+  conteudo:
+    type: array
+    items:
+      $ref: GrupoRito.yaml
+  tipoResposta:
+    $ref: ../enums/TipoRespostaRequisicao.yaml

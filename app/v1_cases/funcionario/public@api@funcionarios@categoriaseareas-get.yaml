@@ -1,0 +1,74 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Funcionário
+summary: "Lista áreas e categorias do funcionário"
+operationId: api-funcionarios-categoriaseareas-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: object
+          properties:
+            Areas:
+              type: array
+              items:
+                type: object
+                properties:
+                  IDArea:
+                    type: integer
+                  NomeArea:
+                    type: string
+                  Categorias:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        IDCategoria:
+                          type: integer
+                        NomeCategoria:
+                          type: string
+                        Funcionarios:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              IDFuncionario:
+                                type: integer
+                              NomeFuncionario:
+                                type: string
+                              AreaPadrao: 
+                                type: boolean
+
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

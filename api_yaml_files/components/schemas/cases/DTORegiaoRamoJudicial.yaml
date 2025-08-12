@@ -1,9 +1,0 @@
-title: DTORegiaoRamoJudicial
-type: object
-properties:
-  nrRamoJudicial:
-    $ref: enums/RamosJudicial.yaml
-  cdRegiao:
-    type: integer
-  dsRegiao:
-    type: string

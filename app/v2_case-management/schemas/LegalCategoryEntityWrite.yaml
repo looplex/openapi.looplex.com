@@ -1,0 +1,9 @@
+title: Legal category (Natureza)
+type: object
+properties:
+  LegalCategory:
+    type: string
+    description: "**The legal category name**"
+    example: "legal category name"
+  Group:
+    $ref: ../enums/GrupoNaturezaDaCausa.yaml

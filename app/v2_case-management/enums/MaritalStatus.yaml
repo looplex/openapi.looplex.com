@@ -1,0 +1,10 @@
+title: MaritalStatus
+type: string <nullable>
+example: SOLTEIRO
+description: |
+  **Estado civil**<br />
+  SOLTEIRO<br/>
+  CASADO<br/>
+  VIUVO<br/>
+  DESQUITADO<br/>
+  DIVORCIADO

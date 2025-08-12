@@ -1,5 +1,0 @@
-title: Tarefa para inclusão
-type: object
-properties:
-  Data:
-    $ref: TaskContentWrite.yaml

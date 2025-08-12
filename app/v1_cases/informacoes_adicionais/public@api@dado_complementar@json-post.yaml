@@ -1,0 +1,49 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Informações adicionais
+summary: "Inclui informação adicional de tipo JSON"
+operationId: api-dado_complementar-json-post
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/DTOSchemaInformacaoAdicional.yaml
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  # Preencha o path do schema de retorno '<response_dto_relative_path_and_name>'
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/DTOSchemaInformacaoAdicionalResponse.yaml"
+  "400":
+    description: "Bad Request"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/BadRequestResponse.yaml"
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/UnauthorizedResponse.yaml"
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/ForbiddenResponse.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: "../../responses/InternalServerErrorResponse.yaml"

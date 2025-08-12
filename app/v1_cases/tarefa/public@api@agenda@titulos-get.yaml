@@ -1,0 +1,62 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Tarefa
+summary: "Titulos"
+operationId: api-agenda-titulos-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: tipo
+    in: query
+    required: true
+    schema:
+      $ref: ../enums/TipoItemAgenda.yaml
+  - name: ativos
+    in: query
+    required: false
+    description: "Listar ativos?<br />`Default: true`"
+    schema: 
+      type: boolean
+  - name: inativos
+    in: query
+    required: false
+    description: "Listar inativos?<br />`Default: false`"
+    schema: 
+      type: boolean
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: ../schemas/DTOTituloAgendaResponse.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

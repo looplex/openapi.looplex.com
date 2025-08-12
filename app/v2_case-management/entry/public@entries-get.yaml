@@ -1,0 +1,49 @@
+tags:
+  - Entries
+summary: "/entries"
+description: |
+  **Fetch entries paginated**
+operationId: entries-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: startIndex
+    in: query
+    required: true
+    description: "**Index of search**"
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    schema:
+      type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _Description_ _co_ _search_term_
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/EntryEntity.yaml
+  "500":
+    description: "Internal Server Error"

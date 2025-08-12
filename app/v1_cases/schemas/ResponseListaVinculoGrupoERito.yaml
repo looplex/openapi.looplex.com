@@ -1,0 +1,19 @@
+name: ResponseListaVinculoGrupoERito
+type: object
+properties:
+  respostaAPI:
+    type: string
+    example: ""
+    description: "Resposta da API (quando necessário)"
+  conteudo:
+    type: object
+    properties:
+      vara:
+        type: integer
+      gruposDeRito:
+        type: array
+        items:
+          type: string
+          example: "Recursos"
+  tipoResposta:
+    $ref: ../enums/TipoRespostaRequisicao.yaml

@@ -1,0 +1,9 @@
+title: Position
+type: string
+description: |
+  **Posição do participante**<br />
+  ACTIVE<br/>
+  PASSIVE<br/>
+  THIRD_PARTY<br/>
+  NONE<br/>
+  OTHER

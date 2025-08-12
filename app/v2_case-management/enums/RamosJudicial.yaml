@@ -1,0 +1,18 @@
+title: RamosJudicial
+type: string
+example: JUDICIAL_ESTADUAL
+description: |
+  **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
+  ADMINISTRATIVO<br />
+  CONSULTIVO<br />
+  JUDICIAL_ESTADUAL<br />
+  JUDICIAL_FEDERAL<br />
+  JUDICIAL_TRABALHISTA<br />
+  MILITAR_ESTADUAL<br />
+  ELEITORAL<br />
+  MILITAR_UNIAO<br />
+  CONTRATO<br />
+  DUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />
+  COBRANCA_EXTRAJUDICIAL<br />
+  SOCIETARIO<br />
+  ARBITRAGEM

@@ -1,0 +1,14 @@
+title: TaskType
+type: string
+description: |
+  **Task type**<br/>
+  MEETING<br/>
+  COURT_HEARING<br/>
+  DEADLINE<br/>
+  FIELD_TASK<br/>
+
+  **Definitions:**<br />
+  **COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />
+  **MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />
+  **FIELD_TASK (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />
+  **DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />

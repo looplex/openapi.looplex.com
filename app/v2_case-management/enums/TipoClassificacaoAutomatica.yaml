@@ -1,0 +1,11 @@
+title: Tipo de classificacao automática
+type: string
+example: DOCKET_ENTRY
+description: |
+  **Tipo de classificação do andamento**<br />
+  TIMESHEET<br/>
+  COURT_NOTICES_AND_SERVICE<br/>
+  DOCKET_ENTRY<br/>
+  EMAIL<br/>
+  AUTOMATIC<br/>
+  MANUAL

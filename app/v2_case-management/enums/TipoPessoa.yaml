@@ -1,0 +1,6 @@
+title: TipoPessoa
+type: string
+description: |
+  **The client type**<br />
+  NATURAL_PERSON<br />
+  LEGAL_PERSON

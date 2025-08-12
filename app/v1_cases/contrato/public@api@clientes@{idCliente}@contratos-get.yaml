@@ -1,0 +1,59 @@
+tags: 
+  - Contrato 
+summary: "Lista os contratos do cliente"
+operationId: api-clientes-idCliente-contratos
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDCliente
+    in: path
+    required: true
+    description: "O identificador do cliente"
+    schema:
+      type: integer
+  - name: ativos
+    in: query
+    description: "`Default: true`<br />Lista contratos ativos?"
+    required: false
+    schema:
+      type: boolean
+  - name: inativos
+    in: query
+    description: "`Default: false`<br />Lista contratos inativos?"
+    required: false
+    schema:
+      type: boolean
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOContrato.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+            

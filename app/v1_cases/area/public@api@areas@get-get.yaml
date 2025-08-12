@@ -1,0 +1,53 @@
+tags: 
+  - Area 
+summary: "Lista as áreas de acordo com o filtro informado"
+operationId: api-areas-get
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: ativos
+    in: query
+    description: "Listar áreas ativas?<br />`Default: true`"
+    required: false
+    schema:
+      type: boolean
+  - name: inativos
+    in: query
+    description: "Listar áreas inativas?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOArea.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+            

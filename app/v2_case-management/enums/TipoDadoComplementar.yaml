@@ -1,0 +1,13 @@
+title: TipoDadoComplementar
+type: string
+description: |
+  **Custom field type**<br />
+  1: text<br />
+  2: decimal<br />
+  3: integer<br />
+  4: date-time<br />
+  5: text-multi-line<br />
+  7: checkbox<br />
+  6, 8, 9, 10, 11, 15, 16: dropdown<br />
+  12, 13, 14: select<br />
+  17: json

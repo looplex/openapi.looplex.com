@@ -1,0 +1,19 @@
+title: DTOQuestoesProcessuais
+type: object
+properties:
+  IdQuestoesProcessuais:
+    type: integer
+  IdQuestoesProcessuaisPai:
+    type: integer
+  QuestoesProcessuais: 
+    type: string
+  QuestoesProcessuaisEnUs: 
+    type: string
+  NomeAceito: 
+    type: string
+  NomeNaoAceito: 
+    type: string
+  ResultadoPositivo: 
+    type: boolean
+  Filhos: 
+    $ref: ../schemas/DTOQuestoesProcessuais.yaml

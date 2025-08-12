@@ -1,0 +1,50 @@
+tags: 
+  - Andamento 
+summary: Atualizar andamento
+description: Atualiza o andamento.
+operationId: api-andamentos-idAndamento-put
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDAndamento
+    in: path
+    required: true
+    description: "O identificador do andamento"
+    schema:
+      type: integer
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/DTOAndamento.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          $ref: ../schemas/DTOAndamento.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

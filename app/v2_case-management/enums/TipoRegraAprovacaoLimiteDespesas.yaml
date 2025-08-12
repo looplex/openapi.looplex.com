@@ -1,0 +1,9 @@
+title: TipoRegraAprovacaoLimiteDespesas
+type: string
+description: |
+  REGRAESCRITORIO = 1<br/>
+  REGRAEMPRESA = 2<br/>
+  REGRACLIENTE = 3<br/>
+  REGRACONTRATO = 4<br/>
+  REGRAPROCESSO = 5<br/>
+  REGRAVAZIA = 6

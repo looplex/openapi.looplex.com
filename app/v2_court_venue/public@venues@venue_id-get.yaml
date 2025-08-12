@@ -1,0 +1,26 @@
+tags:
+  - Court Venue
+summary: "/venues/:venue_id"
+description: |
+  **Retrieve information about a venue**
+operationId: venues-venue_id-get
+parameters:
+  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../common_parameters/Tenant.yaml
+  - $ref: ../common_parameters/BearerToken.yaml
+  - name: venue_id
+    in: path
+    required: true
+    description: "**The venue identifier**"
+    schema:
+      type: string
+      frmat: uuid
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ./schemas/Venue.yaml
+  "500":
+    description: "Internal Server Error"

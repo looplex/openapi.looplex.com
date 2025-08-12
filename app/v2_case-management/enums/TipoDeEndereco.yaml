@@ -1,0 +1,10 @@
+title: TipoDeEndereco
+type: string
+example: RESIDENCIAL
+description: |
+  **Tipo do endereço**<br/>
+  RESIDENCIAL<br/>
+  COMERCIAL<br/>
+  OUTROS<br/>
+  COBRANCA<br/>
+  ENTREGA

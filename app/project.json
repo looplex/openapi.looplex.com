@@ -1,0 +1,448 @@
+{
+  "name": "looplex_openapi",
+  "path_templates": "app/templates",
+  "apis": [
+    {
+      "index": 1,
+      "label": "API MobileService",
+      "option": {
+        "build_command": "redocly bundle app/v1_cases.yaml -o app/v1_cases/cases --ext json",
+        "folder_name": "/v1_cases",
+        "path_components": "app/v1_cases/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v1_cases/enums",
+        "path_routes": "app/v1_cases",
+        "path_http_responses": "/http_responses",
+        "tags": [
+          {
+            "option": 1,
+            "label": "Autenticação",
+            "detail": "Endpoints de autenticação",
+            "folder": "login"
+          },
+          {
+            "option": 2,
+            "label": "Advogado",
+            "detail": "Endpoints de advogado",
+            "folder": "advogado"
+          },
+          {
+            "option": 3,
+            "label": "Andamento",
+            "detail": "Endpoints de andamento",
+            "folder": "andamento"
+          },
+          {
+            "option": 4,
+            "label": "Área",
+            "detail": "Endpoints de área",
+            "folder": "area"
+          },
+          {
+            "option": 5,
+            "label": "Busca",
+            "detail": "Endpoints de busca",
+            "folder": "busca"
+          },
+          {
+            "option": 6,
+            "label": "Cálculo Monetário",
+            "detail": "Endpoints de calculo monetário",
+            "folder": "calculo_monetario"
+          },
+          {
+            "option": 7,
+            "label": "Casos",
+            "detail": "Endpoints de casos",
+            "folder": "casos"
+          },
+          {
+            "option": 8,
+            "label": "Fase do caso",
+            "detail": "Endpoints de fase do caso",
+            "folder": "fase_caso"
+          },
+          {
+            "option": 9,
+            "label": "Categoria",
+            "detail": "Endpoints de categoria",
+            "folder": "categoria"
+          },
+          {
+            "option": 10,
+            "label": "Cliente",
+            "detail": "Endpoints de cliente",
+            "folder": "cliente"
+          },
+          {
+            "option": 11,
+            "label": "Contato",
+            "detail": "Endpoints de contato",
+            "folder": "contato"
+          },
+          {
+            "option": 12,
+            "label": "Conteúdo Julgamento",
+            "detail": "Endpoints de Conteúdo Julgamento",
+            "folder": "conteudo_julgamento"
+          },
+          {
+            "option": 13,
+            "label": "Contrato",
+            "detail": "Endpoints de contrato",
+            "folder": "contrato"
+          },
+          {
+            "option": 14,
+            "label": "Cumprimentos",
+            "detail": "Endpoints de cumprimento",
+            "folder": "cumprimentos"
+          },
+          {
+            "option": 15,
+            "label": "Decisões",
+            "detail": "Endpoints de decisões",
+            "folder": "decisoes"
+          },
+          {
+            "option": 16,
+            "label": "Despesas",
+            "detail": "Endpoints de despesa",
+            "folder": "despesa"
+          },
+          {
+            "option": 17,
+            "label": "Expectativa reivindicação",
+            "detail": "Endpoints de expectativa reivindicação",
+            "folder": "expectativa_reivindicacao"
+          },
+          {
+            "option": 18,
+            "label": "Funcionário",
+            "detail": "Endpoints de funcionário",
+            "folder": "funcionario"
+          },
+          {
+            "option": 19,
+            "label": "Garantia",
+            "detail": "Endpoints de garantia",
+            "folder": "garantia"
+          },
+          {
+            "option": 20,
+            "label": "Hierarquia",
+            "detail": "Endpoints de hierarquia",
+            "folder": "hierarquia"
+          },
+          {
+            "option": 21,
+            "label": "Informações adicionais",
+            "detail": "Endpoints de Informações adicionais",
+            "folder": "informacoes_adicionais"
+          },
+          {
+            "option": 22,
+            "label": "Informações adicionais (valor)",
+            "detail": "Endpoints de Informações adicionais (Valor)",
+            "folder": "informacoes_adicionais_valor"
+          },
+          {
+            "option": 23,
+            "label": "Liabilities Calculation",
+            "detail": "Endpoints de Liabilities Calculation",
+            "folder": "liabilities_calculation"
+          },
+          {
+            "option": 24,
+            "label": "Motivo de pedir",
+            "detail": "Endpoints de motivo de pedir",
+            "folder": "motivos"
+          },
+          {
+            "option": 25,
+            "label": "Natureza",
+            "detail": "Endpoints de natureza",
+            "folder": "natureza"
+          },
+          {
+            "option": 26,
+            "label": "País",
+            "detail": "Endpoints de país",
+            "folder": "pais"
+          },
+          {
+            "option": 27,
+            "label": "Partes",
+            "detail": "Endpoints de partes",
+            "folder": "partes"
+          },
+          {
+            "option": 28,
+            "label": "Pedidos",
+            "detail": "Endpoints de pedidos",
+            "folder": "pedidos"
+          },
+          {
+            "option": 29,
+            "label": "Produtos",
+            "detail": "Endpoints de produtos",
+            "folder": "produtos"
+          },
+          {
+            "option": 30,
+            "label": "Push",
+            "detail": "Endpoints de push",
+            "folder": "push"
+          },
+          {
+            "option": 31,
+            "label": "Push de andamentos",
+            "detail": "Endpoints de push de andamentos",
+            "folder": "push_andamentos"
+          },
+          {
+            "option": 32,
+            "label": "Push de publicação",
+            "detail": "Endpoints de push de publicação",
+            "folder": "push_publicacao"
+          },
+          {
+            "option": 33,
+            "label": "Questões Processuais",
+            "detail": "Endpoints de questões processuais",
+            "folder": "questoes_processuais"
+          },
+          {
+            "option": 34,
+            "label": "Solicitação",
+            "detail": "Endpoints de Solicitação",
+            "folder": "solicitacao"
+          },
+          {
+            "option": 35,
+            "label": "Tabela de preço",
+            "detail": "Endpoints de tabela de preço",
+            "folder": "tabela_preco"
+          },
+          {
+            "option": 36,
+            "label": "Tabela preço categoria",
+            "detail": "Endpoints de tabela preço categoria",
+            "folder": "tabela_preco_categoria"
+          },
+          {
+            "option": 37,
+            "label": "Tipo Decisão",
+            "detail": "Endpoints de tipos de decisão",
+            "folder": "tipo_decisao"
+          },
+          {
+            "option": 38,
+            "label": "Tipo Julgamento",
+            "detail": "Endpoints de tipo de julgamento",
+            "folder": "tipo_julgamento"
+          },
+          {
+            "option": 39,
+            "label": "Tarefa",
+            "detail": "Endpoints de tarefa",
+            "folder": "tarefa"
+          },
+          {
+            "option": 40,
+            "label": "Timeline",
+            "detail": "Endpoints de timeline",
+            "folder": "timeline"
+          },
+          {
+            "option": 41,
+            "label": "Timesheet",
+            "detail": "Endpoints de timesheet",
+            "folder": "timesheet"
+          },
+          {
+            "option": 42,
+            "label": "Valores apurados",
+            "detail": "Endpoints de valores apurados",
+            "folder": "valores_apurados"
+          },
+          {
+            "option": 43,
+            "label": "Render",
+            "detail": "Endpoints do Render",
+            "folder": "render"
+          },
+          {
+            "option": -1,
+            "label": "Debug (não utilizar essa tag em endpoints oficiais)",
+            "detail": "Debug endpoints",
+            "folder": "debug"
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "label": "API Case Management",
+      "option": {
+        "build_command": "redocly bundle app/v2_case-management.yaml -o app/v2_case-management/cases --ext json",
+        "folder_name": "/v2_case-management",
+        "path_components": "app/v2_case-management/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_case-management/enums",
+        "path_routes": "app/v2_case-management",
+        "path_http_responses": "/http_responses",
+        "tags": [
+          {
+            "option": 1,
+            "label": "Authentication",
+            "detail": "Authentication endpoints",
+            "folder": "authentication"
+          },
+          {
+            "option": 2,
+            "label": "Case Management",
+            "detail": "Cases endpoints",
+            "folder": "case"
+          },
+          {
+            "option": 2,
+            "label": "Tasks",
+            "detail": "Tasks endpoints",
+            "folder": "task"
+          },
+          {
+            "option": 3,
+            "label": "Entries",
+            "detail": "Entries endpoints",
+            "folder": "entry"
+          },
+          {
+            "option": 4,
+            "label": "Timesheets",
+            "detail": "Timesheet endpoints",
+            "folder": "timesheet"
+          },
+          {
+            "option": 5,
+            "label": "Client",
+            "detail": "Client endpoints",
+            "folder": "client"
+          },
+          {
+            "option": 6,
+            "label": "Legal service agreement",
+            "detail": "Legal service agreement endpoints",
+            "folder": "legal_service_agreement"
+          },
+          {
+            "option": 7,
+            "label": "Employee",
+            "detail": "Employee endpoints",
+            "folder": "employee"
+          },
+          {
+            "option": 8,
+            "label": "Participant",
+            "detail": "Participant endpoints",
+            "folder": "participant"
+          },
+          {
+            "option": 9,
+            "label": "Legal category",
+            "detail": "Legal category endpoints",
+            "folder": "legal_category"
+          },
+          {
+            "option": -1,
+            "label": "Debug (não utilizar essa tag em endpoints oficiais)",
+            "detail": "Debug endpoints",
+            "folder": "debug"
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "label": "API Tasks Management",
+      "option": {
+        "build_command": "redocly bundle app/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
+        "folder_name": "/v2_tasks",
+        "path_components": "app/v2_tasks/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_tasks/enums",
+        "path_routes": "app/v2_tasks",
+        "path_http_responses": "/http_responses",
+        "tags": [
+          {
+            "option": 1,
+            "label": "Tasks",
+            "detail": "Tasks endpoints",
+            "folder": "task"
+          },
+          {
+            "option": -1,
+            "label": "Debug (não utilizar essa tag em endpoints oficiais)",
+            "detail": "Debug endpoints",
+            "folder": "debug"
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "label": "Varas e Foros (Court Venue)",
+      "option": {
+        "build_command": "redocly bundle app/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
+        "folder_name": "/v2_court_venue",
+        "path_components": "app/v2_court_venue/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_court_venue/enums",
+        "path_routes": "app/v2_court_venue",
+        "path_http_responses": "/http_responses",
+        "tags": [
+          {
+            "option": 1,
+            "label": "Court Venue",
+            "detail": "Court Venue endpoints",
+            "folder": "court_venue"
+          },
+          {
+            "option": 1,
+            "label": "Case Procedure",
+            "detail": "Procedure endpoints",
+            "folder": "procedure"
+          }
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "label": "Recess (API de feriados)",
+      "option": {
+        "build_command": "redocly bundle app/v1_recess.yaml -o app/v1_recess/recess --ext json",
+        "folder_name": "/v1_recess",
+        "path_components": "app/v1_recess/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v1_recess/enums",
+        "path_routes": "app/v1_recess",
+        "path_http_responses": "/http_responses",
+        "tags": []
+      }
+    },
+    {
+      "index": 5,
+      "label": "SCIM",
+      "option": {
+        "build_command": null,
+        "folder_name": "scim",
+        "path_components": "app/scim",
+        "path_parameters": null,
+        "path_enums": null,
+        "path_routes": null,
+        "path_http_responses": null,
+        "tags": null
+      }
+    }
+  ]
+}

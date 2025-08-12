@@ -1,0 +1,59 @@
+tags: 
+  - Andamento 
+summary: Andamentos simples por caso, numero interno ou numero externo
+description: Retorna um array de andamentos simples por identificador do caso, numero interno ou numero externo
+operationId: api-casos-num-andamentosimples
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: NumeroInterno
+    in: query
+    required: false
+    description: "Default: 0"
+    schema:
+      type: integer
+  - name: NumeroExterno
+    in: query
+    required: false
+    description: "Default: empty string"
+    schema:
+      type: string
+  - name: IdProcesso
+    in: query
+    required: false
+    description: "Default: 0"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          type: array
+          items:
+            $ref: ../schemas/DTOAndamentoSimples.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

@@ -1,0 +1,15 @@
+title: Dado complementar | Informação adicional
+type: object
+properties: 
+  Id:
+    type: string
+    format: uuid
+    description: "**Custom field unique identifier**"
+  Name:
+    type: string
+    description: "**Custom field name**<br />"
+  Type:
+    $ref: ../enums/TipoDadoComplementar.yaml
+  Value:
+    type: string
+    description: "**Value stored in the custom field**"

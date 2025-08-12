@@ -1,0 +1,109 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Casos
+summary: "Obtém JSON de casos por filtro"
+operationId: api-render-dados-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: listarTimesheet
+    in: query
+    description: "Listar lançamentos de hora?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listarGarantias
+    in: query
+    description: "Listar garantias?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listarPedidos
+    in: query
+    description: "Listar pedidos?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listarAndamentos
+    in: query
+    description: "Listar andamentos?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: listarAndamentosDeUsoInterno
+    in: query
+    description: "Listar andamentos de uso interno?<br />`Default: false`"
+    required: false
+    schema:
+      type: boolean
+  - name: dataInicialAndamento
+    in: query
+    description: "A data incial de pesquisa de andamentos<br />`Default: null`"
+    required: false
+    schema:
+      type: string
+  - name: dataFinalAndamento
+    in: query
+    description: "A data final de pesquisa de andamentos<br />`Default: null`"
+    required: false
+    schema:
+      type: string
+  - name: idsCasos
+    in: query
+    example: "[100, 200]"
+    description: "Os identificadores dos casos"
+    required: false
+    schema:
+      type: array
+      items:
+        type: integer
+  - name: quantidadeUltimosAndamentos
+    in: query
+    description: "A quantidade de andamentos recentes a listar<br />`Default: 0`"
+    required: false
+    schema:
+      type: integer
+  - name: tiposDeAndamento
+    in: query
+    example: "['automatico', 'manual']"
+    description: "Os tipos de andamento a incluir na resposta<br />`Default null`<br />**Tipos disponíveis:** `'planilha_de_horas'`, `'push_de_publicação'`, `'push_de_andamento'`, `'outlook'`, `'automatico'`, `'manual'`"
+    required: false
+    schema:
+      type: array
+      items:
+        type: string
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/DTODadosJsonRender.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/ExceptionResponse.yaml

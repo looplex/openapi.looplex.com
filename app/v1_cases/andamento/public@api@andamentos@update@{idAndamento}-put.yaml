@@ -1,0 +1,58 @@
+tags: 
+  - Andamento
+summary: Atualizar andamento Web
+description: Atualiza o andamento
+operationId: api-andamentos-update-idAndamento
+parameters:
+  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: IDAndamento
+    in: path
+    required: true
+    description: "O identificador do andamento"
+    schema:
+      type: integer
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/DTOAndamento.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema: 
+          $ref: ../schemas/EncapsuladorDeResposta.yaml
+  "401":
+    description: "Unauthorized"
+    content:
+      application/json:
+        schema:
+          oneOf: 
+            - $ref: ../schemas/EncapsuladorDeResposta.yaml
+            - $ref: ../schemas/ExceptionResponse.yaml
+  "403":
+    description: "Forbidden"
+    content:
+      application/json:
+        schema:
+          oneOf: 
+            - $ref: ../schemas/EncapsuladorDeResposta.yaml
+            - $ref: ../schemas/ExceptionResponse.yaml
+  "404":
+    description: "Não encontrado"
+    content:
+      application/json:
+        schema:
+          oneOf: 
+            - $ref: ../schemas/EncapsuladorDeResposta.yaml
+            - $ref: ../schemas/ExceptionResponse.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          oneOf: 
+            - $ref: ../schemas/EncapsuladorDeResposta.yaml
+            - $ref: ../schemas/ExceptionResponse.yaml

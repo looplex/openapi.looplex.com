@@ -1,0 +1,19 @@
+tags:
+  - Code
+summary: Code
+description: ...
+operationId: putCodeOperation
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../../../components/schemas/actions/code.yaml
+responses:
+  '200':
+    description: OK
+  '401':
+    description: Access Denied
+  '404':
+    description: Not Found

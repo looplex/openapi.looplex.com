@@ -1,0 +1,59 @@
+# Linhas com # são comentários e podem ser removidas.
+tags:
+  - Case Management
+summary: "/cases"
+description: |
+  **Fetch cases paginated**
+operationId: cases-get
+# Parâmetros da requisição
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: startIndex
+    in: query
+    required: true
+    description: |
+      **Index of search**
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _Title_ _co_ _search_term_
+    schema:
+      type: string
+# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
+# Responses
+responses:
+  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: "../schemas/CaseInfoEntity.yaml"
+  "400":
+    description: "Bad Request"
+  "500":
+    description: "Internal Server Error"

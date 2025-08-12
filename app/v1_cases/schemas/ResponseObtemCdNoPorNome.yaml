@@ -1,0 +1,13 @@
+name: ResponseObtemCdNoPorNome
+type: object
+properties:
+  respostaAPI:
+    type: string
+    example: ""
+    description: "Resposta da API (quando necessário)"
+  conteudo:
+    type: integer
+    example: 3
+    description: "0 é retornado caso o item não seja encontrado"
+  tipoResposta:
+    $ref: ../enums/TipoRespostaRequisicao.yaml
