@@ -332,9 +332,8 @@ export default function Home () {
               />
 
               <div>
-                <Text>API de casos gerencia dados e status de processos.</Text>
-                <br />
-                <Text>Permite consultar e atualizar informações automaticamente.</Text>
+                <Text>Grupo de APIs para gestão de dados de</Text>
+                <Text strong>{' casos litigiosos, transacionais e administrativos'}</Text>
               </div>
 
               <BorderedLink
@@ -346,10 +345,22 @@ export default function Home () {
                 link='/v2_case-management'
                 text='Cases Management'
               />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Tasks'
+                icon={<BookOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs para consulta, registro de atualização de</Text>
+                <Text strong>{' tarefas'}</Text>
+              </div>
 
               <BorderedLink
                 link='/v2_tasks'
-                text='Tarefas'
+                text='Tasks'
               />
             </ColCard>
 
