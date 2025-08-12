@@ -1,379 +1,403 @@
 'use client'
 
 import React from 'react'
-import { Row, Col, Typography, Card, Input } from "antd"
+import { Row, Col, Grid, Typography, Card, Input, ConfigProvider, Layout, Flex, Button } from 'antd'
 import Image from 'next/image'
+import '@/styles/globals.css'
 
 import {
-  AudioOutlined,
-  FacebookFilled,
-  LinkedinFilled,
-  InstagramFilled,
   ApiOutlined,
   BookOutlined,
   CalendarOutlined,
-  GlobalOutlined,
+  FileWordOutlined,
   ProfileOutlined,
   RightOutlined
 } from '@ant-design/icons'
+import { getAntdCurrentBreakPoint } from '@/helpers/antd/getAntdCurrentBreakPoint'
+import SocialMediaLinks from '@/components/SocialMediaLinks'
 
-const { Search } = Input;
-const { Text } = Typography
+const { Search } = Input
+const { Text, Title } = Typography
+const { Header, Footer, Content } = Layout
+const { useBreakpoint } = Grid
 
-const iconStyle = { fontSize: 28, color: '#161719', padding: 4 }
+const mobileTypographyTokens = {
+  fontSize: '0.875rem', // 14px
+  fontSizeHeading1: '2.375rem', // 38px
+  fontSizeHeading2: '1.875rem', // 30px
+  fontSizeHeading3: '1.5rem', // 24px
+  fontSizeHeading4: '1.25rem', // 20px
+  fontSizeHeading5: '1rem' // 16px
+}
 
-export default function Home() {
+export default function Home () {
+  const screens = useBreakpoint()
+  const currentBreakPoint = getAntdCurrentBreakPoint(screens)
+  const smallScreen = currentBreakPoint === 'xs' || currentBreakPoint === 'sm'
+  const iconStyle = { fontSize: smallScreen ? '1.5rem' : 24, color: '#161719' }
 
-  return (
+  const ColCard = ({ children }) => (
+    <Col span={smallScreen ? 24 : 8}>
 
-    <div style={{ backgroundColor: '#F5FBFE' }}>
+      <Card
+        size='small'
+        {...smallScreen
+          ? {}
+          : {
+              style: { height: '100%' },
+              styles: {
+                body: { height: '100%' }
+              }
+            }
+        }
+      >
+        {smallScreen
+          ? children
+          : (
+            <Flex style={{ height: '100%' }} vertical justify='space-between'>
+              {children}
+            </Flex>
+            )}
+      </Card>
 
+    </Col>
+  )
+
+  const CardHeader = ({ title, icon, image }) => {
+    return (
       <Row
         style={{
-          padding: 0,
-          backgroundColor: '#F0F4F6',
-          borderBottom: "0.5px solid grey",
-          boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.2)",
-          marginBottom: 80
+          marginBottom: smallScreen ? 8 : 16,
+          display: 'flex',
+          alignItems: 'center'
         }}
       >
 
-        <Col span={6}>
-
-          <Image
-            src={'/logo.png'}
-            width={160}
-            height={80}
-            alt='Looplex'
-          />
-
-        </Col>
-
-        <Col span={10} style={{ marginTop: 30 }}>
-
-          <Search
-            placeholder="Pesquise na Looplex OpenAPI"
-            onSearch={() => { }}
-            suffix={<AudioOutlined style={{ fontSize: 16, color: '#1677ff' }} />}
-          />
-
-        </Col>
-
-        <Col span={5} style={{ marginTop: 30 }} offset={3}>
-
-          <FacebookFilled
-            onClick={() => { }}
-            style={{ fontSize: 26, color: '#1677FF' }}
-          />
-
-          <LinkedinFilled
-            onClick={() => { }}
-            style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
-          />
-
-          <InstagramFilled
-            onClick={() => { }}
-            style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
-          />
-
-          <GlobalOutlined
-            onClick={() => { }}
-            style={{ fontSize: 26, color: '#1677FF', marginLeft: 30 }}
-          />
-
-        </Col>
-
-      </Row>
-
-      <Row>
-
-        <Col span={15} offset={1}>
-
-          <Row>
-
-            <Col span={16}>
-
-              <Text style={{ fontSize: 36, fontWeight: 'bold', marginTop: 50 }}>
-                Documentação - APIs Looplex
-              </Text>
-
-            </Col>
-
-          </Row>
-
-          <Row>
-
-            <Col span={16}>
-
-              <div style={{ fontSize: 18, marginTop: 30 }}>
-                Seja bem-vindo à página oficial de <b>documentação das APIs da Looplex.</b>
-              </div>
-
-              <br />
-
-              <div style={{ fontSize: 18 }}>
-                Aqui você encontrará informações detalhadas, guias e exemplos para auxiliar na
-                integração eficiente dos nossos serviços.
-              </div>
-
-            </Col>
-
-          </Row>
-
-        </Col>
-
-        <Col span={7}>
-
-          <Image
-            src={'/api_image.png'}
-            width={500}
-            height={350}
-            alt='Looplex'
-          />
-
-        </Col>
-
-      </Row>
-
-      <Row style={{ marginTop: 50, marginLeft: 100, fontWeight: 'bold' }}>
-        <div style={{ fontSize: 24 }}>
-          Funcionalidades
+        <div
+          style={{
+            backgroundColor: '#E6F4FF',
+            border: '0.5px solid #8AC2FF',
+            borderRadius: 8,
+            width: 40,
+            height: 40,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          {icon ?? image}
         </div>
-      </Row>
 
-      <Row style={{ marginTop: 30, marginLeft: 100 }}>
-
-        <Col span={7}>
-
-          <Card style={{ height: 250 }}>
-
-            <HeaderAPI
-              title={'Actions'}
-              icon={<ApiOutlined style={iconStyle} />}
-            />
-
-            <p>
-              É o grupo de APIs usado pelos <b>templates</b> relacionados ao <b>fluxo de documentos.</b>
-            </p>
-
-            <BorderedLink
-              text={'Actions v1'}
-              link={'/v1_actions'}
-            />
-
-          </Card>
-
-        </Col>
-
-        <Col span={7} style={{ marginLeft: 20 }}>
-
-          <Card style={{ height: 250 }}>
-
-            <HeaderAPI
-              title={'Court Venue'}
-              image={
-                <Image
-                  src={'/logo_justice.png'}
-                  width={38}
-                  height={35}
-                  alt='Looplex'
-                />
-              }
-            />
-
-            <p>
-              É o grupo de APIs responsável por definir <b>a cidade ou
-                tribunal</b> onde o <b>processo será julgado</b>, com base nos dados
-              fornecidos.
-            </p>
-
-            <BorderedLink
-              text={'Court Venue'}
-              link={'/v2_court_venue'}
-            />
-
-          </Card>
-
-        </Col>
-
-        <Col span={7} style={{ marginLeft: 20 }}>
-
-          <Card style={{ height: 250 }}>
-
-            <HeaderAPI
-              title={'Feriado'}
-              icon={<CalendarOutlined style={iconStyle} />}
-            />
-
-            <p>
-              API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
-            </p>
-
-            <BorderedLink
-              link='/v1_recess'
-              text={'Feriado v1'}
-            />
-
-          </Card>
-
-        </Col>
+        <Text
+          style={{
+            marginLeft: 10,
+            fontSize: smallScreen ? '1.25rem' : 20
+          }}
+          strong
+        >
+          {title}
+        </Text>
 
       </Row>
+    )
+  }
 
-      <Row style={{ marginTop: 50, marginLeft: 100, fontWeight: 'bold' }}>
-        <div style={{ fontSize: 24 }}>
-          Plataforma
-        </div>
-      </Row>
-
-      <Row style={{ marginTop: 30, marginLeft: 100 }}>
-
-        <Col span={7}>
-
-          <Card style={{ height: 280 }}>
-
-            <HeaderAPI
-              title={'Cases'}
-              icon={<BookOutlined style={iconStyle} />}
-            />
-
-            <p>
-              API de casos gerencia dados e status de processos.<br />
-              Permite consultar e atualizar informações automaticamente.
-            </p>
-
-            <BorderedLink
-              link='/v1_cases'
-              text={'Cases V1 (legado)'}
-            />
-
-            <BorderedLink
-              link='/v2_case-management'
-              text={'Cases Management'}
-            />
-
-            <BorderedLink
-              link='/v2_tasks'
-              text={'Tasks Management'}
-            />
-
-          </Card>
-
-        </Col>
-
-        <Col span={7} style={{ marginLeft: 20 }}>
-
-          <Card style={{ height: 280 }}>
-
-            <HeaderAPI
-              title={'Assembler'}
-              icon={<ProfileOutlined style={iconStyle} />}
-            />
-
-            <p>
-              É o grupo de APIs usado pela <b>interface web do Looplex</b>, relacionado ao <b>fluxo de documentos, templates e tarefas.</b>
-            </p>
-
-            <BorderedLink
-              link='/v1_assembler'
-              text={'Assembler v1'}
-            />
-
-          </Card>
-
-        </Col>
-
-        <Col span={7} style={{ marginLeft: 20 }}>
-
-          <Card style={{ height: 280 }}>
-
-            <HeaderAPI
-              title={'Looplex 365'}
-              image={
-                <Image
-                  src={'/logo_looplex.png'}
-                  width={36}
-                  height={36}
-                  alt='Looplex'
-                />
-              }
-            />
-
-            <p>
-              Ciclo de vida de aplicativos da microsoft e renderizações.
-            </p>
-
-            <BorderedLink
-              link={'/v1_looplex365'}
-              text={'Looplex 365 v1'}
-            />
-
-          </Card>
-
-        </Col>
-
-      </Row>
-    </div>
-  )
-}
-
-const HeaderAPI = ({ title, icon, image }) => {
-  return (
-    <Row>
-
-      <div
+  const BorderedLink = ({ text, link }) => {
+    return (
+      <Button
+        icon={<RightOutlined />}
+        iconPosition='end'
+        size={smallScreen ? 'small' : 'large'}
         style={{
-          backgroundColor: '#E6F4FF',
-          border: "0.5px solid #8AC2FF",
-          borderRadius: 8,
-          width: 36,
-          height: 36,
-          padding: 5
+          ...(smallScreen ? { width: '100%' } : {}),
+          marginTop: smallScreen ? 8 : 16,
+          display: 'flex',
+          justifyContent: 'space-between'
         }}
+        onClick={() => window.open(link, '_blank')}
       >
-        {icon ?? image}
-      </div>
+        {text}
+      </Button>
+    )
+  }
 
-      <Text
-        style={{
-          marginLeft: 20,
-          marginTop: 5,
-          fontSize: 22,
-          fontWeight: 'bold'
-        }}
-      >
-        {title}
-      </Text>
-
-    </Row>
-  )
-}
-
-const BorderedLink = ({ text, link }) => {
   return (
-    <Row
-      style={{
-        width: '100%',
-        border: "0.5px solid lightgrey",
-        borderRadius: 8,
-        padding: 10,
-        marginTop: 10
+
+    <ConfigProvider
+      theme={{
+        token: smallScreen ? mobileTypographyTokens : {}
       }}
     >
-      <Col span={21} offset={1}>
 
-        <a
-          href={link}
-          target='_blank'
+      <Layout
+        style={{
+          minHeight: '100dvh',
+          maxWidth: '100dvw'
+        }}
+      >
+        <Header
+          style={{
+            width: '100dvw',
+            backgroundColor: '#F1F5F7',
+            borderBottom: '0.5px solid grey',
+            boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
+            zIndex: 999,
+            padding: smallScreen ? '0px 24px' : '0px 50px',
+            position: 'fixed'
+          }}
         >
-          <div style={{ textAlign: 'left', color: 'black' }}>
-            {text}
-          </div>
-        </a>
-      </Col>
+          <Flex
+            justify='space-between'
+            align='center'
+            style={{ width: '100%', height: '100%' }}
+          >
 
-      <RightOutlined style={{ fontSize: 18, color: 'grey' }} />
+            <Image
+              src='/logo.png'
+              width={109}
+              height={27}
+              style={{ marginRight: 24 }}
+              alt='Looplex logo'
+            />
 
-    </Row>
+            <Search
+              style={{ maxWidth: 500 }}
+              placeholder='Pesquise na Looplex OpenAPI'
+              onSearch={() => { }}
+            />
+
+            {!smallScreen && <SocialMediaLinks />}
+
+          </Flex>
+        </Header>
+
+        <Content
+          style={{
+            marginTop: 64,
+            padding: smallScreen ? '16px 12px' : '47px 52px',
+            backgroundColor: '#EDF0F1'
+          }}
+        >
+          <Row>
+
+            <Col span={smallScreen ? 24 : 16}>
+
+              <Flex align='center' style={{ height: '100%' }}>
+                <Row>
+
+                  <Col span={24}>
+                    <Title level={smallScreen ? 3 : 1}>
+                      Documentação - APIs Looplex
+                    </Title>
+
+                    <Text style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
+                      Seja bem-vindo à página oficial de
+                    </Text>
+
+                    <Text strong style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
+                      {' documentação das APIs da Looplex.'}
+                    </Text>
+
+                    <br />
+
+                    <Text style={{ fontSize: smallScreen ? '1.25rem' : 20 }}>
+                      Aqui você encontrará informações detalhadas, guias e exemplos para auxiliar na
+                      integração eficiente dos nossos serviços.
+                    </Text>
+                  </Col>
+
+                </Row>
+              </Flex>
+
+            </Col>
+
+            <Col
+              span={smallScreen ? 24 : 8}
+              style={{
+                ...(smallScreen
+                  ? { display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 24 }
+                  : {}
+                )
+              }}
+            >
+
+              <Image
+                src='/api_image.png'
+                {...(smallScreen ? { width: 293, height: 197 } : { width: 408, height: 274 })}
+                alt='Looplex'
+              />
+
+            </Col>
+
+          </Row>
+
+          <Row>
+            <Title level={3}>
+              Funcionalidades
+            </Title>
+          </Row>
+
+          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+            <ColCard>
+              <CardHeader
+                title='Actions'
+                icon={<ApiOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>É o grupo de APIs usado pelos</Text>
+                <Text strong>{' templates '}</Text>
+                <Text>relacionados ao</Text>
+                <Text strong>{' fluxo de documentos.'}</Text>
+              </div>
+
+              <BorderedLink
+                text='Actions v1'
+                link='/v1_actions'
+              />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Court Venue'
+                image={
+                  <Image
+                    src='/logo_justice.png'
+                    width={33}
+                    height={29}
+                    alt='Looplex'
+                  />
+                }
+              />
+
+              <div>
+                <Text>É o grupo de APIs responsável por definir</Text>
+                <Text strong>{' a cidade ou tribunal '}</Text>
+                <Text>onde o</Text>
+                <Text strong>{' processo será julgado, '}</Text>
+                <Text>com nos dados fornecidos.</Text>
+              </div>
+
+              <BorderedLink
+                text='Court Venue'
+                link='/v2_court_venue'
+              />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Feriado'
+                icon={<CalendarOutlined style={iconStyle} />}
+              />
+
+              <Text>
+                API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
+              </Text>
+
+              <BorderedLink
+                link='/v1_recess'
+                text='Feriado v1'
+              />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Looplex 365'
+                icon={<FileWordOutlined style={iconStyle} />}
+              />
+
+              <Text>
+                Ciclo de vida de aplicativos da microsoft e renderizações.
+              </Text>
+
+              <BorderedLink
+                link='/v1_looplex365'
+                text='Looplex 365 v1'
+              />
+            </ColCard>
+          </Row>
+
+          <Row>
+            <Title level={3}>
+              Plataforma
+            </Title>
+          </Row>
+
+          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+
+            <ColCard>
+              <CardHeader
+                title='Cases'
+                icon={<BookOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs para gestão de dados de</Text>
+                <Text strong>{' casos litigiosos, transacionais e administrativos'}</Text>
+              </div>
+
+              <BorderedLink
+                link='/v1_cases'
+                text='Cases V1 (legado)'
+              />
+
+              <BorderedLink
+                link='/v2_case-management'
+                text='Cases Management'
+              />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Tasks'
+                icon={<BookOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs para consulta, registro de atualização de</Text>
+                <Text strong>{' tarefas'}</Text>
+              </div>
+
+              <BorderedLink
+                link='/v2_tasks'
+                text='Tasks'
+              />
+            </ColCard>
+
+            <ColCard>
+              <CardHeader
+                title='Assembler'
+                icon={<ProfileOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>É o grupo de APIs usado pela </Text>
+                <Text strong>{' interface web do Looplex, '}</Text>
+                <Text>relacionado ao</Text>
+                <Text strong>{' fluxo de documentos, templates e tarefas.'}</Text>
+              </div>
+
+              <BorderedLink
+                link='/v1_assembler'
+                text='Assembler v1'
+              />
+            </ColCard>
+          </Row>
+        </Content>
+
+        {smallScreen && (
+          <Footer
+            style={{
+              width: '100dvw',
+              backgroundColor: '#F1F5F7',
+              borderTop: '0.5px solid grey'
+            }}
+          >
+            <SocialMediaLinks />
+          </Footer>
+        )}
+      </Layout>
+
+    </ConfigProvider>
   )
 }

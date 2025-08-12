@@ -12,6 +12,7 @@
     "af": "git add -i && cz"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.1.0",
     "@redocly/cli": "1.14.0",
     "antd": "^5.17.0",
     "commitizen": "^4.3.0",
@@ -25,7 +26,8 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.2.3"
+    "eslint-config-next": "14.2.3",
+    "standard": "^17.1.2"
   },
   "config": {
     "commitizen": {
