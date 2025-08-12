@@ -68,7 +68,7 @@ paths:
       $ref: v2_case-management\client\public@clients@client_id-get.yaml
 
   # Legal service agreement
-  /legalServiceAgreement:
+  /legalServiceAgreements:
     post:
       $ref: v2_case-management\legal_service_agreement\public@LegalServiceAgreement-post.yaml
     get:
@@ -80,17 +80,17 @@ paths:
       $ref: v2_case-management\participant\public@participants-post.yaml
 
   # LegalCategory (Natures)
-  /LegalCategories:
+  /legalCategories:
     get:
       $ref: v2_case-management\legal_category\public@legalCategories-get.yaml
     post:
       $ref: v2_case-management\legal_category\public@legalCategories-post.yaml
-  /LegalCategories/legalCategory_id:
+  /legalCategories/legalCategory_id:
     get:
       $ref: v2_case-management\legal_category\public@legalCategories@legalCategory_id-get.yaml
 
   # Employees
-  /Employees:
+  /employees:
     get:
       $ref: v2_case-management\employee\public@Employees-get.yaml
 

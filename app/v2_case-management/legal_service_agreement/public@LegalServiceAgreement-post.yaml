@@ -1,6 +1,6 @@
 tags:
   - Legal service agreement
-summary: "/legalServiceAgreement"
+summary: "/legalServiceAgreements"
 description: |
   **Create Legal service agreement**<br />
   Item created's guid is returned in **Location header**
