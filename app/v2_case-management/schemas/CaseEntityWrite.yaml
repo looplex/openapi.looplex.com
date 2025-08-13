@@ -1,6 +1,8 @@
 title: Dados de caso
 type: object
 properties:
+  Status:
+    $ref: ../enums/SituacaoDoProcesso.yaml
   Type:
     $ref: ../enums/RamosJudicial.yaml
   SubType:

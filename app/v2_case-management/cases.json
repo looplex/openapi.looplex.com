@@ -2749,6 +2749,9 @@
         "title": "Dados de caso",
         "type": "object",
         "properties": {
+          "Status": {
+            "$ref": "#/components/schemas/SituacaoDoProcesso"
+          },
           "Type": {
             "$ref": "#/components/schemas/RamosJudicial"
           },
