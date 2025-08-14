@@ -571,10 +571,6 @@
             "format": "datetime",
             "description": "**Data de Vencimento**"
           },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Criado por**"
-          },
           "Locale": {
             "type": "string <nullable>",
             "description": "**Local**"
@@ -597,6 +593,10 @@
             "items": {
               "$ref": "#/components/schemas/SimpleEntityWrite"
             }
+          },
+          "Status": {
+            "$ref": "#/components/schemas/StatusTarefa",
+            "example": "CREATED"
           },
           "Priority": {
             "example": "LOW",
