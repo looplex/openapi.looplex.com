@@ -22,9 +22,6 @@ properties:
     type: string <nullable>
     format: datetime
     description: "**Data de Vencimento**"
-  CreatedBy:
-    $ref: SimpleEntityWrite.yaml
-    description: "**Criado por**"
   Locale:
     type: string <nullable>
     description: "**Local**"
@@ -42,6 +39,9 @@ properties:
     type: array
     items:
       $ref: SimpleEntityWrite.yaml
+  Status:
+    $ref: ../common_enums/StatusTarefa.yaml
+    example: CREATED
   Priority:
     example: LOW
     $ref: ../common_enums/Prioridade.yaml
