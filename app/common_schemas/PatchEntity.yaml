@@ -1,0 +1,21 @@
+title: Patch object
+type: object
+properties:
+  path:
+    type: string
+    description: "**The property name**"
+    example: "<property_name>"
+  op:
+    type: string
+    example: replace
+    description: |
+      **The operation**<br />
+      **Available option:**<br/>
+      replace
+  value:
+    type: string
+    description: "**The property value**"
+    example: "<new_value>"
+required:
+  - path
+  - op

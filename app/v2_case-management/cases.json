@@ -154,6 +154,65 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Case Management"
+        ],
+        "summary": "/cases/:case_id",
+        "description": "**Patch case properties**",
+        "operationId": "cases-patch-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/cases": {
@@ -2292,6 +2351,31 @@
               }
             }
           }
+        ]
+      },
+      "PatchEntity": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "**The property name**",
+            "example": "<property_name>"
+          },
+          "op": {
+            "type": "string",
+            "example": "replace",
+            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The property value**",
+            "example": "<new_value>"
+          }
+        },
+        "required": [
+          "path",
+          "op"
         ]
       },
       "ListResponse": {

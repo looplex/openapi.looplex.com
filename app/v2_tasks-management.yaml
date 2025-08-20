@@ -27,6 +27,8 @@ paths:
   /tasks/:task_id:
     get:
       $ref: .\v2_tasks\public@tasks@task_id-get.yaml
+    patch:
+      $ref: .\v2_tasks\public@tasks-patch.yaml
   /tasks:
     get:
       $ref: .\v2_tasks\public@tasks-get.yaml

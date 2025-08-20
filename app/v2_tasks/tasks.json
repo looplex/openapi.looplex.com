@@ -82,6 +82,65 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "/tasks/:task_id",
+        "description": "**Patch tasks**",
+        "operationId": "tasks-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/tasks": {
@@ -507,6 +566,28 @@
             "description": "O identificador do tipo de exception"
           }
         }
+      },
+      "PatchEntity": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "**The property name**"
+          },
+          "op": {
+            "type": "string",
+            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The property value**"
+          }
+        },
+        "required": [
+          "path",
+          "op"
+        ]
       },
       "ListResponse": {
         "title": "ListResponse",

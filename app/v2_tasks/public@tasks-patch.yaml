@@ -1,0 +1,34 @@
+tags:
+  - Tasks
+summary: "/tasks/:task_id"
+description: "**Patch tasks**"
+operationId: tasks-patch
+parameters:
+  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../common_parameters/Tenant.yaml
+  - $ref: ../common_parameters/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../common_schemas/PatchEntity.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: boolean
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
