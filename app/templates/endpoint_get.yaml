@@ -1,10 +1,12 @@
 tags:
   - {{TAG_NAME}}
-summary: {{TITLE}}
-description: |
-  {{DESCRIPTION}}<br />
-# **Retrieve a <schema_name> by id** # retrieve
-# **Fetch items paginated** # query
+
+summary: "/{{TAG_NAME}}"
+# summary: {{TITLE}}
+
+# description: "**Retrieve a <schema_name> by id**" # retrieve
+# description: "**Fetch items paginated** # query"
+
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml

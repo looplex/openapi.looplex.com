@@ -1,8 +1,12 @@
 tags:
   - {{TAG_NAME}}
-summary: {{TITLE}}
-description: |
-  {{DESCRIPTION}}
+
+summary: "/{{TAG_NAME}}/:{{TAG_NAME}}_id"
+#summary: {{TITLE}}
+
+description: {{DESCRIPTION}}
+# description: {{DESCRIPTION}}
+
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
@@ -15,8 +19,6 @@ parameters:
     schema:
       type: string
       format: uuid
-{{PATH_QUERY_PARAMETERS}}
-{{REQUEST_BODY}}
 responses:
   {{HTTP_RESPONSES}}
   "204":

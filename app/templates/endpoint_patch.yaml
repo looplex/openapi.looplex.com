@@ -7,7 +7,7 @@ summary: "/{{TAG_NAME}}/:{{TAG_NAME}}_id"
 description: "**Patch {{TAG_NAME}}**"
 # description: {{DESCRIPTION}}
 
-operationId: {{OPERATION_ID}}-patch
+operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml

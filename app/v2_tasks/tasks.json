@@ -573,15 +573,18 @@
         "properties": {
           "path": {
             "type": "string",
-            "description": "**The property name**"
+            "description": "**The property name**",
+            "example": "<property_name>"
           },
           "op": {
             "type": "string",
+            "example": "replace",
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
             "type": "string",
-            "description": "**The property value**"
+            "description": "**The property value**",
+            "example": "<new_value>"
           }
         },
         "required": [
