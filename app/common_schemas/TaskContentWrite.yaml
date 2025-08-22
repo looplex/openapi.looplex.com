@@ -46,10 +46,14 @@ properties:
     example: LOW
     $ref: ../common_enums/Prioridade.yaml
   Case:
-    description: "Caso de uma tarefa"
+    description: "**Caso de uma tarefa**"
     type: object
     properties:
       Id:
         type: string
         format: uuid
         description: "**Case's unique identifier**"
+  CustomFields:
+    type: object
+    example: {}
+    description: "**Tasks's custom fields**"

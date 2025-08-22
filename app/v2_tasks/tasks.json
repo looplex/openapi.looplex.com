@@ -524,6 +524,11 @@
                 "description": "Case's group"
               }
             }
+          },
+          "CustomFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Tasks's custom fields**"
           }
         }
       },
@@ -687,7 +692,7 @@
             "$ref": "#/components/schemas/Prioridade"
           },
           "Case": {
-            "description": "Caso de uma tarefa",
+            "description": "**Caso de uma tarefa**",
             "type": "object",
             "properties": {
               "Id": {
@@ -696,6 +701,11 @@
                 "description": "**Case's unique identifier**"
               }
             }
+          },
+          "CustomFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Tasks's custom fields**"
           }
         }
       },

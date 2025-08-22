@@ -87,3 +87,7 @@ properties:
       Group:
         type: string
         description: "Case's group"
+  CustomFields:
+    type: object
+    example: {}
+    description: "**Tasks's custom fields**"

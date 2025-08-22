@@ -133,7 +133,7 @@ allOf:
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
       Owner:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ./PersonEntity.yaml
         description: |
           **Responsável**<br />
           Advogado ou membro da equipe jurídica responsável pelo caso

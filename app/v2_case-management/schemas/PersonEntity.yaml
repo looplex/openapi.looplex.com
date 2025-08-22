@@ -1,0 +1,11 @@
+type: object
+allOf:
+  - $ref: ../../common_schemas/SimpleEntity.yaml
+  - properties:
+      Email:
+        type: string <nullable>
+        description: owner's email
+      Identities:
+        type: array
+        items:
+          $ref: ../../common_schemas/IdentityEntity.yaml

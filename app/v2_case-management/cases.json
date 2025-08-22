@@ -1426,6 +1426,28 @@
           }
         }
       },
+      "PersonEntity": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SimpleEntity"
+          },
+          {
+            "properties": {
+              "Email": {
+                "type": "string <nullable>",
+                "description": "owner's email"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/IdentityEntity"
+                }
+              }
+            }
+          }
+        ]
+      },
       "TipoPessoa": {
         "title": "TipoPessoa",
         "type": "string",
@@ -1965,6 +1987,11 @@
                 "description": "Case's group"
               }
             }
+          },
+          "CustomFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Tasks's custom fields**"
           }
         }
       },
@@ -2261,7 +2288,7 @@
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
               "Owner": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/PersonEntity",
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
               "Coowners": {
@@ -2596,7 +2623,7 @@
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
               "Owner": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/PersonEntity",
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
               "Coowners": {
