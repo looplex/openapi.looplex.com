@@ -39,3 +39,7 @@ allOf:
         type: object
         example: {}
         description: "**Entry's custom fields**"
+      Identities:
+        type: array
+        items:
+          $ref: ../../common_schemas/IdentityEntity.yaml

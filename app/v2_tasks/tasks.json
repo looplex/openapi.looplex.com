@@ -500,6 +500,12 @@
             "type": "string <nullable>",
             "description": "**Notas de Conclusão**"
           },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentityEntity"
+            }
+          },
           "Case": {
             "description": "Caso de uma tarefa",
             "type": "object",
