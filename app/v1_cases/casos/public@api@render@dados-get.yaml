@@ -5,7 +5,7 @@ summary: "Obtém JSON de casos por filtro"
 operationId: api-render-dados-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: listarTimesheet
     in: query

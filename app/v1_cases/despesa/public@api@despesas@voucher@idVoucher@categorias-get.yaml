@@ -5,7 +5,7 @@ summary: "Lista categorias do voucher"
 operationId: api-despesas-voucher-idVoucher-categorias-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idVoucher
     in: path

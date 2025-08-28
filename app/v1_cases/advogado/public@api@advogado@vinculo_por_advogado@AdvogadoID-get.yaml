@@ -5,7 +5,7 @@ summary: "Listar vinculos de advogado por advogado"
 operationId: api-advogado-vinculo_por_advogado-AdvogadoID-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: AdvogadoID
     in: path

@@ -5,7 +5,7 @@ summary: "Atualiza custom fields"
 operationId: api-casos-edit-custom_fields-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idCaso
     in: query

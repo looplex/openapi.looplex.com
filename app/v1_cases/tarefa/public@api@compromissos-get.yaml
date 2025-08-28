@@ -5,7 +5,7 @@ summary: "Lista paginada de itens de agenda por funcionários e filtro"
 operationId: api-compromissos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: currentPage
     in: query

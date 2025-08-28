@@ -5,7 +5,7 @@ summary: "Incluir item de agenda na publicação"
 operationId: api-push-inclui-publicacoes-id-acoes-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
     in: path

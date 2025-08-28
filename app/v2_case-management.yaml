@@ -96,6 +96,11 @@ paths:
     get:
       $ref: v2_case-management\employee\public@Employees-get.yaml
 
+  # Claims
+  /claims:
+    get:
+      $ref: v2_case-management\claim\public@claims-get.yaml
+
 components:
   securitySchemes:
     api_key:

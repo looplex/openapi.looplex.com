@@ -5,7 +5,7 @@ summary: "Lista os cálculos monetários"
 operationId: api-casos-cdProcesso-CalculosMonetarios
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path

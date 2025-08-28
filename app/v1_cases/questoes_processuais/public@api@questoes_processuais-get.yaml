@@ -5,7 +5,7 @@ summary: "Lista Árvore de Questões Processuais"
 operationId: api-questoes_processuais-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 # Responses
 responses:

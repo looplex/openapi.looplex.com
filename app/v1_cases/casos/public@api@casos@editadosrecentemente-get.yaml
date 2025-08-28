@@ -5,7 +5,7 @@ summary: "Lista os casos editados recentemente"
 operationId: api-casos-editadosrecentemente-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: obtemUltimoItemTimeLine
     in: query

@@ -3,7 +3,7 @@ tags:
 summary: "Obtém informações do contato"
 operationId: api-contatos-id
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDContato
     in: path

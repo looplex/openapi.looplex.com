@@ -5,7 +5,7 @@ summary: "Lista garantias do caso"
 operationId: api-casos-IDCaso-Garantias-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path

@@ -5,7 +5,7 @@ summary: "Inclui timesheet com publicação"
 operationId: api-publicacao-hora-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: cdPublicacao
     in: query

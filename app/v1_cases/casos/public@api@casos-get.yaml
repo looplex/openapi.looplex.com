@@ -3,7 +3,7 @@ tags:
 summary: "Lista casos por filtro"
 operationId: api-casos
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idsCliente
     in: query    

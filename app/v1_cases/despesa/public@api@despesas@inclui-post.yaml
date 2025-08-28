@@ -5,7 +5,7 @@ summary: "Inclui despesa"
 operationId: api-despesas-inclui-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: selecionaAprovador
     in: query

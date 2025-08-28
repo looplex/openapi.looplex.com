@@ -5,7 +5,7 @@ summary: "Lista áreas do funcionário"
 operationId: api-funcionarios-IDFuncionario-areas-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDFuncionario
     in: path

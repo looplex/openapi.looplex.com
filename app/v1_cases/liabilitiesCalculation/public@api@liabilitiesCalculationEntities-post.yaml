@@ -6,7 +6,7 @@ description: "Salva os Parâmetros de Cálculo"
 operationId: api-liabilitiesCalculationEntities-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: env
     in: query

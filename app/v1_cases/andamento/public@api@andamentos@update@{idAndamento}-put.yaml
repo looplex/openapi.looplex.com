@@ -4,7 +4,7 @@ summary: Atualizar andamento Web
 description: Atualiza o andamento
 operationId: api-andamentos-update-idAndamento
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDAndamento
     in: path

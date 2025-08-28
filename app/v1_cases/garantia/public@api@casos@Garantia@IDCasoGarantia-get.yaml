@@ -5,7 +5,7 @@ summary: "Obtém garantia por identificador"
 operationId: api-casos-Garantia-IDCasoGarantia-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCasoGarantia
     in: path

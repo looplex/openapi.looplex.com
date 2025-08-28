@@ -5,7 +5,7 @@ summary: "Lista status de encerramento de tarefas por tipo da tarefa"
 operationId: api-agenda-status_encerramento-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: inCompromisso
     in: query

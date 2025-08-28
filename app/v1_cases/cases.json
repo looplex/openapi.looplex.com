@@ -23653,7 +23653,7 @@
       "Profile": {
         "name": "Profile",
         "in": "header",
-        "description": "Profile obtained when logged in",
+        "description": "**Profile obtained when logged in**",
         "required": true,
         "schema": {
           "type": "string"

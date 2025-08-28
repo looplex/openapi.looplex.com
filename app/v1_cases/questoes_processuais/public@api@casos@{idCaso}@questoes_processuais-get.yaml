@@ -5,7 +5,7 @@ summary: "Lista  Questões Processuais por caso"
 operationId: api-casos--{IDCaso}-questoes_processuais-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path 

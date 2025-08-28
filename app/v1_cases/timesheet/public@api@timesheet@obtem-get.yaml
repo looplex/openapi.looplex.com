@@ -5,7 +5,7 @@ summary: "Lista lançamentos de timesheet do funcionário"
 operationId: api-timesheet-obtem-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ano
     in: query

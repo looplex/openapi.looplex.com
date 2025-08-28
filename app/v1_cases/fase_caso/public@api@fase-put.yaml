@@ -5,7 +5,7 @@ summary: "Atualiza fase"
 operationId: api-fase-put
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 requestBody:

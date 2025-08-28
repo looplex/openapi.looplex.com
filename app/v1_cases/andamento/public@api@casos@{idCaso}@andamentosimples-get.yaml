@@ -4,7 +4,7 @@ summary: Andamentos simples do caso
 description: Retorna um array de andamentos simples do caso informado.
 operationId: api-casos-idCaso-andamentosimples
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path

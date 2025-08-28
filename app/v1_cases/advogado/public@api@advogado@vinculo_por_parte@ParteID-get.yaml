@@ -5,7 +5,7 @@ summary: "Listar vinculo de advogado por parte"
 operationId: api-advogado-vinculo_por_parte-ParteID-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ParteID
     in: path

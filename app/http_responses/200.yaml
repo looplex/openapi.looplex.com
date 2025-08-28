@@ -12,11 +12,11 @@
                   resources:
                     type: array
                     items:
-                      $ref: ../../../components/schemas/{{API_NAME}}/{{DTO_NAME}}.yaml
+                      $ref: ../schemas/{{DTO_NAME}}.yaml
   # Utilizado quando apenas um item for retornado
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            $ref: ../../../components/schemas/{{API_NAME}}/{{DTO_NAME}}.yaml
+            $ref: ../schemas/{{DTO_NAME}}.yaml

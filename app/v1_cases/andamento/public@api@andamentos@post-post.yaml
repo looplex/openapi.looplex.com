@@ -4,7 +4,7 @@ summary: Incluir andamento
 description: Inclui o andamento
 operationId: api-andamentos-post
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 requestBody:
   content:

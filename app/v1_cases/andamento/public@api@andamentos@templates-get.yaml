@@ -3,7 +3,7 @@ tags:
 summary: "Lista os templates de andamento"
 operationId: api-andamentos-templates
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: tipoCaso
     in: query

@@ -5,7 +5,7 @@ summary: "Lista pedidos por ramo judicial"
 operationId: api-Pedidos-lista-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: tipoJustica
     in: query

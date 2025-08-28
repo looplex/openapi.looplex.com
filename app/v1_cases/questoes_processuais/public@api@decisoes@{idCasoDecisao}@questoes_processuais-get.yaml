@@ -5,7 +5,7 @@ summary: "Lista  Questões Processuais por decisão"
 operationId: api-decisoes-{IDCasoDecisao}-questoes_processuais-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCasoDecisao
     in: path 

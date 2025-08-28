@@ -6,7 +6,7 @@ description: "Lista as Informações adicionais de acordo com o filtro informado
 operationId: api-dado_complementar_caso
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: clienteId
     in: query

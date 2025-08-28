@@ -5,7 +5,7 @@ summary: "Lista casos por identificadores dos casos"
 operationId: api-casos-porIds-ids-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ids
     in: path

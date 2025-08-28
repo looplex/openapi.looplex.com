@@ -4,7 +4,7 @@ summary: Apagar andamento
 description: Apaga o andamento
 operationId: api-andamentos-idAndamento-delete
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDAndamento
     in: path

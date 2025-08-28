@@ -1,0 +1,7 @@
+title: TipoTutela
+type: string <nullable>
+example: URGENCIA_SATISFATIVA
+description: |
+  **Tutela provisória**<br/>
+  URGENCIA_SATISFATIVA<br/>
+  EVIDENCIA_SATISFATIVA

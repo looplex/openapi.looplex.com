@@ -5,7 +5,7 @@ summary: "Lista valores apurados por identificador do caso, numero interno ou nu
 operationId: api-casos-num-valoresapurados-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query

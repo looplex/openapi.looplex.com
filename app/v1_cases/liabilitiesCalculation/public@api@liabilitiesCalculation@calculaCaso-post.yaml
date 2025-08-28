@@ -5,7 +5,7 @@ summary: "Calcula caso"
 operationId: api-liabilitiesCalculation-calculaCaso-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: cdProcesso
     in: path

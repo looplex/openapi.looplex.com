@@ -1,0 +1,8 @@
+title: TipoReparacao
+type: string <nullable>
+description: |
+  **Tipo de pedido**<br/>
+  DANO_MORAL<br/>
+  DANO_MATERIAL<br/>
+  OBRIGACAO_DE_FAZER<br/>
+  DECLARATORIA

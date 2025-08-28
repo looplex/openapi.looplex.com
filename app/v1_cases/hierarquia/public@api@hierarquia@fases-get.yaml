@@ -4,7 +4,7 @@ summary: "Lista as fases de processo por ramo judicial"
 
 operationId: api-hierarquia-fases
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: nrRamoJudicial
     in: query

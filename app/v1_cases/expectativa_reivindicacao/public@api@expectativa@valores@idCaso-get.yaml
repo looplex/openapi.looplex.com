@@ -5,7 +5,7 @@ summary: "Obtém valores do caso inicial"
 operationId: api-expectativa-valores-idCaso-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idCaso
     in: path

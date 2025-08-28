@@ -5,7 +5,7 @@ summary: "Listagem de publicações paginada"
 operationId: api-publicacao-por_pagina-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: currentPage
     in: query

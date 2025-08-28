@@ -5,7 +5,7 @@ summary: "Lista fornecedores do voucher"
 operationId: api-despesas-voucher-idVoucher-fornecedores-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idVoucher
     in: path

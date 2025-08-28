@@ -3,7 +3,7 @@ tags:
 summary: "Obtém o contrato por identificador do caso"
 operationId: api-casos-idCaso-contratosimples
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path

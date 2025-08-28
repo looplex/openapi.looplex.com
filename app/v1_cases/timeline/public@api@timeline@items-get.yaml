@@ -5,7 +5,7 @@ summary: "Lista timeline por filtros"
 operationId: api-timeline-items
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: paginaAtual
     in: query

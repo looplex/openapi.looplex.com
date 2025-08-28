@@ -3,7 +3,7 @@ tags:
 summary: "Lista os contratos por situação (ativos / inativos)"
 operationId: api-contratos
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ativos
     in: query

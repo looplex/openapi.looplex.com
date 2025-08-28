@@ -5,7 +5,7 @@ summary: "Lista clientes por filtro"
 operationId: api-clientes-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ativos
     in: query

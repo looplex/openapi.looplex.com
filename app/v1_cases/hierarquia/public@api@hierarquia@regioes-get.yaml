@@ -4,7 +4,7 @@ summary: "Lista as regiões de acordo com o filtro informado"
 
 operationId: api-hierarquia-regioes
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: nrRamoJudicial
     in: query

@@ -5,7 +5,7 @@ summary: "Lista os casos em que sou responsável"
 operationId: api-casos-meuscasos-cdResponsavel-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: cdResponsavel
     in: path

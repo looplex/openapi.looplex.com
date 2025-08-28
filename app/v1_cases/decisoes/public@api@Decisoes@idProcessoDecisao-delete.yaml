@@ -5,7 +5,7 @@ summary: "Exclui decisão"
 operationId: api-Decisoes-idProcessoDecisao-delete
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
     in: path

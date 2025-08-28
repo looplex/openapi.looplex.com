@@ -4,7 +4,7 @@ summary: Andamentos simples por caso, numero interno ou numero externo
 description: Retorna um array de andamentos simples por identificador do caso, numero interno ou numero externo
 operationId: api-casos-num-andamentosimples
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query

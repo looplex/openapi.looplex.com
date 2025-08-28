@@ -5,7 +5,7 @@ summary: "Obtém termo cadastrado por identificador"
 operationId: api-publicacao-termo-IDTermo-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDTermo
     in: path

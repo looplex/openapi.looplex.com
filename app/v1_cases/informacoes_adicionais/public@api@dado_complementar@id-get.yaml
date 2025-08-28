@@ -6,7 +6,7 @@ description: "Obtém os dados de uma Informação adicional de acordo com o iden
 operationId: api-dado_complementar-id-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDParametroDadoComplementar
     in: path

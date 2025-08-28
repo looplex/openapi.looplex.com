@@ -306,52 +306,58 @@
             "folder": "case"
           },
           {
-            "option": 2,
+            "option": 3,
             "label": "Tasks",
             "detail": "Tasks endpoints",
             "folder": "task"
           },
           {
-            "option": 3,
+            "option": 4,
             "label": "Entries",
             "detail": "Entries endpoints",
             "folder": "entry"
           },
           {
-            "option": 4,
+            "option": 5,
             "label": "Timesheets",
             "detail": "Timesheet endpoints",
             "folder": "timesheet"
           },
           {
-            "option": 5,
+            "option": 6,
             "label": "Client",
             "detail": "Client endpoints",
             "folder": "client"
           },
           {
-            "option": 6,
+            "option": 7,
             "label": "Legal service agreement",
             "detail": "Legal service agreement endpoints",
             "folder": "legal_service_agreement"
           },
           {
-            "option": 7,
+            "option": 8,
             "label": "Employee",
             "detail": "Employee endpoints",
             "folder": "employee"
           },
           {
-            "option": 8,
+            "option": 9,
             "label": "Participant",
             "detail": "Participant endpoints",
             "folder": "participant"
           },
           {
-            "option": 9,
+            "option": 10,
             "label": "Legal category",
             "detail": "Legal category endpoints",
             "folder": "legal_category"
+          },
+          {
+            "option": 11,
+            "label": "Claim",
+            "detail": "Claim endpoints",
+            "folder": "claim"
           },
           {
             "option": -1,

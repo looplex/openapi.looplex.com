@@ -5,7 +5,7 @@ summary: "Lista as tabelas de preço"
 operationId: api-escritorios-idEscritorio-tabelaspreco
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: idEscritorio
     in: path

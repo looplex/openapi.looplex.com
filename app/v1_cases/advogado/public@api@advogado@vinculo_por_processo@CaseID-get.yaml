@@ -5,7 +5,7 @@ summary: "Listar vinculos de advogado por processo"
 operationId: api-advogado-vinculo_por_processo-CaseID-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: CaseID
     in: path

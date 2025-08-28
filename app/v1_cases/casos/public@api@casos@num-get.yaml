@@ -5,7 +5,7 @@ summary: "Lista casos por identificadores dos casos, numeros externo ou numeros 
 operationId: api-casos-num-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IdProcesso
     in: query

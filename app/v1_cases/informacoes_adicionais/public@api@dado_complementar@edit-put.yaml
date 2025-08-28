@@ -6,7 +6,7 @@ description: "**Propriedades disponíveis para edição**<br /> `TituloDadoCompl
 operationId: api-dado_complementar-edit
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: IDParametroDadoComplementar
     in: query

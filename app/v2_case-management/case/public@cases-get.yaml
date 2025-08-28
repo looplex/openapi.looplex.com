@@ -36,7 +36,6 @@ parameters:
       _Title_ _co_ _search_term_
     schema:
       type: string
-# RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"

@@ -6,7 +6,7 @@ description: "Salva resultado de cálculo"
 operationId: api-liabilitiesCalculationResults-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 requestBody:

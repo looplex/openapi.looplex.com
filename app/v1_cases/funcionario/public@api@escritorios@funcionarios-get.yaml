@@ -5,7 +5,7 @@ summary: "Lista os funcionários ativos do escritório"
 operationId: api-escritorios-funcionarios-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses

@@ -5,7 +5,7 @@ summary: "Exclui lançamento de hora"
 operationId: api-timesheet-exclui-id-delete
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
     in: path

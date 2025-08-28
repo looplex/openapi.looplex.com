@@ -5,7 +5,7 @@ summary: "Lista os tribunais disponíveis para cadastro de termo de publicação
 operationId: api-publicacao-lista_tribunais-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses

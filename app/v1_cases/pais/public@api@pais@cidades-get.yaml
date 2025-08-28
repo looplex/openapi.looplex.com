@@ -4,7 +4,7 @@ summary: Cidades
 description: Lista as cidades de acordo com o estado informado
 operationId: citiesByState
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: uf
     in: query

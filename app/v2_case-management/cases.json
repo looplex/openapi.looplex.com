@@ -1174,6 +1174,89 @@
           }
         }
       }
+    },
+    "/claims": {
+      "get": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/claims",
+        "description": "**Fetch items paginated**",
+        "operationId": "claims-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "description": "**Index of search**<br />\n",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": true,
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": true,
+            "description": "**SCIM filter to search**<br />\n**e.g:** _CaseId_ _eq_ \"_\\<case-unique-identifier\\>_\"\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseClaimEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1216,6 +1299,15 @@
         "name": "Authorization",
         "in": "header",
         "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Profile": {
+        "name": "Profile",
+        "in": "header",
+        "description": "**Profile obtained when logged in**",
         "required": true,
         "schema": {
           "type": "string"
@@ -3346,6 +3438,105 @@
             }
           }
         ]
+      },
+      "TipoReparacao": {
+        "title": "TipoReparacao",
+        "type": "string <nullable>",
+        "description": "**Tipo de pedido**<br/>\nDANO_MORAL<br/>\nDANO_MATERIAL<br/>\nOBRIGACAO_DE_FAZER<br/>\nDECLARATORIA\n"
+      },
+      "TipoTutela": {
+        "title": "TipoTutela",
+        "type": "string <nullable>",
+        "example": "URGENCIA_SATISFATIVA",
+        "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
+      },
+      "TipoDeRecorrencia": {
+        "title": "TipoDeRecorrencia",
+        "example": "SEM_RECORRENCIA",
+        "description": "SEM_RECORRENCIA<br/>\nDIARIA<br/>\nSEMANAL<br/> \nMENSAL<br/>\nANUAL\n"
+      },
+      "ClaimStatus": {
+        "title": "Claim status",
+        "type": "string",
+        "description": "PROCEDENTE<br/>\nPARCIALMENTE_PROCEDENTE<br/>\nIMPROCEDENTE<br/>\nACORDO<br/>\nPRESCRICAO_OU_DECADENCIA<br/>\nLITISPENDENCIA_COISA_JULGADA_PEREMPCAO<br/>\nILEGITIMIDADE<br/>\nDESISTENCIA\n"
+      },
+      "CaseClaimEntity": {
+        "title": "Claim",
+        "type": "object",
+        "properties": {
+          "CaseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Claim's case**"
+          },
+          "SubjectMatter": {
+            "type": "string <nullable>"
+          },
+          "ReliefStatement": {
+            "type": "string <nullable>"
+          },
+          "RemedyType": {
+            "$ref": "#/components/schemas/TipoReparacao"
+          },
+          "ProvisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          },
+          "AgainstPosition": {
+            "$ref": "#/components/schemas/Position"
+          },
+          "Participants": {
+            "description": "**Participant's identifiers**",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "CalculationRule": {
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "string"
+              },
+              "Title": {
+                "type": "string"
+              }
+            }
+          },
+          "RiskClassification": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "ForeseenValue": {
+            "type": "number"
+          },
+          "ContingencyValue": {
+            "type": "number",
+            "description": "**Valor de contingencia**"
+          },
+          "Liquidated": {
+            "type": "boolean <nullable>"
+          },
+          "EffectiveDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de constituição**"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de vencimento**"
+          },
+          "Recorrence": {
+            "$ref": "#/components/schemas/TipoDeRecorrencia"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/ClaimStatus"
+          },
+          "Granted": {
+            "type": "number",
+            "description": "**Valor deferido pela ultima decisão**"
+          }
+        }
       }
     }
   }

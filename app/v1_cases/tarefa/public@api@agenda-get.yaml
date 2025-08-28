@@ -5,7 +5,7 @@ summary: "Lista itens de agenda por período"
 operationId: api-agenda-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ano
     in: query

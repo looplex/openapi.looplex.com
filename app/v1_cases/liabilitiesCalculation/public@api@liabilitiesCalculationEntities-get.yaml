@@ -6,7 +6,7 @@ description: "Lista os parêmteros de cálculo do caso"
 operationId: api-liabilitiesCalculationEntities-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: caseid
     in: query

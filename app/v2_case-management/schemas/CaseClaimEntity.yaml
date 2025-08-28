@@ -1,0 +1,54 @@
+title: Claim
+type: object
+properties:
+  CaseId:
+    type: string
+    format: uuid
+    description: "**Claim's case**"
+  SubjectMatter:
+    type: string <nullable>
+  ReliefStatement:
+    type: string <nullable>
+  RemedyType:
+    $ref: ../enums/TipoReparacao.yaml
+  ProvisionalRelief:
+    $ref: ../enums/TipoTutela.yaml
+  AgainstPosition:
+    $ref: ../enums/Position.yaml
+  Participants:
+    description: "**Participant's identifiers**"
+    type: array
+    items:
+      type: string
+      format: uuid
+  CalculationRule:
+    type: object
+    properties:
+      Id:
+        type: string
+      Title:
+        type: string
+  RiskClassification:
+    $ref: ../enums/ContingentLiabilityRiskClassification.yaml
+  ForeseenValue:
+    type: number
+  ContingencyValue:
+    type: number
+    description: "**Valor de contingencia**"
+  Liquidated:
+    type: boolean <nullable>
+  EffectiveDate:
+    type: string
+    format: datetime
+    description: "**Data de constituição**"
+  DueDate:
+    type: string
+    format: datetime
+    description: "**Data de vencimento**"
+  Recorrence:
+    $ref: ../enums/TipoDeRecorrencia.yaml
+  Status:
+    $ref: ../enums/ClaimStatus.yaml
+  Granted:
+    type: number
+    description: "**Valor deferido pela ultima decisão**"

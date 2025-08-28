@@ -3,7 +3,7 @@ tags:
 summary: "Lista os grupos foro por ramo de justiça, estado, grupo de família e tipo"
 operationId: api-hierarquia-grupoforoportipo
 parameters:
-  - $ref: ../parameters/Profile.yaml
+  - $ref: ../../common_parameters/Profile.yaml
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: nrRamoJudicial
     in: query
