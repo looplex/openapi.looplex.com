@@ -3442,7 +3442,7 @@
       "TipoReparacao": {
         "title": "TipoReparacao",
         "type": "string <nullable>",
-        "description": "**Tipo de pedido**<br/>\nDANO_MORAL<br/>\nDANO_MATERIAL<br/>\nOBRIGACAO_DE_FAZER<br/>\nDECLARATORIA\n"
+        "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>\nEnum Description:<br/>\nMORAL_DAMAGES: Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\nECONOMIC_DAMAGES: Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\nCOERCIVE_REMEDY: Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\nDECLARATORY_JUDGMENT: Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.**\n\nAllowed values:<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT\n"
       },
       "TipoTutela": {
         "title": "TipoTutela",
@@ -3467,13 +3467,15 @@
           "CaseId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Claim's case**"
+            "description": "**Case's unique identifier of this claim**"
           },
           "SubjectMatter": {
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "description": "**Question's general classification**"
           },
           "ReliefStatement": {
-            "type": "string <nullable>"
+            "type": "string <nullable>",
+            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
           },
           "RemedyType": {
             "$ref": "#/components/schemas/TipoReparacao"

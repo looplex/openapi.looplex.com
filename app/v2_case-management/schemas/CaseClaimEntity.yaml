@@ -4,11 +4,13 @@ properties:
   CaseId:
     type: string
     format: uuid
-    description: "**Claim's case**"
+    description: "**Case's unique identifier of this claim**"
   SubjectMatter:
     type: string <nullable>
+    description: "**Question's general classification**"
   ReliefStatement:
     type: string <nullable>
+    description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
   RemedyType:
     $ref: ../enums/TipoReparacao.yaml
   ProvisionalRelief:
