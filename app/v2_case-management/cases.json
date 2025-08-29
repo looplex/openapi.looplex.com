@@ -2500,14 +2500,15 @@
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
-            "type": "string",
+            "type": "object",
             "description": "**The property value**",
             "example": "<new_value>"
           }
         },
         "required": [
           "path",
-          "op"
+          "op",
+          "value"
         ]
       },
       "ListResponse": {

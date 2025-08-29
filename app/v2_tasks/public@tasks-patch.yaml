@@ -1,7 +1,10 @@
 tags:
   - Tasks
 summary: "/tasks/:task_id"
-description: "**Patch tasks**"
+description: |
+  **Patch tasks**<br/>
+  **Se o campo a atualizar for `CustomFields` deve-se observar o seguinte:<br/>**
+  **É necessário enviar uma header com o nome `X-Looplex-Module` que deverá conter o path do json a ser modificado.**
 operationId: tasks-patch
 parameters:
   - $ref: ../parameters/OcpApimSubscriptionKey.yaml

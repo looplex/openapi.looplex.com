@@ -13,9 +13,10 @@ properties:
       **Available option:**<br/>
       replace
   value:
-    type: string
+    type: object
     description: "**The property value**"
     example: "<new_value>"
 required:
   - path
   - op
+  - value

@@ -88,7 +88,7 @@
           "Tasks"
         ],
         "summary": "/tasks/:task_id",
-        "description": "**Patch tasks**",
+        "description": "**Patch tasks**<br/>\n**Se o campo a atualizar for `CustomFields` deve-se observar o seguinte:<br/>**\n**É necessário enviar uma header com o nome `X-Looplex-Module` que deverá conter o path do json a ser modificado.**\n",
         "operationId": "tasks-patch",
         "parameters": [
           {
@@ -301,6 +301,7 @@
       "Meta": {
         "title": "Meta",
         "type": "object",
+        "description": "**Resource's metadata**",
         "properties": {
           "ResourceType": {
             "type": "string",
@@ -387,7 +388,7 @@
       "IdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
-        "description": "**The identity provider**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\nCPF<br/>\nRG\n"
+        "description": "**The identity provider**<br/>\n**For case:**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\n**For natural person:**<br/>\nCPF<br/>\nRG<br/>\n**For legal person:**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
       },
       "IdentityEntity": {
         "title": "Identidade",
@@ -593,14 +594,15 @@
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
-            "type": "string",
+            "type": "object",
             "description": "**The property value**",
             "example": "<new_value>"
           }
         },
         "required": [
           "path",
-          "op"
+          "op",
+          "value"
         ]
       },
       "ListResponse": {
