@@ -6,34 +6,49 @@ allOf:
     properties:
       Name:
         type: string
+        description: "**Employee's name**"
+        example: "Name"
       NickName:
         type: string <nullable>
+        description: "**Employee's nickname**"
+        example: "nickname"
       Dob:
         type: string <nullable>
         format: datetime
+        description: "**Employee's date of birth**"
+        example: "2025-08-29T03:00:00Z"
       Gender:
         type: string <nullable>
+        description: "**Employee's gender**"
       Identities:
         type: array
         items:
           $ref: ../../common_schemas/IdentityEntity.yaml
+        description: "**Employee's identities**"
       Nationality:
         type: string <nullable>
+        description: "**Employee's nationality**"
       MaritalStatus:
         $ref: ../enums/MaritalStatus.yaml
       Occupation:
         type: string <nullable>
+        description: "**Employee's occupation**"
       Role:
         $ref: ../enums/ParticipantRole.yaml
+      Status:
+        $ref: ../enums/PersonStatus.yaml
       Addresses:
         type: array
         items:
           $ref: AddressEntity.yaml
+        description: "**Employee's addresses**"
       Emails:
         type: array
         items:
           $ref: EmailEntity.yaml
+        description: "**Employee's emails**"
       PhoneNumbers:
         type: array
         items:
           $ref: PhoneNumberEntity.yaml
+        description: "**Employee's phone numbers**"

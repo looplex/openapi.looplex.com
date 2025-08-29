@@ -1335,6 +1335,7 @@
       "Meta": {
         "title": "Meta",
         "type": "object",
+        "description": "**Resource's metadata**",
         "properties": {
           "ResourceType": {
             "type": "string",
@@ -1416,7 +1417,7 @@
       "IdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
-        "description": "**The identity provider**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\nCPF<br/>\nRG\n"
+        "description": "**The identity provider**<br/>\n**For case:**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\n**For natural person:**<br/>\nCPF<br/>\nRG<br/>\n**For legal person:**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
       },
       "IdentityEntity": {
         "title": "Identidade",
@@ -1769,10 +1770,10 @@
         "description": "FEMALE<br/>\nMALE\n"
       },
       "MaritalStatus": {
-        "title": "MaritalStatus",
+        "title": "Marital status",
         "type": "string <nullable>",
         "example": "SOLTEIRO",
-        "description": "**Estado civil**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
+        "description": "**Marital status**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
       "ParticipantNaturalPerson": {
         "title": "Participante Pessoa Física",
@@ -3376,6 +3377,11 @@
           }
         }
       },
+      "PersonStatus": {
+        "title": "Status",
+        "type": "string",
+        "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
+      },
       "EmployeeEntity": {
         "title": "Funcionário",
         "type": "object",
@@ -3387,53 +3393,69 @@
             "type": "object",
             "properties": {
               "Name": {
-                "type": "string"
+                "type": "string",
+                "description": "**Employee's name**",
+                "example": "Name"
               },
               "NickName": {
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Employee's nickname**",
+                "example": "nickname"
               },
               "Dob": {
                 "type": "string <nullable>",
-                "format": "datetime"
+                "format": "datetime",
+                "description": "**Employee's date of birth**",
+                "example": "2025-08-29T03:00:00Z"
               },
               "Gender": {
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Employee's gender**"
               },
               "Identities": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/IdentityEntity"
-                }
+                },
+                "description": "**Employee's identities**"
               },
               "Nationality": {
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Employee's nationality**"
               },
               "MaritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "Occupation": {
-                "type": "string <nullable>"
+                "type": "string <nullable>",
+                "description": "**Employee's occupation**"
               },
               "Role": {
                 "$ref": "#/components/schemas/ParticipantRole"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/PersonStatus"
               },
               "Addresses": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntity"
-                }
+                },
+                "description": "**Employee's addresses**"
               },
               "Emails": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntity"
-                }
+                },
+                "description": "**Employee's emails**"
               },
               "PhoneNumbers": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PhoneNumberEntity"
-                }
+                },
+                "description": "**Employee's phone numbers**"
               }
             }
           }

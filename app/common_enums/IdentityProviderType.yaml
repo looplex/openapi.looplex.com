@@ -2,8 +2,14 @@ title: IdentityProviderType
 type: string
 description: |
   **The identity provider**<br/>
+  **For case:**<br/>
   CNJ<br/>
   Law Office<br/>
   Law Office ID<br/>
+  **For natural person:**<br/>
   CPF<br/>
-  RG
+  RG<br/>
+  **For legal person:**<br/>
+  CNPJ<br/>
+  Inscrição municipal<br/>
+  Inscrição estadual

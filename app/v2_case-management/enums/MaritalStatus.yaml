@@ -1,8 +1,8 @@
-title: MaritalStatus
+title: Marital status
 type: string <nullable>
 example: SOLTEIRO
 description: |
-  **Estado civil**<br />
+  **Marital status**<br />
   SOLTEIRO<br/>
   CASADO<br/>
   VIUVO<br/>

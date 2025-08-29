@@ -1,5 +1,6 @@
 title: Meta
 type: object
+description: "**Resource's metadata**"
 properties:
   ResourceType:
     type: string
