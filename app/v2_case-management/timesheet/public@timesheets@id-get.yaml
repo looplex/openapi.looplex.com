@@ -1,5 +1,5 @@
 tags:
-  - Timesheets
+  - Timesheet
 summary: "/timesheets/:timesheet_id"
 description: |
   **Retrieve a timesheet by id**

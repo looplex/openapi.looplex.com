@@ -1,5 +1,5 @@
 tags:
-  - Entries
+  - Entry
 summary: "/entries/:entry_id"
 description: |
   **Update entry**

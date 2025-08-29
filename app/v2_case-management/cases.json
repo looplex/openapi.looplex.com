@@ -337,7 +337,7 @@
     "/entries/:entry_id": {
       "get": {
         "tags": [
-          "Entries"
+          "Entry"
         ],
         "summary": "/entries/:entry_id",
         "description": "**Retrieve an entry by id**\n",
@@ -382,7 +382,7 @@
     "/entries": {
       "get": {
         "tags": [
-          "Entries"
+          "Entry"
         ],
         "summary": "/entries",
         "description": "**Fetch entries paginated**\n",
@@ -458,7 +458,7 @@
       },
       "post": {
         "tags": [
-          "Entries"
+          "Entry"
         ],
         "summary": "/entries",
         "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
@@ -496,7 +496,7 @@
     "/timesheets": {
       "get": {
         "tags": [
-          "Timesheets"
+          "Timesheet"
         ],
         "summary": "/timesheets",
         "description": "**Fetch timesheets paginated**\n",
@@ -574,7 +574,7 @@
       },
       "post": {
         "tags": [
-          "Timesheets"
+          "Timesheet"
         ],
         "summary": "/timesheets",
         "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
@@ -612,7 +612,7 @@
     "/timesheets/:id": {
       "get": {
         "tags": [
-          "Timesheets"
+          "Timesheet"
         ],
         "summary": "/timesheets/:timesheet_id",
         "description": "**Retrieve a timesheet by id**\n",
