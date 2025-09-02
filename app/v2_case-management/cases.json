@@ -1194,13 +1194,10 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "$ref": "#/components/parameters/Profile"
-          },
-          {
             "name": "startIndex",
             "in": "query",
             "required": true,
-            "description": "**Index of search**<br />\n",
+            "description": "**Index of search**",
             "example": 1,
             "schema": {
               "type": "integer"
@@ -1381,15 +1378,6 @@
         "name": "Authorization",
         "in": "header",
         "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
-        "required": true,
-        "schema": {
-          "type": "string"
-        }
-      },
-      "Profile": {
-        "name": "Profile",
-        "in": "header",
-        "description": "**Profile obtained when logged in**",
         "required": true,
         "schema": {
           "type": "string"

@@ -7,12 +7,10 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/Profile.yaml
   - name: startIndex
     in: query
     required: true
-    description: |
-      **Index of search**<br />
+    description: "**Index of search**"
     example: 1
     schema:
       type: integer
