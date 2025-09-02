@@ -2546,6 +2546,7 @@
                 "$ref": "#/components/schemas/SimpleEntity"
               },
               "ParentCase": {
+                "description": "**The parent case of this case**",
                 "oneOf": [
                   {
                     "type": "string",
@@ -2559,7 +2560,7 @@
                   },
                   {
                     "type": "object",
-                    "description": "**Os dados do caso para cadastro**"
+                    "description": "**Os dados do caso**"
                   }
                 ]
               }

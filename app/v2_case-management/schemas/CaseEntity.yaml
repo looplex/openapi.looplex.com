@@ -195,6 +195,7 @@ allOf:
       Folder:
         $ref: ../../common_schemas/SimpleEntity.yaml
       ParentCase:
+        description: "**The parent case of this case**"
         oneOf:
           - type: string
             example: "0000000-00.0000.0.00.0000"
@@ -203,4 +204,4 @@ allOf:
             format: uuid
             description: "**Identificador único do caso**"
           - type: object
-            description: "**Os dados do caso para cadastro**"
+            description: "**Os dados do caso**"
