@@ -144,6 +144,7 @@ properties:
     example: {}
     description: "**Case's custom fields**"
   ParentCase:
+    description: "**The parent case of this case**"
     oneOf:
       - type: string
         example: "0000000-00.0000.0.00.0000"

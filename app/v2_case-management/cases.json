@@ -3204,6 +3204,7 @@
             "description": "**Case's custom fields**"
           },
           "ParentCase": {
+            "description": "**The parent case of this case**",
             "oneOf": [
               {
                 "type": "string",
