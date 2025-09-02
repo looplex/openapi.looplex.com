@@ -6,7 +6,7 @@ properties:
     format: uuid
     description: "**Case's unique identifier of this claim**"
   SubjectMatter:
-    type: string <nullable>
+    type: string
     description: "**Question's general classification**"
   ReliefStatement:
     type: string <nullable>
@@ -15,10 +15,17 @@ properties:
     $ref: ../enums/TipoReparacao.yaml
   ProvisionalRelief:
     $ref: ../enums/TipoTutela.yaml
-  AgainstPosition:
-    $ref: ../enums/Position.yaml
+  AgainstPosition: 
+    type: string
+    description: |
+      **Participant's position**<br />
+      ACTIVE<br/>
+      PASSIVE<br/>
+      THIRD_PARTY
   Participants:
-    description: "**Participant's identifiers**"
+    description: |
+      **Participant's identifiers**<br/>
+      _These participants should be binded to this case in the same position as the claim_
     type: array
     items:
       type: string
@@ -27,11 +34,10 @@ properties:
     $ref: ../enums/ContingentLiabilityRiskClassification.yaml
   ForeseenValue:
     type: number
-  ContingencyValue:
-    type: number
-    description: "**Valor de contingencia**"
+    description: "**Foreseen value**"
   Liquidated:
-    type: boolean <nullable>
+    type: boolean
+    description: "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
   EffectiveDate:
     type: string
     format: datetime
@@ -44,3 +50,9 @@ properties:
     $ref: ../enums/TipoDeRecorrencia.yaml
   Status:
     $ref: ../enums/ClaimStatus.yaml
+required:
+  - CaseId
+  - SubjectMatter
+  - RemedyType
+  - AgainstPosition
+  - Recorrence

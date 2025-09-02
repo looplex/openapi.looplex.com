@@ -3609,7 +3609,7 @@
             "description": "**Case's unique identifier of this claim**"
           },
           "SubjectMatter": {
-            "type": "string <nullable>",
+            "type": "string",
             "description": "**Question's general classification**"
           },
           "ReliefStatement": {
@@ -3623,10 +3623,11 @@
             "$ref": "#/components/schemas/TipoTutela"
           },
           "AgainstPosition": {
-            "$ref": "#/components/schemas/Position"
+            "type": "string",
+            "description": "**Participant's position**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY\n"
           },
           "Participants": {
-            "description": "**Participant's identifiers**",
+            "description": "**Participant's identifiers**<br/>\n_These participants should be binded to this case in the same position as the claim_\n",
             "type": "array",
             "items": {
               "type": "string",
@@ -3637,14 +3638,12 @@
             "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "ForeseenValue": {
-            "type": "number"
-          },
-          "ContingencyValue": {
             "type": "number",
-            "description": "**Valor de contingencia**"
+            "description": "**Foreseen value**"
           },
           "Liquidated": {
-            "type": "boolean <nullable>"
+            "type": "boolean",
+            "description": "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
           },
           "EffectiveDate": {
             "type": "string",
@@ -3662,7 +3661,14 @@
           "Status": {
             "$ref": "#/components/schemas/ClaimStatus"
           }
-        }
+        },
+        "required": [
+          "CaseId",
+          "SubjectMatter",
+          "RemedyType",
+          "AgainstPosition",
+          "Recorrence"
+        ]
       }
     }
   }
