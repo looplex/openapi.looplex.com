@@ -1,0 +1,25 @@
+tags:
+  - Claim
+summary: "/claims/claim_id"
+description: "**Retrieve a claim by id**" # retrieve
+operationId: claims-claim_id-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: claim_id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+responses:
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/CaseClaimEntity.yaml
+  "500":
+      description: "Internal Server Error"

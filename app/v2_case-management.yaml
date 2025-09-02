@@ -102,6 +102,9 @@ paths:
       $ref: v2_case-management\claim\public@claims-get.yaml
     post:
       $ref: v2_case-management\claim\public@claims-post.yaml
+  /claim/claim_id:
+    get:
+      $ref: v2_case-management\claim\public@claims@claim_id-get.yaml
 
 components:
   securitySchemes:
