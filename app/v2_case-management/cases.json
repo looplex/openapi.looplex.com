@@ -1471,7 +1471,7 @@
       "ClasseProcessoContrato": {
         "title": "Classe Processo Contrato",
         "type": "string",
-        "description": "**Valores permitidos quando _Type_ é definido como _CONTRATO_**<br />\nCASO<br/>\nCONTRATO_CONEXO<br/>\nADITAMENTO<br/>\nTERMO_OU_DOCUMENTO_ANCILAR\n"
+        "description": "**Valores permitidos quando _Type_ é definido como _CONTRATO_**<br />\nCASO<br/>\nCONTRATO_CONEXO<br/>\nADITIVO<br/>\nTERMO_OU_DOCUMENTO_ANCILAR\n"
       },
       "ClasseProcessoSocietario": {
         "title": "Classe Processo Societario",
@@ -3623,7 +3623,7 @@
             "format": "datetime",
             "description": "**Data de vencimento**"
           },
-          "Recorrence": {
+          "Recurrence": {
             "$ref": "#/components/schemas/TipoDeRecorrencia"
           },
           "Status": {
@@ -3691,7 +3691,7 @@
             "format": "datetime",
             "description": "**Data de vencimento**"
           },
-          "Recorrence": {
+          "Recurrence": {
             "$ref": "#/components/schemas/TipoDeRecorrencia"
           },
           "Status": {
@@ -3703,7 +3703,7 @@
           "SubjectMatter",
           "RemedyType",
           "AgainstPosition",
-          "Recorrence"
+          "Recurrence"
         ]
       }
     }

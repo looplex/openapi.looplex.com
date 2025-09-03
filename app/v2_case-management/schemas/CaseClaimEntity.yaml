@@ -47,7 +47,7 @@ properties:
     type: string
     format: datetime
     description: "**Data de vencimento**"
-  Recorrence:
+  Recurrence:
     $ref: ../enums/TipoDeRecorrencia.yaml
   Status:
     $ref: ../enums/ClaimStatus.yaml
