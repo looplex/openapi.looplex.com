@@ -1,0 +1,28 @@
+tags:
+  - Claim
+summary: "/claims/:claim_id"
+description: "**Patch claim property**"
+operationId: claims-claim_id-patch
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: claim_id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../common_schemas/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "500":
+    description: "Internal Server Error"

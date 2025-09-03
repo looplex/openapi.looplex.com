@@ -13,9 +13,14 @@ properties:
       **Available option:**<br/>
       replace
   value:
-    type: object
-    description: "**The property value**"
-    example: "<new_value>"
+    description: "**The new value to set**"
+    oneOf:
+      - type: string
+        example: "new value"
+      - type: number
+        example: 10
+      - type: object
+        example: {}
 required:
   - path
   - op

@@ -1335,6 +1335,55 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/claims/:claim_id",
+        "description": "**Patch claim property**",
+        "operationId": "claims-claim_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   },
@@ -2571,9 +2620,21 @@
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
-            "type": "object",
-            "description": "**The property value**",
-            "example": "<new_value>"
+            "description": "**The new value to set**",
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "new value"
+              },
+              {
+                "type": "number",
+                "example": 10
+              },
+              {
+                "type": "object",
+                "example": {}
+              }
+            ]
           }
         },
         "required": [
