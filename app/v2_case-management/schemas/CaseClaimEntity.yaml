@@ -54,3 +54,7 @@ properties:
   Granted:
     type: number
     description: "**Valor deferido pela ultima decisão**"
+  CustomFields:
+    type: object
+    description: "**Claim's custom fields**"
+    example: {}

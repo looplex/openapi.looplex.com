@@ -50,6 +50,10 @@ properties:
     $ref: ../enums/TipoDeRecorrencia.yaml
   Status:
     $ref: ../enums/ClaimStatus.yaml
+  CustomFields:
+    type: object
+    description: "**Claim's custom fields**"
+    example: {}
 required:
   - CaseId
   - SubjectMatter
