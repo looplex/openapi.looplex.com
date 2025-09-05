@@ -163,6 +163,11 @@ properties:
     items: 
       $ref: ../../common_schemas/TaskEntityWrite.yaml
     description: "**Tarefas vinculadas ao caso**"
+  Claims:
+    type: array
+    items:
+      $ref: ../schemas/CaseClaimEntityWrite.yaml
+    description: "**Case claims**"
   CustomFields:
     type: object
     example: {}

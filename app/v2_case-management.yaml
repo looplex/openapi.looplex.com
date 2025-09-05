@@ -80,6 +80,11 @@ paths:
   /participants:
     post:
       $ref: v2_case-management\participant\public@participants-post.yaml
+    get:
+      $ref: v2_case-management\participant\public@participants-get.yaml
+  /participants/participant_id:
+    get:
+      $ref: v2_case-management\participant\public@participants@participant_id-get.yaml
 
   # LegalCategory (Natures)
   /legalCategories:

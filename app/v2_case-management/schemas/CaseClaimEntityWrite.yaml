@@ -4,7 +4,9 @@ properties:
   CaseId:
     type: string
     format: uuid
-    description: "**Case's unique identifier of this claim**"
+    description: |
+      **Case's unique identifier of this claim**<br/>
+      `Obrigatório apenas quando o pedido não estiver sendo criado junto com o caso`
   SubjectMatter:
     type: string
     description: "**Question's general classification**"

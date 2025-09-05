@@ -1,0 +1,27 @@
+tags:
+  - Participant
+summary: "/participants/participant_id"
+description: "**Retrieve a participant by id**"
+operationId: participants-participant_id-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  # endpoint retrieve
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+responses:
+  # Utilizado quando apenas um item for retornado
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            $ref: ../schemas/ParticipantEntity.yaml
+  "500":
+      description: "Internal Server Error"

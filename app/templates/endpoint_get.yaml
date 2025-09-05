@@ -16,8 +16,7 @@ parameters:
   # - name: id
   #   in: path
   #   required: true
-  #   description: |
-  #     **The item's unique identifier**
+  #   description: "**The item's unique identifier**"
   #   schema:
   #     type: string
   #     format: uuid
@@ -26,8 +25,7 @@ parameters:
   # - name: startIndex
   #   in: query
   #   required: true
-  #   description: |
-  #     **Index of search**<br />
+  #   description: "**Index of search**"
   #   example: 1
   #   schema:
   #     type: integer

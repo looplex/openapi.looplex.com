@@ -4,18 +4,6 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      ClientId: 
-        type: string
-        format: uuid
-        description: "Se a parte for um cliente"
-      EmployeeId: 
-        type: string
-        format: uuid
-        description: "Se a parte for um funcionário"
-      CaseId: 
-        type: string
-        format: uuid
-        description: "**Identificador único do caso**"
       CreatedBy: 
         $ref: ../../common_schemas/SimpleEntity.yaml
       Name:
@@ -24,28 +12,12 @@ allOf:
       Nickname:
         type: string <nullable>
         description: "**Apelido**"
-      IsMainParty:
-        type: bool
-        description: "**Indica se é a parte principal**"
-      Represents:
-        type: array
-        items:
-          oneOf:
-            - type: string (document)
-              example: "000.000.000-00"
-              description: "**Documento da parte representada**"
-            - type: string (unique identifier)
-              format: uuid
-              description: "**Unique identifier da parte representada**"
       LawyerOffice:
         type: string <nullable>
         description: "**Escritório do advogado (se houver)**"
       Nature:
         example: NATURAL_PERSON
         $ref: ../enums/TipoPessoa.yaml
-      Position:
-        example: OTHER
-        $ref: ../enums/Position.yaml
       Addresses:
         description: "**Endereços**"
         type: array
