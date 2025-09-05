@@ -1973,6 +1973,7 @@
         "type": "object",
         "properties": {
           "AgainstPosition": {
+            "example": "ACTIVE",
             "$ref": "#/components/schemas/Position",
             "description": "**Contra polo ativo, passivo, terceiro...**"
           },
@@ -1988,15 +1989,18 @@
           },
           "CaseDeclaredValue": {
             "type": "number <nullable>",
-            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n"
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
+            "example": 0
           },
           "CaseForeseenValue": {
             "type": "number <nullable>",
-            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n"
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "example": 0
           },
           "CaseContingencyValue": {
             "type": "number <nullable>",
-            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n"
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "example": 0
           }
         }
       },
@@ -3058,7 +3062,7 @@
         ]
       },
       "EntryEntityWrite": {
-        "title": "Dados de andamento",
+        "title": "Dados do andamento",
         "type": "object",
         "properties": {
           "Date": {
@@ -3085,12 +3089,107 @@
           "CaseId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Case's unique identifier**"
+            "description": "**Case's unique identifier**<br/>\n`Obrigatório apenas quando o andamento não estiver sendo criado junto com o caso`\n"
           },
           "CustomFields": {
             "type": "object",
             "example": {},
             "description": "**Entry's custom fields**"
+          }
+        }
+      },
+      "TaskContentWrite": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "properties": {
+          "ParentTaskId": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**Unique identifier of parent task**"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TaskType",
+            "example": "COURT_HEARING"
+          },
+          "Title": {
+            "type": "string <nullable>",
+            "description": "**Titulo**"
+          },
+          "Description": {
+            "type": "string <nullable>",
+            "description": "**Descrição**"
+          },
+          "StartDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Início**"
+          },
+          "DueDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Data de Vencimento**"
+          },
+          "Locale": {
+            "type": "string <nullable>",
+            "description": "**Local**"
+          },
+          "TaskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**"
+          },
+          "ActivityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**"
+          },
+          "Owner": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Responsável**"
+          },
+          "OtherParticipants": {
+            "description": "**Outros Participantes**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            }
+          },
+          "Status": {
+            "$ref": "#/components/schemas/StatusTarefa",
+            "example": "CREATED"
+          },
+          "Priority": {
+            "example": "LOW",
+            "$ref": "#/components/schemas/Prioridade"
+          },
+          "Case": {
+            "description": "**Caso de uma tarefa**",
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier**<br/>\n`Obrigatório apenas quando a tarefa não estiver sendo criada junto com o caso`\n"
+              }
+            }
+          },
+          "CustomFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Tasks's custom fields**"
+          }
+        }
+      },
+      "TaskEntityWrite": {
+        "title": "Tarefa",
+        "type": "object",
+        "properties": {
+          "Data": {
+            "$ref": "#/components/schemas/TaskContentWrite"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskContentWrite"
+            }
           }
         }
       },
@@ -3116,7 +3215,8 @@
               {
                 "$ref": "#/components/schemas/ClasseProcesso"
               }
-            ]
+            ],
+            "example": "CASO"
           },
           "Level": {
             "type": "integer",
@@ -3128,19 +3228,28 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/IdentityEntityWrite"
-            }
+            },
+            "example": [
+              {
+                "IdentityProviderType": "CNJ",
+                "Value": "NNNNNNN-DD.AAAA.J.TR.OOOO"
+              }
+            ]
           },
           "Title": {
             "type": "string",
-            "description": "**Nome Jurídico do caso**"
+            "description": "**Nome Jurídico do caso**",
+            "example": "Titulo do caso"
           },
           "Summary": {
             "type": "string <nullable>",
-            "description": "**Breve descrição sobre o caso**"
+            "description": "**Breve descrição sobre o caso**",
+            "example": "Observações do caso"
           },
           "Locale": {
             "type": "string <nullable>",
-            "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+            "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n",
+            "example": "País - Estado - Cidade"
           },
           "CourtVenue": {
             "type": "string <nullable>",
@@ -3148,54 +3257,64 @@
           },
           "CaseProcedure": {
             "type": "string <nullable>",
-            "description": "**Rito ou procedimento do caso**"
+            "description": "**Rito ou procedimento do caso**",
+            "example": "Rito do caso"
           },
           "Phase": {
             "type": "string <nullable>",
-            "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
+            "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
+            "example": "Fase do caso"
           },
           "LegalCategories": {
             "description": "**Indica os assuntos tratados no caso**",
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "example": []
           },
           "RetentionDate": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
+            "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n",
+            "example": "2025-09-01T12:00:00.000Z"
           },
           "StartDate": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
+            "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n",
+            "example": "2025-09-01T12:00:00.000Z"
           },
           "FormationDate": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
+            "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
+            "example": "2025-09-01T12:00:00.000Z"
           },
           "ResJudicataDate": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
+            "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
+            "example": "2025-09-01T12:00:00.000Z"
           },
           "ForecastedEndDate": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
+            "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
+            "example": "2025-09-01T12:00:00.000Z"
           },
           "Group": {
             "type": "string",
-            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
+            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+            "example": "Área"
           },
           "Product": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
+            "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
+            "example": []
           },
           "CaseClient": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
@@ -3246,6 +3365,13 @@
               "$ref": "#/components/schemas/EntryEntityWrite"
             },
             "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
+          },
+          "Tasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskEntityWrite"
+            },
+            "description": "**Tarefas vinculadas ao caso**"
           },
           "CustomFields": {
             "type": "object",

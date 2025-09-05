@@ -1,4 +1,4 @@
-title: Dados de andamento
+title: Dados do andamento
 type: object
 properties:
   Date:
@@ -20,7 +20,9 @@ properties:
   CaseId:
     type: string
     format: uuid
-    description: "**Case's unique identifier**"
+    description: |
+      **Case's unique identifier**<br/>
+      `Obrigatório apenas quando o andamento não estiver sendo criado junto com o caso`
   CustomFields:
     type: object
     example: {}

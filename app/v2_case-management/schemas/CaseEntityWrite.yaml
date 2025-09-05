@@ -11,6 +11,7 @@ properties:
       - $ref: ../enums/ClasseProcessoContrato.yaml
       - $ref: ../enums/ClasseProcessoSocietario.yaml
       - $ref: ../enums/ClasseProcesso.yaml
+    example: CASO
   Level:
     type: integer
     example: 1
@@ -20,18 +21,27 @@ properties:
     type: array
     items:
       $ref: ../../common_schemas/IdentityEntityWrite.yaml
+    example: [
+      {
+        IdentityProviderType: "CNJ",
+        Value: "NNNNNNN-DD.AAAA.J.TR.OOOO"
+      }
+    ]
   Title:
     type: string
     description: "**Nome Jurídico do caso**"
+    example: "Titulo do caso"
   Summary:
     type: string <nullable>
     description: "**Breve descrição sobre o caso**"
+    example: "Observações do caso"
   Locale:
     type: string <nullable>
     description: |
       **Utilizado em casos consultivos**<br />
       **Formato: País - Estado - Cidade**<br />
       Local da Jurisdição de um caso, ou cumprimento da obrigação.
+    example: "País - Estado - Cidade"
   CourtVenue:
     type: string <nullable>
     description: |
@@ -40,28 +50,33 @@ properties:
   CaseProcedure:
     type: string <nullable>
     description: "**Rito ou procedimento do caso**"
+    example: "Rito do caso"
   Phase:
     type: string <nullable>
     description: |
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
+    example: "Fase do caso"
   LegalCategories:
     description: "**Indica os assuntos tratados no caso**"
     type: array
     items:
       type: string
+    example: []
   RetentionDate:
     type: string <nullable>
     format: datetime
     description: |
       **Data de entrada** <br />
       Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
+    example: "2025-09-01T12:00:00.000Z"
   StartDate:
     type: string <nullable>
     format: datetime
     description: |
       **Data de distribuição**<br />
       Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
+    example: "2025-09-01T12:00:00.000Z"
   FormationDate:
     type: string <nullable>
     format: datetime
@@ -69,6 +84,7 @@ properties:
       **Data de citação**<br />
       Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
       Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
+    example: "2025-09-01T12:00:00.000Z"
   ResJudicataDate:
     type: string <nullable>
     format: datetime
@@ -76,6 +92,7 @@ properties:
       **Data de trânsito em julgado**<br />
       Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
       A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
+    example: "2025-09-01T12:00:00.000Z"
   ForecastedEndDate:
     type: string <nullable>
     format: datetime
@@ -83,11 +100,13 @@ properties:
       **Data prevista para encerramento**<br />
       Data estimada para a conclusão de um caso, transação ou disputa. <br />
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
+    example: "2025-09-01T12:00:00.000Z"
   Group:
     type: string
     description: |
       **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
+    example: "Área"
   Product:
     type: array
     items:
@@ -95,6 +114,7 @@ properties:
     description: |
       **Produto**<br />
       Produto ou serviço do cliente que está relacionado ao caso
+    example: []
   CaseClient:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
     description: |
@@ -122,7 +142,6 @@ properties:
     description: |
       **Escritório Responsável / Correspondente**<br />
       Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-  #TODO: verificar se renderiza corretamente na página
   Participants:
     type: array
     items:
@@ -139,6 +158,11 @@ properties:
     items:
       $ref: EntryEntityWrite.yaml
     description: "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
+  Tasks:
+    type: array
+    items: 
+      $ref: ../../common_schemas/TaskEntityWrite.yaml
+    description: "**Tarefas vinculadas ao caso**"
   CustomFields:
     type: object
     example: {}
