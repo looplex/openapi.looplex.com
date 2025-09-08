@@ -345,6 +345,11 @@ export default function Home () {
                 link='/v2_case-management'
                 text='Cases Management'
               />
+
+              <BorderedLink
+                link='/v2_looplex_content'
+                text='Content v2'
+              />
             </ColCard>
 
             <ColCard>

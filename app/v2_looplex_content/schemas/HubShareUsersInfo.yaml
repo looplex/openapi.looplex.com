@@ -1,0 +1,19 @@
+title: HubShareUsersInfo
+description: 
+properties:
+  MaxLicenses:
+    description: "Max number of licenses for tenant"
+    type: integer
+  LicensesAvaiable:
+    description: "Available licenses at the moment"
+    type: integer
+  ActiveUsers:
+    description: "Active Users List"
+    type: array
+    items:
+      $ref: HubShareUser.yaml
+  InactiveUsers:
+    description: "Inactive Users List"
+    type: array
+    items:
+      $ref: HubShareUser.yaml

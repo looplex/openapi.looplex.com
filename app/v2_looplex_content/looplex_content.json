@@ -1,0 +1,225 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "Looplex Looplex Content",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "API do content (M-Files)\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/TODO",
+      "description": "Looplex Content Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/hubshareuser/info": {
+      "get": {
+        "tags": [
+          "Hubshare Users"
+        ],
+        "summary": "Hubshare users informations",
+        "description": "**Retrieve info from user by hubshare**",
+        "operationId": "hubshareuser-info-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubShareUsersInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "Meta": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "Entity"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": null,
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "2.0",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "Resource": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**"
+          },
+          "ExternalId": {
+            "example": null,
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "Meta": {
+            "description": "**Informações relacionadas à essa entity**",
+            "$ref": "#/components/schemas/Meta"
+          }
+        }
+      },
+      "HubShareUser": {
+        "title": "HubShareUser",
+        "description": null,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "LastName": {
+                "type": "string"
+              },
+              "EmailAddress": {
+                "type": "string"
+              },
+              "IsInternalUser": {
+                "type": "boolean"
+              },
+              "Active": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "HubShareUsersInfo": {
+        "title": "HubShareUsersInfo",
+        "description": null,
+        "properties": {
+          "MaxLicenses": {
+            "description": "Max number of licenses for tenant",
+            "type": "integer"
+          },
+          "LicensesAvaiable": {
+            "description": "Available licenses at the moment",
+            "type": "integer"
+          },
+          "ActiveUsers": {
+            "description": "Active Users List",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HubShareUser"
+            }
+          },
+          "InactiveUsers": {
+            "description": "Inactive Users List",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HubShareUser"
+            }
+          }
+        }
+      }
+    }
+  }
+}

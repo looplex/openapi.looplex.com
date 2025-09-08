@@ -1,0 +1,16 @@
+title: HubShareUser
+description: 
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object    
+    properties:
+      Name:
+        type: string
+      LastName:
+        type: string
+      EmailAddress:
+        type: string
+      IsInternalUser:
+        type: boolean
+      Active:
+        type: boolean
