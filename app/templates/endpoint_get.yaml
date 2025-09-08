@@ -49,28 +49,4 @@ parameters:
   #     type: string
 {{PATH_QUERY_PARAMETERS}}
 responses:
-  # Deixar apenas 1 resposta 200 OK
-  # Utilizado quando um array for retornado
-  # "200":
-  #     description: "OK"
-  #     content:
-  #       application/json:
-  #         schema:
-  #           allOf:
-  #             - $ref: '../../common_schemas/ListResponse.yaml'
-  #             - type: object
-  #               properties:
-  #                 resources:
-  #                   type: array
-  #                   items:
-  #                     $ref: ../schemas/{{DTO_NAME}}.yaml
-  # Utilizado quando apenas um item for retornado
-  # "200":
-  #     description: "OK"
-  #     content:
-  #       application/json:
-  #         schema:
-  #           $ref: ../schemas/{{DTO_NAME}}.yaml
   {{HTTP_RESPONSES}}
-  "500":
-      description: "Internal Server Error"

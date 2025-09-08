@@ -24,7 +24,3 @@ responses:
   {{HTTP_RESPONSES}}
   "204":
     description: "No Content"
-  "404":
-    description: "Not Found"
-  "500":
-    description: "Internal Server Error"

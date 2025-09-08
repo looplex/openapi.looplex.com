@@ -17,6 +17,4 @@ parameters:
 responses:
   "201":
     description: "Created"
-  "500":
-    description: "Internal Server Error"
   {{HTTP_RESPONSES}}
