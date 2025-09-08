@@ -1,0 +1,12 @@
+title: Identidade
+type: object
+example: {
+  IdentityProviderType: "CPF",
+  Value: "DDD.DDD.DDD-DD"
+}
+properties:
+  IdentityProviderType:
+    $ref: ../common_enums/NaturalPersonIdentityProviderType.yaml
+  Value:
+    type: string
+    description: "**The identity value**"

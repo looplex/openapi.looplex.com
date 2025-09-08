@@ -1,4 +1,4 @@
-# Deixar apenas 1 resposta 200 OK
+  # Deixar apenas 1 resposta 200 OK
   # Utilizado quando um array for retornado
   "200":
       description: "OK"

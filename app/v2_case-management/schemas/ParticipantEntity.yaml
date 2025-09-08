@@ -32,7 +32,9 @@ allOf:
         description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
         type: array
         items:
-          $ref: ../../common_schemas/IdentityEntity.yaml
+          oneOf:
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
       PhoneNumbers:
         description: "**Telefones**"
         type: array

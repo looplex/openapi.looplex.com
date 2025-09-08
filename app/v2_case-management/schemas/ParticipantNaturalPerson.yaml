@@ -1,4 +1,4 @@
-title: Participante Pessoa Física
+title: Participante (NATURAL_PERSON)
 type: object
 allOf:
   - $ref: ParticipantEntity.yaml

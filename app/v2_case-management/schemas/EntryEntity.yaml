@@ -42,4 +42,4 @@ allOf:
       Identities:
         type: array
         items:
-          $ref: ../../common_schemas/IdentityEntity.yaml
+          $ref: ../../common_schemas/LegacyIdentityEntity.yaml

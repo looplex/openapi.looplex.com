@@ -72,7 +72,7 @@ properties:
   Identities:
     type: array
     items:
-      $ref: ./IdentityEntity.yaml
+      $ref: ./LegacyIdentityEntity.yaml
   Case:
     description: "Caso de uma tarefa"
     type: object
@@ -87,7 +87,7 @@ properties:
       Identities:
         type: array
         items:
-          $ref: IdentityEntity.yaml
+          $ref: LegacyIdentityEntity.yaml
       Group:
         type: string
         description: "Case's group"

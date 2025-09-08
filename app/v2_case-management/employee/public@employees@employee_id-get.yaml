@@ -1,29 +1,26 @@
 tags:
-  - Client
-summary: "/clients/client_id"
-description: |
-  **Retrieve a client by id**
-operationId: clients-client_id-get
+  - Employee
+summary: "/employees/:employee_id"
+description: "**Retrieve an employee by id**" # retrieve
+operationId: employees-employee_id-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # Utilizado em endpoint retrieve
-  - name: client_id
+  # endpoint retrieve
+  - name: employee_id
     in: path
     required: true
-    description: |
-      **The item's unique identifier**
+    description: "**The item's unique identifier**"
     schema:
       type: string
       format: uuid
 responses:
-  # Utilizado quando apenas um item for retornado
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            $ref: ../schemas/ClientEntity.yaml
+            $ref: ../schemas/EmployeeEntity.yaml
   "500":
       description: "Internal Server Error"

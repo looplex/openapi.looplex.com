@@ -1,0 +1,6 @@
+title: IdentityProviderType
+type: string
+description: |
+  **The identity provider**<br/>
+  Law Office<br/>
+  Law Office ID

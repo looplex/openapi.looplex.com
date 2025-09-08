@@ -26,9 +26,9 @@ allOf:
         description: "**Instância do caso**"
       Identities:
         type: array
-        items:
-          $ref: ../../common_schemas/IdentityEntity.yaml
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
+        items:
+          $ref: ../../common_schemas/CaseIdentityEntity.yaml
       Title:
         type: string
         description: "**Nome Jurídico do caso**"
@@ -99,8 +99,8 @@ allOf:
         format: datetime
         description: "**Atualizado em**"
       UpdatedBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Atualizado por**"
+        $ref: ../../common_schemas/SimpleEntity.yaml
       ClosedAt:
         type: string <nullable>
         format: datetime

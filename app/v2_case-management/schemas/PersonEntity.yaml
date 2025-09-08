@@ -1,3 +1,4 @@
+title: "Dados de pessoa"
 type: object
 allOf:
   - $ref: ../../common_schemas/SimpleEntity.yaml
@@ -8,4 +9,6 @@ allOf:
       Identities:
         type: array
         items:
-          $ref: ../../common_schemas/IdentityEntity.yaml
+          oneOf:
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml

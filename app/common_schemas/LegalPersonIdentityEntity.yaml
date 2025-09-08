@@ -1,0 +1,17 @@
+title: Identidade (LEGAL_PERSON)
+type: object
+example: {
+  Id: null,
+  IdentityProviderType: "CNPJ",
+  Value: "DD.DDD.DDD/DDDD-DD"
+}
+properties:
+  Id:
+    type: string <nullable>
+    format: uuid
+    description: "**The unique identifier of this value**"
+  IdentityProviderType:
+    $ref: ../common_enums/LegalPersonIdentityProviderType.yaml
+  Value:
+    type: string
+    description: "**The identity value**"

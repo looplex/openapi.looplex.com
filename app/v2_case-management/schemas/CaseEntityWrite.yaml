@@ -20,13 +20,7 @@ properties:
     description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
     type: array
     items:
-      $ref: ../../common_schemas/IdentityEntityWrite.yaml
-    example: [
-      {
-        IdentityProviderType: "CNJ",
-        Value: "NNNNNNN-DD.AAAA.J.TR.OOOO"
-      }
-    ]
+      $ref: ../../common_schemas/CaseIdentityEntityWrite.yaml
   Title:
     type: string
     description: "**Nome Jurídico do caso**"
@@ -183,3 +177,11 @@ properties:
         description: "**Identificador único do caso**"
       - type: object
         description: "**Os dados do caso para cadastro**"
+required:
+  - Status
+  - Type
+  - SubType
+  - Title
+  - Group
+  - Owner
+  - CaseClient

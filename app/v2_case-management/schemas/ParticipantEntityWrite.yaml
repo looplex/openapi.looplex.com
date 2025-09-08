@@ -44,7 +44,9 @@ properties:
     description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
     type: array
     items:
-      $ref: ../../common_schemas/IdentityEntityWrite.yaml
+      oneOf:
+        - $ref: ../../common_schemas/LegalPersonIdentityEntityWrite.yaml
+        - $ref: ../../common_schemas/NaturalPersonIdentityEntityWrite.yaml
   Role:
     $ref: ../enums/ParticipantRole.yaml
   CustomFields:

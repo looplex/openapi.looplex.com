@@ -1,8 +1,0 @@
-title: Identidade
-type: object
-properties:
-  IdentityProviderType:
-    $ref: ../common_enums/IdentityProviderType.yaml
-  Value:
-    type: string
-    description: "**The identity value**"

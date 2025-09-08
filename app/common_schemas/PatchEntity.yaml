@@ -12,9 +12,13 @@ properties:
       **Exemplo de valor primário: 'string, number, boolean...'**
       ```json
       {
-        // 'path': deve ser enviado no seguinte formato: /CustomFields/carro/ano
-        // 'value': 2025
-        // vai atualizar o valor do CustomFields em um objeto no seguinte formato:
+        // deve ser enviado no seguinte formato: 
+        {
+          "path": "/CustomFields/carro/ano",
+          "value": 2025
+        }
+        // vai atualizar o valor do CustomFields em um objeto 
+        // no seguinte formato:
         "carro": {
           "ano": 2025
         }
@@ -27,13 +31,17 @@ properties:
       **Exemplo de valor 'objeto'**
       ```json
       {
-        // 'path' deve ser enviado no seguinte formato: /CustomFields/carro/dono
-        // 'value': {
-          // "nome": "nome do dono",
-          // "nacionalidade": "brasileiro",
-          // "idade": 20
-        // }
-        // vai atualizar o valor do CustomFields em um objeto no seguinte formato:
+        // deve ser enviado no seguinte formato: 
+        {
+          "path": "/CustomFields/carro/dono",
+          "value": {
+            "nome": "nome do dono",
+            "nacionalidade": "brasileiro",
+            "idade": 20
+          }
+        }
+        // vai atualizar o valor do CustomFields em um objeto 
+        // no seguinte formato:
         "carro": {
           "dono": {
             "nome": "nome do dono",
@@ -42,7 +50,8 @@ properties:
           }
         }
 
-        // 'carro', refere-se a um objeto com um objeto 'dono' com as propriedades: 
+        // 'carro', refere-se a um objeto com um objeto 'dono' 
+        // com as propriedades: 
         // - nome
         // - nacionalidade 
         // - idade
@@ -57,16 +66,20 @@ properties:
       ```json
       {
         // Quando é um array, não pode ser um índice negativo
-        // 'path' deve ser enviado no seguinte formato: /CustomFields/carro/dono/enderecos[0]
-        // 'value': [
-            // {
-                // "logradouro": "Nome da rua",
-                // "numero": 10,
-                // "cidade": "São Paulo",
-                // "estado": "SP"
-            // }
-        // ]
-        // vai atualizar o valor do CustomFields em um objeto no seguinte formato:
+        // deve ser enviado no seguinte formato: 
+        {
+          "path": "/CustomFields/carro/dono/enderecos[0]"
+          "value": [
+            {
+              "logradouro": "Nome da rua",
+              "numero": 10,
+              "cidade": "São Paulo",
+              "estado": "SP"
+            }
+          ]
+        }
+        // vai atualizar o valor do CustomFields em um objeto 
+        // no seguinte formato:
         "carro": {
           ... other properties ommited
           "dono": {
@@ -82,7 +95,8 @@ properties:
           }
         }
 
-        // 'carro', refere-se a um objeto com um objeto 'dono' com as propriedades: 
+        // 'carro', refere-se a um objeto com um objeto 'dono' 
+        // com as propriedades: 
         // - nome (ommited)
         // - nacionalidade (ommited)
         // - idade (ommited)
@@ -90,8 +104,10 @@ properties:
         // se o objeto no indice informado não existir, é criado
 
         // para atualizar somente o nome da rua do endereco 0 dono do carro:
-        // 'path': /CustomFields/carro/dono/enderecos[0]/logradouro
-        // 'value': "Nome da rua atualizado"
+        {
+          "path": "/CustomFields/carro/dono/enderecos[0]/logradouro",
+          "value": "Nome da rua atualizado"
+        }
       }
       ```
     example: "<property_name>"

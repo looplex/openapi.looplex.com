@@ -737,7 +737,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/client/client_id",
+        "summary": "/clients/client_id",
         "description": "**Retrieve a client by id**\n",
         "operationId": "clients-client_id-get",
         "parameters": [
@@ -1296,6 +1296,52 @@
         }
       }
     },
+    "/employees/:employee_id": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "/employees/:employee_id",
+        "description": "**Retrieve an employee by id**",
+        "operationId": "employees-employee_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/claims": {
       "get": {
         "tags": [
@@ -1654,14 +1700,19 @@
         "example": "CASO",
         "description": "**Valores permitidos quando _Type_ não é definido como _CONTRATO_ ou _SOCIETARIO_<br />**\nCASO<br/>\nSUBCASO<br/>\nRECURSO<br/>\nINCIDENTE\n"
       },
-      "IdentityProviderType": {
+      "CaseIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
-        "description": "**The identity provider**<br/>\n**For case:**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\n**For natural person:**<br/>\nCPF<br/>\nRG<br/>\n**For legal person:**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
+        "description": "**The identity provider**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
-      "IdentityEntity": {
-        "title": "Identidade",
+      "CaseIdentityEntity": {
+        "title": "Identidade (Case)",
         "type": "object",
+        "example": {
+          "Id": null,
+          "IdentityProviderType": "CNJ",
+          "Value": "NNNNNNN-DD.AAAA.J.TR.OOOO"
+        },
         "properties": {
           "Id": {
             "type": "string <nullable>",
@@ -1669,7 +1720,7 @@
             "description": "**The unique identifier of this value**"
           },
           "IdentityProviderType": {
-            "$ref": "#/components/schemas/IdentityProviderType"
+            "$ref": "#/components/schemas/CaseIdentityProviderType"
           },
           "Value": {
             "type": "string",
@@ -1731,7 +1782,7 @@
             "description": "**Case identities**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
+              "$ref": "#/components/schemas/CaseIdentityEntity"
             }
           },
           "Descendants": {
@@ -1759,7 +1810,64 @@
           }
         }
       },
+      "NaturalPersonIdentityProviderType": {
+        "title": "IdentityProviderType",
+        "type": "string",
+        "description": "**The identity provider**<br/>\nCPF<br/>\nRG<br/>\n"
+      },
+      "NaturalPersonIdentityEntity": {
+        "title": "Identidade (NATURAL_PERSON)",
+        "type": "object",
+        "example": {
+          "Id": null,
+          "IdentityProviderType": "CPF",
+          "Value": "DDD.DDD.DDD-DD"
+        },
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
+      "LegalPersonIdentityProviderType": {
+        "title": "IdentityProviderType",
+        "type": "string",
+        "description": "**The identity provider**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
+      },
+      "LegalPersonIdentityEntity": {
+        "title": "Identidade (LEGAL_PERSON)",
+        "type": "object",
+        "example": {
+          "Id": null,
+          "IdentityProviderType": "CNPJ",
+          "Value": "DD.DDD.DDD/DDDD-DD"
+        },
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
       "PersonEntity": {
+        "title": "Dados de pessoa",
         "type": "object",
         "allOf": [
           {
@@ -1774,7 +1882,14 @@
               "Identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                    }
+                  ]
                 }
               }
             }
@@ -1936,7 +2051,14 @@
                 "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                    }
+                  ]
                 }
               },
               "PhoneNumbers": {
@@ -1971,7 +2093,7 @@
         "description": "**Marital status**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
       "ParticipantNaturalPerson": {
-        "title": "Participante Pessoa Física",
+        "title": "Participante (NATURAL_PERSON)",
         "type": "object",
         "allOf": [
           {
@@ -2010,7 +2132,7 @@
         "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
       },
       "ParticipantLegalPerson": {
-        "title": "Participante Pessoa Jurídica",
+        "title": "Participante (LEGAL_PERSON)",
         "type": "object",
         "allOf": [
           {
@@ -2091,6 +2213,35 @@
         "example": "DOCKET_ENTRY",
         "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
       },
+      "LegacyIdentityProviderType": {
+        "title": "IdentityProviderType",
+        "type": "string",
+        "description": "**The identity provider**<br/>\nLaw Office<br/>\nLaw Office ID\n"
+      },
+      "LegacyIdentityEntity": {
+        "title": "Identidade",
+        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
+        "type": "object",
+        "example": {
+          "Id": null,
+          "IdentityProviderType": "Law Office",
+          "Value": "1"
+        },
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegacyIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
       "EntryEntity": {
         "title": "Dados de andamento",
         "type": "object",
@@ -2149,7 +2300,7 @@
               "Identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "$ref": "#/components/schemas/LegacyIdentityEntity"
                 }
               }
             }
@@ -2269,7 +2420,7 @@
           "Identities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
+              "$ref": "#/components/schemas/LegacyIdentityEntity"
             }
           },
           "Case": {
@@ -2288,7 +2439,7 @@
               "Identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "$ref": "#/components/schemas/LegacyIdentityEntity"
                 }
               },
               "Group": {
@@ -2492,7 +2643,7 @@
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "$ref": "#/components/schemas/CaseIdentityEntity"
                 }
               },
               "Title": {
@@ -2565,8 +2716,8 @@
                 "description": "**Atualizado em**"
               },
               "UpdatedBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
-                "description": "**Atualizado por**"
+                "description": "**Atualizado por**",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "ClosedAt": {
                 "type": "string <nullable>",
@@ -2696,7 +2847,7 @@
         "properties": {
           "path": {
             "type": "string",
-            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // 'path': deve ser enviado no seguinte formato: /CustomFields/carro/ano\n  // 'value': 2025\n  // vai atualizar o valor do CustomFields em um objeto no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // 'path' deve ser enviado no seguinte formato: /CustomFields/carro/dono\n  // 'value': {\n    // \"nome\": \"nome do dono\",\n    // \"nacionalidade\": \"brasileiro\",\n    // \"idade\": 20\n  // }\n  // vai atualizar o valor do CustomFields em um objeto no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // 'path' deve ser enviado no seguinte formato: /CustomFields/carro/dono/enderecos[0]\n  // 'value': [\n      // {\n          // \"logradouro\": \"Nome da rua\",\n          // \"numero\": 10,\n          // \"cidade\": \"São Paulo\",\n          // \"estado\": \"SP\"\n      // }\n  // ]\n  // vai atualizar o valor do CustomFields em um objeto no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  // 'path': /CustomFields/carro/dono/enderecos[0]/logradouro\n  // 'value': \"Nome da rua atualizado\"\n}\n```\n",
+            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/ano\",\n    \"value\": 2025\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono\",\n    \"value\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
             "example": "<property_name>"
           },
           "op": {
@@ -2803,7 +2954,14 @@
           "Identities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                },
+                {
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                }
+              ]
             }
           }
         }
@@ -2853,10 +3011,10 @@
               },
               "Identities": {
                 "type": "array",
+                "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
-                },
-                "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
+                  "$ref": "#/components/schemas/CaseIdentityEntity"
+                }
               },
               "Title": {
                 "type": "string",
@@ -2922,8 +3080,8 @@
                 "description": "**Atualizado em**"
               },
               "UpdatedBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
-                "description": "**Atualizado por**"
+                "description": "**Atualizado por**",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "ClosedAt": {
                 "type": "string <nullable>",
@@ -2984,12 +3142,17 @@
           }
         ]
       },
-      "IdentityEntityWrite": {
-        "title": "Identidade",
+      "CaseIdentityEntityWrite": {
+        "title": "Identidade (Case)",
         "type": "object",
+        "example": {
+          "IdentityProviderType": "CNJ",
+          "Value": "NNNNNNN-DD.AAAA.J.TR.OOOO"
+        },
         "properties": {
           "IdentityProviderType": {
-            "$ref": "#/components/schemas/IdentityProviderType"
+            "type": "string",
+            "description": "**The identity provider**<br/>\n**Allowed value:**<br/>\nCNJ<br/>\n"
           },
           "Value": {
             "type": "string",
@@ -3015,6 +3178,40 @@
           "Value": {
             "type": "string",
             "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
+          }
+        }
+      },
+      "LegalPersonIdentityEntityWrite": {
+        "title": "Identidade",
+        "type": "object",
+        "example": {
+          "IdentityProviderType": "CNPJ",
+          "Value": "DD.DDD.DDD/DDDD-DD"
+        },
+        "properties": {
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
+          }
+        }
+      },
+      "NaturalPersonIdentityEntityWrite": {
+        "title": "Identidade",
+        "type": "object",
+        "example": {
+          "IdentityProviderType": "CPF",
+          "Value": "DDD.DDD.DDD-DD"
+        },
+        "properties": {
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**"
           }
         }
       },
@@ -3079,7 +3276,14 @@
             "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntityWrite"
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityWrite"
+                },
+                {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
+                }
+              ]
             }
           },
           "Role": {
@@ -3405,14 +3609,8 @@
             "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntityWrite"
-            },
-            "example": [
-              {
-                "IdentityProviderType": "CNJ",
-                "Value": "NNNNNNN-DD.AAAA.J.TR.OOOO"
-              }
-            ]
+              "$ref": "#/components/schemas/CaseIdentityEntityWrite"
+            }
           },
           "Title": {
             "type": "string",
@@ -3582,7 +3780,16 @@
               }
             ]
           }
-        }
+        },
+        "required": [
+          "Status",
+          "Type",
+          "SubType",
+          "Title",
+          "Group",
+          "Owner",
+          "CaseClient"
+        ]
       },
       "TimesheetEntityWrite": {
         "title": "Timesheet",
@@ -3860,7 +4067,7 @@
               "Identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
                 },
                 "description": "**Employee's identities**"
               },

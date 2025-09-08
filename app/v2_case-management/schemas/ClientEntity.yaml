@@ -41,4 +41,6 @@ properties:
   Identities:
     type: array
     items:
-      $ref: ../../common_schemas/IdentityEntity.yaml
+      oneOf:
+        - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
+        - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
