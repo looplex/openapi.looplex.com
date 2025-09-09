@@ -18,7 +18,7 @@ allOf:
       isInternal:
         type: boolean
         description: "**Indica se o andamento é de uso interno**"
-      officialNotice:
+      serviceOfProcess:
         type: string <nullable>
         format: uuid
         description: "**Identificador da publicação que criou esse andamento (se houver)**"
