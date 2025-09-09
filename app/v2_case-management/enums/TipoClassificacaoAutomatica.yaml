@@ -8,4 +8,6 @@ description: |
   DOCKET_ENTRY<br/>
   EMAIL<br/>
   AUTOMATIC<br/>
-  MANUAL
+  MANUAL<br/>
+  DOCUMENT_ANALYSIS<br/>
+  DOCUMENT_GENERATOR

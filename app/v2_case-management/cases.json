@@ -2211,7 +2211,7 @@
         "title": "Tipo de classificacao automática",
         "type": "string",
         "example": "DOCKET_ENTRY",
-        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL\n"
+        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nDOCUMENT_ANALYSIS<br/>\nDOCUMENT_GENERATOR\n"
       },
       "LegacyIdentityProviderType": {
         "title": "IdentityProviderType",
@@ -3637,15 +3637,36 @@
             "example": "Rito do caso"
           },
           "phase": {
-            "type": "string <nullable>",
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
-            "example": "Fase do caso"
+            "oneOf": [
+              {
+                "type": "string (name)",
+                "example": "Nome da fase",
+                "description": "**Nome da fase**"
+              },
+              {
+                "type": "string uuid (unique identifier)",
+                "format": "uuid",
+                "description": "**Unique identifier da fase**"
+              }
+            ]
           },
           "legalCategories": {
             "description": "**Indica os assuntos tratados no caso**",
             "type": "array",
             "items": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string (name)",
+                  "example": "Nome da legal category",
+                  "description": "**Nome da legal category**"
+                },
+                {
+                  "type": "string uuid (unique identifier)",
+                  "format": "uuid",
+                  "description": "**Unique identifier da legal category**"
+                }
+              ]
             },
             "example": []
           },
@@ -3680,16 +3701,37 @@
             "example": "2025-09-01T12:00:00.000Z"
           },
           "group": {
-            "type": "string",
-            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-            "example": "Área"
+            "description": "**Área**<br/>\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+            "oneOf": [
+              {
+                "type": "string (name)",
+                "example": "Nome da área",
+                "description": "**Nome da área**"
+              },
+              {
+                "type": "string uuid (unique identifier)",
+                "format": "uuid",
+                "description": "**Unique identifier da área**"
+              }
+            ]
           },
           "product": {
+            "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
             "type": "array",
             "items": {
-              "type": "string"
+              "oneOf": [
+                {
+                  "type": "string (name)",
+                  "example": "Nome do product",
+                  "description": "**Nome do product**"
+                },
+                {
+                  "type": "string uuid (unique identifier)",
+                  "format": "uuid",
+                  "description": "**Unique identifier do product**"
+                }
+              ]
             },
-            "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
             "example": []
           },
           "caseClient": {

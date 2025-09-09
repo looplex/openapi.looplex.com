@@ -46,16 +46,27 @@ properties:
     description: "**Rito ou procedimento do caso**"
     example: "Rito do caso"
   phase:
-    type: string <nullable>
     description: |
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
-    example: "Fase do caso"
+    oneOf:
+      - type: string (name)
+        example: "Nome da fase"
+        description: "**Nome da fase**"
+      - type: string uuid (unique identifier)
+        format: uuid
+        description: "**Unique identifier da fase**"
   legalCategories:
     description: "**Indica os assuntos tratados no caso**"
     type: array
     items:
-      type: string
+      oneOf:
+      - type: string (name)
+        example: "Nome da legal category"
+        description: "**Nome da legal category**"
+      - type: string uuid (unique identifier)
+        format: uuid
+        description: "**Unique identifier da legal category**"
     example: []
   retentionDate:
     type: string <nullable>
@@ -96,18 +107,29 @@ properties:
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
     example: "2025-09-01T12:00:00.000Z"
   group:
-    type: string
     description: |
-      **Área** <br />
+      **Área**<br/>
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-    example: "Área"
+    oneOf:
+      - type: string (name)
+        example: "Nome da área"
+        description: "**Nome da área**"
+      - type: string uuid (unique identifier)
+        format: uuid
+        description: "**Unique identifier da área**"
   product:
-    type: array
-    items:
-      type: string
     description: |
       **Produto**<br />
       Produto ou serviço do cliente que está relacionado ao caso
+    type: array
+    items:
+      oneOf:
+      - type: string (name)
+        example: "Nome do product"
+        description: "**Nome do product**"
+      - type: string uuid (unique identifier)
+        format: uuid
+        description: "**Unique identifier do product**"
     example: []
   caseClient:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
