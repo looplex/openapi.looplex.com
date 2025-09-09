@@ -4,61 +4,61 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      ClientId:
+      clientId:
         type: string
         format: uuid
         description: "**Client unique identifier**"
-      Classification:
+      classification:
         type: string <nullable>
         description: "**Classificação**"
-      Owner:
+      owner:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Responsável**"
-      Date:
+      date:
         type: string
         format: datetime
         description: "**Data**"
-      Hours:
+      hours:
         type: string
         example: "01:00:00"
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
           `Format: hh:mm:ss`
-      TaskCode:
+      taskCode:
         type: string <nullable>
         description: "**Código da Tarefa**"
-      ActivityCode:
+      activityCode:
         type: string <nullable>
         description: "**Código da Atividade**<br />"
-      Applicant:
+      applicant:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Solicitante**<br />"
-      Description:
+      description:
         type: string <nullable>
         description: "**Descrição**"
-      IsInvoiced:
+      isInvoiced:
         type: boolean <nullable>
         description: "**Faturado**"
-      CreatedAt:
+      createdAt:
         type: string <nullable>
         format: datetime
         description: "**Criado em**"
-      CreatedBy:
+      createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Criado por**"
-      UpdatedAt:
+      updatedAt:
         type: string <nullable>
         format: datetime
         description: "**Atualizado em**"
-      UpdatedBy:
+      updatedBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Atualizado por**"
-      Case:
+      case:
         type: object
         description: "**The case unique identifier**"
         properties:
-          Id:
+          id:
             type: string
             format: uuid
-      TaskType:
+      taskType:
         type: string <nullable>

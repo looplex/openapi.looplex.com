@@ -1,15 +1,15 @@
 title: Email
 type: object
 properties: 
-  Value:
+  value:
     type: string
     description: |
       **Email addresses for the user.**<br />
       The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
       Canonical type values of 'work', 'home', and 'other'.
-  Type:
+  type:
     $ref: ../enums/EmailType.yaml
-  Primary:
+  primary:
     type: boolean
     description: |
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />

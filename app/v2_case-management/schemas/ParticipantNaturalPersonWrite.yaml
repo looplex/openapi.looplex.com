@@ -4,17 +4,17 @@ allOf:
   - $ref: ParticipantEntityWrite.yaml
   - type: object
     properties:
-      Dob:
+      dob:
         type: string <nullable>
         format: datetime
         description: "**Data de Nascimento**<br />"
-      Gender:
+      gender:
         $ref: ../enums/Gender.yaml
-      Nationality:
+      nationality:
         description: "**Nacionalidade**"
         type: string <nullable>
-      MaritalStatus:
+      maritalStatus:
         $ref: ../enums/MaritalStatus.yaml
-      Occupation:
+      occupation:
         type: string <nullable>
         description: "**Profissão**"

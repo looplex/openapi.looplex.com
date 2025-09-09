@@ -4,50 +4,50 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      Name:
+      name:
         type: string
         description: "**Employee's name**"
         example: "Name"
-      NickName:
+      nickName:
         type: string <nullable>
         description: "**Employee's nickname**"
         example: "nickname"
-      Dob:
+      dob:
         type: string <nullable>
         format: datetime
         description: "**Employee's date of birth**"
         example: "2025-08-29T03:00:00Z"
-      Gender:
+      gender:
         type: string <nullable>
         description: "**Employee's gender**"
-      Identities:
+      identities:
         type: array
         items:
           $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
         description: "**Employee's identities**"
-      Nationality:
+      nationality:
         type: string <nullable>
         description: "**Employee's nationality**"
-      MaritalStatus:
+      maritalStatus:
         $ref: ../enums/MaritalStatus.yaml
-      Occupation:
+      occupation:
         type: string <nullable>
         description: "**Employee's occupation**"
-      Role:
+      role:
         $ref: ../enums/ParticipantRole.yaml
-      Status:
+      status:
         $ref: ../enums/PersonStatus.yaml
-      Addresses:
+      addresses:
         type: array
         items:
           $ref: AddressEntity.yaml
         description: "**Employee's addresses**"
-      Emails:
+      emails:
         type: array
         items:
           $ref: EmailEntity.yaml
         description: "**Employee's emails**"
-      PhoneNumbers:
+      phoneNumbers:
         type: array
         items:
           $ref: PhoneNumberEntity.yaml

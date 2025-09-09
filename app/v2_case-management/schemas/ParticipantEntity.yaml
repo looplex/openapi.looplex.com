@@ -4,45 +4,45 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      CreatedBy: 
+      createdBy: 
         $ref: ../../common_schemas/SimpleEntity.yaml
-      Name:
+      name:
         type: string
         description: "**Participant's name**"
-      Nickname:
+      nickname:
         type: string <nullable>
         description: "**Apelido**"
-      LawyerOffice:
+      lawyerOffice:
         type: string <nullable>
         description: "**Escritório do advogado (se houver)**"
-      Nature:
+      nature:
         example: NATURAL_PERSON
         $ref: ../enums/TipoPessoa.yaml
-      Addresses:
+      addresses:
         description: "**Endereços**"
         type: array
         items:
           $ref: AddressEntity.yaml
-      Emails:
+      emails:
         description: "**Emails**"
         type: array
         items:
           $ref: EmailEntity.yaml
-      Identities:
+      identities:
         description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
         type: array
         items:
           oneOf:
             - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
             - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
-      PhoneNumbers:
+      phoneNumbers:
         description: "**Telefones**"
         type: array
         items:
           $ref: PhoneNumberEntity.yaml
-      Role:
+      role:
         $ref: ../enums/ParticipantRole.yaml
-      CustomFields:
+      customFields:
         type: object
         example: {}
         description: "**Participant's custom fields**"

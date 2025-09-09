@@ -1,18 +1,18 @@
 title: TimelineEntity
 type: object
 properties: 
-  Type:
+  type:
     $ref: ../enums/TimelineItemType.yaml
-  Id:
+  id:
     type: string <nullable>
     description: "**Identificador do item**"
-  Date:
+  date:
     type: string
     format: datetime
     description: "**Data do evento**"
-  Title:
+  title:
     type: string <nullable>
     description: "**Título do evento**"
-  Description:
+  description:
     type: string <nullable>
     description: "**Descrição do evento**"

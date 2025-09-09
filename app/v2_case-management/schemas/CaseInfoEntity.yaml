@@ -4,147 +4,147 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      Status:
+      status:
         $ref: ../enums/SituacaoDoProcesso.yaml
-      Type:
+      type:
         $ref: ../enums/RamosJudicial.yaml
-      SubType:
+      subType:
         description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
         oneOf:
           - $ref: ../enums/ClasseProcessoContrato.yaml
           - $ref: ../enums/ClasseProcessoSocietario.yaml
           - $ref: ../enums/ClasseProcesso.yaml
-      HasAncestor:
+      hasAncestor:
         type: boolean
         description: "**Indica se o caso possui um caso primário**"
-      HasDescendants:
+      hasDescendants:
         type: boolean
         description: "**Indica se o caso possui casos filhos**"
-      Level:
+      level:
         type: integer
         example: 1
         description: "**Instância do caso**"
-      Identities:
+      identities:
         type: array
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
         items:
           $ref: ../../common_schemas/CaseIdentityEntity.yaml
-      Title:
+      title:
         type: string
         description: "**Nome Jurídico do caso**"
-      Summary:
+      summary:
         type: string <nullable>
         description: "**Breve descrição sobre o caso**"
-      Locale:
+      locale:
         type: string <nullable>
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
-      CourtVenue:
+      courtVenue:
         type: string <nullable>
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
-      CaseProcedure:
+      caseProcedure:
         type: string <nullable>
         description: "**Rito ou procedimento do caso**"
-      Phase:
+      phase:
         type: string <nullable>
         description: |
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
-      RetentionDate:
+      retentionDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
-      StartDate:
+      startDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
-      FormationDate:
+      formationDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de citação**<br />
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
-      ResJudicataDate:
+      resJudicataDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de trânsito em julgado**<br />
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
-      ForecastedEndDate:
+      forecastedEndDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data prevista para encerramento**<br />
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
-      CreatedAt:
+      createdAt:
         type: string <nullable>
         format: datetime
         description: "**Data de criação do caso**"
-      CreatedBy:
+      createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Usuário que criou o caso**"
-      UpdatedAt:
+      updatedAt:
         type: string <nullable>
         format: datetime
         description: "**Atualizado em**"
-      UpdatedBy:
+      updatedBy:
         description: "**Atualizado por**"
         $ref: ../../common_schemas/SimpleEntity.yaml
-      ClosedAt:
+      closedAt:
         type: string <nullable>
         format: datetime
         description: "**Data de encerramento**"
-      ClosedBy:
+      closedBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Usuário que encerrou o caso**"
-      Group:
+      group:
         type: string
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-      CaseClient:
+      caseClient:
         $ref: ClientEntity.yaml
-      LegalServiceAgreement:
+      legalServiceAgreement:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-      Owner:
+      owner:
         $ref: ./PersonEntity.yaml
         description: |
           **Responsável**<br />
           Advogado ou membro da equipe jurídica responsável pelo caso
-      Coowners:
+      coowners:
         type: array
         items:
           $ref: ../../common_schemas/SimpleEntity.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
-      ExternalServiceProvider:
+      externalServiceProvider:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-      Participants:
+      participants:
         type: array
         items:
           oneOf:
             - $ref: ParticipantNaturalPerson.yaml
             - $ref: ParticipantLegalPerson.yaml
         description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
-      GlobalValues:
+      globalValues:
         type: array
         items:
           $ref: GlobalValues.yaml

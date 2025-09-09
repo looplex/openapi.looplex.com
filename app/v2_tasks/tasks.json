@@ -204,7 +204,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TaskEntity"
@@ -303,29 +303,29 @@
         "type": "object",
         "description": "**Resource's metadata**",
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "type": "string",
             "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
             "example": "Entity"
           },
-          "Created": {
+          "created": {
             "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource creation date**"
           },
-          "LastModified": {
+          "lastModified": {
             "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource last update time**"
           },
-          "Location": {
+          "location": {
             "type": "string <nullable>",
             "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
             "description": "**The resource url**"
           },
-          "Version": {
+          "version": {
             "type": "string",
             "example": "2.0",
             "description": "**The resource version**"
@@ -336,18 +336,18 @@
         "title": "Resource",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string",
             "format": "uuid",
-            "description": "**Object unique identifier (read only)**"
+            "description": "**Object unique identifier**"
           },
-          "ExternalId": {
+          "externalId": {
             "example": null,
             "type": "string <nullable>",
-            "description": "**External identifier (optional, read only)**"
+            "description": "**External identifier**"
           },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity (read only)**",
+          "meta": {
+            "description": "**Informações relacionadas à essa entity**",
             "$ref": "#/components/schemas/Meta"
           }
         }
@@ -385,14 +385,20 @@
         "example": "LOW",
         "description": "**Prioridade de uma tarefa**<br/>\nLOW<br/>\nMEDIUM<br/>\nHIGH\n\n**Definitions:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
       },
-      "IdentityProviderType": {
+      "LegacyIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
-        "description": "**The identity provider**<br/>\n**For case:**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID<br/>\n**For natural person:**<br/>\nCPF<br/>\nRG<br/>\n**For legal person:**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
+        "description": "**The identity provider**<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
-      "IdentityEntity": {
+      "LegacyIdentityEntity": {
         "title": "Identidade",
+        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
         "type": "object",
+        "example": {
+          "Id": null,
+          "IdentityProviderType": "Law Office",
+          "Value": "1"
+        },
         "properties": {
           "Id": {
             "type": "string <nullable>",
@@ -400,7 +406,7 @@
             "description": "**The unique identifier of this value**"
           },
           "IdentityProviderType": {
-            "$ref": "#/components/schemas/IdentityProviderType"
+            "$ref": "#/components/schemas/LegacyIdentityProviderType"
           },
           "Value": {
             "type": "string",
@@ -504,7 +510,7 @@
           "Identities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/IdentityEntity"
+              "$ref": "#/components/schemas/LegacyIdentityEntity"
             }
           },
           "Case": {
@@ -523,7 +529,7 @@
               "Identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/IdentityEntity"
+                  "$ref": "#/components/schemas/LegacyIdentityEntity"
                 }
               },
               "Group": {
@@ -585,7 +591,7 @@
         "properties": {
           "path": {
             "type": "string",
-            "description": "**The property name**",
+            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/ano\",\n    \"value\": 2025\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono\",\n    \"value\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
             "example": "<property_name>"
           },
           "op": {
@@ -594,9 +600,21 @@
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
-            "type": "object",
-            "description": "**The property value**",
-            "example": "<new_value>"
+            "description": "**The new value to set**",
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "value"
+              },
+              {
+                "type": "number",
+                "example": 10
+              },
+              {
+                "type": "object",
+                "example": {}
+              }
+            ]
           }
         },
         "required": [
@@ -706,7 +724,7 @@
               "Id": {
                 "type": "string",
                 "format": "uuid",
-                "description": "**Case's unique identifier**"
+                "description": "**Case's unique identifier**<br/>\n`Obrigatório apenas quando a tarefa não estiver sendo criada junto com o caso`\n"
               }
             }
           },

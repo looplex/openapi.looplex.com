@@ -1,12 +1,12 @@
 title: Phone number
 type: object
 properties:
-  Value:
+  value:
     type: string <nullable>
     description: "**Phone number of the User**"
-  Type:
+  type:
     $ref: ../enums/TipoDeTelefone.yaml
-  Primary:
+  primary:
     type: boolean
     description: |
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />

@@ -3,49 +3,49 @@ type: object
 allOf:
   - $ref: ../../scim/Resource.yaml
 properties:
-  ClientId:
+  clientId:
     type: string
     format: uuid
     description: "**Client's unique identifier**"
-  Name:
+  name:
     type: string
     description: "Legal service agreement's title"
-  Summary:
+  summary:
     type: string
     description: "Legal service agreement's summary"
-  CreatedAt:
+  createdAt:
     type: string
     format: datetime
     description: "Legal service agreement's created date"
-  StartDate:
+  startDate:
     type: string
     format: datetime
     description: "Legal service agreement's start date"
-  ForecastedEndDate:
+  forecastedEndDate:
     type: string
     format: datetime
     description: "Legal service agreement's forecasted end date"
-  DueDate:
+  dueDate:
     type: string
     format: datetime
     description: "Legal service agreement's due date"
-  IsSameReviewerAttorneyFeesAndExpenses:
+  isSameReviewerAttorneyFeesAndExpenses:
     type: boolean
-  IsSamePayerAttorneyFeesAndExpenses:
+  isSamePayerAttorneyFeesAndExpenses:
     type: boolean
-  BillingCompanyId:
+  billingCompanyId:
     type: string
     format: uuid
-  OwnerId:
+  ownerId:
     type: string
     format: uuid
-  Number:
+  number:
     type: integer
-  KilometersReimbursement:
+  kilometersReimbursement:
     $ref: ../enums/ContratoReembolsoKM.yaml
-  ExpenseRuleLocal:
+  expenseRuleLocal:
     $ref: ../enums/TipoRegraAprovacaoLimiteDespesas.yaml
-  Status:
+  status:
     $ref: ../enums/ContratoSituacao.yaml
-  IsDefault:
+  isDefault:
     type: boolean

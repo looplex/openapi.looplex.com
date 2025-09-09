@@ -4,5 +4,5 @@ allOf:
   - $ref: ParticipantEntityWrite.yaml
   - type: object
     properties:
-      BusinessStructure:
+      businessStructure:
         $ref: ../enums/ParticipantBusinessStructure.yaml

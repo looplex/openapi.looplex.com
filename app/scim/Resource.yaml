@@ -1,14 +1,14 @@
 title: Resource
 type: object
 properties:
-  Id:
+  id:
     type: string
     format: uuid
     description: "**Object unique identifier**"
-  ExternalId:
+  externalId:
     example: null
     type: string <nullable>
     description: "**External identifier**"
-  Meta:
+  meta:
     description: "**Informações relacionadas à essa entity**"
     $ref: Meta.yaml

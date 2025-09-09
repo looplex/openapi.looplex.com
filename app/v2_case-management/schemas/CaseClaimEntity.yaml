@@ -1,60 +1,60 @@
 title: Claim
 type: object
 properties:
-  CaseId:
+  caseId:
     type: string
     format: uuid
     description: "**Case's unique identifier of this claim**"
-  SubjectMatter:
+  subjectMatter:
     type: string <nullable>
     description: "**Question's general classification**"
-  ReliefStatement:
+  reliefStatement:
     type: string <nullable>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
-  RemedyType:
+  remedyType:
     $ref: ../enums/TipoReparacao.yaml
-  ProvisionalRelief:
+  provisionalRelief:
     $ref: ../enums/TipoTutela.yaml
-  AgainstPosition:
+  againstPosition:
     $ref: ../enums/Position.yaml
-  Participants:
+  participants:
     description: "**Participant's identifiers**"
     type: array
     items:
       type: string
       format: uuid
-  CalculationRule:
+  calculationRule:
     type: object
     properties:
       Id:
         type: string
       Title:
         type: string
-  RiskClassification:
+  riskClassification:
     $ref: ../enums/ContingentLiabilityRiskClassification.yaml
-  ForeseenValue:
+  foreseenValue:
     type: number
-  ContingencyValue:
+  contingencyValue:
     type: number
     description: "**Valor de contingencia**"
-  Liquidated:
+  liquidated:
     type: boolean <nullable>
-  EffectiveDate:
+  effectiveDate:
     type: string
     format: datetime
     description: "**Data de constituição**"
-  DueDate:
+  dueDate:
     type: string
     format: datetime
     description: "**Data de vencimento**"
-  Recurrence:
+  recurrence:
     $ref: ../enums/TipoDeRecorrencia.yaml
-  Status:
+  status:
     $ref: ../enums/ClaimStatus.yaml
-  Granted:
+  granted:
     type: number
     description: "**Valor deferido pela ultima decisão**"
-  CustomFields:
+  customFields:
     type: object
     description: "**Claim's custom fields**"
     example: {}

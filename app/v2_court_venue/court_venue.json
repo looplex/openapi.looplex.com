@@ -111,7 +111,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/Venue"
@@ -159,7 +159,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TagGroup"
@@ -216,7 +216,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/Tag"
@@ -323,7 +323,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TagGroup"
@@ -395,29 +395,29 @@
         "type": "object",
         "description": "**Resource's metadata**",
         "properties": {
-          "ResourceType": {
+          "resourceType": {
             "type": "string",
             "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
             "example": "Entity"
           },
-          "Created": {
+          "created": {
             "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource creation date**"
           },
-          "LastModified": {
+          "lastModified": {
             "type": "string <nullable>",
             "format": "datetime",
             "example": null,
             "description": "**The resource last update time**"
           },
-          "Location": {
+          "location": {
             "type": "string <nullable>",
             "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
             "description": "**The resource url**"
           },
-          "Version": {
+          "version": {
             "type": "string",
             "example": "2.0",
             "description": "**The resource version**"

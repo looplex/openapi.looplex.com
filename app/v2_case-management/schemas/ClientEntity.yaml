@@ -6,39 +6,39 @@ description: |
 allOf:
   - $ref: '../../scim/Resource.yaml'
 properties:
-  Name:
+  name:
     type: string
     example: "Example name"
     description: "Client's name"
-  NickName:
+  nickName:
     type: string
     example: "Example"
     description: "Client's nickname"
-  Type:
+  type:
     $ref: ../enums/TipoPessoa.yaml
-  Email:
+  email:
     type: string <nullable>
     example: null
     description: "Client's email address"
-  Website:
+  website:
     type: string <nullable>
     example: null
     description: "The client's website page"
-  Comments:
+  comments:
     type: string <nullable>
     description: "Comments about the client"
     example: null
-  Dob:
+  dob:
     type: string <nullable>
     format: datetime
     description: "Client's date of birth (available when NATURAL_PERSON)"
-  Gender:
+  gender:
     $ref: ../enums/Gender.yaml
     description: "Client's gender (available when NATURAL_PERSON)"
-  MaritalStatus:
+  maritalStatus:
     $ref: ../enums/MaritalStatus.yaml
     description: "Client's marital status (available when NATURAL_PERSON)"
-  Identities:
+  identities:
     type: array
     items:
       oneOf:

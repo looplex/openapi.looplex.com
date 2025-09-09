@@ -3,9 +3,9 @@ type: object
 allOf:
   - $ref: ../../scim/Resource.yaml
 properties:
-  LegalCategory:
+  legalCategory:
     type: string
     description: "**The legal category name**"
     example: "legal category name"
-  Group:
+  group:
     $ref: ../enums/GrupoNaturezaDaCausa.yaml

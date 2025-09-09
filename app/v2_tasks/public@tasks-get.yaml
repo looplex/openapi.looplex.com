@@ -47,7 +47,7 @@ responses:
             - $ref: '../common_schemas/ListResponse.yaml'
             - type: object
               properties:
-                resources:
+                Resources:
                   type: array
                   items:
                     $ref: ../common_schemas/TaskEntity.yaml
