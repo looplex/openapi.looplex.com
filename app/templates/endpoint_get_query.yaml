@@ -1,0 +1,44 @@
+tags:
+  - {{TAG_NAME}}
+
+# escolha um titulo
+# summary: "/{{TAG_NAME}}"
+# summary: {{TITLE}}
+
+# escolha uma description
+# description: "**Fetch items paginated**"
+# description: "{{DESCRIPTION}}"
+
+operationId: {{OPERATION_ID}}
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
+  - name: startIndex
+    in: query
+    required: true
+    description: "**Index of search**"
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    required: true
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _PropertyName_ _co_ _search_term_
+    schema:
+      type: string
+{{PATH_QUERY_PARAMETERS}}
+responses:
+  {{HTTP_RESPONSES}}

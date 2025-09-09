@@ -1,0 +1,6 @@
+"200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/{{DTO_NAME}}.yaml

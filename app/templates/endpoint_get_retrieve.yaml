@@ -1,0 +1,25 @@
+tags:
+  - {{TAG_NAME}}
+
+# escolha um titulo
+# summary: "/{{TAG_NAME}}"
+# summary: {{TITLE}}
+
+# escolha uma description
+# description: "**Retrieve a {{TAG_NAME}} by id**"
+# description: "{{DESCRIPTION}}"
+operationId: {{OPERATION_ID}}
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+{{PATH_QUERY_PARAMETERS}}
+responses:
+  {{HTTP_RESPONSES}}

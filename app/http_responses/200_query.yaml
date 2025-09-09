@@ -1,0 +1,13 @@
+"200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/{{DTO_NAME}}.yaml
