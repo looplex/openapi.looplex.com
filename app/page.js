@@ -6,12 +6,8 @@ import Image from 'next/image'
 import '@/styles/globals.css'
 
 import {
-  ApiOutlined,
-  BookOutlined,
-  CalendarOutlined,
-  FileWordOutlined,
-  ProfileOutlined,
-  RightOutlined
+  ApiOutlined, BookOutlined, CalendarOutlined,
+  FileWordOutlined, ProfileOutlined, RightOutlined
 } from '@ant-design/icons'
 import { getAntdCurrentBreakPoint } from '@/helpers/antd/getAntdCurrentBreakPoint'
 import SocialMediaLinks from '@/components/SocialMediaLinks'
@@ -30,13 +26,14 @@ const mobileTypographyTokens = {
   fontSizeHeading5: '1rem' // 16px
 }
 
-export default function Home () {
+export default function Home() {
   const screens = useBreakpoint()
   const currentBreakPoint = getAntdCurrentBreakPoint(screens)
   const smallScreen = currentBreakPoint === 'xs' || currentBreakPoint === 'sm'
   const iconStyle = { fontSize: smallScreen ? '1.5rem' : 24, color: '#161719' }
 
   const ColCard = ({ children }) => (
+
     <Col span={smallScreen ? 24 : 8}>
 
       <Card
@@ -44,11 +41,11 @@ export default function Home () {
         {...smallScreen
           ? {}
           : {
-              style: { height: '100%' },
-              styles: {
-                body: { height: '100%' }
-              }
+            style: { height: '100%' },
+            styles: {
+              body: { height: '100%' }
             }
+          }
         }
       >
         {smallScreen
@@ -57,7 +54,8 @@ export default function Home () {
             <Flex style={{ height: '100%' }} vertical justify='space-between'>
               {children}
             </Flex>
-            )}
+          )}
+
       </Card>
 
     </Col>
@@ -183,6 +181,7 @@ export default function Home () {
             <Col span={smallScreen ? 24 : 16}>
 
               <Flex align='center' style={{ height: '100%' }}>
+
                 <Row>
 
                   <Col span={24}>
@@ -204,9 +203,11 @@ export default function Home () {
                       Aqui você encontrará informações detalhadas, guias e exemplos para auxiliar na
                       integração eficiente dos nossos serviços.
                     </Text>
+
                   </Col>
 
                 </Row>
+
               </Flex>
 
             </Col>
@@ -232,13 +233,17 @@ export default function Home () {
           </Row>
 
           <Row>
+
             <Title level={3}>
               Funcionalidades
             </Title>
+
           </Row>
 
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+
             <ColCard>
+
               <CardHeader
                 title='Actions'
                 icon={<ApiOutlined style={iconStyle} />}
@@ -255,9 +260,11 @@ export default function Home () {
                 text='Actions v1'
                 link='/v1_actions'
               />
+
             </ColCard>
 
             <ColCard>
+
               <CardHeader
                 title='Court Venue'
                 image={
@@ -282,9 +289,11 @@ export default function Home () {
                 text='Court Venue'
                 link='/v2_court_venue'
               />
+
             </ColCard>
 
             <ColCard>
+
               <CardHeader
                 title='Feriado'
                 icon={<CalendarOutlined style={iconStyle} />}
@@ -298,9 +307,11 @@ export default function Home () {
                 link='/v1_recess'
                 text='Feriado v1'
               />
+
             </ColCard>
 
             <ColCard>
+
               <CardHeader
                 title='Looplex 365'
                 icon={<FileWordOutlined style={iconStyle} />}
@@ -314,18 +325,23 @@ export default function Home () {
                 link='/v1_looplex365'
                 text='Looplex 365 v1'
               />
+
             </ColCard>
+
           </Row>
 
           <Row>
+
             <Title level={3}>
               Plataforma
             </Title>
+
           </Row>
 
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
 
             <ColCard>
+
               <CardHeader
                 title='Cases'
                 icon={<BookOutlined style={iconStyle} />}
@@ -346,13 +362,10 @@ export default function Home () {
                 text='Cases Management'
               />
 
-              <BorderedLink
-                link='/v2_looplex_content'
-                text='Content v2'
-              />
             </ColCard>
 
             <ColCard>
+
               <CardHeader
                 title='Tasks'
                 icon={<BookOutlined style={iconStyle} />}
@@ -367,9 +380,11 @@ export default function Home () {
                 link='/v2_tasks'
                 text='Tasks'
               />
+
             </ColCard>
 
             <ColCard>
+
               <CardHeader
                 title='Assembler'
                 icon={<ProfileOutlined style={iconStyle} />}
@@ -386,8 +401,59 @@ export default function Home () {
                 link='/v1_assembler'
                 text='Assembler v1'
               />
+
             </ColCard>
+
+            <ColCard>
+
+              <CardHeader
+                title='Content'
+                icon={<ProfileOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs do Looplex Content </Text>
+              </div>
+
+              <BorderedLink
+                link='/v2_looplex_content'
+                text='Looplex Content v2'
+              />
+
+            </ColCard>
+
           </Row>
+
+          <Row>
+
+            <Title level={3}>
+              Playbook
+            </Title>
+
+          </Row>
+
+          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+
+            <ColCard>
+
+              <CardHeader
+                title='Tasks Playbook'
+                icon={<ProfileOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs de configuração de playbooks de tasks</Text>
+              </div>
+
+              <BorderedLink
+                link='#'
+                text='Looplex Tasks Playbook v2'
+              />
+
+            </ColCard>
+
+          </Row>
+
         </Content>
 
         {smallScreen && (
@@ -399,6 +465,7 @@ export default function Home () {
             }}
           >
             <SocialMediaLinks />
+
           </Footer>
         )}
       </Layout>
