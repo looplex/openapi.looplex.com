@@ -1,17 +1,19 @@
 tags:
-  - Documents
+  - Cases
 
-summary: "Update Document"
-# summary: ""
+summary: "Delete Case"
 
-description: ""
-# description: ****
 
-operationId: Documents-documentID-patch
+operationId: Cases-delete
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
+  - usesLooplexId: 
+    in: header
+    description: if true uses looplex case guid else M-files guid
+    schema: 
+      type: boolean
   - name: id
     in: path
     required: true
@@ -19,20 +21,9 @@ parameters:
     schema:
       type: string
       format: uuid
-requestBody:
-  content:
-    application/json:
-      schema:
-        type: array
-        items:
-          $ref: ../../common_schemas/PatchEntity.yaml
 responses:
-  "200":
-    description: "OK"
-    content:
-      application/json:
-        schema:
-          type: boolean
+  "204":
+    description: "No Content"
   "404":
     description: "Not Found"
   "500":

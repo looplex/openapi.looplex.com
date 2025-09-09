@@ -1,0 +1,7 @@
+title: LegalServiceAgreement
+description: 
+properties:
+    Id:
+      type: string
+    Name:
+      type: string

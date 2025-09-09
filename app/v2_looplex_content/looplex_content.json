@@ -657,6 +657,163 @@
           }
         }
       }
+    },
+    "/Cases": {
+      "post": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Create Case",
+        "description": "**Create Case**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "Cases-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Case"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Update Case",
+        "operationId": "Cases-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "usesLooplexId": null,
+            "in": "header",
+            "description": "if true uses looplex case guid else M-files guid",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Delete Case",
+        "operationId": "Cases-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "usesLooplexId": null,
+            "in": "header",
+            "description": "if true uses looplex case guid else M-files guid",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1049,6 +1206,110 @@
           "op",
           "value"
         ]
+      },
+      "Case": {
+        "title": "Case",
+        "description": null,
+        "properties": {
+          "Status": {
+            "$ref": "#/components/schemas/SchemaEnumElement"
+          }
+        },
+        "Type": {
+          "$ref": "../schemas/SchemaEnumElement.yaml"
+        },
+        "SubType": {
+          "$ref": "../schemas/SchemaEnumElement.yaml"
+        },
+        "Identities": {
+          "$ref": "../schemas/Identity.yaml"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Summary": {
+          "type": "string"
+        },
+        "Locale": {
+          "type": "string"
+        },
+        "CourtVenue": {
+          "type": "string"
+        },
+        "CaseProcedure": {
+          "type": "string"
+        },
+        "Phase": {
+          "type": "string"
+        },
+        "PracticeArea": {
+          "type": "string"
+        },
+        "Nature": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "RetentionDate": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "StartDate": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "FormationDate": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "ResJudicataDate": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "ForecastedEndDate": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "CreatedAt": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "CreatedBy": {
+          "type": "string"
+        },
+        "UpdatedAt": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "UpdatedBy": {
+          "type": "string"
+        },
+        "ClosedAt": {
+          "type": "string",
+          "description": "ISO 8601 Date string"
+        },
+        "Group": {
+          "type": "string"
+        },
+        "Product": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "CaseClient": {
+          "$ref": "../schemas/CaseClient.yaml"
+        },
+        "LegalServiceAgreement": {
+          "type": "../schemas/LegalServiceAgreement"
+        },
+        "Participants": {
+          "type": "array",
+          "items": {
+            "$ref": "../schemas/Participant.yaml"
+          }
+        }
       }
     }
   }

@@ -1,13 +1,10 @@
 tags:
-  - Documents
+  - Cases
 
-summary: "Update Document"
-# summary: ""
+summary: "Update Case"
 
-description: ""
-# description: ****
 
-operationId: Documents-documentID-patch
+operationId: Cases-patch
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
@@ -19,6 +16,11 @@ parameters:
     schema:
       type: string
       format: uuid
+  - usesLooplexId: 
+    in: header
+    description: if true uses looplex case guid else M-files guid
+    schema: 
+      type: boolean
 requestBody:
   content:
     application/json:
@@ -27,6 +29,7 @@ requestBody:
         items:
           $ref: ../../common_schemas/PatchEntity.yaml
 responses:
+  # 
   "200":
     description: "OK"
     content:

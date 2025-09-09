@@ -1,0 +1,29 @@
+tags:
+  - Cases
+
+summary: "Create Case"
+
+description: |
+  **Create Case**<br />
+  Item created's guid is returned in **Location header**
+
+operationId: Cases-post
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/Case.yaml
+responses:
+  "201":
+    description: "Created"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"
+ 

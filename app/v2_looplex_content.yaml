@@ -62,4 +62,12 @@ paths:
   /Documents/:id/check-out:
     put:       
       $ref: v2_looplex_content\content_documents\public@Documents@id@check@out-put.yaml
+  /Cases:
+    post:
+      $ref:  v2_looplex_content\content_cases\public@Cases-post.yaml
+    patch: 
+      $ref: v2_looplex_content\content_cases\public@Cases-patch.yaml
+    delete: 
+      $ref: v2_looplex_content\content_cases\public@Cases-delete.yaml
+      
       

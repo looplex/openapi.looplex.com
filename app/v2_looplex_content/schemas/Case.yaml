@@ -1,0 +1,73 @@
+title: Case
+description: 
+properties:
+  Status:
+    $ref: "../schemas/SchemaEnumElement.yaml"
+
+Type:
+    $ref: "../schemas/SchemaEnumElement.yaml"
+SubType:
+    $ref: "../schemas/SchemaEnumElement.yaml"
+Identities:
+    $ref: "../schemas/Identity.yaml"
+Title:
+    type: string
+Summary:
+    type: string
+Locale:
+    type: string
+CourtVenue:
+    type: string
+CaseProcedure:
+    type: string
+Phase:
+    type: string
+PracticeArea:
+    type: string
+Nature:
+    type: array 
+    items:
+      type: string
+RetentionDate:
+    type: string
+    description: "ISO 8601 Date string"
+StartDate:
+    type: string
+    description: "ISO 8601 Date string"
+FormationDate:
+    type: string
+    description: "ISO 8601 Date string"
+ResJudicataDate:
+    type: string
+    description: "ISO 8601 Date string"
+ForecastedEndDate:
+    type: string
+    description: "ISO 8601 Date string"
+CreatedAt:
+    type: string
+    description: "ISO 8601 Date string"
+CreatedBy:
+    type: string
+UpdatedAt:
+    type: string
+    description: "ISO 8601 Date string"
+UpdatedBy:
+    type: string
+ClosedAt:
+    type: string
+    description: "ISO 8601 Date string"
+
+Group:
+    type: string
+Product:
+    type: array 
+    items:
+      type: string
+CaseClient:
+    $ref: "../schemas/CaseClient.yaml"
+LegalServiceAgreement:
+    type: "../schemas/LegalServiceAgreement"
+Participants:
+    type: array 
+    items:
+      $ref: "../schemas/Participant.yaml"
