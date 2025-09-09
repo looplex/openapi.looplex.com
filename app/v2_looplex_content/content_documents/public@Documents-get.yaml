@@ -1,0 +1,54 @@
+tags:
+  - Documents
+
+summary: "List Documents"
+# summary: ""
+
+# description: "**Retrieve a <schema_name> by id**" # retrieve
+# description: "**Fetch items paginated**" # query
+
+operationId: Documents-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+
+  - name: startIndex
+    in: query
+    description: "**Index of search**"
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+  - name: filter
+    in: query
+    required: false
+    description: |
+      **SCIM filter to search**<br />
+      **e.g:**<br />
+      _PropertyName_ _co_ _search_term_
+    schema:
+      type: string
+
+responses:
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: array 
+            items:
+              $ref: "../schemas/Document.yaml" 
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"

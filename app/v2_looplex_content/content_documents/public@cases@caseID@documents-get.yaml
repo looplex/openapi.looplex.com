@@ -1,0 +1,54 @@
+tags:
+  - Documents
+
+summary: "List Case Documents"
+# summary: "Get all documents of a case"
+
+# description: "**Retrieve a <schema_name> by id**" # retrieve
+# description: "**Fetch items paginated**" # query
+
+operationId: cases-caseID-documents-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  
+  - name: startIndex
+    in: query
+    description: "**Index of search**"
+    example: 1
+    schema:
+      type: integer
+  - name: count
+    in: query
+    description: |
+      **Total count of items to return**<br />
+      `Max of 120`
+    example: 50
+    schema:
+      type: integer
+  - usesLooplexID: 
+      in: query
+      description: "if true uses Looplex case guid else uses M-files guid"
+      schema:
+        type: string
+  - caseID:
+      in: path 
+      type: string 
+    
+responses:
+  "200":
+      description: "OK"
+      content:
+        application/json:
+          schema:
+            type: array 
+            items:
+              $ref: "../schemas/Document.yaml" 
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"
+  

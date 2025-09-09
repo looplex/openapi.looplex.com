@@ -1,0 +1,9 @@
+title: Identity
+description: ""
+properties:
+  Id:
+    type: string
+  IdentityProviderType:
+    type: string
+  Value:
+    type: string

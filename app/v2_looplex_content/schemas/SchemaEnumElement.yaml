@@ -1,0 +1,9 @@
+title: SchemaEnumElement
+description: ""
+properties:
+  Id:
+    type: string
+  Title:
+    type: string
+  Description:
+    type: string

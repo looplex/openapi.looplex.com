@@ -1,0 +1,77 @@
+title: Document
+description: ""
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object    
+    properties:
+      Title:
+        type: string
+      Identities:
+        type: array
+        items:
+          $ref: Identity.yaml
+      FilePath:
+        description: "Path to download bytes to upload to GED "
+        type: string
+      FileSize:
+        description: "File size in bytes"
+        type: integer
+      Version:
+        type: integer
+      FileFormat:
+        description: "pdf, doc, etc"
+        type: string
+      Summary:
+        type: string
+      Keywords:
+        type: array
+        items:
+          type: string
+      Participants:
+        type: array
+        items:
+          $ref: "Participant.yaml"
+      PracticeArea:
+        $ref: "SchemaEnumElement.yaml"
+      DocumentClass:
+        $ref: "SchemaEnumElement.yaml"
+      DocumentSubClass:
+        $ref: "SchemaEnumElement.yaml"
+      DocumentType:
+        $ref: "SchemaEnumElement.yaml"
+      Language:
+        type: string
+      Tenant:
+        type: string
+      Client:
+        type: string
+      CreatedOn:
+        description: "ISO 8601 Date string"
+        type: string
+      CreatedBy:
+        type: string
+      ModifiedOn:
+        description: "ISO 8601 Date string"
+        type: string
+      ModifiedBy:
+        type: string
+      CreatedOnBehalfOf:
+        type: string
+      ConfidentialityLevel:
+        $ref: "SchemaEnumElement.yaml"
+      LifecycleStatus:
+        $ref: "SchemaEnumElement.yaml"
+      IsArchived:
+        type: boolean
+      Links:
+        description: "Define relationship between document and external resource"
+        type: array
+        items:
+          $ref: "Link.yaml"
+      DownloadFile:
+        description: "presigned url that will be returned on retrieve"
+        type: string
+      subjectMatter:
+        type: string
+      Workflow:
+        $ref: "WorkflowInfo.yaml"

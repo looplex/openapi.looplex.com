@@ -1,0 +1,26 @@
+tags:
+  - Documents
+
+summary: "Check-in document"
+# summary: ""
+
+description: ""
+# description: "****"
+
+operationId: Documents-id-check-in-put
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+
+responses:
+  
+  "204":
+    description: "No Content"

@@ -1,0 +1,32 @@
+tags:
+  - Hubshare Users
+
+summary: "Enable or disable Hubshare User"
+
+operationId: api-hubshare-email-status-put
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: email
+    in: path
+    required: true
+    description: "**user email**"
+    schema:
+      type: string
+      format: email
+  - name: active
+    in: query
+    required: true
+    description: "true to enable user, false to disable"
+    schema:
+      type: boolean
+
+responses:
+  "204":
+    description: "No Content"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"
+ 

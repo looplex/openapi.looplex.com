@@ -1,0 +1,27 @@
+tags:
+  - Hubshare Users
+
+summary: "Create HubshareUser"
+
+description: |
+  **Create HubShareUser **<br />
+  Item created's guid is returned in **Location header**
+
+operationId: hubshareuser-post
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/HubShareUserWrite.yaml
+responses:
+  "200":
+      description: "OK"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"
+ 

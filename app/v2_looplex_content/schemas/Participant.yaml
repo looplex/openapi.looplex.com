@@ -1,0 +1,11 @@
+title: Participant
+description: ""
+properties:
+  Name:
+    type: string
+  Role:
+    type: string
+  Position:
+    type: string
+  IsMainParty:
+    type: boolean

@@ -1,0 +1,7 @@
+title: Link
+description: ""
+properties:
+  Rel:
+    type: string
+  Href:
+    type: string

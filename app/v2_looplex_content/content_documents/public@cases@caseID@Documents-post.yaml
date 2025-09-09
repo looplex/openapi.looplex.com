@@ -1,0 +1,33 @@
+tags:
+  - Documents
+
+summary: "Create Document on Case"
+# summary: "Create Document inside a case"
+
+description: |
+  **Create Document inside a case**<br />
+  Item created's guid is returned in **Location header**
+
+operationId: cases-caseID-Documents-post
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+
+  - usesLooplexID: 
+      description: "if true uses Looplex case guid else uses M-files guid"
+      type: boolean
+      in: query
+  - caseID:
+      in: path 
+      type: string
+    
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../schemas/Document.yaml
+responses:
+  "201":
+    description: "Created"
+  

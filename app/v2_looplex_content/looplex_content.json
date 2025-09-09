@@ -48,6 +48,450 @@
           },
           {
             "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HubShareUsersInfo"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hubshareuser/link": {
+      "get": {
+        "tags": [
+          "Hubshare Users"
+        ],
+        "summary": "Get hubshare URL",
+        "description": "Get hubshare URL defined on key vault for curren tenant",
+        "operationId": "hubshareuser-link-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hubshareuser/:email/status": {
+      "put": {
+        "tags": [
+          "Hubshare Users"
+        ],
+        "summary": "Enable or disable Hubshare User",
+        "operationId": "api-hubshare-email-status-put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "description": "**user email**",
+            "schema": {
+              "type": "string",
+              "format": "email"
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": true,
+            "description": "true to enable user, false to disable",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/hubshareuser": {
+      "post": {
+        "tags": [
+          "Hubshare Users"
+        ],
+        "summary": "Create HubshareUser",
+        "description": "**Create HubShareUser **<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "hubshareuser-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HubShareUserWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/Documents": {
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Create Document",
+        "description": "****<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "Documents-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "List Documents",
+        "operationId": "Documents-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "description": "**Index of search**",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cases/:caseId/Documents": {
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "List Case Documents",
+        "operationId": "cases-caseID-documents-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "description": "**Index of search**",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "usesLooplexID": {
+              "in": "query",
+              "description": "if true uses Looplex case guid else uses M-files guid",
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "caseID": {
+              "in": "path",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Create Document on Case",
+        "description": "**Create Document inside a case**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "cases-caseID-Documents-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "usesLooplexID": {
+              "description": "if true uses Looplex case guid else uses M-files guid",
+              "type": "boolean",
+              "in": "query"
+            }
+          },
+          {
+            "caseID": {
+              "in": "path",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/Documents/:id": {
+      "delete": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Delete Document",
+        "description": "",
+        "operationId": "Documents-documentGUID-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Retrieve Document",
+        "operationId": "Documents-documentID-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
           },
           {
             "name": "id",
@@ -66,13 +510,150 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/HubShareUsersInfo"
+                  "$ref": "#/components/schemas/Document"
                 }
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Update Document",
+        "description": "",
+        "operationId": "Documents-documentID-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/Documents/:id/check-in": {
+      "put": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Check-in document",
+        "description": "",
+        "operationId": "Documents-id-check-in-put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/Documents/:id/check-out": {
+      "put": {
+        "tags": [
+          "Documents"
+        ],
+        "summary": "Check-out document",
+        "description": "",
+        "operationId": "Documents-id-check-out-put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -165,7 +746,7 @@
       },
       "HubShareUser": {
         "title": "HubShareUser",
-        "description": null,
+        "description": "",
         "allOf": [
           {
             "$ref": "#/components/schemas/Resource"
@@ -194,7 +775,7 @@
       },
       "HubShareUsersInfo": {
         "title": "HubShareUsersInfo",
-        "description": null,
+        "description": "",
         "properties": {
           "MaxLicenses": {
             "description": "Max number of licenses for tenant",
@@ -219,6 +800,255 @@
             }
           }
         }
+      },
+      "HubShareUserWrite": {
+        "title": "HubShareUser",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "LastName": {
+            "type": "string"
+          },
+          "EmailAddress": {
+            "type": "string"
+          }
+        }
+      },
+      "Identity": {
+        "title": "Identity",
+        "description": "",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "IdentityProviderType": {
+            "type": "string"
+          },
+          "Value": {
+            "type": "string"
+          }
+        }
+      },
+      "Participant": {
+        "title": "Participant",
+        "description": "",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Role": {
+            "type": "string"
+          },
+          "Position": {
+            "type": "string"
+          },
+          "IsMainParty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SchemaEnumElement": {
+        "title": "SchemaEnumElement",
+        "description": "",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Title": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          }
+        }
+      },
+      "Link": {
+        "title": "Link",
+        "description": "",
+        "properties": {
+          "Rel": {
+            "type": "string"
+          },
+          "Href": {
+            "type": "string"
+          }
+        }
+      },
+      "WorkflowInfo": {
+        "title": "WorkflowInfo",
+        "description": "",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "Alias": {
+            "type": "string"
+          },
+          "State": {
+            "type": "string"
+          },
+          "StateName": {
+            "type": "string"
+          }
+        }
+      },
+      "Document": {
+        "title": "Document",
+        "description": "",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Title": {
+                "type": "string"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Identity"
+                }
+              },
+              "FilePath": {
+                "description": "Path to download bytes to upload to GED ",
+                "type": "string"
+              },
+              "FileSize": {
+                "description": "File size in bytes",
+                "type": "integer"
+              },
+              "Version": {
+                "type": "integer"
+              },
+              "FileFormat": {
+                "description": "pdf, doc, etc",
+                "type": "string"
+              },
+              "Summary": {
+                "type": "string"
+              },
+              "Keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Participants": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Participant"
+                }
+              },
+              "PracticeArea": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "DocumentClass": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "DocumentSubClass": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "DocumentType": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "Language": {
+                "type": "string"
+              },
+              "Tenant": {
+                "type": "string"
+              },
+              "Client": {
+                "type": "string"
+              },
+              "CreatedOn": {
+                "description": "ISO 8601 Date string",
+                "type": "string"
+              },
+              "CreatedBy": {
+                "type": "string"
+              },
+              "ModifiedOn": {
+                "description": "ISO 8601 Date string",
+                "type": "string"
+              },
+              "ModifiedBy": {
+                "type": "string"
+              },
+              "CreatedOnBehalfOf": {
+                "type": "string"
+              },
+              "ConfidentialityLevel": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "LifecycleStatus": {
+                "$ref": "#/components/schemas/SchemaEnumElement"
+              },
+              "IsArchived": {
+                "type": "boolean"
+              },
+              "Links": {
+                "description": "Define relationship between document and external resource",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Link"
+                }
+              },
+              "DownloadFile": {
+                "description": "presigned url that will be returned on retrieve",
+                "type": "string"
+              },
+              "subjectMatter": {
+                "type": "string"
+              },
+              "Workflow": {
+                "$ref": "#/components/schemas/WorkflowInfo"
+              }
+            }
+          }
+        ]
+      },
+      "PatchEntity": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/ano\",\n    \"value\": 2025\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono\",\n    \"value\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
+            "example": "<property_name>"
+          },
+          "op": {
+            "type": "string",
+            "example": "replace",
+            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+          },
+          "value": {
+            "description": "**The new value to set**",
+            "oneOf": [
+              {
+                "type": "string",
+                "example": "value"
+              },
+              {
+                "type": "number",
+                "example": 10
+              },
+              {
+                "type": "object",
+                "example": {}
+              }
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "op",
+          "value"
+        ]
       }
     }
   }

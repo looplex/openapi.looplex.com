@@ -1,0 +1,11 @@
+title: HubShareUser
+description: ""
+type: "object"
+properties:
+  Name:
+    type: string
+  LastName:
+    type: string
+  EmailAddress:
+    type: string
+
