@@ -1652,7 +1652,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
+            "name": "case_group_id",
             "in": "path",
             "required": true,
             "description": "**The item's unique identifier**",
