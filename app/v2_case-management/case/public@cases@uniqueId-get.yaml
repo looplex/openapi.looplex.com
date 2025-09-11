@@ -27,7 +27,9 @@ responses:
       application/json:
         schema:
           $ref: "../schemas/CaseEntity.yaml"
-  "400":
-    description: "Bad Request"
   "500":
     description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

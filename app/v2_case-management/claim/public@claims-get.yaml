@@ -33,17 +33,21 @@ parameters:
       type: string
 responses:
   "200":
-      description: "OK"
-      content:
-        application/json:
-          schema:
-            allOf:
-              - $ref: '../../common_schemas/ListResponse.yaml'
-              - type: object
-                properties:
-                  Resources:
-                    type: array
-                    items:
-                      $ref: ../schemas/CaseClaimEntity.yaml
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                Resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/CaseClaimEntity.yaml
   "500":
-      description: "Internal Server Error"
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

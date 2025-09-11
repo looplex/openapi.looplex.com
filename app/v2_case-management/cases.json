@@ -99,7 +99,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                  "$ref": "#/components/schemas/SCIMError"
                 }
               }
             }
@@ -147,11 +147,15 @@
               }
             }
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -206,11 +210,15 @@
               }
             }
           },
-          "404": {
-            "description": "Not Found"
-          },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -290,7 +298,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -326,7 +341,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -371,7 +393,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -449,7 +478,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -485,7 +521,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -565,7 +608,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -601,7 +651,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -647,7 +704,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -727,7 +791,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -773,7 +844,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -811,7 +889,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -880,7 +965,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -925,7 +1017,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -1003,7 +1102,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1049,7 +1155,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1129,7 +1242,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -1165,7 +1285,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1211,7 +1338,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1291,7 +1425,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1337,7 +1478,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1417,7 +1565,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -1453,7 +1608,14 @@
             "description": "Created"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1499,7 +1661,14 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       },
@@ -1548,7 +1717,14 @@
             "description": "No Content"
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1727,20 +1903,38 @@
       }
     },
     "schemas": {
-      "InternalServerErrorResponse": {
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string",
+        "description": "**SCIM type error**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
         "type": "object",
         "properties": {
-          "Message": {
-            "type": "string",
-            "description": "Erro"
+          "scimType": {
+            "description": "**The SCIM type if request is GET, otherwise null**",
+            "example": "invalidFilter",
+            "oneOf": [
+              {
+                "type": null,
+                "description": "**It is not a SCIM error**"
+              },
+              {
+                "$ref": "#/components/schemas/SCIMtypeError",
+                "description": "**The type of SCIM error**"
+              }
+            ]
           },
-          "ExceptionMessage": {
+          "detail": {
             "type": "string",
-            "description": "Indica um erro interno ocorrido no servidor."
+            "description": "**The error message**",
+            "example": "The filter is invalid"
           },
-          "ExceptionCode": {
+          "status": {
             "type": "string",
-            "description": "O identificador do tipo de exception"
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
           }
         }
       },

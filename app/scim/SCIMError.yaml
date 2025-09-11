@@ -1,0 +1,19 @@
+title: SCIM Error
+type: object
+properties:
+  scimType:
+    description: "**The SCIM type if request is GET, otherwise null**"
+    example: "invalidFilter"
+    oneOf:
+      - type: null
+        description: "**It is not a SCIM error**"
+      - $ref: ../common_enums/SCIMtypeError.yaml
+        description: "**The type of SCIM error**"
+  detail:
+    type: string
+    description: "**The error message**"
+    example: "The filter is invalid"
+  status:
+    type: string
+    description: "**The HTTP Status Code error name**"
+    example: "InternalServerError"

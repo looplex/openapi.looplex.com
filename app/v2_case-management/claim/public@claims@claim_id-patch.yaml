@@ -26,3 +26,7 @@ responses:
     description: "No Content"
   "500":
     description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

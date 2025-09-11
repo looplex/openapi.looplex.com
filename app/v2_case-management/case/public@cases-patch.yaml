@@ -27,14 +27,15 @@ requestBody:
         items:
           $ref: ../../common_schemas/PatchEntity.yaml
 responses:
-  # 
   "200":
     description: "OK"
     content:
       application/json:
         schema:
           type: boolean
-  "404":
-    description: "Not Found"
   "500":
     description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

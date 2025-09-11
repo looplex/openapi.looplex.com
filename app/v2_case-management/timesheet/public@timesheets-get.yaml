@@ -49,4 +49,8 @@ responses:
                   items:
                     $ref: ../schemas/TimesheetEntity.yaml
   "500":
-      description: "Internal Server Error"
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

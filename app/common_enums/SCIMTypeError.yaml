@@ -1,0 +1,14 @@
+title: SCIM Type error
+type: string
+description: |
+  **SCIM type error**<br/>
+  invalidFilter<br/>
+  tooMany<br/>
+  uniqueness<br/>
+  mutability<br/>
+  invalidSyntax<br/>
+  invalidPath<br/>
+  noTarget<br/>
+  invalidValue<br/>
+  invalidVers<br/>
+  sensitive
