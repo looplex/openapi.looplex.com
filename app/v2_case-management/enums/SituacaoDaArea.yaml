@@ -1,0 +1,7 @@
+title: Case group status
+type: string
+example: ACTIVE
+description: |
+  **Case group status**<br/>
+  ACTIVE<br/>
+  INACTIVE

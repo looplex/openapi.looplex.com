@@ -360,6 +360,12 @@
             "folder": "claim"
           },
           {
+            "option": 12,
+            "label": "Case Group",
+            "detail": "Case groups endpoints",
+            "folder": "case_groups"
+          },
+          {
             "option": -1,
             "label": "Debug (não utilizar essa tag em endpoints oficiais)",
             "detail": "Debug endpoints",

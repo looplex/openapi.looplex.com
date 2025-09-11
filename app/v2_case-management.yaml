@@ -115,6 +115,15 @@ paths:
       $ref: v2_case-management\claim\public@claims@claim_id-get.yaml
     patch:
       $ref: v2_case-management\claim\public@claims@claim_id-patch.yaml
+
+  # Case Groups
+  /caseGroups:
+    get:
+      $ref: v2_case-management\case_groups\public@caseGroups-get.yaml
+  /caseGroups/:case_group_id:
+    get:
+      $ref: v2_case-management\case_groups\public@caseGroups@case_group_id-get.yaml
+
 components:
   securitySchemes:
     api_key:
