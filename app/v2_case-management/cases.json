@@ -4153,6 +4153,12 @@
           "caseClient"
         ]
       },
+      "TipoDeTarefaTimesheet": {
+        "title": "TipoDeTarefaTimesheet",
+        "example": "HORAS_DEBITAVEIS",
+        "type": "string",
+        "description": "APRIMORAMENTO_PROFISSIONAL\n\nHORAS_DEBITAVEIS\n\nHORAS_DE_RELACIONAMENTO\n\nHORAS_NAO_DEBITAVEIS\n"
+      },
       "TimesheetEntityWrite": {
         "title": "Timesheet",
         "type": "object",
@@ -4192,9 +4198,9 @@
             "type": "string <nullable>",
             "description": "**Descrição**"
           },
-          "createdBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Criado por**"
+          "taskType": {
+            "$ref": "#/components/schemas/TipoDeTarefaTimesheet",
+            "description": "**Tipo da Tarefa**"
           },
           "case": {
             "type": "object",
