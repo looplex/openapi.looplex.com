@@ -1,0 +1,11 @@
+title: TipoDeTarefaTimesheet
+example: HORAS_DEBITAVEIS
+type: string
+description: |  
+  APRIMORAMENTO_PROFISSIONAL
+
+  HORAS_DEBITAVEIS
+
+  HORAS_DE_RELACIONAMENTO
+
+  HORAS_NAO_DEBITAVEIS

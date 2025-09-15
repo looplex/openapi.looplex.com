@@ -29,10 +29,10 @@ properties:
     description: "**Solicitante**<br />"
   description:
     type: string <nullable>
-    description: "**Descrição**"
-  createdBy:
-    $ref: ../../common_schemas/SimpleEntityWrite.yaml
-    description: "**Criado por**"
+    description: "**Descrição**"  
+  taskType:        
+    $ref: ../enums/TipoDeTarefaTimesheet.yaml
+    description: "**Tipo da Tarefa**"    
   case:
     type: object
     description: "**The case unique identifier**"
