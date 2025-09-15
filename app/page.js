@@ -381,6 +381,11 @@ export default function Home() {
                 text='Tasks'
               />
 
+              <BorderedLink
+                link='/v2_task_template'
+                text='Tasks Template'
+              />
+
             </ColCard>
 
             <ColCard>
@@ -422,37 +427,7 @@ export default function Home() {
 
             </ColCard>
 
-          </Row>
-
-          <Row>
-
-            <Title level={3}>
-              Playbook
-            </Title>
-
-          </Row>
-
-          <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
-
-            <ColCard>
-
-              <CardHeader
-                title='Tasks Playbook'
-                icon={<ProfileOutlined style={iconStyle} />}
-              />
-
-              <div>
-                <Text>Grupo de APIs de configuração de playbooks de tasks</Text>
-              </div>
-
-              <BorderedLink
-                link='#'
-                text='Looplex Tasks Playbook v2'
-              />
-
-            </ColCard>
-
-          </Row>
+          </Row>  
 
         </Content>
 

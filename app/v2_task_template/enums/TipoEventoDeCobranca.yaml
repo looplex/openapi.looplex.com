@@ -1,0 +1,9 @@
+title: TipoEventoDeCobranca
+type: string
+example: POR_PRAZO
+description: | 
+  POR_COMPROMISSO<br/>
+  POR_PRAZO<br/>
+  POR_ATIVIDADE_EXTERNA<br/>
+  POR_PUBLICACAO<br/>
+  POR_AUDIENCIA

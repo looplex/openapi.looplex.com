@@ -1,0 +1,31 @@
+title: TaskTemplateEntity
+description: 
+properties:
+  Title:
+    type: string
+  EventType:
+    $ref: ../enums/TipoEventoDeCobranca.yaml
+  Status:
+    description: "ACTIVE<br/>INACTIVE"
+    type: string
+  DeadlineForCompletion:
+    description: "Prazo para conclusão em dias"
+    type: integer
+  ConsecutiveDays:
+    type: boolean
+  TimeToExecution:
+    description: "Tempo em horas para execução"
+    example: 03:30:00
+    type: string
+  DocumentLinkType:
+    $ref: ../enums/TipoVinculoComDocumento.yaml
+  DocumentIdentifier:
+    type: string
+  CaseType:
+    $ref: ../../common_enums/RamosJudicial.yaml
+  CustomFields:
+    type: object
+  Children:
+    type: array
+    items:
+      $ref: ./TaskTemplateEntity.yaml

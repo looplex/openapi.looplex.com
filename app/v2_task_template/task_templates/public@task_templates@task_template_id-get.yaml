@@ -1,0 +1,36 @@
+tags:
+  - Endpoints de task templates
+
+# escolha um titulo
+summary: "Task Template"
+
+# escolha uma description
+description: "**Retrieve a task template by id**"
+
+operationId: task_templates@task_template_id-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+
+# Responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/TaskTemplateEntity.yaml"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

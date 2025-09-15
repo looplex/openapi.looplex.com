@@ -488,6 +488,26 @@
           }
         ]
       }
+    },
+    {
+      "label": "API Tasks Templates",
+      "option": {
+        "build_command": "npx @redocly/cli bundle app/v2_task_template.yaml -o app/v2_task_template/v2_task_template --ext json",
+        "folder_name": "/v2_task_template",
+        "path_components": "app/v2_task_template/schemas",
+        "path_parameters": "common_parameters",
+        "path_enums": "app/v2_task_template/enums",
+        "path_routes": "app/v2_task_template",
+        "path_http_responses": "/http_responses",
+        "tags": [
+          {
+            "option": 1,
+            "label": "Endpoints de task templates",
+            "detail": "Endpoints",
+            "folder": "task_templates"
+          }
+        ]
+      }
     }
   ]
 }

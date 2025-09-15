@@ -1,0 +1,219 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "Looplex v2_task_template",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "API para parametrização de tasks\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/v2_task_template",
+      "description": "v2_task_template Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/TaskTemplates/:id": {
+      "get": {
+        "tags": [
+          "Endpoints de task templates"
+        ],
+        "summary": "Task Template",
+        "description": "**Retrieve a task template by id**",
+        "operationId": "task_templates@task_template_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskTemplateEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "TipoEventoDeCobranca": {
+        "title": "TipoEventoDeCobranca",
+        "type": "string",
+        "example": "POR_PRAZO",
+        "description": "POR_COMPROMISSO<br/>\nPOR_PRAZO<br/>\nPOR_ATIVIDADE_EXTERNA<br/>\nPOR_PUBLICACAO<br/>\nPOR_AUDIENCIA\n"
+      },
+      "TipoVinculoComDocumento": {
+        "title": "TipoVinculoComDocumento",
+        "example": "BUILDER",
+        "description": "BUILDER <br/>\nASSEMBLER\n"
+      },
+      "RamosJudicial": {
+        "title": "RamosJudicial",
+        "type": "string",
+        "example": "JUDICIAL_ESTADUAL",
+        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n"
+      },
+      "TaskTemplateEntity": {
+        "title": "TaskTemplateEntity",
+        "description": null,
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "EventType": {
+            "$ref": "#/components/schemas/TipoEventoDeCobranca"
+          },
+          "Status": {
+            "description": "ACTIVE<br/>INACTIVE",
+            "type": "string"
+          },
+          "DeadlineForCompletion": {
+            "description": "Prazo para conclusão em dias",
+            "type": "integer"
+          },
+          "ConsecutiveDays": {
+            "type": "boolean"
+          },
+          "TimeToExecution": {
+            "description": "Tempo em horas para execução",
+            "example": "03:30:00",
+            "type": "string"
+          },
+          "DocumentLinkType": {
+            "$ref": "#/components/schemas/TipoVinculoComDocumento"
+          },
+          "DocumentIdentifier": {
+            "type": "string"
+          },
+          "CaseType": {
+            "$ref": "#/components/schemas/RamosJudicial"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskTemplateEntity"
+            }
+          }
+        }
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string",
+        "description": "**SCIM type error**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "description": "**The SCIM type if request is GET, otherwise null**",
+            "example": "invalidFilter",
+            "oneOf": [
+              {
+                "type": null,
+                "description": "**It is not a SCIM error**"
+              },
+              {
+                "$ref": "#/components/schemas/SCIMtypeError",
+                "description": "**The type of SCIM error**"
+              }
+            ]
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "The filter is invalid"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}
