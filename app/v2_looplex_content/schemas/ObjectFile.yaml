@@ -1,0 +1,11 @@
+title: ObjectFile
+description: ""
+properties:
+  FileId:
+    type: string
+  FileFormat:
+    type: string
+  FileSize:
+    type: integer
+  DownloadLink:
+    type: string

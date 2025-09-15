@@ -39,6 +39,8 @@ allOf:
         $ref: "SchemaEnumElement.yaml"
       DocumentType:
         $ref: "SchemaEnumElement.yaml"
+      Files:
+        $ref: "ObjectFile.yaml"
       Language:
         type: string
       Tenant:
