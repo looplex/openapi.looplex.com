@@ -1,17 +1,12 @@
 tags:
-  - {{TAG_NAME}}
-
-summary: "/{{TAG_NAME}}/:{{TAG_NAME}}_id"
-# summary: {{TITLE}}
-
-description: "**Patch {{TAG_NAME}}**"
-# description: {{DESCRIPTION}}
-
-operationId: {{OPERATION_ID}}
+  - Entry
+summary: "/entries/:entry_id"
+description: "**Patch Entry**"
+operationId: entries-id-patch
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
   - name: id
     in: path
     required: true
@@ -29,4 +24,9 @@ requestBody:
 responses:
   "204":
     description: "No Content"
-  {{HTTP_RESPONSES}}
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
