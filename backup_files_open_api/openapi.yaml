@@ -151,7 +151,7 @@ x-tagGroups:
       - Valores apurados
   - name: varas_foros
     tags:
-      - Varas e Foros
+      - Court Venue
       - Ritos
 servers:
   - url: https://apim.looplex.com/actions/v1
@@ -33693,7 +33693,7 @@ paths:
   /v2/court:
     get:
       tags:
-        - Varas e Foros
+        - Court Venue
       summary: Lista os foros / varas por nível
       description: Lista os foros / varas de acordo com o nível informado
       operationId: varas_foros-v2-court-level-get
@@ -33731,7 +33731,7 @@ paths:
         - Ocp-Apim-Subscription-Key: []
     post:
       tags:
-        - Varas e Foros
+        - Court Venue
       summary: Cadastra foros / varas
       description: Cadastra novos foros / varas
       operationId: varas_foros-v2-court-post
@@ -33763,7 +33763,7 @@ paths:
   /v2/court/list:
     get:
       tags:
-        - Varas e Foros
+        - Court Venue
       summary: Lista os foros / varas por ids
       operationId: varas_foros-v2-court-list-get
       requestBody:
@@ -33800,7 +33800,7 @@ paths:
   /v2/court/search:
     get:
       tags:
-        - Varas e Foros
+        - Court Venue
       summary: Pesquisa foros / varas por termo
       operationId: varas_foros-v2-court-search-get
       parameters:
@@ -33838,7 +33838,7 @@ paths:
   /v2/court/children:
     get:
       tags:
-        - Varas e Foros
+        - Court Venue
       summary: Lista foro / vara por pai
       description: Lista todos os foros / varas de acordo com o identificador do pai
       operationId: v2-court-children-get

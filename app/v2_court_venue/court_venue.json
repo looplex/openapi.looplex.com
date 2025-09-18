@@ -30,7 +30,7 @@
     "/v2.1/court/:id/nextLevels": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Next levels",
         "description": "List next levels after this node level",
@@ -113,7 +113,7 @@
     "/v2.1/court/:id/formattedHierarchy": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Formatted hierarchy",
         "description": "Get the formatted hierarchy from this node",
@@ -193,7 +193,7 @@
     "/v2.1/court": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Paginated list of court venue by level",
         "operationId": "court_venue-by-level-get",
@@ -272,7 +272,7 @@
     "/v2.1/court/list": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "List court venue by its identifiers",
         "operationId": "court_venue-list-by-ids-get",
@@ -359,7 +359,7 @@
     "/v2.1/court/search": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Paginated search of court venue",
         "operationId": "court_venue-search-get",
@@ -438,7 +438,7 @@
     "/v2.1/court/:id/children": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Paginated list of court venue by parent identifier",
         "description": "List items according to parent identifier",
@@ -518,7 +518,7 @@
     "/v2.1/court/children": {
       "get": {
         "tags": [
-          "Varas e Foros"
+          "Court Venue"
         ],
         "summary": "Paginated list of court venue by parent name",
         "description": "List items according to parent name",

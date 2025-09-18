@@ -1,22 +1,17 @@
 tags:
-  - Varas e Foros
-summary: "Next levels"
-description: "List next levels after this node level"
-operationId: court-id-nextLevels-get.yaml
+  - Court Venue
+summary: "Paginated list of court venue by level"
+operationId: court_venue-by-level-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - name: id
-    in: path
-    required: true
-    description: "**The item's identifier**"
-    schema:
-      type: integer
-  - name: quantityLevels
+  - name: level
     in: query
-    required: false
-    description: "**The level quantity to search** `(default: 2)`"
+    required: true
+    description: "**The level of the item lo list**"
     schema:
       type: integer
+  - $ref: ../parameters/Page.yaml
+  - $ref: ../parameters/PerPage.yaml
   - $ref: ../parameters/ResponseFormat.yaml
 responses:
   "200":

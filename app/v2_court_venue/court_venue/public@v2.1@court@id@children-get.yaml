@@ -1,16 +1,16 @@
 tags:
-  - Varas e Foros
-summary: "Paginated list of court venue by parent name"
-description: "List items according to parent name"
-operationId: court-children-get
+  - Court Venue
+summary: "Paginated list of court venue by parent identifier"
+description: "List items according to parent identifier"
+operationId: court-id-children-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - name: parentName
-    in: query
+  - name: id
+    in: path
     required: true
-    description: "**The item's name to list the children**"
+    description: "**The parent item's identifier**"
     schema:
-      type: string
+      type: int
   - $ref: ../parameters/Page.yaml
   - $ref: ../parameters/PerPage.yaml
   - $ref: ../parameters/ResponseFormat.yaml

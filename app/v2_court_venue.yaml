@@ -24,25 +24,25 @@ paths:
   # Varas e Foros
   /v2.1/court/:id/nextLevels:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@id@nextLevels-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@id@nextLevels-get.yaml
   /v2.1/court/:id/formattedHierarchy:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@id@formatted-hierarchy-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@id@formatted-hierarchy-get.yaml
   /v2.1/court:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court-get.yaml
   /v2.1/court/list:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@list-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@list-get.yaml
   /v2.1/court/search:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@search-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@search-get.yaml
   /v2.1/court/:id/children:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@id@children-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@id@children-get.yaml
   /v2.1/court/children:
     get:
-      $ref: v2_court_venue\varas_foros\public@v2.1@court@children-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court@children-get.yaml
 components:
   securitySchemes:
     api_key:
