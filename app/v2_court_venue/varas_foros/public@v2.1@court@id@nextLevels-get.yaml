@@ -2,7 +2,7 @@ tags:
   - Varas e Foros
 summary: "Next levels"
 description: "List next levels after this node level"
-operationId: varas_foros-proximos_niveis-get
+operationId: court-id-nextLevels-get.yaml
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
@@ -11,7 +11,7 @@ parameters:
     description: "**The item's identifier**"
     schema:
       type: integer
-  - name: quantidadeNiveis
+  - name: quantityLevels
     in: query
     required: false
     description: "**The level quantity to search** `(default: 2)`"

@@ -27,14 +27,14 @@
   ],
   "security": [],
   "paths": {
-    "/v2.1/ProximosNiveis/:id": {
+    "/v2.1/court/{id}/nextLevels": {
       "get": {
         "tags": [
           "Varas e Foros"
         ],
         "summary": "Next levels",
         "description": "List next levels after this node level",
-        "operationId": "varas_foros-proximos_niveis-get",
+        "operationId": "court-id-nextLevels-get.yaml",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -49,7 +49,7 @@
             }
           },
           {
-            "name": "quantidadeNiveis",
+            "name": "quantityLevels",
             "in": "query",
             "required": false,
             "description": "**The level quantity to search** `(default: 2)`",
