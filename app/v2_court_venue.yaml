@@ -3,7 +3,7 @@ openapi: 3.0.2
 security: []
 info:
   version: 2.0.0
-  title: "Looplex Court Venue"
+  title: "Looplex Varas e Foros"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex
@@ -16,30 +16,22 @@ info:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
-    Essa é a documentação de Court Venue
+    Essa é a documentação de Varas e Foros
 servers:
-  - url: "https://apim.looplex.com/court-venue"
-    description: "Court Venue Server"
+  - url: "https://apim.looplex.com/varas_foros"
+    description: "Varas e Foros Server"
 paths:
-  # Court Venue (Varas e Foros)
-  /venues/:venue_id:
+  # Varas e Foros
+  /v2.1/ProximosNiveis/:id:
     get:
-      $ref: .\v2_court_venue\public@venues@venue_id-get.yaml
-  /venues:
+      $ref: v2_court_venue\court_venue\public@v2.1@ProximosNiveis@id-get.yaml
+  /v2.1/HierarquiaFormatada/:id:
     get:
-      $ref: .\v2_court_venue\public@venues-get.yaml
-  /subjectTags:
+      $ref: v2_court_venue\court_venue\public@v2.1@HierarquiaFormatada@id-get.yaml
+  /v2.1/court:
     get:
-      $ref: .\v2_court_venue\public@subjectTags-get.yaml
-  /tags:
-    get:
-      $ref: .\v2_court_venue\public@tags-get.yaml
-  /tags/:tag_id:
-    get:
-      $ref: .\v2_court_venue\public@tags@tag_id-get.yaml
-  /subjectWithTags:
-    get:
-      $ref: .\v2_court_venue\public@subjectWithTags-get.yaml
+      $ref: v2_court_venue\court_venue\public@v2.1@court-get.yaml
+  
 components:
   securitySchemes:
     api_key:

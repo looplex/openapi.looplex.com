@@ -1,0 +1,14 @@
+name: responseFormat
+in: query
+required: false
+description: |
+  **The response format**<br/>
+  0: legacy `(default)`<br/>
+  1: scim
+
+  **Formato da resposta do endpoint**<br/>
+  **Legacy** -> _retornado quando responseFormat for 0_<br/>
+  **Scim** -> _retornado quando responseFormat for 1 e a resposta for uma lista_
+  **object** -> _retornado quando responseFormat for 1 e a resposta for um objeto_
+schema:
+  type: integer

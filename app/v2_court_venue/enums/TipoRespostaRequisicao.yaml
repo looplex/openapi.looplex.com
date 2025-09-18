@@ -1,0 +1,7 @@
+title: TipoRespostaRequisicao
+type: integer
+example: 3
+description: |
+  1: Exception<br/>
+  2: SemDados<br/>
+  3: ComDados<br/>

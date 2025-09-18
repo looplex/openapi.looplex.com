@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "2.0.0",
-    "title": "Looplex Court Venue",
+    "title": "Looplex Varas e Foros",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -17,297 +17,47 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "Essa é a documentação de Court Venue\n"
+    "description": "Essa é a documentação de Varas e Foros\n"
   },
   "servers": [
     {
-      "url": "https://apim.looplex.com/court-venue",
-      "description": "Court Venue Server"
+      "url": "https://apim.looplex.com/varas_foros",
+      "description": "Varas e Foros Server"
     }
   ],
   "security": [],
   "paths": {
-    "/venues/:venue_id": {
+    "/v2.1/ProximosNiveis/:id": {
       "get": {
         "tags": [
-          "Court Venue"
+          "Varas e Foros"
         ],
-        "summary": "/venues/:venue_id",
-        "description": "**Retrieve information about a venue**\n",
-        "operationId": "venues-venue_id-get",
+        "summary": "Lista os próximos níveis",
+        "operationId": "varas_foros-proximos_niveis-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "venue_id",
+            "name": "id",
             "in": "path",
             "required": true,
-            "description": "**The venue identifier**",
-            "schema": {
-              "type": "string",
-              "frmat": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Venue"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/venues": {
-      "get": {
-        "tags": [
-          "Court Venue"
-        ],
-        "summary": "/venues",
-        "description": "**Query court venue by filter**\n",
-        "operationId": "venues-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "required": false,
-            "description": "**The filter to search**\n\n**NOTE 1: Concatenate every parameter with 'and'**<br />\n**NOTE 2: Set the value of a filter using 'eq'**<br />\n**NOTE 3: It is not possible to filter by 'ancestors' and 'descendants' at the same time**\n\n**Example 1**:<br />\nlevel eq 2 and ancestors eq true and depth eq 1<br />\n\n**Example 2**:<br />\nlevel eq 1 and descendants eq true and depth eq 2<br />\n\n**Example 3**:<br />\nlabel eq \"Estadual\"<br />\n\n**Example 4**:<br />\ncnj eq 8.05\n\n**Example 5**:<br />\npath eq /4/2/\n\n**Valid options:**<br />\n- **label (string)**: the node name to search<br />\n- **cnj (string)**: cnj number to search<br />\n- **level (integer)**: filter items by level <br />\n- **path (string)**: the path to search <br />\n- **tags (string)**: tags' unique ids separated by comma <br />\n- **depth (integer)**: depth of descendant or ascendents levels to include in the results <br />\n- **uuids (string)**: node's unique ids separated by comma <br /> \n- **ids (string)**: node's ids separated by comma\n- **ancestors (boolean)**: indicates the search for ancestors<br />\n- **descendants (boolean)**: indicates the search for descendants\n",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "Resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Venue"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/subjectTags": {
-      "get": {
-        "tags": [
-          "Tags"
-        ],
-        "summary": "/subjectTags",
-        "description": "**Get all tag groups**\n",
-        "operationId": "subjectTags-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "Resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/TagGroup"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/tags": {
-      "get": {
-        "tags": [
-          "Tags"
-        ],
-        "summary": "/tags",
-        "description": "**List tags by tag group**\n",
-        "operationId": "subjectTags-uuid-tags-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "Filter",
-            "in": "query",
-            "required": true,
-            "description": "**Unique identifier of tag's group**",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "Resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Tag"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/tags/:tag_id": {
-      "get": {
-        "tags": [
-          "Tags"
-        ],
-        "summary": "/tags/:tag_id",
-        "description": "**Retrieve information about a tag**\n",
-        "operationId": "tags-tag_id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "tag_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**\n",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/subjectWithTags": {
-      "get": {
-        "tags": [
-          "Tags"
-        ],
-        "summary": "/subjectWithTags",
-        "description": "**Fetch subjectTags with respective tags by filter type**<br />\n",
-        "operationId": "subjectWithTags-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "name": "filterType",
-            "in": "query",
-            "required": true,
-            "description": "**Group's type**<br />\n**Valid values:**<br/>\n1<br/>\n2<br/>\n3<br/>\n\n**Definitions:**<br/>\nINSTANCIA = 1<br/>\nESTADO_COMARCA = 2<br/>\nRITO = 3\n",
-            "example": 2,
+            "description": "**The item's unique identifier**",
             "schema": {
               "type": "integer"
             }
+          },
+          {
+            "name": "quantidadeNiveis",
+            "in": "query",
+            "required": false,
+            "description": "**A quantidade de níveis a pesquisar** `(default: 2)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
           }
         ],
         "responses": {
@@ -316,28 +66,215 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "Resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/TagGroup"
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/v2.1/HierarquiaFormatada/:id": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Hierarquia formatada",
+        "operationId": "varas_foros-hierarquia_formatada-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
-          "500": {
-            "description": "Internal Server Error"
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "object",
+                              "properties": {
+                                "hierarquiaCompleta": {
+                                  "type": "string",
+                                  "description": "A hierarquia completa do item"
+                                },
+                                "hierarquiaFormatada": {
+                                  "type": "string",
+                                  "description": "A hierarquia formatada do item"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "properties": {
+                            "hierarquiaCompleta": {
+                              "type": "string",
+                              "description": "A hierarquia completa do item"
+                            },
+                            "hierarquiaFormatada": {
+                              "type": "string",
+                              "description": "A hierarquia formatada do item"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2.1/court": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Listagem de varas e foros paginada",
+        "operationId": "varas_foros-court-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "required": true,
+            "description": "**The level of the item**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 1)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 10)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
           }
         }
       }
@@ -370,124 +307,88 @@
           "type": "string"
         }
       },
-      "Tenant": {
-        "name": "x-looplex-tenant",
-        "in": "header",
-        "description": "**Client domain**",
-        "required": true,
+      "ResponseFormat": {
+        "name": "responseFormat",
+        "in": "query",
+        "required": false,
+        "description": "**The response format**<br/>\n0: legacy `(default)`<br/>\n1: scim\n\n**Formato da resposta do endpoint**<br/>\n**Legacy** -> _retornado quando responseFormat for 0_<br/>\n**Scim** -> _retornado quando responseFormat for 1 e a resposta for uma lista_\n**object** -> _retornado quando responseFormat for 1 e a resposta for um objeto_\n",
         "schema": {
-          "type": "string"
-        }
-      },
-      "BearerToken": {
-        "name": "Authorization",
-        "in": "header",
-        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
-        "required": true,
-        "schema": {
-          "type": "string"
+          "type": "integer"
         }
       }
     },
     "schemas": {
-      "Meta": {
-        "title": "Meta",
+      "TipoRespostaRequisicao": {
+        "title": "TipoRespostaRequisicao",
+        "type": "integer",
+        "example": 3,
+        "description": "1: Exception<br/>\n2: SemDados<br/>\n3: ComDados<br/>\n"
+      },
+      "ListResponseLegacy": {
+        "title": "Legacy",
         "type": "object",
-        "description": "**Resource's metadata**",
         "properties": {
-          "resourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "Entity"
+          "respostaAPI": {
+            "type": "string"
           },
-          "created": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": null,
-            "description": "**The resource creation date**"
-          },
-          "lastModified": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": null,
-            "description": "**The resource last update time**"
-          },
-          "location": {
-            "type": "string <nullable>",
-            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
-            "description": "**The resource url**"
-          },
-          "version": {
-            "type": "string",
-            "example": "2.0",
-            "description": "**The resource version**"
+          "tipoResposta": {
+            "$ref": "#/components/schemas/TipoRespostaRequisicao"
           }
         }
       },
-      "Venue": {
-        "title": "Venue",
-        "type": "object",
+      "Foro": {
+        "title": "Foro",
+        "description": "Dados de um foro / vara",
         "properties": {
-          "Id": {
-            "description": "**Item's identifier**",
-            "type": "integer"
-          },
-          "UUID": {
-            "description": "**Item's unique identifier**",
-            "type": "string",
-            "format": "uuid"
-          },
-          "Level": {
+          "cdNo": {
             "type": "integer",
-            "description": "**Item's level**"
+            "example": 1,
+            "description": "identificador do foro / vara"
           },
-          "Label": {
+          "cdNoPai": {
+            "type": "integer",
+            "example": 1,
+            "description": "identificador do foro pai"
+          },
+          "dsCategoriaFilhos": {
             "type": "string",
-            "description": "**Item's name**"
+            "example": "string de exemplo",
+            "description": "Indicação da categoria de filhos desse item"
           },
-          "Active": {
+          "dsHierarquiaCompleta": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": "Hierarquia completa até esse item"
+          },
+          "dsNome": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": "Nome do item"
+          },
+          "inAtivo": {
+            "type": "integer",
+            "example": 1,
+            "description": "Indica se o item está ativo"
+          },
+          "isEditavel": {
             "type": "boolean",
-            "description": "**Indicate if the item is active**"
+            "example": false,
+            "description": "Indica se o item é editável"
           },
-          "Status": {
+          "LabelProximosNiveis": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": "Label dos próximos itens"
+          },
+          "nrNivel": {
             "type": "integer",
-            "description": "**Item's status**"
-          },
-          "JTROOOO": {
-            "type": "string",
-            "description": "**CNJ**"
-          },
-          "Path": {
-            "type": "string",
-            "description": "**Item's path in tree**"
-          },
-          "Serventia": {
-            "type": "integer <nullable>",
-            "description": ""
-          },
-          "SmallClaimsCourt": {
-            "type": "boolean <nulable>",
-            "description": ""
-          },
-          "AdjucatingCourt": {
-            "type": "boolean <nullable>",
-            "description": ""
-          },
-          "Ordering": {
-            "type": "integer <nullable>",
-            "description": ""
-          },
-          "ExternalId": {
-            "description": "**Item's external identifier**",
-            "type": "string"
-          },
-          "Meta": {
-            "$ref": "#/components/schemas/Meta"
+            "example": 1,
+            "description": "O nível ao qual esse item pertence"
           }
         }
       },
       "ListResponse": {
-        "title": "ListResponse",
+        "title": "Scim",
         "type": "object",
         "properties": {
           "totalResults": {
@@ -504,93 +405,6 @@
             "description": "**Total count of items to return**",
             "type": "integer",
             "example": 12
-          }
-        }
-      },
-      "Tag": {
-        "title": "Tag",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "example": -2147483648,
-            "description": "**Item's identifier**",
-            "type": "integer"
-          },
-          "UUID": {
-            "description": "**Tag's unique identifier**",
-            "type": "string",
-            "format": "uuid"
-          },
-          "Tag": {
-            "type": "string",
-            "example": "Tag name",
-            "description": "**Tag's name**"
-          },
-          "Active": {
-            "type": "boolean",
-            "example": true,
-            "description": "**Indicate if it is active**"
-          },
-          "Status": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Tag's status**"
-          },
-          "ExternalId": {
-            "description": "**Item's external identifier**",
-            "type": "string <nullable>"
-          },
-          "Meta": {
-            "$ref": "#/components/schemas/Meta"
-          }
-        }
-      },
-      "TagGroup": {
-        "title": "Tag group",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "example": -2147483648,
-            "description": "**Item's identifier**",
-            "type": "integer"
-          },
-          "UUID": {
-            "description": "**Unique identifier of tag's group**",
-            "type": "string",
-            "format": "uuid"
-          },
-          "Label": {
-            "type": "string",
-            "example": "SP",
-            "description": "**The name of tag's group**"
-          },
-          "Active": {
-            "type": "boolean",
-            "example": true,
-            "description": "**Indicate if it is active**"
-          },
-          "Status": {
-            "type": "integer",
-            "example": 1,
-            "description": "**Tag's status**"
-          },
-          "Type": {
-            "type": "string",
-            "example": "ESTADO_COMARCA",
-            "description": "**Indicate the group's type**<br/>\n**Possible values:**<br/>\nINSTANCIA = 1<br/>\nESTADO_COMARCA = 2<br/>\nRITO = 3\n"
-          },
-          "Tags": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Tag"
-            }
-          },
-          "ExternalId": {
-            "description": "**Item's external identifier**",
-            "type": "string <nullable>"
-          },
-          "Meta": {
-            "$ref": "#/components/schemas/Meta"
           }
         }
       }
