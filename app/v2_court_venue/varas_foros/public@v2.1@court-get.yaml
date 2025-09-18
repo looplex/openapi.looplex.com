@@ -1,6 +1,6 @@
 tags:
   - Varas e Foros
-summary: "Listagem de varas e foros paginada"
+summary: Listagem de varas e foros paginada
 operationId: varas_foros-court-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml

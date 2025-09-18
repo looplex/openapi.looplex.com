@@ -474,8 +474,9 @@
         "tags": [
           "Varas e Foros"
         ],
-        "summary": "Lista os itens filhos desse item",
-        "operationId": "varas_foros-court-children",
+        "summary": "Pesquisa de varas e foros",
+        "description": "Lista os itens de acordo com o identificador do pai",
+        "operationId": "varas_foros-court-id-children-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -486,7 +487,99 @@
             "required": true,
             "description": "**The item's unique identifier**",
             "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 1)`",
+            "schema": {
               "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 10)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2.1/court/children": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Pesquisa de varas e foros",
+        "description": "Lista os itens de acordo com o nome do pai informado",
+        "operationId": "varas_foros-court-children-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "parentName",
+            "in": "query",
+            "required": true,
+            "description": "**The item's name to list the children**",
+            "schema": {
+              "type": "string"
             }
           },
           {

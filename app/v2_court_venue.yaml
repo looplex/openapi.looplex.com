@@ -39,6 +39,9 @@ paths:
       $ref: v2_court_venue\varas_foros\public@v2.1@court@search-get.yaml
   /v2.1/court/:id/children:
     get:
+      $ref: v2_court_venue\varas_foros\public@v2.1@court@id@children-get.yaml
+  /v2.1/court/children:
+    get:
       $ref: v2_court_venue\varas_foros\public@v2.1@court@children-get.yaml
 components:
   securitySchemes:
