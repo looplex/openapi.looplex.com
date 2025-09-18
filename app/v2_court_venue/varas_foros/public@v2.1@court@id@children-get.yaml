@@ -1,16 +1,16 @@
 tags:
   - Varas e Foros
-summary: "Pesquisa de varas e foros"
-description: "Lista os itens de acordo com o identificador do pai"
-operationId: varas_foros-court-id-children-get
+summary: "Paginated list of court venue by parent identifier"
+description: "List items according to parent identifier"
+operationId: court-id-children-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
     in: path
     required: true
-    description: "**The item's unique identifier**"
+    description: "**The parent item's identifier**"
     schema:
-      type: string
+      type: int
   - $ref: ../parameters/Page.yaml
   - $ref: ../parameters/PerPage.yaml
   - $ref: ../parameters/ResponseFormat.yaml

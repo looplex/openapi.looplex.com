@@ -27,7 +27,7 @@
   ],
   "security": [],
   "paths": {
-    "/v2.1/court/{id}/nextLevels": {
+    "/v2.1/court/:id/nextLevels": {
       "get": {
         "tags": [
           "Varas e Foros"
@@ -110,14 +110,14 @@
         }
       }
     },
-    "/v2.1/HierarquiaFormatada/:id": {
+    "/v2.1/court/:id/formattedHierarchy": {
       "get": {
         "tags": [
           "Varas e Foros"
         ],
         "summary": "Formatted hierarchy",
         "description": "Get the formatted hierarchy from this node",
-        "operationId": "varas_foros-hierarquia_formatada-get",
+        "operationId": "court-id-formatted_hierarchy-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -195,8 +195,8 @@
         "tags": [
           "Varas e Foros"
         ],
-        "summary": "Paginated list of court venue",
-        "operationId": "varas_foros-court-get",
+        "summary": "Paginated list of court venue by level",
+        "operationId": "court_venue-by-level-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -275,7 +275,7 @@
           "Varas e Foros"
         ],
         "summary": "List court venue by its identifiers",
-        "operationId": "varas_foros-court-list-get",
+        "operationId": "court_venue-list-by-ids-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -361,8 +361,8 @@
         "tags": [
           "Varas e Foros"
         ],
-        "summary": "Pesquisa varas e foros",
-        "operationId": "varas_foros-court-search-get",
+        "summary": "Paginated search of court venue",
+        "operationId": "court_venue-search-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -440,9 +440,9 @@
         "tags": [
           "Varas e Foros"
         ],
-        "summary": "Pesquisa de varas e foros",
-        "description": "Lista os itens de acordo com o identificador do pai",
-        "operationId": "varas_foros-court-id-children-get",
+        "summary": "Paginated list of court venue by parent identifier",
+        "description": "List items according to parent identifier",
+        "operationId": "court-id-children-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -451,9 +451,9 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "**The item's unique identifier**",
+            "description": "**The parent item's identifier**",
             "schema": {
-              "type": "string"
+              "type": "int"
             }
           },
           {
@@ -520,9 +520,9 @@
         "tags": [
           "Varas e Foros"
         ],
-        "summary": "Pesquisa de varas e foros",
-        "description": "Lista os itens de acordo com o nome do pai informado",
-        "operationId": "varas_foros-court-children-get",
+        "summary": "Paginated list of court venue by parent name",
+        "description": "List items according to parent name",
+        "operationId": "court-children-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"

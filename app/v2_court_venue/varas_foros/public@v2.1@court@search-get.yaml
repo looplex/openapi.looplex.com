@@ -1,7 +1,7 @@
 tags:
   - Varas e Foros
-summary: "Pesquisa varas e foros"
-operationId: varas_foros-court-search-get
+summary: "Paginated search of court venue"
+operationId: court_venue-search-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: filter

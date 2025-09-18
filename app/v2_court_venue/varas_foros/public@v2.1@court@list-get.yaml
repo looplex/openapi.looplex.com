@@ -1,7 +1,7 @@
 tags:
   - Varas e Foros
 summary: "List court venue by its identifiers"
-operationId: varas_foros-court-list-get
+operationId: court_venue-list-by-ids-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: ids

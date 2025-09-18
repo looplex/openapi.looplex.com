@@ -1,8 +1,8 @@
 tags:
   - Varas e Foros
-summary: "Pesquisa de varas e foros"
-description: "Lista os itens de acordo com o nome do pai informado"
-operationId: varas_foros-court-children-get
+summary: "Paginated list of court venue by parent name"
+description: "List items according to parent name"
+operationId: court-children-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: parentName

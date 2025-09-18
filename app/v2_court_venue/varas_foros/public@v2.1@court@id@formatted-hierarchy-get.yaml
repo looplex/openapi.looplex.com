@@ -2,7 +2,7 @@ tags:
   - Varas e Foros
 summary: "Formatted hierarchy"
 description: "Get the formatted hierarchy from this node"
-operationId: varas_foros-hierarquia_formatada-get
+operationId: court-id-formatted_hierarchy-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id

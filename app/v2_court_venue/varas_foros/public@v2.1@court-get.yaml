@@ -1,7 +1,7 @@
 tags:
   - Varas e Foros
-summary: "Paginated list of court venue"
-operationId: varas_foros-court-get
+summary: "Paginated list of court venue by level"
+operationId: court_venue-by-level-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: level
