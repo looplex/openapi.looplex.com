@@ -415,15 +415,15 @@
         "tags": [
           {
             "option": 1,
-            "label": "Court Venue",
-            "detail": "Court Venue endpoints",
-            "folder": "court_venue"
+            "label": "Varas e Foros",
+            "detail": "Endpoints de Varas e Foros",
+            "folder": "varas_foros"
           },
           {
             "option": 1,
-            "label": "Case Procedure",
-            "detail": "Procedure endpoints",
-            "folder": "procedure"
+            "label": "Ritos",
+            "detail": "Endpoints de ritos",
+            "folder": "ritos"
           }
         ]
       }

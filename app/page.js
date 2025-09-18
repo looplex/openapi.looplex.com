@@ -286,7 +286,7 @@ export default function Home() {
               </div>
 
               <BorderedLink
-                text='Court Venue'
+                text='Court Venue v2.1'
                 link='/v2_court_venue'
               />
 
@@ -427,7 +427,7 @@ export default function Home() {
 
             </ColCard>
 
-          </Row>  
+          </Row>
 
         </Content>
 

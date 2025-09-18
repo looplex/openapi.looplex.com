@@ -278,6 +278,287 @@
           }
         }
       }
+    },
+    "/v2.1/court/list": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Listagem de varas e foros por identificadores",
+        "operationId": "varas_foros-court-list-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "example": [
+              1,
+              2,
+              3
+            ],
+            "description": "**The item's unique identifiers**",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 1)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 10)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2.1/court/search": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Pesquisa varas e foros",
+        "operationId": "varas_foros-court-search-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": true,
+            "description": "**The term to search**",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 1)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 10)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2.1/court/:id/children": {
+      "get": {
+        "tags": [
+          "Varas e Foros"
+        ],
+        "summary": "Lista os itens filhos desse item",
+        "operationId": "varas_foros-court-children",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 1)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "perPage",
+            "in": "query",
+            "required": false,
+            "description": "**The page to search**. `(default: 10)`",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "Resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {

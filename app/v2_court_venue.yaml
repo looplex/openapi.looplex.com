@@ -24,14 +24,22 @@ paths:
   # Varas e Foros
   /v2.1/ProximosNiveis/:id:
     get:
-      $ref: v2_court_venue\court_venue\public@v2.1@ProximosNiveis@id-get.yaml
+      $ref: v2_court_venue\varas_foros\public@v2.1@ProximosNiveis@id-get.yaml
   /v2.1/HierarquiaFormatada/:id:
     get:
-      $ref: v2_court_venue\court_venue\public@v2.1@HierarquiaFormatada@id-get.yaml
+      $ref: v2_court_venue\varas_foros\public@v2.1@HierarquiaFormatada@id-get.yaml
   /v2.1/court:
     get:
-      $ref: v2_court_venue\court_venue\public@v2.1@court-get.yaml
-  
+      $ref: v2_court_venue\varas_foros\public@v2.1@court-get.yaml
+  /v2.1/court/list:
+    get:
+      $ref: v2_court_venue\varas_foros\public@v2.1@court@list-get.yaml
+  /v2.1/court/search:
+    get:
+      $ref: v2_court_venue\varas_foros\public@v2.1@court@search-get.yaml
+  /v2.1/court/:id/children:
+    get:
+      $ref: v2_court_venue\varas_foros\public@v2.1@court@children-get.yaml
 components:
   securitySchemes:
     api_key:

@@ -1,0 +1,46 @@
+tags:
+  - Varas e Foros
+summary: "Pesquisa varas e foros"
+operationId: varas_foros-court-search-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: filter
+    in: query
+    required: true
+    description: "**The term to search**"
+    schema:
+      type: string
+  - name: page
+    in: query
+    required: false
+    description: "**The page to search**. `(default: 1)`"
+    schema:
+      type: integer
+  - name: perPage
+    in: query
+    required: false
+    description: "**The page to search**. `(default: 10)`"
+    schema:
+      type: integer
+  - $ref: ../parameters/ResponseFormat.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - allOf:
+              - $ref: ../schemas/ListResponseLegacy.yaml
+              - properties:
+                  conteudo:
+                    type: array
+                    items:
+                      $ref: ../schemas/Foro.yaml
+            - allOf:
+              - $ref: ../../common_schemas/ListResponse.yaml
+              - properties:
+                  Resources:
+                    type: array
+                    items:
+                      $ref: ../schemas/Foro.yaml
