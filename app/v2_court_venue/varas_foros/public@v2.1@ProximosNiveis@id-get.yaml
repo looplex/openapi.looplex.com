@@ -1,20 +1,20 @@
 tags:
   - Varas e Foros
-summary: "Lista os próximos níveis"
-# description: ""
+summary: "Next levels"
+description: "List next levels after this node level"
 operationId: varas_foros-proximos_niveis-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: id
     in: path
     required: true
-    description: "**The item's unique identifier**"
+    description: "**The item's identifier**"
     schema:
       type: integer
   - name: quantidadeNiveis
     in: query
     required: false
-    description: "**A quantidade de níveis a pesquisar** `(default: 2)`"
+    description: "**The level quantity to search** `(default: 2)`"
     schema:
       type: integer
   - $ref: ../parameters/ResponseFormat.yaml

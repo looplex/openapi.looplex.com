@@ -10,18 +10,8 @@ parameters:
     description: "**The term to search**"
     schema:
       type: string
-  - name: page
-    in: query
-    required: false
-    description: "**The page to search**. `(default: 1)`"
-    schema:
-      type: integer
-  - name: perPage
-    in: query
-    required: false
-    description: "**The page to search**. `(default: 10)`"
-    schema:
-      type: integer
+  - $ref: ../parameters/Page.yaml
+  - $ref: ../parameters/PerPage.yaml
   - $ref: ../parameters/ResponseFormat.yaml
 responses:
   "200":
