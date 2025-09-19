@@ -354,12 +354,12 @@ export default function Home() {
 
               <BorderedLink
                 link='/v1_cases'
-                text='Cases V1 (legado)'
+                text='Cases v1 (legado)'
               />
 
               <BorderedLink
                 link='/v2_case-management'
-                text='Cases Management'
+                text='Cases v2 (Case Management)'
               />
 
             </ColCard>
