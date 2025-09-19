@@ -1085,15 +1085,15 @@
           },
           "procedureChild": {
             "type": "string",
-            "description": "**The child of this procedure"
+            "description": "**The child of this procedure**"
           },
           "cNJCode": {
             "type": "string",
-            "description": "**The CNJ code of this procedure"
+            "description": "**The CNJ code of this procedure**"
           },
           "customFields": {
             "type": "object",
-            "description": "**Custom fields for this procedure"
+            "description": "**Custom fields for this procedure**"
           }
         }
       }
