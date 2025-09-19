@@ -1,0 +1,15 @@
+title: Rito
+description: 
+properties:
+  cdRito:
+    type: integer
+    example: 1
+    description: "**The procedure identifier**"
+  dsNome:
+    type: string
+    example: "string de exemplo"
+    description: "**The procedure identifier**"
+  inAtivo:
+    type: boolean
+    example: false
+    description: "**Indicate if the item is active**"

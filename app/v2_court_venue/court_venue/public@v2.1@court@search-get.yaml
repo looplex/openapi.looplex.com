@@ -1,7 +1,7 @@
 tags:
   - Court Venue
 summary: "Paginated search of court venue"
-operationId: court_venue-search-get
+operationId: v2.1-court-search-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: filter

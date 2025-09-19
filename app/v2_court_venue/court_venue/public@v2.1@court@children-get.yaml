@@ -2,7 +2,7 @@ tags:
   - Court Venue
 summary: "Paginated list of court venue by parent name"
 description: "List items according to parent name"
-operationId: court-children-get
+operationId: v2.1-court-children-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - name: parentName

@@ -1,0 +1,18 @@
+title: Procedure
+type: object
+properties:
+  procedureName:
+    type: string
+    description: "**The procedure name**"
+  procedureParent:
+    type: string
+    description: "**The parent of this procedure**"
+  procedureChild:
+    type: string
+    description: "**The child of this procedure"
+  cNJCode:
+    type: string
+    description: "**The CNJ code of this procedure"
+  customFields:
+    type: object
+    description: "**Custom fields for this procedure"    

@@ -3256,7 +3256,7 @@
         ]
       },
       "ListResponse": {
-        "title": "ListResponse",
+        "title": "Scim",
         "type": "object",
         "properties": {
           "totalResults": {

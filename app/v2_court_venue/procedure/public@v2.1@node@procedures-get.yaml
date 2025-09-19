@@ -1,23 +1,18 @@
 tags:
-  - Court Venue
-summary: "Next levels"
-description: "List next levels after this node level"
-operationId: v2.1-court-id-nextLevels-get
+  - Procedure
+summary: "List procedures by court venue node"
+description: "**List procedures by court venue node**"
+operationId: v2.1-node-procedures-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - name: id
+  - $ref: ../parameters/ResponseFormat.yaml
+  - name: node
     in: path
     required: true
-    description: "**The item's identifier**"
+    description: "**The node unique identifier to list the procedures**"
     schema:
-      type: integer
-  - name: quantityLevels
-    in: query
-    required: false
-    description: "**The level quantity to search** `(default: 2)`"
-    schema:
-      type: integer
-  - $ref: ../parameters/ResponseFormat.yaml
+      type: string
+      format: uuid
 responses:
   "200":
     description: "OK"
@@ -31,11 +26,18 @@ responses:
                   conteudo:
                     type: array
                     items:
-                      $ref: ../schemas/Foro.yaml
+                      $ref: ../schemas/Procedure_v2_1.yaml
             - allOf:
               - $ref: ../../common_schemas/ListResponse.yaml
               - properties:
                   Resources:
                     type: array
                     items:
-                      $ref: ../schemas/Foro.yaml
+                      $ref: ../schemas/Procedure_v2_1.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
+ 
