@@ -3868,6 +3868,7 @@
       "TipoDeRecorrencia": {
         "title": "TipoDeRecorrencia",
         "example": "SEM_RECORRENCIA",
+        "type": "string",
         "description": "SEM_RECORRENCIA<br/>\nDIARIA<br/>\nSEMANAL<br/> \nMENSAL<br/>\nANUAL\n"
       },
       "ClaimStatus": {
@@ -4593,7 +4594,7 @@
             "description": "**Valor de contingencia**"
           },
           "liquidated": {
-            "type": "boolean <nullable>"
+            "type": "boolean"
           },
           "effectiveDate": {
             "type": "string",

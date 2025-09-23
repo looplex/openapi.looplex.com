@@ -1,5 +1,6 @@
 title: TipoDeRecorrencia
 example: SEM_RECORRENCIA
+type: string
 description: |
   SEM_RECORRENCIA<br/>
   DIARIA<br/>

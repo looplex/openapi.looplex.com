@@ -38,7 +38,7 @@ properties:
     type: number
     description: "**Valor de contingencia**"
   liquidated:
-    type: boolean <nullable>
+    type: boolean
   effectiveDate:
     type: string
     format: datetime
