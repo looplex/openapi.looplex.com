@@ -78,7 +78,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -95,7 +95,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -237,7 +237,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -254,7 +254,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -324,7 +324,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -341,7 +341,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -403,7 +403,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -420,7 +420,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -483,7 +483,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -500,7 +500,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -563,7 +563,7 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -580,7 +580,7 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Foro"
+                                "$ref": "#/components/schemas/Foro_v2_1"
                               }
                             }
                           }
@@ -782,7 +782,7 @@
           }
         }
       },
-      "Foro": {
+      "Foro_v2_1": {
         "title": "Foro",
         "description": "Dados de um foro / vara",
         "properties": {
@@ -816,12 +816,7 @@
             "example": 1,
             "description": "Indica se o item está ativo"
           },
-          "isEditavel": {
-            "type": "boolean",
-            "example": false,
-            "description": "Indica se o item é editável"
-          },
-          "LabelProximosNiveis": {
+          "labelProximosNiveis": {
             "type": "string",
             "example": "string de exemplo",
             "description": "Label dos próximos itens"
@@ -830,6 +825,15 @@
             "type": "integer",
             "example": 1,
             "description": "O nível ao qual esse item pertence"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Item's unique identifier**"
+          },
+          "custom_fields": {
+            "type": "object",
+            "description": "**Custom fields for this item**"
           }
         }
       },
