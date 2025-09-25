@@ -9,20 +9,25 @@ properties:
     description: "ACTIVE<br/>INACTIVE"
     type: string
   DeadlineForCompletion:
-    description: "Prazo para conclusão em dias"
+    description: "Prazo para conclusão (em dias)"
     type: integer
   ConsecutiveDays:
     type: boolean
   TimeToExecution:
-    description: "Tempo em horas para execução"
-    example: 03:30:00
-    type: string
+    description: "Tempo para execução (em horas)"    
+    type: integer
   DocumentLinkType:
     $ref: ../enums/TipoVinculoComDocumento.yaml
   DocumentIdentifier:
+    description: "Link do documento"
     type: string
   CaseType:
-    $ref: ../../common_enums/RamosJudicial.yaml
+    example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
+    description: 
+      $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+    type: array
+    items:
+      type: string
   CustomFields:
     type: object
   Children:

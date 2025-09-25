@@ -1,5 +1,6 @@
 title: TipoVinculoComDocumento
 example: BUILDER
+type: string
 description: |  
   BUILDER <br/>
   ASSEMBLER

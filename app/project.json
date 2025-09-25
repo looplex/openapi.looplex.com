@@ -502,7 +502,7 @@
         "tags": [
           {
             "option": 1,
-            "label": "Endpoints de task templates",
+            "label": "Task Templates",
             "detail": "Endpoints",
             "folder": "task_templates"
           }

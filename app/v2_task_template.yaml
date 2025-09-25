@@ -3,7 +3,7 @@ openapi: 3.0.2
 security: []
 info:
   version: 1.0.0
-  title: Looplex v2_task_template
+  title: Looplex Task Template
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex
@@ -22,7 +22,7 @@ externalDocs:
   url: "https://github.com/Rebilly/generator-openapi-repo"
 servers:
   - url: "https://apim.looplex.com/v2_task_template"
-    description: "v2_task_template Server"
+    description: "Task Template Server"
 paths:
 # Endpoints dessa API
 # Exemplo
@@ -30,3 +30,22 @@ paths:
   /TaskTemplates/:id:
     get:
       $ref: v2_task_template\task_templates\public@task_templates@task_template_id-get.yaml
+
+components:
+  # Crie uma seção customizada para guardar trechos de texto
+  x-descriptions:
+    RamosJudicial: |
+      **Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />
+      ADMINISTRATIVO<br />
+      CONSULTIVO<br />
+      JUDICIAL_ESTADUAL<br />
+      JUDICIAL_FEDERAL<br />
+      JUDICIAL_TRABALHISTA<br />
+      MILITAR_ESTADUAL<br />
+      ELEITORAL<br />
+      MILITAR_UNIAO<br />
+      CONTRATO<br />
+      DUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />
+      COBRANCA_EXTRAJUDICIAL<br />
+      SOCIETARIO<br />
+      ARBITRAGEM

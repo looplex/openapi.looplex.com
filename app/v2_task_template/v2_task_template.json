@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "Looplex v2_task_template",
+    "title": "Looplex Task Template",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -22,7 +22,7 @@
   "servers": [
     {
       "url": "https://apim.looplex.com/v2_task_template",
-      "description": "v2_task_template Server"
+      "description": "Task Template Server"
     }
   ],
   "security": [],
@@ -34,7 +34,7 @@
     "/TaskTemplates/:id": {
       "get": {
         "tags": [
-          "Endpoints de task templates"
+          "Task Templates"
         ],
         "summary": "Task Template",
         "description": "**Retrieve a task template by id**",
@@ -86,6 +86,9 @@
     }
   },
   "components": {
+    "x-descriptions": {
+      "RamosJudicial": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n"
+    },
     "parameters": {
       "OcpApimSubscriptionKey": {
         "name": "Ocp-Apim-Subscription-Key",
@@ -125,13 +128,8 @@
       "TipoVinculoComDocumento": {
         "title": "TipoVinculoComDocumento",
         "example": "BUILDER",
-        "description": "BUILDER <br/>\nASSEMBLER\n"
-      },
-      "RamosJudicial": {
-        "title": "RamosJudicial",
         "type": "string",
-        "example": "JUDICIAL_ESTADUAL",
-        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n"
+        "description": "BUILDER <br/>\nASSEMBLER\n"
       },
       "TaskTemplateEntity": {
         "title": "TaskTemplateEntity",
@@ -148,25 +146,33 @@
             "type": "string"
           },
           "DeadlineForCompletion": {
-            "description": "Prazo para conclusão em dias",
+            "description": "Prazo para conclusão (em dias)",
             "type": "integer"
           },
           "ConsecutiveDays": {
             "type": "boolean"
           },
           "TimeToExecution": {
-            "description": "Tempo em horas para execução",
-            "example": "03:30:00",
-            "type": "string"
+            "description": "Tempo para execução (em horas)",
+            "type": "integer"
           },
           "DocumentLinkType": {
             "$ref": "#/components/schemas/TipoVinculoComDocumento"
           },
           "DocumentIdentifier": {
+            "description": "Link do documento",
             "type": "string"
           },
           "CaseType": {
-            "$ref": "#/components/schemas/RamosJudicial"
+            "example": [
+              "JUDICIAL_ESTADUAL",
+              "CONTRATO"
+            ],
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "CustomFields": {
             "type": "object"
