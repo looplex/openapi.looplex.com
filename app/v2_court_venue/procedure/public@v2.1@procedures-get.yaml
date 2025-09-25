@@ -1,18 +1,36 @@
 tags:
   - Procedure
-summary: "List procedures by court venue node"
-description: "**List procedures by court venue node**"
-operationId: v2.1-node-procedures-get
+summary: "List procedures by filters"
+description: "**List procedures by filters**"
+operationId: v2.1-procedures-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
-  - name: node
-    in: path
-    required: true
+  - name: nodeUuid
+    in: query
+    required: false
     description: "**The node unique identifier to list the procedures**"
     schema:
       type: string
       format: uuid
+  - name: nodeId
+    in: query
+    required: false
+    description: "**The node identifier to list the procedures**"
+    schema:
+      type: integer
+  - name: procedureId
+    in: query
+    required: false
+    description: "**The procedure identifier**"
+    schema:
+      type: integer
+  - name: procedureName
+    in: query
+    required: false
+    description: "**The procedure name to search**"
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"

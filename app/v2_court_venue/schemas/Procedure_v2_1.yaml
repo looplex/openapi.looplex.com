@@ -1,16 +1,23 @@
 title: Procedure
 type: object
 properties:
+  group:
+    type: string
+    description: "**The group of this procedure**"
+  subGroup:
+    type: string
+    description: "**The subGroup of this procedure**"
+  procedureId:
+    type: integer
+    description: "**The identifier of this procedure**"
+  procedureUuid:
+    type: string
+    format: uuid
+    description: "**The unique identifier of this procedure**"
   procedureName:
     type: string
     description: "**The procedure name**"
-  procedureParent:
-    type: string
-    description: "**The parent of this procedure**"
-  procedureChild:
-    type: string
-    description: "**The child of this procedure**"
-  cNJCode:
+  cnjCode:
     type: string
     description: "**The CNJ code of this procedure**"
   customFields:

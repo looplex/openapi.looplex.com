@@ -45,15 +45,9 @@ paths:
       $ref: v2_court_venue\court_venue\public@v2.1@court@children-get.yaml
 
   # Ritos
-  /v2.1/procedure/list:
+  /v2.1/procedures:
     get:
-      $ref: v2_court_venue\procedure\public@v2.1@procedure@list-get.yaml
-  /v2.1/sequence/search:
-    get:
-      $ref: v2_court_venue\procedure\public@v2.1@sequence@search-get.yaml
-  /v2.1/:node/procedures:
-    get:
-      $ref: v2_court_venue\procedure\public@v2.1@node@procedures-get.yaml
+      $ref: v2_court_venue\procedure\public@v2.1@procedures-get.yaml
 components:
   securitySchemes:
     api_key:
