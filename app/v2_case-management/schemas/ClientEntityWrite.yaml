@@ -3,8 +3,6 @@ type: object
 description: |
   **Cliente**<br />
   Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
-allOf:
-  - $ref: '../../scim/Resource.yaml'
 properties:
   name:
     type: string
@@ -42,8 +40,8 @@ properties:
     type: array
     items:
       oneOf:
-        - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
-        - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
+        - $ref: ../../common_schemas/NaturalPersonIdentityEntityWrite.yaml
+        - $ref: ../../common_schemas/LegalPersonIdentityEntityWrite.yaml
   phoneNumbers:
     type: array
     items:
@@ -51,7 +49,11 @@ properties:
   addresses:
     type: array
     items:
-      $ref: ./AddressEntity.yaml
+      $ref: ./AddressEntityWrite.yaml
   customFields:
     type: object
     description: "**Client's custom fields**"
+required:
+  - name
+  - nickName
+  - type

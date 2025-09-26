@@ -65,6 +65,8 @@ paths:
   /clients:
     get:
       $ref: v2_case-management\client\public@clients-get.yaml
+    post:
+      $ref: v2_case-management\client\public@clients-post.yaml
   /clients/:client_id:
     get:
       $ref: v2_case-management\client\public@clients@client_id-get.yaml

@@ -1,0 +1,9 @@
+title: AddressType
+type: string
+example: work
+description: |
+  home<br/>
+  work<br/>
+  other<br/>
+  billing<br/>
+  delivery<br/>

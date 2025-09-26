@@ -857,6 +857,49 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "/clients",
+        "description": "**Create a client**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "clients-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/clients/:client_id": {
@@ -2277,58 +2320,74 @@
         "type": "string",
         "description": "**The client type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
-      "TipoDeEndereco": {
-        "title": "TipoDeEndereco",
+      "AddressType": {
+        "title": "AddressType",
         "type": "string",
-        "example": "RESIDENCIAL",
-        "description": "**Tipo do endereço**<br/>\nRESIDENCIAL<br/>\nCOMERCIAL<br/>\nOUTROS<br/>\nCOBRANCA<br/>\nENTREGA\n"
+        "example": "work",
+        "description": "home<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
       },
       "AddressEntity": {
         "title": "Endereço",
         "type": "object",
-        "properties": {
-          "country": {
-            "type": "string <nullable>",
-            "example": "BR",
-            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
           },
-          "postalCode": {
-            "type": "string <nullable>",
-            "example": "00000-000"
-          },
-          "streetAddress": {
-            "example": "Avenida exemplo",
-            "type": "string <nullable>"
-          },
-          "streetAddressNumber": {
-            "type": "string <nullable>",
-            "example": "10"
-          },
-          "pobox": {
-            "type": "string <nullable>",
-            "example": null
-          },
-          "locality": {
-            "type": "string <nullable>",
-            "example": "SP"
-          },
-          "region": {
-            "type": "string <nullable>",
-            "example": "São Paulo"
-          },
-          "neighborhood": {
-            "type": "string <nullable>",
-            "example": "Centro"
-          },
-          "type": {
-            "$ref": "#/components/schemas/TipoDeEndereco"
-          },
-          "primary": {
-            "type": "boolean",
-            "example": true,
-            "description": "**Se é o endereço principal**"
+          {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string <nullable>",
+                "example": "BR",
+                "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
+              },
+              "postalCode": {
+                "type": "string <nullable>",
+                "example": "00000-000"
+              },
+              "streetAddress": {
+                "example": "Avenida exemplo",
+                "type": "string"
+              },
+              "streetAddressNumber": {
+                "type": "string <nullable>",
+                "example": "10"
+              },
+              "pobox": {
+                "type": "string <nullable>",
+                "example": null
+              },
+              "locality": {
+                "type": "string <nullable>",
+                "example": "SP"
+              },
+              "region": {
+                "type": "string <nullable>",
+                "example": "São Paulo"
+              },
+              "neighborhood": {
+                "type": "string <nullable>",
+                "example": "Centro"
+              },
+              "complement": {
+                "type": "string",
+                "description": "**Address' complement**"
+              },
+              "type": {
+                "$ref": "#/components/schemas/AddressType"
+              },
+              "primary": {
+                "type": "boolean",
+                "example": true,
+                "description": "**Se é o endereço principal**"
+              },
+              "customFields": {
+                "type": "object",
+                "description": "**Custom fields for this address**"
+              }
+            }
           }
-        }
+        ]
       },
       "EmailType": {
         "title": "EmailType",
@@ -2360,9 +2419,18 @@
       "PhoneNumberEntity": {
         "title": "Phone number",
         "type": "object",
+        "example": {
+          "value": "(dd) ddddd-dddd",
+          "type": "mobile",
+          "primary": true,
+          "contact": "contact's name",
+          "extension": null,
+          "countryCode": null,
+          "customFields": {}
+        },
         "properties": {
           "value": {
-            "type": "string <nullable>",
+            "type": "string",
             "description": "**Phone number of the User**"
           },
           "type": {
@@ -2371,8 +2439,29 @@
           "primary": {
             "type": "boolean",
             "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n"
+          },
+          "contact": {
+            "type": "string",
+            "description": "**Contact name**"
+          },
+          "extension": {
+            "type": "string",
+            "description": "**Phone's extension**"
+          },
+          "countryCode": {
+            "type": "integer",
+            "description": "**Phone's country code**"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Phone's custom fields**"
           }
-        }
+        },
+        "required": [
+          "value",
+          "type",
+          "primary"
+        ]
       },
       "ParticipantRole": {
         "title": "ParticipantRole",
@@ -3289,12 +3378,12 @@
           "name": {
             "type": "string",
             "example": "Example name",
-            "description": "Client's name"
+            "description": "**Client's name**"
           },
           "nickName": {
             "type": "string",
             "example": "Example",
-            "description": "Client's nickname"
+            "description": "**Client's nickname**"
           },
           "type": {
             "$ref": "#/components/schemas/TipoPessoa"
@@ -3302,30 +3391,30 @@
           "email": {
             "type": "string <nullable>",
             "example": null,
-            "description": "Client's email address"
+            "description": "**Client's email address**"
           },
           "website": {
             "type": "string <nullable>",
             "example": null,
-            "description": "The client's website page"
+            "description": "**The client's website page**"
           },
           "comments": {
             "type": "string <nullable>",
-            "description": "Comments about the client",
+            "description": "**Comments about the client**",
             "example": null
           },
           "dob": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "Client's date of birth (available when NATURAL_PERSON)"
+            "description": "**Client's date of birth (available when NATURAL_PERSON)**"
           },
           "gender": {
             "$ref": "#/components/schemas/Gender",
-            "description": "Client's gender (available when NATURAL_PERSON)"
+            "description": "**Client's gender (available when NATURAL_PERSON)**"
           },
           "maritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
-            "description": "Client's marital status (available when NATURAL_PERSON)"
+            "description": "**Client's marital status (available when NATURAL_PERSON)**"
           },
           "identities": {
             "type": "array",
@@ -3339,6 +3428,22 @@
                 }
               ]
             }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntity"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressEntity"
+            }
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Client's custom fields**"
           }
         }
       },
@@ -3561,35 +3666,43 @@
         "title": "Identidade",
         "type": "object",
         "example": {
-          "IdentityProviderType": "CNPJ",
-          "Value": "DD.DDD.DDD/DDDD-DD"
+          "identityProviderType": "CNPJ",
+          "value": "DD.DDD.DDD/DDDD-DD"
         },
         "properties": {
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**"
           }
-        }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
       },
       "NaturalPersonIdentityEntityWrite": {
         "title": "Identidade",
         "type": "object",
         "example": {
-          "IdentityProviderType": "CPF",
-          "Value": "DDD.DDD.DDD-DD"
+          "identityProviderType": "CPF",
+          "value": "DDD.DDD.DDD-DD"
         },
         "properties": {
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**"
           }
-        }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
       },
       "ParticipantEntityWrite": {
         "title": "Dados de Parte",
@@ -4270,6 +4383,146 @@
             }
           }
         }
+      },
+      "AddressEntityWrite": {
+        "title": "Endereço",
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string <nullable>",
+            "example": "BR",
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
+          },
+          "postalCode": {
+            "type": "string <nullable>",
+            "example": "00000-000"
+          },
+          "streetAddress": {
+            "example": "Avenida exemplo",
+            "type": "string"
+          },
+          "streetAddressNumber": {
+            "type": "string <nullable>",
+            "example": "10"
+          },
+          "pobox": {
+            "type": "string <nullable>",
+            "example": null
+          },
+          "locality": {
+            "type": "string <nullable>",
+            "example": "SP"
+          },
+          "region": {
+            "type": "string <nullable>",
+            "example": "São Paulo"
+          },
+          "neighborhood": {
+            "type": "string <nullable>",
+            "example": "Centro"
+          },
+          "complement": {
+            "type": "string",
+            "description": "**Address' complement**"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AddressType"
+          },
+          "primary": {
+            "type": "boolean",
+            "example": true,
+            "description": "**Se é o endereço principal**"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Custom fields for this address**"
+          }
+        },
+        "required": [
+          "streetAddress"
+        ]
+      },
+      "ClientEntityWrite": {
+        "title": "Cliente",
+        "type": "object",
+        "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Example name",
+            "description": "**Client's name**"
+          },
+          "nickName": {
+            "type": "string",
+            "example": "Example",
+            "description": "**Client's nickname**"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoPessoa"
+          },
+          "email": {
+            "type": "string <nullable>",
+            "example": null,
+            "description": "**Client's email address**"
+          },
+          "website": {
+            "type": "string <nullable>",
+            "example": null,
+            "description": "**The client's website page**"
+          },
+          "comments": {
+            "type": "string <nullable>",
+            "description": "**Comments about the client**",
+            "example": null
+          },
+          "dob": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Client's date of birth (available when NATURAL_PERSON)**"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender",
+            "description": "**Client's gender (available when NATURAL_PERSON)**"
+          },
+          "maritalStatus": {
+            "$ref": "#/components/schemas/MaritalStatus",
+            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+          },
+          "identities": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
+                },
+                {
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityWrite"
+                }
+              ]
+            }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntity"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressEntityWrite"
+            }
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Client's custom fields**"
+          }
+        },
+        "required": [
+          "name",
+          "nickName",
+          "type"
+        ]
       },
       "ContratoReembolsoKM": {
         "title": "ContratoReembolsoKM",

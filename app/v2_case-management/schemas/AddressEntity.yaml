@@ -1,34 +1,43 @@
 title: Endereço
 type: object
-properties:
-  country:
-    type: string <nullable>
-    example: "BR"
-    description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
-  postalCode:
-    type: string <nullable>
-    example: "00000-000"
-  streetAddress:
-    example: "Avenida exemplo"
-    type: string <nullable>
-  streetAddressNumber:
-    type: string <nullable>
-    example: "10"
-  pobox:
-    type: string <nullable>
-    example: null
-  locality:
-    type: string <nullable>
-    example: "SP"
-  region:
-    type: string <nullable>
-    example: "São Paulo"
-  neighborhood:
-    type: string <nullable>
-    example: "Centro"
-  type:
-    $ref: ../enums/TipoDeEndereco.yaml
-  primary:
-    type: boolean
-    example: true
-    description: "**Se é o endereço principal**"
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object
+    properties:
+      country:
+        type: string <nullable>
+        example: "BR"
+        description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
+      postalCode:
+        type: string <nullable>
+        example: "00000-000"
+      streetAddress:
+        example: "Avenida exemplo"
+        type: string
+      streetAddressNumber:
+        type: string <nullable>
+        example: "10"
+      pobox:
+        type: string <nullable>
+        example: null
+      locality:
+        type: string <nullable>
+        example: "SP"
+      region:
+        type: string <nullable>
+        example: "São Paulo"
+      neighborhood:
+        type: string <nullable>
+        example: "Centro"
+      complement:
+        type: string
+        description: "**Address' complement**"
+      type:
+        $ref: ../enums/AddressType.yaml
+      primary:
+        type: boolean
+        example: true
+        description: "**Se é o endereço principal**"
+      customFields:
+        type: object
+        description: "**Custom fields for this address**"

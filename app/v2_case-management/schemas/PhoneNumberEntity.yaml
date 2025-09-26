@@ -1,8 +1,17 @@
 title: Phone number
 type: object
+example: {
+  value: "(dd) ddddd-dddd",
+  type: "mobile",
+  primary: true,
+  contact: "contact's name",
+  extension: null,
+  countryCode: null,
+  customFields: {}
+}
 properties:
   value:
-    type: string <nullable>
+    type: string
     description: "**Phone number of the User**"
   type:
     $ref: ../enums/TipoDeTelefone.yaml
@@ -11,3 +20,19 @@ properties:
     description: |
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />
       The primary attribute value 'true' MUST appear no more than once.
+  contact:
+    type: string
+    description: "**Contact name**"
+  extension:
+    type: string
+    description: "**Phone's extension**"
+  countryCode:
+    type: integer
+    description: "**Phone's country code**"
+  customFields:
+    type: object
+    description: "**Phone's custom fields**"
+required: 
+  - value
+  - type
+  - primary
