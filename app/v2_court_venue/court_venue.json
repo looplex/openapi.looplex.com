@@ -665,7 +665,35 @@
                             "conteudo": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Procedure_v2_1"
+                                "type": "object",
+                                "properties": {
+                                  "group": {
+                                    "type": "string",
+                                    "description": "**The group name**"
+                                  },
+                                  "groupId": {
+                                    "type": "integer",
+                                    "description": "**The group id**"
+                                  },
+                                  "children": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "subGroup": {
+                                          "type": "string",
+                                          "description": "**The subGroup name**"
+                                        },
+                                        "children": {
+                                          "type": "array",
+                                          "items": {
+                                            "$ref": "#/components/schemas/Procedure_v2_1"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -682,7 +710,35 @@
                             "Resources": {
                               "type": "array",
                               "items": {
-                                "$ref": "#/components/schemas/Procedure_v2_1"
+                                "type": "object",
+                                "properties": {
+                                  "group": {
+                                    "type": "string",
+                                    "description": "**The group name**"
+                                  },
+                                  "groupId": {
+                                    "type": "integer",
+                                    "description": "**The group id**"
+                                  },
+                                  "children": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "subGroup": {
+                                          "type": "string",
+                                          "description": "**The subGroup name**"
+                                        },
+                                        "children": {
+                                          "type": "array",
+                                          "items": {
+                                            "$ref": "#/components/schemas/Procedure_v2_1"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -868,18 +924,6 @@
         "title": "Procedure",
         "type": "object",
         "properties": {
-          "group": {
-            "type": "string",
-            "description": "**The group of this procedure**"
-          },
-          "groupId": {
-            "type": "integer",
-            "description": "**The group identifier**"
-          },
-          "subGroup": {
-            "type": "string",
-            "description": "**The subGroup of this procedure**"
-          },
           "procedureId": {
             "type": "integer",
             "description": "**The identifier of this procedure**"
