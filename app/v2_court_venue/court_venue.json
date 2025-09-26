@@ -834,6 +834,12 @@
           "custom_fields": {
             "type": "object",
             "description": "**Custom fields for this item**"
+          },
+          "filhos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Foro_v2_1"
+            }
           }
         }
       },
@@ -865,6 +871,10 @@
           "group": {
             "type": "string",
             "description": "**The group of this procedure**"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "**The group identifier**"
           },
           "subGroup": {
             "type": "string",

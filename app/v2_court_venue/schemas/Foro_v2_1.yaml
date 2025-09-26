@@ -40,3 +40,7 @@ properties:
   custom_fields:
     type: object
     description: "**Custom fields for this item**"
+  filhos:
+    type: array
+    items:
+      $ref: ../schemas/Foro_v2_1.yaml
