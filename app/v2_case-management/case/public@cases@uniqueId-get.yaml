@@ -5,7 +5,6 @@ summary: "/cases/:id"
 description: |
   **Retrieve information about a case**
 operationId: cases-case_id-get
-# Parâmetros da requisição
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml

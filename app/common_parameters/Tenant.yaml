@@ -1,6 +1,7 @@
 name: x-looplex-tenant
 in: header
 description: '**Client domain**'
+example: "{{client_domain}}"
 required: true
 schema:
   type: string

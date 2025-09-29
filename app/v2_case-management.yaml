@@ -1,6 +1,5 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
 openapi: 3.0.2
-security: []
 info:
   version: 1.31.0
   title: "Looplex Case Management"
@@ -125,17 +124,3 @@ paths:
   /caseGroups/:id:
     get:
       $ref: v2_case-management\case_groups\public@caseGroups@case_group_id-get.yaml
-
-components:
-  securitySchemes:
-    api_key:
-      type: apiKey
-      in: header
-      name: api_key
-    auth_token:
-      type: apiKey
-      in: header
-      name: auth_token
-    basic_auth:
-      type: http
-      scheme: basic

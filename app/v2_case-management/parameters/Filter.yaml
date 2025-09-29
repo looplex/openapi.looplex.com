@@ -7,3 +7,4 @@ description: |
   _Description_ _co_ _search_term_
 schema:
   type: string
+example: null

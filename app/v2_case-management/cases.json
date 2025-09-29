@@ -25,7 +25,6 @@
       "description": "Case Management Server"
     }
   ],
-  "security": [],
   "paths": {
     "/token": {
       "post": {
@@ -1684,27 +1683,12 @@
     }
   },
   "components": {
-    "securitySchemes": {
-      "api_key": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "api_key"
-      },
-      "auth_token": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "auth_token"
-      },
-      "basic_auth": {
-        "type": "http",
-        "scheme": "basic"
-      }
-    },
     "parameters": {
       "OcpApimSubscriptionKey": {
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
         "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
         "required": true,
         "schema": {
           "type": "string"
@@ -1714,6 +1698,7 @@
         "name": "x-looplex-tenant",
         "in": "header",
         "description": "**Client domain**",
+        "example": "{{client_domain}}",
         "required": true,
         "schema": {
           "type": "string"
@@ -1722,8 +1707,9 @@
       "BearerToken": {
         "name": "Authorization",
         "in": "header",
-        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "description": "**The authorization token**<br/>\n_Bearer \\<token_from_authentication_endpoint_response\\>_\n",
         "required": true,
+        "example": "Bearer {{token}}",
         "schema": {
           "type": "string"
         }
@@ -1765,7 +1751,8 @@
         "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
         "schema": {
           "type": "string"
-        }
+        },
+        "example": null
       }
     },
     "schemas": {
