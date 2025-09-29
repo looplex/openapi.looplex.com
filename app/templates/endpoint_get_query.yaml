@@ -14,9 +14,9 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
-  - $ref: ../parameters/StartIndex.yaml
-  - $ref: ../parameters/Count.yaml
-  - $ref: ../parameters/Filter.yaml
+  - $ref: ../../common_parameters/StartIndex.yaml
+  - $ref: ../../common_parameters/Count.yaml
+  - $ref: ../../common_parameters/Filter.yaml
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}

@@ -13,7 +13,7 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
-  - $ref: ../parameters/Id.yaml
+  - $ref: ../../common_parameters/Id.yaml
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}

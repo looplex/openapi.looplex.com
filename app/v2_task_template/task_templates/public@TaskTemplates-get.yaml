@@ -1,11 +1,15 @@
-# Linhas com # são comentários e podem ser removidas.
 tags:
-  - Case Management
-summary: "/cases"
-description: |
-  **Fetch cases paginated**
-operationId: cases-get
-# Parâmetros da requisição
+  - Task Templates
+
+# escolha um titulo
+# summary: "/{{TAG_NAME}}"
+summary: Task Template
+
+# escolha uma description
+description: "**Fetch items paginated**"
+# description: "{{DESCRIPTION}}"
+
+operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
@@ -13,9 +17,8 @@ parameters:
   - $ref: ../../common_parameters/StartIndex.yaml
   - $ref: ../../common_parameters/Count.yaml
   - $ref: ../../common_parameters/Filter.yaml
-# Responses
+
 responses:
-  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
   "200":
     description: "OK"
     content:
@@ -28,7 +31,7 @@ responses:
                 Resources:
                   type: array
                   items:
-                    $ref: "../schemas/CaseInfoEntity.yaml"
+                    $ref: ../schemas/TaskTemplateEntity.yaml
   "500":
     description: "Internal Server Error"
     content:

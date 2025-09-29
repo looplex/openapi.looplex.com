@@ -7,9 +7,9 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../parameters/StartIndex.yaml
-  - $ref: ../parameters/Count.yaml
-  - $ref: ../parameters/Filter.yaml
+  - $ref: ../../common_parameters/StartIndex.yaml
+  - $ref: ../../common_parameters/Count.yaml
+  - $ref: ../../common_parameters/Filter.yaml
 responses:
   "200":
       description: "OK"

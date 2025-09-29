@@ -50,14 +50,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -67,6 +60,75 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TaskTemplateEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TaskTemplates": {
+      "get": {
+        "tags": [
+          "Task Templates"
+        ],
+        "summary": "Task Template",
+        "description": "**Fetch items paginated**",
+        "operationId": {
+          "[object Object]": null
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "Resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TaskTemplateEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
                 }
               }
             }
@@ -94,6 +156,7 @@
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
         "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
         "required": true,
         "schema": {
           "type": "string"
@@ -103,6 +166,7 @@
         "name": "x-looplex-tenant",
         "in": "header",
         "description": "**Client domain**",
+        "example": "{{client_domain}}",
         "required": true,
         "schema": {
           "type": "string"
@@ -111,11 +175,52 @@
       "BearerToken": {
         "name": "Authorization",
         "in": "header",
-        "description": "**The authorization token**<br />\n**Example:**<br />`Bearer <token_from_authentication_endpoint_response>`\n",
+        "description": "**The authorization token**<br/>\n_Bearer \\<token_from_authentication_endpoint_response\\>_\n",
         "required": true,
+        "example": "Bearer {{token}}",
         "schema": {
           "type": "string"
         }
+      },
+      "Id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "**The item's unique identifier**",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": true,
+        "description": "**Index of search**",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+        "example": 50,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "in": "query",
+        "required": false,
+        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+        "schema": {
+          "type": "string"
+        },
+        "example": null
       }
     },
     "schemas": {
@@ -187,26 +292,16 @@
       },
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string",
-        "description": "**SCIM type error**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },
       "SCIMError": {
         "title": "SCIM Error",
         "type": "object",
         "properties": {
           "scimType": {
-            "description": "**The SCIM type if request is GET, otherwise null**",
-            "example": "invalidFilter",
-            "oneOf": [
-              {
-                "type": null,
-                "description": "**It is not a SCIM error**"
-              },
-              {
-                "$ref": "#/components/schemas/SCIMtypeError",
-                "description": "**The type of SCIM error**"
-              }
-            ]
+            "$ref": "#/components/schemas/SCIMtypeError"
           },
           "detail": {
             "type": "string",
@@ -217,6 +312,27 @@
             "type": "string",
             "description": "**The HTTP Status Code error name**",
             "example": "InternalServerError"
+          }
+        }
+      },
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
           }
         }
       }

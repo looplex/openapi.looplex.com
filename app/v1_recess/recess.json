@@ -108,6 +108,7 @@
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
         "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
         "required": true,
         "schema": {
           "type": "string"

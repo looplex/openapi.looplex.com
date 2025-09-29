@@ -786,6 +786,7 @@
         "name": "Ocp-Apim-Subscription-Key",
         "in": "header",
         "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
         "required": true,
         "schema": {
           "type": "string"
@@ -949,26 +950,16 @@
       },
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string",
-        "description": "**SCIM type error**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },
       "SCIMError": {
         "title": "SCIM Error",
         "type": "object",
         "properties": {
           "scimType": {
-            "description": "**The SCIM type if request is GET, otherwise null**",
-            "example": "invalidFilter",
-            "oneOf": [
-              {
-                "type": null,
-                "description": "**It is not a SCIM error**"
-              },
-              {
-                "$ref": "#/components/schemas/SCIMtypeError",
-                "description": "**The type of SCIM error**"
-              }
-            ]
+            "$ref": "#/components/schemas/SCIMtypeError"
           },
           "detail": {
             "type": "string",

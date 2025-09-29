@@ -1,4 +1,4 @@
-import { AntdRegistry } from '@ant-design/nextjs-registry'
+//import { AntdRegistry } from '@ant-design/nextjs-registry'
 
 export const metadata = {
   title: 'Looplex OpenAPI',
@@ -9,9 +9,9 @@ export default function RootLayout ({ children }) {
   return (
     <html lang='en'>
       <body>
-        <AntdRegistry>
+        {/* <AntdRegistry> */}
           {children}
-        </AntdRegistry>
+        {/* </AntdRegistry> */}
       </body>
     </html>
   )
