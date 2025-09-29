@@ -8,7 +8,7 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../parameters/Id.yaml
+  - $ref: ../../common_parameters/Id.yaml
 responses:
   "200":
     description: "OK"
