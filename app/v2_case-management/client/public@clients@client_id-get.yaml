@@ -1,24 +1,14 @@
 tags:
   - Client
-summary: "/clients/client_id"
-description: |
-  **Retrieve a client by id**
+summary: "/clients/:id"
+description: "**Retrieve a client by id**"
 operationId: clients-client_id-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # Utilizado em endpoint retrieve
-  - name: client_id
-    in: path
-    required: true
-    description: |
-      **The item's unique identifier**
-    schema:
-      type: string
-      format: uuid
+  - $ref: ../parameters/Id.yaml
 responses:
-  # Utilizado quando apenas um item for retornado
   "200":
       description: "OK"
       content:

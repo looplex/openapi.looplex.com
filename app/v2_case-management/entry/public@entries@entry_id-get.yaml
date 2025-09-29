@@ -1,6 +1,6 @@
 tags:
   - Entry
-summary: "/entries/:entry_id"
+summary: "/entries/:id"
 description: |
   **Retrieve an entry by id**
 operationId: entries-entry_id-get
@@ -8,12 +8,7 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - name: entry_id
-    in: path
-    required: true
-    description: "**The entry id**"
-    schema:
-      type: integer
+  - $ref: ../parameters/Id.yaml
 responses:
   "200":
     description: "OK"

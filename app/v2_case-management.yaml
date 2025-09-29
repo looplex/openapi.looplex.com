@@ -2,7 +2,7 @@
 openapi: 3.0.2
 security: []
 info:
-  version: 1.0.0
+  version: 1.31.0
   title: "Looplex Case Management"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
@@ -28,7 +28,7 @@ paths:
       $ref: v2_case-management\authentication\public@token-post.yaml
   
   # Case
-  /cases/:case_id:
+  /cases/:id:
     get:
       $ref: v2_case-management\case\public@cases@uniqueId-get.yaml
     patch:
@@ -40,7 +40,7 @@ paths:
       $ref: v2_case-management\case\public@cases-post.yaml
 
   # Entry
-  /entries/:entry_id:
+  /entries/:id:
     get:
       $ref: v2_case-management\entry\public@entries@entry_id-get.yaml
     patch:
@@ -67,7 +67,7 @@ paths:
       $ref: v2_case-management\client\public@clients-get.yaml
     post:
       $ref: v2_case-management\client\public@clients-post.yaml
-  /clients/:client_id:
+  /clients/:id:
     get:
       $ref: v2_case-management\client\public@clients@client_id-get.yaml
 
@@ -84,7 +84,7 @@ paths:
       $ref: v2_case-management\participant\public@participants-post.yaml
     get:
       $ref: v2_case-management\participant\public@participants-get.yaml
-  /participants/participant_id:
+  /participants/:id:
     get:
       $ref: v2_case-management\participant\public@participants@participant_id-get.yaml
 
@@ -94,7 +94,7 @@ paths:
       $ref: v2_case-management\legal_category\public@legalCategories-get.yaml
     post:
       $ref: v2_case-management\legal_category\public@legalCategories-post.yaml
-  /legalCategories/legalCategory_id:
+  /legalCategories/:id:
     get:
       $ref: v2_case-management\legal_category\public@legalCategories@legalCategory_id-get.yaml
 
@@ -102,7 +102,7 @@ paths:
   /employees:
     get:
       $ref: v2_case-management\employee\public@Employees-get.yaml
-  /employees/:employee_id:
+  /employees/:id:
     get:
       $ref: v2_case-management\employee\public@employees@employee_id-get.yaml
 
@@ -112,7 +112,7 @@ paths:
       $ref: v2_case-management\claim\public@claims-get.yaml
     post:
       $ref: v2_case-management\claim\public@claims-post.yaml
-  /claim/claim_id:
+  /claim/:id:
     get:
       $ref: v2_case-management\claim\public@claims@claim_id-get.yaml
     patch:
@@ -122,7 +122,7 @@ paths:
   /caseGroups:
     get:
       $ref: v2_case-management\case_groups\public@caseGroups-get.yaml
-  /caseGroups/:case_group_id:
+  /caseGroups/:id:
     get:
       $ref: v2_case-management\case_groups\public@caseGroups@case_group_id-get.yaml
 

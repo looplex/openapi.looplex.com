@@ -1,40 +1,15 @@
 tags:
   - Client
 summary: "/clients"
-description: |
-  **Fetch clients paginated**
+description: "**Fetch clients paginated**"
 operationId: clients-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # utilizado em endpoint query
-  - name: startIndex
-    in: query
-    required: true
-    description: |
-      **Index of search**<br />
-    example: 1
-    schema:
-      type: integer
-  - name: count
-    in: query
-    required: true
-    description: |
-      **Total count of items to return**<br />
-      `Max of 120`
-    example: 50
-    schema:
-      type: integer
-  - name: filter
-    in: query
-    required: false
-    description: |
-      **SCIM filter to search**<br />
-      **e.g:**<br />
-      _Name_ _co_ _search_term_
-    schema:
-      type: string
+  - $ref: ../parameters/StartIndex.yaml
+  - $ref: ../parameters/Count.yaml
+  - $ref: ../parameters/Filter.yaml
 responses:
   "200":
     description: "OK"

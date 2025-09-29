@@ -13,13 +13,7 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
-  - name: id
-    in: path
-    required: true
-    description: "**The item's unique identifier**"
-    schema:
-      type: string
-      format: uuid
+  - $ref: ../parameters/Id.yaml
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}

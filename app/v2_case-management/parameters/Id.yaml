@@ -1,0 +1,7 @@
+name: id
+in: path
+required: true
+description: "**The item's unique identifier**"
+schema:
+  type: string
+  format: uuid

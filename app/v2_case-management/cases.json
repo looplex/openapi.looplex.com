@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "version": "1.0.0",
+    "version": "1.31.0",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -107,12 +107,12 @@
         }
       }
     },
-    "/cases/:case_id": {
+    "/cases/:id": {
       "get": {
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases/:case_id",
+        "summary": "/cases/:id",
         "description": "**Retrieve information about a case**\n",
         "operationId": "cases-case_id-get",
         "parameters": [
@@ -126,14 +126,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "case_id",
-            "in": "path",
-            "required": true,
-            "description": "**Case id**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -163,7 +156,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases/:case_id",
+        "summary": "/cases/:id",
         "description": "**Patch case properties**",
         "operationId": "cases-patch-patch",
         "parameters": [
@@ -177,14 +170,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "requestBody": {
@@ -242,33 +228,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Title_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -353,12 +319,12 @@
         }
       }
     },
-    "/entries/:entry_id": {
+    "/entries/:id": {
       "get": {
         "tags": [
           "Entry"
         ],
-        "summary": "/entries/:entry_id",
+        "summary": "/entries/:id",
         "description": "**Retrieve an entry by id**\n",
         "operationId": "entries-entry_id-get",
         "parameters": [
@@ -372,13 +338,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "entry_id",
-            "in": "path",
-            "required": true,
-            "description": "**The entry id**",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -408,7 +368,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/entries/:entry_id",
+        "summary": "/entries/:id",
         "description": "**Patch Entry**",
         "operationId": "entries-id-patch",
         "parameters": [
@@ -422,14 +382,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "requestBody": {
@@ -480,31 +433,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -608,33 +543,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**<br />\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -724,7 +639,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/timesheets/:timesheet_id",
+        "summary": "/timesheets/:id",
         "description": "**Retrieve a timesheet by id**\n",
         "operationId": "timesheets-id-get",
         "parameters": [
@@ -738,14 +653,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -778,7 +686,7 @@
           "Client"
         ],
         "summary": "/clients",
-        "description": "**Fetch clients paginated**\n",
+        "description": "**Fetch clients paginated**",
         "operationId": "clients-get",
         "parameters": [
           {
@@ -791,33 +699,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**<br />\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Name_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -902,13 +790,13 @@
         }
       }
     },
-    "/clients/:client_id": {
+    "/clients/:id": {
       "get": {
         "tags": [
           "Client"
         ],
-        "summary": "/clients/client_id",
-        "description": "**Retrieve a client by id**\n",
+        "summary": "/clients/:id",
+        "description": "**Retrieve a client by id**",
         "operationId": "clients-client_id-get",
         "parameters": [
           {
@@ -921,14 +809,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "client_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**\n",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1004,7 +885,7 @@
           "Legal service agreement"
         ],
         "summary": "/legalServiceAgreements",
-        "description": "**Fetch items paginated**\n",
+        "description": "**Fetch items paginated**",
         "operationId": "legalServiceAgreement-get",
         "parameters": [
           {
@@ -1017,24 +898,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**<br />\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1145,33 +1015,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1213,12 +1063,12 @@
         }
       }
     },
-    "/participants/participant_id": {
+    "/participants/:id": {
       "get": {
         "tags": [
           "Participant"
         ],
-        "summary": "/participants/participant_id",
+        "summary": "/participants/:id",
         "description": "**Retrieve a participant by id**",
         "operationId": "participants-participant_id-get",
         "parameters": [
@@ -1232,14 +1082,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1272,7 +1115,7 @@
           "Legal category"
         ],
         "summary": "/legalCategories",
-        "description": "**Fetch items paginated**\n",
+        "description": "**Fetch items paginated**",
         "operationId": "legalCategories-get",
         "parameters": [
           {
@@ -1285,33 +1128,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**<br />\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1396,12 +1219,12 @@
         }
       }
     },
-    "/legalCategories/legalCategory_id": {
+    "/legalCategories/:id": {
       "get": {
         "tags": [
           "Legal category"
         ],
-        "summary": "/legalCategories/:legalCategory_id",
+        "summary": "/legalCategories/:id",
         "description": "**Retrieve a legal category by id**\n",
         "operationId": "legalCategories-legalCategory_id-get",
         "parameters": [
@@ -1415,14 +1238,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "legalCategory_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**\n",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1455,7 +1271,7 @@
           "Employee"
         ],
         "summary": "/employees",
-        "description": "**Fetch items paginated**\n",
+        "description": "**Fetch items paginated**",
         "operationId": "Employees-get",
         "parameters": [
           {
@@ -1468,33 +1284,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**<br />\n",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1536,12 +1332,12 @@
         }
       }
     },
-    "/employees/:employee_id": {
+    "/employees/:id": {
       "get": {
         "tags": [
           "Employee"
         ],
-        "summary": "/employees/:employee_id",
+        "summary": "/employees/:id",
         "description": "**Retrieve an employee by id**",
         "operationId": "employees-employee_id-get",
         "parameters": [
@@ -1555,14 +1351,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "employee_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1608,33 +1397,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": true,
-            "description": "**SCIM filter to search**<br />\n**e.g:** _CaseId_ _eq_ \"_\\<case-unique-identifier\\>_\"\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1719,12 +1488,12 @@
         }
       }
     },
-    "/claim/claim_id": {
+    "/claim/:id": {
       "get": {
         "tags": [
           "Claim"
         ],
-        "summary": "/claims/claim_id",
+        "summary": "/claims/:id",
         "description": "**Retrieve a claim by id**",
         "operationId": "claims-claim_id-get",
         "parameters": [
@@ -1738,14 +1507,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "claim_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1775,7 +1537,7 @@
         "tags": [
           "Claim"
         ],
-        "summary": "/claims/:claim_id",
+        "summary": "/claims/:id",
         "description": "**Patch claim property**",
         "operationId": "claims-claim_id-patch",
         "parameters": [
@@ -1789,14 +1551,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "claim_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "requestBody": {
@@ -1847,33 +1602,13 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "startIndex",
-            "in": "query",
-            "required": true,
-            "description": "**Index of search**",
-            "example": 1,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "name": "count",
-            "in": "query",
-            "required": true,
-            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-            "example": 50,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/Count"
           },
           {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_PropertyName_ _co_ _search_term_\n",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/Filter"
           }
         ],
         "responses": {
@@ -1908,14 +1643,14 @@
         }
       }
     },
-    "/caseGroups/:case_group_id": {
+    "/caseGroups/:id": {
       "get": {
         "tags": [
           "Case Group"
         ],
-        "summary": "/caseGroups/:case_group_id",
+        "summary": "/caseGroups/:id",
         "description": "**Retrieve a Case Group by id**",
-        "operationId": "caseGroups-case_group_id-get",
+        "operationId": "caseGroups-caseGroup_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1927,14 +1662,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "name": "case_group_id",
-            "in": "path",
-            "required": true,
-            "description": "**The item's unique identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -1999,31 +1727,60 @@
         "schema": {
           "type": "string"
         }
+      },
+      "Id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "**The item's unique identifier**",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": true,
+        "description": "**Index of search**",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+        "example": 50,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "in": "query",
+        "required": false,
+        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+        "schema": {
+          "type": "string"
+        }
       }
     },
     "schemas": {
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string",
-        "description": "**SCIM type error**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },
       "SCIMError": {
         "title": "SCIM Error",
         "type": "object",
         "properties": {
           "scimType": {
-            "description": "**The SCIM type if request is GET, otherwise null**",
-            "example": "invalidFilter",
-            "oneOf": [
-              {
-                "type": null,
-                "description": "**It is not a SCIM error**"
-              },
-              {
-                "$ref": "#/components/schemas/SCIMtypeError",
-                "description": "**The type of SCIM error**"
-              }
-            ]
+            "$ref": "#/components/schemas/SCIMtypeError"
           },
           "detail": {
             "type": "string",

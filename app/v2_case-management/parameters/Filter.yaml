@@ -1,0 +1,9 @@
+name: filter
+in: query
+required: false
+description: |
+  **SCIM filter to search**<br />
+  **e.g:**<br />
+  _Description_ _co_ _search_term_
+schema:
+  type: string

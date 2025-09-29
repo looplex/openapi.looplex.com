@@ -1,6 +1,6 @@
 tags:
   - Timesheet
-summary: "/timesheets/:timesheet_id"
+summary: "/timesheets/:id"
 description: |
   **Retrieve a timesheet by id**
 operationId: timesheets-id-get
@@ -8,13 +8,7 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - name: id
-    in: path
-    required: true
-    description: "**The item's unique identifier**"
-    schema:
-      type: string
-      format: uuid
+  - $ref: ../parameters/Id.yaml
 responses:
   "200":
     description: "OK"

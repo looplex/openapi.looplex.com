@@ -1,0 +1,9 @@
+name: count
+in: query
+required: true
+description: |
+  **Total count of items to return**<br />
+  `Max of 120`
+example: 50
+schema:
+  type: integer

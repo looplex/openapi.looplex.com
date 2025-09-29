@@ -1,24 +1,13 @@
 tags:
   - Case Management
-
-summary: "/cases/:case_id"
-# summary: ""
-
+summary: "/cases/:id"
 description: "**Patch case properties**"
-# description: ****
-
 operationId: cases-patch-patch
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - name: id
-    in: path
-    required: true
-    description: "**The item's unique identifier**"
-    schema:
-      type: string
-      format: uuid
+  - $ref: ../parameters/Id.yaml
 requestBody:
   content:
     application/json:

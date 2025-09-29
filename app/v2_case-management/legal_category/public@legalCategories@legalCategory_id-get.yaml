@@ -1,6 +1,6 @@
 tags:
   - Legal category
-summary: "/legalCategories/:legalCategory_id"
+summary: "/legalCategories/:id"
 description: |
   **Retrieve a legal category by id**
 operationId: legalCategories-legalCategory_id-get
@@ -8,17 +8,8 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # endpoint retrieve
-  - name: legalCategory_id
-    in: path
-    required: true
-    description: |
-      **The item's unique identifier**
-    schema:
-      type: string
-      format: uuid
+  - $ref: ../parameters/Id.yaml
 responses:
-  # Utilizado quando apenas um item for retornado
   "200":
       description: "OK"
       content:

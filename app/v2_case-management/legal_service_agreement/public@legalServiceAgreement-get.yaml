@@ -1,31 +1,15 @@
 tags:
   - Legal service agreement
 summary: "/legalServiceAgreements"
-description: |
-  **Fetch items paginated**
+description: "**Fetch items paginated**"
 operationId: legalServiceAgreement-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # utilizado em endpoint query
-  - name: startIndex
-    in: query
-    required: true
-    description: |
-      **Index of search**<br />
-    example: 1
-    schema:
-      type: integer
-  - name: count
-    in: query
-    required: true
-    description: |
-      **Total count of items to return**<br />
-      `Max of 120`
-    example: 50
-    schema:
-      type: integer
+  - $ref: ../parameters/StartIndex.yaml
+  - $ref: ../parameters/Count.yaml
+  - $ref: ../parameters/Filter.yaml
 responses:
   "200":
     description: "OK"

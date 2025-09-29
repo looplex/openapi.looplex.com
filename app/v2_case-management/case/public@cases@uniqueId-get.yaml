@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
-summary: "/cases/:case_id"
+summary: "/cases/:id"
 description: |
   **Retrieve information about a case**
 operationId: cases-case_id-get
@@ -10,17 +10,8 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  - name: case_id
-    in: path
-    required: true
-    description: "**Case id**"
-    schema:
-      type: string
-      format: uuid
-# Responses
+  - $ref: ../parameters/Id.yaml
 responses:
-  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
-  # Preencha o path do schema de retorno '<response_dto_relative_path_and_name>'
   "200":
     description: "OK"
     content:

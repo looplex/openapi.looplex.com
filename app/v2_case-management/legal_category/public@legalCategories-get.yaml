@@ -1,44 +1,16 @@
 tags:
   - Legal category
 summary: "/legalCategories"
-description: |
-  **Fetch items paginated**
+description: "**Fetch items paginated**"
 operationId: legalCategories-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
   - $ref: ../../common_parameters/BearerToken.yaml
-  # endpoint query
-  - name: startIndex
-    in: query
-    required: true
-    description: |
-      **Index of search**<br />
-    example: 1
-    schema:
-      type: integer
-  - name: count
-    in: query
-    required: true
-    description: |
-      **Total count of items to return**<br />
-      `Max of 120`
-    example: 50
-    schema:
-      type: integer
-  - name: filter
-    in: query
-    required: false
-    description: |
-      **SCIM filter to search**<br />
-      **e.g:**<br />
-      _PropertyName_ _co_ _search_term_
-    schema:
-      type: string
-
+  - $ref: ../parameters/StartIndex.yaml
+  - $ref: ../parameters/Count.yaml
+  - $ref: ../parameters/Filter.yaml
 responses:
-  # Deixar apenas 1 resposta 200 OK
-  # Utilizado quando um array for retornado
   "200":
       description: "OK"
       content:

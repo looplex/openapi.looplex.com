@@ -1,7 +1,8 @@
 title: SCIM Type error
-type: string
+type: string <nullable>
+example: invalidFilter
 description: |
-  **SCIM type error**<br/>
+  **The type of SCIM error if request is GET, otherwise null**<br/>
   invalidFilter<br/>
   tooMany<br/>
   uniqueness<br/>
