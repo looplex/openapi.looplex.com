@@ -48,17 +48,20 @@
                   "grant_type": {
                     "type": "string",
                     "required": true,
-                    "description": "**The grant type**"
+                    "example": "urn:ietf:params:oauth:grant-type:token-exchange",
+                    "description": "**The grant type**<br/>\n_e.g. urn:ietf:params:oauth:grant-type:token-exchange_\n"
                   },
                   "subject_token": {
                     "type": "string",
                     "required": true,
+                    "example": "{{access_token}}",
                     "description": "**The access token returned by the identity provider**"
                   },
                   "subject_token_type": {
                     "type": "string",
                     "required": true,
-                    "description": "**The token type**"
+                    "example": "urn:ietf:params:oauth:token-type:access_token",
+                    "description": "**The token type**<br/>\n_e.g. urn:ietf:params:oauth:token-type:access_token_\n"
                   }
                 },
                 "required": [
@@ -66,11 +69,6 @@
                   "subject_token",
                   "subject_token_type"
                 ]
-              },
-              "example": {
-                "grant_type": "urn:ietf:params:oauth:grant-type:token-exchange",
-                "subject_token": "access_token_example",
-                "subject_token_type": "urn:ietf:params:oauth:token-type:access_token"
               }
             }
           }
