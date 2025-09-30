@@ -12,7 +12,7 @@ example: {
 properties:
   value:
     type: string
-    description: "**Phone number of the User**"
+    description: "**Phone number**"
   type:
     $ref: ../enums/TipoDeTelefone.yaml
   primary:

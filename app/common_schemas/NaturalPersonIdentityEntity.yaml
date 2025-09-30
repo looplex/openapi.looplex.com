@@ -3,7 +3,7 @@ type: object
 example: {
   Id: null,
   IdentityProviderType: "CPF",
-  Value: "DDD.DDD.DDD-DD"
+  Value: "ddd.ddd.ddd-dd"
 }
 properties:
   Id:

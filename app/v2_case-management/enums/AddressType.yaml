@@ -1,7 +1,8 @@
-title: AddressType
+title: Address' type
 type: string
 example: work
 description: |
+  **Address' type**<br/>
   home<br/>
   work<br/>
   other<br/>

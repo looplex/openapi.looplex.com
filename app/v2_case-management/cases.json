@@ -1982,7 +1982,7 @@
         "example": {
           "Id": null,
           "IdentityProviderType": "CPF",
-          "Value": "DDD.DDD.DDD-DD"
+          "Value": "ddd.ddd.ddd-dd"
         },
         "properties": {
           "Id": {
@@ -2058,18 +2058,19 @@
         ]
       },
       "TipoPessoa": {
-        "title": "TipoPessoa",
+        "title": "Person's type",
         "type": "string",
-        "description": "**The client type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+        "example": "NATURAL_PERSON",
+        "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
       "AddressType": {
-        "title": "AddressType",
+        "title": "Address' type",
         "type": "string",
         "example": "work",
-        "description": "home<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
+        "description": "**Address' type**<br/>\nhome<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
       },
       "AddressEntity": {
-        "title": "Endereço",
+        "title": "Address",
         "type": "object",
         "allOf": [
           {
@@ -2085,31 +2086,38 @@
               },
               "postalCode": {
                 "type": "string <nullable>",
-                "example": "00000-000"
+                "example": "00000-000",
+                "description": "**Postal code**"
               },
               "streetAddress": {
+                "type": "string",
                 "example": "Avenida exemplo",
-                "type": "string"
+                "description": "**Street**"
               },
               "streetAddressNumber": {
                 "type": "string <nullable>",
-                "example": "10"
+                "example": "10",
+                "description": "**Street number**"
               },
               "pobox": {
                 "type": "string <nullable>",
-                "example": null
+                "example": null,
+                "description": "**PO box**"
               },
               "locality": {
                 "type": "string <nullable>",
-                "example": "SP"
+                "example": "SP",
+                "description": "**State**"
               },
               "region": {
                 "type": "string <nullable>",
-                "example": "São Paulo"
+                "example": "São Paulo",
+                "description": "**City**"
               },
               "neighborhood": {
                 "type": "string <nullable>",
-                "example": "Centro"
+                "example": "Centro",
+                "description": "**Neighborhood**"
               },
               "complement": {
                 "type": "string",
@@ -2121,11 +2129,11 @@
               "primary": {
                 "type": "boolean",
                 "example": true,
-                "description": "**Se é o endereço principal**"
+                "description": "**Is this the main address?**"
               },
               "customFields": {
                 "type": "object",
-                "description": "**Custom fields for this address**"
+                "description": "**Address' custom fields**"
               }
             }
           }
@@ -2156,6 +2164,7 @@
       "TipoDeTelefone": {
         "title": "Tipo de telefone",
         "type": "string",
+        "example": "work",
         "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother\n"
       },
       "PhoneNumberEntity": {
@@ -2173,7 +2182,7 @@
         "properties": {
           "value": {
             "type": "string",
-            "description": "**Phone number of the User**"
+            "description": "**Phone number**"
           },
           "type": {
             "$ref": "#/components/schemas/TipoDeTelefone"
@@ -2291,7 +2300,7 @@
         "title": "Gender",
         "type": "string <nullable>",
         "example": null,
-        "description": "FEMALE<br/>\nMALE\n"
+        "description": "**Gender**<br/>\nFEMALE<br/>\nMALE\n"
       },
       "MaritalStatus": {
         "title": "Marital status",
@@ -3124,7 +3133,7 @@
           },
           "nickName": {
             "type": "string",
-            "example": "Example",
+            "example": "Example nickname",
             "description": "**Client's nickname**"
           },
           "type": {
@@ -3143,12 +3152,13 @@
           "comments": {
             "type": "string <nullable>",
             "description": "**Comments about the client**",
-            "example": null
+            "example": "Comments"
           },
           "dob": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Client's date of birth (available when NATURAL_PERSON)**"
+            "description": "**Client's date of birth (available when NATURAL_PERSON)**",
+            "example": "2025-01-01T12:00:00.000Z"
           },
           "gender": {
             "$ref": "#/components/schemas/Gender",
@@ -3405,7 +3415,7 @@
         }
       },
       "LegalPersonIdentityEntityWrite": {
-        "title": "Identidade",
+        "title": "Identity (LEGAL_PERSON)",
         "type": "object",
         "example": {
           "identityProviderType": "CNPJ",
@@ -3426,11 +3436,11 @@
         ]
       },
       "NaturalPersonIdentityEntityWrite": {
-        "title": "Identidade",
+        "title": "Identity (NATURAL_PERSON)",
         "type": "object",
         "example": {
           "identityProviderType": "CPF",
-          "value": "DDD.DDD.DDD-DD"
+          "value": "ddd.ddd.ddd-dd"
         },
         "properties": {
           "identityProviderType": {
@@ -4127,7 +4137,7 @@
         }
       },
       "AddressEntityWrite": {
-        "title": "Endereço",
+        "title": "Address",
         "type": "object",
         "properties": {
           "country": {
@@ -4137,31 +4147,38 @@
           },
           "postalCode": {
             "type": "string <nullable>",
-            "example": "00000-000"
+            "example": "00000-000",
+            "description": "**Postal code**"
           },
           "streetAddress": {
+            "type": "string",
             "example": "Avenida exemplo",
-            "type": "string"
+            "description": "**Street**"
           },
           "streetAddressNumber": {
             "type": "string <nullable>",
-            "example": "10"
+            "example": "10",
+            "description": "**Street number**"
           },
           "pobox": {
             "type": "string <nullable>",
-            "example": null
+            "example": null,
+            "description": "**PO box**"
           },
           "locality": {
             "type": "string <nullable>",
-            "example": "SP"
+            "example": "SP",
+            "description": "**State**"
           },
           "region": {
             "type": "string <nullable>",
-            "example": "São Paulo"
+            "example": "São Paulo",
+            "description": "**City**"
           },
           "neighborhood": {
             "type": "string <nullable>",
-            "example": "Centro"
+            "example": "Centro",
+            "description": "**Neighborhood**"
           },
           "complement": {
             "type": "string",
@@ -4173,11 +4190,11 @@
           "primary": {
             "type": "boolean",
             "example": true,
-            "description": "**Se é o endereço principal**"
+            "description": "**Is this the main address?**"
           },
           "customFields": {
             "type": "object",
-            "description": "**Custom fields for this address**"
+            "description": "**Address' custom fields**"
           }
         },
         "required": [
@@ -4196,7 +4213,7 @@
           },
           "nickName": {
             "type": "string",
-            "example": "Example",
+            "example": "Example nickname",
             "description": "**Client's nickname**"
           },
           "type": {
@@ -4215,12 +4232,13 @@
           "comments": {
             "type": "string <nullable>",
             "description": "**Comments about the client**",
-            "example": null
+            "example": "Comments"
           },
           "dob": {
             "type": "string <nullable>",
             "format": "datetime",
-            "description": "**Client's date of birth (available when NATURAL_PERSON)**"
+            "description": "**Client's date of birth (available when NATURAL_PERSON)**",
+            "example": "2025-01-01T12:00:00.000Z"
           },
           "gender": {
             "$ref": "#/components/schemas/Gender",

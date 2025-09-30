@@ -12,7 +12,7 @@ properties:
     description: "**Client's name**"
   nickName:
     type: string
-    example: "Example"
+    example: "Example nickname"
     description: "**Client's nickname**"
   type:
     $ref: ../enums/TipoPessoa.yaml
@@ -27,11 +27,12 @@ properties:
   comments:
     type: string <nullable>
     description: "**Comments about the client**"
-    example: null
+    example: "Comments"
   dob:
     type: string <nullable>
     format: datetime
     description: "**Client's date of birth (available when NATURAL_PERSON)**"
+    example: "2025-01-01T12:00:00.000Z"
   gender:
     $ref: ../enums/Gender.yaml
     description: "**Client's gender (available when NATURAL_PERSON)**"

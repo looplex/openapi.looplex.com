@@ -1,4 +1,4 @@
-title: Identidade
+title: Identity (LEGAL_PERSON)
 type: object
 example: {
   identityProviderType: "CNPJ",

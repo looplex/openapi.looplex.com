@@ -1,4 +1,4 @@
-title: Endereço
+title: Address
 type: object
 allOf:
   - $ref: ../../scim/Resource.yaml
@@ -11,24 +11,31 @@ allOf:
       postalCode:
         type: string <nullable>
         example: "00000-000"
+        description: "**Postal code**"
       streetAddress:
-        example: "Avenida exemplo"
         type: string
+        example: "Avenida exemplo"
+        description: "**Street**"
       streetAddressNumber:
         type: string <nullable>
         example: "10"
+        description: "**Street number**"
       pobox:
         type: string <nullable>
         example: null
+        description: "**PO box**"
       locality:
         type: string <nullable>
         example: "SP"
+        description: "**State**"
       region:
         type: string <nullable>
         example: "São Paulo"
+        description: "**City**"
       neighborhood:
         type: string <nullable>
         example: "Centro"
+        description: "**Neighborhood**"
       complement:
         type: string
         description: "**Address' complement**"
@@ -37,7 +44,7 @@ allOf:
       primary:
         type: boolean
         example: true
-        description: "**Se é o endereço principal**"
+        description: "**Is this the main address?**"
       customFields:
         type: object
-        description: "**Custom fields for this address**"
+        description: "**Address' custom fields**"

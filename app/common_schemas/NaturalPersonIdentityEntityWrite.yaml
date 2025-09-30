@@ -1,8 +1,8 @@
-title: Identidade
+title: Identity (NATURAL_PERSON)
 type: object
 example: {
   identityProviderType: "CPF",
-  value: "DDD.DDD.DDD-DD"
+  value: "ddd.ddd.ddd-dd"
 }
 properties:
   identityProviderType:
