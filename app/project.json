@@ -498,7 +498,7 @@
         "path_parameters": "common_parameters",
         "path_enums": "app/v2_task_template/enums",
         "path_routes": "app/v2_task_template",
-        "path_http_responses": "/http_responses",
+        "path_http_responses": "/app/http_responses",
         "tags": [
           {
             "option": 1,
