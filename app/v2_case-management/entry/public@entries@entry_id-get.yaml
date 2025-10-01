@@ -1,6 +1,6 @@
 tags:
   - Entry
-summary: "/entries/:id"
+summary: "/Entries/:id"
 description: |
   **Retrieve an entry by id**
 operationId: entries-entry_id-get

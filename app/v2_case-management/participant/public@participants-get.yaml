@@ -1,6 +1,6 @@
 tags:
   - Participant
-summary: "/participants"
+summary: "/Participants"
 description: "**Fetch items paginated**"
 operationId: participants-get
 parameters:

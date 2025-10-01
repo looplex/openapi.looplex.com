@@ -1,7 +1,7 @@
 # Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
-summary: "/cases"
+summary: "/Cases"
 description: |
   **Fetch cases paginated**
 operationId: cases-get

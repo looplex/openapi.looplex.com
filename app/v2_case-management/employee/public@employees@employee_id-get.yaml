@@ -1,6 +1,6 @@
 tags:
   - Employee
-summary: "/employees/:id"
+summary: "/Employees/:id"
 description: "**Retrieve an employee by id**" # retrieve
 operationId: employees-employee_id-get
 parameters:

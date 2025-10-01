@@ -1,6 +1,6 @@
 tags:
   - Timesheet
-summary: "/timesheets"
+summary: "/Timesheets"
 description: |
   **Create timesheet**<br />
   Item created's guid is returned in **Location header**

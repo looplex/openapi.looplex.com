@@ -69,6 +69,8 @@ paths:
   /clients/:id:
     get:
       $ref: v2_case-management\client\public@clients@client_id-get.yaml
+    patch:
+      $ref: v2_case-management\client\public@clients-patch.yaml
 
   # Legal service agreement
   /legalServiceAgreements:

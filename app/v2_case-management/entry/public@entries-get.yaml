@@ -1,6 +1,6 @@
 tags:
   - Entry
-summary: "/entries"
+summary: "/Entries"
 description: |
   **Fetch entries paginated**
 operationId: entries-get

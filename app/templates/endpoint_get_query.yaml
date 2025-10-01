@@ -1,12 +1,10 @@
 tags:
   - {{TAG_NAME}}
 
-# escolha um titulo
-# summary: "/{{TAG_NAME}}"
+summary: "/{{TAG_NAME}}s"
 # summary: {{TITLE}}
 
-# escolha uma description
-# description: "**Fetch items paginated**"
+description: "**Fetch items paginated**"
 # description: "{{DESCRIPTION}}"
 
 operationId: {{OPERATION_ID}}

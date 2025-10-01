@@ -1,6 +1,6 @@
 tags:
   - Claim
-summary: "/claims/:id"
+summary: "/Claims/:id"
 description: "**Retrieve a claim by id**"
 operationId: claims-claim_id-get
 parameters:

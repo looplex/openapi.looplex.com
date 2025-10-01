@@ -1,6 +1,6 @@
 tags:
   - Claim
-summary: "/claims/:id"
+summary: "/Claims/:id"
 description: "**Patch claim property**"
 operationId: claims-claim_id-patch
 parameters:

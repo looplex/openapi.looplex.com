@@ -109,7 +109,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases/:id",
+        "summary": "/Cases/:id",
         "description": "**Retrieve information about a case**\n",
         "operationId": "cases-case_id-get",
         "parameters": [
@@ -153,7 +153,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases/:id",
+        "summary": "/Cases/:id",
         "description": "**Patch case properties**",
         "operationId": "cases-patch-patch",
         "parameters": [
@@ -211,7 +211,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases",
+        "summary": "/Cases",
         "description": "**Fetch cases paginated**\n",
         "operationId": "cases-get",
         "parameters": [
@@ -276,7 +276,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/cases",
+        "summary": "/Cases",
         "description": "**Create a new case**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "cases-post",
         "parameters": [
@@ -321,7 +321,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/entries/:id",
+        "summary": "/Entries/:id",
         "description": "**Retrieve an entry by id**\n",
         "operationId": "entries-entry_id-get",
         "parameters": [
@@ -365,7 +365,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/entries/:id",
+        "summary": "/Entries/:id",
         "description": "**Patch Entry**",
         "operationId": "entries-id-patch",
         "parameters": [
@@ -416,7 +416,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/entries",
+        "summary": "/Entries",
         "description": "**Fetch entries paginated**\n",
         "operationId": "entries-get",
         "parameters": [
@@ -481,7 +481,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/entries",
+        "summary": "/Entries",
         "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "entries-post",
         "parameters": [
@@ -526,7 +526,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/timesheets",
+        "summary": "/Timesheets",
         "description": "**Fetch timesheets paginated**\n",
         "operationId": "timesheets-get",
         "parameters": [
@@ -591,7 +591,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/timesheets",
+        "summary": "/Timesheets",
         "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "timesheets-post",
         "parameters": [
@@ -636,7 +636,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/timesheets/:id",
+        "summary": "/Timesheets/:id",
         "description": "**Retrieve a timesheet by id**\n",
         "operationId": "timesheets-id-get",
         "parameters": [
@@ -682,7 +682,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/clients",
+        "summary": "/Clients",
         "description": "**Fetch clients paginated**",
         "operationId": "clients-get",
         "parameters": [
@@ -747,7 +747,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/clients",
+        "summary": "/Clients",
         "description": "**Create a client**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "clients-post",
         "parameters": [
@@ -792,7 +792,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/clients/:id",
+        "summary": "/Clients/:id",
         "description": "**Retrieve a client by id**",
         "operationId": "clients-client_id-get",
         "parameters": [
@@ -831,6 +831,62 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Client"
+        ],
+        "summary": "/Clients/:id",
+        "description": "**Patch Client**",
+        "operationId": "clients-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/legalServiceAgreements": {
@@ -838,7 +894,7 @@
         "tags": [
           "Legal service agreement"
         ],
-        "summary": "/legalServiceAgreements",
+        "summary": "/LegalServiceAgreements",
         "description": "**Create Legal service agreement**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "LegalServiceAgreement-post",
         "parameters": [
@@ -881,7 +937,7 @@
         "tags": [
           "Legal service agreement"
         ],
-        "summary": "/legalServiceAgreements",
+        "summary": "/LegalServiceAgreements",
         "description": "**Fetch items paginated**",
         "operationId": "legalServiceAgreement-get",
         "parameters": [
@@ -948,7 +1004,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/participants",
+        "summary": "/Participants",
         "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "participants-post",
         "parameters": [
@@ -998,7 +1054,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/participants",
+        "summary": "/Participants",
         "description": "**Fetch items paginated**",
         "operationId": "participants-get",
         "parameters": [
@@ -1065,7 +1121,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/participants/:id",
+        "summary": "/Participants/:id",
         "description": "**Retrieve a participant by id**",
         "operationId": "participants-participant_id-get",
         "parameters": [
@@ -1111,7 +1167,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/legalCategories",
+        "summary": "/LegalCategories",
         "description": "**Fetch items paginated**",
         "operationId": "legalCategories-get",
         "parameters": [
@@ -1176,7 +1232,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/legalCategories",
+        "summary": "/LegalCategories",
         "description": "**Create legal category**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "legalCategories-post",
         "parameters": [
@@ -1221,7 +1277,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/legalCategories/:id",
+        "summary": "/LegalCategories/:id",
         "description": "**Retrieve a legal category by id**\n",
         "operationId": "legalCategories-legalCategory_id-get",
         "parameters": [
@@ -1267,7 +1323,7 @@
         "tags": [
           "Employee"
         ],
-        "summary": "/employees",
+        "summary": "/Employees",
         "description": "**Fetch items paginated**",
         "operationId": "Employees-get",
         "parameters": [
@@ -1334,7 +1390,7 @@
         "tags": [
           "Employee"
         ],
-        "summary": "/employees/:id",
+        "summary": "/Employees/:id",
         "description": "**Retrieve an employee by id**",
         "operationId": "employees-employee_id-get",
         "parameters": [
@@ -1380,7 +1436,7 @@
         "tags": [
           "Claim"
         ],
-        "summary": "/claims",
+        "summary": "/Claims",
         "description": "**Fetch items paginated**",
         "operationId": "claims-get",
         "parameters": [
@@ -1445,7 +1501,7 @@
         "tags": [
           "Claim"
         ],
-        "summary": "/claims",
+        "summary": "/Claims",
         "description": "**Item created's guid is returned in **Location header**",
         "operationId": "claims-post",
         "parameters": [
@@ -1490,7 +1546,7 @@
         "tags": [
           "Claim"
         ],
-        "summary": "/claims/:id",
+        "summary": "/Claims/:id",
         "description": "**Retrieve a claim by id**",
         "operationId": "claims-claim_id-get",
         "parameters": [
@@ -1534,7 +1590,7 @@
         "tags": [
           "Claim"
         ],
-        "summary": "/claims/:id",
+        "summary": "/Claims/:id",
         "description": "**Patch claim property**",
         "operationId": "claims-claim_id-patch",
         "parameters": [
@@ -1585,7 +1641,7 @@
         "tags": [
           "Case Group"
         ],
-        "summary": "/caseGroups",
+        "summary": "/CaseGroups",
         "description": "**Fetch items paginated**",
         "operationId": "caseGroups-get",
         "parameters": [
@@ -1645,7 +1701,7 @@
         "tags": [
           "Case Group"
         ],
-        "summary": "/caseGroups/:id",
+        "summary": "/CaseGroups/:id",
         "description": "**Retrieve a Case Group by id**",
         "operationId": "caseGroups-caseGroup_id-get",
         "parameters": [

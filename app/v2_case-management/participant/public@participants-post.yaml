@@ -1,6 +1,6 @@
 tags:
   - Participant
-summary: "/participants"
+summary: "/Participants"
 description: |
   **Create participant**<br />
   Item created's guid is returned in **Location header**

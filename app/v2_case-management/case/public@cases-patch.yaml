@@ -1,6 +1,6 @@
 tags:
   - Case Management
-summary: "/cases/:id"
+summary: "/Cases/:id"
 description: "**Patch case properties**"
 operationId: cases-patch-patch
 parameters:

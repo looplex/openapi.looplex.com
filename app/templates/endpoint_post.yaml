@@ -1,7 +1,7 @@
 tags:
   - {{TAG_NAME}}
 
-summary: "/{{TAG_NAME}}"
+summary: "/{{TAG_NAME}}s"
 # summary: {{TITLE}}
 
 description: |

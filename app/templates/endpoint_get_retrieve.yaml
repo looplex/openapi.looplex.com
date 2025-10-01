@@ -1,13 +1,12 @@
 tags:
   - {{TAG_NAME}}
 
-# escolha um titulo
-# summary: "/{{TAG_NAME}}"
+summary: "/{{TAG_NAME}}s/:id"
 # summary: {{TITLE}}
 
-# escolha uma description
-# description: "**Retrieve a {{TAG_NAME}} by id**"
+description: "**Retrieve a {{TAG_NAME}} by id**"
 # description: "{{DESCRIPTION}}"
+
 operationId: {{OPERATION_ID}}
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml

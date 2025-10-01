@@ -1,6 +1,6 @@
 tags:
   - Timesheet
-summary: "/timesheets/:id"
+summary: "/Timesheets/:id"
 description: |
   **Retrieve a timesheet by id**
 operationId: timesheets-id-get

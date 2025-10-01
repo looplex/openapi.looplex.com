@@ -1,6 +1,6 @@
 tags:
   - Legal category
-summary: "/legalCategories/:id"
+summary: "/LegalCategories/:id"
 description: |
   **Retrieve a legal category by id**
 operationId: legalCategories-legalCategory_id-get

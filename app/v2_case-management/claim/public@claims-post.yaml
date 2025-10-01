@@ -1,6 +1,6 @@
 tags:
   - Claim
-summary: "/claims"
+summary: "/Claims"
 description: "**Item created's guid is returned in **Location header**"
 operationId: claims-post
 parameters:
