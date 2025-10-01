@@ -165,11 +165,6 @@ allOf:
         items:
           $ref: EntryEntity.yaml
         description: "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
-      tasks:
-        type: array
-        items:
-          $ref: ../../common_schemas/TaskEntity.yaml
-        description: "**Tarefas a serem realizadas**"
       timesheet:
         type: array
         items:
