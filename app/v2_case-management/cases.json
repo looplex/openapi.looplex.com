@@ -999,6 +999,52 @@
         }
       }
     },
+    "/legalServiceAgreements/:id": {
+      "get": {
+        "tags": [
+          "Legal service agreement"
+        ],
+        "summary": "/LegalServiceAgreements/:id",
+        "description": "**Retrieve a Legal service agreement by id**",
+        "operationId": "legalServiceAgreements-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegalServiceAgreementEntity"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/participants": {
       "post": {
         "tags": [

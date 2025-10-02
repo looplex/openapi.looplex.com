@@ -1,0 +1,24 @@
+tags:
+  - Legal service agreement
+summary: "/LegalServiceAgreements/:id"
+description: "**Retrieve a Legal service agreement by id**"
+operationId: legalServiceAgreements-id-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Tenant.yaml
+  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../common_parameters/Id.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/LegalServiceAgreementEntity.yaml
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
+ 

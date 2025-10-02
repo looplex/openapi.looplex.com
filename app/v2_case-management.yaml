@@ -78,6 +78,9 @@ paths:
       $ref: v2_case-management\legal_service_agreement\public@LegalServiceAgreement-post.yaml
     get:
       $ref: v2_case-management\legal_service_agreement\public@legalServiceAgreement-get.yaml
+  /legalServiceAgreements/:id:
+    get:
+      $ref: v2_case-management\legal_service_agreement\public@legalServiceAgreements@id-get.yaml
 
   # Participant
   /participants:
