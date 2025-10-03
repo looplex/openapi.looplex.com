@@ -1894,13 +1894,13 @@
           "created": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": null,
+            "example": "2025-01-01T12:00:00.000",
             "description": "**The resource creation date**"
           },
           "lastModified": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": null,
+            "example": "2025-01-01T12:00:00.000",
             "description": "**The resource last update time**"
           },
           "location": {
@@ -2002,6 +2002,7 @@
             "description": "**Case unique identifier**"
           },
           "status": {
+            "example": "ATIVO",
             "$ref": "#/components/schemas/SituacaoDoProcesso"
           },
           "type": {
@@ -2009,6 +2010,7 @@
           },
           "subType": {
             "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
+            "example": "CASO",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/ClasseProcessoContrato"
@@ -2023,18 +2025,22 @@
           },
           "title": {
             "type": "string",
+            "example": "Titulo do caso",
             "description": "**Nome Jurídico do caso**"
           },
           "locale": {
             "type": "string <nullable>",
-            "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+            "example": "São Paulo",
+            "description": "**Utilizado em casos consultivos**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
           },
           "courtVenue": {
             "type": "string <nullable>",
+            "example": "1ª Vara Cível",
             "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
           },
           "caseProcedure": {
             "type": "string",
+            "example": "Rito do caso",
             "description": "**Rito ou procedimento do caso**"
           },
           "phase": {
@@ -2068,7 +2074,7 @@
           },
           "Name": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "Nome",
             "description": "**The object name**"
           }
         }
@@ -2140,7 +2146,8 @@
             "properties": {
               "email": {
                 "type": "string <nullable>",
-                "description": "owner's email"
+                "description": "owner's email",
+                "example": "dont_exist@email.com"
               },
               "identities": {
                 "type": "array",
@@ -2244,6 +2251,7 @@
       "EmailType": {
         "title": "EmailType",
         "type": "string",
+        "example": "other",
         "description": "**Tipo de email**<br/>\n**A label indicating the attribute's function, e.g., 'work' or 'home'**<br />\nwork<br/>\nhome<br/>\nother\n"
       },
       "EmailEntity": {
@@ -2252,6 +2260,7 @@
         "properties": {
           "value": {
             "type": "string",
+            "example": "dont_exist@email.com",
             "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
           },
           "type": {
@@ -2259,6 +2268,7 @@
           },
           "primary": {
             "type": "boolean",
+            "example": true,
             "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n"
           }
         }
@@ -2337,10 +2347,12 @@
               },
               "name": {
                 "type": "string",
+                "example": "Participant name",
                 "description": "**Participant's name**"
               },
               "nickname": {
                 "type": "string <nullable>",
+                "example": "Apelido",
                 "description": "**Apelido**"
               },
               "lawyerOffice": {
@@ -2423,6 +2435,7 @@
               "dob": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de Nascimento**<br />"
               },
               "gender": {
@@ -2430,6 +2443,7 @@
               },
               "nationality": {
                 "description": "**Nacionalidade**",
+                "example": "brasileiro",
                 "type": "string <nullable>"
               },
               "maritalStatus": {
@@ -2763,6 +2777,7 @@
               },
               "subType": {
                 "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
+                "example": "CASO",
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/ClasseProcessoContrato"
@@ -2799,6 +2814,7 @@
               },
               "summary": {
                 "type": "string <nullable>",
+                "example": "Descrição do caso",
                 "description": "**Breve descrição sobre o caso**"
               },
               "locale": {
@@ -2821,43 +2837,51 @@
               },
               "phase": {
                 "type": "string <nullable>",
+                "example": "Fase do caso",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
               },
               "legalCategories": {
                 "description": "**Indica os assuntos tratados no caso**",
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Legal category"
                 }
               },
               "retentionDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
               },
               "startDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
               },
               "formationDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
               },
               "resJudicataDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
               "forecastedEndDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
               },
               "createdAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de criação do caso**"
               },
               "createdBy": {
@@ -2866,6 +2890,7 @@
               },
               "updatedAt": {
                 "type": "string <nullable>",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Atualizado em**"
               },
               "updatedBy": {
@@ -2875,6 +2900,7 @@
               "closedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de encerramento**"
               },
               "closedBy": {
@@ -2883,12 +2909,14 @@
               },
               "group": {
                 "type": "string",
+                "example": "Área",
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
               },
               "product": {
                 "type": "array",
                 "items": {
-                  "type": "string"
+                  "type": "string",
+                  "example": "Produto"
                 },
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
               },

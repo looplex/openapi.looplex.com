@@ -6,6 +6,7 @@ allOf:
       email:
         type: string <nullable>
         description: owner's email
+        example: "dont_exist@email.com"
       identities:
         type: array
         items:

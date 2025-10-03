@@ -1,5 +1,6 @@
 title: EmailType
 type: string
+example: other
 description: |
   **Tipo de email**<br/>
   **A label indicating the attribute's function, e.g., 'work' or 'home'**<br />

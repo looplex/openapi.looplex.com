@@ -7,5 +7,5 @@ properties:
     description: "**The object unique identifier**"
   Name:
     type: string <nullable>
-    example: null
+    example: "Nome"
     description: "**The object name**"

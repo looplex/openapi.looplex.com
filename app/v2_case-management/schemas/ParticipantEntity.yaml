@@ -8,9 +8,11 @@ allOf:
         $ref: ../../common_schemas/SimpleEntity.yaml
       name:
         type: string
+        example: "Participant name"
         description: "**Participant's name**"
       nickname:
         type: string <nullable>
+        example: "Apelido"
         description: "**Apelido**"
       lawyerOffice:
         type: string <nullable>

@@ -10,6 +10,7 @@ allOf:
         $ref: ../../common_enums/RamosJudicial.yaml
       subType:
         description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+        example: CASO
         oneOf:
           - $ref: ../enums/ClasseProcessoContrato.yaml
           - $ref: ../enums/ClasseProcessoSocietario.yaml
@@ -32,6 +33,7 @@ allOf:
         description: "**Nome Jurídico do caso**"
       summary:
         type: string <nullable>
+        example: "Descrição do caso"
         description: "**Breve descrição sobre o caso**"
       locale:
         type: array
@@ -53,6 +55,7 @@ allOf:
         $ref: ../../common_schemas/SimpleEntity.yaml
       phase:
         type: string <nullable>
+        example: "Fase do caso"
         description: |
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
@@ -61,21 +64,25 @@ allOf:
         type: array
         items:
           type: string
+          example: "Legal category"
       retentionDate:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
       startDate:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
       formationDate:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: |
           **Data de citação**<br />
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
@@ -83,6 +90,7 @@ allOf:
       resJudicataDate:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: |
           **Data de trânsito em julgado**<br />
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
@@ -90,6 +98,7 @@ allOf:
       forecastedEndDate:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: |
           **Data prevista para encerramento**<br />
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
@@ -97,12 +106,14 @@ allOf:
       createdAt:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: "**Data de criação do caso**"
       createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Usuário que criou o caso**"
       updatedAt:
         type: string <nullable>
+        example: "2025-01-01T12:00:00.000"
         description: "**Atualizado em**"
       updatedBy:
         description: "**Atualizado por**"
@@ -110,12 +121,14 @@ allOf:
       closedAt:
         type: string <nullable>
         format: datetime
+        example: "2025-01-01T12:00:00.000"
         description: "**Data de encerramento**"
       closedBy:
         description: "**Usuário que encerrou o caso**"
         $ref: ../../common_schemas/SimpleEntity.yaml
       group:
         type: string
+        example: "Área"
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
@@ -123,6 +136,7 @@ allOf:
         type: array
         items:
           type: string
+          example: "Produto"
         description: |
           **Produto**<br />
           Produto ou serviço do cliente que está relacionado ao caso

@@ -11,12 +11,12 @@ properties:
   created:
     type: string <nullable>
     format: datetime
-    example: null
+    example: "2025-01-01T12:00:00.000"
     description: "**The resource creation date**"
   lastModified:
     type: string <nullable>
     format: datetime
-    example: null
+    example: "2025-01-01T12:00:00.000"
     description: "**The resource last update time**"
   location:
     type: string <nullable>

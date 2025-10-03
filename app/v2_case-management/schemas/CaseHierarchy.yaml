@@ -7,31 +7,36 @@ properties:
     format: uuid
     description: "**Case unique identifier**"
   status:
+    example: ATIVO
     $ref: ../enums/SituacaoDoProcesso.yaml
   type:
     $ref: ../../common_enums/RamosJudicial.yaml
   subType:
     description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+    example: CASO
     oneOf:
       - $ref: ../enums/ClasseProcessoContrato.yaml
       - $ref: ../enums/ClasseProcessoSocietario.yaml
       - $ref: ../enums/ClasseProcesso.yaml
   title:
     type: string
+    example: "Titulo do caso"
     description: "**Nome Jurídico do caso**"
   locale:
     type: string <nullable>
+    example: "São Paulo"
     description: |
       **Utilizado em casos consultivos**<br />
-      **Formato: País - Estado - Cidade**<br />
       Local da Jurisdição de um caso, ou cumprimento da obrigação.
   courtVenue:
     type: string <nullable>
+    example: "1ª Vara Cível"
     description: |
       **Utilizado para casos contenciosos, judiciais ou não**<br />
       Foro do caso, local onde o caso será julgado
   caseProcedure:
     type: string
+    example: "Rito do caso"
     description: "**Rito ou procedimento do caso**"
   phase:
     type: string <nullable>
