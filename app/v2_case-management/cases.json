@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.0",
   "info": {
     "version": "1.32.0",
     "title": "Looplex Case Management",
@@ -2802,16 +2802,22 @@
                 "description": "**Breve descrição sobre o caso**"
               },
               "locale": {
-                "type": "string <nullable>",
-                "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                },
+                "description": "**Utilizado em casos consultivos**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "courtVenue": {
-                "type": "string <nullable>",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                },
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
               "caseProcedure": {
-                "type": "string <nullable>",
-                "description": "**Rito ou procedimento do caso**"
+                "description": "**Rito ou procedimento do caso**<br/>\n",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "phase": {
                 "type": "string <nullable>",
@@ -3694,18 +3700,49 @@
             "example": "Observações do caso"
           },
           "locale": {
-            "type": "string <nullable>",
-            "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n",
-            "example": "País - Estado - Cidade"
+            "description": "**Utilizado em casos consultivos**",
+            "oneOf": [
+              {
+                "type": "string <nullable>",
+                "example": "Local",
+                "description": "**Local da Jurisdição de um caso, ou cumprimento da obrigação.**"
+              },
+              {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Unique identifier do local**"
+              }
+            ]
           },
           "courtVenue": {
-            "type": "string <nullable>",
-            "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
+            "description": "**Utilizado para casos contenciosos, judiciais ou não**",
+            "oneOf": [
+              {
+                "type": "string <nullable>",
+                "example": "1ª Vara Cível",
+                "description": "**Foro do caso, local onde o caso será julgado**"
+              },
+              {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Unique identifier do Court Venue**"
+              }
+            ]
           },
           "caseProcedure": {
-            "type": "string <nullable>",
             "description": "**Rito ou procedimento do caso**",
-            "example": "Rito do caso"
+            "oneOf": [
+              {
+                "type": "string <nullable>",
+                "example": "Rito do caso",
+                "description": "**Nome do rito**"
+              },
+              {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Unique identifier do CaseProcedure**"
+              }
+            ]
           },
           "phase": {
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
