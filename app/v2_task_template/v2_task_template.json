@@ -274,8 +274,8 @@
       "TipoEventoDeCobranca": {
         "title": "TipoEventoDeCobranca",
         "type": "string",
-        "example": "POR_PRAZO",
-        "description": "POR_COMPROMISSO<br/>\nPOR_PRAZO<br/>\nPOR_ATIVIDADE_EXTERNA<br/>\nPOR_PUBLICACAO<br/>\nPOR_AUDIENCIA\n"
+        "example": "PRAZO",
+        "description": "COMPROMISSO<br/>\nPRAZO<br/>\nATIVIDADE_EXTERNA<br/>\nPUBLICACAO<br/>\nAUDIENCIA\n"
       },
       "TipoVinculoComDocumento": {
         "title": "TipoVinculoComDocumento",
