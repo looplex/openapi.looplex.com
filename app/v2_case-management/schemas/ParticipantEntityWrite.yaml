@@ -9,12 +9,15 @@ properties:
       `Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`
   name:
     type: string
+    example: "Nome"
     description: "**Participant's name**"
   nickname:
     type: string <nullable>
+    example: "Apelido"
     description: "**Apelido**"
   isMainParty:
     type: bool
+    example: false
     description: "**Indica se é a parte principal**"
   represents:
     type: array

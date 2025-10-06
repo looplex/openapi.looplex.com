@@ -4,15 +4,19 @@ properties:
   type:
     $ref: ../enums/TimelineItemType.yaml
   id:
-    type: string <nullable>
+    type: string
+    format: uuid
     description: "**Identificador do item**"
   date:
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000"
     description: "**Data do evento**"
   title:
     type: string <nullable>
+    example: "Titulo"
     description: "**Título do evento**"
   description:
     type: string <nullable>
+    example: "Descrição"
     description: "**Descrição do evento**"

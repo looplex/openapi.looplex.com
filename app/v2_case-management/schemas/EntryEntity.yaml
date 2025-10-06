@@ -14,9 +14,11 @@ allOf:
         description: "**Classificação do andamento**"
       description:
         type: string
+        example: "Texto do andamento"
         description: "**Texto do andamento**"
       isInternal:
         type: boolean
+        example: false
         description: "**Indica se o andamento é de uso interno**"
       serviceOfProcess:
         type: string <nullable>

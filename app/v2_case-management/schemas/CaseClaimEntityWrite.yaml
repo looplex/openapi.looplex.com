@@ -19,6 +19,7 @@ properties:
     $ref: ../enums/TipoTutela.yaml
   againstPosition: 
     type: string
+    example: ACTIVE
     description: |
       **Participant's position**<br />
       ACTIVE<br/>
@@ -36,17 +37,21 @@ properties:
     $ref: ../enums/ContingentLiabilityRiskClassification.yaml
   foreseenValue:
     type: number
+    example: 1
     description: "**Foreseen value**"
   liquidated:
     type: boolean
+    exampl: false
     description: "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
   effectiveDate:
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000"
     description: "**Data de constituição**"
   dueDate:
     type: string
     format: datetime
+    example: "2025-01-02T12:00:00.000"
     description: "**Data de vencimento**"
   recurrence:
     $ref: ../enums/TipoDeRecorrencia.yaml

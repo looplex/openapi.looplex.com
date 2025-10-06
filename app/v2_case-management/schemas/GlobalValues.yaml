@@ -2,7 +2,6 @@ title: Valores globais do caso por polo
 type: object
 properties: 
   againstPosition:
-    example: ACTIVE
     $ref: ../enums/Position.yaml
     description: "**Contra polo ativo, passivo, terceiro...**"
   perspective:

@@ -2483,6 +2483,7 @@
       "Position": {
         "title": "Position",
         "type": "string",
+        "example": "ACTIVE",
         "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
       },
       "TipoExpectativaReivindicacao": {
@@ -2508,7 +2509,6 @@
         "type": "object",
         "properties": {
           "againstPosition": {
-            "example": "ACTIVE",
             "$ref": "#/components/schemas/Position",
             "description": "**Contra polo ativo, passivo, terceiro...**"
           },
@@ -2596,10 +2596,12 @@
               },
               "description": {
                 "type": "string",
+                "example": "Texto do andamento",
                 "description": "**Texto do andamento**"
               },
               "isInternal": {
                 "type": "boolean",
+                "example": false,
                 "description": "**Indica se o andamento é de uso interno**"
               },
               "serviceOfProcess": {
@@ -2638,6 +2640,12 @@
             }
           }
         ]
+      },
+      "TipoDeTarefaTimesheet": {
+        "title": "TipoDeTarefaTimesheet",
+        "example": "HORAS_DEBITAVEIS",
+        "type": "string",
+        "description": "APRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
       },
       "TimesheetEntity": {
         "title": "Timesheet",
@@ -2686,15 +2694,18 @@
               },
               "description": {
                 "type": "string <nullable>",
+                "example": "Descrição",
                 "description": "**Descrição**"
               },
               "isInvoiced": {
                 "type": "boolean <nullable>",
+                "example": false,
                 "description": "**Faturado**"
               },
               "createdAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Criado em**"
               },
               "createdBy": {
@@ -2704,6 +2715,7 @@
               "updatedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-02T12:00:00.000",
                 "description": "**Atualizado em**"
               },
               "updatedBy": {
@@ -2721,7 +2733,7 @@
                 }
               },
               "taskType": {
-                "type": "string <nullable>"
+                "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
               }
             }
           }
@@ -2741,20 +2753,24 @@
             "$ref": "#/components/schemas/TimelineItemType"
           },
           "id": {
-            "type": "string <nullable>",
+            "type": "string",
+            "format": "uuid",
             "description": "**Identificador do item**"
           },
           "date": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "**Data do evento**"
           },
           "title": {
             "type": "string <nullable>",
+            "example": "Titulo",
             "description": "**Título do evento**"
           },
           "description": {
             "type": "string <nullable>",
+            "example": "Descrição",
             "description": "**Descrição do evento**"
           }
         }
@@ -3368,6 +3384,7 @@
         "properties": {
           "value": {
             "type": "string",
+            "example": "dont_exists@email.com",
             "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
           }
         }
@@ -3425,14 +3442,17 @@
           },
           "name": {
             "type": "string",
+            "example": "Nome",
             "description": "**Participant's name**"
           },
           "nickname": {
             "type": "string <nullable>",
+            "example": "Apelido",
             "description": "**Apelido**"
           },
           "isMainParty": {
             "type": "bool",
+            "example": false,
             "description": "**Indica se é a parte principal**"
           },
           "represents": {
@@ -3508,6 +3528,7 @@
               "dob": {
                 "type": "string <nullable>",
                 "format": "datetime",
+                "example": "2025-01-01T12:00:00.000",
                 "description": "**Data de Nascimento**<br />"
               },
               "gender": {
@@ -3515,6 +3536,7 @@
               },
               "nationality": {
                 "description": "**Nacionalidade**",
+                "example": "Brasileiro",
                 "type": "string <nullable>"
               },
               "maritalStatus": {
@@ -3561,10 +3583,12 @@
           },
           "description": {
             "type": "string",
+            "example": "Descrição",
             "description": "**Texto do andamento**"
           },
           "isInternal": {
             "type": "boolean",
+            "example": false,
             "description": "**Indica se o andamento é de uso interno**"
           },
           "classificationType": {
@@ -3585,6 +3609,7 @@
       "TipoReparacao": {
         "title": "TipoReparacao",
         "type": "string <nullable>",
+        "example": "COERCIVE_REMEDY",
         "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n**Enum Description:**<br/>\n**MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\n**ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\n**COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\n**DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.\n\n**Allowed values:**<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT\n"
       },
       "TipoTutela": {
@@ -3602,6 +3627,7 @@
       "ClaimStatus": {
         "title": "Claim status",
         "type": "string",
+        "example": "ACORDO",
         "description": "PROCEDENTE<br/>\nPARCIALMENTE_PROCEDENTE<br/>\nIMPROCEDENTE<br/>\nACORDO<br/>\nPRESCRICAO_OU_DECADENCIA<br/>\nLITISPENDENCIA_COISA_JULGADA_PEREMPCAO<br/>\nILEGITIMIDADE<br/>\nDESISTENCIA\n"
       },
       "CaseClaimEntityWrite": {
@@ -3629,6 +3655,7 @@
           },
           "againstPosition": {
             "type": "string",
+            "example": "ACTIVE",
             "description": "**Participant's position**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY\n"
           },
           "participants": {
@@ -3644,20 +3671,24 @@
           },
           "foreseenValue": {
             "type": "number",
+            "example": 1,
             "description": "**Foreseen value**"
           },
           "liquidated": {
             "type": "boolean",
+            "exampl": false,
             "description": "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
           },
           "effectiveDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "**Data de constituição**"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-02T12:00:00.000",
             "description": "**Data de vencimento**"
           },
           "recurrence": {
@@ -3961,12 +3992,6 @@
           "owner",
           "caseClient"
         ]
-      },
-      "TipoDeTarefaTimesheet": {
-        "title": "TipoDeTarefaTimesheet",
-        "example": "HORAS_DEBITAVEIS",
-        "type": "string",
-        "description": "APRIMORAMENTO_PROFISSIONAL\n\nHORAS_DEBITAVEIS\n\nHORAS_DE_RELACIONAMENTO\n\nHORAS_NAO_DEBITAVEIS\n"
       },
       "TimesheetEntityWrite": {
         "title": "Timesheet",
