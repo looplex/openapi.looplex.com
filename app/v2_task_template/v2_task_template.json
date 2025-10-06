@@ -36,9 +36,9 @@
         "tags": [
           "Task Templates"
         ],
-        "summary": "Task Template",
+        "summary": "Task Templates",
         "description": "**Retrieve a task template by id**",
-        "operationId": "task_templates@task_template_id-get",
+        "operationId": "task_templates_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -82,11 +82,9 @@
         "tags": [
           "Task Templates"
         ],
-        "summary": "Task Template",
+        "summary": "Task Templates",
         "description": "**Fetch items paginated**",
-        "operationId": {
-          "[object Object]": null
-        },
+        "operationId": "task_templates-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -132,6 +130,55 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Task Templates"
+        ],
+        "summary": "Task Templates",
+        "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "task_templates-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskTemplateEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",

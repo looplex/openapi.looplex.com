@@ -2,12 +2,12 @@ tags:
   - Task Templates
 
 # escolha um titulo
-summary: "Task Template"
+summary: "Task Templates"
 
 # escolha uma description
 description: "**Retrieve a task template by id**"
 
-operationId: task_templates@task_template_id-get
+operationId: task_templates_id-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml

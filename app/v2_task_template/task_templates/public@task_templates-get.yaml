@@ -2,14 +2,12 @@ tags:
   - Task Templates
 
 # escolha um titulo
-# summary: "/{{TAG_NAME}}"
-summary: Task Template
+summary: Task Templates
 
 # escolha uma description
 description: "**Fetch items paginated**"
-# description: "{{DESCRIPTION}}"
 
-operationId: {{OPERATION_ID}}
+operationId: task_templates-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../../common_parameters/Tenant.yaml
