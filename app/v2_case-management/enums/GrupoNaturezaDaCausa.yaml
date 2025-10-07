@@ -1,5 +1,6 @@
 title: GrupoNaturezaDaCausa
 type: string
+example: PROCESSOS_JUDICIAIS_ESTADUAL
 description: |
   PROCESSOS_ADMINISTRATIVOS<br/>
   PROCESSOS_JUDICIAIS_ESTADUAL<br/>

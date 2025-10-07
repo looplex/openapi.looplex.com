@@ -1,5 +1,6 @@
 title: ContratoReembolsoKM
 type: string
+example: ESCRITORIO
 description: |
   ESCRITORIO = 1<br />
   CONTRATO = 2

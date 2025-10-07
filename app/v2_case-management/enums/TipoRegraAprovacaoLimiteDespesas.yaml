@@ -1,5 +1,6 @@
 title: TipoRegraAprovacaoLimiteDespesas
 type: string
+example: REGRAESCRITORIO
 description: |
   REGRAESCRITORIO = 1<br/>
   REGRAEMPRESA = 2<br/>

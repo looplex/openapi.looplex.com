@@ -91,6 +91,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -136,6 +145,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -192,6 +210,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -260,6 +287,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -302,6 +338,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -348,6 +393,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -397,6 +451,15 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -465,6 +528,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -507,6 +579,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -575,6 +656,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -617,6 +707,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -663,6 +762,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -731,6 +839,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -773,6 +890,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -819,6 +945,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -876,6 +1011,15 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -920,6 +1064,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -986,6 +1139,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1031,6 +1193,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1083,6 +1254,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1149,6 +1329,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1194,6 +1383,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1262,6 +1460,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1304,6 +1511,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1350,6 +1566,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1418,6 +1643,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1463,6 +1697,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1531,6 +1774,15 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -1573,6 +1825,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1619,6 +1880,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1668,6 +1938,15 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error",
@@ -1736,8 +2015,24 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -1775,8 +2070,24 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
           }
         }
       }
@@ -3115,12 +3426,12 @@
           },
           "email": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "dont_exists@email.com",
             "description": "**Client's email address**"
           },
           "website": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "dont-exists.com",
             "description": "**The client's website page**"
           },
           "comments": {
@@ -4133,12 +4444,12 @@
           },
           "email": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "dont_exists@email.com",
             "description": "**Client's email address**"
           },
           "website": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "dont-exists.com",
             "description": "**The client's website page**"
           },
           "comments": {
@@ -4199,16 +4510,19 @@
       "ContratoReembolsoKM": {
         "title": "ContratoReembolsoKM",
         "type": "string",
+        "example": "ESCRITORIO",
         "description": "ESCRITORIO = 1<br />\nCONTRATO = 2\n"
       },
       "TipoRegraAprovacaoLimiteDespesas": {
         "title": "TipoRegraAprovacaoLimiteDespesas",
         "type": "string",
+        "example": "REGRAESCRITORIO",
         "description": "REGRAESCRITORIO = 1<br/>\nREGRAEMPRESA = 2<br/>\nREGRACLIENTE = 3<br/>\nREGRACONTRATO = 4<br/>\nREGRAPROCESSO = 5<br/>\nREGRAVAZIA = 6\n"
       },
       "ContratoSituacao": {
         "title": "ContratoSituacao",
         "type": "string",
+        "example": "ATIVO",
         "description": "ATIVO = 1<br/>\nENCERRADO = 3\n"
       },
       "LegalServiceAgreementEntity": {
@@ -4227,37 +4541,45 @@
           },
           "name": {
             "type": "string",
+            "example": "Title",
             "description": "Legal service agreement's title"
           },
           "summary": {
             "type": "string",
+            "example": "Summary",
             "description": "Legal service agreement's summary"
           },
           "createdAt": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "Legal service agreement's created date"
           },
           "startDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "Legal service agreement's start date"
           },
           "forecastedEndDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "Legal service agreement's forecasted end date"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-02T12:00:00.000",
             "description": "Legal service agreement's due date"
           },
           "isSameReviewerAttorneyFeesAndExpenses": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "isSamePayerAttorneyFeesAndExpenses": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "billingCompanyId": {
             "type": "string",
@@ -4280,7 +4602,8 @@
             "$ref": "#/components/schemas/ContratoSituacao"
           },
           "isDefault": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           }
         }
       },
@@ -4295,32 +4618,39 @@
           },
           "name": {
             "type": "string",
+            "example": "Title",
             "description": "Legal service agreement's title"
           },
           "summary": {
             "type": "string",
+            "example": "Summary",
             "description": "Legal service agreement's summary"
           },
           "startDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "Legal service agreement's start date"
           },
           "forecastedEndDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-01T12:00:00.000",
             "description": "Legal service agreement's forecasted end date"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
+            "example": "2025-01-02T12:00:00.000",
             "description": "Legal service agreement's due date"
           },
           "isSameReviewerAttorneyFeesAndExpenses": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "isSamePayerAttorneyFeesAndExpenses": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "billingCompanyId": {
             "type": "string",
@@ -4337,13 +4667,15 @@
             "$ref": "#/components/schemas/TipoRegraAprovacaoLimiteDespesas"
           },
           "isDefault": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           }
         }
       },
       "GrupoNaturezaDaCausa": {
         "title": "GrupoNaturezaDaCausa",
         "type": "string",
+        "example": "PROCESSOS_JUDICIAIS_ESTADUAL",
         "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
       },
       "LegalCategoryEntity": {

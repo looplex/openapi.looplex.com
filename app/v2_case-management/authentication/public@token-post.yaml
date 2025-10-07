@@ -55,6 +55,12 @@ responses:
               type: string
               description: '**The token to use in all other requests**'
               example: 'access_token_example'
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
   "500":
     description: "Internal Server Error"
     content:

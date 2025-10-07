@@ -18,11 +18,11 @@ properties:
     $ref: ../enums/TipoPessoa.yaml
   email:
     type: string <nullable>
-    example: null
+    example: "dont_exists@email.com"
     description: "**Client's email address**"
   website:
     type: string <nullable>
-    example: null
+    example: "dont-exists.com"
     description: "**The client's website page**"
   comments:
     type: string <nullable>

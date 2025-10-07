@@ -18,3 +18,15 @@ parameters:
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

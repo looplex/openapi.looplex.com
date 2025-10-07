@@ -9,30 +9,38 @@ properties:
     description: "**Client's unique identifier**"
   name:
     type: string
+    example: "Title"
     description: "Legal service agreement's title"
   summary:
     type: string
+    example: "Summary"
     description: "Legal service agreement's summary"
   createdAt:
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000"
     description: "Legal service agreement's created date"
   startDate:
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000"
     description: "Legal service agreement's start date"
   forecastedEndDate:
     type: string
     format: datetime
+    example: "2025-01-01T12:00:00.000"
     description: "Legal service agreement's forecasted end date"
   dueDate:
     type: string
     format: datetime
+    example: "2025-01-02T12:00:00.000"
     description: "Legal service agreement's due date"
   isSameReviewerAttorneyFeesAndExpenses:
     type: boolean
+    example: false
   isSamePayerAttorneyFeesAndExpenses:
     type: boolean
+    example: false
   billingCompanyId:
     type: string
     format: uuid
@@ -49,3 +57,4 @@ properties:
     $ref: ../enums/ContratoSituacao.yaml
   isDefault:
     type: boolean
+    example: false
