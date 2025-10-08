@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.33.0",
+    "version": "1.33.1",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {

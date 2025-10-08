@@ -39,14 +39,14 @@ paths:
       $ref: v1_cases/login/public@api@logon-post.yaml
       
   # Advogado
-  /api/advogado:
-    post:
-      $ref: 'v1_cases\advogado\public@api@advogado-post.yaml'
-    put:
-      $ref: 'v1_cases\advogado\public@api@advogado-put.yaml'
+  # /api/advogado:
+  #   post:
+  #     $ref: 'v1_cases\advogado\public@api@advogado-post.yaml'
+  #   put:
+  #     $ref: 'v1_cases\advogado\public@api@advogado-put.yaml'
   /api/advogado/{AdvogadoID}:
-    delete:
-      $ref: 'v1_cases\advogado\public@api@advogado@AdvogadoID-delete.yaml'
+    # delete:
+    #   $ref: 'v1_cases\advogado\public@api@advogado@AdvogadoID-delete.yaml'
     get:
       $ref: 'v1_cases\advogado\public@api@advogado@AdvogadoID-get.yaml'
   /api/advogado/{AdvogadoIDs}:
@@ -61,12 +61,12 @@ paths:
   /api/advogado/vinculo_por_processo/{CaseID}:
     get:
       $ref: 'v1_cases\advogado\public@api@advogado@vinculo_por_processo@CaseID-get.yaml'
-  /api/advogado/vincula:
-    post:
-      $ref: 'v1_cases\advogado\public@api@advogado@vincula-post.yaml'
-  /api/advogado/desvincula:
-    delete:
-      $ref: 'v1_cases\advogado\public@api@advogado@desvincula-delete.yaml'
+  # /api/advogado/vincula:
+  #   post:
+  #     $ref: 'v1_cases\advogado\public@api@advogado@vincula-post.yaml'
+  # /api/advogado/desvincula:
+  #   delete:
+  #     $ref: 'v1_cases\advogado\public@api@advogado@desvincula-delete.yaml'
 
   # Andamentos
   /api/andamentos/templates:
@@ -81,19 +81,19 @@ paths:
   /api/casos/num/andamentosimples:
     get:
       $ref: v1_cases/andamento/public@api@casos@num@andamentosimples-get.yaml
-  /api/andamentos:
-    post:
-      $ref: v1_cases/andamento/public@api@andamentos@post-post.yaml
+  # /api/andamentos:
+  #   post:
+  #     $ref: v1_cases/andamento/public@api@andamentos@post-post.yaml
   /api/andamentos/{IDAndamento}:
     get:
       $ref: v1_cases/andamento/public@api@andamentos@{id}-get.yaml
-    put:
-      $ref: v1_cases/andamento/public@api@andamentos@{idAndamento}@put-put.yaml
+    # put:
+    #   $ref: v1_cases/andamento/public@api@andamentos@{idAndamento}@put-put.yaml
     # delete:
     #   $ref: v1_cases/andamento/public@api@andamentos@{idAndamento}@delete-delete.yaml
-  /api/andamentos/update/{IDAndamento}:
-    put:
-      $ref: v1_cases/andamento/public@api@andamentos@update@{idAndamento}-put.yaml
+  # /api/andamentos/update/{IDAndamento}:
+  #   put:
+  #     $ref: v1_cases/andamento/public@api@andamentos@update@{idAndamento}-put.yaml
 
   # Áreas
   /api/areas:
@@ -117,9 +117,9 @@ paths:
       $ref: 'v1_cases/calculo_monetario/public@api@CalculoMonetario@id-get.yaml'
     # delete:
     #   $ref: 'v1_cases/calculo_monetario/public@api@CalculoMonetario@id-delete.yaml'
-  /api/casos/{ID}/Calcula:
-    post:
-      $ref: 'v1_cases/calculo_monetario/public@api@casos@id@Calcula-post.yaml'
+  # /api/casos/{ID}/Calcula:
+  #   post:
+  #     $ref: 'v1_cases/calculo_monetario/public@api@casos@id@Calcula-post.yaml'
   /api/CalculoMonetario/Indices:
     get:
       $ref: 'v1_cases/calculo_monetario/public@api@CalculoMonetario@Indices-get.yaml'
@@ -134,18 +134,18 @@ paths:
       $ref: 'v1_cases/calculo_monetario/public@api@casos@id@ValoresParaCalculo-get.yaml'
 
   # Caso
-  /api/casos/edit/custom_fields:
-    post:
-      $ref: 'v1_cases/casos/public@api@casos@edit@custom_fields-post.yaml'
+  # /api/casos/edit/custom_fields:
+  #   post:
+  #     $ref: 'v1_cases/casos/public@api@casos@edit@custom_fields-post.yaml'
   /api/casos:
     get:
       $ref: 'v1_cases/casos/public@api@casos-get.yaml'
-  /api/casos/inclui:
-    post:
-      $ref: 'v1_cases/casos/public@api@casos@inclui-post.yaml'
-  /api/casos/edit:
-    put:
-      $ref: 'v1_cases/casos/public@api@casos@edit-put.yaml'
+  # /api/casos/inclui:
+  #   post:
+  #     $ref: 'v1_cases/casos/public@api@casos@inclui-post.yaml'
+  # /api/casos/edit:
+  #   put:
+  #     $ref: 'v1_cases/casos/public@api@casos@edit-put.yaml'
   /api/clientes/{idCliente}/casos:
     get:
       $ref: 'v1_cases/casos/public@api@clientes@idCliente@casos-get.yaml'
@@ -199,10 +199,10 @@ paths:
   /api/fase:
     get:
       $ref: 'v1_cases/fase_caso/public@api@fase-get.yaml'
-    post:
-      $ref: 'v1_cases/fase_caso/public@api@fase-post.yaml'
-    put:
-      $ref: 'v1_cases/fase_caso/public@api@fase-put.yaml'
+    # post:
+    #   $ref: 'v1_cases/fase_caso/public@api@fase-post.yaml'
+    # put:
+    #   $ref: 'v1_cases/fase_caso/public@api@fase-put.yaml'
   /api/casos/fase/{nrGrupo}:
     get:
       $ref: 'v1_cases/fase_caso/public@api@casos@fase@nrGrupo-get.yaml'
@@ -289,24 +289,23 @@ paths:
       $ref: v1_cases/contrato/public@api@contratos-get.yaml
 
   # Cumprimentos
-  /api/cumprimentos/ListaComFiltro:
-    post:
-      $ref: 'v1_cases/cumprimentos/public@api@cumprimentos@ListaComFiltro-post.yaml'    
+  # /api/cumprimentos/ListaComFiltro:
+  #   post:
+  #     $ref: 'v1_cases/cumprimentos/public@api@cumprimentos@ListaComFiltro-post.yaml'    
   /api/cumprimentos/{cdCumprimento}:   
     get:
       $ref: 'v1_cases/cumprimentos/public@api@cumprimentos-get.yaml'
-  /api/cumprimentos:
-    put:
-      $ref: 'v1_cases/cumprimentos/public@api@cumprimentos-put.yaml'  
-    post:
-      $ref: 'v1_cases/cumprimentos/public@api@cumprimentos-post.yaml'
-    delete:
-      $ref: 'v1_cases/cumprimentos/public@api@cumprimentos@exclui-delete.yaml'
-  /api/Pedidos/{cdPedido}/cumprimentos:
-    delete:
-      $ref: 'v1_cases/cumprimentos/public@api@Pedidos@cdPedido@cumprimentos-delete.yaml'            
+  # /api/cumprimentos:
+  #   put:
+  #     $ref: 'v1_cases/cumprimentos/public@api@cumprimentos-put.yaml'  
+  #   post:
+  #     $ref: 'v1_cases/cumprimentos/public@api@cumprimentos-post.yaml'
+  #   delete:
+  #     $ref: 'v1_cases/cumprimentos/public@api@cumprimentos@exclui-delete.yaml'
+  # /api/Pedidos/{cdPedido}/cumprimentos:
+  #   delete:
+  #     $ref: 'v1_cases/cumprimentos/public@api@Pedidos@cdPedido@cumprimentos-delete.yaml'            
       
-  
   # Decisões
   /api/casos/{idCaso}/Decisoes:
     get:
@@ -317,16 +316,16 @@ paths:
   /api/Decisoes/tipos:
     get:
       $ref: 'v1_cases/decisoes/public@api@Decisoes@tipos-get.yaml'
-  /api/Decisoes:
-    post:
-      $ref: 'v1_cases/decisoes/public@api@Decisoes-post.yaml'
+  # /api/Decisoes:
+  #   post:
+  #     $ref: 'v1_cases/decisoes/public@api@Decisoes-post.yaml'
   /api/Decisoes/{id}:
-    put:
-      $ref: 'v1_cases/decisoes/public@api@Decisoes@id-put.yaml'
+    # put:
+    #   $ref: 'v1_cases/decisoes/public@api@Decisoes@id-put.yaml'
     get:
       $ref: 'v1_cases/decisoes/public@api@Decisoes@id-get.yaml'
-    delete:
-      $ref: 'v1_cases/decisoes/public@api@Decisoes@idProcessoDecisao-delete.yaml'
+    # delete:
+    #   $ref: 'v1_cases/decisoes/public@api@Decisoes@idProcessoDecisao-delete.yaml'
   /api/casos/{idCaso}/DecisoesComValores:
     get:
       $ref: 'v1_cases/decisoes/public@api@casos@idCaso@DecisoesComValores-get.yaml'
@@ -368,12 +367,12 @@ paths:
   /api/despesas/obtem/{id}:
     get:
       $ref: 'v1_cases/despesa/public@api@despesas@obtem@id-get.yaml'
-  /api/despesas/inclui:
-    post:
-      $ref: 'v1_cases/despesa/public@api@despesas@inclui-post.yaml'
-  /api/despesas/atualiza:
-    put:
-      $ref: 'v1_cases/despesa/public@api@despesas@atualiza-put.yaml'
+  # /api/despesas/inclui:
+  #   post:
+  #     $ref: 'v1_cases/despesa/public@api@despesas@inclui-post.yaml'
+  # /api/despesas/atualiza:
+  #   put:
+  #     $ref: 'v1_cases/despesa/public@api@despesas@atualiza-put.yaml'
   # /api/despesas/exclui/{id}:
   #   delete:
   #     $ref: 'v1_cases/despesa/public@api@despesas@exclui@id-delete.yaml'
@@ -388,9 +387,9 @@ paths:
   /api/casos/{idCaso}/PedidosComHistorico:
     get:
       $ref: 'v1_cases/expectativa_reivindicacao/public@api@casos@idCaso@PedidosComHistorico-get.yaml'
-  /api/expectativa/{idCaso}/Valores:
-    put:
-      $ref: 'v1_cases/expectativa_reivindicacao/public@api@expectativa@idCaso@Valores-put.yaml'
+  # /api/expectativa/{idCaso}/Valores:
+  #   put:
+  #     $ref: 'v1_cases/expectativa_reivindicacao/public@api@expectativa@idCaso@Valores-put.yaml'
   /api/expectativa/valores/{idCaso}:
     get:
       $ref: 'v1_cases/expectativa_reivindicacao/public@api@expectativa@valores@idCaso-get.yaml'
@@ -439,27 +438,27 @@ paths:
   /api/casos/num/garantias:
     get:
       $ref: 'v1_cases/garantia/public@api@casos@num@garantias-get.yaml'
-  /api/casos/Garantia/Inclui/{IDCaso}:
-    post:
-      $ref: 'v1_cases/garantia/public@api@casos@Garantia@Inclui@IDCaso-post.yaml'
-  /api/casos/Garantia/Atualiza/{IDCaso}:
-    put:
-      $ref: 'v1_cases/garantia/public@api@casos@Garantia@Atualiza@IDCaso-put.yaml'
+  # /api/casos/Garantia/Inclui/{IDCaso}:
+  #   post:
+  #     $ref: 'v1_cases/garantia/public@api@casos@Garantia@Inclui@IDCaso-post.yaml'
+  # /api/casos/Garantia/Atualiza/{IDCaso}:
+  #   put:
+  #     $ref: 'v1_cases/garantia/public@api@casos@Garantia@Atualiza@IDCaso-put.yaml'
   # /api/casos/GarantiaMovimentacao/Exclui/{IDGarantiaMovimentacao}:
   #   delete:
   #     $ref: 'v1_cases/garantia/public@api@casos@GarantiaMovimentacao@Exclui@IDGarantiaMovimentacao-delete.yaml'
-  /api/casos/Garantia/IncluiMovimentacao/{IDCaso}:
-    post:
-      $ref: 'v1_cases/garantia/public@api@casos@Garantia@IncluiMovimentacao@IDCaso-post.yaml'
+  # /api/casos/Garantia/IncluiMovimentacao/{IDCaso}:
+  #   post:
+  #     $ref: 'v1_cases/garantia/public@api@casos@Garantia@IncluiMovimentacao@IDCaso-post.yaml'
   /api/casos/Garantia/{IDGarantia}/ObtemMovimentacao/{IDGarantiaMovimentacao}:
     get:
       $ref: 'v1_cases/garantia/public@api@casos@Garantia@IDGarantia@ObtemMovimentacao@IDGarantiaMovimentacao-get.yaml'
   # /api/casos/Garantia/Exclui/{IDCaso}:
   #   delete:
   #     $ref: 'v1_cases/garantia/public@api@casos@Garantia@Exclui@IDCaso-delete.yaml'
-  /api/casos/Garantia/AtualizaMovimentacao:
-    put:
-      $ref: 'v1_cases/garantia/public@api@casos@Garantia@AtualizaMovimentacao-put.yaml'
+  # /api/casos/Garantia/AtualizaMovimentacao:
+  #   put:
+  #     $ref: 'v1_cases/garantia/public@api@casos@Garantia@AtualizaMovimentacao-put.yaml'
   /api/casos/Garantia/{IDProcessoGarantia}/IdsPedidos:
     get:
       $ref: 'v1_cases/garantia/public@api@casos@Garantia@IDProcessoGarantia@IdsPedidos-get.yaml'
@@ -514,48 +513,48 @@ paths:
   /api/casos/num/dadoscomplementares:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@casos@num@dadoscomplementares-get.yaml'
-  /api/dado_complementar:
-    post:
-      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-post.yaml'
-    put:
-      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-put.yaml'
-  /api/dado_complementar/edit:
-    put:
-      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@edit-put.yaml'
+  # /api/dado_complementar:
+  #   post:
+  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-post.yaml'
+  #   put:
+  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-put.yaml'
+  # /api/dado_complementar/edit:
+  #   put:
+  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@edit-put.yaml'
   /api/dado_complementar/filtro:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@filtro-get.yaml'   
-  /api/dado_complementar/json:
-    post:
-      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@json-post.yaml'
+  # /api/dado_complementar/json:
+  #   post:
+  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@json-post.yaml'
   
   # Informações adicionais (Valor)
-  /api/dado_complementar/valor:
-    post:
-      $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valor-post.yaml'
-  /api/dado_complementar/valores:
-    delete: 
-      $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml' 
+  # /api/dado_complementar/valor:
+  #   post:
+  #     $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valor-post.yaml'
+  # /api/dado_complementar/valores:
+  #   delete: 
+  #     $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml' 
       
   # Liabilities Calculation
-  /api/liabilitiesCalculation/calculaCaso/{cdProcesso}:
-    post:
-      $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculation@calculaCaso-post.yaml'
+  # /api/liabilitiesCalculation/calculaCaso/{cdProcesso}:
+  #   post:
+  #     $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculation@calculaCaso-post.yaml'
   /api/liabilitiesCalculationResults:
     get:
       $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationResults-get.yaml'
-    post:
-      $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationResults-post.yaml'
+    # post:
+    #   $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationResults-post.yaml'
   /api/liabilitiesCalculationEntities:
     get:
       $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationEntities-get.yaml'
-    post:
-      $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationEntities-post.yaml'
+    # post:
+    #   $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationEntities-post.yaml'
   /api/liabilitiesCalculationTemplate:
     get:
       $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationTemplate-get.yaml'
-    post:
-      $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationTemplate-post.yaml'
+    # post:
+    #   $ref: 'v1_cases/liabilitiesCalculation/public@api@liabilitiesCalculationTemplate-post.yaml'
   
   # Motivo de pedir
   /api/propositionStatements/{id}:
@@ -564,9 +563,9 @@ paths:
   /api/propositionStatements:
     get:
       $ref: 'v1_cases/motivos/public@api@propositionStatements-get.yaml'
-  /api/propositionStatement:
-    post:
-      $ref: 'v1_cases/motivos/public@api@propositionStatement-post.yaml'
+  # /api/propositionStatement:
+  #   post:
+  #     $ref: 'v1_cases/motivos/public@api@propositionStatement-post.yaml'
 
   # Natureza
   /api/casos/{IDCaso}/natureza:
@@ -603,15 +602,15 @@ paths:
   /api/casos/num/partes:
     get:
       $ref: 'v1_cases/partes/public@api@casos@num@partes-get.yaml'
-  /api/parte:
-    post:
-      $ref: 'v1_cases/partes/public@api@parte-post.yaml'
-  /api/Partes/desvincular:
-    delete:
-      $ref: 'v1_cases/partes/public@api@Partes@desvincular-delete.yaml'
-  /api/partes/{idParte}:
-    patch:
-      $ref: 'v1_cases/partes/public@api@partes@idParte-patch.yaml'
+  # /api/parte:
+  #   post:
+  #     $ref: 'v1_cases/partes/public@api@parte-post.yaml'
+  # /api/Partes/desvincular:
+  #   delete:
+  #     $ref: 'v1_cases/partes/public@api@Partes@desvincular-delete.yaml'
+  # /api/partes/{idParte}:
+  #   patch:
+  #     $ref: 'v1_cases/partes/public@api@partes@idParte-patch.yaml'
   /api/partes/pesquisa:
     get:
       $ref: 'v1_cases/partes/public@api@partes@pesquisa-get.yaml'
@@ -620,8 +619,8 @@ paths:
   /api/casos/{IDCaso}/Pedidos:
     get:
       $ref: 'v1_cases/pedidos/public@api@casos@idCaso@Pedidos-get.yaml'
-    post:
-      $ref: 'v1_cases/pedidos/public@api@casos@IDCaso@pedidos-post.yaml'
+    # post:
+    #   $ref: 'v1_cases/pedidos/public@api@casos@IDCaso@pedidos-post.yaml'
   /api/casos/num/pedidos:
     get:
       $ref: 'v1_cases/pedidos/public@api@casos@num@pedidos-get.yaml'
@@ -640,12 +639,12 @@ paths:
   /api/casos/Pedidos/{IDCasoPedido}/IdsGarantias:
     get:
       $ref: 'v1_cases/pedidos/public@api@casos@Pedidos@IDCasoPedido@IdsGarantias-get.yaml'
-  /api/casos/pedidostmp:
-    post:
-      $ref: 'v1_cases/pedidos/public@api@pedidostmp-post.yaml'      
-  /api/casos/{IDCaso}/pedidosComValores:
-    post:
-      $ref: 'v1_cases/pedidos/public@api@casos@IDCaso@pedidosComValores-post.yaml'     
+  # /api/casos/pedidostmp:
+  #   post:
+  #     $ref: 'v1_cases/pedidos/public@api@pedidostmp-post.yaml'      
+  # /api/casos/{IDCaso}/pedidosComValores:
+  #   post:
+  #     $ref: 'v1_cases/pedidos/public@api@casos@IDCaso@pedidosComValores-post.yaml'     
       
   # Produtos
   /api/casos/{IDCaso}/produtos:
@@ -668,67 +667,68 @@ paths:
   /api/push/publicacoes/{id}/acoes:
     get:
       $ref: 'v1_cases/push/public@api@push@publicacoes@id@acoes-get.yaml'
-  /api/push/inclui/publicacoes/{id}/acoes:
-    post:
-      $ref: 'v1_cases/push/public@api@push@inclui@publicacoes@id@acoes-post.yaml'
-  /api/push/altera/publicacoes/{id}:
-    put:
-      $ref: 'v1_cases/push/public@api@push@altera@publicacoes@id-put.yaml'
-  /api/publicacao/vincula:
-    post:
-      $ref: 'v1_cases/push/public@api@publicacao@vincula-post.yaml'
-  /api/publicacao/desvincula:
-    post:
-      $ref: 'v1_cases\push\public@api@publicacao@desvincula-post.yaml'
-  /api/publicacao/aprova:
-    post:
-      $ref: 'v1_cases/push/public@api@publicacao@aprova-post.yaml'
-  /api/publicacao/prazo:
-    post:
-      $ref: 'v1_cases/push/public@api@publicacao@prazo-post.yaml'
-  /api/publicacao/hora:
-    post:
-      $ref: 'v1_cases/push/public@api@publicacao@hora-post.yaml'
+  # /api/push/inclui/publicacoes/{id}/acoes:
+  #   post:
+  #     $ref: 'v1_cases/push/public@api@push@inclui@publicacoes@id@acoes-post.yaml'
+  # /api/push/altera/publicacoes/{id}:
+  #   put:
+  #     $ref: 'v1_cases/push/public@api@push@altera@publicacoes@id-put.yaml'
+  # /api/publicacao/vincula:
+  #   post:
+  #     $ref: 'v1_cases/push/public@api@publicacao@vincula-post.yaml'
+  # /api/publicacao/desvincula:
+  #   post:
+  #     $ref: 'v1_cases\push\public@api@publicacao@desvincula-post.yaml'
+  # /api/publicacao/aprova:
+  #   post:
+  #     $ref: 'v1_cases/push/public@api@publicacao@aprova-post.yaml'
+  # /api/publicacao/prazo:
+  #   post:
+  #     $ref: 'v1_cases/push/public@api@publicacao@prazo-post.yaml'
+  # /api/publicacao/hora:
+  #   post:
+  #     $ref: 'v1_cases/push/public@api@publicacao@hora-post.yaml'
   /api/publicacao/por_pagina:
     get:
       $ref: 'v1_cases\push\public@api@publicacao@por_pagina-get.yaml'
 
   # Push de andamentos
-  /api/push/casos/ativar_push_andamentos:
-    post:
-      $ref: 'v1_cases\push_andamentos\public@api@push@casos@ativar_push_andamentos-post.yaml'
-  /api/push/casos/descadastrar_push_andamentos:
-    post:
-      $ref: 'v1_cases\push_andamentos\public@api@push@casos@descadastrar_push_andamentos-post.yaml'
+  # /api/push/casos/ativar_push_andamentos:
+  #   post:
+  #     $ref: 'v1_cases\push_andamentos\public@api@push@casos@ativar_push_andamentos-post.yaml'
+  # /api/push/casos/descadastrar_push_andamentos:
+  #   post:
+  #     $ref: 'v1_cases\push_andamentos\public@api@push@casos@descadastrar_push_andamentos-post.yaml'
 
   # Push de publicação
   /api/publicacao/lista_tribunais:
     get:
       $ref: 'v1_cases\push_publicacao\public@api@publicacao@lista_tribunais-get.yaml'
-  /api/publicacao/termo:
-    post:
-      $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo-post.yaml'
-    put:
-      $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo-put.yaml'
+  # /api/publicacao/termo:
+  #   post:
+  #     $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo-post.yaml'
+  #   put:
+  #     $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo-put.yaml'
   /api/publicacao/termos_ativos:
     get:
       $ref: 'v1_cases\push_publicacao\public@api@publicacao@termos_ativos-get.yaml'
   /api/publicacao/termo/{IDTermo}:
     get:
       $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo@IDTermo-get.yaml'
-  /api/publicacao/termo/{IDsTermos}:
-    delete:
-      $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo@IDsTermos-delete.yaml'
-# Questões Processuais
+  # /api/publicacao/termo/{IDsTermos}:
+  #   delete:
+  #     $ref: 'v1_cases\push_publicacao\public@api@publicacao@termo@IDsTermos-delete.yaml'
+  
+  # Questões Processuais
   /api/questoes_processuais:
     get:
       $ref: 'v1_cases\questoes_processuais\public@api@questoes_processuais-get.yaml'
-  /api/questoes_processuais/relacao_caso/{IDCaso}:
-    post:
-      $ref: 'v1_cases\questoes_processuais\public@api@questoes_processuais@relacao_caso@{IDCaso}-post.yaml'
-  /api/questoes_processuais/relacao_decisao/{IDCasoDecisao}:
-    post:
-      $ref: 'v1_cases\questoes_processuais\public@api@questoes_processuais@relacao_decisao@{IDCasoDecisao}-post.yaml'
+  # /api/questoes_processuais/relacao_caso/{IDCaso}:
+  #   post:
+  #     $ref: 'v1_cases\questoes_processuais\public@api@questoes_processuais@relacao_caso@{IDCaso}-post.yaml'
+  # /api/questoes_processuais/relacao_decisao/{IDCasoDecisao}:
+  #   post:
+  #     $ref: 'v1_cases\questoes_processuais\public@api@questoes_processuais@relacao_decisao@{IDCasoDecisao}-post.yaml'
   /api/casos/{idCaso}/questoes_processuais:
     get:
       $ref: 'v1_cases\questoes_processuais\public@api@casos@{idCaso}@questoes_processuais-get.yaml'
@@ -746,16 +746,16 @@ paths:
   /api/solicitacao/{id}:
     get:
       $ref: 'v1_cases/solicitacao/public@api@solicitacao@id-get.yaml'
-    put:
-      $ref: 'v1_cases/solicitacao/public@api@solicitacao@id-put.yaml'
-    delete:
-      $ref: 'v1_cases/solicitacao/public@api@solicitacao@id-delete.yaml'
+    # put:
+    #   $ref: 'v1_cases/solicitacao/public@api@solicitacao@id-put.yaml'
+    # delete:
+    #   $ref: 'v1_cases/solicitacao/public@api@solicitacao@id-delete.yaml'
   /api/solicitacao/lista:
     get:
       $ref: 'v1_cases/solicitacao/public@api@solicitacao@lista-get.yaml'
-  /api/solicitacao/inclui:
-    post:
-      $ref: 'v1_cases/solicitacao/public@api@solicitacao@inclui-post.yaml'  
+  # /api/solicitacao/inclui:
+  #   post:
+  #     $ref: 'v1_cases/solicitacao/public@api@solicitacao@inclui-post.yaml'  
 
   # Tabela de preço
   /api/escritorios/{idEscritorio}/tabelaspreco:
@@ -771,9 +771,9 @@ paths:
     get:
       $ref: 'v1_cases/tipo_decisao/public@api@tipo_decisao-get.yaml'
   # Tipo Julgamento
-  /api/tipo_julgamento:
-    post:
-      $ref: 'v1_cases/tipo_julgamento/public@api@tipo_julgamento-post.yaml'
+  # /api/tipo_julgamento:
+  #   post:
+  #     $ref: 'v1_cases/tipo_julgamento/public@api@tipo_julgamento-post.yaml'
   /api/tipo_decisao/{IdTipoDecisao}/tipo_julgamento:
     get:
       $ref: 'v1_cases/tipo_julgamento/public@api@tipo_decisao@{IdTipoDecisao}@tipo_julgamento-get.yaml'
@@ -788,9 +788,9 @@ paths:
   /api/compromissos:
     get:
       $ref: 'v1_cases/tarefa/public@api@compromissos-get.yaml'
-  /api/agenda/edit:
-    put:
-      $ref: 'v1_cases/tarefa/public@api@agenda@edit-put.yaml'
+  # /api/agenda/edit:
+  #   put:
+  #     $ref: 'v1_cases/tarefa/public@api@agenda@edit-put.yaml'
   /api/agenda/totaleventos:
     get:
       $ref: 'v1_cases/tarefa/public@api@agenda@totaleventos-get.yaml'
@@ -800,10 +800,10 @@ paths:
   /api/agenda:
     get:
       $ref: 'v1_cases/tarefa/public@api@agenda-get.yaml'
-    post:
-      $ref: 'v1_cases/tarefa/public@api@agenda-post.yaml'
-    put:
-      $ref: 'v1_cases/tarefa/public@api@agenda-put.yaml'
+    # post:
+    #   $ref: 'v1_cases/tarefa/public@api@agenda-post.yaml'
+    # put:
+    #   $ref: 'v1_cases/tarefa/public@api@agenda-put.yaml'
   /api/casos/{idCaso}/agenda:
     get:
       $ref: 'v1_cases/tarefa/public@api@casos@idCaso@agenda-get.yaml'
@@ -819,10 +819,10 @@ paths:
   /api/agenda/titulos:
     get:
       $ref: 'v1_cases/tarefa/public@api@agenda@titulos-get.yaml'
-    post:
-      $ref: 'v1_cases/tarefa/public@api@agenda@titulos-post.yaml'
-    put:
-      $ref: 'v1_cases/tarefa/public@api@agenda@titulos-put.yaml'
+    # post:
+    #   $ref: 'v1_cases/tarefa/public@api@agenda@titulos-post.yaml'
+    # put:
+    #   $ref: 'v1_cases/tarefa/public@api@agenda@titulos-put.yaml'
   /api/casos/{idCaso}/audiencias:
     get:
       $ref: 'v1_cases/tarefa/public@api@casos@idCaso@audiencias-get.yaml'
@@ -838,26 +838,26 @@ paths:
   /api/agenda/status_encerramento:
     get:
       $ref: 'v1_cases/tarefa/public@api@agenda@status_encerramento-get.yaml'
-  /api/agenda/custom_field:
-    post:
-      $ref: 'v1_cases/tarefa/public@api@agenda@custom_field-post.yaml'
-  /api/tarefas:
-    post:
-      $ref: 'v1_cases/tarefa/public@api@tarefas-post.yaml'
+  # /api/agenda/custom_field:
+  #   post:
+  #     $ref: 'v1_cases/tarefa/public@api@agenda@custom_field-post.yaml'
+  # /api/tarefas:
+  #   post:
+  #     $ref: 'v1_cases/tarefa/public@api@tarefas-post.yaml'
   /api/tarefas/tarefas_subtarefas:
     get:
       $ref: 'v1_cases/tarefa/public@api@tarefas@tarefas_subtarefas-get.yaml'    
   /api/tarefas/titulos:
     get:
       $ref: 'v1_cases/tarefa/public@api@tarefas@titulos-get.yaml'
-    patch: 
-      $ref: 'v1_cases/tarefa/public@api@tarefas@titulos-patch.yaml'
+    # patch: 
+    #   $ref: 'v1_cases/tarefa/public@api@tarefas@titulos-patch.yaml'
   /api/tarefas/tarefa_subtarefas/{id}/{tipo}:
     get:
       $ref: 'v1_cases/tarefa/public@api@tarefas@tarefa_subtarefas@id@tipo-get.yaml'
-  /api/tarefas/custom_field:
-    post:
-      $ref: 'v1_cases/tarefa/public@api@tarefas@custom_field-post.yaml'
+  # /api/tarefas/custom_field:
+  #   post:
+  #     $ref: 'v1_cases/tarefa/public@api@tarefas@custom_field-post.yaml'
 
   # Timeline
   /api/timeline/items:
@@ -904,18 +904,18 @@ paths:
   /api/timesheet/obtem/{id}:
     get:
       $ref: 'v1_cases/timesheet/public@api@timesheet@obtem@id-get.yaml'
-  /api/timesheet/inclui:
-    post:
-      $ref: 'v1_cases/timesheet/public@api@timesheet@inclui-post.yaml'
-  /api/timesheet/incluiWeb:
-    post:
-      $ref: 'v1_cases/timesheet/public@api@timesheet@incluiWeb-post.yaml'
-  /api/timesheet/atualizaWeb:
-    put:
-      $ref: 'v1_cases/timesheet/public@api@timesheet@atualizaWeb-put.yaml'
-  /api/timesheet/atualiza:
-    put:
-      $ref: 'v1_cases/timesheet/public@api@timesheet@atualiza-put.yaml'
+  # /api/timesheet/inclui:
+  #   post:
+  #     $ref: 'v1_cases/timesheet/public@api@timesheet@inclui-post.yaml'
+  # /api/timesheet/incluiWeb:
+  #   post:
+  #     $ref: 'v1_cases/timesheet/public@api@timesheet@incluiWeb-post.yaml'
+  # /api/timesheet/atualizaWeb:
+  #   put:
+  #     $ref: 'v1_cases/timesheet/public@api@timesheet@atualizaWeb-put.yaml'
+  # /api/timesheet/atualiza:
+  #   put:
+  #     $ref: 'v1_cases/timesheet/public@api@timesheet@atualiza-put.yaml'
   /api/timesheet/limiteMinimo:
     get:
       $ref: 'v1_cases/timesheet/public@api@timesheet@limiteMinimo-get.yaml'
