@@ -36,19 +36,24 @@ allOf:
         type: string <nullable>
         description: "**Breve descrição sobre o caso**"
       locale:
-        type: string <nullable>
+        type: array
+        items:
+          $ref: ../../common_schemas/SimpleEntity.yaml
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
       courtVenue:
-        type: string <nullable>
+        type: array
+        items:
+          $ref: ../../common_schemas/SimpleEntity.yaml
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
       caseProcedure:
-        type: string <nullable>
-        description: "**Rito ou procedimento do caso**"
+        description: >
+          **Rito ou procedimento do caso**
+        $ref: ../../common_schemas/SimpleEntity.yaml
       phase:
         type: string <nullable>
         description: |
