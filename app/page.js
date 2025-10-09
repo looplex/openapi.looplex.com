@@ -359,7 +359,7 @@ export default function Home() {
 
               <BorderedLink
                 link='/v2_case-management'
-                text='Cases v2 (Case Management)'
+                text='Case Management'
               />
 
             </ColCard>
