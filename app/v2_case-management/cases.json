@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.33.1",
+    "version": "1.34.0",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -3543,16 +3543,22 @@
                 "description": "**Breve descrição sobre o caso**"
               },
               "locale": {
-                "type": "string <nullable>",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                },
                 "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "courtVenue": {
-                "type": "string <nullable>",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntity"
+                },
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
               "caseProcedure": {
-                "type": "string <nullable>",
-                "description": "**Rito ou procedimento do caso**"
+                "description": "**Rito ou procedimento do caso**\n",
+                "$ref": "#/components/schemas/SimpleEntity"
               },
               "phase": {
                 "type": "string <nullable>",
