@@ -13,6 +13,8 @@ parameters:
   - $ref: ../../common_parameters/StartIndex.yaml
   - $ref: ../../common_parameters/Count.yaml
   - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../common_parameters/SortBy.yaml
+  - $ref: ../../common_parameters/SortOrder.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"

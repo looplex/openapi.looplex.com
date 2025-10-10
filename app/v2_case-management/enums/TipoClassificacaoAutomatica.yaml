@@ -1,6 +1,6 @@
 title: Tipo de classificacao automática
 type: string
-example: DOCKET_ENTRY
+example: <tipo_de_classificacao_do_andamento>
 description: |
   **Tipo de classificação do andamento**<br />
   TIMESHEET<br/>

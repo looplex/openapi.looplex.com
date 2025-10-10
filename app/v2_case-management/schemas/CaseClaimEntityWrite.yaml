@@ -4,14 +4,17 @@ properties:
   caseId:
     type: string
     format: uuid
+    example: <global_unique_identifier>
     description: |
       **Case's unique identifier of this claim**<br/>
       `Obrigatório apenas quando o pedido não estiver sendo criado junto com o caso`
   subjectMatter:
     type: string
+    example: <classificacao_geral_da_questao>
     description: "**Question's general classification**"
   reliefStatement:
     type: string <nullable>
+    example: <relief_statement>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
   remedyType:
     $ref: ../enums/TipoReparacao.yaml
@@ -19,7 +22,7 @@ properties:
     $ref: ../enums/TipoTutela.yaml
   againstPosition: 
     type: string
-    example: ACTIVE
+    example: <polo>
     description: |
       **Participant's position**<br />
       ACTIVE<br/>
@@ -33,25 +36,26 @@ properties:
     items:
       type: string
       format: uuid
+      example: <global_unique_identifier>
   riskClassification:
     $ref: ../enums/ContingentLiabilityRiskClassification.yaml
   foreseenValue:
     type: number
-    example: 1
+    example: 0
     description: "**Foreseen value**"
   liquidated:
     type: boolean
-    exampl: false
+    example: false
     description: "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
   effectiveDate:
     type: string
     format: datetime
-    example: "2025-01-01T12:00:00.000"
+    example: <effective_date>
     description: "**Data de constituição**"
   dueDate:
     type: string
     format: datetime
-    example: "2025-01-02T12:00:00.000"
+    example: <due_date>
     description: "**Data de vencimento**"
   recurrence:
     $ref: ../enums/TipoDeRecorrencia.yaml

@@ -1,6 +1,6 @@
 title: Position
 type: string
-example: ACTIVE 
+example: <polo>
 description: |
   **Posição do participante**<br />
   ACTIVE<br/>

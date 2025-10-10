@@ -1,6 +1,6 @@
 title: TipoTutela
 type: string <nullable>
-example: URGENCIA_SATISFATIVA
+example: <tipo_tutela>
 description: |
   **Tutela provisória**<br/>
   URGENCIA_SATISFATIVA<br/>

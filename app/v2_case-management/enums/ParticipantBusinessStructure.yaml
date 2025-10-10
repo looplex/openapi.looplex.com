@@ -1,6 +1,6 @@
 title: ParticipantBusinessStructure
 type: string <nullable>
-example: null
+example: <business_structure>
 description: |
   Empresa Pública<br />
   Sociedade de Economia Mista<br />

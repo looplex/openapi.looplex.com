@@ -4,6 +4,6 @@ properties:
   legalCategory:
     type: string
     description: "**The legal category name**"
-    example: "legal category name"
+    example: <nome_da_natureza>
   group:
     $ref: ../enums/GrupoNaturezaDaCausa.yaml

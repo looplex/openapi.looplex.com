@@ -110,10 +110,10 @@ properties:
         }
       }
       ```
-    example: "<property_name>"
+    example: <property_name>
   op:
     type: string
-    example: replace
+    example: <operation>
     description: |
       **The operation**<br />
       **Available option:**<br/>
@@ -122,7 +122,7 @@ properties:
     description: "**The new value to set**"
     oneOf:
       - type: string
-        example: "value"
+        example: <value>
       - type: number
         example: 10
       - type: object

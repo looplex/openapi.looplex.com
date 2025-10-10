@@ -1,5 +1,6 @@
 title: Classe Processo Societario
 type: string
+example: <classe_do_processo>
 description: |
   **Valores permitidos quando _Type_ é definido como _SOCIETARIO_**<br />
   CASO<br/>

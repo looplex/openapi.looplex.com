@@ -1,15 +1,12 @@
 title: Identity (NATURAL_PERSON)
 type: object
-example: {
-  identityProviderType: "CPF",
-  value: "ddd.ddd.ddd-dd"
-}
 properties:
   identityProviderType:
     $ref: ../common_enums/NaturalPersonIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"
+    example: <value>
 required: 
   - identityProviderType
   - value

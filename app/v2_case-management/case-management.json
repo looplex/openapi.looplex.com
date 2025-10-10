@@ -2466,7 +2466,7 @@
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**The unique identifier of this value**",
-            "example": "<global_unique_identifier_ou_null>"
+            "example": "<global_unique_identifier_ou_null>\""
           },
           "IdentityProviderType": {
             "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
@@ -2474,7 +2474,7 @@
           "Value": {
             "type": "string",
             "description": "**The identity value**",
-            "example": "<valor>"
+            "example": "<valor>\""
           }
         }
       },
@@ -2777,7 +2777,7 @@
                 "type": "string <nullable>",
                 "format": "datetime",
                 "example": "<data_de_nascimento>",
-                "description": "**Data de Nascimento**<br />"
+                "description": "**Data de Nascimento**"
               },
               "gender": {
                 "$ref": "#/components/schemas/Gender"
@@ -2890,29 +2890,27 @@
       "LegacyIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
+        "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
       "LegacyIdentityEntity": {
         "title": "Identidade",
         "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
         "type": "object",
-        "example": {
-          "Id": null,
-          "IdentityProviderType": "Law Office",
-          "Value": "1"
-        },
         "properties": {
           "Id": {
             "type": "string <nullable>",
             "format": "uuid",
-            "description": "**The unique identifier of this value**"
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identifier>"
           },
           "IdentityProviderType": {
             "$ref": "#/components/schemas/LegacyIdentityProviderType"
           },
           "Value": {
             "type": "string",
-            "description": "**The identity value**"
+            "description": "**The identity value**",
+            "example": "<value>"
           }
         }
       },
@@ -2929,16 +2927,17 @@
               "date": {
                 "type": "string",
                 "format": "datetime",
-                "example": "2025-05-21T12:00:00.000Z",
+                "example": "<data_do_andamento>",
                 "description": "**Data do andamento**"
               },
               "classification": {
                 "type": "string <nullable>",
-                "description": "**Classificação do andamento**"
+                "description": "**Classificação do andamento**",
+                "example": "<classificacao_do_andamento>"
               },
               "description": {
                 "type": "string",
-                "example": "Texto do andamento",
+                "example": "<descricao_do_andamento>",
                 "description": "**Texto do andamento**"
               },
               "isInternal": {
@@ -2949,12 +2948,13 @@
               "serviceOfProcess": {
                 "type": "string <nullable>",
                 "format": "uuid",
-                "description": "**Identificador da publicação que criou esse andamento (se houver)**"
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**",
+                "example": "<unique_identifier_da_publicacao>"
               },
               "createdAt": {
                 "type": "string",
                 "format": "datetime",
-                "example": "2025-05-21T12:00:00.000Z",
+                "example": "<data_criacao_do_andamento>",
                 "description": "**Entry creation date**"
               },
               "createdBy": {
@@ -2966,7 +2966,8 @@
               "caseId": {
                 "type": "string",
                 "format": "uuid",
-                "description": "**Case's unique identifier**"
+                "description": "**Case's unique identifier**",
+                "example": "<unique_identifier_do_processo>"
               },
               "customFields": {
                 "type": "object",
@@ -2985,8 +2986,8 @@
       },
       "TipoDeTarefaTimesheet": {
         "title": "TipoDeTarefaTimesheet",
-        "example": "HORAS_DEBITAVEIS",
         "type": "string",
+        "example": "<tipo_de_tarefa_de_timesheet>",
         "description": "APRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
       },
       "TimesheetEntity": {
@@ -3002,11 +3003,13 @@
               "clientId": {
                 "type": "string",
                 "format": "uuid",
-                "description": "**Client unique identifier**"
+                "description": "**Client unique identifier**",
+                "example": "<global_unique_identifier>"
               },
               "classification": {
                 "type": "string <nullable>",
-                "description": "**Classificação**"
+                "description": "**Classificação**",
+                "example": "<classificacao>"
               },
               "owner": {
                 "$ref": "#/components/schemas/SimpleEntity",
@@ -3015,28 +3018,31 @@
               "date": {
                 "type": "string",
                 "format": "datetime",
-                "description": "**Data**"
+                "description": "**Data**",
+                "example": "<data>"
               },
               "hours": {
                 "type": "string",
-                "example": "01:00:00",
+                "example": "<hora>",
                 "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
               },
               "taskCode": {
                 "type": "string <nullable>",
-                "description": "**Código da Tarefa**"
+                "description": "**Código da Tarefa**",
+                "example": "<codigo_da_tarefa>"
               },
               "activityCode": {
                 "type": "string <nullable>",
-                "description": "**Código da Atividade**<br />"
+                "description": "**Código da Atividade**",
+                "example": "<codigo_da_atividade>"
               },
               "applicant": {
                 "$ref": "#/components/schemas/SimpleEntity",
-                "description": "**Solicitante**<br />"
+                "description": "**Solicitante**"
               },
               "description": {
                 "type": "string <nullable>",
-                "example": "Descrição",
+                "example": "<descricao>",
                 "description": "**Descrição**"
               },
               "isInvoiced": {
@@ -3047,7 +3053,7 @@
               "createdAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_de_criacao>",
                 "description": "**Criado em**"
               },
               "createdBy": {
@@ -3057,8 +3063,8 @@
               "updatedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-02T12:00:00.000",
-                "description": "**Atualizado em**"
+                "description": "**Atualizado em**",
+                "example": "<data_de_atualizacao>"
               },
               "updatedBy": {
                 "$ref": "#/components/schemas/SimpleEntity",
@@ -3070,7 +3076,8 @@
                 "properties": {
                   "id": {
                     "type": "string",
-                    "format": "uuid"
+                    "format": "uuid",
+                    "example": "<global_unique_identifier>"
                   }
                 }
               },
@@ -3084,7 +3091,7 @@
       "TimelineItemType": {
         "title": "TimelineItemType",
         "type": "string",
-        "example": "Andamento do Tribunal",
+        "example": "<tipo_de_item_da_timeline>",
         "description": "**Tipo de evento**<br />\n**Valores possíveis:**<br />\nAndamento do Tribunal<br />\nDecisão<br />\nAndamento<br />\nGarantia<br />\nPublicação<br />\nCumprimento<br />\nTarefa<br />\nHora\n"
       },
       "TimelineEntity": {
@@ -3097,22 +3104,23 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "description": "**Identificador do item**"
+            "description": "**Identificador do item**",
+            "example": "<global_unique_identifier>"
           },
           "date": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data>",
             "description": "**Data do evento**"
           },
           "title": {
             "type": "string <nullable>",
-            "example": "Titulo",
+            "example": "<titulo>",
             "description": "**Título do evento**"
           },
           "description": {
             "type": "string <nullable>",
-            "example": "Descrição",
+            "example": "<descricao>",
             "description": "**Descrição do evento**"
           }
         }
@@ -3204,43 +3212,43 @@
                 "type": "array",
                 "items": {
                   "type": "string",
-                  "example": "Legal category"
+                  "example": "<natureza_do_processo>"
                 }
               },
               "retentionDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_entrada_do_processo>",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
               },
               "startDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_distribuicao_do_processo>",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
               },
               "formationDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_citacao_do_processo>",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
               },
               "resJudicataDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_transito_julgado_do_processo>",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
               "forecastedEndDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_prevista_encerramento_do_processo>",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
               },
               "createdAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_criacao_do_processo>",
                 "description": "**Data de criação do caso**"
               },
               "createdBy": {
@@ -3249,7 +3257,7 @@
               },
               "updatedAt": {
                 "type": "string <nullable>",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_atualizacao_do_processo>",
                 "description": "**Atualizado em**"
               },
               "updatedBy": {
@@ -3259,7 +3267,7 @@
               "closedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
-                "example": "2025-01-01T12:00:00.000",
+                "example": "<data_encerramento_do_processo>",
                 "description": "**Data de encerramento**"
               },
               "closedBy": {
@@ -3268,14 +3276,14 @@
               },
               "group": {
                 "type": "string",
-                "example": "Área",
+                "example": "<area_do_processo>",
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
               },
               "product": {
                 "type": "array",
                 "items": {
                   "type": "string",
-                  "example": "Produto"
+                  "example": "<produto_do_processo>"
                 },
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
               },
@@ -3334,7 +3342,7 @@
                 "items": {
                   "$ref": "#/components/schemas/TimesheetEntity"
                 },
-                "description": "**Registro de horas trabalhadas**<br />"
+                "description": "**Registro de horas trabalhadas**"
               },
               "customFields": {
                 "type": "object",
@@ -3352,23 +3360,10 @@
                 "$ref": "#/components/schemas/SimpleEntity"
               },
               "parentCase": {
-                "description": "**The parent case of this case**",
-                "oneOf": [
-                  {
-                    "type": "string",
-                    "example": "0000000-00.0000.0.00.0000",
-                    "description": "**Numero CNJ do caso**"
-                  },
-                  {
-                    "type": "string",
-                    "format": "uuid",
-                    "description": "**Identificador único do caso**"
-                  },
-                  {
-                    "type": "object",
-                    "description": "**Os dados do caso**"
-                  }
-                ]
+                "type": "string",
+                "format": "uuid",
+                "description": "**Identificador único do caso**",
+                "example": "<global_unique_identifier_ou_null>"
               }
             }
           }
@@ -3385,7 +3380,7 @@
           },
           "op": {
             "type": "string",
-            "example": "replace",
+            "example": "<operation>",
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
@@ -3393,7 +3388,7 @@
             "oneOf": [
               {
                 "type": "string",
-                "example": "value"
+                "example": "<value>"
               },
               {
                 "type": "number",
@@ -3715,18 +3710,16 @@
       "CaseIdentityEntityWrite": {
         "title": "Identidade (Case)",
         "type": "object",
-        "example": {
-          "IdentityProviderType": "<identity_type>",
-          "Value": "<identity_value>"
-        },
         "properties": {
           "IdentityProviderType": {
             "type": "string",
-            "description": "**The identity provider**<br/>\n**Allowed value:**<br/>\nCNJ<br/>\n"
+            "description": "**The identity provider**<br/>\n**Allowed value:**<br/>\nCNJ<br/>\n",
+            "example": "<identity_provider>"
           },
           "Value": {
             "type": "string",
-            "description": "**The identity value**"
+            "description": "**The identity value**",
+            "example": "<value>"
           }
         }
       },
@@ -3756,17 +3749,14 @@
       "LegalPersonIdentityEntityWrite": {
         "title": "Identity (LEGAL_PERSON)",
         "type": "object",
-        "example": {
-          "identityProviderType": "<provider_type>",
-          "value": "<value>"
-        },
         "properties": {
           "identityProviderType": {
             "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
           },
           "value": {
             "type": "string",
-            "description": "**The identity value**"
+            "description": "**The identity value**",
+            "example": "<value>"
           }
         },
         "required": [
@@ -3891,7 +3881,7 @@
                 "type": "string <nullable>",
                 "format": "datetime",
                 "example": "<data_de_nascimento>",
-                "description": "**Data de Nascimento**<br />"
+                "description": "**Data de Nascimento**"
               },
               "gender": {
                 "$ref": "#/components/schemas/Gender"
@@ -4222,7 +4212,7 @@
             "type": "string <nullable>",
             "format": "datetime",
             "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
-            "example": "data_de_citacao_do_processo"
+            "example": "<data_de_citacao_do_processo>"
           },
           "resJudicataDate": {
             "type": "string <nullable>",
@@ -4369,7 +4359,8 @@
           "clientId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Client unique identifier**"
+            "description": "**Client unique identifier**",
+            "example": "<global_unique_identifier>"
           },
           "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
@@ -4378,28 +4369,32 @@
           "date": {
             "type": "string",
             "format": "datetime",
-            "description": "**Data**"
+            "description": "**Data**",
+            "example": "<data>"
           },
           "hours": {
             "type": "string",
-            "example": "01:00:00",
+            "example": "<hora>",
             "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
           },
           "taskCode": {
             "type": "string <nullable>",
-            "description": "**Código da Tarefa**"
+            "description": "**Código da Tarefa**",
+            "example": "<codigo_da_tarefa>"
           },
           "activityCode": {
             "type": "string <nullable>",
-            "description": "**Código da Atividade**<br />"
+            "description": "**Código da Atividade**",
+            "example": "<codigo_da_atividade>"
           },
           "applicant": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Solicitante**<br />"
+            "description": "**Solicitante**"
           },
           "description": {
             "type": "string <nullable>",
-            "description": "**Descrição**"
+            "description": "**Descrição**",
+            "example": "<descricao>"
           },
           "taskType": {
             "$ref": "#/components/schemas/TipoDeTarefaTimesheet",
@@ -4411,7 +4406,8 @@
             "properties": {
               "id": {
                 "type": "string",
-                "format": "uuid"
+                "format": "uuid",
+                "example": "<global_unique_identifier>"
               }
             }
           }
@@ -4423,54 +4419,55 @@
         "properties": {
           "country": {
             "type": "string <nullable>",
-            "example": "BR",
+            "example": "<pais>",
             "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
           },
           "postalCode": {
             "type": "string <nullable>",
-            "example": "00000-000",
+            "example": "<cep>",
             "description": "**Postal code**"
           },
           "streetAddress": {
             "type": "string",
-            "example": "Avenida exemplo",
+            "example": "<logradouro>",
             "description": "**Street**"
           },
           "streetAddressNumber": {
             "type": "string <nullable>",
-            "example": "10",
+            "example": "<numero_do_logradouro>",
             "description": "**Street number**"
           },
           "pobox": {
             "type": "string <nullable>",
-            "example": null,
+            "example": "<caixa_postal>",
             "description": "**PO box**"
           },
           "locality": {
             "type": "string <nullable>",
-            "example": "SP",
+            "example": "<estado>",
             "description": "**State**"
           },
           "region": {
             "type": "string <nullable>",
-            "example": "São Paulo",
+            "example": "<cidade>",
             "description": "**City**"
           },
           "neighborhood": {
             "type": "string <nullable>",
-            "example": "Centro",
+            "example": "<bairro>",
             "description": "**Neighborhood**"
           },
           "complement": {
             "type": "string",
-            "description": "**Address' complement**"
+            "description": "**Address' complement**",
+            "example": "<complemento>"
           },
           "type": {
             "$ref": "#/components/schemas/AddressType"
           },
           "primary": {
             "type": "boolean",
-            "example": true,
+            "example": false,
             "description": "**Is this the main address?**"
           },
           "customFields": {
@@ -4489,12 +4486,12 @@
         "properties": {
           "name": {
             "type": "string",
-            "example": "Example name",
+            "example": "<nome>",
             "description": "**Client's name**"
           },
           "nickName": {
             "type": "string",
-            "example": "Example nickname",
+            "example": "<apelido_do_cliente>",
             "description": "**Client's nickname**"
           },
           "type": {
@@ -4502,24 +4499,24 @@
           },
           "email": {
             "type": "string <nullable>",
-            "example": "dont_exists@email.com",
+            "example": "<email>",
             "description": "**Client's email address**"
           },
           "website": {
             "type": "string <nullable>",
-            "example": "dont-exists.com",
+            "example": "<website>",
             "description": "**The client's website page**"
           },
           "comments": {
             "type": "string <nullable>",
             "description": "**Comments about the client**",
-            "example": "Comments"
+            "example": "<observacoes>"
           },
           "dob": {
             "type": "string <nullable>",
             "format": "datetime",
             "description": "**Client's date of birth (available when NATURAL_PERSON)**",
-            "example": "2025-01-01T12:00:00.000Z"
+            "example": "<data_de_nascimento>"
           },
           "gender": {
             "$ref": "#/components/schemas/Gender",
@@ -4568,19 +4565,19 @@
       "ContratoReembolsoKM": {
         "title": "ContratoReembolsoKM",
         "type": "string",
-        "example": "ESCRITORIO",
+        "example": "<reembolso_km_enumeration>",
         "description": "ESCRITORIO = 1<br />\nCONTRATO = 2\n"
       },
       "TipoRegraAprovacaoLimiteDespesas": {
         "title": "TipoRegraAprovacaoLimiteDespesas",
         "type": "string",
-        "example": "REGRAESCRITORIO",
+        "example": "<tipo_regra_aprovacao_limite_despesas>",
         "description": "REGRAESCRITORIO = 1<br/>\nREGRAEMPRESA = 2<br/>\nREGRACLIENTE = 3<br/>\nREGRACONTRATO = 4<br/>\nREGRAPROCESSO = 5<br/>\nREGRAVAZIA = 6\n"
       },
       "ContratoSituacao": {
         "title": "ContratoSituacao",
         "type": "string",
-        "example": "ATIVO",
+        "example": "<situacao_do_contrato>",
         "description": "ATIVO = 1<br/>\nENCERRADO = 3\n"
       },
       "LegalServiceAgreementEntity": {
@@ -4595,40 +4592,41 @@
           "clientId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Client's unique identifier**"
+            "description": "**Client's unique identifier**",
+            "example": "<global_unique_identifier>"
           },
           "name": {
             "type": "string",
-            "example": "Title",
+            "example": "<titulo>",
             "description": "Legal service agreement's title"
           },
           "summary": {
             "type": "string",
-            "example": "Summary",
+            "example": "<observacoes>",
             "description": "Legal service agreement's summary"
           },
           "createdAt": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_de_criacao>",
             "description": "Legal service agreement's created date"
           },
           "startDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_inicial>",
             "description": "Legal service agreement's start date"
           },
           "forecastedEndDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_prevista_encerramento>",
             "description": "Legal service agreement's forecasted end date"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-02T12:00:00.000",
+            "example": "<data_de_vencimento>",
             "description": "Legal service agreement's due date"
           },
           "isSameReviewerAttorneyFeesAndExpenses": {
@@ -4641,14 +4639,17 @@
           },
           "billingCompanyId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "ownerId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "number": {
-            "type": "integer"
+            "type": "integer",
+            "example": "<integer>"
           },
           "kilometersReimbursement": {
             "$ref": "#/components/schemas/ContratoReembolsoKM"
@@ -4672,34 +4673,35 @@
           "clientId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Client's unique identifier**"
+            "description": "**Client's unique identifier**",
+            "example": "<global_unique_identifier>"
           },
           "name": {
             "type": "string",
-            "example": "Title",
+            "example": "<titulo>",
             "description": "Legal service agreement's title"
           },
           "summary": {
             "type": "string",
-            "example": "Summary",
+            "example": "<observacoes>",
             "description": "Legal service agreement's summary"
           },
           "startDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_inicial>",
             "description": "Legal service agreement's start date"
           },
           "forecastedEndDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_prevista_encerramento>",
             "description": "Legal service agreement's forecasted end date"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
-            "example": "2025-01-02T12:00:00.000",
+            "example": "<data_de_vencimento>",
             "description": "Legal service agreement's due date"
           },
           "isSameReviewerAttorneyFeesAndExpenses": {
@@ -4712,11 +4714,13 @@
           },
           "billingCompanyId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "ownerId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "kilometersReimbursement": {
             "$ref": "#/components/schemas/ContratoReembolsoKM"
@@ -4733,7 +4737,7 @@
       "GrupoNaturezaDaCausa": {
         "title": "GrupoNaturezaDaCausa",
         "type": "string",
-        "example": "PROCESSOS_JUDICIAIS_ESTADUAL",
+        "example": "<grupo_da_natureza>",
         "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
       },
       "LegalCategoryEntity": {
@@ -4748,7 +4752,7 @@
           "legalCategory": {
             "type": "string",
             "description": "**The legal category name**",
-            "example": "legal category name"
+            "example": "<nome_da_natureza>"
           },
           "group": {
             "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
@@ -4762,7 +4766,7 @@
           "legalCategory": {
             "type": "string",
             "description": "**The legal category name**",
-            "example": "legal category name"
+            "example": "<nome_da_natureza>"
           },
           "group": {
             "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
@@ -4772,6 +4776,7 @@
       "PersonStatus": {
         "title": "Status",
         "type": "string",
+        "example": "<status>",
         "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
       },
       "EmployeeEntity": {
@@ -4787,22 +4792,23 @@
               "name": {
                 "type": "string",
                 "description": "**Employee's name**",
-                "example": "Name"
+                "example": "<nome>"
               },
               "nickName": {
                 "type": "string <nullable>",
                 "description": "**Employee's nickname**",
-                "example": "nickname"
+                "example": "<apelido>"
               },
               "dob": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Employee's date of birth**",
-                "example": "2025-08-29T03:00:00Z"
+                "example": "<data_de_nascimento>"
               },
               "gender": {
                 "type": "string <nullable>",
-                "description": "**Employee's gender**"
+                "description": "**Employee's gender**",
+                "example": "<genero>"
               },
               "identities": {
                 "type": "array",
@@ -4813,14 +4819,16 @@
               },
               "nationality": {
                 "type": "string <nullable>",
-                "description": "**Employee's nationality**"
+                "description": "**Employee's nationality**",
+                "example": "<nacionalidade>"
               },
               "maritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "occupation": {
                 "type": "string <nullable>",
-                "description": "**Employee's occupation**"
+                "description": "**Employee's occupation**",
+                "example": "<profissao>"
               },
               "role": {
                 "$ref": "#/components/schemas/ParticipantRole"
@@ -4860,15 +4868,18 @@
           "caseId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Case's unique identifier of this claim**"
+            "description": "**Case's unique identifier of this claim**",
+            "example": "<global_unique_identifier>"
           },
           "subjectMatter": {
             "type": "string <nullable>",
-            "description": "**Question's general classification**"
+            "description": "**Question's general classification**",
+            "example": "<subject_matter>"
           },
           "reliefStatement": {
             "type": "string <nullable>",
-            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
+            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
+            "example": "<relief_statement>"
           },
           "remedyType": {
             "$ref": "#/components/schemas/TipoReparacao"
@@ -4884,17 +4895,20 @@
             "type": "array",
             "items": {
               "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "example": "<global_unique_identifier>"
             }
           },
           "calculationRule": {
             "type": "object",
             "properties": {
               "Id": {
-                "type": "string"
+                "type": "string",
+                "example": "<global_unique_identifier>"
               },
               "Title": {
-                "type": "string"
+                "type": "string",
+                "example": "<title>"
               }
             }
           },
@@ -4902,24 +4916,29 @@
             "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "foreseenValue": {
-            "type": "number"
+            "type": "number",
+            "example": 0
           },
           "contingencyValue": {
             "type": "number",
-            "description": "**Valor de contingencia**"
+            "description": "**Valor de contingencia**",
+            "example": 0
           },
           "liquidated": {
-            "type": "boolean"
+            "type": "boolean",
+            "example": false
           },
           "effectiveDate": {
             "type": "string",
             "format": "datetime",
-            "description": "**Data de constituição**"
+            "description": "**Data de constituição**",
+            "example": "<data_de_constituicao>"
           },
           "dueDate": {
             "type": "string",
             "format": "datetime",
-            "description": "**Data de vencimento**"
+            "description": "**Data de vencimento**",
+            "example": "<data_de_vencimento>"
           },
           "recurrence": {
             "$ref": "#/components/schemas/TipoDeRecorrencia"
@@ -4929,7 +4948,8 @@
           },
           "granted": {
             "type": "number",
-            "description": "**Valor deferido pela ultima decisão**"
+            "description": "**Valor deferido pela ultima decisão**",
+            "example": 0
           },
           "customFields": {
             "type": "object",
@@ -4941,7 +4961,7 @@
       "SituacaoDaArea": {
         "title": "Case group status",
         "type": "string",
-        "example": "ACTIVE",
+        "example": "<situacao_da_area>",
         "description": "**Case group status**<br/>\nACTIVE<br/>\nINACTIVE\n"
       },
       "CaseGroupEntity": {
@@ -4956,16 +4976,16 @@
             "properties": {
               "name": {
                 "description": "**Case group name**",
-                "example": "Case group name",
+                "example": "<case_group_name>",
                 "type": "string"
               },
               "status": {
                 "$ref": "#/components/schemas/SituacaoDaArea"
               },
               "isProductive": {
+                "type": "boolean",
                 "description": "**Indicate if the group is productive**",
-                "example": true,
-                "type": "boolean"
+                "example": true
               },
               "customFields": {
                 "description": "**Custom fields for the case group**",

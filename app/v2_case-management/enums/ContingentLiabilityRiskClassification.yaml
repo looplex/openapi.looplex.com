@@ -1,6 +1,6 @@
 title: ContingentLiabilityRiskClassification
 type: string <nullable>
-example: POSSIBLE
+example: <risco>
 description: |
   **Risco**<br />
   Indicação do risco associado ao valor. <br />

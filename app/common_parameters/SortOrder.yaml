@@ -1,0 +1,7 @@
+name: SortOrder
+in: query
+required: false
+description: "**Order of sort (ASC | DESC)**"
+example: DESC
+schema:
+  type: string

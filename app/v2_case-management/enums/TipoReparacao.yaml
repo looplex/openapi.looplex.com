@@ -1,6 +1,6 @@
 title: TipoReparacao
 type: string <nullable>
-example: COERCIVE_REMEDY
+example: <tipo_da_reparacao>
 description: |
   **Request for relief or remedy sought by the party in connection with the claim.<br/>**
   **Enum Description:**<br/>

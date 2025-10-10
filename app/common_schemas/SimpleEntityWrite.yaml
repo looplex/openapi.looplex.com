@@ -5,3 +5,4 @@ properties:
     type: string
     format: uuid
     description: "**The object unique identifier**"
+    example: <global_unique_identifier>

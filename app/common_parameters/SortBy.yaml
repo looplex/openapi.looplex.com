@@ -1,0 +1,7 @@
+name: SortBy
+in: query
+required: false
+description: "**Property to be sorted**"
+example: <Name>
+schema:
+  type: string

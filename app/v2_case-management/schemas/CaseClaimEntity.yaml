@@ -5,12 +5,15 @@ properties:
     type: string
     format: uuid
     description: "**Case's unique identifier of this claim**"
+    example: <global_unique_identifier>
   subjectMatter:
     type: string <nullable>
     description: "**Question's general classification**"
+    example: <subject_matter>
   reliefStatement:
     type: string <nullable>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
+    example: <relief_statement>
   remedyType:
     $ref: ../enums/TipoReparacao.yaml
   provisionalRelief:
@@ -23,30 +26,38 @@ properties:
     items:
       type: string
       format: uuid
+      example: <global_unique_identifier>
   calculationRule:
     type: object
     properties:
       Id:
         type: string
+        example: <global_unique_identifier>
       Title:
         type: string
+        example: <title>
   riskClassification:
     $ref: ../enums/ContingentLiabilityRiskClassification.yaml
   foreseenValue:
     type: number
+    example: 0
   contingencyValue:
     type: number
     description: "**Valor de contingencia**"
+    example: 0
   liquidated:
     type: boolean
+    example: false
   effectiveDate:
     type: string
     format: datetime
     description: "**Data de constituição**"
+    example: <data_de_constituicao>
   dueDate:
     type: string
     format: datetime
     description: "**Data de vencimento**"
+    example: <data_de_vencimento>
   recurrence:
     $ref: ../enums/TipoDeRecorrencia.yaml
   status:
@@ -54,6 +65,7 @@ properties:
   granted:
     type: number
     description: "**Valor deferido pela ultima decisão**"
+    example: 0
   customFields:
     type: object
     description: "**Claim's custom fields**"

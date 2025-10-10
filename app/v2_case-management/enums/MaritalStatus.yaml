@@ -1,6 +1,6 @@
 title: Marital status
 type: string <nullable>
-example: SOLTEIRO
+example: <estado_civil>
 description: |
   **Marital status**<br />
   SOLTEIRO<br/>

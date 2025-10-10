@@ -5,6 +5,7 @@ properties:
     type: string
     format: uuid
     description: "**Client unique identifier**"
+    example: <global_unique_identifier>
   owner:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
     description: "**Responsável**"
@@ -12,25 +13,29 @@ properties:
     type: string
     format: datetime
     description: "**Data**"
+    example: <data>
   hours:
     type: string
-    example: "01:00:00"
+    example: <hora>
     description: |
       **Horas (quantidade de horas do lançamento)**<br />
       `Format: hh:mm:ss`
   taskCode:
     type: string <nullable>
     description: "**Código da Tarefa**"
+    example: <codigo_da_tarefa>
   activityCode:
     type: string <nullable>
-    description: "**Código da Atividade**<br />"
+    description: "**Código da Atividade**"
+    example: <codigo_da_atividade>
   applicant:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
-    description: "**Solicitante**<br />"
+    description: "**Solicitante**"
   description:
     type: string <nullable>
-    description: "**Descrição**"  
-  taskType:        
+    description: "**Descrição**"
+    example: <descricao>
+  taskType:
     $ref: ../enums/TipoDeTarefaTimesheet.yaml
     description: "**Tipo da Tarefa**"    
   case:
@@ -40,3 +45,4 @@ properties:
       id:
         type: string
         format: uuid
+        example: <global_unique_identifier>

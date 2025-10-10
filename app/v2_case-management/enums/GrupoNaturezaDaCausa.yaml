@@ -1,6 +1,6 @@
 title: GrupoNaturezaDaCausa
 type: string
-example: PROCESSOS_JUDICIAIS_ESTADUAL
+example: <grupo_da_natureza>
 description: |
   PROCESSOS_ADMINISTRATIVOS<br/>
   PROCESSOS_JUDICIAIS_ESTADUAL<br/>

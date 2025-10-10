@@ -1,17 +1,14 @@
 title: Identidade (NATURAL_PERSON)
 type: object
-example: {
-  Id: null,
-  IdentityProviderType: "CPF",
-  Value: "ddd.ddd.ddd-dd"
-}
 properties:
   Id:
     type: string <nullable>
     format: uuid
     description: "**The unique identifier of this value**"
+    example: <global_unique_identifier_ou_null>
   IdentityProviderType:
     $ref: ../common_enums/NaturalPersonIdentityProviderType.yaml
   Value:
     type: string
     description: "**The identity value**"
+    example: <valor>

@@ -1,5 +1,5 @@
 title: RamosJudicial
 type: string
-example: JUDICIAL_ESTADUAL
+example: <ramo_judicial_do_processo>
 description: 
-  $ref: '../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+  $ref: '../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'

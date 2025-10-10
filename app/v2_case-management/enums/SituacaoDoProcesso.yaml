@@ -1,6 +1,6 @@
 title: SituacaoDoProcesso
 type: string
-example: ATIVO
+example: <situacao_do_processo>
 description: |
   **Indicação do status do caso**<br />
   **Valores permitidos:**<br />

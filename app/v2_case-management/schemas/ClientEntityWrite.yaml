@@ -6,31 +6,31 @@ description: |
 properties:
   name:
     type: string
-    example: "Example name"
+    example: <nome>
     description: "**Client's name**"
   nickName:
     type: string
-    example: "Example nickname"
+    example: <apelido_do_cliente>
     description: "**Client's nickname**"
   type:
     $ref: ../enums/TipoPessoa.yaml
   email:
     type: string <nullable>
-    example: "dont_exists@email.com"
+    example: <email>
     description: "**Client's email address**"
   website:
     type: string <nullable>
-    example: "dont-exists.com"
+    example: <website>
     description: "**The client's website page**"
   comments:
     type: string <nullable>
     description: "**Comments about the client**"
-    example: "Comments"
+    example: <observacoes>
   dob:
     type: string <nullable>
     format: datetime
     description: "**Client's date of birth (available when NATURAL_PERSON)**"
-    example: "2025-01-01T12:00:00.000Z"
+    example: <data_de_nascimento>
   gender:
     $ref: ../enums/Gender.yaml
     description: "**Client's gender (available when NATURAL_PERSON)**"

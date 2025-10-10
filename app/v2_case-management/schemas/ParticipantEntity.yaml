@@ -4,19 +4,20 @@ allOf:
   - $ref: ../../scim/Resource.yaml
   - type: object
     properties:
-      createdBy: 
+      createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
       name:
         type: string
-        example: "Participant name"
+        example: <nome_da_parte>
         description: "**Participant's name**"
       nickname:
         type: string <nullable>
-        example: "Apelido"
+        example: <apelido_da_parte>
         description: "**Apelido**"
       lawyerOffice:
         type: string <nullable>
         description: "**Escritório do advogado (se houver)**"
+        example: <escritorio>
       nature:
         example: NATURAL_PERSON
         $ref: ../enums/TipoPessoa.yaml

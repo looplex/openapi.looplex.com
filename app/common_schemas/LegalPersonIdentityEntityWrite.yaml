@@ -1,15 +1,12 @@
 title: Identity (LEGAL_PERSON)
 type: object
-example: {
-  identityProviderType: "CNPJ",
-  value: "DD.DDD.DDD/DDDD-DD"
-}
 properties:
   identityProviderType:
     $ref: ../common_enums/LegalPersonIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"
+    example: <value>
 required:
   - identityProviderType
   - value

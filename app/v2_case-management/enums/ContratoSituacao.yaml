@@ -1,6 +1,6 @@
 title: ContratoSituacao
 type: string
-example: ATIVO
+example: <situacao_do_contrato>
 description: |
   ATIVO = 1<br/>
   ENCERRADO = 3

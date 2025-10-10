@@ -1,5 +1,6 @@
 title: Classe Processo Contrato
 type: string
+example: <classe_do_processo>
 description: |
   **Valores permitidos quando _Type_ é definido como _CONTRATO_**<br />
   CASO<br/>

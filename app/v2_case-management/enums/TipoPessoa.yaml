@@ -1,6 +1,6 @@
 title: Person's type
 type: string
-example: NATURAL_PERSON
+example: <tipo_de_pessoa>
 description: |
   **Person's type**<br />
   NATURAL_PERSON<br />

@@ -2,7 +2,7 @@
 
 import { RedocStandalone } from 'redoc'
 
-const json = require('./cases.json')
+const json = require('./case-management.json')
 
 export default function Cases() {
   return (

@@ -1,6 +1,6 @@
 title: Moeda
 type: string
-example: BRL
+example: <moeda>
 description: |
   **Moeda**
   BRL<br />
