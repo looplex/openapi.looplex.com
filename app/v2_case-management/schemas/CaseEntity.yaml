@@ -65,7 +65,7 @@ allOf:
         type: array
         items:
           type: string
-          example: "<natureza_do_processo>"
+          example: <natureza_do_processo>
       retentionDate:
         type: string <nullable>
         format: datetime
@@ -188,7 +188,7 @@ allOf:
         type: array
         items:
           $ref: TimesheetEntity.yaml
-        description: "**Registro de horas trabalhadas**<br />"
+        description: "**Registro de horas trabalhadas**"
       customFields:
         type: object
         example: {}

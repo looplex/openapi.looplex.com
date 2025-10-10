@@ -23,7 +23,7 @@ allOf:
         example: <data>
       hours:
         type: string
-        example: "<hora>"
+        example: <hora>
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
           `Format: hh:mm:ss`
@@ -33,14 +33,14 @@ allOf:
         example: <codigo_da_tarefa>
       activityCode:
         type: string <nullable>
-        description: "**Código da Atividade**<br />"
+        description: "**Código da Atividade**"
         example: <codigo_da_atividade>
       applicant:
         $ref: ../../common_schemas/SimpleEntity.yaml
-        description: "**Solicitante**<br />"
+        description: "**Solicitante**"
       description:
         type: string <nullable>
-        example: "<descricao>"
+        example: <descricao>
         description: "**Descrição**"
       isInvoiced:
         type: boolean <nullable>

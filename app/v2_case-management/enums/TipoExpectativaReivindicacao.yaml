@@ -1,6 +1,6 @@
 title: TipoExpectativaReivindicacao
 type: string <nullable>
-example: "<perspectiva>"
+example: <perspectiva>
 description: |
   **Perpectiva**<br />
   Indicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />

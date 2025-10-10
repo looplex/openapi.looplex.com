@@ -6,7 +6,7 @@ properties:
   value:
     type: string
     description: "**The identity value**"
-    example: "<value>"
+    example: <value>
 required: 
   - identityProviderType
   - value

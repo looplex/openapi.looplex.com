@@ -3,7 +3,7 @@ type: object
 properties: 
   value:
     type: string
-    example: "<email>"
+    example: <email>
     description: |
       **Email addresses for the user.**<br />
       The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />

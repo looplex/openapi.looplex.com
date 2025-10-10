@@ -7,6 +7,6 @@ properties:
     type: string
   Link:
     type: string
-    example: "<link>"
+    example: <link>"
 required:
   - TituloSolicitacao

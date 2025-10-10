@@ -1,6 +1,6 @@
 title: Case group status
 type: string
-example: ACTIVE
+example: <situacao_da_area>
 description: |
   **Case group status**<br/>
   ACTIVE<br/>

@@ -6,10 +6,10 @@ properties:
     $ref: "../enums/OperationEnum.yaml"
   path:
     description: "O nome da propriedade"
-    example: "<property_name>"
+    example: <property_name>"
     type: string
   from:
-    example: "<property_name_from>"
+    example: <property_name_from>"
     type: string
   value:
     description: "O valor a ser gravado na propriedade informada"

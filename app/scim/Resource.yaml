@@ -5,9 +5,9 @@ properties:
     type: string
     format: uuid
     description: "**Object unique identifier**"
-    example: "<global_unique_identifier>"
+    example: <global_unique_identifier>
   externalId:
-    example: "<external_id>"
+    example: <external_id>
     type: string <nullable>
     description: "**External identifier**"
   meta:

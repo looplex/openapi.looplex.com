@@ -1,6 +1,6 @@
 title: ContratoReembolsoKM
 type: string
-example: ESCRITORIO
+example: <reembolso_km_enumeration>
 description: |
   ESCRITORIO = 1<br />
   CONTRATO = 2

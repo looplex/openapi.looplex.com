@@ -4,7 +4,7 @@ properties:
   value:
     type: string
     description: "**Phone number**"
-    example: "<numero_do_telefone>"
+    example: <numero_do_telefone>
   type:
     $ref: ../enums/TipoDeTelefone.yaml
   primary:
@@ -16,15 +16,15 @@ properties:
   contact:
     type: string
     description: "**Contact name**"
-    example: "<contato>"
+    example: <contato>
   extension:
     type: string
     description: "**Phone's extension**"
-    example: "<extensao>"
+    example: <extensao>
   countryCode:
     type: integer
     description: "**Phone's country code**"
-    example: "<codigo_do_pais>"
+    example: <codigo_do_pais>
   customFields:
     type: object
     description: "**Phone's custom fields**"

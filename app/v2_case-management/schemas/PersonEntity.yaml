@@ -6,7 +6,7 @@ allOf:
       email:
         type: string <nullable>
         description: owner's email
-        example: "<email>"
+        example: <email>
       identities:
         type: array
         items:

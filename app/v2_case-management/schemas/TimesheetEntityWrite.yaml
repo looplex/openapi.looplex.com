@@ -26,11 +26,11 @@ properties:
     example: <codigo_da_tarefa>
   activityCode:
     type: string <nullable>
-    description: "**Código da Atividade**<br />"
+    description: "**Código da Atividade**"
     example: <codigo_da_atividade>
   applicant:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
-    description: "**Solicitante**<br />"
+    description: "**Solicitante**"
   description:
     type: string <nullable>
     description: "**Descrição**"

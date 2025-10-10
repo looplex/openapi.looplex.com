@@ -8,31 +8,31 @@ allOf:
 properties:
   name:
     type: string
-    example: "<nome_do_cliente>"
+    example: <nome_do_cliente>
     description: "**Client's name**"
   nickName:
     type: string
-    example: "<apelido_do_cliente>"
+    example: <apelido_do_cliente>
     description: "**Client's nickname**"
   type:
     $ref: ../enums/TipoPessoa.yaml
   email:
     type: string <nullable>
-    example: "<email>"
+    example: <email>
     description: "**Client's email address**"
   website:
     type: string <nullable>
-    example: "<website>"
+    example: <website>
     description: "**The client's website page**"
   comments:
     type: string <nullable>
     description: "**Comments about the client**"
-    example: "<observacoes_sobre_o_cliente>"
+    example: <observacoes_sobre_o_cliente>
   dob:
     type: string <nullable>
     format: datetime
     description: "**Client's date of birth (available when NATURAL_PERSON)**"
-    example: "<data_de_nascimento>"
+    example: <data_de_nascimento>
   gender:
     $ref: ../enums/Gender.yaml
     description: "**Client's gender (available when NATURAL_PERSON)**"

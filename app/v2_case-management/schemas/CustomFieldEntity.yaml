@@ -7,7 +7,7 @@ properties:
     description: "**Custom field unique identifier**"
   name:
     type: string
-    description: "**Custom field name**<br />"
+    description: "**Custom field name**"
   type:
     $ref: ../enums/TipoDadoComplementar.yaml
   value:
