@@ -307,9 +307,9 @@
           },
           {
             "option": 3,
-            "label": "Tasks",
-            "detail": "Tasks endpoints",
-            "folder": "task"
+            "label": "Decision",
+            "detail": "Decision endpoints",
+            "folder": "decision"
           },
           {
             "option": 4,

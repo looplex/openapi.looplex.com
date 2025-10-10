@@ -1,6 +1,6 @@
 title: Claim status
 type: string
-example: ACORDO
+example: <status_do_pedido>
 description: |
   PROCEDENTE<br/>
   PARCIALMENTE_PROCEDENTE<br/>

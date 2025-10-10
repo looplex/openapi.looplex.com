@@ -16,9 +16,11 @@ allOf:
           - $ref: ../enums/ClasseProcesso.yaml
       hasAncestor:
         type: boolean
+        example: false
         description: "**Indica se o caso possui um caso primário**"
       hasDescendants:
         type: boolean
+        example: false
         description: "**Indica se o caso possui casos filhos**"
       level:
         type: integer
@@ -32,9 +34,11 @@ allOf:
       title:
         type: string
         description: "**Nome Jurídico do caso**"
+        example: "<titulo_do_processo>"
       summary:
         type: string <nullable>
         description: "**Breve descrição sobre o caso**"
+        example: "<observacoes_do_processo>"
       locale:
         type: array
         items:
@@ -59,18 +63,21 @@ allOf:
         description: |
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
+        example: "<fase_do_processo>"
       retentionDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
+        example: "<data_de_entrada_do_processo>"
       startDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
+        example: "<data_distribuicao_do_processo>"
       formationDate:
         type: string <nullable>
         format: datetime
@@ -78,6 +85,7 @@ allOf:
           **Data de citação**<br />
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
+        example: "<data_de_citacao_do_processo>"
       resJudicataDate:
         type: string <nullable>
         format: datetime
@@ -85,6 +93,7 @@ allOf:
           **Data de trânsito em julgado**<br />
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
+        example: "<data_transito_julgado_do_processo>"
       forecastedEndDate:
         type: string <nullable>
         format: datetime
@@ -92,10 +101,12 @@ allOf:
           **Data prevista para encerramento**<br />
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
+        example: "<data_prevista_encerramento_do_processo>"
       createdAt:
         type: string <nullable>
         format: datetime
         description: "**Data de criação do caso**"
+        example: "<data_criacao_do_processo>"
       createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Usuário que criou o caso**"
@@ -103,6 +114,7 @@ allOf:
         type: string <nullable>
         format: datetime
         description: "**Atualizado em**"
+        example: "<data_de_atualizacao_do_processo>"
       updatedBy:
         description: "**Atualizado por**"
         $ref: ../../common_schemas/SimpleEntity.yaml
@@ -110,6 +122,7 @@ allOf:
         type: string <nullable>
         format: datetime
         description: "**Data de encerramento**"
+        example: "<data_encerramento_do_processo>"
       closedBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Usuário que encerrou o caso**"
@@ -118,6 +131,7 @@ allOf:
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
+        example: "<area_do_processo>"
       caseClient:
         $ref: ClientEntity.yaml
       legalServiceAgreement:

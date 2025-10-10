@@ -3,7 +3,7 @@ type: object
 properties: 
   value:
     type: string
-    example: "dont_exist@email.com"
+    example: "<email>"
     description: |
       **Email addresses for the user.**<br />
       The value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />
@@ -12,7 +12,7 @@ properties:
     $ref: ../enums/EmailType.yaml
   primary:
     type: boolean
-    example: true
+    example: false
     description: |
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />
       The primary attribute value 'true' MUST appear no more than once.

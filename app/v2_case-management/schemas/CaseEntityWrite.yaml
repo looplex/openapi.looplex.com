@@ -11,7 +11,7 @@ properties:
       - $ref: ../enums/ClasseProcessoContrato.yaml
       - $ref: ../enums/ClasseProcessoSocietario.yaml
       - $ref: ../enums/ClasseProcesso.yaml
-    example: CASO
+    example: <classe_do_processo>
   level:
     type: integer
     example: 1
@@ -24,16 +24,16 @@ properties:
   title:
     type: string
     description: "**Nome Jurídico do caso**"
-    example: "Titulo do caso"
+    example: "<titulo_do_processo>"
   summary:
     type: string <nullable>
     description: "**Breve descrição sobre o caso**"
-    example: "Observações do caso"
+    example: "<observacoes_do_processo>"
   locale:
     description: "**Utilizado em casos consultivos**"
     oneOf:
       - type: string <nullable>
-        example: "Local"
+        example: "<local_do_processo>"
         description: "**Local da Jurisdição de um caso, ou cumprimento da obrigação.**"
       - type: string
         format: uuid
@@ -42,7 +42,7 @@ properties:
     description: "**Utilizado para casos contenciosos, judiciais ou não**"
     oneOf:
       - type: string <nullable>
-        example: "1ª Vara Cível"
+        example: "<foro_do_processo>"
         description: "**Foro do caso, local onde o caso será julgado**"
       - type: string
         format: uuid
@@ -51,7 +51,7 @@ properties:
     description: "**Rito ou procedimento do caso**"
     oneOf:
       - type: string <nullable>
-        example: "Rito do caso"
+        example: "<rito_do_processo>"
         description: "**Nome do rito**"
       - type: string
         format: uuid
@@ -62,7 +62,7 @@ properties:
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
     oneOf:
       - type: string (name)
-        example: "Nome da fase"
+        example: "<fase_do_processo>"
         description: "**Nome da fase**"
       - type: string uuid (unique identifier)
         format: uuid
@@ -73,7 +73,7 @@ properties:
     items:
       oneOf:
       - type: string (name)
-        example: "Nome da legal category"
+        example: "<natureza_do_processo>"
         description: "**Nome da legal category**"
       - type: string uuid (unique identifier)
         format: uuid
@@ -85,14 +85,14 @@ properties:
     description: |
       **Data de entrada** <br />
       Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
-    example: "2025-09-01T12:00:00.000Z"
+    example: "<data_de_entrada_do_processo>"
   startDate:
     type: string <nullable>
     format: datetime
     description: |
       **Data de distribuição**<br />
       Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
-    example: "2025-09-01T12:00:00.000Z"
+    example: "<data_de_distribuicao_do_processo>"
   formationDate:
     type: string <nullable>
     format: datetime
@@ -100,7 +100,7 @@ properties:
       **Data de citação**<br />
       Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
       Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
-    example: "2025-09-01T12:00:00.000Z"
+    example: "data_de_citacao_do_processo"
   resJudicataDate:
     type: string <nullable>
     format: datetime
@@ -108,7 +108,7 @@ properties:
       **Data de trânsito em julgado**<br />
       Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
       A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
-    example: "2025-09-01T12:00:00.000Z"
+    example: "<data_transito_julgado_do_processo>"
   forecastedEndDate:
     type: string <nullable>
     format: datetime
@@ -116,14 +116,14 @@ properties:
       **Data prevista para encerramento**<br />
       Data estimada para a conclusão de um caso, transação ou disputa. <br />
       Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
-    example: "2025-09-01T12:00:00.000Z"
+    example: "<data_prevista_encerramento_do_processo>"
   group:
     description: |
       **Área**<br/>
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
     oneOf:
       - type: string (name)
-        example: "Nome da área"
+        example: "<area_do_processo>"
         description: "**Nome da área**"
       - type: string uuid (unique identifier)
         format: uuid
@@ -136,7 +136,7 @@ properties:
     items:
       oneOf:
       - type: string (name)
-        example: "Nome do product"
+        example: "<produto_do_processo>"
         description: "**Nome do product**"
       - type: string uuid (unique identifier)
         format: uuid
@@ -198,7 +198,7 @@ properties:
     description: "**The parent case of this case**"
     oneOf:
       - type: string
-        example: "0000000-00.0000.0.00.0000"
+        example: "<numero_cnj_do_processo_ou_global_unique_identifier>"
         description: "**Numero CNJ do caso**"
       - type: string
         format: uuid

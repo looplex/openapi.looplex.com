@@ -1,5 +1,6 @@
 title: IdentityProviderType
 type: string
+example: "<provider_type>"
 description: |
   **The identity provider**<br/>
   CNPJ<br/>

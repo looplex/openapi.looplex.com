@@ -1,6 +1,6 @@
 title: Address' type
 type: string
-example: work
+example: <tipo_de_endereco>
 description: |
   **Address' type**<br/>
   home<br/>

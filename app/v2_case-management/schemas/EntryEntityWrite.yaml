@@ -4,14 +4,15 @@ properties:
   date:
     type: string
     format: datetime
-    example: "2025-05-21T12:00:00.000Z"
+    example: "<data_do_andamento>"
     description: "**Data do andamento**"
   classification:
     type: string <nullable>
     description: "**Classificação do andamento**"
+    example: "<classificacao_do_andamento>"
   description:
     type: string
-    example: "Descrição"
+    example: "<texto_do_andamento>"
     description: "**Texto do andamento**"
   isInternal:
     type: boolean
@@ -22,6 +23,7 @@ properties:
   caseId:
     type: string
     format: uuid
+    example: "<global_unique_identifier>"
     description: |
       **Case's unique identifier**<br/>
       `Obrigatório apenas quando o andamento não estiver sendo criado junto com o caso`

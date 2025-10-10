@@ -1,8 +1,8 @@
 title: Identidade (Case)
 type: object
 example: {
-  IdentityProviderType: "CNJ",
-  Value: "NNNNNNN-DD.AAAA.J.TR.OOOO"
+  IdentityProviderType: "<identity_type>",
+  Value: "<identity_value>"
 }
 properties:
   IdentityProviderType:

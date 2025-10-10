@@ -4,16 +4,17 @@ properties:
   caseId: 
     type: string
     format: uuid
+    example: "<global_unique_identifier>"
     description: |
       **Identificador único do caso**<br/>
       `Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`
   name:
     type: string
-    example: "Nome"
+    example: "<nome_da_parte>"
     description: "**Participant's name**"
   nickname:
     type: string <nullable>
-    example: "Apelido"
+    example: "<apelido_da_parte>"
     description: "**Apelido**"
   isMainParty:
     type: bool
@@ -24,7 +25,7 @@ properties:
     items:
       oneOf:
         - type: string (document)
-          example: "000.000.000-00"
+          example: "<documento_da_parte_representada>"
           description: "**Documento da parte representada**"
         - type: string (unique identifier)
           format: uuid
@@ -32,8 +33,8 @@ properties:
   lawyerOffice:
     type: string <nullable>
     description: "**Escritório do advogado (se houver)**"
+    example: "<nome_do_escritorio>"
   nature:
-    example: NATURAL_PERSON
     $ref: ../enums/TipoPessoa.yaml
   position:
     example: OTHER

@@ -7,16 +7,17 @@ properties:
     type: string
     format: uuid
     description: "**Identificador do item**"
+    example: <global_unique_identifier>
   date:
     type: string
     format: datetime
-    example: "2025-01-01T12:00:00.000"
+    example: <data>
     description: "**Data do evento**"
   title:
     type: string <nullable>
-    example: "Titulo"
+    example: <titulo>
     description: "**Título do evento**"
   description:
     type: string <nullable>
-    example: "Descrição"
+    example: <descricao>
     description: "**Descrição do evento**"

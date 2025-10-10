@@ -8,9 +8,11 @@ allOf:
         type: string
         format: uuid
         description: "**Client unique identifier**"
+        example: <global_unique_identifier>
       classification:
         type: string <nullable>
         description: "**Classificação**"
+        example: <classificacao>
       owner:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Responsável**"
@@ -18,24 +20,27 @@ allOf:
         type: string
         format: datetime
         description: "**Data**"
+        example: <data>
       hours:
         type: string
-        example: "01:00:00"
+        example: "<hora>"
         description: |
           **Horas (quantidade de horas do lançamento)**<br />
           `Format: hh:mm:ss`
       taskCode:
         type: string <nullable>
         description: "**Código da Tarefa**"
+        example: <codigo_da_tarefa>
       activityCode:
         type: string <nullable>
         description: "**Código da Atividade**<br />"
+        example: <codigo_da_atividade>
       applicant:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Solicitante**<br />"
       description:
         type: string <nullable>
-        example: "Descrição"
+        example: "<descricao>"
         description: "**Descrição**"
       isInvoiced:
         type: boolean <nullable>
@@ -44,7 +49,7 @@ allOf:
       createdAt:
         type: string <nullable>
         format: datetime
-        example: "2025-01-01T12:00:00.000"
+        example: <data_de_criacao>
         description: "**Criado em**"
       createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
@@ -52,8 +57,8 @@ allOf:
       updatedAt:
         type: string <nullable>
         format: datetime
-        example: "2025-01-02T12:00:00.000"
         description: "**Atualizado em**"
+        example: <data_de_atualizacao>
       updatedBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
         description: "**Atualizado por**"
@@ -64,5 +69,6 @@ allOf:
           id:
             type: string
             format: uuid
+            example: <global_unique_identifier>
       taskType:
         $ref: ../enums/TipoDeTarefaTimesheet.yaml

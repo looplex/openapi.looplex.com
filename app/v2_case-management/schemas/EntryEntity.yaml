@@ -7,14 +7,15 @@ allOf:
       date:
         type: string
         format: datetime
-        example: "2025-05-21T12:00:00.000Z"
+        example: <data_do_andamento>
         description: "**Data do andamento**"
       classification:
         type: string <nullable>
         description: "**Classificação do andamento**"
+        example: <classificacao_do_andamento>
       description:
         type: string
-        example: "Texto do andamento"
+        example: <descricao_do_andamento>
         description: "**Texto do andamento**"
       isInternal:
         type: boolean
@@ -24,10 +25,11 @@ allOf:
         type: string <nullable>
         format: uuid
         description: "**Identificador da publicação que criou esse andamento (se houver)**"
+        example: <unique_identifier_da_publicacao>
       createdAt:
         type: string
         format: datetime
-        example: "2025-05-21T12:00:00.000Z"
+        example: <data_criacao_do_andamento>
         description: "**Entry creation date**"
       createdBy:
         $ref: ../../common_schemas/SimpleEntity.yaml
@@ -37,6 +39,7 @@ allOf:
         type: string
         format: uuid
         description: "**Case's unique identifier**"
+        example: <unique_identifier_do_processo>
       customFields:
         type: object
         example: {}

@@ -1,8 +1,8 @@
 title: Identity (LEGAL_PERSON)
 type: object
 example: {
-  identityProviderType: "CNPJ",
-  value: "DD.DDD.DDD/DDDD-DD"
+  identityProviderType: "<provider_type>",
+  value: "<value>"
 }
 properties:
   identityProviderType:

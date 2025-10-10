@@ -1,6 +1,6 @@
 title: Tipo de telefone
 type: string
-example: work
+example: <tipo_de_telefone>
 description: |
   **A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />
   work<br />

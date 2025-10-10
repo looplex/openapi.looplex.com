@@ -1,6 +1,6 @@
 title: TimelineItemType
 type: string
-example: Andamento do Tribunal
+example: <tipo_de_item_da_timeline>
 description: |
   **Tipo de evento**<br />
   **Valores possíveis:**<br />

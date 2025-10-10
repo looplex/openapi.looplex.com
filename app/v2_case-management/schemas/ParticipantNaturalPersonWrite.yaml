@@ -7,16 +7,17 @@ allOf:
       dob:
         type: string <nullable>
         format: datetime
-        example: "2025-01-01T12:00:00.000"
+        example: "<data_de_nascimento>"
         description: "**Data de Nascimento**<br />"
       gender:
         $ref: ../enums/Gender.yaml
       nationality:
-        description: "**Nacionalidade**"
-        example: "Brasileiro"
         type: string <nullable>
+        description: "**Nacionalidade**"
+        example: "<nacionalidade>"
       maritalStatus:
         $ref: ../enums/MaritalStatus.yaml
       occupation:
         type: string <nullable>
         description: "**Profissão**"
+        example: "<profissao>"
