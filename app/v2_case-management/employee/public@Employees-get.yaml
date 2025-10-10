@@ -10,6 +10,8 @@ parameters:
   - $ref: ../../common_parameters/StartIndex.yaml
   - $ref: ../../common_parameters/Count.yaml
   - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../common_parameters/SortBy.yaml
+  - $ref: ../../common_parameters/SortOrder.yaml
 responses:
   "200":
       description: "OK"
