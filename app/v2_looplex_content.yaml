@@ -27,6 +27,13 @@ paths:
 # Endpoints dessa API
 # Exemplo
 
+  /viewhierarchy:
+   get:
+      $ref: v2_looplex_content\content_views\public@viewhierarchy-get.yaml
+  /views/:viewID/objects:
+   get:
+      $ref: v2_looplex_content\content_views\public@views@viewID@objects-get.yaml
+      
   /hubshareuser/info:
    get:
       $ref: v2_looplex_content\content_hubshare_users\public@hubshareuser@info-get.yaml

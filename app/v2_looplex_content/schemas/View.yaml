@@ -1,0 +1,16 @@
+title: View
+description: ""
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object    
+    properties:
+      Name:
+        type: string
+      DisplayId:
+        type: integer
+      ParentDisplayId:
+        type: integer
+      Children:
+        type: array
+        items:
+         $ref: View.yaml 

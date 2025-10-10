@@ -1,0 +1,9 @@
+title: GenericProperty
+description: ""
+properties:
+  Name:
+    type: string
+  DisplayValue:
+    type: string
+  Value:
+    type: object

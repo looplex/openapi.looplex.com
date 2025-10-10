@@ -31,6 +31,110 @@
     "url": "https://github.com/Rebilly/generator-openapi-repo"
   },
   "paths": {
+    "/viewhierarchy": {
+      "get": {
+        "tags": [
+          "Views"
+        ],
+        "summary": "List all views in a hierarchy",
+        "description": "**List all views in a hierarchy**",
+        "operationId": "viewhierarchy-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/views/:viewID/objects": {
+      "get": {
+        "tags": [
+          "Views"
+        ],
+        "summary": "List All Objects of a View",
+        "operationId": "views-viewID-objects-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "startIndex",
+            "in": "query",
+            "description": "**Index of search**",
+            "example": 1,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+            "example": 50,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "viewID": {
+              "in": "path",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GenericResource"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/hubshareuser/info": {
       "get": {
         "tags": [
@@ -863,13 +967,13 @@
           "created": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": null,
+            "example": "2025-01-01T12:00:00.000",
             "description": "**The resource creation date**"
           },
           "lastModified": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": null,
+            "example": "2025-01-01T12:00:00.000",
             "description": "**The resource last update time**"
           },
           "location": {
@@ -903,6 +1007,70 @@
             "$ref": "#/components/schemas/Meta"
           }
         }
+      },
+      "View": {
+        "title": "View",
+        "description": "",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string"
+              },
+              "DisplayId": {
+                "type": "integer"
+              },
+              "ParentDisplayId": {
+                "type": "integer"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/View"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "GenericProperty": {
+        "title": "GenericProperty",
+        "description": "",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "DisplayValue": {
+            "type": "string"
+          },
+          "Value": {
+            "type": "object"
+          }
+        }
+      },
+      "GenericResource": {
+        "title": "GenericResource",
+        "description": "",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Properties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GenericProperty"
+                }
+              }
+            }
+          }
+        ]
       },
       "HubShareUser": {
         "title": "HubShareUser",

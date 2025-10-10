@@ -1,0 +1,10 @@
+title: GenericResource
+description: ""
+allOf:
+  - $ref: ../../scim/Resource.yaml
+  - type: object    
+    properties:
+      Properties:
+        type: array
+        items:
+         $ref: GenericProperty.yaml 

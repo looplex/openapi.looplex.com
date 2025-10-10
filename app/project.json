@@ -486,6 +486,13 @@
             "detail": "Content Hubshare Users endpoints",
             "folder": "content_hubshare_users"
           }
+          ,
+          {
+            "option": 4,
+            "label": "Views",
+            "detail": "Content View endpoints",
+            "folder": "content_views"
+          }
         ]
       }
     },
