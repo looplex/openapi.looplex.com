@@ -4067,7 +4067,8 @@
           "subjectMatter",
           "remedyType",
           "againstPosition",
-          "recurrence"
+          "recurrence",
+          "liquidated"
         ]
       },
       "CaseEntityWrite": {
