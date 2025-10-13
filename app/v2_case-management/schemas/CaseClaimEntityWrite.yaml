@@ -71,3 +71,4 @@ required:
   - remedyType
   - againstPosition
   - recurrence
+  - liquidated
