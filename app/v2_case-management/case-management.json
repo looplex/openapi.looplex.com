@@ -2274,7 +2274,7 @@
             "description": "**External identifier**"
           },
           "meta": {
-            "description": "**Informações relacionadas à essa entity**",
+            "description": "**Entity's information**",
             "$ref": "#/components/schemas/Meta"
           }
         }
@@ -2881,6 +2881,135 @@
           }
         }
       },
+      "TipoReparacao": {
+        "title": "TipoReparacao",
+        "type": "string <nullable>",
+        "example": "<tipo_da_reparacao>",
+        "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n**Enum Description:**<br/>\n**MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\n**ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\n**COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\n**DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.\n\n**Allowed values:**<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT\n"
+      },
+      "TipoTutela": {
+        "title": "TipoTutela",
+        "type": "string <nullable>",
+        "example": "<tipo_tutela>",
+        "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
+      },
+      "TipoDeRecorrencia": {
+        "title": "TipoDeRecorrencia",
+        "type": "string",
+        "example": "<tipo_de_recorrencia>",
+        "description": "SEM_RECORRENCIA<br/>\nDIARIA<br/>\nSEMANAL<br/> \nMENSAL<br/>\nANUAL\n"
+      },
+      "ClaimStatus": {
+        "title": "Claim status",
+        "type": "string",
+        "example": "<status_do_pedido>",
+        "description": "PROCEDENTE<br/>\nPARCIALMENTE_PROCEDENTE<br/>\nIMPROCEDENTE<br/>\nACORDO<br/>\nPRESCRICAO_OU_DECADENCIA<br/>\nLITISPENDENCIA_COISA_JULGADA_PEREMPCAO<br/>\nILEGITIMIDADE<br/>\nDESISTENCIA\n"
+      },
+      "CaseClaimEntity": {
+        "title": "Claim",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Resource"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "caseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier of this claim**",
+                "example": "<global_unique_identifier>"
+              },
+              "subjectMatter": {
+                "type": "string <nullable>",
+                "description": "**Question's general classification**",
+                "example": "<subject_matter>"
+              },
+              "reliefStatement": {
+                "type": "string <nullable>",
+                "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
+                "example": "<relief_statement>"
+              },
+              "remedyType": {
+                "$ref": "#/components/schemas/TipoReparacao"
+              },
+              "provisionalRelief": {
+                "$ref": "#/components/schemas/TipoTutela"
+              },
+              "againstPosition": {
+                "$ref": "#/components/schemas/Position"
+              },
+              "participants": {
+                "description": "**Participant's identifiers**",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "<global_unique_identifier>"
+                }
+              },
+              "calculationRule": {
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "string",
+                    "example": "<global_unique_identifier>"
+                  },
+                  "Title": {
+                    "type": "string",
+                    "example": "<title>"
+                  }
+                }
+              },
+              "riskClassification": {
+                "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+              },
+              "foreseenValue": {
+                "type": "number",
+                "example": 0
+              },
+              "contingencyValue": {
+                "type": "number",
+                "description": "**Valor de contingencia**",
+                "example": 0
+              },
+              "liquidated": {
+                "type": "boolean",
+                "example": false
+              },
+              "effectiveDate": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data de constituição**",
+                "example": "<data_de_constituicao>"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data de vencimento**",
+                "example": "<data_de_vencimento>"
+              },
+              "recurrence": {
+                "$ref": "#/components/schemas/TipoDeRecorrencia"
+              },
+              "status": {
+                "$ref": "#/components/schemas/ClaimStatus"
+              },
+              "granted": {
+                "type": "number",
+                "description": "**Valor deferido pela ultima decisão**",
+                "example": 0
+              },
+              "customFields": {
+                "type": "object",
+                "description": "**Claim's custom fields**",
+                "example": {}
+              }
+            }
+          }
+        ]
+      },
       "TipoClassificacaoAutomatica": {
         "title": "Tipo de classificacao automática",
         "type": "string",
@@ -3328,6 +3457,12 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/GlobalValues"
+                }
+              },
+              "claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CaseClaimEntity"
                 }
               },
               "entries": {
@@ -3960,30 +4095,6 @@
             "description": "**Entry's custom fields**"
           }
         }
-      },
-      "TipoReparacao": {
-        "title": "TipoReparacao",
-        "type": "string <nullable>",
-        "example": "<tipo_da_reparacao>",
-        "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n**Enum Description:**<br/>\n**MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\n**ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\n**COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\n**DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.\n\n**Allowed values:**<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT\n"
-      },
-      "TipoTutela": {
-        "title": "TipoTutela",
-        "type": "string <nullable>",
-        "example": "<tipo_tutela>",
-        "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
-      },
-      "TipoDeRecorrencia": {
-        "title": "TipoDeRecorrencia",
-        "type": "string",
-        "example": "<tipo_de_recorrencia>",
-        "description": "SEM_RECORRENCIA<br/>\nDIARIA<br/>\nSEMANAL<br/> \nMENSAL<br/>\nANUAL\n"
-      },
-      "ClaimStatus": {
-        "title": "Claim status",
-        "type": "string",
-        "example": "<status_do_pedido>",
-        "description": "PROCEDENTE<br/>\nPARCIALMENTE_PROCEDENTE<br/>\nIMPROCEDENTE<br/>\nACORDO<br/>\nPRESCRICAO_OU_DECADENCIA<br/>\nLITISPENDENCIA_COISA_JULGADA_PEREMPCAO<br/>\nILEGITIMIDADE<br/>\nDESISTENCIA\n"
       },
       "CaseClaimEntityWrite": {
         "title": "Claim",
@@ -4861,103 +4972,6 @@
             }
           }
         ]
-      },
-      "CaseClaimEntity": {
-        "title": "Claim",
-        "type": "object",
-        "properties": {
-          "caseId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Case's unique identifier of this claim**",
-            "example": "<global_unique_identifier>"
-          },
-          "subjectMatter": {
-            "type": "string <nullable>",
-            "description": "**Question's general classification**",
-            "example": "<subject_matter>"
-          },
-          "reliefStatement": {
-            "type": "string <nullable>",
-            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
-            "example": "<relief_statement>"
-          },
-          "remedyType": {
-            "$ref": "#/components/schemas/TipoReparacao"
-          },
-          "provisionalRelief": {
-            "$ref": "#/components/schemas/TipoTutela"
-          },
-          "againstPosition": {
-            "$ref": "#/components/schemas/Position"
-          },
-          "participants": {
-            "description": "**Participant's identifiers**",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "example": "<global_unique_identifier>"
-            }
-          },
-          "calculationRule": {
-            "type": "object",
-            "properties": {
-              "Id": {
-                "type": "string",
-                "example": "<global_unique_identifier>"
-              },
-              "Title": {
-                "type": "string",
-                "example": "<title>"
-              }
-            }
-          },
-          "riskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
-          },
-          "foreseenValue": {
-            "type": "number",
-            "example": 0
-          },
-          "contingencyValue": {
-            "type": "number",
-            "description": "**Valor de contingencia**",
-            "example": 0
-          },
-          "liquidated": {
-            "type": "boolean",
-            "example": false
-          },
-          "effectiveDate": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data de constituição**",
-            "example": "<data_de_constituicao>"
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data de vencimento**",
-            "example": "<data_de_vencimento>"
-          },
-          "recurrence": {
-            "$ref": "#/components/schemas/TipoDeRecorrencia"
-          },
-          "status": {
-            "$ref": "#/components/schemas/ClaimStatus"
-          },
-          "granted": {
-            "type": "number",
-            "description": "**Valor deferido pela ultima decisão**",
-            "example": 0
-          },
-          "customFields": {
-            "type": "object",
-            "description": "**Claim's custom fields**",
-            "example": {}
-          }
-        }
       },
       "SituacaoDaArea": {
         "title": "Case group status",

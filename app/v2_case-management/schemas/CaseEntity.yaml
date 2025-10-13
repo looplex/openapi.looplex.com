@@ -179,6 +179,10 @@ allOf:
         type: array
         items:
           $ref: GlobalValues.yaml
+      claims:
+        type: array
+        items:
+          $ref: CaseClaimEntity.yaml
       entries:
         type: array
         items:

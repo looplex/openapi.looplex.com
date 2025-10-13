@@ -11,5 +11,5 @@ properties:
     type: string <nullable>
     description: "**External identifier**"
   meta:
-    description: "**Informações relacionadas à essa entity**"
+    description: "**Entity's information**"
     $ref: Meta.yaml
