@@ -7,7 +7,7 @@
             - $ref: '../../common_schemas/ListResponse.yaml'
             - type: object
               properties:
-                Resources:
+                resources:
                   type: array
                   items:
                     $ref: ../schemas/{{DTO_NAME}}.yaml

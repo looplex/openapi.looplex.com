@@ -1,50 +1,50 @@
 title: Dados de andamento
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceQuery.yaml
   - type: object
     properties:
-      date:
+      Date:
         type: string
         format: datetime
         example: <data_do_andamento>
         description: "**Data do andamento**"
-      classification:
+      Classification:
         type: string <nullable>
         description: "**Classificação do andamento**"
         example: <classificacao_do_andamento>
-      description:
+      Description:
         type: string
         example: <descricao_do_andamento>
         description: "**Texto do andamento**"
-      isInternal:
+      IsInternal:
         type: boolean
         example: false
         description: "**Indica se o andamento é de uso interno**"
-      serviceOfProcess:
+      ServiceOfProcess:
         type: string <nullable>
         format: uuid
         description: "**Identificador da publicação que criou esse andamento (se houver)**"
         example: <unique_identifier_da_publicacao>
-      createdAt:
+      CreatedAt:
         type: string
         format: datetime
         example: <data_criacao_do_andamento>
         description: "**Entry creation date**"
-      createdBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
-      classificationType:
+      CreatedBy:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+      ClassificationType:
         $ref: ../enums/TipoClassificacaoAutomatica.yaml
-      caseId:
+      CaseId:
         type: string
         format: uuid
         description: "**Case's unique identifier**"
         example: <unique_identifier_do_processo>
-      customFields:
+      CustomFields:
         type: object
         example: {}
         description: "**Entry's custom fields**"
-      identities:
+      Identities:
         type: array
         items:
-          $ref: ../../common_schemas/LegacyIdentityEntity.yaml
+          $ref: ../../common_schemas/LegacyIdentityEntityQuery.yaml

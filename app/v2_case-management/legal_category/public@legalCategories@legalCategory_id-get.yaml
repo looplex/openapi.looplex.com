@@ -15,7 +15,7 @@ responses:
       content:
         application/json:
           schema:
-            $ref: ../schemas/LegalCategoryEntity.yaml
+            $ref: ../schemas/LegalCategoryEntityRetrieve.yaml
   "400":
     description: "Bad Request"
   "401":

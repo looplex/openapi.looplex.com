@@ -1,7 +1,7 @@
 title: Participante (NATURAL_PERSON)
 type: object
 allOf:
-  - $ref: ParticipantEntity.yaml
+  - $ref: ParticipantEntityRetrieve.yaml
   - type: object
     properties:
       dob:

@@ -15,7 +15,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/EntryEntity.yaml
+          $ref: ../schemas/EntryEntityRetrieve.yaml
   "400":
     description: "Bad Request"
   "401":

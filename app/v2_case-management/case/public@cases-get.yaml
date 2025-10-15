@@ -27,10 +27,10 @@ responses:
             - $ref: '../../common_schemas/ListResponse.yaml'
             - type: object
               properties:
-                Resources:
+                resources:
                   type: array
                   items:
-                    $ref: "../schemas/CaseInfoEntity.yaml"
+                    $ref: "../schemas/CaseInfoEntityQuery.yaml"
   "400":
     description: "Bad Request"
   "401":

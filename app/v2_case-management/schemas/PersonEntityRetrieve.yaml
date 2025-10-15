@@ -1,7 +1,7 @@
 title: "Dados de pessoa"
 type: object
 allOf:
-  - $ref: ../../common_schemas/SimpleEntity.yaml
+  - $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
   - properties:
       email:
         type: string <nullable>
@@ -11,5 +11,5 @@ allOf:
         type: array
         items:
           oneOf:
-            - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
-            - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntityRetrieve.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntityRetrieve.yaml

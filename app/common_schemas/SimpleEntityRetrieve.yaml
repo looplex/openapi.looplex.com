@@ -1,0 +1,12 @@
+title: Identificador
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "**The object unique identifier**"
+    example: <global_unique_identifier>
+  name:
+    type: string <nullable>
+    example: <nome_do_item>
+    description: "**The object name**"
