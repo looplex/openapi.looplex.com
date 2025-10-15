@@ -1,64 +1,64 @@
 title: "Legal service agreement"
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceQuery.yaml
 properties:
-  clientId:
+  ClientId:
     type: string
     format: uuid
     description: "**Client's unique identifier**"
     example: <global_unique_identifier>
-  name:
+  Name:
     type: string
     example: <titulo>
     description: "Legal service agreement's title"
-  summary:
+  Summary:
     type: string
     example: <observacoes>
     description: "Legal service agreement's summary"
-  createdAt:
+  CreatedAt:
     type: string
     format: datetime
     example: <data_de_criacao>
     description: "Legal service agreement's created date"
-  startDate:
+  StartDate:
     type: string
     format: datetime
     example: <data_inicial>
     description: "Legal service agreement's start date"
-  forecastedEndDate:
+  ForecastedEndDate:
     type: string
     format: datetime
     example: <data_prevista_encerramento>
     description: "Legal service agreement's forecasted end date"
-  dueDate:
+  DueDate:
     type: string
     format: datetime
     example: <data_de_vencimento>
     description: "Legal service agreement's due date"
-  isSameReviewerAttorneyFeesAndExpenses:
+  IsSameReviewerAttorneyFeesAndExpenses:
     type: boolean
     example: false
-  isSamePayerAttorneyFeesAndExpenses:
+  IsSamePayerAttorneyFeesAndExpenses:
     type: boolean
     example: false
-  billingCompanyId:
+  BillingCompanyId:
     type: string
     format: uuid
     example: <global_unique_identifier>
-  ownerId:
+  OwnerId:
     type: string
     format: uuid
     example: <global_unique_identifier>
-  number:
+  Number:
     type: integer
     example: <integer>
-  kilometersReimbursement:
+  KilometersReimbursement:
     $ref: ../enums/ContratoReembolsoKM.yaml
-  expenseRuleLocal:
+  ExpenseRuleLocal:
     $ref: ../enums/TipoRegraAprovacaoLimiteDespesas.yaml
-  status:
+  Status:
     $ref: ../enums/ContratoSituacao.yaml
-  isDefault:
+  IsDefault:
     type: boolean
     example: false

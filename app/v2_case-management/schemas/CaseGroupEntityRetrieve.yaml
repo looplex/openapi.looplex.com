@@ -1,7 +1,7 @@
 title: CaseGroupEntity
 description: Case groups
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
       name:

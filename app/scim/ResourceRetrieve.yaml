@@ -1,0 +1,15 @@
+title: Resource
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "**Object unique identifier**"
+    example: <global_unique_identifier>
+  externalId:
+    example: <external_id>
+    type: string <nullable>
+    description: "**External identifier**"
+  meta:
+    description: "**Informações relacionadas à essa entity**"
+    $ref: MetaRetrieve.yaml

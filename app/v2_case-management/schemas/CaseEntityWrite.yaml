@@ -179,7 +179,7 @@ properties:
   globalValues:
     type: array
     items:
-      $ref: GlobalValues.yaml
+      $ref: GlobalValuesWrite.yaml
   entries:
     type: array
     items:

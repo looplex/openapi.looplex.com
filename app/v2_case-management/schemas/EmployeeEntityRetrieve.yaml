@@ -1,7 +1,7 @@
 title: Funcionário
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
       name:
@@ -24,7 +24,7 @@ allOf:
       identities:
         type: array
         items:
-          $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
+          $ref: ../../common_schemas/NaturalPersonIdentityEntityRetrieve.yaml
         description: "**Employee's identities**"
       nationality:
         type: string <nullable>
@@ -43,15 +43,15 @@ allOf:
       addresses:
         type: array
         items:
-          $ref: AddressEntity.yaml
+          $ref: AddressEntityRetrieve.yaml
         description: "**Employee's addresses**"
       emails:
         type: array
         items:
-          $ref: EmailEntity.yaml
+          $ref: EmailEntityRetrieve.yaml
         description: "**Employee's emails**"
       phoneNumbers:
         type: array
         items:
-          $ref: PhoneNumberEntity.yaml
+          $ref: PhoneNumberEntityRetrieve.yaml
         description: "**Employee's phone numbers**"

@@ -1,0 +1,72 @@
+title: Claim
+type: object
+properties:
+  CaseId:
+    type: string
+    format: uuid
+    description: "**Case's unique identifier of this claim**"
+    example: <global_unique_identifier>
+  SubjectMatter:
+    type: string <nullable>
+    description: "**Question's general classification**"
+    example: <subject_matter>
+  ReliefStatement:
+    type: string <nullable>
+    description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
+    example: <relief_statement>
+  RemedyType:
+    $ref: ../enums/TipoReparacao.yaml
+  ProvisionalRelief:
+    $ref: ../enums/TipoTutela.yaml
+  AgainstPosition:
+    $ref: ../enums/Position.yaml
+  Participants:
+    description: "**Participant's identifiers**"
+    type: array
+    items:
+      type: string
+      format: uuid
+      example: <global_unique_identifier>
+  CalculationRule:
+    type: object
+    properties:
+      Id:
+        type: string
+        example: <global_unique_identifier>
+      Title:
+        type: string
+        example: <title>
+  RiskClassification:
+    $ref: ../enums/ContingentLiabilityRiskClassification.yaml
+  ForeseenValue:
+    type: number
+    example: 0
+  ContingencyValue:
+    type: number
+    description: "**Valor de contingencia**"
+    example: 0
+  Liquidated:
+    type: boolean
+    example: false
+  EffectiveDate:
+    type: string
+    format: datetime
+    description: "**Data de constituição**"
+    example: <data_de_constituicao>
+  DueDate:
+    type: string
+    format: datetime
+    description: "**Data de vencimento**"
+    example: <data_de_vencimento>
+  Recurrence:
+    $ref: ../enums/TipoDeRecorrencia.yaml
+  Status:
+    $ref: ../enums/ClaimStatus.yaml
+  Granted:
+    type: number
+    description: "**Valor deferido pela ultima decisão**"
+    example: 0
+  CustomFields:
+    type: object
+    description: "**Claim's custom fields**"
+    example: {}

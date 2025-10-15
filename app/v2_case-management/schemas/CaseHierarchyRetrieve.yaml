@@ -49,9 +49,9 @@ properties:
     description: "**Case identities**"
     type: array
     items:
-      $ref: ../../common_schemas/CaseIdentityEntity.yaml
+      $ref: ../../common_schemas/CaseIdentityEntityRetrieve.yaml
   descendants:
     description: "**Case hierarchy**"
     type: array
     items:
-      $ref: CaseHierarchy.yaml
+      $ref: CaseHierarchyRetrieve.yaml

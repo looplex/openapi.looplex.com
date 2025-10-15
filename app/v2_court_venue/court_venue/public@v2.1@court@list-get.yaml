@@ -33,7 +33,7 @@ responses:
             - allOf:
               - $ref: ../../common_schemas/ListResponse.yaml
               - properties:
-                  Resources:
+                  resources:
                     type: array
                     items:
                       $ref: ../schemas/Foro_v2_1.yaml

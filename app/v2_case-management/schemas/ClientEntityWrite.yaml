@@ -46,7 +46,7 @@ properties:
   phoneNumbers:
     type: array
     items:
-      $ref: ./PhoneNumberEntity.yaml
+      $ref: ./PhoneNumberEntityWrite.yaml
   addresses:
     type: array
     items:

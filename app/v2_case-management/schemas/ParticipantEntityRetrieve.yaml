@@ -1,11 +1,11 @@
 title: Dados de Parte
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
       createdBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
       name:
         type: string
         example: <nome_da_parte>
@@ -25,24 +25,24 @@ allOf:
         description: "**Endereços**"
         type: array
         items:
-          $ref: AddressEntity.yaml
+          $ref: AddressEntityRetrieve.yaml
       emails:
         description: "**Emails**"
         type: array
         items:
-          $ref: EmailEntity.yaml
+          $ref: EmailEntityRetrieve.yaml
       identities:
         description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
         type: array
         items:
           oneOf:
-            - $ref: ../../common_schemas/NaturalPersonIdentityEntity.yaml
-            - $ref: ../../common_schemas/LegalPersonIdentityEntity.yaml
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntityRetrieve.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntityRetrieve.yaml
       phoneNumbers:
         description: "**Telefones**"
         type: array
         items:
-          $ref: PhoneNumberEntity.yaml
+          $ref: PhoneNumberEntityRetrieve.yaml
       role:
         $ref: ../enums/ParticipantRole.yaml
       customFields:
