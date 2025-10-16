@@ -1,0 +1,9 @@
+title: DTOSolicitacaoRito
+description: "Para vinculo de solicitações com rito"
+type: object
+properties:  
+  UUIDRito:
+    type: string
+    format: uuid
+  CustomFields:
+    type: string

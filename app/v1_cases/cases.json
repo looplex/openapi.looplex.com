@@ -24895,6 +24895,46 @@
           }
         }
       },
+      "DTOSolicitacaoRito": {
+        "title": "DTOSolicitacaoRito",
+        "description": "Para vinculo de solicitações com rito",
+        "type": "object",
+        "properties": {
+          "UUIDRito": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "CustomFields": {
+            "type": "string"
+          }
+        }
+      },
+      "DTOSolicitacaoAreaDePratica": {
+        "title": "DTOSolicitacaoAreaDePratica",
+        "description": "Vinculo da solicitacao com a área de pratica",
+        "properties": {
+          "IDAreaDePratica": {
+            "type": "integer",
+            "example": 1
+          },
+          "CustomFields": {
+            "type": "string",
+            "example": "string de exemplo"
+          }
+        }
+      },
+      "DTOSolicitacaoTipoProcesso": {
+        "title": "DTOSolicitacaoTipoProcesso",
+        "description": "Vinculo da solicitação com o tipo de processo",
+        "properties": {
+          "TipoProcesso": {
+            "$ref": "#/components/schemas/RamosJudicial"
+          },
+          "CustomFields": {
+            "type": "string"
+          }
+        }
+      },
       "DTOSolicitacaoResponse": {
         "title": "DTOSolicitacaoResponse",
         "type": "object",
@@ -24911,6 +24951,24 @@
           },
           "Custom_Fields": {
             "type": "string"
+          },
+          "VinculosRito": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DTOSolicitacaoRito"
+            }
+          },
+          "VinculosAreaDePratica": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DTOSolicitacaoAreaDePratica"
+            }
+          },
+          "VinculosTipoProcesso": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DTOSolicitacaoTipoProcesso"
+            }
           }
         }
       },

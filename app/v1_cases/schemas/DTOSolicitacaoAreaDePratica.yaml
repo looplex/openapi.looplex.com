@@ -1,0 +1,9 @@
+title: DTOSolicitacaoAreaDePratica
+description: "Vinculo da solicitacao com a área de pratica"
+properties:
+  IDAreaDePratica:
+    type: integer
+    example: 1
+  CustomFields:
+    type: string
+    example: "string de exemplo"
