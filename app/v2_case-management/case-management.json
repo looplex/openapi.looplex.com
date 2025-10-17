@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.34.0",
+    "version": "1.35.0",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -141,7 +141,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CaseEntity"
+                  "$ref": "#/components/schemas/CaseEntityRetrieve"
                 }
               }
             }
@@ -280,10 +280,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/CaseInfoEntity"
+                            "$ref": "#/components/schemas/CaseInfoEntityQuery"
                           }
                         }
                       }
@@ -395,7 +395,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EntryEntity"
+                  "$ref": "#/components/schemas/EntryEntityRetrieve"
                 }
               }
             }
@@ -521,10 +521,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/EntryEntity"
+                            "$ref": "#/components/schemas/EntryEntityQuery"
                           }
                         }
                       }
@@ -649,10 +649,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/TimesheetEntity"
+                            "$ref": "#/components/schemas/TimesheetEntityQuery"
                           }
                         }
                       }
@@ -764,7 +764,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TimesheetEntity"
+                  "$ref": "#/components/schemas/TimesheetEntityRetrieve"
                 }
               }
             }
@@ -832,10 +832,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/ClientEntity"
+                            "$ref": "#/components/schemas/ClientEntityQuery"
                           }
                         }
                       }
@@ -947,7 +947,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientEntity"
+                  "$ref": "#/components/schemas/ClientEntityRetrieve"
                 }
               }
             }
@@ -1132,10 +1132,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/LegalServiceAgreementEntity"
+                            "$ref": "#/components/schemas/LegalServiceAgreementEntityQuery"
                           }
                         }
                       }
@@ -1195,7 +1195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LegalServiceAgreementEntity"
+                  "$ref": "#/components/schemas/LegalServiceAgreementEntityRetrieve"
                 }
               }
             }
@@ -1322,10 +1322,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/ParticipantEntity"
+                            "$ref": "#/components/schemas/ParticipantEntityQuery"
                           }
                         }
                       }
@@ -1385,7 +1385,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ParticipantEntity"
+                  "$ref": "#/components/schemas/ParticipantEntityRetrieve"
                 }
               }
             }
@@ -1453,10 +1453,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/LegalCategoryEntity"
+                            "$ref": "#/components/schemas/LegalCategoryEntityQuery"
                           }
                         }
                       }
@@ -1568,7 +1568,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LegalCategoryEntity"
+                  "$ref": "#/components/schemas/LegalCategoryEntityRetrieve"
                 }
               }
             }
@@ -1642,10 +1642,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/EmployeeEntity"
+                            "$ref": "#/components/schemas/EmployeeEntityQuery"
                           }
                         }
                       }
@@ -1705,7 +1705,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeEntity"
+                  "$ref": "#/components/schemas/EmployeeEntityRetrieve"
                 }
               }
             }
@@ -1773,10 +1773,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/CaseClaimEntity"
+                            "$ref": "#/components/schemas/CaseClaimEntityQuery"
                           }
                         }
                       }
@@ -1888,7 +1888,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CaseClaimEntity"
+                  "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
                 }
               }
             }
@@ -2014,10 +2014,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "Resources": {
+                        "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/CaseGroupEntity"
+                            "$ref": "#/components/schemas/CaseGroupEntityQuery"
                           }
                         }
                       }
@@ -2077,7 +2077,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CaseGroupEntity"
+                  "$ref": "#/components/schemas/CaseGroupEntityRetrieve"
                 }
               }
             }
@@ -2224,7 +2224,7 @@
           }
         }
       },
-      "Meta": {
+      "MetaRetrieve": {
         "title": "Meta",
         "type": "object",
         "description": "**Resource's metadata**",
@@ -2258,7 +2258,7 @@
           }
         }
       },
-      "Resource": {
+      "ResourceRetrieve": {
         "title": "Resource",
         "type": "object",
         "properties": {
@@ -2275,7 +2275,7 @@
           },
           "meta": {
             "description": "**Entity's information**",
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/MetaRetrieve"
           }
         }
       },
@@ -2315,27 +2315,27 @@
         "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nCNJ<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
-      "CaseIdentityEntity": {
+      "CaseIdentityEntityRetrieve": {
         "title": "Identidade (Case)",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identitier_or_null>"
           },
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/CaseIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**",
             "example": "<value>"
           }
         }
       },
-      "CaseHierarchy": {
+      "CaseHierarchyRetrieve": {
         "title": "CaseHierarchy",
         "description": "Hierarquia do caso, mostra todos os casos relacionados a este, seus antecessores e sucessores",
         "type": "object",
@@ -2397,29 +2397,29 @@
             "description": "**Case identities**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CaseIdentityEntity"
+              "$ref": "#/components/schemas/CaseIdentityEntityRetrieve"
             }
           },
           "descendants": {
             "description": "**Case hierarchy**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CaseHierarchy"
+              "$ref": "#/components/schemas/CaseHierarchyRetrieve"
             }
           }
         }
       },
-      "SimpleEntity": {
+      "SimpleEntityRetrieve": {
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string",
             "format": "uuid",
             "description": "**The object unique identifier**",
             "example": "<global_unique_identifier>"
           },
-          "Name": {
+          "name": {
             "type": "string <nullable>",
             "example": "<nome_do_item>",
             "description": "**The object name**"
@@ -2432,20 +2432,20 @@
         "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nCPF<br/>\nRG<br/>\n"
       },
-      "NaturalPersonIdentityEntity": {
+      "NaturalPersonIdentityEntityRetrieve": {
         "title": "Identidade (NATURAL_PERSON)",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>"
           },
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**",
             "example": "<valor>"
@@ -2458,32 +2458,32 @@
         "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nCNPJ<br/>\nInscrição municipal<br/>\nInscrição estadual\n"
       },
-      "LegalPersonIdentityEntity": {
+      "LegalPersonIdentityEntityRetrieve": {
         "title": "Identidade (LEGAL_PERSON)",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>\""
           },
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**",
             "example": "<valor>\""
           }
         }
       },
-      "PersonEntity": {
+      "PersonEntityRetrieve": {
         "title": "Dados de pessoa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/SimpleEntity"
+            "$ref": "#/components/schemas/SimpleEntityRetrieve"
           },
           {
             "properties": {
@@ -2497,10 +2497,10 @@
                 "items": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
                     },
                     {
-                      "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntityRetrieve"
                     }
                   ]
                 }
@@ -2521,12 +2521,12 @@
         "example": "<tipo_de_endereco>",
         "description": "**Address' type**<br/>\nhome<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
       },
-      "AddressEntity": {
+      "AddressEntityRetrieve": {
         "title": "Address",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -2598,7 +2598,7 @@
         "example": "<tipo_email>",
         "description": "**Tipo de email**<br/>\n**A label indicating the attribute's function, e.g., 'work' or 'home'**<br />\nwork<br/>\nhome<br/>\nother\n"
       },
-      "EmailEntity": {
+      "EmailEntityRetrieve": {
         "title": "Email",
         "type": "object",
         "properties": {
@@ -2623,7 +2623,7 @@
         "example": "<tipo_de_telefone>",
         "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother\n"
       },
-      "PhoneNumberEntity": {
+      "PhoneNumberEntityRetrieve": {
         "title": "Phone number",
         "type": "object",
         "properties": {
@@ -2672,18 +2672,18 @@
         "example": "<papel_da_parte>",
         "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
       },
-      "ParticipantEntity": {
+      "ParticipantEntityRetrieve": {
         "title": "Dados de Parte",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
             "properties": {
               "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "name": {
                 "type": "string",
@@ -2708,14 +2708,14 @@
                 "description": "**Endereços**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/AddressEntity"
+                  "$ref": "#/components/schemas/AddressEntityRetrieve"
                 }
               },
               "emails": {
                 "description": "**Emails**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/EmailEntity"
+                  "$ref": "#/components/schemas/EmailEntityRetrieve"
                 }
               },
               "identities": {
@@ -2724,10 +2724,10 @@
                 "items": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
                     },
                     {
-                      "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntityRetrieve"
                     }
                   ]
                 }
@@ -2736,7 +2736,7 @@
                 "description": "**Telefones**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/PhoneNumberEntity"
+                  "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
                 }
               },
               "role": {
@@ -2763,12 +2763,12 @@
         "example": "<estado_civil>",
         "description": "**Marital status**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
-      "ParticipantNaturalPerson": {
+      "ParticipantNaturalPersonRetrieve": {
         "title": "Participante (NATURAL_PERSON)",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ParticipantEntity"
+            "$ref": "#/components/schemas/ParticipantEntityRetrieve"
           },
           {
             "type": "object",
@@ -2805,12 +2805,12 @@
         "example": "<business_structure>",
         "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
       },
-      "ParticipantLegalPerson": {
+      "ParticipantLegalPersonRetrieve": {
         "title": "Participante (LEGAL_PERSON)",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ParticipantEntity"
+            "$ref": "#/components/schemas/ParticipantEntityRetrieve"
           },
           {
             "type": "object",
@@ -2846,7 +2846,7 @@
         "example": "<moeda>",
         "description": "**Moeda**\nBRL<br />\nUSD<br />\nEUR\n"
       },
-      "GlobalValues": {
+      "GlobalValuesRetrieve": {
         "title": "Valores globais do caso por polo",
         "type": "object",
         "properties": {
@@ -2905,12 +2905,12 @@
         "example": "<status_do_pedido>",
         "description": "PROCEDENTE<br/>\nPARCIALMENTE_PROCEDENTE<br/>\nIMPROCEDENTE<br/>\nACORDO<br/>\nPRESCRICAO_OU_DECADENCIA<br/>\nLITISPENDENCIA_COISA_JULGADA_PEREMPCAO<br/>\nILEGITIMIDADE<br/>\nDESISTENCIA\n"
       },
-      "CaseClaimEntity": {
+      "CaseClaimEntityRetrieve": {
         "title": "Claim",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -3022,33 +3022,33 @@
         "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
-      "LegacyIdentityEntity": {
+      "LegacyIdentityEntityRetrieve": {
         "title": "Identidade",
         "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string <nullable>",
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier>"
           },
-          "IdentityProviderType": {
+          "identityProviderType": {
             "$ref": "#/components/schemas/LegacyIdentityProviderType"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**",
             "example": "<value>"
           }
         }
       },
-      "EntryEntity": {
+      "EntryEntityRetrieve": {
         "title": "Dados de andamento",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -3087,7 +3087,7 @@
                 "description": "**Entry creation date**"
               },
               "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "classificationType": {
                 "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
@@ -3106,7 +3106,7 @@
               "identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/LegacyIdentityEntity"
+                  "$ref": "#/components/schemas/LegacyIdentityEntityRetrieve"
                 }
               }
             }
@@ -3119,12 +3119,12 @@
         "example": "<tipo_de_tarefa_de_timesheet>",
         "description": "APRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
       },
-      "TimesheetEntity": {
+      "TimesheetEntityRetrieve": {
         "title": "Timesheet",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -3141,7 +3141,7 @@
                 "example": "<classificacao>"
               },
               "owner": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Responsável**"
               },
               "date": {
@@ -3166,7 +3166,7 @@
                 "example": "<codigo_da_atividade>"
               },
               "applicant": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Solicitante**"
               },
               "description": {
@@ -3186,7 +3186,7 @@
                 "description": "**Criado em**"
               },
               "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Criado por**"
               },
               "updatedAt": {
@@ -3196,7 +3196,7 @@
                 "example": "<data_de_atualizacao>"
               },
               "updatedBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Atualizado por**"
               },
               "case": {
@@ -3223,7 +3223,7 @@
         "example": "<tipo_de_item_da_timeline>",
         "description": "**Tipo de evento**<br />\n**Valores possíveis:**<br />\nAndamento do Tribunal<br />\nDecisão<br />\nAndamento<br />\nGarantia<br />\nPublicação<br />\nCumprimento<br />\nTarefa<br />\nHora\n"
       },
-      "TimelineEntity": {
+      "TimelineEntityRetrieve": {
         "title": "TimelineEntity",
         "type": "object",
         "properties": {
@@ -3254,12 +3254,12 @@
           }
         }
       },
-      "CaseEntity": {
+      "CaseEntityRetrieve": {
         "title": "Dados de caso",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -3293,14 +3293,14 @@
               "caseHierarchy": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/CaseHierarchy"
+                  "$ref": "#/components/schemas/CaseHierarchyRetrieve"
                 }
               },
               "identities": {
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/CaseIdentityEntity"
+                  "$ref": "#/components/schemas/CaseIdentityEntityRetrieve"
                 }
               },
               "title": {
@@ -3316,20 +3316,20 @@
               "locale": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
                 },
                 "description": "**Utilizado em casos consultivos**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
               "courtVenue": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
                 },
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
               "caseProcedure": {
                 "description": "**Rito ou procedimento do caso**<br/>\n",
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "phase": {
                 "type": "string <nullable>",
@@ -3381,7 +3381,7 @@
                 "description": "**Data de criação do caso**"
               },
               "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Usuário que criou o caso**"
               },
               "updatedAt": {
@@ -3391,7 +3391,7 @@
               },
               "updatedBy": {
                 "description": "**Atualizado por**",
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "closedAt": {
                 "type": "string <nullable>",
@@ -3401,7 +3401,7 @@
               },
               "closedBy": {
                 "description": "**Usuário que encerrou o caso**",
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "group": {
                 "type": "string",
@@ -3417,26 +3417,26 @@
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
               },
               "caseClient": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
               },
               "legalServiceAgreement": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
               "owner": {
-                "$ref": "#/components/schemas/PersonEntity",
+                "$ref": "#/components/schemas/PersonEntityRetrieve",
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
               "coowners": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
                 },
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
               "externalServiceProvider": {
-                "$ref": "#/components/schemas/SimpleEntity",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n"
               },
               "participants": {
@@ -3444,10 +3444,10 @@
                 "items": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                      "$ref": "#/components/schemas/ParticipantNaturalPersonRetrieve"
                     },
                     {
-                      "$ref": "#/components/schemas/ParticipantLegalPerson"
+                      "$ref": "#/components/schemas/ParticipantLegalPersonRetrieve"
                     }
                   ]
                 },
@@ -3456,26 +3456,26 @@
               "globalValues": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/GlobalValues"
+                  "$ref": "#/components/schemas/GlobalValuesRetrieve"
                 }
               },
               "claims": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/CaseClaimEntity"
+                  "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
                 }
               },
               "entries": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/EntryEntity"
+                  "$ref": "#/components/schemas/EntryEntityRetrieve"
                 },
                 "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
               },
               "timesheet": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/TimesheetEntity"
+                  "$ref": "#/components/schemas/TimesheetEntityRetrieve"
                 },
                 "description": "**Registro de horas trabalhadas**"
               },
@@ -3487,12 +3487,12 @@
               "timeline": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/TimelineEntity"
+                  "$ref": "#/components/schemas/TimelineEntityRetrieve"
                 },
                 "description": "**Linha do Tempo**<br />\nLog de eventos\n"
               },
               "folder": {
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "parentCase": {
                 "type": "string",
@@ -3563,106 +3563,577 @@
           }
         }
       },
-      "ClientEntity": {
+      "MetaQuery": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceQuery": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "ExternalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "Meta": {
+            "description": "**Informações relacionadas à essa entity**",
+            "$ref": "#/components/schemas/MetaQuery"
+          }
+        }
+      },
+      "CaseIdentityEntityQuery": {
+        "title": "Identidade (Case)",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identitier_or_null>"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/CaseIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        }
+      },
+      "SimpleEntityQuery": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "Name": {
+            "type": "string <nullable>",
+            "example": "<nome_do_item>",
+            "description": "**The object name**"
+          }
+        }
+      },
+      "Status": {
+        "type": "string",
+        "example": "<status>",
+        "description": "**Status**<br/>\nACTIVE<br/>\nINACTIVE\n"
+      },
+      "NaturalPersonIdentityEntityQuery": {
+        "title": "Identidade (NATURAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identifier_ou_null>"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<valor>"
+          }
+        }
+      },
+      "LegalPersonIdentityEntityQuery": {
+        "title": "Identidade (LEGAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identifier_ou_null>\""
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<valor>\""
+          }
+        }
+      },
+      "PhoneNumberEntityQuery": {
+        "title": "Phone number",
+        "type": "object",
+        "properties": {
+          "Value": {
+            "type": "string",
+            "description": "**Phone number**",
+            "example": "<numero_do_telefone>"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TipoDeTelefone"
+          },
+          "Primary": {
+            "type": "boolean",
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "example": true
+          },
+          "Contact": {
+            "type": "string",
+            "description": "**Contact name**",
+            "example": "<contato>"
+          },
+          "Extension": {
+            "type": "string",
+            "description": "**Phone's extension**",
+            "example": "<extensao>"
+          },
+          "CountryCode": {
+            "type": "integer",
+            "description": "**Phone's country code**",
+            "example": "<codigo_do_pais>"
+          },
+          "CustomFields": {
+            "type": "object",
+            "description": "**Phone's custom fields**"
+          }
+        },
+        "required": [
+          "Value",
+          "Type",
+          "Primary"
+        ]
+      },
+      "AddressEntityQuery": {
+        "title": "Address",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Country": {
+                "type": "string <nullable>",
+                "example": "<pais>",
+                "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
+              },
+              "PostalCode": {
+                "type": "string <nullable>",
+                "example": "<cep>",
+                "description": "**Postal code**"
+              },
+              "StreetAddress": {
+                "type": "string",
+                "example": "<logradouro>",
+                "description": "**Street**"
+              },
+              "StreetAddressNumber": {
+                "type": "string <nullable>",
+                "example": "<numero_do_logradouro>",
+                "description": "**Street number**"
+              },
+              "Pobox": {
+                "type": "string <nullable>",
+                "example": "<caixa_postal>",
+                "description": "**PO box**"
+              },
+              "Locality": {
+                "type": "string <nullable>",
+                "example": "<sigla_estado>",
+                "description": "**State**"
+              },
+              "Region": {
+                "type": "string <nullable>",
+                "example": "<cidade>",
+                "description": "**City**"
+              },
+              "Neighborhood": {
+                "type": "string <nullable>",
+                "example": "<bairro>",
+                "description": "**Neighborhood**"
+              },
+              "Complement": {
+                "type": "string",
+                "description": "**Address' complement**",
+                "example": "<complemento>"
+              },
+              "Type": {
+                "$ref": "#/components/schemas/AddressType"
+              },
+              "Primary": {
+                "type": "boolean",
+                "example": true,
+                "description": "**Is this the main address?**"
+              },
+              "CustomFields": {
+                "type": "object",
+                "description": "**Address' custom fields**"
+              }
+            }
+          }
+        ]
+      },
+      "ClientEntityQuery": {
         "title": "Cliente",
         "type": "object",
         "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           }
         ],
         "properties": {
-          "name": {
+          "Name": {
             "type": "string",
             "example": "<nome_do_cliente>",
             "description": "**Client's name**"
           },
-          "nickName": {
+          "NickName": {
             "type": "string",
             "example": "<apelido_do_cliente>",
             "description": "**Client's nickname**"
           },
-          "type": {
+          "Status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "Type": {
             "$ref": "#/components/schemas/TipoPessoa"
           },
-          "email": {
+          "Email": {
             "type": "string <nullable>",
             "example": "<email>",
             "description": "**Client's email address**"
           },
-          "website": {
+          "Website": {
             "type": "string <nullable>",
             "example": "<website>",
             "description": "**The client's website page**"
           },
-          "comments": {
+          "Comments": {
             "type": "string <nullable>",
             "description": "**Comments about the client**",
             "example": "<observacoes_sobre_o_cliente>"
           },
-          "dob": {
+          "Dob": {
             "type": "string <nullable>",
             "format": "datetime",
             "description": "**Client's date of birth (available when NATURAL_PERSON)**",
             "example": "<data_de_nascimento>"
           },
-          "gender": {
+          "Gender": {
             "$ref": "#/components/schemas/Gender",
             "description": "**Client's gender (available when NATURAL_PERSON)**"
           },
-          "maritalStatus": {
+          "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
             "description": "**Client's marital status (available when NATURAL_PERSON)**"
           },
-          "identities": {
+          "Identities": {
             "type": "array",
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
                 },
                 {
-                  "$ref": "#/components/schemas/LegalPersonIdentityEntity"
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
                 }
               ]
             }
           },
-          "phoneNumbers": {
+          "PhoneNumbers": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PhoneNumberEntity"
+              "$ref": "#/components/schemas/PhoneNumberEntityQuery"
             }
           },
-          "addresses": {
+          "Addresses": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AddressEntity"
+              "$ref": "#/components/schemas/AddressEntityQuery"
             }
           },
-          "customFields": {
+          "CustomFields": {
             "type": "object",
             "description": "**Client's custom fields**"
           }
         }
       },
-      "CaseInfoEntity": {
-        "title": "Dados simplificados do caso",
+      "PersonEntityQuery": {
+        "title": "Dados de pessoa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/SimpleEntityQuery"
+          },
+          {
+            "properties": {
+              "Email": {
+                "type": "string <nullable>",
+                "description": "owner's email",
+                "example": "<email>"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      },
+      "EmailEntityQuery": {
+        "title": "Email",
+        "type": "object",
+        "properties": {
+          "Value": {
+            "type": "string",
+            "example": "<email>",
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/EmailType"
+          },
+          "Primary": {
+            "type": "boolean",
+            "example": false,
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n"
+          }
+        }
+      },
+      "ParticipantEntityQuery": {
+        "title": "Dados de Parte",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
             "properties": {
-              "status": {
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              },
+              "Name": {
+                "type": "string",
+                "example": "<nome_da_parte>",
+                "description": "**Participant's name**"
+              },
+              "Nickname": {
+                "type": "string <nullable>",
+                "example": "<apelido_da_parte>",
+                "description": "**Apelido**"
+              },
+              "LawyerOffice": {
+                "type": "string <nullable>",
+                "description": "**Escritório do advogado (se houver)**",
+                "example": "<escritorio>"
+              },
+              "Nature": {
+                "example": "NATURAL_PERSON",
+                "$ref": "#/components/schemas/TipoPessoa"
+              },
+              "Addresses": {
+                "description": "**Endereços**",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntityQuery"
+                }
+              },
+              "Emails": {
+                "description": "**Emails**",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityQuery"
+                }
+              },
+              "Identities": {
+                "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                    },
+                    {
+                      "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
+                    }
+                  ]
+                }
+              },
+              "PhoneNumbers": {
+                "description": "**Telefones**",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+                }
+              },
+              "Role": {
+                "$ref": "#/components/schemas/ParticipantRole"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "**Participant's custom fields**"
+              }
+            }
+          }
+        ]
+      },
+      "ParticipantNaturalPersonQuery": {
+        "title": "Participante (NATURAL_PERSON)",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParticipantEntityQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Dob": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "example": "<data_de_nascimento>",
+                "description": "**Data de Nascimento**"
+              },
+              "Gender": {
+                "$ref": "#/components/schemas/Gender"
+              },
+              "Nationality": {
+                "description": "**Nacionalidade**",
+                "example": "<nacionalidade>",
+                "type": "string <nullable>"
+              },
+              "MaritalStatus": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "Occupation": {
+                "type": "string <nullable>",
+                "description": "**Profissão**",
+                "example": "<profissao>"
+              }
+            }
+          }
+        ]
+      },
+      "ParticipantLegalPersonQuery": {
+        "title": "Participante (LEGAL_PERSON)",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ParticipantEntityQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "BusinessStructure": {
+                "$ref": "#/components/schemas/ParticipantBusinessStructure"
+              }
+            }
+          }
+        ]
+      },
+      "GlobalValuesQuery": {
+        "title": "Valores globais do caso por polo",
+        "type": "object",
+        "properties": {
+          "AgainstPosition": {
+            "$ref": "#/components/schemas/Position",
+            "description": "**Contra polo ativo, passivo, terceiro...**"
+          },
+          "Perspective": {
+            "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
+          },
+          "RiskClassification": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "Currency": {
+            "$ref": "#/components/schemas/Moeda",
+            "description": "**Moeda usada para os valores do caso**"
+          },
+          "CaseDeclaredValue": {
+            "type": "number <nullable>",
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
+            "example": 0
+          },
+          "CaseForeseenValue": {
+            "type": "number <nullable>",
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "example": 0
+          },
+          "CaseContingencyValue": {
+            "type": "number <nullable>",
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "example": 0
+          }
+        }
+      },
+      "CaseInfoEntityQuery": {
+        "title": "Dados simplificados do caso",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Status": {
                 "$ref": "#/components/schemas/SituacaoDoProcesso"
               },
-              "type": {
+              "Type": {
                 "$ref": "#/components/schemas/RamosJudicial"
               },
-              "subType": {
+              "SubType": {
                 "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
                 "oneOf": [
                   {
@@ -3676,166 +4147,166 @@
                   }
                 ]
               },
-              "hasAncestor": {
+              "HasAncestor": {
                 "type": "boolean",
                 "example": false,
                 "description": "**Indica se o caso possui um caso primário**"
               },
-              "hasDescendants": {
+              "HasDescendants": {
                 "type": "boolean",
                 "example": false,
                 "description": "**Indica se o caso possui casos filhos**"
               },
-              "level": {
+              "Level": {
                 "type": "integer",
                 "example": 1,
                 "description": "**Instância do caso**"
               },
-              "identities": {
+              "Identities": {
                 "type": "array",
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
                 "items": {
-                  "$ref": "#/components/schemas/CaseIdentityEntity"
+                  "$ref": "#/components/schemas/CaseIdentityEntityQuery"
                 }
               },
-              "title": {
+              "Title": {
                 "type": "string",
                 "description": "**Nome Jurídico do caso**",
                 "example": "<titulo_do_processo>"
               },
-              "summary": {
+              "Summary": {
                 "type": "string <nullable>",
                 "description": "**Breve descrição sobre o caso**",
                 "example": "<observacoes_do_processo>"
               },
-              "locale": {
+              "Locale": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityQuery"
                 },
                 "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
               },
-              "courtVenue": {
+              "CourtVenue": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityQuery"
                 },
                 "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
               },
-              "caseProcedure": {
+              "CaseProcedure": {
                 "description": "**Rito ou procedimento do caso**\n",
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityQuery"
               },
-              "phase": {
+              "Phase": {
                 "type": "string <nullable>",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
                 "example": "<fase_do_processo>"
               },
-              "retentionDate": {
+              "RetentionDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n",
                 "example": "<data_de_entrada_do_processo>"
               },
-              "startDate": {
+              "StartDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n",
                 "example": "<data_distribuicao_do_processo>"
               },
-              "formationDate": {
+              "FormationDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
                 "example": "<data_de_citacao_do_processo>"
               },
-              "resJudicataDate": {
+              "ResJudicataDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
                 "example": "<data_transito_julgado_do_processo>"
               },
-              "forecastedEndDate": {
+              "ForecastedEndDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
                 "example": "<data_prevista_encerramento_do_processo>"
               },
-              "createdAt": {
+              "CreatedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de criação do caso**",
                 "example": "<data_criacao_do_processo>"
               },
-              "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**Usuário que criou o caso**"
               },
-              "updatedAt": {
+              "UpdatedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Atualizado em**",
                 "example": "<data_de_atualizacao_do_processo>"
               },
-              "updatedBy": {
+              "UpdatedBy": {
                 "description": "**Atualizado por**",
-                "$ref": "#/components/schemas/SimpleEntity"
+                "$ref": "#/components/schemas/SimpleEntityQuery"
               },
-              "closedAt": {
+              "ClosedAt": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data de encerramento**",
                 "example": "<data_encerramento_do_processo>"
               },
-              "closedBy": {
-                "$ref": "#/components/schemas/SimpleEntity",
+              "ClosedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**Usuário que encerrou o caso**"
               },
-              "group": {
+              "Group": {
                 "type": "string",
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
                 "example": "<area_do_processo>"
               },
-              "caseClient": {
-                "$ref": "#/components/schemas/ClientEntity"
+              "CaseClient": {
+                "$ref": "#/components/schemas/ClientEntityQuery"
               },
-              "legalServiceAgreement": {
-                "$ref": "#/components/schemas/SimpleEntity",
+              "LegalServiceAgreement": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
-              "owner": {
-                "$ref": "#/components/schemas/PersonEntity",
+              "Owner": {
+                "$ref": "#/components/schemas/PersonEntityQuery",
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
-              "coowners": {
+              "Coowners": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntity"
+                  "$ref": "#/components/schemas/SimpleEntityQuery"
                 },
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
-              "externalServiceProvider": {
-                "$ref": "#/components/schemas/SimpleEntity",
+              "ExternalServiceProvider": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n"
               },
-              "participants": {
+              "Participants": {
                 "type": "array",
                 "items": {
                   "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ParticipantNaturalPerson"
+                      "$ref": "#/components/schemas/ParticipantNaturalPersonQuery"
                     },
                     {
-                      "$ref": "#/components/schemas/ParticipantLegalPerson"
+                      "$ref": "#/components/schemas/ParticipantLegalPersonQuery"
                     }
                   ]
                 },
                 "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
               },
-              "globalValues": {
+              "GlobalValues": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/GlobalValues"
+                  "$ref": "#/components/schemas/GlobalValuesQuery"
                 }
               }
             }
@@ -4054,6 +4525,41 @@
             }
           }
         ]
+      },
+      "GlobalValuesWrite": {
+        "title": "Valores globais do caso por polo",
+        "type": "object",
+        "properties": {
+          "againstPosition": {
+            "$ref": "#/components/schemas/Position",
+            "description": "**Contra polo ativo, passivo, terceiro...**"
+          },
+          "perspective": {
+            "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
+          },
+          "riskClassification": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Moeda",
+            "description": "**Moeda usada para os valores do caso**"
+          },
+          "caseDeclaredValue": {
+            "type": "number <nullable>",
+            "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
+            "example": 0
+          },
+          "caseForeseenValue": {
+            "type": "number <nullable>",
+            "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "example": 0
+          },
+          "caseContingencyValue": {
+            "type": "number <nullable>",
+            "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "example": 0
+          }
+        }
       },
       "EntryEntityWrite": {
         "title": "Dados do andamento",
@@ -4412,7 +4918,7 @@
           "globalValues": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/GlobalValues"
+              "$ref": "#/components/schemas/GlobalValuesWrite"
             }
           },
           "entries": {
@@ -4462,6 +4968,195 @@
           "group",
           "owner",
           "caseClient"
+        ]
+      },
+      "LegacyIdentityEntityQuery": {
+        "title": "Identidade",
+        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identifier>"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegacyIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        }
+      },
+      "EntryEntityQuery": {
+        "title": "Dados de andamento",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Date": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_do_andamento>",
+                "description": "**Data do andamento**"
+              },
+              "Classification": {
+                "type": "string <nullable>",
+                "description": "**Classificação do andamento**",
+                "example": "<classificacao_do_andamento>"
+              },
+              "Description": {
+                "type": "string",
+                "example": "<descricao_do_andamento>",
+                "description": "**Texto do andamento**"
+              },
+              "IsInternal": {
+                "type": "boolean",
+                "example": false,
+                "description": "**Indica se o andamento é de uso interno**"
+              },
+              "ServiceOfProcess": {
+                "type": "string <nullable>",
+                "format": "uuid",
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**",
+                "example": "<unique_identifier_da_publicacao>"
+              },
+              "CreatedAt": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_criacao_do_andamento>",
+                "description": "**Entry creation date**"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              },
+              "ClassificationType": {
+                "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
+              },
+              "CaseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier**",
+                "example": "<unique_identifier_do_processo>"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "**Entry's custom fields**"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "TimesheetEntityQuery": {
+        "title": "Timesheet",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ClientId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Client unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "Classification": {
+                "type": "string <nullable>",
+                "description": "**Classificação**",
+                "example": "<classificacao>"
+              },
+              "Owner": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Responsável**"
+              },
+              "Date": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data**",
+                "example": "<data>"
+              },
+              "Hours": {
+                "type": "string",
+                "example": "<hora>",
+                "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
+              },
+              "TaskCode": {
+                "type": "string <nullable>",
+                "description": "**Código da Tarefa**",
+                "example": "<codigo_da_tarefa>"
+              },
+              "ActivityCode": {
+                "type": "string <nullable>",
+                "description": "**Código da Atividade**",
+                "example": "<codigo_da_atividade>"
+              },
+              "Applicant": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Solicitante**"
+              },
+              "Description": {
+                "type": "string <nullable>",
+                "example": "<descricao>",
+                "description": "**Descrição**"
+              },
+              "IsInvoiced": {
+                "type": "boolean <nullable>",
+                "example": false,
+                "description": "**Faturado**"
+              },
+              "CreatedAt": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "example": "<data_de_criacao>",
+                "description": "**Criado em**"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Criado por**"
+              },
+              "UpdatedAt": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Atualizado em**",
+                "example": "<data_de_atualizacao>"
+              },
+              "UpdatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Atualizado por**"
+              },
+              "Case": {
+                "type": "object",
+                "description": "**The case unique identifier**",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "<global_unique_identifier>"
+                  }
+                }
+              },
+              "TaskType": {
+                "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+              }
+            }
+          }
         ]
       },
       "TimesheetEntityWrite": {
@@ -4524,6 +5219,49 @@
             }
           }
         }
+      },
+      "PhoneNumberEntityWrite": {
+        "title": "Phone number",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "**Phone number**",
+            "example": "<numero_do_telefone>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDeTelefone"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "example": true
+          },
+          "contact": {
+            "type": "string",
+            "description": "**Contact name**",
+            "example": "<contato>"
+          },
+          "extension": {
+            "type": "string",
+            "description": "**Phone's extension**",
+            "example": "<extensao>"
+          },
+          "countryCode": {
+            "type": "integer",
+            "description": "**Phone's country code**",
+            "example": "<codigo_do_pais>"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Phone's custom fields**"
+          }
+        },
+        "required": [
+          "value",
+          "type",
+          "primary"
+        ]
       },
       "AddressEntityWrite": {
         "title": "Address",
@@ -4654,7 +5392,7 @@
           "phoneNumbers": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PhoneNumberEntity"
+              "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             }
           },
           "addresses": {
@@ -4674,6 +5412,89 @@
           "type"
         ]
       },
+      "ClientEntityRetrieve": {
+        "title": "Cliente",
+        "type": "object",
+        "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          }
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "<nome_do_cliente>",
+            "description": "**Client's name**"
+          },
+          "nickName": {
+            "type": "string",
+            "example": "<apelido_do_cliente>",
+            "description": "**Client's nickname**"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoPessoa"
+          },
+          "email": {
+            "type": "string <nullable>",
+            "example": "<email>",
+            "description": "**Client's email address**"
+          },
+          "website": {
+            "type": "string <nullable>",
+            "example": "<website>",
+            "description": "**The client's website page**"
+          },
+          "comments": {
+            "type": "string <nullable>",
+            "description": "**Comments about the client**",
+            "example": "<observacoes_sobre_o_cliente>"
+          },
+          "dob": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Client's date of birth (available when NATURAL_PERSON)**",
+            "example": "<data_de_nascimento>"
+          },
+          "gender": {
+            "$ref": "#/components/schemas/Gender",
+            "description": "**Client's gender (available when NATURAL_PERSON)**"
+          },
+          "maritalStatus": {
+            "$ref": "#/components/schemas/MaritalStatus",
+            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+          },
+          "identities": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
+                },
+                {
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityRetrieve"
+                }
+              ]
+            }
+          },
+          "phoneNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
+            }
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressEntityRetrieve"
+            }
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Client's custom fields**"
+          }
+        }
+      },
       "ContratoReembolsoKM": {
         "title": "ContratoReembolsoKM",
         "type": "string",
@@ -4692,12 +5513,166 @@
         "example": "<situacao_do_contrato>",
         "description": "ATIVO = 1<br/>\nENCERRADO = 3\n"
       },
-      "LegalServiceAgreementEntity": {
+      "LegalServiceAgreementEntityQuery": {
         "title": "Legal service agreement",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
+          }
+        ],
+        "properties": {
+          "ClientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client's unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "Name": {
+            "type": "string",
+            "example": "<titulo>",
+            "description": "Legal service agreement's title"
+          },
+          "Summary": {
+            "type": "string",
+            "example": "<observacoes>",
+            "description": "Legal service agreement's summary"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_de_criacao>",
+            "description": "Legal service agreement's created date"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_inicial>",
+            "description": "Legal service agreement's start date"
+          },
+          "ForecastedEndDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_prevista_encerramento>",
+            "description": "Legal service agreement's forecasted end date"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_de_vencimento>",
+            "description": "Legal service agreement's due date"
+          },
+          "IsSameReviewerAttorneyFeesAndExpenses": {
+            "type": "boolean",
+            "example": false
+          },
+          "IsSamePayerAttorneyFeesAndExpenses": {
+            "type": "boolean",
+            "example": false
+          },
+          "BillingCompanyId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
+          },
+          "OwnerId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
+          },
+          "Number": {
+            "type": "integer",
+            "example": "<integer>"
+          },
+          "KilometersReimbursement": {
+            "$ref": "#/components/schemas/ContratoReembolsoKM"
+          },
+          "ExpenseRuleLocal": {
+            "$ref": "#/components/schemas/TipoRegraAprovacaoLimiteDespesas"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/ContratoSituacao"
+          },
+          "IsDefault": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "LegalServiceAgreementEntityWrite": {
+        "title": "Legal service agreement",
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client's unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "name": {
+            "type": "string",
+            "example": "<titulo>",
+            "description": "Legal service agreement's title"
+          },
+          "summary": {
+            "type": "string",
+            "example": "<observacoes>",
+            "description": "Legal service agreement's summary"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_inicial>",
+            "description": "Legal service agreement's start date"
+          },
+          "forecastedEndDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_prevista_encerramento>",
+            "description": "Legal service agreement's forecasted end date"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_de_vencimento>",
+            "description": "Legal service agreement's due date"
+          },
+          "isSameReviewerAttorneyFeesAndExpenses": {
+            "type": "boolean",
+            "example": false
+          },
+          "isSamePayerAttorneyFeesAndExpenses": {
+            "type": "boolean",
+            "example": false
+          },
+          "billingCompanyId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
+          },
+          "ownerId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
+          },
+          "kilometersReimbursement": {
+            "$ref": "#/components/schemas/ContratoReembolsoKM"
+          },
+          "expenseRuleLocal": {
+            "$ref": "#/components/schemas/TipoRegraAprovacaoLimiteDespesas"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "example": false
+          }
+        }
+      },
+      "LegalServiceAgreementEntityRetrieve": {
+        "title": "Legal service agreement",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
           }
         ],
         "properties": {
@@ -4778,95 +5753,27 @@
           }
         }
       },
-      "LegalServiceAgreementEntityWrite": {
-        "title": "Legal service agreement",
-        "type": "object",
-        "properties": {
-          "clientId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Client's unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "name": {
-            "type": "string",
-            "example": "<titulo>",
-            "description": "Legal service agreement's title"
-          },
-          "summary": {
-            "type": "string",
-            "example": "<observacoes>",
-            "description": "Legal service agreement's summary"
-          },
-          "startDate": {
-            "type": "string",
-            "format": "datetime",
-            "example": "<data_inicial>",
-            "description": "Legal service agreement's start date"
-          },
-          "forecastedEndDate": {
-            "type": "string",
-            "format": "datetime",
-            "example": "<data_prevista_encerramento>",
-            "description": "Legal service agreement's forecasted end date"
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "datetime",
-            "example": "<data_de_vencimento>",
-            "description": "Legal service agreement's due date"
-          },
-          "isSameReviewerAttorneyFeesAndExpenses": {
-            "type": "boolean",
-            "example": false
-          },
-          "isSamePayerAttorneyFeesAndExpenses": {
-            "type": "boolean",
-            "example": false
-          },
-          "billingCompanyId": {
-            "type": "string",
-            "format": "uuid",
-            "example": "<global_unique_identifier>"
-          },
-          "ownerId": {
-            "type": "string",
-            "format": "uuid",
-            "example": "<global_unique_identifier>"
-          },
-          "kilometersReimbursement": {
-            "$ref": "#/components/schemas/ContratoReembolsoKM"
-          },
-          "expenseRuleLocal": {
-            "$ref": "#/components/schemas/TipoRegraAprovacaoLimiteDespesas"
-          },
-          "isDefault": {
-            "type": "boolean",
-            "example": false
-          }
-        }
-      },
       "GrupoNaturezaDaCausa": {
         "title": "GrupoNaturezaDaCausa",
         "type": "string",
         "example": "<grupo_da_natureza>",
         "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
       },
-      "LegalCategoryEntity": {
+      "LegalCategoryEntityQuery": {
         "title": "Legal category (Natureza)",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           }
         ],
         "properties": {
-          "legalCategory": {
+          "LegalCategory": {
             "type": "string",
             "description": "**The legal category name**",
             "example": "<nome_da_natureza>"
           },
-          "group": {
+          "Group": {
             "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
           }
         }
@@ -4885,18 +5792,119 @@
           }
         }
       },
+      "LegalCategoryEntityRetrieve": {
+        "title": "Legal category (Natureza)",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          }
+        ],
+        "properties": {
+          "legalCategory": {
+            "type": "string",
+            "description": "**The legal category name**",
+            "example": "<nome_da_natureza>"
+          },
+          "group": {
+            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
+          }
+        }
+      },
       "PersonStatus": {
         "title": "Status",
         "type": "string",
         "example": "<status>",
         "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
       },
-      "EmployeeEntity": {
+      "EmployeeEntityQuery": {
         "title": "Funcionário",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "description": "**Employee's name**",
+                "example": "<nome>"
+              },
+              "NickName": {
+                "type": "string <nullable>",
+                "description": "**Employee's nickname**",
+                "example": "<apelido>"
+              },
+              "Dob": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's date of birth**",
+                "example": "<data_de_nascimento>"
+              },
+              "Gender": {
+                "type": "string <nullable>",
+                "description": "**Employee's gender**",
+                "example": "<genero>"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                },
+                "description": "**Employee's identities**"
+              },
+              "Nationality": {
+                "type": "string <nullable>",
+                "description": "**Employee's nationality**",
+                "example": "<nacionalidade>"
+              },
+              "MaritalStatus": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "Occupation": {
+                "type": "string <nullable>",
+                "description": "**Employee's occupation**",
+                "example": "<profissao>"
+              },
+              "Role": {
+                "$ref": "#/components/schemas/ParticipantRole"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/PersonStatus"
+              },
+              "Addresses": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntityQuery"
+                },
+                "description": "**Employee's addresses**"
+              },
+              "Emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityQuery"
+                },
+                "description": "**Employee's emails**"
+              },
+              "PhoneNumbers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+                },
+                "description": "**Employee's phone numbers**"
+              }
+            }
+          }
+        ]
+      },
+      "EmployeeEntityRetrieve": {
+        "title": "Funcionário",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
@@ -4925,7 +5933,7 @@
               "identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntity"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
                 },
                 "description": "**Employee's identities**"
               },
@@ -4951,21 +5959,21 @@
               "addresses": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/AddressEntity"
+                  "$ref": "#/components/schemas/AddressEntityRetrieve"
                 },
                 "description": "**Employee's addresses**"
               },
               "emails": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/EmailEntity"
+                  "$ref": "#/components/schemas/EmailEntityRetrieve"
                 },
                 "description": "**Employee's emails**"
               },
               "phoneNumbers": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/PhoneNumberEntity"
+                  "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
                 },
                 "description": "**Employee's phone numbers**"
               }
@@ -4973,18 +5981,147 @@
           }
         ]
       },
+      "CaseClaimEntityQuery": {
+        "title": "Claim",
+        "type": "object",
+        "properties": {
+          "CaseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case's unique identifier of this claim**",
+            "example": "<global_unique_identifier>"
+          },
+          "SubjectMatter": {
+            "type": "string <nullable>",
+            "description": "**Question's general classification**",
+            "example": "<subject_matter>"
+          },
+          "ReliefStatement": {
+            "type": "string <nullable>",
+            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
+            "example": "<relief_statement>"
+          },
+          "RemedyType": {
+            "$ref": "#/components/schemas/TipoReparacao"
+          },
+          "ProvisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          },
+          "AgainstPosition": {
+            "$ref": "#/components/schemas/Position"
+          },
+          "Participants": {
+            "description": "**Participant's identifiers**",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "example": "<global_unique_identifier>"
+            }
+          },
+          "CalculationRule": {
+            "type": "object",
+            "properties": {
+              "Id": {
+                "type": "string",
+                "example": "<global_unique_identifier>"
+              },
+              "Title": {
+                "type": "string",
+                "example": "<title>"
+              }
+            }
+          },
+          "RiskClassification": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "ForeseenValue": {
+            "type": "number",
+            "example": 0
+          },
+          "ContingencyValue": {
+            "type": "number",
+            "description": "**Valor de contingencia**",
+            "example": 0
+          },
+          "Liquidated": {
+            "type": "boolean",
+            "example": false
+          },
+          "EffectiveDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de constituição**",
+            "example": "<data_de_constituicao>"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de vencimento**",
+            "example": "<data_de_vencimento>"
+          },
+          "Recurrence": {
+            "$ref": "#/components/schemas/TipoDeRecorrencia"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/ClaimStatus"
+          },
+          "Granted": {
+            "type": "number",
+            "description": "**Valor deferido pela ultima decisão**",
+            "example": 0
+          },
+          "CustomFields": {
+            "type": "object",
+            "description": "**Claim's custom fields**",
+            "example": {}
+          }
+        }
+      },
       "SituacaoDaArea": {
         "title": "Case group status",
         "type": "string",
         "example": "<situacao_da_area>",
         "description": "**Case group status**<br/>\nACTIVE<br/>\nINACTIVE\n"
       },
-      "CaseGroupEntity": {
+      "CaseGroupEntityQuery": {
         "title": "CaseGroupEntity",
         "description": "Case groups",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "description": "**Case group name**",
+                "example": "<case_group_name>",
+                "type": "string"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/SituacaoDaArea"
+              },
+              "IsProductive": {
+                "type": "boolean",
+                "description": "**Indicate if the group is productive**",
+                "example": true
+              },
+              "CustomFields": {
+                "description": "**Custom fields for the case group**",
+                "type": "object",
+                "example": {}
+              }
+            }
+          }
+        ]
+      },
+      "CaseGroupEntityRetrieve": {
+        "title": "CaseGroupEntity",
+        "description": "Case groups",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",

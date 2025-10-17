@@ -182,7 +182,7 @@ allOf:
       claims:
         type: array
         items:
-          $ref: CaseClaimEntity.yaml
+          $ref: CaseClaimEntityRetrieve.yaml
       entries:
         type: array
         items:
