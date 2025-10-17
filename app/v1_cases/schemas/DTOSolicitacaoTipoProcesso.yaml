@@ -1,0 +1,8 @@
+title: DTOSolicitacaoTipoProcesso
+description: "Vinculo da solicitação com o tipo de processo"
+properties:
+  
+  TipoProcesso:    
+    $ref: ../enums/RamosJudicial.yaml
+  CustomFields:
+    type: string

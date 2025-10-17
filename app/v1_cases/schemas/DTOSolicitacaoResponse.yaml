@@ -10,3 +10,15 @@ properties:
     type: integer
   Custom_Fields:
     type: string
+  VinculosRito:
+    type: array
+    items:
+      $ref: DTOSolicitacaoRito.yaml
+  VinculosAreaDePratica:
+    type: array
+    items:
+      $ref: DTOSolicitacaoAreaDePratica.yaml
+  VinculosTipoProcesso:
+    type: array
+    items:
+      $ref: DTOSolicitacaoTipoProcesso.yaml  
