@@ -12,4 +12,4 @@ properties:
     description: "**External identifier**"
   meta:
     description: "**Entity's information**"
-    $ref: Meta.yaml
+    $ref: MetaRetrieve.yaml

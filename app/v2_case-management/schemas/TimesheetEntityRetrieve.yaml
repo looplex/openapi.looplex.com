@@ -1,7 +1,7 @@
 title: Timesheet
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
       clientId:
@@ -14,7 +14,7 @@ allOf:
         description: "**Classificação**"
         example: <classificacao>
       owner:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
         description: "**Responsável**"
       date:
         type: string
@@ -36,7 +36,7 @@ allOf:
         description: "**Código da Atividade**"
         example: <codigo_da_atividade>
       applicant:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
         description: "**Solicitante**"
       description:
         type: string <nullable>
@@ -52,7 +52,7 @@ allOf:
         example: <data_de_criacao>
         description: "**Criado em**"
       createdBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
         description: "**Criado por**"
       updatedAt:
         type: string <nullable>
@@ -60,7 +60,7 @@ allOf:
         description: "**Atualizado em**"
         example: <data_de_atualizacao>
       updatedBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
         description: "**Atualizado por**"
       case:
         type: object

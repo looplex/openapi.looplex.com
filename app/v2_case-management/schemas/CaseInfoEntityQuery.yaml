@@ -1,84 +1,84 @@
 title: Dados simplificados do caso
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceQuery.yaml
   - type: object
     properties:
-      status:
+      Status:
         $ref: ../enums/SituacaoDoProcesso.yaml
-      type:
+      Type:
         $ref: ../../common_enums/RamosJudicial.yaml
-      subType:
+      SubType:
         description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
         oneOf:
           - $ref: ../enums/ClasseProcessoContrato.yaml
           - $ref: ../enums/ClasseProcessoSocietario.yaml
           - $ref: ../enums/ClasseProcesso.yaml
-      hasAncestor:
+      HasAncestor:
         type: boolean
         example: false
         description: "**Indica se o caso possui um caso primário**"
-      hasDescendants:
+      HasDescendants:
         type: boolean
         example: false
         description: "**Indica se o caso possui casos filhos**"
-      level:
+      Level:
         type: integer
         example: 1
         description: "**Instância do caso**"
-      identities:
+      Identities:
         type: array
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
         items:
-          $ref: ../../common_schemas/CaseIdentityEntity.yaml
-      title:
+          $ref: ../../common_schemas/CaseIdentityEntityQuery.yaml
+      Title:
         type: string
         description: "**Nome Jurídico do caso**"
         example: <titulo_do_processo>
-      summary:
+      Summary:
         type: string <nullable>
         description: "**Breve descrição sobre o caso**"
         example: <observacoes_do_processo>
-      locale:
+      Locale:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntity.yaml
+          $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
-      courtVenue:
+      CourtVenue:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntity.yaml
+          $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
-      caseProcedure:
+      CaseProcedure:
         description: >
           **Rito ou procedimento do caso**
-        $ref: ../../common_schemas/SimpleEntity.yaml
-      phase:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+      Phase:
         type: string <nullable>
         description: |
           **Fase do caso**<br />
           Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
         example: <fase_do_processo>
-      retentionDate:
+      RetentionDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
         example: <data_de_entrada_do_processo>
-      startDate:
+      StartDate:
         type: string <nullable>
         format: datetime
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
         example: <data_distribuicao_do_processo>
-      formationDate:
+      FormationDate:
         type: string <nullable>
         format: datetime
         description: |
@@ -86,7 +86,7 @@ allOf:
           Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
         example: <data_de_citacao_do_processo>
-      resJudicataDate:
+      ResJudicataDate:
         type: string <nullable>
         format: datetime
         description: |
@@ -94,7 +94,7 @@ allOf:
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
         example: <data_transito_julgado_do_processo>
-      forecastedEndDate:
+      ForecastedEndDate:
         type: string <nullable>
         format: datetime
         description: |
@@ -102,68 +102,68 @@ allOf:
           Data estimada para a conclusão de um caso, transação ou disputa. <br />
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
         example: <data_prevista_encerramento_do_processo>
-      createdAt:
+      CreatedAt:
         type: string <nullable>
         format: datetime
         description: "**Data de criação do caso**"
         example: <data_criacao_do_processo>
-      createdBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+      CreatedBy:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: "**Usuário que criou o caso**"
-      updatedAt:
+      UpdatedAt:
         type: string <nullable>
         format: datetime
         description: "**Atualizado em**"
         example: <data_de_atualizacao_do_processo>
-      updatedBy:
+      UpdatedBy:
         description: "**Atualizado por**"
-        $ref: ../../common_schemas/SimpleEntity.yaml
-      closedAt:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+      ClosedAt:
         type: string <nullable>
         format: datetime
         description: "**Data de encerramento**"
         example: <data_encerramento_do_processo>
-      closedBy:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+      ClosedBy:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: "**Usuário que encerrou o caso**"
-      group:
+      Group:
         type: string
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
         example: <area_do_processo>
-      caseClient:
-        $ref: ClientEntity.yaml
-      legalServiceAgreement:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+      CaseClient:
+        $ref: ClientEntityQuery.yaml
+      LegalServiceAgreement:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
-      owner:
-        $ref: ./PersonEntity.yaml
+      Owner:
+        $ref: ./PersonEntityQuery.yaml
         description: |
           **Responsável**<br />
           Advogado ou membro da equipe jurídica responsável pelo caso
-      coowners:
+      Coowners:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntity.yaml
+          $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
-      externalServiceProvider:
-        $ref: ../../common_schemas/SimpleEntity.yaml
+      ExternalServiceProvider:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
-      participants:
+      Participants:
         type: array
         items:
           oneOf:
-            - $ref: ParticipantNaturalPerson.yaml
-            - $ref: ParticipantLegalPerson.yaml
+            - $ref: ParticipantNaturalPersonQuery.yaml
+            - $ref: ParticipantLegalPersonQuery.yaml
         description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
-      globalValues:
+      GlobalValues:
         type: array
         items:
-          $ref: GlobalValues.yaml
+          $ref: GlobalValuesQuery.yaml

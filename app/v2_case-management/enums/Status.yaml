@@ -1,0 +1,6 @@
+type: string
+example: <status>
+description: |
+  **Status**<br/>
+  ACTIVE<br/>
+  INACTIVE

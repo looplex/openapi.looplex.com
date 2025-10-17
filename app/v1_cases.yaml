@@ -496,8 +496,8 @@ paths:
   /api/dado_complementar/{IDParametroDadoComplementar}:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@id-get.yaml'
-    # delete:
-    #   $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@id-delete.yaml'
+    delete:
+      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@id-delete.yaml'
   /api/dado_complementar/todos:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@todos-get.yaml'
@@ -513,28 +513,28 @@ paths:
   /api/casos/num/dadoscomplementares:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@casos@num@dadoscomplementares-get.yaml'
-  # /api/dado_complementar:
-  #   post:
-  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-post.yaml'
-  #   put:
-  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-put.yaml'
-  # /api/dado_complementar/edit:
-  #   put:
-  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@edit-put.yaml'
+  /api/dado_complementar:
+    post:
+      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-post.yaml'
+    put:
+      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar-put.yaml'
+  /api/dado_complementar/edit:
+    put:
+      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@edit-put.yaml'
   /api/dado_complementar/filtro:
     get:
       $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@filtro-get.yaml'   
-  # /api/dado_complementar/json:
-  #   post:
-  #     $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@json-post.yaml'
+  /api/dado_complementar/json:
+    post:
+      $ref: 'v1_cases/informacoes_adicionais/public@api@dado_complementar@json-post.yaml'
   
   # Informações adicionais (Valor)
-  # /api/dado_complementar/valor:
-  #   post:
-  #     $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valor-post.yaml'
-  # /api/dado_complementar/valores:
-  #   delete: 
-  #     $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml' 
+  /api/dado_complementar/valor:
+    post:
+      $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valor-post.yaml'
+  /api/dado_complementar/valores:
+    delete: 
+      $ref: 'v1_cases/informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml' 
       
   # Liabilities Calculation
   # /api/liabilitiesCalculation/calculaCaso/{cdProcesso}:

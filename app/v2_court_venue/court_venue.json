@@ -92,7 +92,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -251,7 +251,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -338,7 +338,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -417,7 +417,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -497,7 +497,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -577,7 +577,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "$ref": "#/components/schemas/Foro_v2_1"
@@ -707,7 +707,7 @@
                         },
                         {
                           "properties": {
-                            "Resources": {
+                            "resources": {
                               "type": "array",
                               "items": {
                                 "type": "object",

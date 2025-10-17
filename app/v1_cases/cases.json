@@ -9537,6 +9537,81 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Informações adicionais"
+        ],
+        "summary": "Exclui a informação adicional",
+        "description": "**Essa informação não poderá mais ser utilizada para gravar valores em processos depois de excluída.**<br />**A exclusão de uma informação adicional só é possível se não estiver sendo utilizada.**",
+        "operationId": "api-dado_complementar-id-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "IDParametroDadoComplementar",
+            "in": "path",
+            "description": "O identificador da Informação adicional",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": "A informação adicional foi excluída."
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/dado_complementar/todos": {
@@ -9988,6 +10063,260 @@
         }
       }
     },
+    "/api/dado_complementar": {
+      "post": {
+        "tags": [
+          "Informações adicionais"
+        ],
+        "summary": "Inclui Informações adicionais (completa)",
+        "description": "Cadastrar novas Informações adicionais.",
+        "operationId": "api-dado_complementar-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DTOInformacaoAdicional"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DTOInformacaoAdicional"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Informações adicionais"
+        ],
+        "summary": "Atualiza Informações adicionais (completa)",
+        "description": "Atualiza as Informações adicionais informadas.",
+        "operationId": "api-dado_complementar-put",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DTOInformacaoAdicional"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": "As Informações adicionais foram atualizadas corretamente."
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dado_complementar/edit": {
+      "put": {
+        "tags": [
+          "Informações adicionais"
+        ],
+        "summary": "Edita propriedades específicas da Informação adicional",
+        "description": "**Propriedades disponíveis para edição**<br /> `TituloDadoComplementar`, `TamanhoCampo`, `Obrigatorio`, `Ativo`, `Schemas (serializado)`.",
+        "operationId": "api-dado_complementar-edit",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "IDParametroDadoComplementar",
+            "in": "query",
+            "description": "O identificador da Informação adicional",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DTOObjetoNomeValor"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DTOInformacaoAdicional"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/dado_complementar/filtro": {
       "get": {
         "tags": [
@@ -10070,6 +10399,246 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dado_complementar/json": {
+      "post": {
+        "tags": [
+          "Informações adicionais"
+        ],
+        "summary": "Inclui informação adicional de tipo JSON",
+        "operationId": "api-dado_complementar-json-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTOSchemaInformacaoAdicional"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DTOSchemaInformacaoAdicionalResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dado_complementar/valor": {
+      "post": {
+        "tags": [
+          "Informações adicionais (valor)"
+        ],
+        "summary": "Incluir valor em processo utilizando informação adicional",
+        "description": "Inclui valores em processos utilizando Informação adicional.",
+        "operationId": "api-dado_complementar-valor",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DTOValorDadoComplementarCaso"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "example": "Os valores foram incluídos corretamente."
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExceptionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/dado_complementar/valores": {
+      "delete": {
+        "tags": [
+          "Informações adicionais (valor)"
+        ],
+        "summary": "Exclui informação adicional por processo",
+        "operationId": "api-dado_complementar-valores-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Profile"
+          },
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DTOProcessoValorDadoComplementarIds"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Valor(es) excluído(s) com sucesso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
                 }
               }
             }
@@ -22364,6 +22933,26 @@
           }
         }
       },
+      "DTOObjetoNomeValor": {
+        "title": "DTOObjetoNomeValor",
+        "type": "object",
+        "properties": {
+          "Nome": {
+            "type": "string",
+            "example": "Nome da propriedade",
+            "description": "O nome da propriedade"
+          },
+          "Valor": {
+            "type": "string",
+            "example": "Valor a gravar",
+            "description": "O valor a gravar"
+          }
+        },
+        "required": [
+          "Nome",
+          "Valor"
+        ]
+      },
       "DTOFiltroInformacaoAdicional": {
         "title": "DTOFiltroInformacaoAdicional",
         "type": "object",
@@ -22401,6 +22990,143 @@
             "description": "O UI Schema do dado complementar (se o tipo do dado complementar for JSON e se houver)"
           }
         }
+      },
+      "DTOSchemaInformacaoAdicional": {
+        "title": "DTOSchemaInformacaoAdicional",
+        "type": "object",
+        "properties": {
+          "IDParametroDadoComplementar": {
+            "type": "integer",
+            "example": -2147483648,
+            "description": "O identificador da Informação adicional.<br />`Required`<br />- **POST**: A propriedade deve ser enviada com o valor *-2147483648*<br />- **PUT e DELETE**: Preencher com o valor da propriedade já existente."
+          },
+          "title": {
+            "description": "O nome para a informação adicional",
+            "type": "string"
+          },
+          "IDCliente": {
+            "type": "integer",
+            "example": -2147483648,
+            "description": "O identificador do cliente. Se o valor for maior que 0, a Informação adicional será vinculada ao cliente."
+          },
+          "VinculadoNosTiposDeProcesso": {
+            "type": "array",
+            "description": "Vincular dado complementar nos tipos de processos informados. <br />`No GET indica os tipos de processo em que a informação adicional está vinculada, em POST e PUT indica em quais tipos de processo a Informação adicional deve ser vinculada.`",
+            "items": {
+              "$ref": "#/components/schemas/DTOTipoProcesso"
+            }
+          },
+          "VinculadoNasAreas": {
+            "type": "array",
+            "description": "Vincular dado complementar nas áreas informadas. <br />`No GET indica as áreas em que a informação adicional está vinculada, em POST e PUT indica em quais áreas a Informação adicional deve ser vinculada.`",
+            "items": {
+              "$ref": "#/components/schemas/DTOAreaInformacaoAdicional"
+            }
+          },
+          "schemas": {
+            "description": "As propriedades Json dessa informação adicional",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Schema"
+            }
+          }
+        }
+      },
+      "DTOSchemaInformacaoAdicionalResponse": {
+        "title": "DTOSchemaInformacaoAdicionalResponse",
+        "type": "object",
+        "properties": {
+          "IDParametroDadoComplementar": {
+            "type": "integer",
+            "example": -2147483648,
+            "description": "O identificador da Informação adicional.<br />`Required`<br />- **POST**: A propriedade deve ser enviada com o valor *-2147483648*<br />- **PUT e DELETE**: Preencher com o valor da propriedade já existente."
+          },
+          "title": {
+            "description": "O nome para a informação adicional",
+            "type": "string"
+          },
+          "IDCliente": {
+            "type": "integer",
+            "example": -2147483648,
+            "description": "O identificador do cliente. Se o valor for maior que 0, a Informação adicional será vinculada ao cliente."
+          },
+          "VinculadoNosTiposDeProcesso": {
+            "type": "array",
+            "description": "Vincular dado complementar nos tipos de processos informados. <br />`No GET indica os tipos de processo em que a informação adicional está vinculada, em POST e PUT indica em quais tipos de processo a Informação adicional deve ser vinculada.`",
+            "items": {
+              "$ref": "#/components/schemas/DTOTipoProcesso"
+            }
+          },
+          "VinculadoNasAreas": {
+            "type": "array",
+            "description": "Vincular dado complementar nas áreas informadas. <br />`No GET indica as áreas em que a informação adicional está vinculada, em POST e PUT indica em quais áreas a Informação adicional deve ser vinculada.`",
+            "items": {
+              "$ref": "#/components/schemas/DTOAreaInformacaoAdicional"
+            }
+          },
+          "schemas": {
+            "description": "As propriedades Json dessa informação adicional",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Schema"
+            }
+          },
+          "tipo": {
+            "$ref": "#/components/schemas/TipoDadoComplementar"
+          }
+        }
+      },
+      "DTOValorDadoComplementarCaso": {
+        "title": "DTOValorDadoComplementarCaso",
+        "type": "object",
+        "properties": {
+          "IDProcessoValorDadoComplementar": {
+            "description": "O identificador do valor gravado no processo utilizando a Informação adicional.<br />`Required`<br />- **POST**: A propriedade deve ser enviada com o valor *-2147483648*<br />- **PUT e DELETE**: Preencher com o valor da propriedade já existente.",
+            "type": "integer"
+          },
+          "IDCaso": {
+            "description": "O identificador do caso.",
+            "example": 100,
+            "type": "integer"
+          },
+          "IDParametroDadoComplementar": {
+            "description": "O identificador da Informação adicional.",
+            "example": 50,
+            "type": "integer"
+          },
+          "Valor": {
+            "description": "O valor a ser gravado / atualizado na Informação adicional",
+            "example": "Valor para gravar",
+            "type": "string"
+          },
+          "DataDeAtualizacao": {
+            "description": "A data de atualização do valor",
+            "example": "2022-01-01T00:00:00.000",
+            "type": "string"
+          }
+        },
+        "required": [
+          "IDCaso",
+          "IDParametroDadoComplementar",
+          "Valor",
+          "DataDeAtualizacao"
+        ]
+      },
+      "DTOProcessoValorDadoComplementarIds": {
+        "title": "DTOProcessoValorDadoComplementarIds",
+        "type": "object",
+        "properties": {
+          "IDCaso": {
+            "type": "integer"
+          },
+          "IDParametroDadoComplementar": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "IDCaso",
+          "IDParametroDadoComplementar"
+        ]
       },
       "DTORebateResultSaved": {
         "title": "DTORebateResultSaved",

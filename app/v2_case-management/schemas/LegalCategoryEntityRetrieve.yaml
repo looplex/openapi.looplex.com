@@ -1,7 +1,7 @@
 title: Legal category (Natureza)
 type: object
 allOf:
-  - $ref: ../../scim/Resource.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
 properties:
   legalCategory:
     type: string

@@ -1,0 +1,15 @@
+title: Dados de pessoa
+type: object
+allOf:
+  - $ref: ../../common_schemas/SimpleEntityQuery.yaml
+  - properties:
+      Email:
+        type: string <nullable>
+        description: owner's email
+        example: <email>
+      Identities:
+        type: array
+        items:
+          oneOf:
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntityQuery.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntityQuery.yaml

@@ -1,8 +1,8 @@
 title: Participante (LEGAL_PERSON)
 type: object
 allOf:
-  - $ref: ParticipantEntity.yaml
+  - $ref: ParticipantEntityQuery.yaml
   - type: object
     properties:
-      businessStructure:
+      BusinessStructure:
         $ref: ../enums/ParticipantBusinessStructure.yaml
