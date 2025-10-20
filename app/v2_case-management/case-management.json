@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.35.0",
+    "version": "1.35.1",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -5499,13 +5499,13 @@
         "title": "ContratoReembolsoKM",
         "type": "string",
         "example": "<reembolso_km_enumeration>",
-        "description": "ESCRITORIO = 1<br />\nCONTRATO = 2\n"
+        "description": "ESCRITORIO<br />\nCONTRATO\n"
       },
       "TipoRegraAprovacaoLimiteDespesas": {
         "title": "TipoRegraAprovacaoLimiteDespesas",
         "type": "string",
         "example": "<tipo_regra_aprovacao_limite_despesas>",
-        "description": "REGRAESCRITORIO = 1<br/>\nREGRAEMPRESA = 2<br/>\nREGRACLIENTE = 3<br/>\nREGRACONTRATO = 4<br/>\nREGRAPROCESSO = 5<br/>\nREGRAVAZIA = 6\n"
+        "description": "REGRAESCRITORIO<br/>\nREGRAEMPRESA<br/>\nREGRACLIENTE<br/>\nREGRACONTRATO<br/>\nREGRAPROCESSO<br/>\nREGRAVAZIA\n"
       },
       "ContratoSituacao": {
         "title": "ContratoSituacao",
@@ -5665,7 +5665,13 @@
             "type": "boolean",
             "example": false
           }
-        }
+        },
+        "required": [
+          "clientId",
+          "name",
+          "startDate",
+          "ownerId"
+        ]
       },
       "LegalServiceAgreementEntityRetrieve": {
         "title": "Legal service agreement",

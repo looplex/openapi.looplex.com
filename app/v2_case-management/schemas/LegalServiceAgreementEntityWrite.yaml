@@ -50,3 +50,8 @@ properties:
   isDefault:
     type: boolean
     example: false
+required:
+  - clientId
+  - name
+  - startDate
+  - ownerId

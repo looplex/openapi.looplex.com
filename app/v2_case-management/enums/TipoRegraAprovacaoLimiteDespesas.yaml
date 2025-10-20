@@ -2,9 +2,9 @@ title: TipoRegraAprovacaoLimiteDespesas
 type: string
 example: <tipo_regra_aprovacao_limite_despesas>
 description: |
-  REGRAESCRITORIO = 1<br/>
-  REGRAEMPRESA = 2<br/>
-  REGRACLIENTE = 3<br/>
-  REGRACONTRATO = 4<br/>
-  REGRAPROCESSO = 5<br/>
-  REGRAVAZIA = 6
+  REGRAESCRITORIO<br/>
+  REGRAEMPRESA<br/>
+  REGRACLIENTE<br/>
+  REGRACONTRATO<br/>
+  REGRAPROCESSO<br/>
+  REGRAVAZIA
