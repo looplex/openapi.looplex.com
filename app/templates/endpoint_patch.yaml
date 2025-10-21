@@ -4,7 +4,9 @@ tags:
 summary: "/{{TAG_NAME}}s/:id"
 # summary: {{TITLE}}
 
-description: "**Patch {{TAG_NAME}}**"
+description: |
+  **Patch {{TAG_NAME}} properties**<br/>
+  **If you want to patch '_CustomFields_' property see** _<a href="/v2_case-management#tag/Custom-Fields">this link</a>_
 # description: {{DESCRIPTION}}
 
 operationId: {{OPERATION_ID}}
