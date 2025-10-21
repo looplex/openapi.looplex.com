@@ -4,7 +4,9 @@ tags:
 summary: "/{{TAG_NAME}}s/:id"
 # summary: {{TITLE}}
 
-description: "**Patch {{TAG_NAME}}**"
+description: |
+  **Patch {{TAG_NAME}} properties**<br/>
+  **If you want to patch CustomFields property see** _<a target="_blank" href="https://www.looplex.com.br/">this link</a>_
 # description: {{DESCRIPTION}}
 
 operationId: {{OPERATION_ID}}

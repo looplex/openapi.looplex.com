@@ -1,7 +1,9 @@
 tags:
   - Case Management
 summary: "/Cases/:id"
-description: "**Patch case properties**"
+description: |
+  **Patch case properties**<br />
+  **If you want to patch '_CustomFields_' property see** _<a href="/v2_case-management#tag/Custom-Fields">this link</a>_
 operationId: cases-patch-patch
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
@@ -16,12 +18,8 @@ requestBody:
         items:
           $ref: ../../common_schemas/PatchEntity.yaml
 responses:
-  "200":
-    description: "OK"
-    content:
-      application/json:
-        schema:
-          type: boolean
+  "204":
+    description: "No Content"
   "400":
     description: "Bad Request"
   "401":

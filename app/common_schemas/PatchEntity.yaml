@@ -3,114 +3,10 @@ type: object
 properties:
   path:
     type: string
-    description: |
-      **Para propriedades comuns**: _O nome da propriedade_<br/>
-
-      **Para CustomFields**<br/>
-      **Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>
-      
-      **Exemplo de valor primário: 'string, number, boolean...'**
-      ```json
-      {
-        // deve ser enviado no seguinte formato: 
-        {
-          "path": "/CustomFields/carro/ano",
-          "value": 2025
-        }
-        // vai atualizar o valor do CustomFields em um objeto 
-        // no seguinte formato:
-        "carro": {
-          "ano": 2025
-        }
-
-        // 'carro', refere-se a um objeto com uma propriedade 'ano'
-        // tudo antes da ultima propriedade sem um array '[]', é um objeto
-        // se o objeto não existir, é criado
-      }
-      ```
-      **Exemplo de valor 'objeto'**
-      ```json
-      {
-        // deve ser enviado no seguinte formato: 
-        {
-          "path": "/CustomFields/carro/dono",
-          "value": {
-            "nome": "nome do dono",
-            "nacionalidade": "brasileiro",
-            "idade": 20
-          }
-        }
-        // vai atualizar o valor do CustomFields em um objeto 
-        // no seguinte formato:
-        "carro": {
-          "dono": {
-            "nome": "nome do dono",
-            "nacionalidade": "brasileiro",
-            "idade": 20
-          }
-        }
-
-        // 'carro', refere-se a um objeto com um objeto 'dono' 
-        // com as propriedades: 
-        // - nome
-        // - nacionalidade 
-        // - idade
-        // se o objeto não existir, é criado
-
-        // para atualizar somente o nome do dono do caso:
-        // 'path': /CustomFields/carro/dono/nome
-        // 'value': "nome do dono atualizado"
-      }
-      ```
-      **Exemplo de valor 'array'**
-      ```json
-      {
-        // Quando é um array, não pode ser um índice negativo
-        // deve ser enviado no seguinte formato: 
-        {
-          "path": "/CustomFields/carro/dono/enderecos[0]"
-          "value": [
-            {
-              "logradouro": "Nome da rua",
-              "numero": 10,
-              "cidade": "São Paulo",
-              "estado": "SP"
-            }
-          ]
-        }
-        // vai atualizar o valor do CustomFields em um objeto 
-        // no seguinte formato:
-        "carro": {
-          ... other properties ommited
-          "dono": {
-            ... other properties ommited
-            "enderecos": [
-              {
-                "logradouro": "Nome da rua",
-                "numero": 10,
-                "cidade": "São Paulo",
-                "estado": "SP"
-              }
-            ]
-          }
-        }
-
-        // 'carro', refere-se a um objeto com um objeto 'dono' 
-        // com as propriedades: 
-        // - nome (ommited)
-        // - nacionalidade (ommited)
-        // - idade (ommited)
-        // - enderecos
-        // se o objeto no indice informado não existir, é criado
-
-        // para atualizar somente o nome da rua do endereco 0 dono do carro:
-        {
-          "path": "/CustomFields/carro/dono/enderecos[0]/logradouro",
-          "value": "Nome da rua atualizado"
-        }
-      }
-      ```
     example: <property_name>
+    description: |
+      **The property name**<br/>
+      _property_name_
   op:
     type: string
     example: <operation>
@@ -120,13 +16,38 @@ properties:
       replace
   value:
     description: "**The new value to set**"
+    example: <value>
     oneOf:
       - type: string
-        example: <value>
+        description: |
+          **A string value**
       - type: number
-        example: 10
+        description: |
+          **A number value**
       - type: object
-        example: {}
+        description: |
+          **A simple object containing one or more properties, depending on Resource property beeing patched**<br />
+          ```json
+            // Example:
+            {
+              "<property_name>": "<property_value>",
+              ...other properties if needed
+            }
+            ```
+      - type: array
+        items:
+          type: object
+          description: |
+            **An object containing one or more properties, depending on Resource property beeing patched**<br/>
+            ```json
+            // Example:
+            [
+              {
+                "<property_name>": "<property_value>",
+                ...other properties if needed
+              }
+            ]
+            ```
 required:
   - path
   - op

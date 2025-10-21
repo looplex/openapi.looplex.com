@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.35.1",
+    "version": "1.35.2",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -172,7 +172,7 @@
           "Case Management"
         ],
         "summary": "/Cases/:id",
-        "description": "**Patch case properties**",
+        "description": "**Patch case properties**<br />\n**If you want to patch '_CustomFields_' property see** _<a href=\"/v2_case-management#tag/Custom-Fields\">this link</a>_\n",
         "operationId": "cases-patch-patch",
         "parameters": [
           {
@@ -201,15 +201,8 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "boolean"
-                }
-              }
-            }
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -2103,6 +2096,66 @@
           }
         }
       }
+    },
+    "/:resource/:id": {
+      "patch": {
+        "tags": [
+          "Custom Fields"
+        ],
+        "summary": "/:resource/:id",
+        "description": "Patch custom fields property for a resource<br/>\n**Change '/:resource' to one of these:**<br />\n- /cases\n- /claims\n\n**Note que 'path' deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n    \n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n    {\n      // deve ser enviado no seguinte formato: \n      {\n        \"path\": \"/CustomFields/carro/ano\",\n        \"op\": \"replace\",\n        \"value\": 2025\n      }\n\n      // vai atualizar o valor do CustomFields em um objeto \n      // no seguinte formato:\n      \"carro\": {\n        \"ano\": 2025\n      }\n\n      // 'carro', refere-se a um objeto com uma propriedade 'ano'\n      // tudo antes da ultima propriedade sem um array '[]', é um objeto\n      // se o objeto não existir, é criado\n    }\n    ```\n    **Exemplo de valor 'objeto'**\n    ```json\n    {\n      // deve ser enviado no seguinte formato: \n      {\n        \"path\": \"/CustomFields/carro/dono\",\n        \"op\": \"replace\",\n        \"value\": {\n          \"nome\": \"nome do dono\",\n          \"nacionalidade\": \"brasileiro\",\n          \"idade\": 20\n        }\n      }\n      // vai atualizar o valor do CustomFields em um objeto \n      // no seguinte formato:\n      \"carro\": {\n        \"dono\": {\n          \"nome\": \"nome do dono\",\n          \"nacionalidade\": \"brasileiro\",\n          \"idade\": 20\n        }\n      }\n\n      // 'carro', refere-se a um objeto com um objeto 'dono' \n      // com as propriedades: \n      // - nome\n      // - nacionalidade \n      // - idade\n      // se o objeto não existir, é criado\n\n      // para atualizar somente o nome do dono do caso:\n      // 'path': /CustomFields/carro/dono/nome\n      // 'op': \"replace\",\n      // 'value': \"nome do dono atualizado\"\n    }\n    ```\n    **Exemplo de valor 'array'**\n    ```json\n    {\n      // Quando é um array, não pode ser um índice negativo\n      // deve ser enviado no seguinte formato: \n      {\n        \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n        \"op\": \"replace\",\n        \"value\": [\n          {\n            \"logradouro\": \"Nome da rua\",\n            \"numero\": 10,\n            \"cidade\": \"São Paulo\",\n            \"estado\": \"SP\"\n          }\n        ]\n      }\n      // vai atualizar o valor do CustomFields em um objeto \n      // no seguinte formato:\n      \"carro\": {\n        ... other properties ommited\n        \"dono\": {\n          ... other properties ommited\n          \"enderecos\": [\n            {\n              \"logradouro\": \"Nome da rua\",\n              \"numero\": 10,\n              \"cidade\": \"São Paulo\",\n              \"estado\": \"SP\"\n            }\n          ]\n        }\n      }\n\n      // 'carro', refere-se a um objeto com um objeto 'dono' \n      // com as propriedades: \n      // - nome (ommited)\n      // - nacionalidade (ommited)\n      // - idade (ommited)\n      // - enderecos\n      // se o objeto no indice informado não existir, é criado\n\n      // para atualizar somente o nome da rua do endereco 0 dono do carro:\n      {\n        \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n        \"op\": \"replace\",\n        \"value\": \"Nome da rua atualizado\"\n      }\n    }\n    ```\n",
+        "operationId": "custom_fields-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntityCustomFields"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3510,8 +3563,8 @@
         "properties": {
           "path": {
             "type": "string",
-            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/ano\",\n    \"value\": 2025\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono\",\n    \"value\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
-            "example": "<property_name>"
+            "example": "<property_name>",
+            "description": "**The property name**<br/>\n_property_name_\n"
           },
           "op": {
             "type": "string",
@@ -3520,18 +3573,26 @@
           },
           "value": {
             "description": "**The new value to set**",
+            "example": "<value>",
             "oneOf": [
               {
                 "type": "string",
-                "example": "<value>"
+                "description": "**A string value**\n"
               },
               {
                 "type": "number",
-                "example": 10
+                "description": "**A number value**\n"
               },
               {
                 "type": "object",
-                "example": {}
+                "description": "**A simple object containing one or more properties, depending on Resource property beeing patched**<br />\n```json\n  // Example:\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n  ```\n"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "**An object containing one or more properties, depending on Resource property beeing patched**<br/>\n```json\n// Example:\n[\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n]\n```\n"
+                }
               }
             ]
           }
@@ -6152,6 +6213,30 @@
               }
             }
           }
+        ]
+      },
+      "PatchEntityCustomFields": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "op": {
+            "type": "string",
+            "example": "<operation>",
+            "description": "**The operation**<br />\n**Available option:**<br/>\n_replace_\n"
+          },
+          "value": {
+            "description": "**The new value to set**<br />\n_See examples in endpoint description_\n"
+          },
+          "path": {
+            "type": "string",
+            "description": "**The CustomFields property**<br/>\n_/CustomFields_\n",
+            "example": "/CustomFields"
+          }
+        },
+        "required": [
+          "path",
+          "op",
+          "value"
         ]
       }
     }

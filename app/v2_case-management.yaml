@@ -1,7 +1,7 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
 openapi: 3.1.0
 info:
-  version: 1.35.1
+  version: 1.35.2
   title: "Looplex Case Management"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
@@ -129,3 +129,8 @@ paths:
   /caseGroups/:id:
     get:
       $ref: v2_case-management\case_groups\public@caseGroups@case_group_id-get.yaml
+
+  # Custom fields
+  /:resource/:id:
+    patch:
+      $ref: v2_case-management\custom_fields\public@custom_fields-patch.yaml

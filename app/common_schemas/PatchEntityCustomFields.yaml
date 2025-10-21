@@ -1,0 +1,24 @@
+title: Patch object
+type: object
+properties:
+  op:
+    type: string
+    example: <operation>
+    description: |
+      **The operation**<br />
+      **Available option:**<br/>
+      _replace_
+  value:
+    description: |
+      **The new value to set**<br />
+      _See examples in endpoint description_
+  path:
+    type: string
+    description: |
+      **The CustomFields property**<br/>
+      _/CustomFields_
+    example: /CustomFields
+required:
+  - path
+  - op
+  - value
