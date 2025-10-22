@@ -110,6 +110,99 @@
         }
       }
     },
+    "/v2.1/court/:id/hierarchy": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Hierarchy by node",
+        "description": "**List hierarchy by node**",
+        "operationId": "v2.1-court-id-hierarchy-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/ResponseFormat"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's identifier**",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro_v2_1"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro_v2_1"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2.1/court/:id/formattedHierarchy": {
       "get": {
         "tags": [
@@ -123,6 +216,9 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
+            "$ref": "#/components/parameters/ResponseFormat"
+          },
+          {
             "name": "id",
             "in": "path",
             "required": true,
@@ -130,9 +226,6 @@
             "schema": {
               "type": "integer"
             }
-          },
-          {
-            "$ref": "#/components/parameters/ResponseFormat"
           }
         ],
         "responses": {
@@ -635,20 +728,40 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
+                  "oneOf": [
                     {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/Foro_v2_1"
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponseLegacy"
+                        },
+                        {
+                          "properties": {
+                            "conteudo": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro_v2_1"
+                              }
+                            }
                           }
                         }
-                      }
+                      ]
+                    },
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/ListResponse"
+                        },
+                        {
+                          "properties": {
+                            "resources": {
+                              "type": "array",
+                              "items": {
+                                "$ref": "#/components/schemas/Foro_v2_1"
+                              }
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
