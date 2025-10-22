@@ -25,6 +25,9 @@ paths:
   /v2.1/court/:id/nextLevels:
     get:
       $ref: v2_court_venue\court_venue\public@v2.1@court@id@nextLevels-get.yaml
+  /v2.1/court/:id/hierarchy:
+    get:
+      $ref: v2_court_venue\court_venue\public@v2.1@court@id@hierarchy-get.yaml
   /v2.1/court/:id/formattedHierarchy:
     get:
       $ref: v2_court_venue\court_venue\public@v2.1@court@id@formatted-hierarchy-get.yaml
