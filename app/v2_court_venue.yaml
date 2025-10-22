@@ -43,6 +43,9 @@ paths:
   /v2.1/court/children:
     get:
       $ref: v2_court_venue\court_venue\public@v2.1@court@children-get.yaml
+  /v2.1/court/search_by_cnj:
+    get:
+      $ref: v2_court_venue\court_venue\public@v2.1@court@search_by_cnj-get.yaml
 
   # Ritos
   /v2.1/procedures:
