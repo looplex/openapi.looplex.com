@@ -4,8 +4,9 @@ summary: /:resource/:id
 description: |
   **Patch custom fields property for a resource**<br/>
   **Change '/:resource' to one of these:**<br />
-  - /cases
-  - /claims
+  - /Cases
+  - /Claims
+  - /TaskTemplates
 
   **Note que 'path' deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>
       

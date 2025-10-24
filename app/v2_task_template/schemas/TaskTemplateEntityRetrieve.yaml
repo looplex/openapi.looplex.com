@@ -1,0 +1,52 @@
+title: TaskTemplateEntity
+description: 
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - properties:
+      title:
+        type: string
+      eventType:
+        $ref: ../enums/TipoEventoDeCobranca.yaml
+      status:
+        description: "ACTIVE<br/>INACTIVE"
+        type: string
+      deadlineForCompletion:
+        description: "Prazo para conclusão (em dias)"
+        type: integer
+      consecutiveDays:
+        type: boolean
+      timeToExecution:
+        description: "Tempo para execução (em horas)"    
+        type: integer
+      documentLinkType:
+        $ref: ../enums/TipoVinculoComDocumento.yaml
+      documentIdentifier:
+        description: "Link do documento"
+        type: string
+      caseTypes:
+        example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
+        description: 
+          $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+        type: array
+        items:
+          type: string
+      subjectMatter:
+        type: string
+      customFields:
+        type: object
+      children:
+        type: array
+        items:
+          $ref: ./TaskTemplateEntityRetrieve.yaml
+      parentId:
+        type: string
+        format: uuid    
+      description:
+        type: string
+      canonicalSubjectMatter:
+        type: string
+      createdBy:
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
+      updatedBy:
+        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
+      

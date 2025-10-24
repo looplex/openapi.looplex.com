@@ -21,16 +21,19 @@ properties:
   DocumentIdentifier:
     description: "Link do documento"
     type: string
-  CaseType:
+  CaseTypes:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description: 
       $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
     type: array
     items:
       type: string
+  SubjectMatter:
+    type: string
   CustomFields:
     type: object
   Children:
     type: array
     items:
-      $ref: ./TaskTemplateEntity.yaml
+      $ref: ./TaskTemplateEntityWrite.yaml 
+  

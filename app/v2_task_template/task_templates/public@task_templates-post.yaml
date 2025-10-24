@@ -1,7 +1,7 @@
 tags:
   - Task Templates
 
-summary: "Task Templates"
+summary: "/TaskTemplates"
 
 description: |
   **Create task templates**<br />
@@ -16,10 +16,12 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../app/v2_task_template/schemas/TaskTemplateEntity.yaml
+        $ref: ../../../app/v2_task_template/schemas/TaskTemplateEntityWrite.yaml
 responses:
   "201":
     description: "Created"  
+  "400":
+    description: "Bad Request"  
   "401":
     description: "Unauthorized"
   "404":
@@ -30,4 +32,3 @@ responses:
       application/json:
         schema:
           $ref: '../../scim/SCIMError.yaml'
- 

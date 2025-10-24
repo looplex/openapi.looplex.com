@@ -16,9 +16,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/CaseEntityRetrieve.yaml"
-  "400":
-    description: "Bad Request"
+          $ref: "../schemas/CaseEntityRetrieve.yaml"  
   "401":
     description: "Unauthorized"
   "404":
