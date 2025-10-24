@@ -39,3 +39,6 @@ paths:
   /v3/court/:id/hierarchy:
     get:
       $ref: v3_court_venue\court_venue\public@v3@court@id@hierarchy-get.yaml
+  /v3/court/:id/formattedHierarchy:
+    get:
+      $ref: v3_court_venue\court_venue\public@v3@court@id@formattedHierarchy-get.yaml
