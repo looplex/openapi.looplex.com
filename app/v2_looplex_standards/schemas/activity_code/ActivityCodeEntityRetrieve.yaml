@@ -1,0 +1,17 @@
+title: ActivityCodeEntityRetrieve
+allOf:
+  - $ref: ..\..\..\scim\ResourceRetrieve.yaml
+  - type: object
+    description: 
+    properties:  
+      code:
+        type: string
+      enUsName:
+        type: string
+      ptBrName:
+        type: string
+      esArName:
+        type: string
+      customFields:
+        type: object
+      

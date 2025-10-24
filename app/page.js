@@ -432,6 +432,24 @@ export default function Home() {
 
             </ColCard>
 
+            <ColCard>
+
+              <CardHeader
+                title='Standards'
+                icon={<ProfileOutlined style={iconStyle} />}
+              />
+
+              <div>
+                <Text>Grupo de APIs do Looplex Standards </Text>
+              </div>
+
+              <BorderedLink
+                link='/v2_looplex_standards'
+                text='Activity and Task Codes v2'
+              />
+
+            </ColCard>
+
           </Row>
 
         </Content>
