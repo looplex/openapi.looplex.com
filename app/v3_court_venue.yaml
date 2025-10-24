@@ -33,3 +33,6 @@ paths:
   /v3/court/search_by_cnj:
     get:
       $ref: v3_court_venue\court_venue\public@v3@court@search_by_cnj-get.yaml
+  /v3/court/:id/nextLevels:
+    get:
+      $ref: v3_court_venue\court_venue\public@v3@court@id@nextLevels-get.yaml
