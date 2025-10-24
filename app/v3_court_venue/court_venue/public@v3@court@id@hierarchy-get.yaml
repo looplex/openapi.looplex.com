@@ -1,0 +1,39 @@
+tags:
+  - Court Venue
+summary: "List full hierarchy"
+description: "**List full hierarchy by court venue identifier**"
+operationId: v3-court-id-hierarchy-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: id
+    in: path
+    description: "**The court venue unique identifier**"
+    required: true
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
