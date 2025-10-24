@@ -2611,13 +2611,13 @@
               },
               "locality": {
                 "type": "string <nullable>",
-                "example": "<sigla_estado>",
-                "description": "**State**"
+                "example": "<cidade>",
+                "description": "**Cidade**"
               },
               "region": {
                 "type": "string <nullable>",
-                "example": "<cidade>",
-                "description": "**City**"
+                "example": "<sigla_estado>",
+                "description": "**State**"
               },
               "neighborhood": {
                 "type": "string <nullable>",
@@ -3841,13 +3841,13 @@
               },
               "Locality": {
                 "type": "string <nullable>",
-                "example": "<sigla_estado>",
-                "description": "**State**"
+                "example": "<cidade>",
+                "description": "**Cidade**"
               },
               "Region": {
                 "type": "string <nullable>",
-                "example": "<cidade>",
-                "description": "**City**"
+                "example": "<sigla_estado>",
+                "description": "**State**"
               },
               "Neighborhood": {
                 "type": "string <nullable>",
@@ -5355,13 +5355,13 @@
           },
           "locality": {
             "type": "string <nullable>",
-            "example": "<estado>",
-            "description": "**State**"
+            "example": "<cidade>",
+            "description": "**Cidade**"
           },
           "region": {
             "type": "string <nullable>",
-            "example": "<cidade>",
-            "description": "**City**"
+            "example": "<sigla_estado>",
+            "description": "**State**"
           },
           "neighborhood": {
             "type": "string <nullable>",

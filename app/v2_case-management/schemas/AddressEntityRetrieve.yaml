@@ -26,12 +26,12 @@ allOf:
         description: "**PO box**"
       locality:
         type: string <nullable>
-        example: <sigla_estado>
-        description: "**State**"
+        example: <cidade>
+        description: "**Cidade**"
       region:
         type: string <nullable>
-        example: <cidade>
-        description: "**City**"
+        example: <sigla_estado>
+        description: "**State**"
       neighborhood:
         type: string <nullable>
         example: <bairro>

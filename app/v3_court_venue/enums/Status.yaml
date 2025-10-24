@@ -1,0 +1,6 @@
+title: Status
+type: string
+description: |
+  **Court Venue status**<br/>
+  inactive<br/>
+  active

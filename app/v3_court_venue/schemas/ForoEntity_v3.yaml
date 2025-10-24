@@ -1,0 +1,26 @@
+title: Foro v3
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - properties:
+      status:
+        $ref: ../enums/Status.yaml
+      level:
+        type: integer
+        description: "**The level of this item**"
+      levelTitle:
+        type: string
+        description: "**Indicate this item's title level**"
+      title:
+        type: string
+        description: "**This item's title**"
+      customFields:
+        type: object
+        description: "**This item's custom fields**"
+      children:
+        type: array
+        description: |
+          **This item's children**<br/>
+          _Foro v3 is the main object of this response_ (Recursive)
+        items:
+          $ref: ./ForoEntity_v3.yaml

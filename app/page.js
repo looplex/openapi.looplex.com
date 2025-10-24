@@ -290,6 +290,11 @@ export default function Home() {
                 link='/v2_court_venue'
               />
 
+              <BorderedLink
+                text='Court Venue v3'
+                link='/v3_court_venue'
+              />
+
             </ColCard>
 
             <ColCard>

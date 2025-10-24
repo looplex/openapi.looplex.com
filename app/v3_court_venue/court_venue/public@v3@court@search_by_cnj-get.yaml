@@ -1,0 +1,45 @@
+tags:
+  - Court Venue
+summary: "Search Court Venue by CNJ"
+description: "**Search Court Venue by CNJ**"
+operationId: v3-court-search_by_cnj-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - name: cnj
+    in: query
+    required: true
+    description: "**The CNJ number to search**"
+    schema:
+      type: string
+  - name: level
+    in: query
+    required: false
+    description: "**The court venue level**"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
