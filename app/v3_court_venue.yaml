@@ -54,3 +54,8 @@ paths:
   /v3/court/list:
     get:
       $ref: v3_court_venue\court_venue\public@v3@court@list-get.yaml
+
+  # Procedures
+  /v3/procedures:
+    get:
+      $ref: v3_court_venue\procedures\public@v3@procedures-get.yaml
