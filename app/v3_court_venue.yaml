@@ -42,3 +42,6 @@ paths:
   /v3/court:
     get:
       $ref: v3_court_venue\court_venue\public@v3@court-get.yaml
+  /v3/court/search:
+    get:
+      $ref: v3_court_venue\court_venue\public@v3@court@search-get.yaml

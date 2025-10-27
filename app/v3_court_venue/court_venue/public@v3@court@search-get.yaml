@@ -1,18 +1,18 @@
 tags:
   - Court Venue
-summary: "Court Venue by level (paginated)"
-description: "**Court Venue by level (paginated)**"
-operationId: v3-court-get
+summary: "Search Court Venue (paginated)"
+description: "**Search Court Venue (paginated)**"
+operationId: v3-court-search-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/Page.yaml
   - $ref: ../parameters/PerPage.yaml
-  - name: level
+  - name: filter
     in: query
     required: true
-    description: "**The level of the item to fetch**"
+    description: "**The search term**"
     schema:
-      type: integer
+      type: string
 responses:
   "200":
     description: "OK"
