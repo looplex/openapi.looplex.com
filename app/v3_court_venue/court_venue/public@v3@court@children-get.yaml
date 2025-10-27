@@ -1,19 +1,18 @@
 tags:
   - Court Venue
-summary: "Children by Court Venue id (paginated)"
-description: "**Children by Court Venue id**"
-operationId: v3-court-id-children-get
+summary: "Children by Court Venue parent name (paginated)"
+description: "**Children by Court Venue parent name (paginated)**"
+operationId: v3-court-children-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/Page.yaml
   - $ref: ../parameters/PerPage.yaml
-  - name: id
-    in: path
+  - name: parentName
+    in: query
     required: true
-    description: "**The court venue identifier**"
+    description: "**The parent name to fetch the children**"
     schema:
       type: string
-      format: uuid
 responses:
   "200":
     description: "OK"

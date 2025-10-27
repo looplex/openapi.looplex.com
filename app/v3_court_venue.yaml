@@ -48,3 +48,6 @@ paths:
   /v3/court/:id/children:
     get:
       $ref: v3_court_venue\court_venue\public@v3@court@id@children-get.yaml
+  /v3/court/children:
+    get:
+      $ref: v3_court_venue\court_venue\public@v3@court@children-get.yaml

@@ -520,7 +520,7 @@
         "tags": [
           "Court Venue"
         ],
-        "summary": "Children by Court Venue id",
+        "summary": "Children by Court Venue id (paginated)",
         "description": "**Children by Court Venue id**",
         "operationId": "v3-court-id-children-get",
         "parameters": [
@@ -541,6 +541,82 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ForoEntity_v3"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/court/children": {
+      "get": {
+        "tags": [
+          "Court Venue"
+        ],
+        "summary": "Children by Court Venue parent name (paginated)",
+        "description": "**Children by Court Venue parent name (paginated)**",
+        "operationId": "v3-court-children-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          },
+          {
+            "name": "parentName",
+            "in": "query",
+            "required": true,
+            "description": "**The parent name to fetch the children**",
+            "schema": {
+              "type": "string"
             }
           }
         ],
