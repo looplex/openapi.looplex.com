@@ -1070,7 +1070,7 @@
           "detail": {
             "type": "string",
             "description": "**The error message**",
-            "example": "The filter is invalid"
+            "example": "<exception_message>"
           },
           "status": {
             "type": "string",
