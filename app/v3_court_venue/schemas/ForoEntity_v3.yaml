@@ -11,9 +11,11 @@ allOf:
       levelTitle:
         type: string
         description: "**Indicate this item's title level**"
+        example: <level_title>
       title:
         type: string
         description: "**This item's title**"
+        example: <title>
       customFields:
         type: object
         description: "**This item's custom fields**"

@@ -802,12 +802,14 @@
                     "properties": {
                       "group": {
                         "type": "string",
-                        "description": "**The group name**"
+                        "description": "**The group name**",
+                        "example": "<group_name>"
                       },
                       "id": {
                         "type": "string",
                         "format": "uuid",
-                        "description": "**The group identifier**"
+                        "description": "**The group identifier**",
+                        "example": "<global_unique_identifier>"
                       },
                       "children": {
                         "type": "array",
@@ -817,12 +819,14 @@
                           "properties": {
                             "subGroup": {
                               "type": "string",
-                              "description": "**The subgroup name**"
+                              "description": "**The subgroup name**",
+                              "example": "<subgroup_name>"
                             },
                             "id": {
                               "type": "string",
                               "format": "uuid",
-                              "description": "**The subgroup identifier**"
+                              "description": "**The subgroup identifier**",
+                              "example": "<global_unique_identifier>"
                             },
                             "children": {
                               "type": "array",
@@ -832,16 +836,19 @@
                                 "properties": {
                                   "procedure": {
                                     "type": "string",
-                                    "description": "**The procedure name**"
+                                    "description": "**The procedure name**",
+                                    "example": "<procedure_name>"
                                   },
                                   "id": {
                                     "type": "string",
                                     "format": "uuid",
-                                    "description": "**The procedure identifier**"
+                                    "description": "**The procedure identifier**",
+                                    "example": "<global_unique_identifier>"
                                   },
                                   "cnjCode": {
                                     "type": "string",
-                                    "description": "**The CNJ code**"
+                                    "description": "**The CNJ code**",
+                                    "example": "<cnj_code>"
                                   },
                                   "customFields": {
                                     "type": "object",
@@ -1003,6 +1010,7 @@
       "Status": {
         "title": "Status",
         "type": "string",
+        "example": "<status>",
         "description": "**Court Venue status**<br/>\ninactive<br/>\nactive\n"
       },
       "ForoEntity_v3": {
@@ -1023,11 +1031,13 @@
               },
               "levelTitle": {
                 "type": "string",
-                "description": "**Indicate this item's title level**"
+                "description": "**Indicate this item's title level**",
+                "example": "<level_title>"
               },
               "title": {
                 "type": "string",
-                "description": "**This item's title**"
+                "description": "**This item's title**",
+                "example": "<title>"
               },
               "customFields": {
                 "type": "object",
