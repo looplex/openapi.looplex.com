@@ -130,6 +130,14 @@ paths:
     get:
       $ref: v2_case-management\case_groups\public@caseGroups@case_group_id-get.yaml
 
+  # Phases (aguardando publicação de pull request do ticket AB#32241)
+  # /phases:
+  #   get:
+  #     $ref: v2_case-management\phases\public@phases-get.yaml
+  # /phases/:id:
+  #   get:
+  #     $ref: v2_case-management\phases\public@phases@id-get.yaml
+
   # Custom fields
   /:resource/:id:
     patch:

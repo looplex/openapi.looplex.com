@@ -366,6 +366,12 @@
 						"folder": "case_groups"
 					},
 					{
+						"option": 13,
+						"label": "Phase",
+						"detail": "Phases endpoints",
+						"folder": "phases"
+					},
+					{
 						"option": -1,
 						"label": "Debug (não utilizar essa tag em endpoints oficiais)",
 						"detail": "Debug endpoints",
