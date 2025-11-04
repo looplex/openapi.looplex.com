@@ -151,7 +151,8 @@ properties:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
     description: |
       **Contrato**<br />
-      Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
+      Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br/>
+      `Obrigatório quando o cliente não tem um contrato default definido`
   owner:
     $ref: ../../common_schemas/SimpleEntityWrite.yaml
     description: |
@@ -213,3 +214,4 @@ required:
   - group
   - owner
   - caseClient
+  - legalServiceAgreement

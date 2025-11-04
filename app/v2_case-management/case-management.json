@@ -4945,7 +4945,7 @@
           },
           "legalServiceAgreement": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
+            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br/>\n`Obrigatório quando o cliente não tem um contrato default definido`\n"
           },
           "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
@@ -5028,7 +5028,8 @@
           "title",
           "group",
           "owner",
-          "caseClient"
+          "caseClient",
+          "legalServiceAgreement"
         ]
       },
       "LegacyIdentityEntityQuery": {
