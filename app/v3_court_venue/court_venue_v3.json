@@ -1013,6 +1013,12 @@
         "example": "<status>",
         "description": "**Court Venue status**<br/>\ninactive<br/>\nactive\n"
       },
+      "RamosJudicial": {
+        "title": "RamosJudicial",
+        "type": "string",
+        "example": "<ramo_judicial_do_processo>",
+        "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n"
+      },
       "ForoEntity_v3": {
         "title": "Foro v3",
         "type": "object",
@@ -1043,6 +1049,9 @@
                 "type": "string",
                 "description": "**This item's title**",
                 "example": "<title>"
+              },
+              "caseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
               },
               "customFields": {
                 "type": "object",
