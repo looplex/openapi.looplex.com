@@ -1,0 +1,41 @@
+tags:
+  - Court Venue
+summary: "Court Venue by level (paginated)"
+description: "**Court Venue by level (paginated)**"
+operationId: v3-court-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/Page.yaml
+  - $ref: ../parameters/PerPage.yaml
+  - name: level
+    in: query
+    required: true
+    description: "**The level of the item to fetch**"
+    schema:
+      type: integer
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

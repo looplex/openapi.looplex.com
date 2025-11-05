@@ -1,0 +1,31 @@
+tags:
+  - Court Venue
+summary: "Formatted hierarchy"
+description: "**Return the formatted hierarchy**"
+operationId: v3-court-id-formattedHierarchy-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../common_parameters/Id.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            formattedHierarchy:
+              type: string
+              description: "**The formatted hierarchy**"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

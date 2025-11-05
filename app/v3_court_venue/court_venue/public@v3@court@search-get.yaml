@@ -1,0 +1,41 @@
+tags:
+  - Court Venue
+summary: "Search Court Venue (paginated)"
+description: "**Search Court Venue (paginated)**"
+operationId: v3-court-search-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/Page.yaml
+  - $ref: ../parameters/PerPage.yaml
+  - name: filter
+    in: query
+    required: true
+    description: "**The search term**"
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

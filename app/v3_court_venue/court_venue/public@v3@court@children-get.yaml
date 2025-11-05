@@ -1,0 +1,41 @@
+tags:
+  - Court Venue
+summary: "Children by Court Venue parent name (paginated)"
+description: "**Children by Court Venue parent name (paginated)**"
+operationId: v3-court-children-get
+parameters:
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/Page.yaml
+  - $ref: ../parameters/PerPage.yaml
+  - name: parentName
+    in: query
+    required: true
+    description: "**The parent name to fetch the children**"
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../common_schemas/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

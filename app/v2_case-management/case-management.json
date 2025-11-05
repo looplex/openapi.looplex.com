@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "1.35.2",
+    "version": "1.35.4",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -2262,7 +2262,7 @@
           "detail": {
             "type": "string",
             "description": "**The error message**",
-            "example": "The filter is invalid"
+            "example": "<exception_message>"
           },
           "status": {
             "type": "string",
@@ -4939,7 +4939,7 @@
           },
           "legalServiceAgreement": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
+            "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br/>\n`Obrigatório quando o cliente não tem um contrato default definido`\n"
           },
           "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
@@ -5022,7 +5022,8 @@
           "title",
           "group",
           "owner",
-          "caseClient"
+          "caseClient",
+          "legalServiceAgreement"
         ]
       },
       "LegacyIdentityEntityQuery": {

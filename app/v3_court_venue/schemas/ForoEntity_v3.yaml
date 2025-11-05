@@ -11,9 +11,17 @@ allOf:
       levelTitle:
         type: string
         description: "**Indicate this item's title level**"
+        example: <level_title>
+      order:
+        type: string
+        description: "**The order of this item in the list**"
+        example: <order>
       title:
         type: string
         description: "**This item's title**"
+        example: <title>
+      caseType:
+        $ref: ../../common_enums/RamosJudicial.yaml
       customFields:
         type: object
         description: "**This item's custom fields**"
