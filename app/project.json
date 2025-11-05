@@ -8,9 +8,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v1_cases.yaml -o app/v1_cases/cases --ext json",
 				"folder_name": "/v1_cases",
-				"path_components": "app/v1_cases/schemas",
+				"path_components": "app/schemas/v1_cases",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v1_cases/enums",
+				"path_enums": "app/enums/v1_cases",
 				"path_routes": "app/v1_cases",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -287,9 +287,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_case-management.yaml -o app/v2_case-management/case-management --ext json",
 				"folder_name": "/v2_case-management",
-				"path_components": "app/v2_case-management/schemas",
+				"path_components": "app/schemas/v2_case-management",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v2_case-management/enums",
+				"path_enums": "app/enums/v2_case-management",
 				"path_routes": "app/v2_case-management",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -386,9 +386,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
 				"folder_name": "/v2_tasks",
-				"path_components": "app/v2_tasks/schemas",
+				"path_components": "app/schemas/v2_tasks",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v2_tasks/enums",
+				"path_enums": "app/enums/v2_tasks",
 				"path_routes": "app/v2_tasks",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -413,9 +413,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
 				"folder_name": "/v2_court_venue",
-				"path_components": "app/v2_court_venue/schemas",
+				"path_components": "app/schemas/v2_court_venue",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v2_court_venue/enums",
+				"path_enums": "app/enums/v2_court_venue",
 				"path_routes": "app/v2_court_venue",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -440,9 +440,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v1_recess.yaml -o app/v1_recess/recess --ext json",
 				"folder_name": "/v1_recess",
-				"path_components": "app/v1_recess/schemas",
+				"path_components": "app/schemas/v1_recess",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v1_recess/enums",
+				"path_enums": "app/enums/v1_recess",
 				"path_routes": "app/v1_recess",
 				"path_http_responses": "/app/http_responses",
 				"tags": []
@@ -468,9 +468,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_looplex_content.yaml -o app/v2_looplex_content/looplex_content --ext json",
 				"folder_name": "/v2_looplex_content",
-				"path_components": "app/v2_looplex_content/schemas",
+				"path_components": "app/schemas/v2_looplex_content",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v2_looplex_content/enums",
+				"path_enums": "app/enums/v2_looplex_content",
 				"path_routes": "app/v2_looplex_content",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -506,9 +506,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_task_template.yaml -o app/v2_task_template/v2_task_template --ext json",
 				"folder_name": "/v2_task_template",
-				"path_components": "app/v2_task_template/schemas",
+				"path_components": "app/schemas/v2_task_template",
 				"path_parameters": "common_parameters",
-				"path_enums": "app/v2_task_template/enums",
+				"path_enums": "app/enums/v2_task_template",
 				"path_routes": "app/v2_task_template",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
