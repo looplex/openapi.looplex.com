@@ -8,7 +8,7 @@ properties:
     description: "**The unique identifier of this value**"
     example: <global_unique_identifier>
   identityProviderType:
-    $ref: ../common_enums/LegacyIdentityProviderType.yaml
+    $ref: ../enums/common/LegacyIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"

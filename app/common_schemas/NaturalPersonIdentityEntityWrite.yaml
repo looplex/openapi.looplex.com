@@ -2,7 +2,7 @@ title: Identity (NATURAL_PERSON)
 type: object
 properties:
   identityProviderType:
-    $ref: ../common_enums/NaturalPersonIdentityProviderType.yaml
+    $ref: ../enums/common/NaturalPersonIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"

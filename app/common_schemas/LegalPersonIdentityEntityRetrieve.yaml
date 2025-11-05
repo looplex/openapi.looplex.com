@@ -7,7 +7,7 @@ properties:
     description: "**The unique identifier of this value**"
     example: <global_unique_identifier_ou_null>"
   identityProviderType:
-    $ref: ../common_enums/LegalPersonIdentityProviderType.yaml
+    $ref: ../enums/common/LegalPersonIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"

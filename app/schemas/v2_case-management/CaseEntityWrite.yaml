@@ -4,7 +4,7 @@ properties:
   status:
     $ref: ../../enums/v2_case-management/SituacaoDoProcesso.yaml
   type:
-    $ref: ../../common_enums/RamosJudicial.yaml
+    $ref: ../../enums/common/RamosJudicial.yaml
   subType:
     description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
     oneOf:
