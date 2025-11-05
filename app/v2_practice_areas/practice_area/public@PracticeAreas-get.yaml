@@ -1,16 +1,15 @@
 tags:
-  - ActivityCodes
+  - PracticeAreas
 
-summary: "/ActivityCodes"
+summary: "/PracticeAreas"
 
 description: "**Fetch items paginated**"
 
-operationId: ActivityCodes-get
+operationId: PracticeAreas-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
 
 responses:
-  responses:
   "200":
     description: "OK"
     content:
@@ -23,7 +22,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/activity_code/ActivityCodeEntityQuery.yaml    
+                    $ref: ../schemas/PracticeAreaEntityQuery.yaml  
   "401":
     description: "Unauthorized"
   "404":

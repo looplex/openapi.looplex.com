@@ -603,6 +603,10 @@ export default function Home() {
                     link='/v2_task_codes'
                     text='Task Codes'
                   />
+                  <BorderedLink
+                    link='/v2_practice_areas'
+                    text='Practice Areas'
+                  />
 
                 </ColCard>
               )}

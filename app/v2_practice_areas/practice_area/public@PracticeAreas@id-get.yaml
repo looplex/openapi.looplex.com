@@ -1,11 +1,11 @@
 tags:
-  - TaskCodes
+  - PracticeAreas
 
-summary: "/TaskCodes/:id"
+summary: "/PracticeAreas/:Id"
 
-description: "**Retrieve a TaskCode by id**"
+description: "**Retrieve a PracticeArea by id**"
 
-operationId: TaskCodes-Id-get
+operationId: PracticeAreas-Id-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
   - $ref: ../../common_parameters/Id.yaml
@@ -23,7 +23,7 @@ responses:
                   resources:
                     type: array
                     items:
-                      $ref: ../schemas/task_code/TaskCodeEntityRetrieve.yaml 
+                      $ref: ../schemas/PracticeAreaEntityRetrieve.yaml 
   "401":
     description: "Unauthorized"
   "404":

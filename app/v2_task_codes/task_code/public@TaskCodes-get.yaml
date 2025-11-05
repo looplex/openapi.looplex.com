@@ -7,11 +7,7 @@ description: "**Fetch items paginated**"
 
 operationId: TaskCodes-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml  
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
 
 responses:
   "200":

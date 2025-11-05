@@ -7,9 +7,7 @@ description: "**Retrieve a ActivityCode by id**"
 
 operationId: ActivityCodes-Id-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
   - $ref: ../../common_parameters/Id.yaml
 
 responses:  

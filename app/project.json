@@ -586,6 +586,26 @@
                     }
                 ]
             }
+        },
+        {
+            "label": "Practice Areas",
+            "option": {
+                "build_command": "npx @redocly/cli bundle app/v2_practice_areas.yaml -o app/v2_practice_areas/v2_practice_areas --ext json",
+                "folder_name": "/v2_practice_areas",
+                "path_components": "app/v2_practice_areas/schemas",
+                "path_parameters": "common_parameters",
+                "path_enums": "app/v2_practice_areas/enums",
+                "path_routes": "app/v2_practice_areas",
+                "path_http_responses": "/app/http_responses",
+                "tags": [
+                    {
+                        "option": 1,
+                        "label": "Pasta",
+                        "detail": "Endpoints",
+                        "folder": "practice_area"
+                    }
+                ]
+            }
         }
     ]
 }
