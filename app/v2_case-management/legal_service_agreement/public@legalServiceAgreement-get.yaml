@@ -23,7 +23,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: "../schemas/LegalServiceAgreementEntityQuery.yaml"
+                    $ref: ../../schemas/v2_case-management/LegalServiceAgreementEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

@@ -1,0 +1,48 @@
+title: Timesheet
+type: object
+properties:
+  clientId:
+    type: string
+    format: uuid
+    description: "**Client unique identifier**"
+    example: <global_unique_identifier>
+  owner:
+    $ref: ../../common_schemas/SimpleEntityWrite.yaml
+    description: "**Responsável**"
+  date:
+    type: string
+    format: datetime
+    description: "**Data**"
+    example: <data>
+  hours:
+    type: string
+    example: <hora>
+    description: |
+      **Horas (quantidade de horas do lançamento)**<br />
+      `Format: hh:mm:ss`
+  taskCode:
+    type: string <nullable>
+    description: "**Código da Tarefa**"
+    example: <codigo_da_tarefa>
+  activityCode:
+    type: string <nullable>
+    description: "**Código da Atividade**"
+    example: <codigo_da_atividade>
+  applicant:
+    $ref: ../../common_schemas/SimpleEntityWrite.yaml
+    description: "**Solicitante**"
+  description:
+    type: string <nullable>
+    description: "**Descrição**"
+    example: <descricao>
+  taskType:
+    $ref: ../../enums/v2_case-management/TipoDeTarefaTimesheet.yaml
+    description: "**Tipo da Tarefa**"    
+  case:
+    type: object
+    description: "**The case unique identifier**"
+    properties:
+      id:
+        type: string
+        format: uuid
+        example: <global_unique_identifier>

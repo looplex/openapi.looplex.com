@@ -13,7 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/EntryEntityWrite.yaml
+        $ref: ../../schemas/v2_case-management/EntryEntityWrite.yaml
 responses:
   "201":
     description: "Created"

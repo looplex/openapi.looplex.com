@@ -30,7 +30,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: "../schemas/CaseInfoEntityQuery.yaml"
+                    $ref: ../../schemas/v2_case-management/CaseInfoEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

@@ -1,0 +1,57 @@
+title: CaseHierarchy
+description: Hierarquia do caso, mostra todos os casos relacionados a este, seus antecessores e sucessores
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "**Case unique identifier**"
+    example: <global_unique_identifier>
+  status:
+    example: ATIVO
+    $ref: ../../enums/v2_case-management/SituacaoDoProcesso.yaml
+  type:
+    $ref: ../../common_enums/RamosJudicial.yaml
+  subType:
+    description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+    example: <subtipo_do_processo>
+    oneOf:
+      - $ref: ../../enums/v2_case-management/ClasseProcessoContrato.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcessoSocietario.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcesso.yaml
+  title:
+    type: string
+    example: <titulo_do_processo>
+    description: "**Nome Jurídico do caso**"
+  locale:
+    type: string <nullable>
+    example: <local_do_processo>
+    description: |
+      **Utilizado em casos consultivos**<br />
+      Local da Jurisdição de um caso, ou cumprimento da obrigação.
+  courtVenue:
+    type: string <nullable>
+    example: <foro_do_processo>
+    description: |
+      **Utilizado para casos contenciosos, judiciais ou não**<br />
+      Foro do caso, local onde o caso será julgado
+  caseProcedure:
+    type: string
+    example: <rito_do_processo>
+    description: "**Rito ou procedimento do caso**"
+  phase:
+    type: string <nullable>
+    description: |
+      **Fase do caso**<br />
+      Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
+    example: <fase_do_processo>
+  identities:
+    description: "**Case identities**"
+    type: array
+    items:
+      $ref: ../../common_schemas/CaseIdentityEntityRetrieve.yaml
+  descendants:
+    description: "**Case hierarchy**"
+    type: array
+    items:
+      $ref: CaseHierarchyRetrieve.yaml

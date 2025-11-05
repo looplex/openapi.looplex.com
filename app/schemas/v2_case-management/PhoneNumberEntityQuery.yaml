@@ -1,0 +1,34 @@
+title: Phone number
+type: object
+properties:
+  Value:
+    type: string
+    description: "**Phone number**"
+    example: <numero_do_telefone>
+  Type:
+    $ref: ../../enums/v2_case-management/TipoDeTelefone.yaml
+  Primary:
+    type: boolean
+    description: |
+      **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />
+      The primary attribute value 'true' MUST appear no more than once.
+    example: true
+  Contact:
+    type: string
+    description: "**Contact name**"
+    example: <contato>
+  Extension:
+    type: string
+    description: "**Phone's extension**"
+    example: <extensao>
+  CountryCode:
+    type: integer
+    description: "**Phone's country code**"
+    example: <codigo_do_pais>
+  CustomFields:
+    type: object
+    description: "**Phone's custom fields**"
+required: 
+  - Value
+  - Type
+  - Primary

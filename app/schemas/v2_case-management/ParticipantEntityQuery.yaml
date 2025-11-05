@@ -1,0 +1,51 @@
+title: Dados de Parte
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      CreatedBy:
+        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+      Name:
+        type: string
+        example: <nome_da_parte>
+        description: "**Participant's name**"
+      Nickname:
+        type: string <nullable>
+        example: <apelido_da_parte>
+        description: "**Apelido**"
+      LawyerOffice:
+        type: string <nullable>
+        description: "**Escritório do advogado (se houver)**"
+        example: <escritorio>
+      Nature:
+        example: NATURAL_PERSON
+        $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+      Addresses:
+        description: "**Endereços**"
+        type: array
+        items:
+          $ref: AddressEntityQuery.yaml
+      Emails:
+        description: "**Emails**"
+        type: array
+        items:
+          $ref: EmailEntityQuery.yaml
+      Identities:
+        description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+        type: array
+        items:
+          oneOf:
+            - $ref: ../../common_schemas/NaturalPersonIdentityEntityQuery.yaml
+            - $ref: ../../common_schemas/LegalPersonIdentityEntityQuery.yaml
+      PhoneNumbers:
+        description: "**Telefones**"
+        type: array
+        items:
+          $ref: PhoneNumberEntityQuery.yaml
+      Role:
+        $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+      CustomFields:
+        type: object
+        example: {}
+        description: "**Participant's custom fields**"

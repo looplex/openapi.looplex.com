@@ -16,7 +16,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/CaseEntityRetrieve.yaml"
+          $ref: ../../schemas/v2_case-management/CaseEntityRetrieve.yaml
   "400":
     description: "Bad Request"
   "401":

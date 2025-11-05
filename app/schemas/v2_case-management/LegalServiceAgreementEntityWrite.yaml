@@ -1,0 +1,57 @@
+title: Legal service agreement
+type: object
+properties:
+  clientId:
+    type: string
+    format: uuid
+    description: "**Client's unique identifier**"
+    example: <global_unique_identifier>
+  name:
+    type: string
+    example: <titulo>
+    description: "Legal service agreement's title"
+  summary:
+    type: string
+    example: <observacoes>
+    description: "Legal service agreement's summary"
+  startDate:
+    type: string
+    format: datetime
+    example: <data_inicial>
+    description: "Legal service agreement's start date"
+  forecastedEndDate:
+    type: string
+    format: datetime
+    example: <data_prevista_encerramento>
+    description: "Legal service agreement's forecasted end date"
+  dueDate:
+    type: string
+    format: datetime
+    example: <data_de_vencimento>
+    description: "Legal service agreement's due date"
+  isSameReviewerAttorneyFeesAndExpenses:
+    type: boolean
+    example: false
+  isSamePayerAttorneyFeesAndExpenses:
+    type: boolean
+    example: false
+  billingCompanyId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+  ownerId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+  kilometersReimbursement:
+    $ref: ../../enums/v2_case-management/ContratoReembolsoKM.yaml
+  expenseRuleLocal:
+    $ref: ../../enums/v2_case-management/TipoRegraAprovacaoLimiteDespesas.yaml
+  isDefault:
+    type: boolean
+    example: false
+required:
+  - clientId
+  - name
+  - startDate
+  - ownerId

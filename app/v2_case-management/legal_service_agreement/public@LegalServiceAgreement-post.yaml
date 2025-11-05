@@ -13,7 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/LegalServiceAgreementEntityWrite.yaml
+        $ref: ../../schemas/v2_case-management/LegalServiceAgreementEntityWrite.yaml
 responses:
   "201":
     description: "Created"

@@ -25,7 +25,7 @@ responses:
                   resources:
                     type: array
                     items:
-                      $ref: ../schemas/EmployeeEntityQuery.yaml
+                      $ref: ../../schemas/v2_case-management/EmployeeEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

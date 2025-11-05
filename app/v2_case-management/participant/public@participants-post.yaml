@@ -14,8 +14,8 @@ requestBody:
     application/json:
       schema:
         oneOf:
-          - $ref: ../schemas/ParticipantNaturalPersonWrite.yaml
-          - $ref: ../schemas/ParticipantLegalPersonWrite.yaml
+          - $ref: ../../schemas/v2_case-management/ParticipantNaturalPersonWrite.yaml
+          - $ref: ../../schemas/v2_case-management/ParticipantLegalPersonWrite.yaml
 responses:
   "201":
     description: "Created"
