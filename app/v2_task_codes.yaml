@@ -1,9 +1,9 @@
-# API 'looplex_standards.yaml'
+# API 'task_codes.yaml'
 openapi: 3.0.2
 security: []
 info:
   version: 1.0.0
-  title: Looplex looplex standards
+  title: Looplex task_codes
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex
@@ -16,25 +16,19 @@ info:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
-    API Standards
+    Endpoints de task codes
 externalDocs:
   description: Find out how to create a GitHub repo for your OpenAPI definition.
   url: "https://github.com/Rebilly/generator-openapi-repo"
 servers:
   - url: "https://apim.looplex.com/TODO"
-    description: "looplex standards Server"
+    description: "task_codes Server"
 paths:
 
 # Endpoints dessa API
   /TaskCodes:
     get:
-      $ref: v2_looplex_standards\task_code\public@TaskCodes-get.yaml
+      $ref: v2_task_codes\task_code\public@TaskCodes-get.yaml
   /TaskCodes/:id:  
     get: 
-      $ref: v2_looplex_standards\task_code\public@TaskCodes@Id-get.yaml
-  /ActivityCodes:
-    get:
-      $ref: v2_looplex_standards\activity_code\public@ActivityCodes-get.yaml
-  /ActivityCodes/:id:  
-    get: 
-      $ref: v2_looplex_standards\activity_code\public@ActivityCodes@Id-get.yaml    
+      $ref: v2_task_codes\task_code\public@TaskCodes@Id-get.yaml

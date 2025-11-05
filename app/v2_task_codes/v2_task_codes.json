@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "Looplex looplex standards",
+    "title": "Looplex task_codes",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -17,12 +17,12 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "API Standards\n"
+    "description": "Endpoints de task codes\n"
   },
   "servers": [
     {
       "url": "https://apim.looplex.com/TODO",
-      "description": "looplex standards Server"
+      "description": "task_codes Server"
     }
   ],
   "security": [],
@@ -140,144 +140,6 @@
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TaskCodeEntityRetrieve"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/ActivityCodes": {
-      "get": {
-        "tags": [
-          "ActivityCodes"
-        ],
-        "summary": "/ActivityCodes",
-        "description": "**Fetch items paginated**",
-        "operationId": "ActivityCodes-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ActivityCodeEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          },
-          "responses": null
-        }
-      }
-    },
-    "/ActivityCodes/:id": {
-      "get": {
-        "tags": [
-          "ActivityCodes"
-        ],
-        "summary": "ActivityCodes/:id",
-        "description": "**Retrieve a ActivityCode by id**",
-        "operationId": "ActivityCodes-Id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/ActivityCodeEntityRetrieve"
                           }
                         }
                       }
@@ -511,7 +373,7 @@
           "detail": {
             "type": "string",
             "description": "**The error message**",
-            "example": "The filter is invalid"
+            "example": "<exception_message>"
           },
           "status": {
             "type": "string",
@@ -618,64 +480,6 @@
                 "items": {
                   "$ref": "#/components/schemas/TaskCodeEntityRetrieve"
                 }
-              }
-            }
-          }
-        ]
-      },
-      "ActivityCodeEntityQuery": {
-        "title": "ActivityCodeEntityQuery",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "type": "object",
-            "description": null,
-            "properties": {
-              "Code": {
-                "type": "string"
-              },
-              "EnUsName": {
-                "type": "string"
-              },
-              "PtBrName": {
-                "type": "string"
-              },
-              "EsArName": {
-                "type": "string"
-              },
-              "CustomFields": {
-                "type": "object"
-              }
-            }
-          }
-        ]
-      },
-      "ActivityCodeEntityRetrieve": {
-        "title": "ActivityCodeEntityRetrieve",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "type": "object",
-            "description": null,
-            "properties": {
-              "code": {
-                "type": "string"
-              },
-              "enUsName": {
-                "type": "string"
-              },
-              "ptBrName": {
-                "type": "string"
-              },
-              "esArName": {
-                "type": "string"
-              },
-              "customFields": {
-                "type": "object"
               }
             }
           }

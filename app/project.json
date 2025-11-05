@@ -366,12 +366,12 @@
                         "folder": "case_groups"
                     },
                     {
-						"option": 13,
-						"label": "Phase",
-						"detail": "Phases endpoints",
-						"folder": "phases"
-					},
-					{
+                        "option": 13,
+                        "label": "Phase",
+                        "detail": "Phases endpoints",
+                        "folder": "phases"
+                    },
+                    {
                         "option": -1,
                         "label": "Debug (não utilizar essa tag em endpoints oficiais)",
                         "detail": "Debug endpoints",
@@ -548,24 +548,38 @@
             }
         },
         {
-            "label": "API Looplex Standards",
+            "label": "Activity Codes",
             "option": {
-                "build_command": "npx @redocly/cli bundle app/v2_looplex_standards.yaml -o app/v2_looplex_standards/looplex_standards --ext json",
-                "folder_name": "/v2_looplex_standards",
-                "path_components": "app/v2_looplex_standards/schemas",
+                "build_command": "npx @redocly/cli bundle app/v2_activity_codes.yaml -o app/v2_activity_codes/v2_activity_codes --ext json",
+                "folder_name": "/v2_activity_codes",
+                "path_components": "app/v2_activity_codes/schemas",
                 "path_parameters": "common_parameters",
-                "path_enums": "app/v2_looplex_standards/enums",
-                "path_routes": "app/v2_looplex_standards",
+                "path_enums": "app/v2_activity_codes/enums",
+                "path_routes": "app/v2_activity_codes",
                 "path_http_responses": "/app/http_responses",
-                "tags": [                    
+                "tags": [
                     {
                         "option": 1,
                         "label": "Endpoints de ActivityCode",
                         "detail": "Endpoints",
                         "folder": "ActivityCodes"
-                    },
+                    }
+                ]
+            }
+        },
+        {
+            "label": "Task Codes",
+            "option": {
+                "build_command": "npx @redocly/cli bundle app/v2_task_codes.yaml -o app/v2_task_codes/v2_task_codes --ext json",
+                "folder_name": "/v2_task_codes",
+                "path_components": "app/v2_task_codes/schemas",
+                "path_parameters": "common_parameters",
+                "path_enums": "app/v2_task_codes/enums",
+                "path_routes": "app/v2_task_codes",
+                "path_http_responses": "/app/http_responses",
+                "tags": [
                     {
-                        "option": 2,
+                        "option": 1,
                         "label": "Endpoints de TaskCode",
                         "detail": "Endpoints",
                         "folder": "TaskCodes"

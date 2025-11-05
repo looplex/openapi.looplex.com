@@ -2,16 +2,16 @@
 
 import { RedocStandalone } from 'redoc'
 
-const json = require('./looplex_standards.json')
+const json = require('./v2_task_codes.json')
 
 // Nome de function component deve ser PascalCase
-export default function looplexstandards() {
+export default function TaskCodes() {
   return (
     <RedocStandalone
       spec={json}
       options={{
         sortTagsAlphabetically: true,
-        downloadFileName: 'openapi_looplex_looplex_standards.json'
+        downloadFileName: 'openapi_looplex_task_codes.json'
       }}
     />
   )

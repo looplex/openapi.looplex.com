@@ -1,0 +1,453 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "version": "1.0.0",
+    "title": "Looplex looplex standards",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "API Standards\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/TODO",
+      "description": "looplex standards Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/ActivityCodes": {
+      "get": {
+        "tags": [
+          "ActivityCodes"
+        ],
+        "summary": "/ActivityCodes",
+        "description": "**Fetch items paginated**",
+        "operationId": "ActivityCodes-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ActivityCodeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          },
+          "responses": null
+        }
+      }
+    },
+    "/ActivityCodes/:id": {
+      "get": {
+        "tags": [
+          "ActivityCodes"
+        ],
+        "summary": "ActivityCodes/:id",
+        "description": "**Retrieve a ActivityCode by id**",
+        "operationId": "ActivityCodes-Id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ActivityCodeEntityRetrieve"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "example": "{{client_domain}}",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br/>\n_Bearer \\<token_from_authentication_endpoint_response\\>_\n",
+        "required": true,
+        "example": "Bearer {{token}}",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": true,
+        "description": "**Index of search**",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+        "example": 50,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Id": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "description": "**The item's unique identifier**",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      }
+    },
+    "schemas": {
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "MetaQuery": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceQuery": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "ExternalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "Meta": {
+            "description": "**Informações relacionadas à essa entity**",
+            "$ref": "#/components/schemas/MetaQuery"
+          }
+        }
+      },
+      "ActivityCodeEntityQuery": {
+        "title": "ActivityCodeEntityQuery",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "description": null,
+            "properties": {
+              "Code": {
+                "type": "string"
+              },
+              "EnUsName": {
+                "type": "string"
+              },
+              "PtBrName": {
+                "type": "string"
+              },
+              "EsArName": {
+                "type": "string"
+              },
+              "CustomFields": {
+                "type": "object"
+              }
+            }
+          }
+        ]
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "$ref": "#/components/schemas/SCIMtypeError"
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "<exception_message>"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      },
+      "MetaRetrieve": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "lastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceRetrieve": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "externalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "meta": {
+            "description": "**Entity's information**",
+            "$ref": "#/components/schemas/MetaRetrieve"
+          }
+        }
+      },
+      "ActivityCodeEntityRetrieve": {
+        "title": "ActivityCodeEntityRetrieve",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "description": null,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "enUsName": {
+                "type": "string"
+              },
+              "ptBrName": {
+                "type": "string"
+              },
+              "esArName": {
+                "type": "string"
+              },
+              "customFields": {
+                "type": "object"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
