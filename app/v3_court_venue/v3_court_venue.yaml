@@ -26,36 +26,36 @@ servers:
 paths:
   /v3/court/:id/nextLevels:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@id@nextLevels-get.yaml
+      $ref: court_venue\public@v3@court@id@nextLevels-get.yaml
   /v3/court/:id/hierarchy:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@id@hierarchy-get.yaml
+      $ref: court_venue\public@v3@court@id@hierarchy-get.yaml
   /v3/court/:id/formattedHierarchy:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@id@formattedHierarchy-get.yaml
+      $ref: court_venue\public@v3@court@id@formattedHierarchy-get.yaml
   /v3/court/:id:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@id-get.yaml
+      $ref: court_venue\public@v3@court@id-get.yaml
   /v3/court/search_by_cnj:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@search_by_cnj-get.yaml
+      $ref: court_venue\public@v3@court@search_by_cnj-get.yaml
   /v3/court:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court-get.yaml
+      $ref: court_venue\public@v3@court-get.yaml
   /v3/court/search:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@search-get.yaml
+      $ref: court_venue\public@v3@court@search-get.yaml
   /v3/court/:id/children:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@id@children-get.yaml
+      $ref: court_venue\public@v3@court@id@children-get.yaml
   /v3/court/children:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@children-get.yaml
+      $ref: court_venue\public@v3@court@children-get.yaml
   /v3/court/list:
     get:
-      $ref: v3_court_venue\court_venue\public@v3@court@list-get.yaml
+      $ref: court_venue\public@v3@court@list-get.yaml
 
   # Procedures
   /v3/procedures:
     get:
-      $ref: v3_court_venue\procedures\public@v3@procedures-get.yaml
+      $ref: procedures\public@v3@procedures-get.yaml

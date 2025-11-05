@@ -24,17 +24,14 @@ servers:
   - url: "https://apim.looplex.com/v2_task_template"
     description: "Task Template Server"
 paths:
-# Endpoints dessa API
-# Exemplo
-
   /TaskTemplates/:id:
     get:
-      $ref: v2_task_template\task_templates\public@task_template_id-get.yaml
+      $ref: task_templates\public@task_template_id-get.yaml
   /TaskTemplates:
     get:
-      $ref: v2_task_template\task_templates\public@task_templates-get.yaml  
+      $ref: task_templates\public@task_templates-get.yaml  
     post:
-      $ref: v2_task_template\task_templates\public@task_templates-post.yaml    
+      $ref: task_templates\public@task_templates-post.yaml    
 
 components:
   # Crie uma seção customizada para guardar trechos de texto

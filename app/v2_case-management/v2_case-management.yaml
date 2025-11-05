@@ -1,0 +1,144 @@
+# https://redocly.com/docs/openapi-visual-reference/info/
+openapi: 3.1.0
+info:
+  version: 1.35.4
+  title: "Looplex Case Management"
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    Essa é a documentação da API Case Management
+servers:
+  - url: "https://apim.looplex.com/case-management/v1"
+    description: "Case Management Server"
+paths:
+  
+  # Authentication
+  /token:
+    post:
+      $ref: authentication\public@token-post.yaml
+  
+  # Case
+  /cases/:id:
+    get:
+      $ref: case\public@cases@uniqueId-get.yaml
+    patch:
+      $ref: case\public@cases-patch.yaml
+  /cases:
+    get:
+      $ref: case\public@cases-get.yaml
+    post:
+      $ref: case\public@cases-post.yaml
+
+  # Entry
+  /entries/:id:
+    get:
+      $ref: entry\public@entries@entry_id-get.yaml
+    patch:
+      $ref: entry\public@entries@entry_id-patch.yaml
+  /entries:
+    get:
+      $ref: entry\public@entries-get.yaml
+    post:
+      $ref: entry\public@entries-post.yaml
+
+  # Timesheet
+  /timesheets:
+    get:
+      $ref: timesheet\public@timesheets-get.yaml
+    post:
+      $ref: timesheet\public@timesheets-post.yaml
+  /timesheets/:id:
+    get:
+      $ref: timesheet\public@timesheets@id-get.yaml
+
+  # Client
+  /clients:
+    get:
+      $ref: client\public@clients-get.yaml
+    post:
+      $ref: client\public@clients-post.yaml
+  /clients/:id:
+    get:
+      $ref: client\public@clients@client_id-get.yaml
+    patch:
+      $ref: client\public@clients-patch.yaml
+
+  # Legal service agreement
+  /legalServiceAgreements:
+    post:
+      $ref: legal_service_agreement\public@LegalServiceAgreement-post.yaml
+    get:
+      $ref: legal_service_agreement\public@legalServiceAgreement-get.yaml
+  /legalServiceAgreements/:id:
+    get:
+      $ref: legal_service_agreement\public@legalServiceAgreements@id-get.yaml
+
+  # Participant
+  /participants:
+    post:
+      $ref: participant\public@participants-post.yaml
+    get:
+      $ref: participant\public@participants-get.yaml
+  /participants/:id:
+    get:
+      $ref: participant\public@participants@participant_id-get.yaml
+
+  # LegalCategory (Natures)
+  /legalCategories:
+    get:
+      $ref: legal_category\public@legalCategories-get.yaml
+    post:
+      $ref: legal_category\public@legalCategories-post.yaml
+  /legalCategories/:id:
+    get:
+      $ref: legal_category\public@legalCategories@legalCategory_id-get.yaml
+
+  # Employees
+  /employees:
+    get:
+      $ref: employee\public@Employees-get.yaml
+  /employees/:id:
+    get:
+      $ref: employee\public@employees@employee_id-get.yaml
+
+  # Claims
+  /claims:
+    get:
+      $ref: claim\public@claims-get.yaml
+    post:
+      $ref: claim\public@claims-post.yaml
+  /claim/:id:
+    get:
+      $ref: claim\public@claims@claim_id-get.yaml
+    patch:
+      $ref: claim\public@claims@claim_id-patch.yaml
+
+  # Case Groups
+  /caseGroups:
+    get:
+      $ref: case_groups\public@caseGroups-get.yaml
+  /caseGroups/:id:
+    get:
+      $ref: case_groups\public@caseGroups@case_group_id-get.yaml
+
+  # Phases (aguardando publicação de pull request do ticket AB#32241)
+  # /phases:
+  #   get:
+  #     $ref: v2_case-management\phases\public@phases-get.yaml
+  # /phases/:id:
+  #   get:
+  #     $ref: v2_case-management\phases\public@phases@id-get.yaml
+
+  # Custom fields
+  /:resource/:id:
+    patch:
+      $ref: custom_fields\public@custom_fields-patch.yaml

@@ -24,7 +24,7 @@ properties:
   CaseType:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description: 
-      $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+      $ref: ../v2_task_template.yaml#/components/x-descriptions/RamosJudicial
     type: array
     items:
       type: string

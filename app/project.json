@@ -6,7 +6,7 @@
 			"index": 1,
 			"label": "API MobileService",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v1_cases.yaml -o app/v1_cases/cases --ext json",
+				"build_command": "npx @redocly/cli bundle app/v1_cases/v1_cases.yaml -o app/v1_cases/cases --ext json",
 				"folder_name": "/v1_cases",
 				"path_components": "app/schemas/v1_cases",
 				"path_parameters": "common_parameters",
@@ -285,7 +285,7 @@
 			"index": 2,
 			"label": "API Case Management",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v2_case-management.yaml -o app/v2_case-management/case-management --ext json",
+				"build_command": "npx @redocly/cli bundle app/v2_case-management/v2_case-management.yaml -o app/v2_case-management/case-management --ext json",
 				"folder_name": "/v2_case-management",
 				"path_components": "app/schemas/v2_case-management",
 				"path_parameters": "common_parameters",
@@ -384,7 +384,7 @@
 			"index": 6,
 			"label": "API Tasks Management",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
+				"build_command": "npx @redocly/cli bundle app/v2_tasks/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
 				"folder_name": "/v2_tasks",
 				"path_components": "app/schemas/v2_tasks",
 				"path_parameters": "common_parameters",
@@ -411,7 +411,7 @@
 			"index": 3,
 			"label": "Varas e Foros v2.1 (Court Venue)",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
+				"build_command": "npx @redocly/cli bundle app/v2_court_venue/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
 				"folder_name": "/v2_court_venue",
 				"path_components": "app/schemas/v2_court_venue",
 				"path_parameters": "common_parameters",
@@ -438,7 +438,7 @@
 			"index": 4,
 			"label": "Recess (API de feriados)",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v1_recess.yaml -o app/v1_recess/recess --ext json",
+				"build_command": "npx @redocly/cli bundle app/v1_recess/v1_recess.yaml -o app/v1_recess/recess --ext json",
 				"folder_name": "/v1_recess",
 				"path_components": "app/schemas/v1_recess",
 				"path_parameters": "common_parameters",
@@ -466,7 +466,7 @@
 			"index": 6,
 			"label": "Content",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v2_looplex_content.yaml -o app/v2_looplex_content/looplex_content --ext json",
+				"build_command": "npx @redocly/cli bundle app/v2_looplex_content/v2_looplex_content.yaml -o app/v2_looplex_content/looplex_content --ext json",
 				"folder_name": "/v2_looplex_content",
 				"path_components": "app/schemas/v2_looplex_content",
 				"path_parameters": "common_parameters",
@@ -504,7 +504,7 @@
 		{
 			"label": "API Tasks Templates",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v2_task_template.yaml -o app/v2_task_template/v2_task_template --ext json",
+				"build_command": "npx @redocly/cli bundle app/v2_task_template/v2_task_template.yaml -o app/v2_task_template/v2_task_template --ext json",
 				"folder_name": "/v2_task_template",
 				"path_components": "app/schemas/v2_task_template",
 				"path_parameters": "common_parameters",
@@ -524,7 +524,7 @@
 		{
 			"label": "Varas e Foros v3 (Court Venue)",
 			"option": {
-				"build_command": "npx @redocly/cli bundle app/v3_court_venue.yaml -o app/v3_court_venue/court_venue_v3 --ext json",
+				"build_command": "npx @redocly/cli bundle app/v3_court_venue/v3_court_venue.yaml -o app/v3_court_venue/court_venue_v3 --ext json",
 				"folder_name": "/v3_court_venue",
 				"path_components": "app/v3_court_venue/schemas",
 				"path_parameters": "common_parameters",

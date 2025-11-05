@@ -24,4 +24,4 @@ paths:
   # Feriados
   /recess:
     get:
-      $ref: './v1_recess/public@recess-get.yaml'
+      $ref: public@recess-get.yaml

@@ -26,11 +26,11 @@ paths:
   # Task
   /tasks/:task_id:
     get:
-      $ref: .\v2_tasks\public@tasks@task_id-get.yaml
+      $ref: public@tasks@task_id-get.yaml
     patch:
-      $ref: .\v2_tasks\public@tasks-patch.yaml
+      $ref: public@tasks-patch.yaml
   /tasks:
     get:
-      $ref: .\v2_tasks\public@tasks-get.yaml
+      $ref: public@tasks-get.yaml
     post:
-      $ref: .\v2_tasks\public@tasks-post.yaml
+      $ref: public@tasks-post.yaml
