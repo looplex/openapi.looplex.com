@@ -24,7 +24,7 @@ allOf:
       identities:
         type: array
         items:
-          $ref: ../../common_schemas/NaturalPersonIdentityEntityRetrieve.yaml
+          $ref: ../../schemas/common/NaturalPersonIdentityEntityRetrieve.yaml
         description: "**Employee's identities**"
       nationality:
         type: string <nullable>

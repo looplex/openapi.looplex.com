@@ -27,7 +27,7 @@ allOf:
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
         type: array
         items:
-          $ref: ../../common_schemas/CaseIdentityEntityQuery.yaml
+          $ref: ../../schemas/common/CaseIdentityEntityQuery.yaml
       Title:
         type: string
         description: "**Nome Jurídico do caso**"
@@ -39,21 +39,21 @@ allOf:
       Locale:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Utilizado em casos consultivos**<br />
           Local da Jurisdição de um caso, ou cumprimento da obrigação.
       CourtVenue:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
       CaseProcedure:
         description: >
           **Rito ou procedimento do caso**<br/>
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       Phase:
         type: string <nullable>
         example: <fase_do_processo>
@@ -110,7 +110,7 @@ allOf:
         example: <data_criacao_do_processo>
         description: "**Data de criação do caso**"
       CreatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Usuário que criou o caso**"
       UpdatedAt:
         type: string <nullable>
@@ -118,7 +118,7 @@ allOf:
         description: "**Atualizado em**"
       UpdatedBy:
         description: "**Atualizado por**"
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       ClosedAt:
         type: string <nullable>
         format: datetime
@@ -126,7 +126,7 @@ allOf:
         description: "**Data de encerramento**"
       ClosedBy:
         description: "**Usuário que encerrou o caso**"
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       Group:
         type: string
         example: <area_do_processo>
@@ -142,12 +142,12 @@ allOf:
           **Produto**<br />
           Produto ou serviço do cliente que está relacionado ao caso
       CaseClient:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Cliente**<br />
           Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
       LegalServiceAgreement:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
@@ -159,12 +159,12 @@ allOf:
       Coowners:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
       ExternalServiceProvider:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
@@ -201,7 +201,7 @@ allOf:
           **Linha do Tempo**<br />
           Log de eventos
       Folder:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       ParentCase:
         type: string
         format: uuid

@@ -1,14 +1,14 @@
-title: Identidade (NATURAL_PERSON)
+title: Identidade (Case)
 type: object
 properties:
   id:
     type: string <nullable>
     format: uuid
     description: "**The unique identifier of this value**"
-    example: <global_unique_identifier_ou_null>
+    example: <global_unique_identitier_or_null>
   identityProviderType:
-    $ref: ../enums/common/NaturalPersonIdentityProviderType.yaml
+    $ref: ../../enums/common/CaseIdentityProviderType.yaml
   value:
     type: string
     description: "**The identity value**"
-    example: <valor>
+    example: <value>

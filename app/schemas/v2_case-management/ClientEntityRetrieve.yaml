@@ -43,8 +43,8 @@ properties:
     type: array
     items:
       oneOf:
-        - $ref: ../../common_schemas/NaturalPersonIdentityEntityRetrieve.yaml
-        - $ref: ../../common_schemas/LegalPersonIdentityEntityRetrieve.yaml
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityRetrieve.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityRetrieve.yaml
   phoneNumbers:
     type: array
     items:

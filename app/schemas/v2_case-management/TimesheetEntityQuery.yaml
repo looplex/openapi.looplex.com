@@ -14,7 +14,7 @@ allOf:
         description: "**Classificação**"
         example: <classificacao>
       Owner:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Responsável**"
       Date:
         type: string
@@ -36,7 +36,7 @@ allOf:
         description: "**Código da Atividade**"
         example: <codigo_da_atividade>
       Applicant:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Solicitante**"
       Description:
         type: string <nullable>
@@ -52,7 +52,7 @@ allOf:
         example: <data_de_criacao>
         description: "**Criado em**"
       CreatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Criado por**"
       UpdatedAt:
         type: string <nullable>
@@ -60,7 +60,7 @@ allOf:
         description: "**Atualizado em**"
         example: <data_de_atualizacao>
       UpdatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Atualizado por**"
       Case:
         type: object

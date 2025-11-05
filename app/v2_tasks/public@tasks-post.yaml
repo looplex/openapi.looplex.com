@@ -13,7 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../common_schemas/TaskEntityWrite.yaml
+        $ref: ../schemas/common/TaskEntityWrite.yaml
 responses:
   "201":
     description: "Created"

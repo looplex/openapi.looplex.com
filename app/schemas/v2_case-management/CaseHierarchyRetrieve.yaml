@@ -49,7 +49,7 @@ properties:
     description: "**Case identities**"
     type: array
     items:
-      $ref: ../../common_schemas/CaseIdentityEntityRetrieve.yaml
+      $ref: ../../schemas/common/CaseIdentityEntityRetrieve.yaml
   descendants:
     description: "**Case hierarchy**"
     type: array

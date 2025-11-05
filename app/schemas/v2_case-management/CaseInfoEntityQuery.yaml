@@ -30,7 +30,7 @@ allOf:
         type: array
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
         items:
-          $ref: ../../common_schemas/CaseIdentityEntityQuery.yaml
+          $ref: ../../schemas/common/CaseIdentityEntityQuery.yaml
       Title:
         type: string
         description: "**Nome Jurídico do caso**"
@@ -42,7 +42,7 @@ allOf:
       Locale:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Utilizado em casos consultivos**<br />
           **Formato: País - Estado - Cidade**<br />
@@ -50,14 +50,14 @@ allOf:
       CourtVenue:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Utilizado para casos contenciosos, judiciais ou não**<br />
           Foro do caso, local onde o caso será julgado
       CaseProcedure:
         description: >
           **Rito ou procedimento do caso**
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       Phase:
         type: string <nullable>
         description: |
@@ -108,7 +108,7 @@ allOf:
         description: "**Data de criação do caso**"
         example: <data_criacao_do_processo>
       CreatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Usuário que criou o caso**"
       UpdatedAt:
         type: string <nullable>
@@ -117,14 +117,14 @@ allOf:
         example: <data_de_atualizacao_do_processo>
       UpdatedBy:
         description: "**Atualizado por**"
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       ClosedAt:
         type: string <nullable>
         format: datetime
         description: "**Data de encerramento**"
         example: <data_encerramento_do_processo>
       ClosedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Usuário que encerrou o caso**"
       Group:
         type: string
@@ -135,7 +135,7 @@ allOf:
       CaseClient:
         $ref: ClientEntityQuery.yaml
       LegalServiceAgreement:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Contrato**<br />
           Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
@@ -147,12 +147,12 @@ allOf:
       Coowners:
         type: array
         items:
-          $ref: ../../common_schemas/SimpleEntityQuery.yaml
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
       ExternalServiceProvider:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
           **Escritório Responsável / Correspondente**<br />
           Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso

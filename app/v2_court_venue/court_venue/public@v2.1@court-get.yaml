@@ -28,7 +28,7 @@ responses:
                     items:
                       $ref: ../schemas/Foro_v2_1.yaml
             - allOf:
-              - $ref: ../../common_schemas/ListResponse.yaml
+              - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
                   resources:
                     type: array

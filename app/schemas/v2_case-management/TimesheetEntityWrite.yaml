@@ -7,7 +7,7 @@ properties:
     description: "**Client unique identifier**"
     example: <global_unique_identifier>
   owner:
-    $ref: ../../common_schemas/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleEntityWrite.yaml
     description: "**Responsável**"
   date:
     type: string
@@ -29,7 +29,7 @@ properties:
     description: "**Código da Atividade**"
     example: <codigo_da_atividade>
   applicant:
-    $ref: ../../common_schemas/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleEntityWrite.yaml
     description: "**Solicitante**"
   description:
     type: string <nullable>

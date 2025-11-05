@@ -954,57 +954,58 @@
       }
     },
     "schemas": {
-      "Meta": {
+      "MetaQuery": {
         "title": "Meta",
         "type": "object",
         "description": "**Resource's metadata**",
         "properties": {
-          "resourceType": {
+          "ResourceType": {
             "type": "string",
             "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "Entity"
+            "example": "<tipo_do_recurso>"
           },
-          "created": {
+          "Created": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
-          "lastModified": {
+          "LastModified": {
             "type": "string <nullable>",
             "format": "datetime",
-            "example": "2025-01-01T12:00:00.000",
+            "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
-          "location": {
+          "Location": {
             "type": "string <nullable>",
-            "example": "https://apim.looplex.com/<service_name>/<version_number>/<entity>/<item_unique_id>",
+            "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
-          "version": {
+          "Version": {
             "type": "string",
-            "example": "2.0",
+            "example": "<versao_do_recurso>",
             "description": "**The resource version**"
           }
         }
       },
-      "Resource": {
+      "ResourceQuery": {
         "title": "Resource",
         "type": "object",
         "properties": {
-          "id": {
+          "Id": {
             "type": "string",
             "format": "uuid",
-            "description": "**Object unique identifier**"
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
           },
-          "externalId": {
-            "example": null,
+          "ExternalId": {
+            "example": "<external_id>",
             "type": "string <nullable>",
             "description": "**External identifier**"
           },
-          "meta": {
+          "Meta": {
             "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/Meta"
+            "$ref": "#/components/schemas/MetaQuery"
           }
         }
       },
@@ -1013,7 +1014,7 @@
         "description": "",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
@@ -1057,7 +1058,7 @@
         "description": "",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
@@ -1077,7 +1078,7 @@
         "description": "",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
@@ -1246,7 +1247,7 @@
         "description": "",
         "allOf": [
           {
-            "$ref": "#/components/schemas/Resource"
+            "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
@@ -1367,28 +1368,36 @@
         "properties": {
           "path": {
             "type": "string",
-            "description": "**Para propriedades comuns**: _O nome da propriedade_<br/>\n\n**Para CustomFields**<br/>\n**Note que deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n\n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/ano\",\n    \"value\": 2025\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"ano\": 2025\n  }\n\n  // 'carro', refere-se a um objeto com uma propriedade 'ano'\n  // tudo antes da ultima propriedade sem um array '[]', é um objeto\n  // se o objeto não existir, é criado\n}\n```\n**Exemplo de valor 'objeto'**\n```json\n{\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono\",\n    \"value\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    \"dono\": {\n      \"nome\": \"nome do dono\",\n      \"nacionalidade\": \"brasileiro\",\n      \"idade\": 20\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome\n  // - nacionalidade \n  // - idade\n  // se o objeto não existir, é criado\n\n  // para atualizar somente o nome do dono do caso:\n  // 'path': /CustomFields/carro/dono/nome\n  // 'value': \"nome do dono atualizado\"\n}\n```\n**Exemplo de valor 'array'**\n```json\n{\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
-            "example": "<property_name>"
+            "example": "<property_name>",
+            "description": "**The property name**<br/>\n_property_name_\n"
           },
           "op": {
             "type": "string",
-            "example": "replace",
+            "example": "<operation>",
             "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
           },
           "value": {
             "description": "**The new value to set**",
+            "example": "<value>",
             "oneOf": [
               {
                 "type": "string",
-                "example": "value"
+                "description": "**A string value**\n"
               },
               {
                 "type": "number",
-                "example": 10
+                "description": "**A number value**\n"
               },
               {
                 "type": "object",
-                "example": {}
+                "description": "**A simple object containing one or more properties, depending on Resource property beeing patched**<br />\n```json\n  // Example:\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n  ```\n"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "**An object containing one or more properties, depending on Resource property beeing patched**<br/>\n```json\n// Example:\n[\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n]\n```\n"
+                }
               }
             ]
           }

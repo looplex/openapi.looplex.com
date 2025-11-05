@@ -44,13 +44,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../common_schemas/ListResponse.yaml'
+            - $ref: '../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 Resources:
                   type: array
                   items:
-                    $ref: ../common_schemas/TaskEntity.yaml
+                    $ref: ../schemas/common/TaskEntity.yaml
   "500":
     description: "Internal Server Error"
     content:

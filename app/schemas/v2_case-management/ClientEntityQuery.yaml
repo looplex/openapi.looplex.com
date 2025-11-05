@@ -45,8 +45,8 @@ properties:
     type: array
     items:
       oneOf:
-        - $ref: ../../common_schemas/NaturalPersonIdentityEntityQuery.yaml
-        - $ref: ../../common_schemas/LegalPersonIdentityEntityQuery.yaml
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityQuery.yaml
   PhoneNumbers:
     type: array
     items:

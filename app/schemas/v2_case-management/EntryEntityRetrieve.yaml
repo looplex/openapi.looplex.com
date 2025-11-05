@@ -32,7 +32,7 @@ allOf:
         example: <data_criacao_do_andamento>
         description: "**Entry creation date**"
       createdBy:
-        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       classificationType:
         $ref: ../../enums/v2_case-management/TipoClassificacaoAutomatica.yaml
       caseId:
@@ -47,4 +47,4 @@ allOf:
       identities:
         type: array
         items:
-          $ref: ../../common_schemas/LegacyIdentityEntityRetrieve.yaml
+          $ref: ../../schemas/common/LegacyIdentityEntityRetrieve.yaml

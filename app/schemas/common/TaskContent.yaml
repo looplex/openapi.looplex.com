@@ -6,7 +6,7 @@ properties:
     format: uuid
     description: "**Unique identifier of parent task**"
   Type:
-    $ref: ../common_enums/TaskType.yaml
+    $ref: ../../enums/common/TaskType.yaml
     example: COURT_HEARING
   Title:
     type: string <nullable>
@@ -23,7 +23,7 @@ properties:
     format: datetime
     description: "**Data de Vencimento**"
   CreatedBy:
-    $ref: SimpleEntity.yaml
+    $ref: SimpleEntityQuery.yaml
     description: "**Criado por**"
   CreatedAt:
     type: string <nullable>
@@ -34,14 +34,14 @@ properties:
     format: datetime
     description: "**Atualizado em**"
   UpdatedBy:
-    $ref: SimpleEntity.yaml
+    $ref: SimpleEntityQuery.yaml
     description: "**Atualizado por**"
   CompletedAt:
     type: string <nullable>
     format: datetime
     description: "**Concluído em**"
   CompletedBy:
-    $ref: SimpleEntity.yaml
+    $ref: SimpleEntityQuery.yaml
     description: "**Concluído por**"
   Locale:
     type: string <nullable>
@@ -53,26 +53,26 @@ properties:
     type: string <nullable>
     description: "**Código da Atividade**"
   Owner:
-    $ref: SimpleEntity.yaml
+    $ref: SimpleEntityQuery.yaml
     description: "**Responsável**"
   OtherParticipants:
     description: "**Outros Participantes**"
     type: array
     items:
-      $ref: SimpleEntity.yaml
+      $ref: SimpleEntityQuery.yaml
   Status:
-    $ref: ../common_enums/StatusTarefa.yaml
+    $ref: ../../enums/common/StatusTarefa.yaml
     example: CREATED
   Priority:
     example: LOW
-    $ref: ../common_enums/Prioridade.yaml
+    $ref: ../../enums/common/Prioridade.yaml
   ConclusionNotes:
     type: string <nullable>
     description: "**Notas de Conclusão**"
   Identities:
     type: array
     items:
-      $ref: ./LegacyIdentityEntity.yaml
+      $ref: LegacyIdentityEntityQuery.yaml
   Case:
     description: "Caso de uma tarefa"
     type: object
@@ -87,7 +87,7 @@ properties:
       Identities:
         type: array
         items:
-          $ref: LegacyIdentityEntity.yaml
+          $ref: LegacyIdentityEntityQuery.yaml
       Group:
         type: string
         description: "Case's group"

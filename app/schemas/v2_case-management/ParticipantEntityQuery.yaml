@@ -5,7 +5,7 @@ allOf:
   - type: object
     properties:
       CreatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       Name:
         type: string
         example: <nome_da_parte>
@@ -36,8 +36,8 @@ allOf:
         type: array
         items:
           oneOf:
-            - $ref: ../../common_schemas/NaturalPersonIdentityEntityQuery.yaml
-            - $ref: ../../common_schemas/LegalPersonIdentityEntityQuery.yaml
+            - $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
+            - $ref: ../../schemas/common/LegalPersonIdentityEntityQuery.yaml
       PhoneNumbers:
         description: "**Telefones**"
         type: array

@@ -27,7 +27,7 @@ requestBody:
       schema:
         type: array
         items:
-          $ref: ../../common_schemas/PatchEntity.yaml
+          $ref: ../../schemas/common/PatchEntity.yaml
 responses:
   "204":
     description: "No Content"

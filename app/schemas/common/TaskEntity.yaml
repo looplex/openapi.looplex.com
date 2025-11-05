@@ -1,7 +1,7 @@
 title: Tarefa
 type: object
 allOf:
-  - $ref: ../scim/Resource.yaml
+  - $ref: ../../scim/ResourceQuery.yaml
   - type: object
     properties:
       Data:

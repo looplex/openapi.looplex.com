@@ -21,7 +21,7 @@ allOf:
         description: "**This item's title**"
         example: <title>
       caseType:
-        $ref: ../../common_enums/RamosJudicial.yaml
+        $ref: ../../enums/common/RamosJudicial.yaml
       customFields:
         type: object
         description: "**This item's custom fields**"

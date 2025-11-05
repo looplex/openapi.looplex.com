@@ -49,8 +49,8 @@ properties:
     type: array
     items:
       oneOf:
-        - $ref: ../../common_schemas/LegalPersonIdentityEntityWrite.yaml
-        - $ref: ../../common_schemas/NaturalPersonIdentityEntityWrite.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityWrite.yaml
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
   role:
     $ref: ../../enums/v2_case-management/ParticipantRole.yaml
   customFields:

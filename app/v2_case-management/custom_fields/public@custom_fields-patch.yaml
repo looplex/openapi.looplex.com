@@ -127,7 +127,7 @@ requestBody:
       schema:
         type: array
         items:
-          $ref: ../../common_schemas/PatchEntityCustomFields.yaml
+          $ref: ../../schemas/common/PatchEntityCustomFields.yaml
 responses:
   "204":
     description: "No Content"
