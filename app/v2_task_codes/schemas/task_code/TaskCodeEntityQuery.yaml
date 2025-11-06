@@ -1,0 +1,30 @@
+title: TaskCodeEntityQuery
+description: 
+allOf:
+  - $ref: ..\..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:  
+      ParentId:
+        type: string
+        format: uuid
+      EnUsName:
+        type: string
+      PtBrName:
+        type: string
+      EsArName:
+        type: string
+      EnUsDescription:
+        type: string
+      PtBrDescription:
+        type: string
+      EsArDescription:
+        type: string  
+      CustomFields:
+        type: object
+      Code:
+        type: string
+      Children:
+        type: array
+        items:
+          $ref: TaskCodeEntityQuery.yaml
+          

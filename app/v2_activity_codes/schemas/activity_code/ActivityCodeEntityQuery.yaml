@@ -1,0 +1,17 @@
+title: ActivityCodeEntityQuery
+allOf:
+  - $ref: ..\..\..\scim\ResourceQuery.yaml
+  - type: object
+    description: 
+    properties:  
+      Code:
+        type: string
+      EnUsName:
+        type: string
+      PtBrName:
+        type: string
+      EsArName:
+        type: string
+      CustomFields:
+        type: object
+          

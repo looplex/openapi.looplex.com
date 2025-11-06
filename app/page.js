@@ -91,6 +91,11 @@ export default function Home() {
     'url', 'user', 'views', 'objects'
   ]
 
+  const arrStandardsKeywords = [
+    'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions', 
+    'localities'
+  ]
+
   const [cards, updateCards] = useState({
     isVisibleCases: true,
     isVisibleTasks: true,
@@ -99,7 +104,8 @@ export default function Home() {
     isVisibleLooplex365: true,
     isVisibleFeriados: true,
     isVisibleCourtVenue: true,
-    isVisibleActions: true
+    isVisibleActions: true,
+    isVisibleStandards: false
   })
 
   useEffect(() => {
@@ -111,7 +117,8 @@ export default function Home() {
       isVisibleLooplex365: (search === '') || arrLooplex365Keywords.some(i => i.includes(search)),
       isVisibleFeriados: (search === '') || arrFeriadosKeywords.some(i => i.includes(search)),
       isVisibleCourtVenue: (search === '') || arrCourtVenueKeywords.some(i => i.includes(search)),
-      isVisibleActions: (search === '') || arrActionsKeywords.some(i => i.includes(search))
+      isVisibleActions: (search === '') || arrActionsKeywords.some(i => i.includes(search)),
+      isVisibleStandards: (search === '') || arrStandardsKeywords.some(i => i.includes(search))
     })
   }, [search])
 
@@ -453,7 +460,8 @@ export default function Home() {
               cards.isVisibleCases ||
               cards.isVisibleTasks ||
               cards.isVisibleAssembler ||
-              cards.isVisibleContent
+              cards.isVisibleContent ||
+              cards.isVisibleStandards
             ) &&
             (
               <Row>
@@ -574,9 +582,39 @@ export default function Home() {
                 </ColCard>
               )
             }
+            {
+              cards?.isVisibleStandards &&
+              (
+                <ColCard>
+                  <CardHeader
+                    title='Standards'
+                    icon={<ProfileOutlined style={iconStyle} />}
+                  />
 
+                  <div>
+                    <Text>Grupo de APIs do Looplex Standards </Text>
+                  </div>
+
+                  <BorderedLink
+                    link='/v2_activity_codes'
+                    text='Activity Codes'
+                  />
+                  <BorderedLink
+                    link='/v2_task_codes'
+                    text='Task Codes'
+                  />
+                  <BorderedLink
+                    link='/v2_practice_areas'
+                    text='Practice Areas'
+                  />
+                  <BorderedLink
+                    link='/v2_locales'
+                    text='Locales'
+                  />
+
+                </ColCard>
+              )}
           </Row>
-
         </Content>
 
         {smallScreen && (

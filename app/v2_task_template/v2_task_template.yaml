@@ -26,12 +26,14 @@ servers:
 paths:
   /TaskTemplates/:id:
     get:
-      $ref: task_templates\public@task_template_id-get.yaml
+      $ref: task_templates\public@task_templates@id-get.yaml
   /TaskTemplates:
     get:
       $ref: task_templates\public@task_templates-get.yaml  
     post:
       $ref: task_templates\public@task_templates-post.yaml    
+    patch: 
+      $ref: task_templates\public@task_templates@id-patch.yaml
 
 components:
   # Crie uma seção customizada para guardar trechos de texto

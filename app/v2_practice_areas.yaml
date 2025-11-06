@@ -1,0 +1,34 @@
+# API 'Practice_Area.yaml'
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: Looplex Practice Area
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    API de Practice Areas
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/TODO"
+    description: "Practice Areas Server"
+paths:
+
+# Endpoints dessa API
+  /PracticeAreas:
+    get:
+      $ref: v2_practice_areas\practice_area\public@PracticeAreas-get.yaml
+  /TaskCodes/:id:  
+    get: 
+      $ref: v2_practice_areas\practice_area\public@PracticeAreas@id-get.yaml

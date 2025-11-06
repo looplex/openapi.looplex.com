@@ -36,7 +36,7 @@
         "tags": [
           "Task Templates"
         ],
-        "summary": "Task Templates",
+        "summary": "/TaskTemplates/:id",
         "description": "**Retrieve a task template by id**",
         "operationId": "task_templates_id-get",
         "parameters": [
@@ -64,6 +64,12 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -82,7 +88,7 @@
         "tags": [
           "Task Templates"
         ],
-        "summary": "Task Templates",
+        "summary": "/TaskTemplates",
         "description": "**Fetch items paginated**",
         "operationId": "task_templates-get",
         "parameters": [
@@ -131,6 +137,12 @@
               }
             }
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
           "500": {
             "description": "Internal Server Error",
             "content": {
@@ -147,7 +159,7 @@
         "tags": [
           "Task Templates"
         ],
-        "summary": "Task Templates",
+        "summary": "/TaskTemplates",
         "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "task_templates-post",
         "parameters": [
@@ -173,6 +185,74 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Task Templates"
+        ],
+        "summary": "/TaskTemplates/:id",
+        "description": "**Patch Task Templates properties**<br/>\n**If you want to patch '_CustomFields_' property see** _<a href=\"/v2_case-management#tag/Custom-Fields\">this link</a>_\n",
+        "operationId": "task_templates-id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -283,6 +363,63 @@
         "type": "string",
         "description": "BUILDER <br/>\nASSEMBLER\n"
       },
+      "TaskTemplateEntityWrite": {
+        "title": "TaskTemplateEntity",
+        "description": null,
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "EventType": {
+            "$ref": "#/components/schemas/TipoEventoDeCobranca"
+          },
+          "Status": {
+            "description": "ACTIVE<br/>INACTIVE",
+            "type": "string"
+          },
+          "DeadlineForCompletion": {
+            "description": "Prazo para conclusão (em dias)",
+            "type": "integer"
+          },
+          "ConsecutiveDays": {
+            "type": "boolean"
+          },
+          "TimeToExecution": {
+            "description": "Tempo para execução (em horas)",
+            "type": "integer"
+          },
+          "DocumentLinkType": {
+            "$ref": "#/components/schemas/TipoVinculoComDocumento"
+          },
+          "DocumentIdentifier": {
+            "description": "Link do documento",
+            "type": "string"
+          },
+          "CaseTypes": {
+            "example": [
+              "JUDICIAL_ESTADUAL",
+              "CONTRATO"
+            ],
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "SubjectMatter": {
+            "type": "string"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
+            }
+          }
+        }
+      },
       "TaskTemplateEntity": {
         "title": "TaskTemplateEntity",
         "description": null,
@@ -315,7 +452,7 @@
             "description": "Link do documento",
             "type": "string"
           },
-          "CaseType": {
+          "CaseTypes": {
             "example": [
               "JUDICIAL_ESTADUAL",
               "CONTRATO"
@@ -326,13 +463,16 @@
               "type": "string"
             }
           },
+          "SubjectMatter": {
+            "type": "string"
+          },
           "CustomFields": {
             "type": "object"
           },
           "Children": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TaskTemplateEntity"
+              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
             }
           }
         }
@@ -382,6 +522,52 @@
             "example": 12
           }
         }
+      },
+      "PatchEntity": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "example": "<property_name>",
+            "description": "**The property name**<br/>\n_property_name_\n"
+          },
+          "op": {
+            "type": "string",
+            "example": "<operation>",
+            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+          },
+          "value": {
+            "description": "**The new value to set**",
+            "example": "<value>",
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "**A string value**\n"
+              },
+              {
+                "type": "number",
+                "description": "**A number value**\n"
+              },
+              {
+                "type": "object",
+                "description": "**A simple object containing one or more properties, depending on Resource property beeing patched**<br />\n```json\n  // Example:\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n  ```\n"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "description": "**An object containing one or more properties, depending on Resource property beeing patched**<br/>\n```json\n// Example:\n[\n  {\n    \"<property_name>\": \"<property_value>\",\n    ...other properties if needed\n  }\n]\n```\n"
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "op",
+          "value"
+        ]
       }
     }
   }

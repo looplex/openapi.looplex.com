@@ -1,0 +1,34 @@
+# API 'task_codes.yaml'
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: Looplex task_codes
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    Endpoints de task codes
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/TODO"
+    description: "task_codes Server"
+paths:
+
+# Endpoints dessa API
+  /TaskCodes:
+    get:
+      $ref: v2_task_codes\task_code\public@TaskCodes-get.yaml
+  /TaskCodes/:id:  
+    get: 
+      $ref: v2_task_codes\task_code\public@TaskCodes@Id-get.yaml

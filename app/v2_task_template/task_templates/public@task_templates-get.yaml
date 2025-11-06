@@ -2,7 +2,7 @@ tags:
   - Task Templates
 
 # escolha um titulo
-summary: Task Templates
+summary: /TaskTemplates
 
 # escolha uma description
 description: "**Fetch items paginated**"
@@ -29,6 +29,10 @@ responses:
                   type: array
                   items:
                     $ref: ../../schemas/v2_task_template/TaskTemplateEntity.yaml
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
   "500":
     description: "Internal Server Error"
     content:

@@ -1,0 +1,37 @@
+# API 'Locales.yaml'
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: Looplex Locales
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    Lista de códigos ISO 3166-2 (países e subdivisões de regiões ou estados) e cidades ou municípios
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/TODO"
+    description: "Locales Server"
+paths:
+
+# Endpoints dessa API
+  /Countries:
+    get:
+      $ref: v2_locales\locales\public@Countries-get.yaml
+  /Regions/:id:  
+    get: 
+      $ref: v2_locales\locales\public@Regions-get.yaml
+  /Localities/:id:  
+    get: 
+      $ref: v2_locales\locales\public@Localities-get.yaml

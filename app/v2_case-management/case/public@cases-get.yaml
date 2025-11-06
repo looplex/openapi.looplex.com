@@ -31,8 +31,6 @@ responses:
                   type: array
                   items:
                     $ref: ../../schemas/v2_case-management/CaseInfoEntityQuery.yaml
-  "400":
-    description: "Bad Request"
   "401":
     description: "Unauthorized"
   "404":
