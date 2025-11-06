@@ -105,7 +105,7 @@ export default function Home() {
     isVisibleFeriados: true,
     isVisibleCourtVenue: true,
     isVisibleActions: true,
-    isVisibleStandards: true
+    isVisibleStandards: false
   })
 
   useEffect(() => {
@@ -606,6 +606,10 @@ export default function Home() {
                   <BorderedLink
                     link='/v2_practice_areas'
                     text='Practice Areas'
+                  />
+                  <BorderedLink
+                    link='/v2_locales'
+                    text='Locales'
                   />
 
                 </ColCard>

@@ -1,0 +1,35 @@
+title: CountryEntity
+type: object
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:
+      EnName:
+        type: string    
+      FrName:
+        type: string    
+      BrName:
+        type: string    
+      EsName:
+        type: string
+      DeName:
+        type: string    
+      CodeAlpha2:
+        type: string    
+      CodeAlpha3:
+        type: string    
+      NumericCode:
+        type: integer    
+      EnDemonym:
+        type: string    
+      FrDemonym:
+        type: string    
+      BrDemonym:
+        type: string    
+      EsDemonym:
+        type: string    
+      DeDemonym:
+        type: string    
+      CustomFields:
+        type: object
+        

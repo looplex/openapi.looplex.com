@@ -606,6 +606,26 @@
                     }
                 ]
             }
+        },
+        {
+            "label": "Locales",
+            "option": {
+                "build_command": "npx @redocly/cli bundle app/v2_locales.yaml -o app/v2_locales/v2_locales --ext json",
+                "folder_name": "/v2_locales",
+                "path_components": "app/v2_locales/schemas",
+                "path_parameters": "common_parameters",
+                "path_enums": "app/v2_locales/enums",
+                "path_routes": "app/v2_locales",
+                "path_http_responses": "/app/http_responses",
+                "tags": [
+                    {
+                        "option": 1,
+                        "label": "Pasta",
+                        "detail": "Endpoints",
+                        "folder": "locales"
+                    }
+                ]
+            }
         }
     ]
 }
