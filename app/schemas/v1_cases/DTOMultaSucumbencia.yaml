@@ -1,0 +1,77 @@
+title: DTOMultaSucumbencia
+type: object
+properties:
+  PedidoId:
+    type: integer
+  PedidoCausaId:
+    type: integer
+  CasoId:
+    type: integer
+  ValorSolicitado:
+    type: number
+  MoedaSolicitado:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  ValorContigenciado:
+    type: number
+  MoedaContigenciado:    
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  PorcentagemExito:
+    $ref: ../../enums/v1_cases/ExpectativaReivindicacao.yaml
+  JustificativaPedido:
+    type: string
+  SituacaoPedido:
+    $ref: ../../enums/v1_cases/eSituacaoDePedido.yaml  
+  DataConstituicao:
+    type: string
+  DataVencimento:
+    type: string
+  ChangeReason:
+    type: string
+  ChangeId:
+    type: integer
+  EnvolvimentoParte:
+    $ref: ../../enums/v1_cases/Polo.yaml
+  IsLiquido:
+    type: boolean
+  TipoRecorrencia:
+    $ref: ../../enums/v1_cases/TipoDeRecorrencia.yaml
+  IsLiminar:
+    type: boolean
+  MotivoDePedirId:
+    type: integer
+  TipoReparacao:
+    $ref: ../../enums/v1_cases/TipoReparacao.yaml
+  MultaOuSucumbencia:
+    $ref: ../../enums/v1_cases/MultaSucumbencia.yaml
+  MultaSucumbenciaPorcentagem:
+    type: number
+  TipoTutela:
+    $ref: ../../enums/v1_cases/TipoTutela.yaml
+  ProcessoDecisaoValorId:
+    type: integer
+  ProcessoDecisaoId:
+    type: integer
+  ExitoPerda:
+    $ref: ../../enums/v1_cases/ValorApuradoExitoPerda.yaml
+  ValorDeferido:
+    type: number
+  Moeda:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  IsAlterado:
+    type: boolean
+  ResultadoTutela:
+    $ref: ../../enums/v1_cases/ResultadoTutela.yaml
+  IDsParte:
+    example: null   
+    oneOf:
+      - type: null
+      - type: array
+        items:
+          type: int
+required:  
+  - CasoId
+  - ValorSolicitado
+  - MoedaSolicitado  
+  - MultaOuSucumbencia  
+  - ValorDeferido
+  - Moeda

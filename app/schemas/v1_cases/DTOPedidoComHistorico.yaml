@@ -1,0 +1,59 @@
+title: DTOPedidoComHistorico
+type: object
+properties:
+  PedidoCausa:
+    type: string
+  RiscoPai:
+    type: integer
+  RiscoPaiText:
+    type: string
+  ValorPrevistoPai:
+    type: number
+  SituacaoPaiText:
+    type: string
+  ValorContingenciadoPai:
+    type: number
+  IdProcessoExpectativaReivindicacao:
+    type: integer
+  MultaSucumbencia:
+    $ref: ../../enums/v1_cases/MultaSucumbencia.yaml
+  MultaSucumbenciaPorcentagem:
+    type: number
+  SituacaoJulgamento:
+    $ref: ../../enums/v1_cases/SituacaoJulgamento.yaml
+  TipoTutela:
+    $ref: ../../enums/v1_cases/TipoTutela.yaml  
+  ValorContingenciadoAtualizado:
+    type: number
+  ValorPrevistoAtualizado:
+    type: number    
+  ResultadoTutelaPelaUltimaDecisao:
+    $ref: ../../enums/v1_cases/ResultadoTutela.yaml
+  ValorDeferidoPelaUltimaDecisao:
+    type: number    
+  MoedaDeferidoPelaUltimaDecisao:
+    type: string  
+  Historico:
+    type: array
+    items: 
+      $ref: DTOPedidoHistorico.yaml
+  ValorPrevistoPelaUltimaDecisao:
+    type: number   
+  ValorContingenciadoPelaUltimaDecisao:
+    type: number  
+  RiscoUltimaDecisao:
+    type: integer
+  RiscoUltimaDecisaoText:
+    type: string
+  SituacaoUltimaDecisao:
+    type: string   
+  DataConstituicao:
+    type: string
+  DataVencimento:
+    type: string 
+  
+  
+  
+  
+  
+  

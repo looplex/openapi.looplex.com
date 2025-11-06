@@ -23,7 +23,7 @@ parameters:
     in: query
     required: true
     schema:
-      $ref: ../enums/TipoPesquisaPublicacao.yaml
+      $ref: ../../enums/v1_cases/TipoPesquisaPublicacao.yaml
   - name: startDate
     in: query
     description: "A data inicial para pesquisa"
@@ -41,13 +41,13 @@ parameters:
     required: false
     example: "1. `Default: 2`(Todas)"
     schema:
-      $ref: ../enums/SituacaoPublicacao.yaml
+      $ref: ../../enums/v1_cases/SituacaoPublicacao.yaml
   - name: status
     in: query
     required: false
     example: "[2,3]. `Default: [1,2,3]`"
     schema:
-      $ref: ../enums/StatusDaPublicacao.yaml
+      $ref: ../../enums/v1_cases/StatusDaPublicacao.yaml
   - name: areaID
     in: query
     description: "O identificador da área"
@@ -79,7 +79,7 @@ responses:
               description: "As publicações da página informada"
               type: array
               items:
-                $ref: ../schemas/DTOPublicacao.yaml
+                $ref: ../../schemas/v1_cases/DTOPublicacao.yaml
             QuantidadePublicacoesExistente:
               description: "A quantidade de resgistros que corresponde aos parâmetros informados"
               type: integer
@@ -88,22 +88,22 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

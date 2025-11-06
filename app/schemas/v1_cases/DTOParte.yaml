@@ -1,0 +1,73 @@
+title: DTOParte
+type: object
+properties:
+  IdParte: 
+    type: integer
+    description: "Se for menor ou igual a zero insere uma nova parte, senão, atualiza a parte de acordo com o identificador informado."
+  IdCliente:
+    type: integer
+  NrCliente:
+    type: integer
+  inContato:
+    type: boolean
+  inMigradoParaNovosContatos:
+    type: boolean
+  IdFuncionario:
+    type: integer
+  Polo:
+    $ref: ../../enums/v1_cases/PoloLawOffice.yaml
+  TipoPessoa:
+    $ref: ../../enums/v1_cases/TipoPessoa.yaml
+  CPF:
+    type: string
+  CNPJ:
+    type: string
+  RG:
+    type: string
+  nomeParte:
+    type: string
+  Nome:
+    type: string
+  RazaoSocial:
+    type: string
+  NomeFantasia:
+    type: string
+  NomeContato:
+    type: string
+  Email:
+    type: string
+  TipoEnvolvimento:
+    type: integer
+  TipoEnvolvimentoPapel:
+    type: string
+  PoloPrincipal:
+    type: boolean
+  Observacoes:
+    type: string
+  Endereco:
+    $ref: DTOEnderecoParte.yaml
+  Telefones:
+    type: array
+    items:
+      $ref: DTOTelefoneParte.yaml
+  Advogado:
+    $ref: DTODadosAdvogado.yaml
+  Envolvimento:
+    type: array
+    items: 
+      $ref: DTOEnvolvimento.yaml
+  NomeCliente:
+    type: string
+    description: "Preenchido apenas na pesquisa de partes do caso"
+  TituloCaso:
+    type: string
+    description: "Preenchido apenas na pesquisa de partes do caso"
+  NumeroInterno:
+    type: string
+    description: "Preenchido apenas na pesquisa de partes do caso"
+  NumeroExterno:
+    type: string
+    description: "Preenchido apenas na pesquisa de partes do caso"
+  EnvolvimentoText:
+    type: string
+  

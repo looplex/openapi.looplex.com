@@ -23,7 +23,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/TermoPublicacao.yaml"
+          $ref: ../../schemas/v1_cases/TermoPublicacao.yaml
   "400":
     description: "Bad Request"
     content:

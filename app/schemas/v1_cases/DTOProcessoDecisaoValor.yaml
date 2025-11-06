@@ -1,0 +1,33 @@
+title: DTOProcessoDecisaoValor
+type: object
+properties:
+  nrExitoPerda:
+    type: integer
+  nrMoeda:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  nrMoedaSolicitado:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  dsJustificativaPedido:
+    type: string
+  nrMoedaContigenciado:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  vlContigenciado:
+    type: number
+  vlDeferido:
+    type: number
+  IdProcessoExpectativaReivindicacao:
+    type: integer
+  IdProcessoDecisao:
+    type: integer
+  inAlterado:
+    type: boolean
+  IdProcessoDecisaoValor:
+    type: integer
+  vlSolicitado:
+    type: number
+  nrSituacao:
+    type: integer
+  ResultadoTutela:
+    $ref: ../../enums/v1_cases/ResultadoTutela.yaml
+  SituacaoJulgamento:
+    $ref: ../../enums/v1_cases/SituacaoJulgamento.yaml

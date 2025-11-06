@@ -1,0 +1,17 @@
+title: DTOLiberacao
+type: object
+properties:
+  DataUltimaLiberacao:
+    type: string
+  Descricao:
+    type: string
+  ID:
+    type: integer
+  Situacao:
+    $ref: ../../enums/v1_cases/SituacaoLiberacao.yaml
+  ValorDespesasLancadas:
+    type: number
+  ValorLiberado:
+    type: number
+  Adiantamento:
+    type: string

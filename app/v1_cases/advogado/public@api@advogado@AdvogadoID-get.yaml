@@ -23,7 +23,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/DTOAdvogado.yaml"
+          $ref: "../../schemas/v1_cases/DTOAdvogado.yaml"
   "400":
     description: "Bad Request"
     content:

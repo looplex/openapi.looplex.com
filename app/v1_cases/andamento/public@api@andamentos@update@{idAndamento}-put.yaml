@@ -16,7 +16,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/DTOAndamento.yaml
+        $ref: ../../schemas/v1_cases/DTOAndamento.yaml
 responses:
   "200":
     description: "OK"
@@ -31,7 +31,7 @@ responses:
         schema:
           oneOf: 
             - $ref: ../schemas/EncapsuladorDeResposta.yaml
-            - $ref: ../schemas/ExceptionResponse.yaml
+            - $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
@@ -39,7 +39,7 @@ responses:
         schema:
           oneOf: 
             - $ref: ../schemas/EncapsuladorDeResposta.yaml
-            - $ref: ../schemas/ExceptionResponse.yaml
+            - $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
@@ -47,7 +47,7 @@ responses:
         schema:
           oneOf: 
             - $ref: ../schemas/EncapsuladorDeResposta.yaml
-            - $ref: ../schemas/ExceptionResponse.yaml
+            - $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
@@ -55,4 +55,4 @@ responses:
         schema:
           oneOf: 
             - $ref: ../schemas/EncapsuladorDeResposta.yaml
-            - $ref: ../schemas/ExceptionResponse.yaml
+            - $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

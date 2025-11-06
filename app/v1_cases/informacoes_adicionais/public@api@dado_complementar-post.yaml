@@ -15,7 +15,7 @@ requestBody:
       schema:
         type: array
         items: 
-          $ref: ../schemas/DTOInformacaoAdicional.yaml
+          $ref: ../../schemas/v1_cases/DTOInformacaoAdicional.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
@@ -26,28 +26,28 @@ responses:
         schema:
           type: array
           items:
-            $ref: ../schemas/DTOInformacaoAdicional.yaml
+            $ref: ../../schemas/v1_cases/DTOInformacaoAdicional.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

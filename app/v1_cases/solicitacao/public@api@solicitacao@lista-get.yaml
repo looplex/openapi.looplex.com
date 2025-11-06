@@ -20,7 +20,7 @@ responses:
         schema:
           type: array
           items: 
-            $ref: "../schemas/DTOSolicitacaoResponse.yaml"
+            $ref: "../../schemas/v1_cases/DTOSolicitacaoResponse.yaml"
   "400":
     description: "Bad Request"
     content:

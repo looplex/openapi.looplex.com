@@ -88,7 +88,7 @@ parameters:
     example: "[1,2]. `Enviar um array`"
     required: false
     schema:
-      $ref: ..\enums\SituacaoDoProcesso.yaml
+      $ref: ../../enums/v1_cases/SituacaoDoProcesso.yaml
   - name: searchTerm
     in: query
     example: "\"termo para pesquisa\""
@@ -116,7 +116,7 @@ responses:
             Result:
               type: array
               items:
-                $ref: ../schemas/DTOCasoCompleto.yaml
+                $ref: ../../schemas/v1_cases/DTOCasoCompleto.yaml
             QuantidadeCasosExistente:
               type: integer
               description: "A quantidade de casos existente de acordo com o filtro informado"
@@ -125,22 +125,22 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

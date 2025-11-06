@@ -17,7 +17,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/DTOValoresDoCaso.yaml
+        $ref: ../../schemas/v1_cases/DTOValoresDoCaso.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"

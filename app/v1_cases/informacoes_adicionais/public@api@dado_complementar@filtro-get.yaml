@@ -10,14 +10,14 @@ parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml 
   - name: tiposCaso
     in: query
-    required: false        
-    schema:           
-      $ref: ../enums/RamosJudicial.yaml
+    required: false
+    schema:
+      $ref: ../../enums/v1_cases/RamosJudicial.yaml
   - name: tiposCampo
     in: query
     required: false    
     schema:
-      $ref: ../enums/TipoDadoComplementar.yaml   
+      $ref: ../../enums/v1_cases/TipoDadoComplementar.yaml   
 
 # Responses
 responses:
@@ -29,28 +29,28 @@ responses:
         schema:
           type: array
           items:
-            $ref: ../schemas/DTOFiltroInformacaoAdicional.yaml
+            $ref: ../../schemas/v1_cases/DTOFiltroInformacaoAdicional.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

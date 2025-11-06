@@ -27,7 +27,7 @@ requestBody:
       schema:
         type: array
         items: 
-          $ref: ../schemas/DTOCustomFields.yaml
+          $ref: ../../schemas/v1_cases/DTOCustomFields.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
@@ -36,7 +36,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/DTOTarefaResponse.yaml"
+          $ref: "../../schemas/v1_cases/DTOTarefaResponse.yaml"
   "400":
     description: "Bad Request"
     content:

@@ -1,0 +1,44 @@
+title: DTOTimelineItem
+type: object
+properties:
+  IDItem:
+    type: integer
+    example: 9030
+    description: "Identificador do item de timeline"
+  Data:
+    type: string
+    description: "A data do item de agenda em UTC"
+  DataFormatada:
+    type: string
+    example: "01/07/2022 20:00"
+    description: "Data do item de timeline"
+  TipoItem:
+    description: "Tipo do item"
+    $ref: ../../enums/v1_cases/TipoItemTimeline.yaml
+  TipoItemString:
+    type: string
+    description: "Tipo do item em texto"
+    example: "Agenda"
+  TextoItem:
+    type: string
+    description: "O conteúdo do item"
+    example: "Descrição da atividade"
+  TipoItemAgenda:
+    type: integer
+    example: 1
+  Titulo:
+    type: string
+    description: "O titulo do item"
+    example: "Atividade externa - 01/07/2022"
+  IDCaso:
+    type: integer
+    description: "O identificador do processo"
+  TituloCaso:
+    type: string
+    description: "O título do processo"
+  NumeroExterno:
+    type: string
+    description: "O número externo do processo"
+  ClasseCaso:
+    type: string
+    description: "A classe do processo"

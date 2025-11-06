@@ -18,7 +18,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: "../schemas/TermoPublicacao.yaml"
+            $ref: ../../schemas/v1_cases/TermoPublicacao.yaml
   "400":
     description: "Bad Request"
     content:

@@ -27,7 +27,7 @@ responses:
         schema:
           type: array
           items: 
-            $ref: "../schemas/DTOTituloAgendaResponse.yaml"
+            $ref: "../../schemas/v1_cases/DTOTituloAgendaResponse.yaml"
   "400":
     description: "Bad Request"
     content:

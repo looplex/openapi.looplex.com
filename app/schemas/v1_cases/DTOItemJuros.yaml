@@ -1,0 +1,16 @@
+title: DTOItemJuros
+type: object
+properties:
+  Taxa:
+    type: number
+  Periodo:
+    $ref: ../../enums/v1_cases/PeriodoTaxaJuros.yaml
+  isProRata:
+    type: boolean
+  Capitalizacao:
+    $ref: ../../enums/v1_cases/TipoCapitalizacaoJuros.yaml
+  ApartirDe:
+    type: string
+    example: "2022-06-01T12:00:00"
+  PeriodoText:
+    type: string
