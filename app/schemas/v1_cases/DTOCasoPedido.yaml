@@ -1,0 +1,77 @@
+title: DTOCasoPedido
+type: object
+properties:
+  NomeCliente:
+    type: string
+  TituloCaso:
+    type: string
+  NumeroInterno:
+    type: string
+  NumeroExterno:
+    type: string
+  ValorPrevisto:
+    type: number
+  ValorPrevistoMoeda:
+    type: string
+  ValorContingenciado:
+    type: number
+  ValorContingenciadoMoeda:
+    type: string
+  ValorDeferido:
+    type: number
+  ResultadoTutela:
+    $ref: ../../enums/v1_cases/ResultadoTutela.yaml
+  ValorDeferidoMoeda:
+    type: string
+  ExitoPerda:
+    type: string
+  Situacao:
+    $ref: ../../enums/v1_cases/eSituacaoDePedido.yaml
+  Justificativa:
+    type: string
+  IdCasoPedido:
+    type: integer
+  IdPedidoCausa:
+    type: integer
+  IdCaso:
+    type: integer
+  changeReason:
+    type: string
+  changeId:
+    type: integer
+  Envolvimento:
+    $ref: ../../enums/v1_cases/Polo.yaml
+  IsLiquido:
+    type: boolean
+  TipoRecorrencia:
+    $ref: ../../enums/v1_cases/TipoDeRecorrencia.yaml
+  IsLiminar:
+    type: boolean
+  IDMotivoDePedir:
+    type: integer
+  TipoReparacao:
+    $ref: ../../enums/v1_cases/TipoReparacao.yaml
+  MultaSucumbencia:
+    $ref: ../../enums/v1_cases/MultaSucumbencia.yaml
+  MultaSucumbenciaPorcentagem:
+    type: number
+  SituacaoJulgamento:
+    $ref: ../../enums/v1_cases/SituacaoJulgamento.yaml
+  TipoTutela:
+    $ref: ../../enums/v1_cases/TipoTutela.yaml
+  IDsParte: 
+    type: array
+    items: 
+      type: integer
+  DataConstituicao:
+    type: string
+    format: datetime
+  DataVencimento:
+    type: string
+    format: datetime
+  Risco:
+    $ref: ../../enums/v1_cases/ExpectativaReivindicacao.yaml
+  ValorContingenciaAtualizado:
+    type: number
+  ValorPrevistoAtualizado:
+    type: number

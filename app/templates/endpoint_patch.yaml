@@ -11,7 +11,7 @@ description: |
 
 operationId: {{OPERATION_ID}}
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
   - name: id
@@ -27,7 +27,7 @@ requestBody:
       schema:
         type: array
         items:
-          $ref: ../../common_schemas/PatchEntity.yaml
+          $ref: ../../schemas/common/PatchEntity.yaml
 responses:
   "204":
     description: "No Content"

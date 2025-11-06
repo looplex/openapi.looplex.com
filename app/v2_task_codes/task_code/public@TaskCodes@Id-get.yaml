@@ -8,7 +8,7 @@ description: "**Retrieve a TaskCode by id**"
 operationId: TaskCodes-Id-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
-  - $ref: ../../common_parameters/Id.yaml
+  - $ref: ../../schemas/common/Id.yaml
 
 responses: 
   "200":

@@ -1,0 +1,213 @@
+title: Dados de caso
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      status:
+        $ref: ../../enums/v2_case-management/SituacaoDoProcesso.yaml
+      type:
+        $ref: ../../enums/common/RamosJudicial.yaml
+      subType:
+        description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+        example: <subtipo_do_processo>
+        oneOf:
+          - $ref: ../../enums/v2_case-management/ClasseProcessoContrato.yaml
+          - $ref: ../../enums/v2_case-management/ClasseProcessoSocietario.yaml
+          - $ref: ../../enums/v2_case-management/ClasseProcesso.yaml
+      level:
+        type: integer
+        example: 1
+        description: "**Instância do caso**"
+      caseHierarchy:
+        type: array
+        items:
+          $ref: CaseHierarchyRetrieve.yaml
+      identities:
+        description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
+        type: array
+        items:
+          $ref: ../../schemas/common/CaseIdentityEntityRetrieve.yaml
+      title:
+        type: string
+        description: "**Nome Jurídico do caso**"
+        example: <titulo_do_processo>
+      summary:
+        type: string <nullable>
+        example: <observacoes_do_processo>
+        description: "**Breve descrição sobre o caso**"
+      locale:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Utilizado em casos consultivos**<br />
+          Local da Jurisdição de um caso, ou cumprimento da obrigação.
+      courtVenue:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Utilizado para casos contenciosos, judiciais ou não**<br />
+          Foro do caso, local onde o caso será julgado
+      caseProcedure:
+        description: >
+          **Rito ou procedimento do caso**<br/>
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+      phase:
+        type: string <nullable>
+        example: <fase_do_processo>
+        description: |
+          **Fase do caso**<br />
+          Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
+      legalCategories:
+        description: "**Indica os assuntos tratados no caso**"
+        type: array
+        items:
+          type: string
+          example: <natureza_do_processo>
+      retentionDate:
+        type: string <nullable>
+        format: datetime
+        example: <data_entrada_do_processo>
+        description: |
+          **Data de entrada** <br />
+          Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
+      startDate:
+        type: string <nullable>
+        format: datetime
+        example: <data_distribuicao_do_processo>
+        description: |
+          **Data de distribuição**<br />
+          Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
+      formationDate:
+        type: string <nullable>
+        format: datetime
+        example: <data_citacao_do_processo>
+        description: |
+          **Data de citação**<br />
+          Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
+          Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
+      resJudicataDate:
+        type: string <nullable>
+        format: datetime
+        example: <data_transito_julgado_do_processo>
+        description: |
+          **Data de trânsito em julgado**<br />
+          Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
+          A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
+      forecastedEndDate:
+        type: string <nullable>
+        format: datetime
+        example: <data_prevista_encerramento_do_processo>
+        description: |
+          **Data prevista para encerramento**<br />
+          Data estimada para a conclusão de um caso, transação ou disputa. <br />
+          Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
+      createdAt:
+        type: string <nullable>
+        format: datetime
+        example: <data_criacao_do_processo>
+        description: "**Data de criação do caso**"
+      createdBy:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: "**Usuário que criou o caso**"
+      updatedAt:
+        type: string <nullable>
+        example: <data_atualizacao_do_processo>
+        description: "**Atualizado em**"
+      updatedBy:
+        description: "**Atualizado por**"
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+      closedAt:
+        type: string <nullable>
+        format: datetime
+        example: <data_encerramento_do_processo>
+        description: "**Data de encerramento**"
+      closedBy:
+        description: "**Usuário que encerrou o caso**"
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+      group:
+        type: string
+        example: <area_do_processo>
+        description: |
+          **Área** <br />
+          Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
+      product:
+        type: array
+        items:
+          type: string
+          example: <produto_do_processo>
+        description: |
+          **Produto**<br />
+          Produto ou serviço do cliente que está relacionado ao caso
+      caseClient:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Cliente**<br />
+          Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
+      legalServiceAgreement:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Contrato**<br />
+          Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente
+      owner:
+        $ref: ./PersonEntityRetrieve.yaml
+        description: |
+          **Responsável**<br />
+          Advogado ou membro da equipe jurídica responsável pelo caso
+      coowners:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Corresponsáveis**<br />
+          Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
+      externalServiceProvider:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Escritório Responsável / Correspondente**<br />
+          Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
+      participants:
+        type: array
+        items:
+          oneOf:
+            - $ref: ParticipantNaturalPersonRetrieve.yaml
+            - $ref: ParticipantLegalPersonRetrieve.yaml
+        description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+      globalValues:
+        type: array
+        items:
+          $ref: GlobalValuesRetrieve.yaml
+      claims:
+        type: array
+        items:
+          $ref: CaseClaimEntityRetrieve.yaml
+      entries:
+        type: array
+        items:
+          $ref: EntryEntityRetrieve.yaml
+        description: "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
+      timesheet:
+        type: array
+        items:
+          $ref: TimesheetEntityRetrieve.yaml
+        description: "**Registro de horas trabalhadas**"
+      customFields:
+        type: object
+        example: {}
+        description: "**Case's custom fields**"
+      timeline:
+        type: array
+        items:
+          $ref: TimelineEntityRetrieve.yaml
+        description: |
+          **Linha do Tempo**<br />
+          Log de eventos
+      folder:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+      parentCase:
+        type: string
+        format: uuid
+        description: "**Identificador único do caso**"
+        example: <global_unique_identifier_ou_null>

@@ -1,0 +1,7 @@
+title: Person's type
+type: string
+example: <tipo_de_pessoa>
+description: |
+  **Person's type**<br />
+  NATURAL_PERSON<br />
+  LEGAL_PERSON

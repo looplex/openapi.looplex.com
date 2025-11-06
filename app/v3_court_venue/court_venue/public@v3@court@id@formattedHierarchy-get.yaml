@@ -4,8 +4,8 @@ summary: "Formatted hierarchy"
 description: "**Return the formatted hierarchy**"
 operationId: v3-court-id-formattedHierarchy-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Id.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Id.yaml
 responses:
   "200":
     description: "OK"

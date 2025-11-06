@@ -4,12 +4,12 @@ summary: "/LegalServiceAgreements"
 description: "**Fetch items paginated**"
 operationId: legalServiceAgreement-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml
-  - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
 responses:
   "200":
     description: "OK"
@@ -17,13 +17,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: '../../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: "../schemas/LegalServiceAgreementEntityQuery.yaml"
+                    $ref: ../../schemas/v2_case-management/LegalServiceAgreementEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

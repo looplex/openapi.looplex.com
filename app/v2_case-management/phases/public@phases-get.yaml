@@ -4,12 +4,12 @@ summary: "/Phases"
 description: "**Fetch items paginated**"
 operationId: phases-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml
-  - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
 responses:
   "200":
     description: "OK"
@@ -17,7 +17,7 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: '../../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:

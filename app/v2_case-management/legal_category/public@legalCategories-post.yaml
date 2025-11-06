@@ -6,14 +6,14 @@ description: |
   Item created's guid is returned in **Location header**
 operationId: legalCategories-post
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
 requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/LegalCategoryEntityWrite.yaml
+        $ref: ../../schemas/v2_case-management/LegalCategoryEntityWrite.yaml
 responses:
   "201":
     description: "Created"

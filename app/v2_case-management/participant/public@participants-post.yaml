@@ -6,16 +6,16 @@ description: |
   Item created's guid is returned in **Location header**
 operationId: participants-post
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
 requestBody:
   content:
     application/json:
       schema:
         oneOf:
-          - $ref: ../schemas/ParticipantNaturalPersonWrite.yaml
-          - $ref: ../schemas/ParticipantLegalPersonWrite.yaml
+          - $ref: ../../schemas/v2_case-management/ParticipantNaturalPersonWrite.yaml
+          - $ref: ../../schemas/v2_case-management/ParticipantLegalPersonWrite.yaml
 responses:
   "201":
     description: "Created"

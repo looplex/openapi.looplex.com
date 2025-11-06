@@ -5,8 +5,8 @@ summary: "Lista os termos ativos (cadastrados)"
 operationId: api-publicacao-termos_ativos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses
 responses:
@@ -18,7 +18,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: "../schemas/TermoPublicacao.yaml"
+            $ref: ../../schemas/v1_cases/TermoPublicacao.yaml
   "400":
     description: "Bad Request"
     content:

@@ -7,9 +7,9 @@ description: |
 operationId: tasks-task_id-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../common_parameters/Tenant.yaml
-  - $ref: ../common_parameters/BearerToken.yaml
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/common/Tenant.yaml
+  - $ref: ../parameters/common/BearerToken.yaml
   - name: task_id
     in: path
     required: true
@@ -24,7 +24,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../common_schemas/TaskEntity.yaml"
+          $ref: "../schemas/common/TaskEntity.yaml"
   "500":
     description: "Internal Server Error"
     content:

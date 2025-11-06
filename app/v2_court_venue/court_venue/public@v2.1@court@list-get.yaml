@@ -3,7 +3,7 @@ tags:
 summary: "List court venue by its identifiers"
 operationId: v2.1-court-list-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: ids
     in: query
     required: true
@@ -24,16 +24,16 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml
             - allOf:
-              - $ref: ../../common_schemas/ListResponse.yaml
+              - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
                   resources:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml

@@ -1,0 +1,36 @@
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: Looplex Tasks Management
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    API de Tarefas v2
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/case-management"
+    description: "Tasks Management Server"
+paths:
+  # Task
+  /tasks/:task_id:
+    get:
+      $ref: public@tasks@task_id-get.yaml
+    patch:
+      $ref: public@tasks-patch.yaml
+  /tasks:
+    get:
+      $ref: public@tasks-get.yaml
+    post:
+      $ref: public@tasks-post.yaml

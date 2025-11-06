@@ -9,17 +9,17 @@ description: |
 
 operationId: task_templates-post
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
 requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../app/v2_task_template/schemas/TaskTemplateEntityWrite.yaml
+        $ref: ../../schemas/v2_task_template/TaskTemplateEntity.yaml
 responses:
   "201":
-    description: "Created"  
+    description: "Created"
   "400":
     description: "Bad Request"  
   "401":
@@ -31,4 +31,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          $ref: ../../scim/SCIMError.yaml

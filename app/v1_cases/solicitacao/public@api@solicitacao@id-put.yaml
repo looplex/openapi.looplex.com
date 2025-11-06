@@ -6,8 +6,8 @@ description: "Edita solicitação"
 operationId: api-solicitacao-id-put
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: id
     in: path
     required: true
@@ -18,7 +18,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../schemas/DTOSolicitacao.yaml
+        $ref: ../../schemas/v1_cases/DTOSolicitacao.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"

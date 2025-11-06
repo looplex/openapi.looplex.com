@@ -4,7 +4,7 @@ summary: "List procedures by filters"
 description: "**List procedures by filters**"
 operationId: v2.1-procedures-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
   - name: nodeUuid
     in: query
@@ -39,7 +39,7 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: array
@@ -63,9 +63,9 @@ responses:
                               children:
                                 type: array
                                 items:
-                                  $ref: ../schemas/Procedure_v2_1.yaml
+                                  $ref: ../../schemas/v2_court_venue/Procedure_v2_1.yaml
             - allOf:
-              - $ref: ../../common_schemas/ListResponse.yaml
+              - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
                   resources:
                     type: array
@@ -89,7 +89,7 @@ responses:
                               children:
                                 type: array
                                 items:
-                                  $ref: ../schemas/Procedure_v2_1.yaml
+                                  $ref: ../../schemas/v2_court_venue/Procedure_v2_1.yaml
   "500":
     description: "Internal Server Error"
     content:

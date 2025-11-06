@@ -1,0 +1,32 @@
+title: Valores globais do caso por polo
+type: object
+properties: 
+  AgainstPosition:
+    $ref: ../../enums/v2_case-management/Position.yaml
+    description: "**Contra polo ativo, passivo, terceiro...**"
+  Perspective:
+    $ref: ../../enums/v2_case-management/TipoExpectativaReivindicacao.yaml
+  RiskClassification:
+    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
+  Currency:
+    $ref: ../../enums/v2_case-management/Moeda.yaml
+    description: "**Moeda usada para os valores do caso**"
+  CaseDeclaredValue:
+    type: number <nullable>
+    description: |
+      **Valor da causa**<br />
+      Valor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação
+    example: 0
+  CaseForeseenValue:
+    type: number <nullable>
+    description: |
+      **Valor previsto**<br />
+      Valor estimado para a resolução do caso, transação ou disputa
+    example: 0
+  CaseContingencyValue:
+    type: number <nullable>
+    description: |
+      **Valor de contingência**<br />
+      Valor de provisionamento vinculado a perspectiva e risco do caso. <br />
+      Para os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar
+    example: 0

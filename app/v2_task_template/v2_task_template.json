@@ -59,7 +59,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
+                  "$ref": "#/components/schemas/TaskTemplateEntity"
                 }
               }
             }
@@ -127,7 +127,7 @@
                         "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/TaskTemplateEntityQuery"
+                            "$ref": "#/components/schemas/TaskTemplateEntity"
                           }
                         }
                       }
@@ -177,7 +177,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskTemplateEntityWrite"
+                "$ref": "#/components/schemas/TaskTemplateEntity"
               }
             }
           }
@@ -351,61 +351,6 @@
       }
     },
     "schemas": {
-      "MetaRetrieve": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "resourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "created": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "lastModified": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "location": {
-            "type": "string <nullable>",
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceRetrieve": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "externalId": {
-            "example": "<external_id>",
-            "type": "string <nullable>",
-            "description": "**External identifier**"
-          },
-          "meta": {
-            "description": "**Entity's information**",
-            "$ref": "#/components/schemas/MetaRetrieve"
-          }
-        }
-      },
       "TipoEventoDeCobranca": {
         "title": "TipoEventoDeCobranca",
         "type": "string",
@@ -417,301 +362,6 @@
         "example": "BUILDER",
         "type": "string",
         "description": "BUILDER <br/>\nASSEMBLER\n"
-      },
-      "TaskTemplateEntityRetrieve": {
-        "title": "TaskTemplateEntity",
-        "description": null,
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "properties": {
-              "title": {
-                "type": "string"
-              },
-              "eventType": {
-                "$ref": "#/components/schemas/TipoEventoDeCobranca"
-              },
-              "status": {
-                "description": "ACTIVE<br/>INACTIVE",
-                "type": "string"
-              },
-              "deadlineForCompletion": {
-                "description": "Prazo para conclusão (em dias)",
-                "type": "integer"
-              },
-              "consecutiveDays": {
-                "type": "boolean"
-              },
-              "timeToExecution": {
-                "description": "Tempo para execução (em horas)",
-                "type": "integer"
-              },
-              "documentLinkType": {
-                "$ref": "#/components/schemas/TipoVinculoComDocumento"
-              },
-              "documentIdentifier": {
-                "description": "Link do documento",
-                "type": "string"
-              },
-              "caseTypes": {
-                "example": [
-                  "JUDICIAL_ESTADUAL",
-                  "CONTRATO"
-                ],
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "subjectMatter": {
-                "type": "string"
-              },
-              "customFields": {
-                "type": "object"
-              },
-              "children": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
-                }
-              },
-              "parentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "description": {
-                "type": "string"
-              },
-              "canonicalSubjectMatter": {
-                "type": "string"
-              },
-              "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
-              },
-              "updatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
-              }
-            }
-          }
-        ]
-      },
-      "SimpleEntityRetrieve": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "name": {
-            "type": "string <nullable>",
-            "example": "<nome_do_item>",
-            "description": "**The object name**"
-          }
-        }
-      },
-      "SCIMtypeError": {
-        "title": "SCIM Type error",
-        "type": "string <nullable>",
-        "example": "invalidFilter",
-        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
-      },
-      "SCIMError": {
-        "title": "SCIM Error",
-        "type": "object",
-        "properties": {
-          "scimType": {
-            "$ref": "#/components/schemas/SCIMtypeError"
-          },
-          "detail": {
-            "type": "string",
-            "description": "**The error message**",
-            "example": "The filter is invalid"
-          },
-          "status": {
-            "type": "string",
-            "description": "**The HTTP Status Code error name**",
-            "example": "InternalServerError"
-          }
-        }
-      },
-      "ListResponse": {
-        "title": "Scim",
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
-          },
-          "startIndex": {
-            "description": "**Index of search**",
-            "type": "integer",
-            "example": 1
-          },
-          "itemsPerPage": {
-            "description": "**Total count of items to return**",
-            "type": "integer",
-            "example": 12
-          }
-        }
-      },
-      "MetaQuery": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "ResourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "Created": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "LastModified": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "Location": {
-            "type": "string <nullable>",
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "Version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceQuery": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "ExternalId": {
-            "example": "<external_id>",
-            "type": "string <nullable>",
-            "description": "**External identifier**"
-          },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/MetaQuery"
-          }
-        }
-      },
-      "TaskTemplateEntityQuery": {
-        "title": "TaskTemplateEntity",
-        "description": null,
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "properties": {
-              "Title": {
-                "type": "string"
-              },
-              "EventType": {
-                "$ref": "#/components/schemas/TipoEventoDeCobranca"
-              },
-              "Status": {
-                "description": "ACTIVE<br/>INACTIVE",
-                "type": "string"
-              },
-              "DeadlineForCompletion": {
-                "description": "Prazo para conclusão (em dias)",
-                "type": "integer"
-              },
-              "ConsecutiveDays": {
-                "type": "boolean"
-              },
-              "TimeToExecution": {
-                "description": "Tempo para execução (em horas)",
-                "type": "integer"
-              },
-              "DocumentLinkType": {
-                "$ref": "#/components/schemas/TipoVinculoComDocumento"
-              },
-              "DocumentIdentifier": {
-                "description": "Link do documento",
-                "type": "string"
-              },
-              "CaseTypes": {
-                "example": [
-                  "JUDICIAL_ESTADUAL",
-                  "CONTRATO"
-                ],
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "SubjectMatter": {
-                "type": "string"
-              },
-              "CustomFields": {
-                "type": "object"
-              },
-              "Children": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityQuery"
-                }
-              },
-              "ParentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "CanonicalSubjectMatter": {
-                "type": "string"
-              },
-              "CreatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery"
-              },
-              "UpdatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery"
-              }
-            }
-          }
-        ]
-      },
-      "SimpleEntityQuery": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Name": {
-            "type": "string <nullable>",
-            "example": "<nome_do_item>",
-            "description": "**The object name**"
-          }
-        }
       },
       "TaskTemplateEntityWrite": {
         "title": "TaskTemplateEntity",
@@ -767,6 +417,109 @@
             "items": {
               "$ref": "#/components/schemas/TaskTemplateEntityWrite"
             }
+          }
+        }
+      },
+      "TaskTemplateEntity": {
+        "title": "TaskTemplateEntity",
+        "description": null,
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "EventType": {
+            "$ref": "#/components/schemas/TipoEventoDeCobranca"
+          },
+          "Status": {
+            "description": "ACTIVE<br/>INACTIVE",
+            "type": "string"
+          },
+          "DeadlineForCompletion": {
+            "description": "Prazo para conclusão (em dias)",
+            "type": "integer"
+          },
+          "ConsecutiveDays": {
+            "type": "boolean"
+          },
+          "TimeToExecution": {
+            "description": "Tempo para execução (em horas)",
+            "type": "integer"
+          },
+          "DocumentLinkType": {
+            "$ref": "#/components/schemas/TipoVinculoComDocumento"
+          },
+          "DocumentIdentifier": {
+            "description": "Link do documento",
+            "type": "string"
+          },
+          "CaseTypes": {
+            "example": [
+              "JUDICIAL_ESTADUAL",
+              "CONTRATO"
+            ],
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "SubjectMatter": {
+            "type": "string"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
+            }
+          }
+        }
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "$ref": "#/components/schemas/SCIMtypeError"
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "<exception_message>"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      },
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
           }
         }
       },

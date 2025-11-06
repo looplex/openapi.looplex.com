@@ -1,0 +1,76 @@
+# API 'Looplex_Content.yaml'
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: Looplex Looplex Content
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    API do content (M-Files)
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/TODO"
+    description: "Looplex Content Server"
+paths:
+  /viewhierarchy:
+   get:
+      $ref: content_views\public@viewhierarchy-get.yaml
+  /views/:viewID/objects:
+   get:
+      $ref: content_views\public@views@viewID@objects-get.yaml
+  /hubshareuser/info:
+   get:
+      $ref: content_hubshare_users\public@hubshareuser@info-get.yaml
+  /hubshareuser/link:
+    get:
+      $ref: content_hubshare_users\public@hubshareuser@link-get.yaml
+  /hubshareuser/:email/status:
+    put:
+      $ref: content_hubshare_users\public@api@hubshare@email@status-put.yaml
+  /hubshareuser:
+    post:
+      $ref: content_hubshare_users\public@hubshareuser-post.yaml
+  /Documents:
+    post:
+      $ref: content_documents\public@Documents-post.yaml
+    get:
+      $ref: content_documents\public@Documents-get.yaml
+  /cases/:caseId/Documents:
+    get:
+      $ref: content_documents\public@cases@caseID@documents-get.yaml
+    post:
+      $ref: content_documents\public@cases@caseID@Documents-post.yaml 
+  /Documents/:id:
+    delete:
+      $ref: content_documents\public@Documents@id-delete.yaml
+    get:
+      $ref: content_documents\public@Documents@id-get.yaml
+    patch:
+      $ref: content_documents\public@Documents@id-patch.yaml
+  /Documents/:id/check-in:
+    put:
+      $ref: content_documents\public@Documents@id@check@in-put.yaml
+  /Documents/:id/check-out:
+    put:
+      $ref: content_documents\public@Documents@id@check@out-put.yaml
+  /Cases:
+    post:
+      $ref: content_cases\public@Cases-post.yaml
+    patch: 
+      $ref: content_cases\public@Cases-patch.yaml
+    delete: 
+      $ref: content_cases\public@Cases-delete.yaml
+      
+      

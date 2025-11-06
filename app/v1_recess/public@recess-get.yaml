@@ -5,7 +5,7 @@ description: "Lista dias de feriados por intervalo de data e região"
 operationId: recess-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
   - name: startDate
     in: query
     required: true
@@ -33,7 +33,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: ./schemas/DTORecess.yaml
+            $ref: ../schemas/v1_recess/DTORecess.yaml
   "400":
     description: "BadRequest"
     content:

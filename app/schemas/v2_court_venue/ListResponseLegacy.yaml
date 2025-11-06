@@ -1,0 +1,7 @@
+title: Legacy
+type: object
+properties:
+  respostaAPI:
+    type: string
+  tipoResposta:
+    $ref: ../../enums/v2_court_venue/TipoRespostaRequisicao.yaml

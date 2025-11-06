@@ -1,0 +1,20 @@
+title: CaseGroupEntity
+description: Case groups
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      name:
+        description: "**Case group name**"
+        example: <case_group_name>
+        type: string
+      status:
+        $ref: ../../enums/v2_case-management/SituacaoDaArea.yaml
+      isProductive:
+        type: boolean
+        description: "**Indicate if the group is productive**"
+        example: true
+      customFields:
+        description: "**Custom fields for the case group**"
+        type: object
+        example: {}

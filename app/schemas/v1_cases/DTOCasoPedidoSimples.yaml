@@ -1,0 +1,80 @@
+title: DTOCasoPedidoSimples
+type: object
+properties:
+  IdProcessoExpectativaReivindicacao:
+    type: integer
+    example: 0
+  IdPedidoCausa:
+    type: integer
+    description: "O identificador do pedido a ser utilizado"
+    example: 1
+  Nome:
+    type: string
+    example: "Nome do pedido"
+  IDMotivoDePedir:
+    type: integer
+  MotivoDePedir:
+    type: string
+    description: "O nome do motivo de pedir"
+    example: "Nome do motivo de pedir"
+  Justificativa:
+    type: string
+    example: "Descrição da justificativa"
+  Risco:
+    $ref: ../../enums/v1_cases/ExpectativaReivindicacao.yaml
+  Situacao:     
+    $ref: ../../enums/v1_cases/eSituacaoDePedido.yaml
+  Envolvimento: 
+    $ref: ../../enums/v1_cases/Polo.yaml
+  TipoRecorrencia: 
+    $ref: ../../enums/v1_cases/TipoDeRecorrencia.yaml
+  TipoReparacao:
+      $ref: ../../enums/v1_cases/TipoReparacao.yaml  
+  ValorPrevisto:
+    type: number
+    example: 10
+  MoedaValorPrevisto:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  ValorPrevistoAtualizado:
+    type: number
+  ValorContingencia:
+    type: number
+    example: 10
+  MoedaValorContingenciado:
+    $ref: ../../enums/v1_cases/Moeda.yaml
+  ValorContingenciaAtualizado:
+    type: number
+  DataConstituicao:
+    type: string
+    example: "2024-04-01T12:30:00.000Z"
+  DataVencimento:
+    type: string
+    example: "2024-04-01T12:30:00.000Z"
+  IsLiquido:
+    type: boolean
+    example: false
+  IsLiminar:
+    type: boolean
+    example: false
+  IDsParte:
+    type: array
+    example: []
+    items:
+      type: integer
+  ValorDeferido:
+    type: number  
+  MultaSucumbencia:
+    $ref: ../../enums/v1_cases/MultaSucumbencia.yaml
+  MultaSucumbenciaPorcentagem:
+    type: number
+  SituacaoJulgamento:
+    $ref: ../../enums/v1_cases/SituacaoJulgamento.yaml
+  TipoTutela:
+    $ref: ../../enums/v1_cases/TipoTutela.yaml
+  ResultadoTutela:
+    $ref: ../../enums/v1_cases/ResultadoTutela.yaml
+  changeReason: 
+    type: string
+  changeId:
+    type: integer
+  

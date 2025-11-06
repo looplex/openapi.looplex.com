@@ -1,0 +1,57 @@
+title: Funcionário
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: string
+        description: "**Employee's name**"
+        example: <nome>
+      NickName:
+        type: string <nullable>
+        description: "**Employee's nickname**"
+        example: <apelido>
+      Dob:
+        type: string <nullable>
+        format: datetime
+        description: "**Employee's date of birth**"
+        example: <data_de_nascimento>
+      Gender:
+        type: string <nullable>
+        description: "**Employee's gender**"
+        example: <genero>
+      Identities:
+        type: array
+        items:
+          $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
+        description: "**Employee's identities**"
+      Nationality:
+        type: string <nullable>
+        description: "**Employee's nationality**"
+        example: <nacionalidade>
+      MaritalStatus:
+        $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+      Occupation:
+        type: string <nullable>
+        description: "**Employee's occupation**"
+        example: <profissao>
+      Role:
+        $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+      Status:
+        $ref: ../../enums/v2_case-management/PersonStatus.yaml
+      Addresses:
+        type: array
+        items:
+          $ref: AddressEntityQuery.yaml
+        description: "**Employee's addresses**"
+      Emails:
+        type: array
+        items:
+          $ref: EmailEntityQuery.yaml
+        description: "**Employee's emails**"
+      PhoneNumbers:
+        type: array
+        items:
+          $ref: PhoneNumberEntityQuery.yaml
+        description: "**Employee's phone numbers**"

@@ -1,0 +1,61 @@
+title: DTOProcessoDecisao
+type: object
+properties:
+  Valores:
+    type: array
+    items:
+      $ref: DTOProcessoDecisaoValor.yaml
+  inDeEncerramento:
+    type: boolean
+  cdParteJuiz:
+    type: integer
+  cdParteAdvAcusacao:
+    type: integer
+  cdParteAdvDefesa:
+    type: integer
+  Observacao:
+    type: string
+  vlDeferido:
+    type: number
+  DataOcorrencia:
+    type: string
+  IdCaso:
+    type: integer
+  Decisao:
+    type: integer
+  nrExitoPerda:
+    type: integer
+  IdCasoDecisao:
+    type: integer
+  IDTipoDecisao:
+    type: integer
+  IDTipoJulgamento:
+    type: integer
+  IDConteudoJulgamento:
+    type: integer
+  IDDecisaoAnterior:
+    type: integer
+  Prequestionamento:
+    type: boolean
+  OutrasDeterminacoes:
+    type: string
+  MotivoExtincao:
+     $ref: ../../enums/v1_cases/MotivoDeExtincao.yaml  
+  ValoresPrevistosASeremAlterados:
+    type: array
+    items:
+      $ref: DTOValorPrevistoDePedido.yaml
+  QuestoesProcessuais:
+    description: "Precisa que AlteraQuestoesProcessuais seja true para ter efeito"
+    type: array
+    items:
+      $ref: DTORelacaoQuestaoDecisao.yaml    
+  AlteraQuestoesProcessuais:
+    description: "se true utiliza o campo QuestoesProcessuais para atualizar as relacoes da decisao com as questoes processuais"
+    type: boolean
+  MultasSucumbencias:
+    type: array
+    items:
+      $ref: DTOMultaSucumbencia.yaml
+    
+     

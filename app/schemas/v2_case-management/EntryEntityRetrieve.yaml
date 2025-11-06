@@ -1,0 +1,50 @@
+title: Dados de andamento
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      date:
+        type: string
+        format: datetime
+        example: <data_do_andamento>
+        description: "**Data do andamento**"
+      classification:
+        type: string <nullable>
+        description: "**Classificação do andamento**"
+        example: <classificacao_do_andamento>
+      description:
+        type: string
+        example: <descricao_do_andamento>
+        description: "**Texto do andamento**"
+      isInternal:
+        type: boolean
+        example: false
+        description: "**Indica se o andamento é de uso interno**"
+      serviceOfProcess:
+        type: string <nullable>
+        format: uuid
+        description: "**Identificador da publicação que criou esse andamento (se houver)**"
+        example: <unique_identifier_da_publicacao>
+      createdAt:
+        type: string
+        format: datetime
+        example: <data_criacao_do_andamento>
+        description: "**Entry creation date**"
+      createdBy:
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+      classificationType:
+        $ref: ../../enums/v2_case-management/TipoClassificacaoAutomatica.yaml
+      caseId:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"
+        example: <unique_identifier_do_processo>
+      customFields:
+        type: object
+        example: {}
+        description: "**Entry's custom fields**"
+      identities:
+        type: array
+        items:
+          $ref: ../../schemas/common/LegacyIdentityEntityRetrieve.yaml

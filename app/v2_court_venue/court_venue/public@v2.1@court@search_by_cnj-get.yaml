@@ -4,7 +4,7 @@ summary: "Search court venue by CNJ"
 description: "**Search court venue by CNJ**"
 operationId: v2.1-court-search_by_cnj-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
   - name: cnj
     in: query
@@ -26,19 +26,19 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml
             - allOf:
-              - $ref: ../../common_schemas/ListResponse.yaml
+              - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
                   resources:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml
   "400":
     description: "Bad Request"
   "401":

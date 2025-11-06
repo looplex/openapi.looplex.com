@@ -8,9 +8,9 @@ description: "**Fetch items paginated**"
 operationId: Regions-get
 parameters:
   - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml
-  - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../schemas/common/StartIndex.yaml
+  - $ref: ../../schemas/common/Count.yaml
+  - $ref: ../../schemas/common/Filter.yaml
 
   - name: CountryId
     in: query    

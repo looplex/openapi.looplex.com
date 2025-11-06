@@ -9,9 +9,9 @@ description: ""
 
 operationId: Documents-documentID-patch
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
   - name: id
     in: path
     required: true
@@ -25,7 +25,7 @@ requestBody:
       schema:
         type: array
         items:
-          $ref: ../../common_schemas/PatchEntity.yaml
+          $ref: ../../schemas/common/PatchEntity.yaml
 responses:
   "200":
     description: "OK"

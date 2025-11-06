@@ -1,0 +1,25 @@
+title: DTOItemPublicacao
+type: object
+properties:
+  IDItemPublicacao:
+    type: integer
+  DataDePublicacao:
+    type: string
+  Status:
+    $ref: ../../enums/v1_cases/StatusItemPublicacao.yaml
+  Text:
+    type: string
+  IDProcesso:
+    type: integer
+  DataDeDisponibilizacao:
+    type: string
+  IDAutor:
+    type: integer
+  Situacao:
+    $ref: ../../enums/v1_cases/SituacaoDeAndamentoPublicacao.yaml
+  TextContinuacao:
+    type: string
+  IDAndamento:
+    type: integer
+  TipoDePush:
+    $ref: ../../enums/v1_cases/TipoDePush.yaml

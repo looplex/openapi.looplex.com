@@ -1,0 +1,59 @@
+title: Dados de Parte
+type: object
+properties:
+  caseId: 
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: |
+      **Identificador único do caso**<br/>
+      `Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`
+  name:
+    type: string
+    example: <nome_da_parte>
+    description: "**Participant's name**"
+  nickname:
+    type: string <nullable>
+    example: <apelido_da_parte>
+    description: "**Apelido**"
+  isMainParty:
+    type: bool
+    example: false
+    description: "**Indica se é a parte principal**"
+  represents:
+    type: array
+    items:
+      oneOf:
+        - type: string (document)
+          example: <documento_da_parte_representada>
+          description: "**Documento da parte representada**"
+        - type: string (unique identifier)
+          format: uuid
+          description: "**Unique identifier da parte representada**"
+  lawyerOffice:
+    type: string <nullable>
+    description: "**Escritório do advogado (se houver)**"
+    example: <nome_do_escritorio>
+  nature:
+    $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+  position:
+    example: OTHER
+    $ref: ../../enums/v2_case-management/Position.yaml
+  emails:
+    description: "**Emails**"
+    type: array
+    items:
+      $ref: EmailEntityWrite.yaml
+  identities:
+    description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+    type: array
+    items:
+      oneOf:
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityWrite.yaml
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
+  role:
+    $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+  customFields:
+    type: object
+    example: {}
+    description: "**Participant's custom fields**"

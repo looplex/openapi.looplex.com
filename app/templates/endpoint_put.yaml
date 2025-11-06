@@ -9,7 +9,7 @@ description: "**Put {{TAG_NAME}}**"
 
 operationId: {{OPERATION_ID}}
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
   - name: id

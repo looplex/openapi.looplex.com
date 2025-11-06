@@ -7,8 +7,8 @@ description: "**As propriedades que podem ser editadas são as listadas na respo
 operationId: api-casos-edit-put
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: id
     in: query
     description: "O identificador do caso"
@@ -22,7 +22,7 @@ requestBody:
       schema:
         type: array
         items: 
-          $ref: ../schemas/DTOObjetoNomeValor.yaml
+          $ref: ../../schemas/v1_cases/DTOObjetoNomeValor.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
@@ -31,28 +31,28 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/DTOCasoCompleto.yaml
+          $ref: ../../schemas/v1_cases/DTOCasoCompleto.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
