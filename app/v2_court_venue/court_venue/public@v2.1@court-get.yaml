@@ -3,7 +3,7 @@ tags:
 summary: "Paginated list of court venue by level"
 operationId: v2.1-court-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: level
     in: query
     required: true

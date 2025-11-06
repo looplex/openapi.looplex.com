@@ -4,7 +4,7 @@ summary: "Formatted hierarchy"
 description: "Get the formatted hierarchy from this node"
 operationId: v2.1-court-id-formatted-hierarchy-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
   - name: id
     in: path

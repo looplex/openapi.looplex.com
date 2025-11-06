@@ -5,8 +5,8 @@ summary: "Obtém movimentação da garantia por identificador da garantia e iden
 operationId: api-casos-Garantia-IDGarantia-ObtemMovimentacao-IDGarantiaMovimentacao-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDGarantia
     in: path
     description: "O identificador da garantia"

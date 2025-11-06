@@ -4,7 +4,7 @@ summary: "Court Venue by level (paginated)"
 description: "**Court Venue by level (paginated)**"
 operationId: v3-court-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/Page.yaml
   - $ref: ../parameters/PerPage.yaml
   - name: level
@@ -20,13 +20,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../schemas/common/ListResponse.yaml'
+            - $ref: ../../schemas/common/ListResponse.yaml
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/ForoEntity_v3.yaml
+                    $ref: ../../schemas/v3_court_venue/ForoEntity_v3.yaml
   "400":
     description: "Bad Request"
   "401":

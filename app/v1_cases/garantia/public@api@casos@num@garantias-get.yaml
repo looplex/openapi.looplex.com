@@ -5,8 +5,8 @@ summary: "Lista garantias por identificador do caso, numero interno ou numero ex
 operationId: api-casos-num-garantias-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query
     description: "`Default: 0`<br />O numero interno do caso"

@@ -4,7 +4,7 @@ properties:
   Title:
     type: string
   EventType:
-    $ref: ../enums/TipoEventoDeCobranca.yaml
+    $ref: ../../enums/v2_task_template/TipoEventoDeCobranca.yaml
   Status:
     description: "ACTIVE<br/>INACTIVE"
     type: string
@@ -17,14 +17,14 @@ properties:
     description: "Tempo para execução (em horas)"    
     type: integer
   DocumentLinkType:
-    $ref: ../enums/TipoVinculoComDocumento.yaml
+    $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
   DocumentIdentifier:
     description: "Link do documento"
     type: string
   CaseType:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description: 
-      $ref: ../v2_task_template.yaml#/components/x-descriptions/RamosJudicial
+      $ref: ../../v2_task_template/v2_task_template.yaml#/components/x-descriptions/RamosJudicial
     type: array
     items:
       type: string

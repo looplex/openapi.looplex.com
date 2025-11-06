@@ -3,7 +3,7 @@ tags:
 summary: "List court venue by its identifiers"
 operationId: v2.1-court-list-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: ids
     in: query
     required: true

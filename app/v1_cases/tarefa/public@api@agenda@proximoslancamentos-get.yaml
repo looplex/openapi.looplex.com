@@ -5,8 +5,8 @@ summary: "Lista próximos compromissos por profissional"
 operationId: api-agenda-proximoslancamentos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: data
     in: query
     description: "A data para pesquisa"

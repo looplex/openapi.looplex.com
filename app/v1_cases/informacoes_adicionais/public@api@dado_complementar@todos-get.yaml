@@ -5,8 +5,8 @@ summary: "Lista todas as Informações adicionais"
 operationId: api-dado_complementar-todos
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses
 responses:

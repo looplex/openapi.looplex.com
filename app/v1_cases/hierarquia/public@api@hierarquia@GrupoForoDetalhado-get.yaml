@@ -3,8 +3,8 @@ tags:
 summary: "Obtém as informações do grupo foro"
 operationId: api-hierarquia-GrupoForoDetalhado
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: cdGrupoForo
     in: query
     required: true

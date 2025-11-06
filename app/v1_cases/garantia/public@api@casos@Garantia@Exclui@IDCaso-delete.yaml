@@ -5,8 +5,8 @@ summary: "Exclui garantia do caso"
 operationId: api-casos-Garantia-Exclui-IDCaso-delete
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path
     description: "O identificador do caso"

@@ -5,8 +5,8 @@ summary: "Obtém cliente por identificador"
 operationId: api-clientes-ficha-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: idCliente
     in: query
     description: "O identificador do cliente"

@@ -5,8 +5,8 @@ summary: "Pesquisa de partes"
 operationId: api-Partes-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: nome
     in: query
     description: "O texto para pesquisa<br />`Mínimo de 4 caracteres`"

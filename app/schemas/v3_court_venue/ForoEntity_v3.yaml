@@ -4,7 +4,7 @@ allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - properties:
       status:
-        $ref: ../enums/Status.yaml
+        $ref: ../../enums/v3_court_venue/Status.yaml
       level:
         type: integer
         description: "**The level of this item**"

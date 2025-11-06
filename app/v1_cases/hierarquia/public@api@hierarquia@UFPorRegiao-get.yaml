@@ -4,8 +4,8 @@ summary: "Lista as UFs de acordo com a região e ramo judicial"
 
 operationId: statesByRegion
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: regiao
     in: query
     required: true

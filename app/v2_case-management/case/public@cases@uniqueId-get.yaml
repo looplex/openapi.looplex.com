@@ -6,10 +6,10 @@ description: |
   **Retrieve information about a case**
 operationId: cases-case_id-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/Id.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
 responses:
   "200":
     description: "OK"

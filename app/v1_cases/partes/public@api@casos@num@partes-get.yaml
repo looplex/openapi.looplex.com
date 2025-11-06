@@ -5,8 +5,8 @@ summary: "Lista partes por do caso por identificador do caso, numero interno ou 
 operationId: api-casos-num-partes-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query
     description: "O numero interno do caso<br />`Default: 0`"

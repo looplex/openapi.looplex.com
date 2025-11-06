@@ -4,8 +4,8 @@ summary: Categorias de preço do escritório
 description: Retorna um array com as categorias de preço do escritório
 operationId: api-escritorios-IdEscritorio-categoriaspreco
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IdEscritorio
     in: path
     required: true

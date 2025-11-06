@@ -6,8 +6,8 @@ summary: "Lista Informações adicionais por caso, numero interno ou numero exte
 operationId: api-casos-num-dadoscomplementares
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query
     description: "O numero interno do processo. `(Default: 0)`"

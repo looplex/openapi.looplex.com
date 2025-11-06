@@ -7,7 +7,7 @@ operationId: api-logon
 # Parâmetros da requisição
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/json:

@@ -5,8 +5,8 @@ summary: "Exclui despesa"
 operationId: api-despesas-exclui-id-delete
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: id
     in: path
     description: "O identificador da despesa"

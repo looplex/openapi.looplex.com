@@ -4,7 +4,7 @@ summary: "Hierarchy by node"
 description: "**List hierarchy by node**"
 operationId: v2.1-court-id-hierarchy-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
   - name: id
     in: path

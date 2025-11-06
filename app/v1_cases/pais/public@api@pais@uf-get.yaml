@@ -4,8 +4,8 @@ summary: Estados
 description: Obtém a lista de estados do Brasil
 operationId: statesOfBrazil
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 responses:
   "200":
     description: "OK"

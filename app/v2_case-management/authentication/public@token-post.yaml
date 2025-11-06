@@ -7,7 +7,7 @@ description: |
 operationId: token-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/x-www-form-urlencoded:

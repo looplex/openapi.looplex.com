@@ -5,8 +5,8 @@ summary: "Lista Tipo Decisão"
 operationId: api-tipo_decisao-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: query
     description: "Id do caso, o endpoint verifica em que instancia está o caso e lista os tipos decisão de acordo"

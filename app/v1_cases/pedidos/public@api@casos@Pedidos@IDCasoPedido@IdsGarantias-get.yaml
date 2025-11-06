@@ -5,8 +5,8 @@ summary: "Lista identificadores de garantias dos pedidos"
 operationId: api-casos-Pedidos-IDCasoPedido-IdsGarantias-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCasoPedido
     in: path
     required: true

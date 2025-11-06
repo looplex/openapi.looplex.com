@@ -5,8 +5,8 @@ summary: "Lista funcionários por situação (ativo / inativo)"
 operationId: api-funcionarios-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: ativos
     in: query
     description: "`Default: true`<br />Listar funcionários ativos?"

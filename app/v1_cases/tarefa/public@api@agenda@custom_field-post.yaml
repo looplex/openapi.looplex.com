@@ -6,8 +6,8 @@ description: "Esse endpoint é `exclusivo para criar ou atualizar valores de cus
 operationId: api-agenda-custom_field-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: client_id
     in: header
     description: "O identificador do client que está efetuando a operação"

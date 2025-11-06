@@ -4,7 +4,7 @@ summary: Sign
 description: ...
 operationId: jwtSign
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/json:

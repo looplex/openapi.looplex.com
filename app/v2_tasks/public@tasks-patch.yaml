@@ -7,9 +7,9 @@ description: |
   **É necessário enviar uma header com o nome `X-Looplex-Module` que deverá conter o path do json a ser modificado.**
 operationId: tasks-patch
 parameters:
-  - $ref: ../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../common_parameters/Tenant.yaml
-  - $ref: ../common_parameters/BearerToken.yaml
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/common/Tenant.yaml
+  - $ref: ../parameters/common/BearerToken.yaml
   - name: id
     in: path
     required: true

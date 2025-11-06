@@ -5,8 +5,8 @@ summary: "Obtém modelo de cálculo por identificador"
 operationId: api-CalculoMonetario-Modelos-id
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: ID
     in: path
     required: true

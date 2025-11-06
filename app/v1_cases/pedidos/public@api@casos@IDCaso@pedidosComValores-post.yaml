@@ -5,8 +5,8 @@ summary: "Inclui ou atualiza pedidos e valores do caso"
 operationId: api-casos-IDCaso-pedidosComValores-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path
     required: true

@@ -5,8 +5,8 @@ summary: "Exclui cumprimento por pedido"
 operationId: api-Pedidos-cdPedido-cumprimentos-delete
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: cdPedido
     in: path
     example: '10'

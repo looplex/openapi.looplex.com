@@ -5,8 +5,8 @@ summary: "Lista tarefas e subtarefas"
 operationId: api-tarefas-tarefas_subtarefas-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: idsTarefa
     description: Os ids das tarefas 
     in: query

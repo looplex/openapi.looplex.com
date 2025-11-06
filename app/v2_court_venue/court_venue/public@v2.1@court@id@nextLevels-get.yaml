@@ -4,7 +4,7 @@ summary: "Next levels"
 description: "List next levels after this node level"
 operationId: v2.1-court-id-nextLevels-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: id
     in: path
     required: true

@@ -6,7 +6,7 @@ description: |
   `At least one of these parameters are required: nodeId, procedureId or procedureName`
 operationId: v3-procedures-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: nodeId
     in: query
     required: false

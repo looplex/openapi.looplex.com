@@ -5,8 +5,8 @@ summary: "Lista funcionários do escritório"
 operationId: api-escritorios-IDEscritorio-funcionarios-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDEscritorio
     in: path
     description: "O identificador do escritório"

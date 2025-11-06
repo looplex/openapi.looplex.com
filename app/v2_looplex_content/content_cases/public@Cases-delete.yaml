@@ -6,9 +6,9 @@ summary: "Delete Case"
 
 operationId: Cases-delete
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
   - usesLooplexId: 
     in: header
     description: if true uses looplex case guid else M-files guid

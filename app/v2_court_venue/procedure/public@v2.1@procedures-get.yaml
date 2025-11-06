@@ -4,7 +4,7 @@ summary: "List procedures by filters"
 description: "**List procedures by filters**"
 operationId: v2.1-procedures-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../parameters/ResponseFormat.yaml
   - name: nodeUuid
     in: query

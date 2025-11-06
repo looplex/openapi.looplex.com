@@ -5,8 +5,8 @@ summary: "Lista próximos lançamentos de despesa de acordo com a data informada
 operationId: api-despesas-proximoslancamentos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: dataDespesaString
     in: query
     description: "A data para pesquisa"

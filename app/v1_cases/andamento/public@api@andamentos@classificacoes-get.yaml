@@ -4,8 +4,8 @@ summary: Classificações de andamento
 description: Retorna um array com as classificações de andamento do escritório
 operationId: api-andamentos-classificacoes
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 responses:
   "200":
     description: "OK"

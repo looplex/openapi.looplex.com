@@ -3,8 +3,8 @@ tags:
 summary: "Lista as áreas de acordo com o filtro informado"
 operationId: api-areas-get
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: ativos
     in: query
     description: "Listar áreas ativas?<br />`Default: true`"

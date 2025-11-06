@@ -7,14 +7,14 @@ description: |
 operationId: cases-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml
-  - $ref: ../../common_parameters/Filter.yaml
-  - $ref: ../../common_parameters/SortBy.yaml
-  - $ref: ../../common_parameters/SortOrder.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
+  - $ref: ../../parameters/common/SortBy.yaml
+  - $ref: ../../parameters/common/SortOrder.yaml
 # Responses
 responses:
   # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"

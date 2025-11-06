@@ -4,7 +4,7 @@ summary: TinyURL
 description: Put your tinyURL based on a ID
 operationId: putTinyURLOperation
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/json:

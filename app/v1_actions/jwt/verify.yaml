@@ -4,7 +4,7 @@ summary: Verify
 description: ...
 operationId: jwtVerify
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/json:

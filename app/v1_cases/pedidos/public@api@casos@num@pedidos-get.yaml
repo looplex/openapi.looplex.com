@@ -5,8 +5,8 @@ summary: "Lista pedidos por identificador do caso, numero interno ou numero exte
 operationId: api-casos-num-pedidos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: NumeroInterno
     in: query
     description: "`Default: 0`<br />O numero interno do caso"

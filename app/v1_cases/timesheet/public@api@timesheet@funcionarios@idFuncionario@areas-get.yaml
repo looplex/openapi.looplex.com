@@ -5,8 +5,8 @@ summary: "Lista áreas para lançamento de hora"
 operationId: api-timesheet-funcionarios-idFuncionario-areas-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: idFuncionario
     in: path
     description: "O identificador do funcionário"

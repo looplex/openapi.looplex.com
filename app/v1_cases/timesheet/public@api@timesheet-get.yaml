@@ -5,8 +5,8 @@ summary: "Lista timesheet por filtro"
 operationId: api-timesheet-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: idsFuncionarios
     in: query
     example: "10,25,30"
