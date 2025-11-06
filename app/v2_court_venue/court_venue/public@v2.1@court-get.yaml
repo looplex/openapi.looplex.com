@@ -21,16 +21,16 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml
             - allOf:
               - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
                   resources:
                     type: array
                     items:
-                      $ref: ../schemas/Foro_v2_1.yaml
+                      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml

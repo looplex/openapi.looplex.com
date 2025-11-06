@@ -43,4 +43,4 @@ properties:
   filhos:
     type: array
     items:
-      $ref: ../schemas/Foro_v2_1.yaml
+      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml

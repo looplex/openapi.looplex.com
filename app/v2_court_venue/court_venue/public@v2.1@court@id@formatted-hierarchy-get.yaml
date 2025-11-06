@@ -20,7 +20,7 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: object

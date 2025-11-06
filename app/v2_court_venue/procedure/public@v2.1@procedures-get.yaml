@@ -39,7 +39,7 @@ responses:
         schema:
           oneOf:
             - allOf:
-              - $ref: ../schemas/ListResponseLegacy.yaml
+              - $ref: ../../schemas/v2_court_venue/ListResponseLegacy.yaml
               - properties:
                   conteudo:
                     type: array
@@ -63,7 +63,7 @@ responses:
                               children:
                                 type: array
                                 items:
-                                  $ref: ../schemas/Procedure_v2_1.yaml
+                                  $ref: ../../schemas/v2_court_venue/Procedure_v2_1.yaml
             - allOf:
               - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
@@ -89,7 +89,7 @@ responses:
                               children:
                                 type: array
                                 items:
-                                  $ref: ../schemas/Procedure_v2_1.yaml
+                                  $ref: ../../schemas/v2_court_venue/Procedure_v2_1.yaml
   "500":
     description: "Internal Server Error"
     content:

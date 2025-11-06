@@ -33,7 +33,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: ./schemas/DTORecess.yaml
+            $ref: ../schemas/v1_recess/DTORecess.yaml
   "400":
     description: "BadRequest"
     content:
