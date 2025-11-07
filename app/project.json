@@ -1,19 +1,19 @@
 {
 	"name": "looplex_openapi",
-	"path_templates": "app/templates",
-	"path_help": "app/help",
+	"path_templates": "/app/templates/",
+	"path_help": "/app/help/",
 	"apis": [
 		{
 			"index": 1,
 			"label": "API MobileService",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v1_cases/v1_cases.yaml -o app/v1_cases/cases --ext json",
-				"folder_name": "/app/v1_cases",
-				"path_components": "/app/schemas/v1_cases",
-				"path_parameters": "/app/parameters/common",
-				"path_enums": "/app/enums/v1_cases",
-				"path_routes": "/app/v1_cases",
-				"path_http_responses": "/app/http_responses",
+				"folder_name": "/app/v1_cases/",
+				"path_components": "/app/schemas/v1_cases/",
+				"path_parameters": "/app/parameters/common/",
+				"path_enums": "/app/enums/v1_cases/",
+				"path_routes": "/app/v1_cases/",
+				"path_http_responses": "/app/http_responses/",
 				"tags": [
 					{
 						"option": 1,
