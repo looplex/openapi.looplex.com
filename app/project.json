@@ -8,11 +8,11 @@
 			"label": "API MobileService",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v1_cases/v1_cases.yaml -o app/v1_cases/cases --ext json",
-				"folder_name": "/v1_cases",
-				"path_components": "app/schemas/v1_cases",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v1_cases",
-				"path_routes": "app/v1_cases",
+				"folder_name": "/app/v1_cases",
+				"path_components": "/app/schemas/v1_cases",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v1_cases",
+				"path_routes": "/app/v1_cases",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -287,11 +287,11 @@
 			"label": "API Case Management",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_case-management/v2_case-management.yaml -o app/v2_case-management/case-management --ext json",
-				"folder_name": "/v2_case-management",
-				"path_components": "app/schemas/v2_case-management",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_case-management",
-				"path_routes": "app/v2_case-management",
+				"folder_name": "/app/v2_case-management",
+				"path_components": "/app/schemas/v2_case-management",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_case-management",
+				"path_routes": "/app/v2_case-management",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -386,11 +386,11 @@
 			"label": "API Tasks Management",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_tasks/v2_tasks-management.yaml -o app/v2_tasks/tasks --ext json",
-				"folder_name": "/v2_tasks",
-				"path_components": "app/schemas/v2_tasks",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_tasks",
-				"path_routes": "app/v2_tasks",
+				"folder_name": "/app/v2_tasks",
+				"path_components": "/app/schemas/v2_tasks",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_tasks",
+				"path_routes": "/app/v2_tasks",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -413,11 +413,11 @@
 			"label": "Varas e Foros v2.1 (Court Venue)",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_court_venue/v2_court_venue.yaml -o app/v2_court_venue/court_venue --ext json",
-				"folder_name": "/v2_court_venue",
-				"path_components": "app/schemas/v2_court_venue",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_court_venue",
-				"path_routes": "app/v2_court_venue",
+				"folder_name": "/app/v2_court_venue",
+				"path_components": "/app/schemas/v2_court_venue",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_court_venue",
+				"path_routes": "/app/v2_court_venue",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -440,11 +440,11 @@
 			"label": "Recess (API de feriados)",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v1_recess/v1_recess.yaml -o app/v1_recess/recess --ext json",
-				"folder_name": "/v1_recess",
-				"path_components": "app/schemas/v1_recess",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v1_recess",
-				"path_routes": "app/v1_recess",
+				"folder_name": "/app/v1_recess",
+				"path_components": "/app/schemas/v1_recess",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v1_recess",
+				"path_routes": "/app/v1_recess",
 				"path_http_responses": "/app/http_responses",
 				"tags": []
 			}
@@ -455,7 +455,7 @@
 			"option": {
 				"build_command": null,
 				"folder_name": "scim",
-				"path_components": "app/scim",
+				"path_components": "/app/scim",
 				"path_parameters": null,
 				"path_enums": null,
 				"path_routes": null,
@@ -468,11 +468,11 @@
 			"label": "Content",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_looplex_content/v2_looplex_content.yaml -o app/v2_looplex_content/looplex_content --ext json",
-				"folder_name": "/v2_looplex_content",
-				"path_components": "app/schemas/v2_looplex_content",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_looplex_content",
-				"path_routes": "app/v2_looplex_content",
+				"folder_name": "/app/v2_looplex_content",
+				"path_components": "/app/schemas/v2_looplex_content",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_looplex_content",
+				"path_routes": "/app/v2_looplex_content",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -506,11 +506,11 @@
 			"label": "API Tasks Templates",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_task_template/v2_task_template.yaml -o app/v2_task_template/v2_task_template --ext json",
-				"folder_name": "/v2_task_template",
-				"path_components": "app/schemas/v2_task_template",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_task_template",
-				"path_routes": "app/v2_task_template",
+				"folder_name": "/app/v2_task_template",
+				"path_components": "/app/schemas/v2_task_template",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_task_template",
+				"path_routes": "/app/v2_task_template",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -526,11 +526,11 @@
 			"label": "Varas e Foros v3 (Court Venue)",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v3_court_venue/v3_court_venue.yaml -o app/v3_court_venue/court_venue_v3 --ext json",
-				"folder_name": "/v3_court_venue",
-				"path_components": "app/schemas/v3_court_venue",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v3_court_venue",
-				"path_routes": "app/v3_court_venue",
+				"folder_name": "/app/v3_court_venue",
+				"path_components": "/app/schemas/v3_court_venue",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v3_court_venue",
+				"path_routes": "/app/v3_court_venue",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -552,11 +552,11 @@
 			"label": "Activity Codes",
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v2_activity_codes/v2_activity_codes.yaml -o app/v2_activity_codes/v2_activity_codes --ext json",
-				"folder_name": "/v2_activity_codes",
-				"path_components": "app/schemas/v2_activity_codes",
-				"path_parameters": "parameters/common",
-				"path_enums": "app/enums/v2_activity_codes",
-				"path_routes": "app/v2_activity_codes",
+				"folder_name": "/app/v2_activity_codes",
+				"path_components": "/app/schemas/v2_activity_codes",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_activity_codes",
+				"path_routes": "/app/v2_activity_codes",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
 					{
@@ -564,6 +564,26 @@
 						"label": "Activity Code",
 						"detail": "Endpoints de Activity Code",
 						"folder": "activity_code"
+					}
+				]
+			}
+		},
+		{
+			"label": "Task Codes",
+			"option": {
+				"build_command": "npx @redocly/cli bundle app/v2_task_codes/v2_task_codes.yaml -o app/v2_task_codes/v2_task_codes --ext json",
+				"folder_name": "/app/v2_task_codes",
+				"path_components": "/app/schemas/v2_task_codes",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v2_task_codes",
+				"path_routes": "/app/v2_task_codes",
+				"path_http_responses": "/app/http_responses",
+				"tags": [
+					{
+						"option": 1,
+						"label": "Task Codes",
+						"detail": "Endpoints de Task Codes",
+						"folder": "task_code"
 					}
 				]
 			}
