@@ -527,9 +527,9 @@
 			"option": {
 				"build_command": "npx @redocly/cli bundle app/v3_court_venue/v3_court_venue.yaml -o app/v3_court_venue/court_venue_v3 --ext json",
 				"folder_name": "/v3_court_venue",
-				"path_components": "app/v3_court_venue/schemas",
+				"path_components": "app/schemas/v3_court_venue",
 				"path_parameters": "parameters/common",
-				"path_enums": "app/v3_court_venue/enums",
+				"path_enums": "app/enums/v3_court_venue",
 				"path_routes": "app/v3_court_venue",
 				"path_http_responses": "/app/http_responses",
 				"tags": [
@@ -544,6 +544,26 @@
 						"label": "Procedures",
 						"detail": "Endpoints procedures",
 						"folder": "procedures"
+					}
+				]
+			}
+		},
+		{
+			"label": "Activity Codes",
+			"option": {
+				"build_command": "npx @redocly/cli bundle app/v2_activity_codes/v2_activity_codes.yaml -o app/v2_activity_codes/v2_activity_codes --ext json",
+				"folder_name": "/v2_activity_codes",
+				"path_components": "app/schemas/v2_activity_codes",
+				"path_parameters": "parameters/common",
+				"path_enums": "app/enums/v2_activity_codes",
+				"path_routes": "app/v2_activity_codes",
+				"path_http_responses": "/app/http_responses",
+				"tags": [
+					{
+						"option": 1,
+						"label": "Activity Code",
+						"detail": "Endpoints de Activity Code",
+						"folder": "activity_code"
 					}
 				]
 			}

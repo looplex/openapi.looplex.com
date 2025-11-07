@@ -1,14 +1,10 @@
 tags:
   - ActivityCodes
-
 summary: "/ActivityCodes"
-
 description: "**Fetch items paginated**"
-
 operationId: ActivityCodes-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
-
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 responses:
   responses:
   "200":
@@ -17,13 +13,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: ../../schemas/common/ListResponse.yaml
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/activity_code/ActivityCodeEntityQuery.yaml    
+                    $ref: ../../schemas/v2_activity_codes/ActivityCodeEntityQuery.yaml    
   "401":
     description: "Unauthorized"
   "404":

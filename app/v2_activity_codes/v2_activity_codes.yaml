@@ -28,7 +28,7 @@ paths:
 # Endpoints dessa API  
   /ActivityCodes:
     get:
-      $ref: v2_activity_codes\activity_code\public@ActivityCodes-get.yaml
+      $ref: activity_code/public@ActivityCodes-get.yaml
   /ActivityCodes/:id:  
     get: 
-      $ref: v2_activity_codes\activity_code\public@ActivityCodes@Id-get.yaml    
+      $ref: activity_code/public@ActivityCodes@Id-get.yaml    

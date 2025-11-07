@@ -1,6 +1,6 @@
 title: ActivityCodeEntityRetrieve
 allOf:
-  - $ref: ..\..\..\scim\ResourceRetrieve.yaml
+  - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     description: 
     properties:  

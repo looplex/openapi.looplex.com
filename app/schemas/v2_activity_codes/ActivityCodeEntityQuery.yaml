@@ -1,6 +1,6 @@
 title: ActivityCodeEntityQuery
 allOf:
-  - $ref: ..\..\..\scim\ResourceQuery.yaml
+  - $ref: ../../scim/ResourceQuery.yaml
   - type: object
     description: 
     properties:  
