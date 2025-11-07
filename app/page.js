@@ -9,8 +9,8 @@ import {
   ApiOutlined, BookOutlined, CalendarOutlined,
   FileWordOutlined, ProfileOutlined, RightOutlined
 } from '@ant-design/icons'
-import { getAntdCurrentBreakPoint } from '@/helpers/antd/getAntdCurrentBreakPoint'
-import SocialMediaLinks from '@/components/SocialMediaLinks'
+import { getAntdCurrentBreakPoint } from './helpers/antd/getAntdCurrentBreakPoint'
+import SocialMediaLinks from '@/app/components/SocialMediaLinks'
 
 const { Search } = Input
 const { Text, Title } = Typography
@@ -92,7 +92,7 @@ export default function Home() {
   ]
 
   const arrStandardsKeywords = [
-    'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions', 
+    'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions',
     'localities'
   ]
 

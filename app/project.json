@@ -1,6 +1,7 @@
 {
 	"name": "looplex_openapi",
 	"path_templates": "app/templates",
+	"path_help": "app/help",
 	"apis": [
 		{
 			"index": 1,
