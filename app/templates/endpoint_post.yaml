@@ -10,9 +10,9 @@ description: |
 
 operationId: {{OPERATION_ID}}
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
 {{REQUEST_BODY}}
 responses:
   "201":

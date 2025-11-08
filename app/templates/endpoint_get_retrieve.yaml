@@ -9,10 +9,10 @@ description: "**Retrieve a {{TAG_NAME}} by id**"
 
 operationId: {{OPERATION_ID}}
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
-  - $ref: ../../parameters/common/Id.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Id.yaml
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}
