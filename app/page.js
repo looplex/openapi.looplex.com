@@ -611,6 +611,10 @@ export default function Home() {
                     link='/v2_locales'
                     text='Locales'
                   />
+                  <BorderedLink
+                    link='/v2_occupations'
+                    text='Occupations'
+                  />
 
                 </ColCard>
               )}

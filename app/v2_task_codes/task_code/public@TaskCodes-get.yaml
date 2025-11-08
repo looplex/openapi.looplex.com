@@ -7,7 +7,22 @@ description: "**Fetch items paginated**"
 
 operationId: TaskCodes-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
+  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../schemas/common/StartIndex.yaml
+  - $ref: ../../schemas/common/Count.yaml
+  - $ref: ../../schemas/common/Filter.yaml  
+
+  - name: Id
+    description: "Pode ser passado vários Ids separados por vírgula"
+    in: query    
+    schema:
+      type: string
+      format: uuid
+  - name: Name
+    in: query    
+    schema:
+      type: string    
+
 
 responses:
   "200":

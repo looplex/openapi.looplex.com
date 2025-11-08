@@ -1,0 +1,18 @@
+title: OccupationEntity
+type: object
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:
+      Code:
+        type: string    
+      Name:
+        type: string    
+      Status:
+        type: string    
+      CustomFields:
+        type: object    
+      Synonyms:
+        type: array
+        items: 
+          $ref: "OccupationEntityQuery.yaml"

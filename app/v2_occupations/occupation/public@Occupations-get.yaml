@@ -1,44 +1,53 @@
 tags:
-  - ActivityCodes
-summary: "/ActivityCodes"
-description: "**Fetch items paginated**"
-operationId: ActivityCodes-get
-parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../schemas/common/StartIndex.yaml
-  - $ref: ../../schemas/common/Count.yaml
-  - $ref: ../../schemas/common/Filter.yaml  
+  - Occupations
 
+summary: "Occupations"
+
+description: "**Fetch items paginated**"
+
+
+operationId: Ocupations-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
+  
   - name: Id
-    description: "Pode ser passado vários Ids separados por vírgula"
     in: query    
+    description: "Pode ser passado mais de um Id separado por vírgula"
     schema:
       type: string
       format: uuid
-  - name: Name
-    in: query    
-    schema:
-      type: string    
   - name: Code
     in: query    
     schema:
-      type: string        
-
+      type: string
+  - name: Name
+    in: query    
+    schema:
+      type: string
+  - name: Status
+    in: query    
+    schema:
+      type: string
 responses:
-  responses:
   "200":
     description: "OK"
     content:
       application/json:
         schema:
           allOf:
-            - $ref: ../../schemas/common/ListResponse.yaml
+            - $ref: '../../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v2_activity_codes/ActivityCodeEntityQuery.yaml    
+                    $ref: ../schemas/OccupationEntityQuery.yaml
+ 
+  "400":
+    description: "Bad Request"
   "401":
     description: "Unauthorized"
   "404":
