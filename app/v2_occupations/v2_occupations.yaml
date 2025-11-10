@@ -1,9 +1,9 @@
-# API 'task_codes.yaml'
+# API 'Occupations.yaml'
 openapi: 3.0.2
 security: []
 info:
   version: 1.0.0
-  title: Looplex task_codes
+  title: Looplex Occupations
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
     name: Developers Looplex
@@ -16,19 +16,19 @@ info:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
-    Endpoints de task codes
+     
 externalDocs:
   description: Find out how to create a GitHub repo for your OpenAPI definition.
   url: "https://github.com/Rebilly/generator-openapi-repo"
 servers:
-  - url: "https://apim.looplex.com/TODO"
-    description: "task_codes Server"
+  - url: "https://apim.looplex.com/Occupations"
+    description: "Occupations Server"
 paths:
 
 # Endpoints dessa API
-  /TaskCodes:
+  /Occupations:
     get:
-      $ref: v2_task_codes\task_code\public@TaskCodes-get.yaml
-  /TaskCodes/:id:  
+      $ref: occupation\public@Occupations-get.yaml
+  /Occupations/:id:  
     get: 
-      $ref: v2_task_codes\task_code\public@TaskCodes@Id-get.yaml
+      $ref: occupation\public@Occupations@Id-get.yaml

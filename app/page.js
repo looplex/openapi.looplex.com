@@ -93,7 +93,9 @@ export default function Home() {
 
   const arrStandardsKeywords = [
     'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions',
-    'localities'
+    'localities', 'occupations', 'areas', 'practice', 'atividades', 'países', 'regiões',
+    'localidades', 'práticas', 'ocupações', 'códigos', 'atividade', 'áreas', 'cidades', 'estados',
+    'states', 'cities', 'locales', 'tarefas'
   ]
 
   const [cards, updateCards] = useState({
@@ -105,7 +107,7 @@ export default function Home() {
     isVisibleFeriados: true,
     isVisibleCourtVenue: true,
     isVisibleActions: true,
-    isVisibleStandards: false
+    isVisibleStandards: true
   })
 
   useEffect(() => {
@@ -583,7 +585,7 @@ export default function Home() {
               )
             }
             {
-              cards?.isVisibleStandards &&
+              cards?.isVisibleStandards && 1 == 0 &&
               (
                 <ColCard>
                   <CardHeader
@@ -596,13 +598,9 @@ export default function Home() {
                   </div>
 
                   <BorderedLink
-                    link='/v2_activity_codes'
-                    text='Activity Codes'
-                  />
-                  <BorderedLink
-                    link='/v2_task_codes'
-                    text='Task Codes'
-                  />
+                    link='/v2_activity_task_codes'
+                    text='Activity and Task Codes'
+                  />                  
                   <BorderedLink
                     link='/v2_practice_areas'
                     text='Practice Areas'
@@ -610,6 +608,10 @@ export default function Home() {
                   <BorderedLink
                     link='/v2_locales'
                     text='Locales'
+                  />
+                  <BorderedLink
+                    link='/v2_occupations'
+                    text='Occupations'
                   />
 
                 </ColCard>

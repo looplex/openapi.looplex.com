@@ -2,16 +2,16 @@
 
 import { RedocStandalone } from 'redoc'
 
-const json = require('./v2_activity_codes.json')
+const json = require('./occupations.json')
 
 // Nome de function component deve ser PascalCase
-export default function ActivityCodes() {
+export default function Occupations() {
   return (
     <RedocStandalone
       spec={json}
       options={{
         sortTagsAlphabetically: true,
-        downloadFileName: 'openapi_looplex_activity_codes.json'
+        downloadFileName: 'openapi_looplex_Occupations.json'
       }}
     />
   )

@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "Looplex task_codes",
+    "title": "Looplex looplex standards",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -17,12 +17,12 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "Endpoints de task codes\n"
+    "description": "API Standards\n"
   },
   "servers": [
     {
       "url": "https://apim.looplex.com/TODO",
-      "description": "task_codes Server"
+      "description": "looplex standards Server"
     }
   ],
   "security": [],
@@ -31,6 +31,158 @@
     "url": "https://github.com/Rebilly/generator-openapi-repo"
   },
   "paths": {
+    "/ActivityCodes": {
+      "get": {
+        "tags": [
+          "ActivityCodes"
+        ],
+        "summary": "/ActivityCodes",
+        "description": "**Fetch items paginated**",
+        "operationId": "ActivityCodes-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Id",
+            "description": "Pode ser passado vários Ids separados por vírgula",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ActivityCodeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          },
+          "responses": null
+        }
+      }
+    },
+    "/ActivityCodes/:id": {
+      "get": {
+        "tags": [
+          "ActivityCodes"
+        ],
+        "summary": "ActivityCodes/:id",
+        "description": "**Retrieve a ActivityCode by id**",
+        "operationId": "ActivityCodes-Id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ActivityCodeEntityRetrieve"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/TaskCodes": {
       "get": {
         "tags": [
@@ -42,6 +194,31 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Id",
+            "description": "Pode ser passado vários Ids separados por vírgula",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -163,6 +340,36 @@
           "type": "string"
         }
       },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": true,
+        "description": "**Index of search**",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+        "example": 50,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "in": "query",
+        "required": false,
+        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+        "schema": {
+          "type": "string"
+        },
+        "example": null
+      },
       "Id": {
         "name": "id",
         "in": "path",
@@ -251,49 +458,30 @@
           }
         }
       },
-      "TaskCodeEntityQuery": {
-        "title": "TaskCodeEntityQuery",
-        "description": null,
+      "ActivityCodeEntityQuery": {
+        "title": "ActivityCodeEntityQuery",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
           },
           {
             "type": "object",
+            "description": null,
             "properties": {
-              "ParentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "EnUsName": {
+              "Code": {
                 "type": "string"
               },
-              "PtBrName": {
+              "EnglishName": {
                 "type": "string"
               },
-              "EsArName": {
+              "PortugueseName": {
                 "type": "string"
               },
-              "EnUsDescription": {
-                "type": "string"
-              },
-              "PtBrDescription": {
-                "type": "string"
-              },
-              "EsArDescription": {
+              "SpanishName": {
                 "type": "string"
               },
               "CustomFields": {
                 "type": "object"
-              },
-              "Code": {
-                "type": "string"
-              },
-              "Children": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskCodeEntityQuery"
-                }
               }
             }
           }
@@ -379,6 +567,83 @@
           }
         }
       },
+      "ActivityCodeEntityRetrieve": {
+        "title": "ActivityCodeEntityRetrieve",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "description": null,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "englishName": {
+                "type": "string"
+              },
+              "portugueseName": {
+                "type": "string"
+              },
+              "spanishName": {
+                "type": "string"
+              },
+              "customFields": {
+                "type": "object"
+              }
+            }
+          }
+        ]
+      },
+      "TaskCodeEntityQuery": {
+        "title": "TaskCodeEntityQuery",
+        "description": null,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ParentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "EnglishName": {
+                "type": "string"
+              },
+              "PortugueseName": {
+                "type": "string"
+              },
+              "SpanishName": {
+                "type": "string"
+              },
+              "EnglishDescription": {
+                "type": "string"
+              },
+              "PortugueseDescription": {
+                "type": "string"
+              },
+              "SpanishDescription": {
+                "type": "string"
+              },
+              "CustomFields": {
+                "type": "object"
+              },
+              "Code": {
+                "type": "string"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskCodeEntityQuery"
+                }
+              }
+            }
+          }
+        ]
+      },
       "TaskCodeEntityRetrieve": {
         "title": "TaskCodeEntityRetrieve",
         "description": null,
@@ -393,22 +658,22 @@
                 "type": "string",
                 "format": "uuid"
               },
-              "enUsName": {
+              "englishName": {
                 "type": "string"
               },
-              "ptBrName": {
+              "portugueseName": {
                 "type": "string"
               },
-              "esArName": {
+              "spanishName": {
                 "type": "string"
               },
-              "enUsDescription": {
+              "englishDescription": {
                 "type": "string"
               },
-              "ptBrDescription": {
+              "portugueseDescription": {
                 "type": "string"
               },
-              "esArDescription": {
+              "spanishDescription": {
                 "type": "string"
               },
               "customFields": {

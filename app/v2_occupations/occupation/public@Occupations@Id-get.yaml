@@ -1,13 +1,14 @@
 tags:
-  - TaskCodes
+  - Occupations
 
-summary: "/TaskCodes"
+summary: "Occupations/:Id"
 
-description: "**Fetch items paginated**"
+description: "**Retrieve a Pasta padrão de endpoints by id**"
 
-operationId: TaskCodes-get
+operationId: Occupations-Id-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml  
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
+  - $ref: ../../parameters/common/Id.yaml
 
 responses:
   "200":
@@ -16,13 +17,15 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: '../../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/task_code/TaskCodeEntityQuery.yaml  
+                    $ref: ../../schemas/v2_occupations/OccupationEntityRetrieve.yaml
+  "400":
+    description: "Bad Request"
   "401":
     description: "Unauthorized"
   "404":

@@ -1,22 +1,36 @@
 tags:
-  - Countries
+  - Occupations
 
-summary: "/Countries"
+summary: "Occupations"
 
 description: "**Fetch items paginated**"
 
-operationId: Countries-get
+
+operationId: Ocupations-get
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
   - $ref: ../../parameters/common/StartIndex.yaml
   - $ref: ../../parameters/common/Count.yaml
   - $ref: ../../parameters/common/Filter.yaml
   
-  - name: CountryId
+  - name: Id
     in: query    
+    description: "Pode ser passado mais de um Id separado por vírgula"
     schema:
       type: string
       format: uuid
+  - name: Code
+    in: query    
+    schema:
+      type: string
+  - name: Name
+    in: query    
+    schema:
+      type: string
+  - name: Status
+    in: query    
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"
@@ -30,7 +44,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v2_locales/CountryEntityQuery.yaml
+                    $ref: ../../schemas/v2_occupations/OccupationEntityQuery.yaml
  
   "400":
     description: "Bad Request"

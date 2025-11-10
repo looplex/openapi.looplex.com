@@ -4,31 +4,31 @@ allOf:
   - $ref: ..\..\scim\ResourceQuery.yaml
   - type: object
     properties:
-      EnName:
+      EnglishName:
         type: string    
-      FrName:
+      FrenchName:
         type: string    
-      BrName:
+      PortugueseName:
         type: string    
-      EsName:
+      SpanishName:
         type: string
-      DeName:
+      GermanName:
         type: string    
-      CodeAlpha2:
+      Alpha2Code:
         type: string    
-      CodeAlpha3:
+      Alpha3Code:
         type: string    
       NumericCode:
         type: integer    
-      EnDemonym:
+      EnglishDemonym:
         type: string    
-      FrDemonym:
+      FrenchDemonym:
         type: string    
-      BrDemonym:
+      PortugueseDemonym:
         type: string    
-      EsDemonym:
+      SpanishDemonym:
         type: string    
-      DeDemonym:
+      GermanDemonym:
         type: string    
       CustomFields:
         type: object
