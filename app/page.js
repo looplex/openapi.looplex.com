@@ -93,7 +93,9 @@ export default function Home() {
 
   const arrStandardsKeywords = [
     'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions',
-    'localities'
+    'localities', 'occupations', 'areas', 'practice', 'atividades', 'países', 'regiões',
+    'localidades', 'práticas', 'ocupações', 'códigos', 'atividade', 'áreas', 'cidades', 'estados',
+    'states', 'cities', 'locales', 'tarefas'
   ]
 
   const [cards, updateCards] = useState({
