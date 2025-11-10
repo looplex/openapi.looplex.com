@@ -1,0 +1,30 @@
+title: TaskCodeEntityRetrieve
+description: 
+allOf:
+  - $ref: ..\..\scim\ResourceRetrieve.yaml
+  - type: object
+    properties:  
+      parentId:
+        type: string
+        format: uuid
+      englishName:
+        type: string
+      portugueseName:
+        type: string
+      spanishName:
+        type: string
+      englishDescription:
+        type: string
+      portugueseDescription:
+        type: string
+      spanishDescription:
+        type: string  
+      customFields:
+        type: object
+      code:
+        type: string
+      children:
+        type: array
+        items:
+          $ref: TaskCodeEntityRetrieve.yaml
+          

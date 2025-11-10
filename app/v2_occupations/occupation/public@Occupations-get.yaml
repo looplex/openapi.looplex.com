@@ -44,7 +44,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/OccupationEntityQuery.yaml
+                    $ref: ../../schemas/v2_occupations/OccupationEntityQuery.yaml
  
   "400":
     description: "Bad Request"

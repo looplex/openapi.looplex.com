@@ -549,41 +549,61 @@
             }
         },
         {
-            "label": "Activity Codes",
+            "label": "Activity and Task Codes",
             "option": {
-                "build_command": "npx @redocly/cli bundle app/v2_activity_codes/v2_activity_codes.yaml -o app/v2_activity_codes/v2_activity_codes --ext json",
-                "folder_name": "/app/v2_activity_codes",
-                "path_components": "/app/schemas/v2_activity_codes",
+                "build_command": "npx @redocly/cli bundle app/v2_activity_task_codes/v2_activity_task_codes.yaml -o app/v2_activity_task_codes/v2_activity_task_codes --ext json",
+                "folder_name": "/app/v2_activity_task_codes",
+                "path_components": "/app/schemas/v2_activity_task_codes",
                 "path_parameters": "/app/parameters/common",
-                "path_enums": "/app/enums/v2_activity_codes",
-                "path_routes": "/app/v2_activity_codes",
+                "path_enums": "/app/enums/v2_activity_task_codes",
+                "path_routes": "/app/v2_activity_task_codes",
                 "path_http_responses": "/app/http_responses",
                 "tags": [
                     {
                         "option": 1,
-                        "label": "Activity Code",
-                        "detail": "Endpoints de Activity Code",
-                        "folder": "activity_code"
+                        "label": "Activity and Task Codes",
+                        "detail": "Endpoints de Activity and Task Codes",
+                        "folder": "activity_task_code"
+                    }
+                ]
+            }
+        },        
+        {
+            "label": "Practice Areas",
+            "option": {
+                "build_command": "npx @redocly/cli bundle app/v2_practice_areas/v2_practice_areas.yaml -o app/v2_practice_areas/v2_practice_areas --ext json",
+                "folder_name": "/app/v2_practice_areas",
+                "path_components": "/app/v2_practice_areas/schemas",
+                "path_parameters": "/app/parameters/common",
+                "path_enums": "/app/enums/v2_practice_areas",
+                "path_routes": "/app/v2_practice_areas",
+                "path_http_responses": "/app/http_responses",
+                "tags": [
+                    {
+                        "option": 1,
+                        "label": "Practice Areas",
+                        "detail": "Endpoints de Practice Areas",
+                        "folder": "practice_area"
                     }
                 ]
             }
         },
         {
-            "label": "Task Codes",
+            "label": "Locales",
             "option": {
-                "build_command": "npx @redocly/cli bundle app/v2_task_codes/v2_task_codes.yaml -o app/v2_task_codes/v2_task_codes --ext json",
-                "folder_name": "/app/v2_task_codes",
-                "path_components": "/app/schemas/v2_task_codes",
+                "build_command": "npx @redocly/cli bundle app/v2_locales/v2_locales.yaml -o app/v2_locales/v2_locales --ext json",
+                "folder_name": "/app/v2_locales",
+                "path_components": "/app/v2_locales/schemas",
                 "path_parameters": "/app/parameters/common",
-                "path_enums": "/app/enums/v2_task_codes",
-                "path_routes": "/app/v2_task_codes",
+                "path_enums": "/app/enums/v2_locales",
+                "path_routes": "/app/v2_locales",
                 "path_http_responses": "/app/http_responses",
                 "tags": [
                     {
                         "option": 1,
-                        "label": "Task Codes",
-                        "detail": "Endpoints de Task Codes",
-                        "folder": "task_code"
+                        "label": "Locales",
+                        "detail": "Endpoints de Locales",
+                        "folder": "locales"
                     }
                 ]
             }
@@ -591,12 +611,12 @@
         {
             "label": "Occupations",
             "option": {
-                "build_command": "npx @redocly/cli bundle app/v2_occupations.yaml -o app/v2_occupations/occupations --ext json",
+                "build_command": "npx @redocly/cli bundle app/v2_occupations/v2_occupations.yaml -o app/v2_occupations/occupations --ext json",
                 "folder_name": "/v2_occupations",
                 "path_components": "app/v2_occupations/schemas",
                 "path_parameters": "common_parameters",
                 "path_enums": "app/v2_occupations/enums",
-                "path_routes": "app/v2_occupations",
+                "path_routes": "app/v2_occupations/occupation",
                 "path_http_responses": "/app/http_responses",
                 "tags": [
                     {

@@ -7,10 +7,10 @@ description: "**Fetch items paginated**"
 
 operationId: TaskCodes-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../schemas/common/StartIndex.yaml
-  - $ref: ../../schemas/common/Count.yaml
-  - $ref: ../../schemas/common/Filter.yaml  
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/common/StartIndex.yaml
+  - $ref: ../parameters/common/Count.yaml
+  - $ref: ../parameters/common/Filter.yaml  
 
   - name: Id
     description: "Pode ser passado vários Ids separados por vírgula"
@@ -31,13 +31,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: '../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/task_code/TaskCodeEntityQuery.yaml  
+                    $ref: ../schemas/v2_activity_task_codes/TaskCodeEntityQuery.yaml  
   "401":
     description: "Unauthorized"
   "404":
@@ -47,4 +47,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          $ref: '../scim/SCIMError.yaml'

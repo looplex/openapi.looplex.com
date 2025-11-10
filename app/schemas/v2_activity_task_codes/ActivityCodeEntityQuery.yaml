@@ -6,11 +6,11 @@ allOf:
     properties:  
       Code:
         type: string
-      EnUsName:
+      EnglishName:
         type: string
-      PtBrName:
+      PortugueseName:
         type: string
-      EsArName:
+      SpanishName:
         type: string
       CustomFields:
         type: object

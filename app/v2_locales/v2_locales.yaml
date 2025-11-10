@@ -28,10 +28,10 @@ paths:
 # Endpoints dessa API
   /Countries:
     get:
-      $ref: v2_locales\locales\public@Countries-get.yaml
+      $ref: ../v2_locales\locales\public@Countries-get.yaml
   /Regions/:id:  
     get: 
-      $ref: v2_locales\locales\public@Regions-get.yaml
+      $ref: ../v2_locales\locales\public@Regions-get.yaml
   /Localities/:id:  
     get: 
-      $ref: v2_locales\locales\public@Localities-get.yaml
+      $ref: ../v2_locales\locales\public@Localities-get.yaml

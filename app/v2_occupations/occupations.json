@@ -163,7 +163,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/OccupationEntityQuery"
+                            "$ref": "#/components/schemas/OccupationEntityRetrieve"
                           }
                         }
                       }
@@ -382,6 +382,93 @@
             "example": "InternalServerError"
           }
         }
+      },
+      "MetaRetrieve": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "lastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceRetrieve": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "externalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "meta": {
+            "description": "**Entity's information**",
+            "$ref": "#/components/schemas/MetaRetrieve"
+          }
+        }
+      },
+      "OccupationEntityRetrieve": {
+        "title": "OccupationEntity",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "customFields": {
+                "type": "object"
+              },
+              "synonyms": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OccupationEntityRetrieve"
+                }
+              }
+            }
+          }
+        ]
       }
     }
   }

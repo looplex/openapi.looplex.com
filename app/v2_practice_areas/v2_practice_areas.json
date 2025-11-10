@@ -89,7 +89,7 @@
         }
       }
     },
-    "/TaskCodes/:id": {
+    "/PracticeAreas/:id": {
       "get": {
         "tags": [
           "PracticeAreas"

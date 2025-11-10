@@ -7,10 +7,10 @@ description: "**Fetch items paginated**"
 
 operationId: Regions-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../schemas/common/StartIndex.yaml
-  - $ref: ../../schemas/common/Count.yaml
-  - $ref: ../../schemas/common/Filter.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
 
   - name: CountryId
     in: query    
@@ -24,13 +24,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../common_schemas/ListResponse.yaml'
+            - $ref: '../../schemas/common/ListResponse.yaml'
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/RegionEntityQuery.yaml
+                    $ref: ../../schemas/v2_locales/RegionEntityQuery.yaml
  
   "400":
     description: "Bad Request"

@@ -28,7 +28,7 @@ paths:
 # Endpoints dessa API
   /PracticeAreas:
     get:
-      $ref: v2_practice_areas\practice_area\public@PracticeAreas-get.yaml
-  /TaskCodes/:id:  
-    get: 
-      $ref: v2_practice_areas\practice_area\public@PracticeAreas@id-get.yaml
+      $ref: practice_area\public@PracticeAreas-get.yaml
+  /PracticeAreas/:id:
+    get:
+      $ref: practice_area\public@PracticeAreas@id-get.yaml

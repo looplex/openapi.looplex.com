@@ -105,7 +105,7 @@ export default function Home() {
     isVisibleFeriados: true,
     isVisibleCourtVenue: true,
     isVisibleActions: true,
-    isVisibleStandards: false
+    isVisibleStandards: true
   })
 
   useEffect(() => {
@@ -583,7 +583,7 @@ export default function Home() {
               )
             }
             {
-              cards?.isVisibleStandards &&
+              cards?.isVisibleStandards && 1 == 0 &&
               (
                 <ColCard>
                   <CardHeader
@@ -596,13 +596,9 @@ export default function Home() {
                   </div>
 
                   <BorderedLink
-                    link='/v2_activity_codes'
-                    text='Activity Codes'
-                  />
-                  <BorderedLink
-                    link='/v2_task_codes'
-                    text='Task Codes'
-                  />
+                    link='/v2_activity_task_codes'
+                    text='Activity and Task Codes'
+                  />                  
                   <BorderedLink
                     link='/v2_practice_areas'
                     text='Practice Areas'

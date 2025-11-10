@@ -42,6 +42,38 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Id",
+            "description": "Pode ser passado vários Ids separados por vírgula",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Code",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -150,6 +182,150 @@
           }
         }
       }
+    },
+    "/TaskCodes": {
+      "get": {
+        "tags": [
+          "TaskCodes"
+        ],
+        "summary": "/TaskCodes",
+        "description": "**Fetch items paginated**",
+        "operationId": "TaskCodes-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Id",
+            "description": "Pode ser passado vários Ids separados por vírgula",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TaskCodeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TaskCodes/:id": {
+      "get": {
+        "tags": [
+          "TaskCodes"
+        ],
+        "summary": "/TaskCodes/:id",
+        "description": "**Retrieve a TaskCode by id**",
+        "operationId": "TaskCodes-Id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TaskCodeEntityRetrieve"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -163,6 +339,36 @@
         "schema": {
           "type": "string"
         }
+      },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": true,
+        "description": "**Index of search**",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
+        "example": 50,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "in": "query",
+        "required": false,
+        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+        "schema": {
+          "type": "string"
+        },
+        "example": null
       },
       "Id": {
         "name": "id",
@@ -265,13 +471,13 @@
               "Code": {
                 "type": "string"
               },
-              "EnUsName": {
+              "EnglishName": {
                 "type": "string"
               },
-              "PtBrName": {
+              "PortugueseName": {
                 "type": "string"
               },
-              "EsArName": {
+              "SpanishName": {
                 "type": "string"
               },
               "CustomFields": {
@@ -374,17 +580,113 @@
               "code": {
                 "type": "string"
               },
-              "enUsName": {
+              "englishName": {
                 "type": "string"
               },
-              "ptBrName": {
+              "portugueseName": {
                 "type": "string"
               },
-              "esArName": {
+              "spanishName": {
                 "type": "string"
               },
               "customFields": {
                 "type": "object"
+              }
+            }
+          }
+        ]
+      },
+      "TaskCodeEntityQuery": {
+        "title": "TaskCodeEntityQuery",
+        "description": null,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ParentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "EnglishName": {
+                "type": "string"
+              },
+              "PortugueseName": {
+                "type": "string"
+              },
+              "SpanishName": {
+                "type": "string"
+              },
+              "EnglishDescription": {
+                "type": "string"
+              },
+              "PortugueseDescription": {
+                "type": "string"
+              },
+              "SpanishDescription": {
+                "type": "string"
+              },
+              "CustomFields": {
+                "type": "object"
+              },
+              "Code": {
+                "type": "string"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskCodeEntityQuery"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "TaskCodeEntityRetrieve": {
+        "title": "TaskCodeEntityRetrieve",
+        "description": null,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "parentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "englishName": {
+                "type": "string"
+              },
+              "portugueseName": {
+                "type": "string"
+              },
+              "spanishName": {
+                "type": "string"
+              },
+              "englishDescription": {
+                "type": "string"
+              },
+              "portugueseDescription": {
+                "type": "string"
+              },
+              "spanishDescription": {
+                "type": "string"
+              },
+              "customFields": {
+                "type": "object"
+              },
+              "code": {
+                "type": "string"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskCodeEntityRetrieve"
+                }
               }
             }
           }
