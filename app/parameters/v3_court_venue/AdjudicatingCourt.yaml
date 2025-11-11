@@ -1,0 +1,8 @@
+name: isAdjudicatingCourt
+in: query
+required: false
+description: |
+  **The filter to fetch only Adjudicating Court**<br/>
+  `This filter only applies to LevelTitle "Vara"`
+schema:
+  type: boolean

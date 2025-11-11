@@ -5,6 +5,7 @@ description: "**Search Court Venue by CNJ**"
 operationId: v3-court-search_by_cnj-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
   - name: cnj
     in: query
     required: true

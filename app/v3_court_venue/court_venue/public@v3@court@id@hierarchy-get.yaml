@@ -5,12 +5,8 @@ description: "**List full hierarchy by court venue identifier**"
 operationId: v3-court-id-hierarchy-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - name: id
-    in: path
-    description: "**The court venue unique identifier**"
-    required: true
-    schema:
-      type: integer
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../../parameters/common/Id.yaml
 responses:
   "200":
     description: "OK"

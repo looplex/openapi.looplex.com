@@ -5,12 +5,8 @@ description: "**List next levels of informed Court Venue**"
 operationId: v3-court-id-nextLevels-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - name: quantityLevels
-    in: query
-    required: false
-    description: "**The quantity of levels to return**<br/>`Default: 2`"
-    schema:
-      type: integer
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../../parameters/v3_court_venue/QuantityLevels.yaml
   - name: id
     in: path
     required: true

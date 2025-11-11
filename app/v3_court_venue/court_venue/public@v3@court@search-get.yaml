@@ -5,8 +5,9 @@ description: "**Search Court Venue (paginated)**"
 operationId: v3-court-search-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../parameters/Page.yaml
-  - $ref: ../parameters/PerPage.yaml
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../../parameters/v3_court_venue/Page.yaml
+  - $ref: ../../parameters/v3_court_venue/PerPage.yaml
   - name: filter
     in: query
     required: true

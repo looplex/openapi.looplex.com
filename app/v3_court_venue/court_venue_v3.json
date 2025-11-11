@@ -44,13 +44,10 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "name": "quantityLevels",
-            "in": "query",
-            "required": false,
-            "description": "**The quantity of levels to return**<br/>`Default: 2`",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
+            "$ref": "#/components/parameters/QuantityLevels"
           },
           {
             "name": "id",
@@ -123,13 +120,10 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "name": "id",
-            "in": "path",
-            "description": "**The court venue unique identifier**",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
           }
         ],
         "responses": {
@@ -193,6 +187,9 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
             "$ref": "#/components/parameters/Id"
           }
         ],
@@ -248,6 +245,9 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
             "$ref": "#/components/parameters/Id"
           }
         ],
@@ -295,6 +295,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
           },
           {
             "name": "cnj",
@@ -376,6 +379,9 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
             "$ref": "#/components/parameters/Page"
           },
           {
@@ -452,6 +458,9 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
+          },
+          {
             "$ref": "#/components/parameters/Page"
           },
           {
@@ -526,6 +535,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/AdjudicatingCourt"
           },
           {
             "$ref": "#/components/parameters/Page"
@@ -899,6 +911,24 @@
         "required": true,
         "schema": {
           "type": "string"
+        }
+      },
+      "AdjudicatingCourt": {
+        "name": "isAdjudicatingCourt",
+        "in": "query",
+        "required": false,
+        "description": "**The filter to fetch only Adjudicating Court**<br/>\n`This filter only applies to LevelTitle \"Vara\"`\n",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "QuantityLevels": {
+        "name": "quantityLevels",
+        "in": "query",
+        "required": false,
+        "description": "**The quantity of levels to return**<br/>`Default: 2`",
+        "schema": {
+          "type": "integer"
         }
       },
       "Id": {

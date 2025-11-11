@@ -5,6 +5,7 @@ description: "**Retrieve a Court Venue by id**"
 operationId: v3-court-id-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
   - $ref: ../../parameters/common/Id.yaml
 responses:
   "200":

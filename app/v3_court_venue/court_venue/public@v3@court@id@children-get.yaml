@@ -5,8 +5,9 @@ description: "**Children by Court Venue id**"
 operationId: v3-court-id-children-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../parameters/Page.yaml
-  - $ref: ../parameters/PerPage.yaml
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../../parameters/v3_court_venue/Page.yaml
+  - $ref: ../../parameters/v3_court_venue/PerPage.yaml
   - name: id
     in: path
     required: true
