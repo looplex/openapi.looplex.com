@@ -6,8 +6,8 @@ description: "Lista as Informações adicionais de acordo com o filtro informado
 operationId: api-dado_complementar_caso
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: clienteId
     in: query
     description: "O identificador do cliente"
@@ -24,7 +24,7 @@ parameters:
     in: query
     required: false
     schema:
-      $ref: ../enums/RamosJudicial.yaml
+      $ref: ../../enums/v1_cases/RamosJudicial.yaml
   - name: mostraInativo
     in: query
     description: "Listar as Informações adicionais inativas? (Default: false)"
@@ -42,28 +42,28 @@ responses:
         schema:
           type: array
           items:
-            $ref: ../schemas/DTOInformacaoAdicionalResponse.yaml
+            $ref: ../../schemas/v1_cases/DTOInformacaoAdicionalResponse.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

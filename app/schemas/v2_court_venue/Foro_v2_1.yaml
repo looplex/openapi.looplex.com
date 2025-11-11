@@ -1,0 +1,46 @@
+title: Foro
+description: "Dados de um foro / vara"
+properties:
+  cdNo:
+    type: integer
+    example: 1
+    description: "identificador do foro / vara"
+  cdNoPai:
+    type: integer
+    example: 1
+    description: "identificador do foro pai"
+  dsCategoriaFilhos:
+    type: string
+    example: "string de exemplo"
+    description: "Indicação da categoria de filhos desse item"
+  dsHierarquiaCompleta:
+    type: string
+    example: "string de exemplo"
+    description: "Hierarquia completa até esse item"
+  dsNome:
+    type: string
+    example: "string de exemplo"
+    description: "Nome do item"
+  inAtivo:
+    type: integer
+    example: 1
+    description: "Indica se o item está ativo"
+  labelProximosNiveis:
+    type: string
+    example: "string de exemplo"
+    description: "Label dos próximos itens"
+  nrNivel:
+    type: integer
+    example: 1
+    description: "O nível ao qual esse item pertence"
+  uuid:
+    type: string
+    format: uuid
+    description: "**Item's unique identifier**"
+  custom_fields:
+    type: object
+    description: "**Custom fields for this item**"
+  filhos:
+    type: array
+    items:
+      $ref: ../../schemas/v2_court_venue/Foro_v2_1.yaml

@@ -1,8 +1,8 @@
 title: HubShareUser
 description: ""
 allOf:
-  - $ref: ../../scim/Resource.yaml
-  - type: object    
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
     properties:
       Name:
         type: string

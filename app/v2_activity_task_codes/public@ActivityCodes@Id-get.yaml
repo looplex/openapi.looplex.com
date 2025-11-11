@@ -1,0 +1,36 @@
+tags:
+  - ActivityCodes
+
+summary: "ActivityCodes/:id"
+
+description: "**Retrieve a ActivityCode by id**"
+
+operationId: ActivityCodes-Id-get
+parameters:
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml  
+  - $ref: ../parameters/common/Id.yaml
+
+responses:  
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ../schemas/common/ListResponse.yaml
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/v2_activity_task_codes/ActivityCodeEntityRetrieve.yaml
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../scim/SCIMError.yaml'

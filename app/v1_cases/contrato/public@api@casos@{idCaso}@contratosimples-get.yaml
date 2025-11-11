@@ -3,8 +3,8 @@ tags:
 summary: "Obtém o contrato por identificador do caso"
 operationId: api-casos-idCaso-contratosimples
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: path
     required: true
@@ -17,29 +17,29 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/DTOContratoSimples.yaml
+          $ref: ../../schemas/v1_cases/DTOContratoSimples.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
           

@@ -5,8 +5,8 @@ summary: "Obtém garantia por identificador"
 operationId: api-casos-Garantia-IDCasoGarantia-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCasoGarantia
     in: path
     description: "O identificador da garantia"
@@ -22,28 +22,28 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/DTOCasoGarantia.yaml
+          $ref: ../../schemas/v1_cases/DTOCasoGarantia.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

@@ -1,0 +1,12 @@
+title: Identity (LEGAL_PERSON)
+type: object
+properties:
+  identityProviderType:
+    $ref: ../../enums/common/LegalPersonIdentityProviderType.yaml
+  value:
+    type: string
+    description: "**The identity value**"
+    example: <value>
+required:
+  - identityProviderType
+  - value

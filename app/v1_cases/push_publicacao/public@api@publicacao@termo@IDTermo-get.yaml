@@ -5,8 +5,8 @@ summary: "Obtém termo cadastrado por identificador"
 operationId: api-publicacao-termo-IDTermo-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDTermo
     in: path
     required: true
@@ -23,7 +23,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/TermoPublicacao.yaml"
+          $ref: ../../schemas/v1_cases/TermoPublicacao.yaml
   "400":
     description: "Bad Request"
     content:

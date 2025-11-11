@@ -6,8 +6,8 @@ description: "Ativa o push de andamento para os casos informados"
 operationId: api-push-casos-ativar_push_andamentos-post
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 requestBody:
   content:

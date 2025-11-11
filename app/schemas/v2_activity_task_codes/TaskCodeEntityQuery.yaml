@@ -1,0 +1,30 @@
+title: TaskCodeEntityQuery
+description: 
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:  
+      ParentId:
+        type: string
+        format: uuid
+      EnglishName:
+        type: string
+      PortugueseName:
+        type: string
+      SpanishName:
+        type: string
+      EnglishDescription:
+        type: string
+      PortugueseDescription:
+        type: string
+      SpanishDescription:
+        type: string  
+      CustomFields:
+        type: object
+      Code:
+        type: string
+      Children:
+        type: array
+        items:
+          $ref: TaskCodeEntityQuery.yaml
+          

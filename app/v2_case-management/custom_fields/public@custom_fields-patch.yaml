@@ -4,8 +4,9 @@ summary: /:resource/:id
 description: |
   **Patch custom fields property for a resource**<br/>
   **Change '/:resource' to one of these:**<br />
-  - /cases
-  - /claims
+  - /Cases
+  - /Claims
+  - /TaskTemplates
 
   **Note que 'path' deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>
       
@@ -117,17 +118,17 @@ description: |
   ```
 operationId: custom_fields-patch
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
-  - $ref: ../../common_parameters/Id.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
 requestBody:
   content:
     application/json:
       schema:
         type: array
         items:
-          $ref: ../../common_schemas/PatchEntityCustomFields.yaml
+          $ref: ../../schemas/common/PatchEntityCustomFields.yaml
 responses:
   "204":
     description: "No Content"

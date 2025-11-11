@@ -1,0 +1,15 @@
+title: RegionEntity
+type: object
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: string    
+      Acronym:
+        type: string    
+      ISOCode:
+        type: string    
+      CustomFields:
+        type: object
+    

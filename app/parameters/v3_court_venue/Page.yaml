@@ -1,0 +1,6 @@
+name: page
+in: query
+required: false
+description: "**The page to search.** `Default: 1`"
+schema:
+  type: integer

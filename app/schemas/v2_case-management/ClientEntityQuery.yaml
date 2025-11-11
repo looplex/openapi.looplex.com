@@ -1,0 +1,60 @@
+title: Cliente
+type: object
+description: |
+  **Cliente**<br />
+  Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
+allOf:
+  - $ref: '../../scim/ResourceQuery.yaml'
+properties:
+  Name:
+    type: string
+    example: <nome_do_cliente>
+    description: "**Client's name**"
+  NickName:
+    type: string
+    example: <apelido_do_cliente>
+    description: "**Client's nickname**"
+  Status:
+    $ref: ../../enums/v2_case-management/Status.yaml
+  Type:
+    $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+  Email:
+    type: string <nullable>
+    example: <email>
+    description: "**Client's email address**"
+  Website:
+    type: string <nullable>
+    example: <website>
+    description: "**The client's website page**"
+  Comments:
+    type: string <nullable>
+    description: "**Comments about the client**"
+    example: <observacoes_sobre_o_cliente>
+  Dob:
+    type: string <nullable>
+    format: datetime
+    description: "**Client's date of birth (available when NATURAL_PERSON)**"
+    example: <data_de_nascimento>
+  Gender:
+    $ref: ../../enums/v2_case-management/Gender.yaml
+    description: "**Client's gender (available when NATURAL_PERSON)**"
+  MaritalStatus:
+    $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+    description: "**Client's marital status (available when NATURAL_PERSON)**"
+  Identities:
+    type: array
+    items:
+      oneOf:
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityQuery.yaml
+  PhoneNumbers:
+    type: array
+    items:
+      $ref: ./PhoneNumberEntityQuery.yaml
+  Addresses:
+    type: array
+    items:
+      $ref: ./AddressEntityQuery.yaml
+  CustomFields:
+    type: object
+    description: "**Client's custom fields**"

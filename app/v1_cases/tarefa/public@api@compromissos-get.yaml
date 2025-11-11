@@ -5,8 +5,8 @@ summary: "Lista paginada de itens de agenda por funcionários e filtro"
 operationId: api-compromissos-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: currentPage
     in: query
     required: false
@@ -60,7 +60,7 @@ parameters:
     in: query
     required: false
     schema:
-      $ref: ../enums/TipoDeConsultaCalendario.yaml
+      $ref: ../../enums/v1_cases/TipoDeConsultaCalendario.yaml
 # RequestBody aqui (se houver). Verificar menu "Copiar body da requisição"
 # Responses
 responses:
@@ -76,7 +76,7 @@ responses:
               type: array
               description: "Os compromissos da página pesquisada"
               items:
-                $ref: ../schemas/DTOCompromissoSimples.yaml
+                $ref: ../../schemas/v1_cases/DTOCompromissoSimples.yaml
             QuantidadeTarefasExistentes:
               type: integer
               description: "A quantidade de tarefas existentes para o filtro informado"
@@ -85,22 +85,22 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

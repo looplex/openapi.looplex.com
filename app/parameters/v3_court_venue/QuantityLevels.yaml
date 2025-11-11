@@ -1,0 +1,6 @@
+name: quantityLevels
+in: query
+required: false
+description: "**The quantity of levels to return**<br/>`Default: 2`"
+schema:
+  type: integer

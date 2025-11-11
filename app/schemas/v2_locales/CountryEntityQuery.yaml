@@ -1,0 +1,35 @@
+title: CountryEntity
+type: object
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:
+      EnglishName:
+        type: string    
+      FrenchName:
+        type: string    
+      PortugueseName:
+        type: string    
+      SpanishName:
+        type: string
+      GermanName:
+        type: string    
+      Alpha2Code:
+        type: string    
+      Alpha3Code:
+        type: string    
+      NumericCode:
+        type: integer    
+      EnglishDemonym:
+        type: string    
+      FrenchDemonym:
+        type: string    
+      PortugueseDemonym:
+        type: string    
+      SpanishDemonym:
+        type: string    
+      GermanDemonym:
+        type: string    
+      CustomFields:
+        type: object
+        

@@ -5,8 +5,8 @@ summary: "Listar advogados por identificadores"
 operationId: api-advogado-AdvogadoIDs-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: AdvogadoIDs
     in: path
     required: true
@@ -26,7 +26,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: "../schemas/DTOAdvogado.yaml"
+            $ref: "../../schemas/v1_cases/DTOAdvogado.yaml"
   "400":
     description: "Bad Request"
     content:

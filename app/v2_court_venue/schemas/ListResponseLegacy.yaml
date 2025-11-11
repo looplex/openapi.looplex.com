@@ -1,7 +1,0 @@
-title: Legacy
-type: object
-properties:
-  respostaAPI:
-    type: string
-  tipoResposta:
-    $ref: ../enums/TipoRespostaRequisicao.yaml

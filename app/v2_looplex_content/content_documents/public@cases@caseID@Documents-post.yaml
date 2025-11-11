@@ -10,9 +10,9 @@ description: |
 
 operationId: cases-caseID-Documents-post
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
 
   - usesLooplexID: 
       description: "if true uses Looplex case guid else uses M-files guid"

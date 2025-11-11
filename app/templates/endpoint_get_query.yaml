@@ -9,12 +9,12 @@ description: "**Fetch items paginated**"
 
 operationId: {{OPERATION_ID}}
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
-  - $ref: ../../common_parameters/StartIndex.yaml
-  - $ref: ../../common_parameters/Count.yaml
-  - $ref: ../../common_parameters/Filter.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/StartIndex.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Count.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Filter.yaml
 {{PATH_QUERY_PARAMETERS}}
 responses:
   {{HTTP_RESPONSES}}

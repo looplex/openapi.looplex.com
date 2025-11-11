@@ -1,0 +1,45 @@
+tags:
+  - Court Venue
+summary: "Court Venue by ids (paginated)"
+description: "**Court Venue by ids (paginated)**"
+operationId: v3-court-list-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../../parameters/v3_court_venue/Page.yaml
+  - $ref: ../../parameters/v3_court_venue/PerPage.yaml
+  - name: ids
+    in: query
+    required: true
+    description: "**The court venue ids**"
+    schema:
+      type: array
+      items:
+        type: string
+        format: uuid
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../schemas/v3_court_venue/ForoEntity_v3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

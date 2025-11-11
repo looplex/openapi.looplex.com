@@ -1,8 +1,8 @@
 title: Document
 description: ""
 allOf:
-  - $ref: ../../scim/Resource.yaml
-  - type: object    
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
     properties:
       Title:
         type: string

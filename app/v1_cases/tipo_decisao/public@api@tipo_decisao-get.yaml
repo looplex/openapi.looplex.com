@@ -5,8 +5,8 @@ summary: "Lista Tipo Decisão"
 operationId: api-tipo_decisao-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDCaso
     in: query
     description: "Id do caso, o endpoint verifica em que instancia está o caso e lista os tipos decisão de acordo"
@@ -27,28 +27,28 @@ responses:
     content:
       application/json:
         schema:
-          $ref: ../schemas/DTOTipoDecisao.yaml
+          $ref: ../../schemas/v1_cases/DTOTipoDecisao.yaml
   "401":
     description: "Unauthorized"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "403":
     description: "Forbidden"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "404":
     description: "Não encontrado"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml
   "500":
     description: "Internal Server Error"
     content:
       application/json:
         schema:
-          $ref: ../schemas/ExceptionResponse.yaml
+          $ref: ../../schemas/v1_cases/ExceptionResponse.yaml

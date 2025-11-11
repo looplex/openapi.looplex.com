@@ -1,0 +1,38 @@
+tags:
+  - Phase
+summary: "/Phases"
+description: "**Fetch items paginated**"
+operationId: phases-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/PhaseEntityQuery.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

@@ -1,0 +1,11 @@
+title: Legal category (Natureza)
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+properties:
+  legalCategory:
+    type: string
+    description: "**The legal category name**"
+    example: <nome_da_natureza>
+  group:
+    $ref: ../../enums/v2_case-management/GrupoNaturezaDaCausa.yaml

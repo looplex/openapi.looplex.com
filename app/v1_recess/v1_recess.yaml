@@ -1,0 +1,27 @@
+# https://redocly.com/docs/openapi-visual-reference/info/
+openapi: 3.0.2
+security: []
+info:
+  version: 1.0.0
+  title: "Looplex Feriados"
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    Essa é a documentação da API Feriados
+servers:
+  - url: "https://apim.looplex.com/holidays"
+    description: "Feriados Server"
+paths:
+  # Feriados
+  /recess:
+    get:
+      $ref: public@recess-get.yaml

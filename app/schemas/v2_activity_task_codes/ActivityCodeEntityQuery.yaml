@@ -1,0 +1,17 @@
+title: ActivityCodeEntityQuery
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    description: 
+    properties:  
+      Code:
+        type: string
+      EnglishName:
+        type: string
+      PortugueseName:
+        type: string
+      SpanishName:
+        type: string
+      CustomFields:
+        type: object
+          

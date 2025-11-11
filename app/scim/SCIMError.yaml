@@ -2,11 +2,11 @@ title: SCIM Error
 type: object
 properties:
   scimType:
-    $ref: ../common_enums/SCIMtypeError.yaml
+    $ref: ../enums/common/SCIMtypeError.yaml
   detail:
     type: string
     description: "**The error message**"
-    example: "The filter is invalid"
+    example: "<exception_message>"
   status:
     type: string
     description: "**The HTTP Status Code error name**"

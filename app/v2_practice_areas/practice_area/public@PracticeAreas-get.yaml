@@ -1,0 +1,35 @@
+tags:
+  - PracticeAreas
+
+summary: "/PracticeAreas"
+
+description: "**Fetch items paginated**"
+
+operationId: PracticeAreas-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
+
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../schemas/v2_practice_areas/PracticeAreaEntityQuery.yaml  
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

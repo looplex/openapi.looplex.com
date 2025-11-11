@@ -7,9 +7,9 @@ description: "Get hubshare URL defined on key vault for curren tenant"
 
 operationId: hubshareuser-link-get
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
-  - $ref: ../../common_parameters/Tenant.yaml
-  - $ref: ../../common_parameters/BearerToken.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
 
 responses:
   "200":

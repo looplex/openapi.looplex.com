@@ -1,0 +1,17 @@
+title: Phase
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: string
+        example: <phase_name>
+        description: "**Phase name**"
+      CaseType:
+        $ref: ../../common_enums/RamosJudicial.yaml
+      Status:
+        $ref: ../enums/Status.yaml
+      CustomFields:
+        type: object
+        description: "**Phase's custom fields**"

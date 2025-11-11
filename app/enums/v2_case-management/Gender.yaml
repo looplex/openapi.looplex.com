@@ -1,0 +1,7 @@
+title: Gender
+type: string <nullable>
+example: <genero>
+description: |
+  **Gender**<br/>
+  FEMALE<br/>
+  MALE

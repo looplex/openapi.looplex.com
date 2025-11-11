@@ -1,0 +1,34 @@
+tags:
+  - Task Templates
+
+# escolha um titulo
+summary: "/TaskTemplates/:id"
+
+# escolha uma description
+description: "**Retrieve a task template by id**"
+
+operationId: task_templates_id-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+
+# Responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/v2_task_template/TaskTemplateEntity.yaml
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"        
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../../scim/SCIMError.yaml

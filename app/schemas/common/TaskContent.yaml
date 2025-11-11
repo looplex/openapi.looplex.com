@@ -1,0 +1,97 @@
+title: Dados da tarefa
+type: object
+properties:
+  ParentTaskId:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifier of parent task**"
+  Type:
+    $ref: ../../enums/common/TaskType.yaml
+    example: COURT_HEARING
+  Title:
+    type: string <nullable>
+    description: "**Titulo**"
+  Description:
+    type: string <nullable>
+    description: "**Descrição**"
+  StartDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Início**"
+  DueDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Vencimento**"
+  CreatedBy:
+    $ref: SimpleEntityQuery.yaml
+    description: "**Criado por**"
+  CreatedAt:
+    type: string <nullable>
+    format: datetime
+    description: "**Criado em**"
+  UpdatedAt:
+    type: string <nullable>
+    format: datetime
+    description: "**Atualizado em**"
+  UpdatedBy:
+    $ref: SimpleEntityQuery.yaml
+    description: "**Atualizado por**"
+  CompletedAt:
+    type: string <nullable>
+    format: datetime
+    description: "**Concluído em**"
+  CompletedBy:
+    $ref: SimpleEntityQuery.yaml
+    description: "**Concluído por**"
+  Locale:
+    type: string <nullable>
+    description: "**Local**"
+  TaskCode:
+    type: string <nullable>
+    description: "**Código da Tarefa**"
+  ActivityCode:
+    type: string <nullable>
+    description: "**Código da Atividade**"
+  Owner:
+    $ref: SimpleEntityQuery.yaml
+    description: "**Responsável**"
+  OtherParticipants:
+    description: "**Outros Participantes**"
+    type: array
+    items:
+      $ref: SimpleEntityQuery.yaml
+  Status:
+    $ref: ../../enums/common/StatusTarefa.yaml
+    example: CREATED
+  Priority:
+    example: LOW
+    $ref: ../../enums/common/Prioridade.yaml
+  ConclusionNotes:
+    type: string <nullable>
+    description: "**Notas de Conclusão**"
+  Identities:
+    type: array
+    items:
+      $ref: LegacyIdentityEntityQuery.yaml
+  Case:
+    description: "Caso de uma tarefa"
+    type: object
+    properties:
+      Id:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"
+      Title:
+        type: string
+        description: "**Case title**"
+      Identities:
+        type: array
+        items:
+          $ref: LegacyIdentityEntityQuery.yaml
+      Group:
+        type: string
+        description: "Case's group"
+  CustomFields:
+    type: object
+    example: {}
+    description: "**Tasks's custom fields**"

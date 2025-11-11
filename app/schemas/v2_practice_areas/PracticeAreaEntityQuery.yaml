@@ -1,0 +1,15 @@
+title: PracticeAreaEntity
+type: object
+allOf:
+  - $ref: ..\..\scim\ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: string    
+      CaseTypes:
+        type: array
+        items: 
+          type: string
+      CustomFields:
+        type: object    
+        

@@ -6,8 +6,8 @@ description: "Atualiza as informações de um termo"
 operationId: api-publicacao-termo-put
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: IDsTribunais
     in: query
     required: true

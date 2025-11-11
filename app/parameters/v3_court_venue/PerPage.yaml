@@ -1,0 +1,6 @@
+name: perPage
+in: query
+required: false
+description: "**The quantity of items to fetch in this page.** `Default: 10`"
+schema:
+  type: integer

@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col, Grid, Typography, Card, Input, ConfigProvider, Layout, Flex, Button } from 'antd'
 import Image from 'next/image'
 import '@/styles/globals.css'
@@ -9,8 +9,8 @@ import {
   ApiOutlined, BookOutlined, CalendarOutlined,
   FileWordOutlined, ProfileOutlined, RightOutlined
 } from '@ant-design/icons'
-import { getAntdCurrentBreakPoint } from '@/helpers/antd/getAntdCurrentBreakPoint'
-import SocialMediaLinks from '@/components/SocialMediaLinks'
+import { getAntdCurrentBreakPoint } from './helpers/antd/getAntdCurrentBreakPoint'
+import SocialMediaLinks from '@/app/components/SocialMediaLinks'
 
 const { Search } = Input
 const { Text, Title } = Typography
@@ -31,6 +31,98 @@ export default function Home() {
   const currentBreakPoint = getAntdCurrentBreakPoint(screens)
   const smallScreen = currentBreakPoint === 'xs' || currentBreakPoint === 'sm'
   const iconStyle = { fontSize: smallScreen ? '1.5rem' : 24, color: '#161719' }
+
+  const [search, setSearch] = useState('')
+
+  const arrActionsKeywords = [
+    'funcionalidades', 'v1', 'actions', 'templates', 'fluxo', 'documentos',
+    'operations', 'code', 'tinyurl', 'jwt'
+  ]
+
+  const arrCourtVenueKeywords = [
+    'funcionalidades', 'v2.1', 'v3', 'next', 'levels', 'hierarchy', 'cnj',
+    'court', 'venue', 'varas', 'foros', 'ritos',
+    'julgado', 'tribunal', 'cidade', 'procedure', 'locale',
+    'children'
+  ]
+
+  const arrFeriadosKeywords = [
+    'funcionalidades', 'v1', 'feriado', 'recess',
+    'região', 'dia', 'semana'
+  ]
+
+  const arrLooplex365Keywords = [
+    'funcionalidades', 'v1', 'looplex', '365', 'renderização',
+    'document', 'assembler', 'render', 'easy', 'docs',
+    'surf', 'headless', 'jsbox', 'mjml', 'mustache',
+    'pdf', 'converter', 'word'
+  ]
+
+  const arrCasesKeywords = [
+    'plataforma', 'v1', 'cases', 'management', 'legado',
+    'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
+    'administrativos', 'autenticação', 'advogado', 'andamento',
+    'area', 'busca', 'calculo', 'monetário', 'fase', 'categoria',
+    'cliente', 'contato', 'conteudo', 'julgamento', 'contrato',
+    'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário',
+    'garantia', 'hierarquia', 'informações', 'adicionais', 'dado',
+    'complementar', 'liabilities', 'calculation', 'motivo', 'pedir',
+    'natureza', 'pais', 'partes', 'pedidos', 'produtos', 'push', 'publicação',
+    'questões', 'processuais', 'solicitação', 'tabela', 'preço', 'tipo', 'decisão',
+    'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores', 'apurados',
+    'authentication', 'entry', 'client', 'legal', 'service', 'agreement', 'participant',
+    'category', 'employee', 'claim', 'group', 'custom', 'fields'
+  ]
+
+  const arrTasksKeywords = [
+    'plataforma', 'tasks', 'template', 'tarefas', 'deadline', 'event type'
+  ]
+
+  const arrAssemblerKeywords = [
+    'plataforma', 'v1', 'web', 'looplex', 'fluxo', 'documentos', 'templates',
+    'tarefas', 'assembler', 'tasks', 'documents', 'users',
+    'organization', 'export', 'import', 'answers', 'review', 'json',
+    'create', 'hide', 'restores', 'identifier', 'account', 'login'
+  ]
+
+  const arrContentKeywords = [
+    'plataforma', 'v2', 'looplex', 'content', 'cases', 'create', 'update', 'delete',
+    'documents', 'list', 'retrieve', 'check in', 'check out', 'hubshare',
+    'url', 'user', 'views', 'objects'
+  ]
+
+  const arrStandardsKeywords = [
+    'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions',
+    'localities', 'occupations', 'areas', 'practice', 'atividades', 'países', 'regiões',
+    'localidades', 'práticas', 'ocupações', 'códigos', 'atividade', 'áreas', 'cidades', 'estados',
+    'states', 'cities', 'locales', 'tarefas'
+  ]
+
+  const [cards, updateCards] = useState({
+    isVisibleCases: true,
+    isVisibleTasks: true,
+    isVisibleAssembler: true,
+    isVisibleContent: true,
+    isVisibleLooplex365: true,
+    isVisibleFeriados: true,
+    isVisibleCourtVenue: true,
+    isVisibleActions: true,
+    isVisibleStandards: true
+  })
+
+  useEffect(() => {
+    updateCards({
+      isVisibleCases: (search === '') || arrCasesKeywords.some(i => i.includes(search)),
+      isVisibleTasks: (search === '') || arrTasksKeywords.some(i => i.includes(search)),
+      isVisibleAssembler: (search === '') || arrAssemblerKeywords.some(i => i.includes(search)),
+      isVisibleContent: (search === '') || arrContentKeywords.some(i => i.includes(search)),
+      isVisibleLooplex365: (search === '') || arrLooplex365Keywords.some(i => i.includes(search)),
+      isVisibleFeriados: (search === '') || arrFeriadosKeywords.some(i => i.includes(search)),
+      isVisibleCourtVenue: (search === '') || arrCourtVenueKeywords.some(i => i.includes(search)),
+      isVisibleActions: (search === '') || arrActionsKeywords.some(i => i.includes(search)),
+      isVisibleStandards: (search === '') || arrStandardsKeywords.some(i => i.includes(search))
+    })
+  }, [search])
 
   const ColCard = ({ children }) => (
 
@@ -161,7 +253,7 @@ export default function Home() {
             <Search
               style={{ maxWidth: 500 }}
               placeholder='Pesquise na Looplex OpenAPI'
-              onSearch={() => { }}
+              onSearch={(text) => setSearch(text.toLowerCase())}
             />
 
             {!smallScreen && <SocialMediaLinks />}
@@ -232,203 +324,299 @@ export default function Home() {
 
           </Row>
 
-          <Row>
 
-            <Title level={3}>
-              Funcionalidades
-            </Title>
+          {
+            (
+              cards.isVisibleActions ||
+              cards.isVisibleCourtVenue ||
+              cards.isVisibleFeriados ||
+              cards.isVisibleLooplex365
+            ) &&
+            (
+              <Row>
 
-          </Row>
+                <Title level={3}>
+                  Funcionalidades
+                </Title>
+
+              </Row>
+            )
+          }
 
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+            {
+              cards?.isVisibleActions &&
+              (
+                <ColCard>
 
-            <ColCard>
-
-              <CardHeader
-                title='Actions'
-                icon={<ApiOutlined style={iconStyle} />}
-              />
-
-              <div>
-                <Text>É o grupo de APIs usado pelos</Text>
-                <Text strong>{' templates '}</Text>
-                <Text>relacionados ao</Text>
-                <Text strong>{' fluxo de documentos.'}</Text>
-              </div>
-
-              <BorderedLink
-                text='Actions v1'
-                link='/v1_actions'
-              />
-
-            </ColCard>
-
-            <ColCard>
-
-              <CardHeader
-                title='Court Venue'
-                image={
-                  <Image
-                    src='/logo_justice.png'
-                    width={33}
-                    height={29}
-                    alt='Looplex'
+                  <CardHeader
+                    title='Actions'
+                    icon={<ApiOutlined style={iconStyle} />}
                   />
-                }
-              />
 
-              <div>
-                <Text>É o grupo de APIs responsável por definir</Text>
-                <Text strong>{' a cidade ou tribunal '}</Text>
-                <Text>onde o</Text>
-                <Text strong>{' processo será julgado, '}</Text>
-                <Text>com nos dados fornecidos.</Text>
-              </div>
+                  <div>
+                    <Text>É o grupo de APIs usado pelos</Text>
+                    <Text strong>{' templates '}</Text>
+                    <Text>relacionados ao</Text>
+                    <Text strong>{' fluxo de documentos.'}</Text>
+                  </div>
 
-              <BorderedLink
-                text='Court Venue v2.1'
-                link='/v2_court_venue'
-              />
+                  <BorderedLink
+                    text='Actions v1'
+                    link='/v1_actions'
+                  />
 
-            </ColCard>
+                </ColCard>
+              )
+            }
 
-            <ColCard>
+            {
+              cards?.isVisibleCourtVenue &&
+              (
+                <ColCard>
 
-              <CardHeader
-                title='Feriado'
-                icon={<CalendarOutlined style={iconStyle} />}
-              />
+                  <CardHeader
+                    title='Court Venue'
+                    image={
+                      <Image
+                        src='/logo_justice.png'
+                        width={33}
+                        height={29}
+                        alt='Looplex'
+                      />
+                    }
+                  />
 
-              <Text>
-                API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
-              </Text>
+                  <div>
+                    <Text>É o grupo de APIs responsável por definir</Text>
+                    <Text strong>{' a cidade ou tribunal '}</Text>
+                    <Text>onde o</Text>
+                    <Text strong>{' processo será julgado, '}</Text>
+                    <Text>com nos dados fornecidos.</Text>
+                  </div>
 
-              <BorderedLink
-                link='/v1_recess'
-                text='Feriado v1'
-              />
+                  <BorderedLink
+                    text='Court Venue v2.1'
+                    link='/v2_court_venue'
+                  />
 
-            </ColCard>
+                  <BorderedLink
+                    text='Court Venue v3'
+                    link='/v3_court_venue'
+                  />
 
-            <ColCard>
+                </ColCard>
+              )
+            }
 
-              <CardHeader
-                title='Looplex 365'
-                icon={<FileWordOutlined style={iconStyle} />}
-              />
+            {
+              cards?.isVisibleFeriados &&
+              (
+                <ColCard>
 
-              <Text>
-                Ciclo de vida de aplicativos da microsoft e renderizações.
-              </Text>
+                  <CardHeader
+                    title='Feriado'
+                    icon={<CalendarOutlined style={iconStyle} />}
+                  />
 
-              <BorderedLink
-                link='/v1_looplex365'
-                text='Looplex 365 v1'
-              />
+                  <Text>
+                    API de feriados é um serviço que fornece datas oficiais de feriados para diferentes regiões.
+                  </Text>
 
-            </ColCard>
+                  <BorderedLink
+                    link='/v1_recess'
+                    text='Feriado v1'
+                  />
+
+                </ColCard>
+              )
+            }
+
+            {
+              cards?.isVisibleLooplex365 &&
+              (
+                <ColCard>
+
+                  <CardHeader
+                    title='Looplex 365'
+                    icon={<FileWordOutlined style={iconStyle} />}
+                  />
+
+                  <Text>
+                    Ciclo de vida de aplicativos da microsoft e renderizações.
+                  </Text>
+
+                  <BorderedLink
+                    link='/v1_looplex365'
+                    text='Looplex 365 v1'
+                  />
+
+                </ColCard>
+              )
+            }
 
           </Row>
 
-          <Row>
+          {
+            (
+              cards.isVisibleCases ||
+              cards.isVisibleTasks ||
+              cards.isVisibleAssembler ||
+              cards.isVisibleContent ||
+              cards.isVisibleStandards
+            ) &&
+            (
+              <Row>
 
-            <Title level={3}>
-              Plataforma
-            </Title>
+                <Title level={3}>
+                  Plataforma
+                </Title>
 
-          </Row>
+              </Row>
+            )
+          }
 
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
 
-            <ColCard>
+            {
+              cards?.isVisibleCases &&
+              (
+                <ColCard>
 
-              <CardHeader
-                title='Cases'
-                icon={<BookOutlined style={iconStyle} />}
-              />
+                  <CardHeader
+                    title='Cases'
+                    icon={<BookOutlined style={iconStyle} />}
+                  />
 
-              <div>
-                <Text>Grupo de APIs para gestão de dados de</Text>
-                <Text strong>{' casos litigiosos, transacionais e administrativos'}</Text>
-              </div>
+                  <div>
+                    <Text>Grupo de APIs para gestão de dados de</Text>
+                    <Text strong>{' casos litigiosos, transacionais e administrativos'}</Text>
+                  </div>
 
-              <BorderedLink
-                link='/v1_cases'
-                text='Cases v1 (legado)'
-              />
+                  <BorderedLink
+                    link='/v1_cases'
+                    text='Cases v1 (legado)'
+                  />
 
-              <BorderedLink
-                link='/v2_case-management'
-                text='Case Management'
-              />
+                  <BorderedLink
+                    link='/v2_case-management'
+                    text='Case Management'
+                  />
 
-            </ColCard>
+                </ColCard>
+              )
+            }
 
-            <ColCard>
+            {
+              cards?.isVisibleTasks &&
+              (
+                <ColCard>
 
-              <CardHeader
-                title='Tasks'
-                icon={<BookOutlined style={iconStyle} />}
-              />
+                  <CardHeader
+                    title='Tasks'
+                    icon={<BookOutlined style={iconStyle} />}
+                  />
 
-              <div>
-                <Text>Grupo de APIs para consulta, registro de atualização de</Text>
-                <Text strong>{' tarefas'}</Text>
-              </div>
+                  <div>
+                    <Text>Grupo de APIs para consulta, registro de atualização de</Text>
+                    <Text strong>{' tarefas'}</Text>
+                  </div>
 
-              <BorderedLink
-                link='/v2_tasks'
-                text='Tasks'
-              />
+                  <BorderedLink
+                    link='/v2_tasks'
+                    text='Tasks'
+                  />
 
-              <BorderedLink
-                link='/v2_task_template'
-                text='Tasks Template'
-              />
+                  <BorderedLink
+                    link='/v2_task_template'
+                    text='Tasks Template'
+                  />
 
-            </ColCard>
+                </ColCard>
+              )
+            }
 
-            <ColCard>
+            {
+              cards?.isVisibleAssembler &&
+              (
+                <ColCard>
 
-              <CardHeader
-                title='Assembler'
-                icon={<ProfileOutlined style={iconStyle} />}
-              />
+                  <CardHeader
+                    title='Assembler'
+                    icon={<ProfileOutlined style={iconStyle} />}
+                  />
 
-              <div>
-                <Text>É o grupo de APIs usado pela </Text>
-                <Text strong>{' interface web do Looplex, '}</Text>
-                <Text>relacionado ao</Text>
-                <Text strong>{' fluxo de documentos, templates e tarefas.'}</Text>
-              </div>
+                  <div>
+                    <Text>É o grupo de APIs usado pela </Text>
+                    <Text strong>{' interface web do Looplex, '}</Text>
+                    <Text>relacionado ao</Text>
+                    <Text strong>{' fluxo de documentos, templates e tarefas.'}</Text>
+                  </div>
 
-              <BorderedLink
-                link='/v1_assembler'
-                text='Assembler v1'
-              />
+                  <BorderedLink
+                    link='/v1_assembler'
+                    text='Assembler v1'
+                  />
 
-            </ColCard>
+                </ColCard>
+              )
+            }
 
-            <ColCard>
+            {
+              cards?.isVisibleContent &&
+              (
+                <ColCard>
 
-              <CardHeader
-                title='Content'
-                icon={<ProfileOutlined style={iconStyle} />}
-              />
+                  <CardHeader
+                    title='Content'
+                    icon={<ProfileOutlined style={iconStyle} />}
+                  />
 
-              <div>
-                <Text>Grupo de APIs do Looplex Content </Text>
-              </div>
+                  <div>
+                    <Text>Grupo de APIs do Looplex Content </Text>
+                  </div>
 
-              <BorderedLink
-                link='/v2_looplex_content'
-                text='Looplex Content v2'
-              />
+                  <BorderedLink
+                    link='/v2_looplex_content'
+                    text='Looplex Content v2'
+                  />
 
-            </ColCard>
+                </ColCard>
+              )
+            }
+            {
+              cards?.isVisibleStandards && 1 == 0 &&
+              (
+                <ColCard>
+                  <CardHeader
+                    title='Standards'
+                    icon={<ProfileOutlined style={iconStyle} />}
+                  />
 
+                  <div>
+                    <Text>Grupo de APIs do Looplex Standards </Text>
+                  </div>
+
+                  <BorderedLink
+                    link='/v2_activity_task_codes'
+                    text='Activity and Task Codes'
+                  />                  
+                  <BorderedLink
+                    link='/v2_practice_areas'
+                    text='Practice Areas'
+                  />
+                  <BorderedLink
+                    link='/v2_locales'
+                    text='Locales'
+                  />
+                  <BorderedLink
+                    link='/v2_occupations'
+                    text='Occupations'
+                  />
+
+                </ColCard>
+              )}
           </Row>
-
         </Content>
 
         {smallScreen && (

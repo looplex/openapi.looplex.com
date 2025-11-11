@@ -1,0 +1,23 @@
+title: Participante (NATURAL_PERSON)
+type: object
+allOf:
+  - $ref: ParticipantEntityQuery.yaml
+  - type: object
+    properties:
+      Dob:
+        type: string <nullable>
+        format: datetime
+        example: <data_de_nascimento>
+        description: "**Data de Nascimento**"
+      Gender:
+        $ref: ../../enums/v2_case-management/Gender.yaml
+      Nationality:
+        description: "**Nacionalidade**"
+        example: <nacionalidade>
+        type: string <nullable>
+      MaritalStatus:
+        $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+      Occupation:
+        type: string <nullable>
+        description: "**Profissão**"
+        example: <profissao>

@@ -5,8 +5,8 @@ summary: "Listar vinculos de advogado por advogado"
 operationId: api-advogado-vinculo_por_advogado-AdvogadoID-get
 # Parâmetros da requisição
 parameters:
-  - $ref: ../../common_parameters/Profile.yaml
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Profile.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - name: AdvogadoID
     in: path
     required: true
@@ -25,7 +25,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: "../schemas/DTOProcessoParteAdvogado.yaml"
+            $ref: "../../schemas/v1_cases/DTOProcessoParteAdvogado.yaml"
   "400":
     description: "Bad Request"
     content:

@@ -1,0 +1,15 @@
+title: Identidade
+description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
+type: object
+properties:
+  Id:
+    type: string <nullable>
+    format: uuid
+    description: "**The unique identifier of this value**"
+    example: <global_unique_identifier>
+  IdentityProviderType:
+    $ref: ../../enums/common/LegacyIdentityProviderType.yaml
+  Value:
+    type: string
+    description: "**The identity value**"
+    example: <value>

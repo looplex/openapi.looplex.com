@@ -4,7 +4,7 @@ summary: TinyURL
 description: URL shortener that shortens your unwieldly links into more manageable and useable URLs
 operationId: postTinyURLOperation
 parameters:
-  - $ref: ../../parameters/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
 requestBody:
   content:
     application/json:
