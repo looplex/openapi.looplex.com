@@ -585,7 +585,7 @@ export default function Home() {
               )
             }
             {
-              cards?.isVisibleStandards && 1 == 0 &&
+              cards?.isVisibleStandards &&
               (
                 <ColCard>
                   <CardHeader
@@ -600,7 +600,7 @@ export default function Home() {
                   <BorderedLink
                     link='/v2_activity_task_codes'
                     text='Activity and Task Codes'
-                  />                  
+                  />
                   <BorderedLink
                     link='/v2_practice_areas'
                     text='Practice Areas'
