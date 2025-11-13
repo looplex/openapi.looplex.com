@@ -5,31 +5,30 @@ allOf:
   - type: object
     properties:
       EnglishName:
-        type: string    
+        type: string
       FrenchName:
-        type: string    
+        type: string
       PortugueseName:
-        type: string    
+        type: string
       SpanishName:
         type: string
       GermanName:
-        type: string    
+        type: string
       Alpha2Code:
-        type: string    
+        type: string
       Alpha3Code:
-        type: string    
+        type: string
       NumericCode:
-        type: integer    
+        type: integer
       EnglishDemonym:
-        type: string    
+        type: string
       FrenchDemonym:
-        type: string    
+        type: string
       PortugueseDemonym:
-        type: string    
+        type: string
       SpanishDemonym:
-        type: string    
+        type: string
       GermanDemonym:
-        type: string    
+        type: string
       CustomFields:
         type: object
-        

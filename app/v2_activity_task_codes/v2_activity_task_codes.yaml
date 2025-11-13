@@ -1,5 +1,5 @@
 # API 'looplex_standards.yaml'
-openapi: 3.0.2
+openapi: 3.1.0
 security: []
 info:
   version: 1.0.0
@@ -16,13 +16,13 @@ info:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
-    API Standards
+    APIs de Activity Codes e Task Codes
 externalDocs:
   description: Find out how to create a GitHub repo for your OpenAPI definition.
   url: "https://github.com/Rebilly/generator-openapi-repo"
 servers:
-  - url: "https://apim.looplex.com/TODO"
-    description: "looplex standards Server"
+  - url: "https://apim.looplex.com/standards/v1"
+    description: "Looplex Codes Server"
 paths:
 
 # Endpoints dessa API  
