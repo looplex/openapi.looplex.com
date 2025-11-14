@@ -350,9 +350,11 @@
               },
               "Synonyms": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "$ref": "#/components/schemas/OccupationEntityQuery"
-                }
+                },
+                "nullable": true
               }
             }
           }
@@ -462,9 +464,11 @@
               },
               "synonyms": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "$ref": "#/components/schemas/OccupationEntityRetrieve"
-                }
+                },
+                "nullable": true
               }
             }
           }

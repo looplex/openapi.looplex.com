@@ -3,21 +3,18 @@ description:
 allOf:
   - $ref: ..\..\scim\ResourceQuery.yaml
   - type: object
-    properties:  
-      ParentId:
+    properties:        
+      EnUsName:
         type: string
-        format: uuid
-      EnglishName:
+      PtBrName:
         type: string
-      PortugueseName:
+      EsArName:
         type: string
-      SpanishName:
+      EnUsDescription:
         type: string
-      EnglishDescription:
+      PtBrDescription:
         type: string
-      PortugueseDescription:
-        type: string
-      SpanishDescription:
+      EsArDescription:
         type: string  
       CustomFields:
         type: object
@@ -25,6 +22,8 @@ allOf:
         type: string
       Children:
         type: array
+        example: []
         items:
           $ref: TaskCodeEntityQuery.yaml
+        nullable: true
           

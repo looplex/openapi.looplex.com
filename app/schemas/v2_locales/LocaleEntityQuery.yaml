@@ -1,0 +1,46 @@
+title: LocaleEntity
+type: object
+properties:
+  EnUsName:
+    type: string
+  FrFrName:
+    type: string
+  PtBrName:
+    type: string
+  EsArName:
+    type: string    
+  DeDeName:
+    type: string
+  Alpha2Code:
+    type: string
+  Alpha3Code:
+    type: string
+  NumericCode:
+    type: string
+  EnUsDemonym:
+    type: string
+  FrFrDemonym:
+    type: string
+  PtBrDemonym:
+    type: string
+  EsArDemonym:
+    type: string
+  DeDeDemonym:
+    type: string
+  Acronym:
+    type: string
+  ISOCode:
+    type: string
+  Code:
+    type: integer
+  FullCode:
+    type: integer
+  Name:
+    type: string
+  CustomFields:
+    type: object    
+  Children:
+    type: array
+    items: 
+      $ref: "./LocaleEntityQuery.yaml"
+    nullable: true

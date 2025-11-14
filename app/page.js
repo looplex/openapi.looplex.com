@@ -585,7 +585,7 @@ export default function Home() {
               )
             }
             {
-              cards?.isVisibleStandards &&
+              cards?.isVisibleStandards && 1 === 0 &&
               (
                 <ColCard>
                   <CardHeader

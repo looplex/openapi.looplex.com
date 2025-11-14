@@ -471,13 +471,13 @@
               "Code": {
                 "type": "string"
               },
-              "EnglishName": {
+              "EnUsName": {
                 "type": "string"
               },
-              "PortugueseName": {
+              "PtBrName": {
                 "type": "string"
               },
-              "SpanishName": {
+              "EsArName": {
                 "type": "string"
               },
               "CustomFields": {
@@ -580,13 +580,13 @@
               "code": {
                 "type": "string"
               },
-              "englishName": {
+              "enUsName": {
                 "type": "string"
               },
-              "portugueseName": {
+              "ptBrName": {
                 "type": "string"
               },
-              "spanishName": {
+              "esArName": {
                 "type": "string"
               },
               "customFields": {
@@ -606,26 +606,22 @@
           {
             "type": "object",
             "properties": {
-              "ParentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "EnglishName": {
+              "EnUsName": {
                 "type": "string"
               },
-              "PortugueseName": {
+              "PtBrName": {
                 "type": "string"
               },
-              "SpanishName": {
+              "EsArName": {
                 "type": "string"
               },
-              "EnglishDescription": {
+              "EnUsDescription": {
                 "type": "string"
               },
-              "PortugueseDescription": {
+              "PtBrDescription": {
                 "type": "string"
               },
-              "SpanishDescription": {
+              "EsArDescription": {
                 "type": "string"
               },
               "CustomFields": {
@@ -636,9 +632,11 @@
               },
               "Children": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "$ref": "#/components/schemas/TaskCodeEntityQuery"
-                }
+                },
+                "nullable": true
               }
             }
           }
@@ -654,26 +652,22 @@
           {
             "type": "object",
             "properties": {
-              "parentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "englishName": {
+              "enUsName": {
                 "type": "string"
               },
-              "portugueseName": {
+              "ptBrName": {
                 "type": "string"
               },
-              "spanishName": {
+              "esArName": {
                 "type": "string"
               },
-              "englishDescription": {
+              "enUsDescription": {
                 "type": "string"
               },
-              "portugueseDescription": {
+              "ptBrDescription": {
                 "type": "string"
               },
-              "spanishDescription": {
+              "esArDescription": {
                 "type": "string"
               },
               "customFields": {
@@ -684,9 +678,11 @@
               },
               "children": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "$ref": "#/components/schemas/TaskCodeEntityRetrieve"
-                }
+                },
+                "nullable": true
               }
             }
           }
