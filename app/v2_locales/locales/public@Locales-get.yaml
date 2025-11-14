@@ -1,0 +1,85 @@
+tags:
+  - Locales
+
+summary: "Locales"
+
+description: "**Fetch items paginated**"
+
+operationId: Locales-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
+  - $ref: ../../parameters/common/StartIndex.yaml
+  - $ref: ../../parameters/common/Count.yaml
+  - $ref: ../../parameters/common/Filter.yaml
+
+  - name: Ids
+    in: query    
+    description: "Pode ser passado diversos uuids separados por vírgula"
+    schema:
+      type: string
+  - name: CountryName
+    in: query
+    schema:
+      type: string
+  - name: CountryAlphaCode
+    in: query
+    schema:
+      type: string
+  - name: CountryDemonym
+    in: query
+    schema:
+      type: string
+  - name: RegionName
+    in: query
+    schema:
+      type: string
+  - name: RegionAcronym
+    in: query
+    schema:
+      type: string
+  - name: RegionIsoCode
+    in: query
+    schema:
+      type: string
+  - name: RegionCode
+    in: query
+    schema:
+      type: string
+  - name: LocalityName
+    in: query
+    schema:
+      type: string
+  - name: LocalityCode
+    in: query
+    schema:
+      type: string
+  - name: LocalityFullCode
+    in: query
+    schema:
+      type: string
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../../schemas/v2_locales/LocaleEntityQuery.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

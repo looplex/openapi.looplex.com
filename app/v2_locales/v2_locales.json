@@ -264,6 +264,154 @@
           }
         }
       }
+    },
+    "/Locales": {
+      "get": {
+        "tags": [
+          "Locales"
+        ],
+        "summary": "Locales",
+        "description": "**Fetch items paginated**",
+        "operationId": "Locales-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Ids",
+            "in": "query",
+            "description": "Pode ser passado diversos uuids separados por vírgula",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CountryName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CountryAlphaCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CountryDemonym",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RegionName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RegionAcronym",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RegionIsoCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RegionCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LocalityName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LocalityCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "LocalityFullCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/LocaleEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -518,6 +666,76 @@
             }
           }
         ]
+      },
+      "LocaleEntityQuery": {
+        "title": "LocaleEntity",
+        "type": "object",
+        "properties": {
+          "EnUsName": {
+            "type": "string"
+          },
+          "FrFrName": {
+            "type": "string"
+          },
+          "PtBrName": {
+            "type": "string"
+          },
+          "EsArName": {
+            "type": "string"
+          },
+          "DeDeName": {
+            "type": "string"
+          },
+          "Alpha2Code": {
+            "type": "string"
+          },
+          "Alpha3Code": {
+            "type": "string"
+          },
+          "NumericCode": {
+            "type": "string"
+          },
+          "EnUsDemonym": {
+            "type": "string"
+          },
+          "FrFrDemonym": {
+            "type": "string"
+          },
+          "PtBrDemonym": {
+            "type": "string"
+          },
+          "EsArDemonym": {
+            "type": "string"
+          },
+          "DeDeDemonym": {
+            "type": "string"
+          },
+          "Acronym": {
+            "type": "string"
+          },
+          "ISOCode": {
+            "type": "string"
+          },
+          "Code": {
+            "type": "integer"
+          },
+          "FullCode": {
+            "type": "integer"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LocaleEntityQuery"
+            },
+            "nullable": true
+          }
+        }
       }
     }
   }

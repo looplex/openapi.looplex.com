@@ -35,3 +35,6 @@ paths:
   /Localities/:id:  
     get: 
       $ref: ../v2_locales\locales\public@Localities-get.yaml
+  /Locales:  
+    get: 
+      $ref: ../v2_locales\locales\public@Locales-get.yaml
