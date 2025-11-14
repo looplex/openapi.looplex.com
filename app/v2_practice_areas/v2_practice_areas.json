@@ -266,9 +266,11 @@
               },
               "CaseTypes": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "type": "string"
-                }
+                },
+                "nullable": true
               },
               "CustomFields": {
                 "type": "object"
@@ -372,9 +374,11 @@
               },
               "caseTypes": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "type": "string"
-                }
+                },
+                "nullable": true
               },
               "customFields": {
                 "type": "object"

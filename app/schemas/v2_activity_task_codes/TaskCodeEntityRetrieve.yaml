@@ -3,21 +3,18 @@ description:
 allOf:
   - $ref: ..\..\scim\ResourceRetrieve.yaml
   - type: object
-    properties:  
-      parentId:
+    properties:        
+      enUsName:
         type: string
-        format: uuid
-      englishName:
+      ptBrName:
         type: string
-      portugueseName:
+      esArName:
         type: string
-      spanishName:
+      enUsDescription:
         type: string
-      englishDescription:
+      ptBrDescription:
         type: string
-      portugueseDescription:
-        type: string
-      spanishDescription:
+      esArDescription:
         type: string  
       customFields:
         type: object
@@ -25,6 +22,8 @@ allOf:
         type: string
       children:
         type: array
+        example: []
         items:
           $ref: TaskCodeEntityRetrieve.yaml
+        nullable: true
           
