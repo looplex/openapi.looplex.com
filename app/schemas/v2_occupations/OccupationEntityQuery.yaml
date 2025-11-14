@@ -14,5 +14,7 @@ allOf:
         type: object    
       Synonyms:
         type: array
+        example: []
         items: 
           $ref: "OccupationEntityQuery.yaml"
+        nullable: true

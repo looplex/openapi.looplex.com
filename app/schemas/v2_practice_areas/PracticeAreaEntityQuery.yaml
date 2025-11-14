@@ -8,8 +8,10 @@ allOf:
         type: string    
       CaseTypes:
         type: array
+        example: []
         items: 
           type: string
+        nullable: true
       CustomFields:
         type: object    
         
