@@ -32,6 +32,9 @@
   "paths": {
     "/v3/contractClassifications": {
       "get": {
+        "tags": [
+          "Contract classification"
+        ],
         "summary": "Fetch Contract Classifications (paginated)",
         "description": "**Fetch contract classifications (paginated)**",
         "operationId": "v3-contractClassification-get",
@@ -96,6 +99,9 @@
     },
     "/v3/contractClassifications/:id": {
       "get": {
+        "tags": [
+          "Contract classification"
+        ],
         "summary": "Get Contract classification",
         "description": "**Retrieve a contract classification by id**",
         "operationId": "v3-contractClassifications-id-get",
@@ -114,6 +120,62 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContractClassification"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/contractTypes/:uuidContractClassification": {
+      "get": {
+        "tags": [
+          "Contract type"
+        ],
+        "summary": "Fetch Contract types",
+        "description": "**Fetch the contract types according to sent contract classification**",
+        "operationId": "v3-contractTypes-uuidContractClassification-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "uuidContractClassification",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "**The contract classification unique identifier to fetch the contract types**"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProcedureV3"
                 }
               }
             }
@@ -328,6 +390,71 @@
             "type": "string",
             "description": "**The HTTP Status Code error name**",
             "example": "InternalServerError"
+          }
+        }
+      },
+      "ProcedureV3": {
+        "type": "object",
+        "properties": {
+          "group": {
+            "type": "string",
+            "description": "**The group name**",
+            "example": "<group_name>"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The group identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "children": {
+            "type": "array",
+            "description": "**The list of subgroups**",
+            "items": {
+              "type": "object",
+              "properties": {
+                "subGroup": {
+                  "type": "string",
+                  "description": "**The subgroup name**",
+                  "example": "<subgroup_name>"
+                },
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "**The subgroup identifier**",
+                  "example": "<global_unique_identifier>"
+                },
+                "children": {
+                  "type": "array",
+                  "description": "**The list of procedures**",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "procedure": {
+                        "type": "string",
+                        "description": "**The procedure name**",
+                        "example": "<procedure_name>"
+                      },
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "**The procedure identifier**",
+                        "example": "<global_unique_identifier>"
+                      },
+                      "cnjCode": {
+                        "type": "string",
+                        "description": "**The CNJ code**",
+                        "example": "<cnj_code>"
+                      },
+                      "customFields": {
+                        "type": "object",
+                        "description": "**Custom fields for this item**"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

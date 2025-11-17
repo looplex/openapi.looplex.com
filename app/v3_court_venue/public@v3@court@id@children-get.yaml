@@ -1,3 +1,5 @@
+tags:
+  - Court Venue
 summary: "Children by Court Venue id (paginated)"
 description: "**Children by Court Venue id**"
 operationId: v3-court-id-children-get

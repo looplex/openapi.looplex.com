@@ -1,3 +1,5 @@
+tags:
+  - Court Venue
 summary: "Search Court Venue by CNJ"
 description: "**Search Court Venue by CNJ**"
 operationId: v3-court-search_by_cnj-get

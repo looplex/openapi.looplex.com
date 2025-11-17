@@ -1,3 +1,5 @@
+tags:
+  - Court Venue
 summary: "Search Court Venue (paginated)"
 description: "**Search Court Venue (paginated)**"
 operationId: v3-court-search-get
