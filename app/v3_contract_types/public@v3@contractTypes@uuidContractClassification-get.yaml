@@ -1,4 +1,4 @@
-summary: "Contract types"
+summary: "Fetch Contract types"
 description: "**Fetch the contract types according to sent contract classification**"
 operationId: v3-contractTypes-uuidContractClassification-get
 parameters:
