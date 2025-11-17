@@ -1,4 +1,4 @@
-summary: "Contract Classifications (paginated)"
+summary: "List Contract Classifications (paginated)"
 description: "**Fetch contract classifications (paginated)**"
 operationId: v3-contractClassification-get
 parameters:

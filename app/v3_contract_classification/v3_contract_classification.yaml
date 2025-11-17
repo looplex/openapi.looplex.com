@@ -23,6 +23,9 @@ servers:
   - url: "https://apim.looplex.com/varas_foros"
     description: "Contract Classification Server"
 paths:
-  /v3/contractClassification:
+  /v3/contractClassifications:
     get:
-      $ref: public@v3@contractClassification-get.yaml
+      $ref: public@v3@contractClassifications-get.yaml
+  /v3/contractClassifications/:id:
+    get:
+      $ref: public@v3@contractClassifications@id-get.yaml
