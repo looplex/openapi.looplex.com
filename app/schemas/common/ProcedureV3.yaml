@@ -1,0 +1,48 @@
+type: object
+properties:
+  group:
+    type: string
+    description: "**The group name**"
+    example: <group_name>
+  id:
+    type: string
+    format: uuid
+    description: "**The group identifier**"
+    example: <global_unique_identifier>
+  children:
+    type: array
+    description: "**The list of subgroups**"
+    items:
+      type: object
+      properties:
+        subGroup:
+          type: string
+          description: "**The subgroup name**"
+          example: <subgroup_name>
+        id:
+          type: string
+          format: uuid
+          description: "**The subgroup identifier**"
+          example: <global_unique_identifier>
+        children:
+          type: array
+          description: "**The list of procedures**"
+          items:
+            type: object
+            properties:
+              procedure:
+                type: string
+                description: "**The procedure name**"
+                example: <procedure_name>
+              id:
+                type: string
+                format: uuid
+                description: "**The procedure identifier**"
+                example: <global_unique_identifier>
+              cnjCode:
+                type: string
+                description: "**The CNJ code**"
+                example: <cnj_code>
+              customFields:
+                type: object
+                description: "**Custom fields for this item**"
