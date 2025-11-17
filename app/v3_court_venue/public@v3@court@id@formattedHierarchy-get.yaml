@@ -1,12 +1,10 @@
-tags:
-  - Court Venue
 summary: "Formatted hierarchy"
 description: "**Return the formatted hierarchy**"
 operationId: v3-court-id-formattedHierarchy-get
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
-  - $ref: ../../parameters/common/Id.yaml
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../parameters/common/Id.yaml
 responses:
   "200":
     description: "OK"
@@ -29,4 +27,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          $ref: ../scim/SCIMError.yaml

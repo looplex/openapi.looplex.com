@@ -405,6 +405,11 @@ export default function Home() {
                     link='/v3_court_venue'
                   />
 
+                  <BorderedLink
+                    text='Procedures v3'
+                    link='/v3_procedures'
+                  />
+
                 </ColCard>
               )
             }
