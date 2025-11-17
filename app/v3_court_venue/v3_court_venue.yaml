@@ -53,3 +53,7 @@ paths:
   /v3/court/list:
     get:
       $ref: public@v3@court@list-get.yaml
+
+  /v3/procedures:
+    get:
+      $ref: public@v3@procedures-get.yaml

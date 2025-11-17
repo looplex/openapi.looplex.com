@@ -29,3 +29,7 @@ paths:
   /v3/contractClassifications/:id:
     get:
       $ref: public@v3@contractClassifications@id-get.yaml
+
+  /contractTypes/:uuidContractClassification:
+    get:
+      $ref: public@v3@contractTypes@uuidContractClassification-get.yaml

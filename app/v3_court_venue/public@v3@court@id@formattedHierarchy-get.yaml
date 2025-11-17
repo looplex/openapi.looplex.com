@@ -1,3 +1,5 @@
+tags:
+  - Court Venue
 summary: "Formatted hierarchy"
 description: "**Return the formatted hierarchy**"
 operationId: v3-court-id-formattedHierarchy-get
