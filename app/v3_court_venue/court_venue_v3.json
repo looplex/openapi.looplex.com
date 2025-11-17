@@ -1,7 +1,6 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "version": "3.0.0",
     "title": "Looplex Court Venue v3",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -33,9 +32,6 @@
   "paths": {
     "/v3/court/:id/nextLevels": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Next levels of Court Venue",
         "description": "**List next levels of informed Court Venue**",
         "operationId": "v3-court-id-nextLevels-get",
@@ -109,9 +105,6 @@
     },
     "/v3/court/:id/hierarchy": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "List full hierarchy",
         "description": "**List full hierarchy by court venue identifier**",
         "operationId": "v3-court-id-hierarchy-get",
@@ -176,9 +169,6 @@
     },
     "/v3/court/:id/formattedHierarchy": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Formatted hierarchy",
         "description": "**Return the formatted hierarchy**",
         "operationId": "v3-court-id-formattedHierarchy-get",
@@ -234,9 +224,6 @@
     },
     "/v3/court/:id": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Get Court Venue by Id",
         "description": "**Retrieve a Court Venue by id**",
         "operationId": "v3-court-id-get",
@@ -286,9 +273,6 @@
     },
     "/v3/court/search_by_cnj": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Search Court Venue by CNJ",
         "description": "**Search Court Venue by CNJ**",
         "operationId": "v3-court-search_by_cnj-get",
@@ -368,9 +352,6 @@
     },
     "/v3/court": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Court Venue by level (paginated)",
         "description": "**Court Venue by level (paginated)**",
         "operationId": "v3-court-get",
@@ -447,9 +428,6 @@
     },
     "/v3/court/search": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Search Court Venue (paginated)",
         "description": "**Search Court Venue (paginated)**",
         "operationId": "v3-court-search-get",
@@ -526,9 +504,6 @@
     },
     "/v3/court/:id/children": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Children by Court Venue id (paginated)",
         "description": "**Children by Court Venue id**",
         "operationId": "v3-court-id-children-get",
@@ -606,9 +581,6 @@
     },
     "/v3/court/children": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Children by Court Venue parent name (paginated)",
         "description": "**Children by Court Venue parent name (paginated)**",
         "operationId": "v3-court-children-get",
@@ -685,9 +657,6 @@
     },
     "/v3/court/list": {
       "get": {
-        "tags": [
-          "Court Venue"
-        ],
         "summary": "Court Venue by ids (paginated)",
         "description": "**Court Venue by ids (paginated)**",
         "operationId": "v3-court-list-get",
@@ -740,146 +709,6 @@
                       }
                     }
                   ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v3/procedures": {
-      "get": {
-        "tags": [
-          "Procedures"
-        ],
-        "summary": "Procedures by filter",
-        "description": "**Procedures by filter**<br/>\n`At least one of these parameters are required: nodeId, procedureId or procedureName`\n",
-        "operationId": "v3-procedures-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "name": "nodeId",
-            "in": "query",
-            "required": false,
-            "description": "**The court venue identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "procedureId",
-            "in": "query",
-            "required": false,
-            "description": "**The procedure identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "procedureName",
-            "in": "query",
-            "required": false,
-            "description": "**The procedure name**",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "group": {
-                        "type": "string",
-                        "description": "**The group name**",
-                        "example": "<group_name>"
-                      },
-                      "id": {
-                        "type": "string",
-                        "format": "uuid",
-                        "description": "**The group identifier**",
-                        "example": "<global_unique_identifier>"
-                      },
-                      "children": {
-                        "type": "array",
-                        "description": "**The list of subgroups**",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "subGroup": {
-                              "type": "string",
-                              "description": "**The subgroup name**",
-                              "example": "<subgroup_name>"
-                            },
-                            "id": {
-                              "type": "string",
-                              "format": "uuid",
-                              "description": "**The subgroup identifier**",
-                              "example": "<global_unique_identifier>"
-                            },
-                            "children": {
-                              "type": "array",
-                              "description": "**The list of procedures**",
-                              "items": {
-                                "type": "object",
-                                "properties": {
-                                  "procedure": {
-                                    "type": "string",
-                                    "description": "**The procedure name**",
-                                    "example": "<procedure_name>"
-                                  },
-                                  "id": {
-                                    "type": "string",
-                                    "format": "uuid",
-                                    "description": "**The procedure identifier**",
-                                    "example": "<global_unique_identifier>"
-                                  },
-                                  "cnjCode": {
-                                    "type": "string",
-                                    "description": "**The CNJ code**",
-                                    "example": "<cnj_code>"
-                                  },
-                                  "customFields": {
-                                    "type": "object",
-                                    "description": "**Custom fields for this item**"
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }

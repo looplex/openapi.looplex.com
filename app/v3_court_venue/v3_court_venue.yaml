@@ -2,7 +2,6 @@
 openapi: 3.1.0
 security: []
 info:
-  version: 3.0.0
   title: Looplex Court Venue v3
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
@@ -26,36 +25,31 @@ servers:
 paths:
   /v3/court/:id/nextLevels:
     get:
-      $ref: court_venue\public@v3@court@id@nextLevels-get.yaml
+      $ref: public@v3@court@id@nextLevels-get.yaml
   /v3/court/:id/hierarchy:
     get:
-      $ref: court_venue\public@v3@court@id@hierarchy-get.yaml
+      $ref: public@v3@court@id@hierarchy-get.yaml
   /v3/court/:id/formattedHierarchy:
     get:
-      $ref: court_venue\public@v3@court@id@formattedHierarchy-get.yaml
+      $ref: public@v3@court@id@formattedHierarchy-get.yaml
   /v3/court/:id:
     get:
-      $ref: court_venue\public@v3@court@id-get.yaml
+      $ref: public@v3@court@id-get.yaml
   /v3/court/search_by_cnj:
     get:
-      $ref: court_venue\public@v3@court@search_by_cnj-get.yaml
+      $ref: public@v3@court@search_by_cnj-get.yaml
   /v3/court:
     get:
-      $ref: court_venue\public@v3@court-get.yaml
+      $ref: public@v3@court-get.yaml
   /v3/court/search:
     get:
-      $ref: court_venue\public@v3@court@search-get.yaml
+      $ref: public@v3@court@search-get.yaml
   /v3/court/:id/children:
     get:
-      $ref: court_venue\public@v3@court@id@children-get.yaml
+      $ref: public@v3@court@id@children-get.yaml
   /v3/court/children:
     get:
-      $ref: court_venue\public@v3@court@children-get.yaml
+      $ref: public@v3@court@children-get.yaml
   /v3/court/list:
     get:
-      $ref: court_venue\public@v3@court@list-get.yaml
-
-  # Procedures
-  /v3/procedures:
-    get:
-      $ref: procedures\public@v3@procedures-get.yaml
+      $ref: public@v3@court@list-get.yaml

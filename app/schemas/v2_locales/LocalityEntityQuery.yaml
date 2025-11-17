@@ -5,11 +5,11 @@ allOf:
   - type: object
     properties:
       Name:
-        type: string    
+        type: string
       Code:
-        type: integer    
+        type: integer
       FullCode:
-        type: integer    
+        type: integer
       CustomFields:
         type: object
     

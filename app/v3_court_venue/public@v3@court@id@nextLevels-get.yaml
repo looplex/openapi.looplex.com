@@ -1,12 +1,10 @@
-tags:
-  - Court Venue
 summary: "Next levels of Court Venue"
 description: "**List next levels of informed Court Venue**"
 operationId: v3-court-id-nextLevels-get
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../parameters/v3_court_venue/AdjudicatingCourt.yaml
-  - $ref: ../../parameters/v3_court_venue/QuantityLevels.yaml
+  - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../parameters/v3_court_venue/AdjudicatingCourt.yaml
+  - $ref: ../parameters/v3_court_venue/QuantityLevels.yaml
   - name: id
     in: path
     required: true
@@ -20,13 +18,13 @@ responses:
       application/json:
         schema:
           allOf:
-            - $ref: '../../schemas/common/ListResponse.yaml'
+            - $ref: ../schemas/common/ListResponse.yaml
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v3_court_venue/ForoEntity_v3.yaml
+                    $ref: ../schemas/v3_court_venue/ForoEntity_v3.yaml
  
   "400":
     description: "Bad Request"
@@ -39,4 +37,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          $ref: ../scim/SCIMError.yaml

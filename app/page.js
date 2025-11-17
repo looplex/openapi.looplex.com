@@ -405,6 +405,11 @@ export default function Home() {
                     link='/v3_court_venue'
                   />
 
+                  <BorderedLink
+                    text='Procedures v3'
+                    link='/v3_procedures'
+                  />
+
                 </ColCard>
               )
             }
@@ -585,7 +590,7 @@ export default function Home() {
               )
             }
             {
-              cards?.isVisibleStandards && 1 === 0 &&
+              cards?.isVisibleStandards &&
               (
                 <ColCard>
                   <CardHeader

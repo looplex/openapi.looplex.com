@@ -8,7 +8,7 @@ properties:
   PtBrName:
     type: string
   EsArName:
-    type: string    
+    type: string
   DeDeName:
     type: string
   Alpha2Code:
@@ -38,7 +38,7 @@ properties:
   Name:
     type: string
   CustomFields:
-    type: object    
+    type: object
   Children:
     type: array
     items: 
