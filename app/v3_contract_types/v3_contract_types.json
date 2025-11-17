@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.2",
   "info": {
-    "title": "Looplex Procedures v3",
+    "title": "Looplex Contract Types v3",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -16,12 +16,12 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "Endpoints to fetch procedures\n"
+    "description": "Fetch contract types\n"
   },
   "servers": [
     {
       "url": "https://apim.looplex.com/varas_foros",
-      "description": "Procedures Server"
+      "description": "Contract Type Server"
     }
   ],
   "security": [],
@@ -30,42 +30,23 @@
     "url": "https://github.com/Rebilly/generator-openapi-repo"
   },
   "paths": {
-    "/v3/procedures": {
+    "/contractTypes/:uuidContractClassification": {
       "get": {
-        "summary": "Procedures by filter",
-        "description": "**Procedures by filter**<br/>\n`At least one of these parameters are required: nodeId, procedureId or procedureName`\n",
-        "operationId": "v3-procedures-get",
+        "summary": "Contract types",
+        "description": "**Fetch the contract types according to sent contract classification**",
+        "operationId": "v3-contractTypes-uuidContractClassification-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "name": "nodeId",
-            "in": "query",
-            "required": false,
-            "description": "**The court venue identifier**",
+            "name": "uuidContractClassification",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "procedureId",
-            "in": "query",
-            "required": false,
-            "description": "**The procedure identifier**",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "procedureName",
-            "in": "query",
-            "required": false,
-            "description": "**The procedure name**",
-            "schema": {
-              "type": "string"
+              "format": "uuid",
+              "description": "**The contract classification unique identifier to fetch the contract types**"
             }
           }
         ],
@@ -75,10 +56,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ProcedureV3"
-                  }
+                  "$ref": "#/components/schemas/ProcedureV3"
                 }
               }
             }
