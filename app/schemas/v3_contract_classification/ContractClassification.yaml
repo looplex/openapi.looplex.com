@@ -1,0 +1,30 @@
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      Status:
+        type: string
+        description: "**Indicate the item's status**"
+      Level:
+        type: integer
+        description: "**Indicate the item's level**"
+      LevelTitle:
+        type: string
+        description: "**The item's level**"
+      Order:
+        type: integer
+        description: "**The item's order of appearance in a list**"
+      Title:
+        type: string
+        description: "**The item's name**"
+      CaseType:
+        type: string
+        description: "**The case type's canonical of this item**"
+      CustomFields:
+        type: object
+        description: "**Custom fields for this item**"
+      Children:
+        type: array
+        items:
+          $ref: ContractClassification.yaml

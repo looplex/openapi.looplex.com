@@ -1,0 +1,31 @@
+summary: "Fetch Contract types"
+description: "**Fetch the contract types according to sent contract classification**"
+operationId: v3-contractTypes-uuidContractClassification-get
+parameters:
+  - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - name: uuidContractClassification
+    in: path
+    required: true
+    schema:
+      type: string
+      format: uuid
+      description: "**The contract classification unique identifier to fetch the contract types**"
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/common/ProcedureV3.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../scim/SCIMError.yaml

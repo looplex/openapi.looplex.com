@@ -1,0 +1,33 @@
+summary: "Fetch Contract Classifications (paginated)"
+description: "**Fetch contract classifications (paginated)**"
+operationId: v3-contractClassification-get
+parameters:
+  - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../app/parameters/v3_court_venue/Page.yaml
+  - $ref: ../../app/parameters/v3_court_venue/PerPage.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ../schemas/common/ListResponse.yaml
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    $ref: ../schemas/v3_contract_classification/ContractClassification.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../scim/SCIMError.yaml

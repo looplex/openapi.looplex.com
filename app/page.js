@@ -410,6 +410,16 @@ export default function Home() {
                     link='/v3_procedures'
                   />
 
+                  <BorderedLink
+                    text='Contract Classification v3'
+                    link='/v3_contract_classification'
+                  />
+
+                  <BorderedLink
+                    text='Contract Type v3'
+                    link='/v3_contract_types'
+                  />
+
                 </ColCard>
               )
             }

@@ -647,6 +647,46 @@
 					}
 				]
 			}
+		},
+		{
+			"label": "Contract Classification v3",
+			"option": {
+				"build_command": "npx @redocly/cli bundle app/v3_contract_classification/v3_contract_classification.yaml -o app/v3_contract_classification/v3_contract_classification --ext json",
+				"folder_name": "/v3_contract_classification",
+				"path_components": "/app/schemas/v3_contract_classification",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v3_contract_classification",
+				"path_routes": "/app/v3_contract_classification",
+				"path_http_responses": "/app/http_responses",
+				"tags": [
+					{
+						"option": 1,
+						"label": "Pasta padrão de endpoints",
+						"detail": "Endpoints",
+						"folder": "pasta_padrao"
+					}
+				]
+			}
+		},
+		{
+			"label": "Contract Types v3",
+			"option": {
+				"build_command": "npx @redocly/cli bundle app/v3_contract_types/v3_contract_types.yaml -o app/v3_contract_types/v3_contract_types --ext json",
+				"folder_name": "/v3_contract_types",
+				"path_components": "/app/schemas/v3_contract_types",
+				"path_parameters": "/app/parameters/common",
+				"path_enums": "/app/enums/v3_contract_types",
+				"path_routes": "/app/v3_contract_types",
+				"path_http_responses": "/app/http_responses",
+				"tags": [
+					{
+						"option": 1,
+						"label": "Pasta padrão de endpoints",
+						"detail": "Endpoints",
+						"folder": "pasta_padrao"
+					}
+				]
+			}
 		}
 	]
 }
