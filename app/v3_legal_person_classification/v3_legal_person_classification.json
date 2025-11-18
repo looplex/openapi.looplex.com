@@ -1,0 +1,283 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Looplex Legal Person Classification v3",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "Fetch Legal Person Classifications\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/varas_foros",
+      "description": "Legal Person Classification Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/v3/legalPersonClassifications": {
+      "get": {
+        "tags": [
+          "Legal Person Classification"
+        ],
+        "summary": "Fetch Legal Person Classifications (paginated)",
+        "description": "**Fetch Legal Person Classifications (paginated)**",
+        "operationId": "v3-legalPersonClassifications-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Page"
+          },
+          {
+            "$ref": "#/components/parameters/PerPage"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/LegalPersonClassification"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Page": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "description": "**The page to search.** `Default: 1`",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "PerPage": {
+        "name": "perPage",
+        "in": "query",
+        "required": false,
+        "description": "**The quantity of items to fetch in this page.** `Default: 10`",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
+    "schemas": {
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "MetaRetrieve": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "lastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceRetrieve": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "externalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "meta": {
+            "description": "**Entity's information**",
+            "$ref": "#/components/schemas/MetaRetrieve"
+          }
+        }
+      },
+      "LegalPersonClassification": {
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Status": {
+                "type": "string",
+                "description": "**Indicate the item's status**"
+              },
+              "Level": {
+                "type": "integer",
+                "description": "**Indicate the item's level**"
+              },
+              "LevelTitle": {
+                "type": "string",
+                "description": "**The item's level**"
+              },
+              "Order": {
+                "type": "integer",
+                "description": "**The item's order of appearance in a list**"
+              },
+              "Title": {
+                "type": "string",
+                "description": "**The item's name**"
+              },
+              "CaseType": {
+                "type": "string",
+                "description": "**The case type's canonical of this item**"
+              },
+              "CustomFields": {
+                "type": "object",
+                "description": "**Custom fields for this item**"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegalPersonClassification"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "$ref": "#/components/schemas/SCIMtypeError"
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "<exception_message>"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}
