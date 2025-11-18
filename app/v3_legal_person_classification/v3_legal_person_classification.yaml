@@ -26,3 +26,6 @@ paths:
   /v3/legalPersonClassifications:
     get:
       $ref: public@v3@legalPersonClassifications-get.yaml
+  /v3/legalPersonClassifications/:id:
+    get:
+      $ref: public@v3@legalPersonClassifications@id-get.yaml
