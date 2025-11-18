@@ -39,8 +39,15 @@ export default function Home() {
     'operations', 'code', 'tinyurl', 'jwt'
   ]
 
-  const arrCourtVenueKeywords = [
-    'funcionalidades', 'v2.1', 'v3', 'next', 'levels', 'hierarchy', 'cnj',
+  const arrCourtVenueV2_1Keywords = [
+    'funcionalidades', 'v2.1', 'next', 'levels', 'hierarchy', 'cnj',
+    'court', 'venue', 'varas', 'foros', 'ritos',
+    'julgado', 'tribunal', 'cidade', 'procedure', 'locale',
+    'children'
+  ]
+
+  const arrCourtVenueV3Keywords = [
+    'funcionalidades', 'v3', 'next', 'levels', 'hierarchy', 'cnj',
     'court', 'venue', 'varas', 'foros', 'ritos',
     'julgado', 'tribunal', 'cidade', 'procedure', 'locale',
     'children'
@@ -58,25 +65,28 @@ export default function Home() {
     'pdf', 'converter', 'word'
   ]
 
-  const arrCasesKeywords = [
-    'plataforma', 'v1', 'cases', 'management', 'legado',
-    'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
-    'administrativos', 'autenticação', 'advogado', 'andamento',
-    'area', 'busca', 'calculo', 'monetário', 'fase', 'categoria',
-    'cliente', 'contato', 'conteudo', 'julgamento', 'contrato',
-    'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário',
-    'garantia', 'hierarquia', 'informações', 'adicionais', 'dado',
-    'complementar', 'liabilities', 'calculation', 'motivo', 'pedir',
-    'natureza', 'pais', 'partes', 'pedidos', 'produtos', 'push', 'publicação',
-    'questões', 'processuais', 'solicitação', 'tabela', 'preço', 'tipo', 'decisão',
-    'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores', 'apurados',
-    'authentication', 'entry', 'client', 'legal', 'service', 'agreement', 'participant',
-    'category', 'employee', 'claim', 'group', 'custom', 'fields'
+  const arrCasesV1Keywords = [
+    'v1', 'api', 'logon', 'cases', 'legado', 'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
+    'administrativos', 'autenticação', 'advogado', 'andamento', 'area', 'busca', 'calculo',
+    'monetário', 'fase', 'categoria', 'cliente', 'contato', 'conteudo', 'julgamento',
+    'contrato', 'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário',
+    'garantia', 'hierarquia', 'informações', 'adicionais', 'dado', 'complementar',
+    'liabilities', 'calculation', 'motivo', 'pedir', 'natureza', 'pais', 'partes', 'pedidos',
+    'produtos', 'push', 'publicação', 'questões', 'processuais', 'solicitação', 'tabela', 'preço',
+    'tipo', 'decisão', 'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores',
+    'apurados', 'custom', 'fields'
+  ]
+
+  const arrCasesV2Keywords = [
+    'v2', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client', 'legal', 'service',
+    'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom', 'fields'
   ]
 
   const arrTasksKeywords = [
-    'plataforma', 'tasks', 'template', 'tarefas', 'deadline', 'event type'
+    'plataforma', 'task', 'tarefas', 'deadline', 'event type'
   ]
+
+  const arrTaskTemplateKeywords = [...arrTasksKeywords, 'template']
 
   const arrAssemblerKeywords = [
     'plataforma', 'v1', 'web', 'looplex', 'fluxo', 'documentos', 'templates',
@@ -91,36 +101,54 @@ export default function Home() {
     'url', 'user', 'views', 'objects'
   ]
 
-  const arrStandardsKeywords = [
-    'task', 'v2', 'codes', 'activity', 'standards', 'countries', 'regions',
-    'localities', 'occupations', 'areas', 'practice', 'atividades', 'países', 'regiões',
-    'localidades', 'práticas', 'ocupações', 'códigos', 'atividade', 'áreas', 'cidades', 'estados',
-    'states', 'cities', 'locales', 'tarefas'
+  const arrStandardsCodesKeywords = ['task', 'codes', 'activity', 'standards', 'atividade', 'código', 'tarefa']
+
+  const arrStandardsPracticeAreasKeywords = ['standards', 'area', 'practice', 'prática']
+
+  const arrStandardsLocaleKeywords = [
+    'standards', 'countries', 'regions', 'localities', 'países', 'regiões',
+    'localidades', 'cidade', 'estado', 'states', 'cities', 'locale', 'city'
   ]
 
+  const arrStandardsOccupationsKeywords = ['standards', 'occupations', 'ocupação', 'ocupações']
+
   const [cards, updateCards] = useState({
-    isVisibleCases: true,
+    isVisibleCasesV1: true,
+    isVisibleCasesV2: true,
     isVisibleTasks: true,
+    isVisibleTaskTemplate: true,
     isVisibleAssembler: true,
     isVisibleContent: true,
     isVisibleLooplex365: true,
     isVisibleFeriados: true,
-    isVisibleCourtVenue: true,
+    isVisibleCourtVenueV2_1: true,
+    isVisibleCourtVenueV3: true,
     isVisibleActions: true,
-    isVisibleStandards: true
+    isVisibleStandardsCodes: true,
+    isVisibleStandardsPracticeArea: true,
+    isVisibleStandardsLocale: true,
+    isVisibleStandardsOccupation: true,
+    isVisibleContractClassification: true
   })
 
   useEffect(() => {
     updateCards({
-      isVisibleCases: (search === '') || arrCasesKeywords.some(i => i.includes(search)),
+      isVisibleCasesV1: (search === '') || arrCasesV1Keywords.some(i => i.includes(search)),
+      isVisibleCasesV2: (search === '') || arrCasesV2Keywords.some(i => i.includes(search)),
       isVisibleTasks: (search === '') || arrTasksKeywords.some(i => i.includes(search)),
+      isVisibleTaskTemplate: (search === '') || arrTaskTemplateKeywords.some(i => i.includes(search)),
       isVisibleAssembler: (search === '') || arrAssemblerKeywords.some(i => i.includes(search)),
       isVisibleContent: (search === '') || arrContentKeywords.some(i => i.includes(search)),
       isVisibleLooplex365: (search === '') || arrLooplex365Keywords.some(i => i.includes(search)),
       isVisibleFeriados: (search === '') || arrFeriadosKeywords.some(i => i.includes(search)),
-      isVisibleCourtVenue: (search === '') || arrCourtVenueKeywords.some(i => i.includes(search)),
+      isVisibleCourtVenueV2_1: (search === '') || arrCourtVenueV2_1Keywords.some(i => i.includes(search)),
+      isVisibleCourtVenueV3: (search === '') || arrCourtVenueV3Keywords.some(i => i.includes(search)),
       isVisibleActions: (search === '') || arrActionsKeywords.some(i => i.includes(search)),
-      isVisibleStandards: (search === '') || arrStandardsKeywords.some(i => i.includes(search))
+      isVisibleStandardsCodes: (search === '') || arrStandardsCodesKeywords.some(i => i.includes(search)),
+      isVisibleStandardsLocale: (search === '') || arrStandardsLocaleKeywords.some(i => i.includes(search)),
+      isVisibleStandardsOccupation: (search === '') || arrStandardsOccupationsKeywords.some(i => i.includes(search)),
+      isVisibleStandardsPracticeArea: (search === '') || arrStandardsPracticeAreasKeywords.some(i => i.includes(search)),
+      isVisibleContractClassification: (search === '') || ['contract', 'classification', 'v3'].some(i => i.includes(search))
     })
   }, [search])
 
@@ -253,7 +281,7 @@ export default function Home() {
             <Search
               style={{ maxWidth: 500 }}
               placeholder='Pesquise na Looplex OpenAPI'
-              onSearch={(text) => setSearch(text.toLowerCase())}
+              onChange={(e) => setSearch(e.target.value.toLowerCase())}
             />
 
             {!smallScreen && <SocialMediaLinks />}
@@ -328,7 +356,8 @@ export default function Home() {
           {
             (
               cards.isVisibleActions ||
-              cards.isVisibleCourtVenue ||
+              cards.isVisibleCourtVenueV2_1 ||
+              cards.isVisibleCourtVenueV3 ||
               cards.isVisibleFeriados ||
               cards.isVisibleLooplex365
             ) &&
@@ -344,6 +373,7 @@ export default function Home() {
           }
 
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
+
             {
               cards?.isVisibleActions &&
               (
@@ -371,7 +401,11 @@ export default function Home() {
             }
 
             {
-              cards?.isVisibleCourtVenue &&
+              (
+                cards.isVisibleCourtVenueV2_1 ||
+                cards.isVisibleCourtVenueV3 ||
+                cards.isVisibleContractClassification
+              ) &&
               (
                 <ColCard>
 
@@ -395,20 +429,35 @@ export default function Home() {
                     <Text>com nos dados fornecidos.</Text>
                   </div>
 
-                  <BorderedLink
-                    text='Court Venue v2.1'
-                    link='/v2_court_venue'
-                  />
+                  {
+                    cards.isVisibleCourtVenueV2_1 &&
+                    (
+                      <BorderedLink
+                        text='Court Venue v2.1'
+                        link='/v2_court_venue'
+                      />
+                    )
+                  }
 
-                  <BorderedLink
-                    text='Court Venue v3'
-                    link='/v3_court_venue'
-                  />
+                  {
+                    cards.isVisibleCourtVenueV3 &&
+                    (
+                      <BorderedLink
+                        text='Court Venue v3'
+                        link='/v3_court_venue'
+                      />
+                    )
+                  }
 
-                  <BorderedLink
-                    text='Contract Classification v3'
-                    link='/v3_contract_classification'
-                  />
+                  {
+                    cards.isVisibleContractClassification &&
+                    (
+                      <BorderedLink
+                        text='Contract Classification v3'
+                        link='/v3_contract_classification'
+                      />
+                    )
+                  }
 
                 </ColCard>
               )
@@ -464,11 +513,16 @@ export default function Home() {
 
           {
             (
-              cards.isVisibleCases ||
+              cards.isVisibleCasesV1 ||
+              cards.isVisibleCasesV2 ||
               cards.isVisibleTasks ||
+              cards.isVisibleTaskTemplate ||
               cards.isVisibleAssembler ||
               cards.isVisibleContent ||
-              cards.isVisibleStandards
+              cards.isVisibleStandardsCodes ||
+              cards.isVisibleStandardsLocale ||
+              cards.isVisibleStandardsOccupation ||
+              cards.isVisibleStandardsPracticeArea
             ) &&
             (
               <Row>
@@ -484,7 +538,10 @@ export default function Home() {
           <Row gutter={smallScreen ? [16, 16] : [24, 24]}>
 
             {
-              cards?.isVisibleCases &&
+              (
+                cards?.isVisibleCasesV1 ||
+                cards?.isVisibleCasesV2
+              ) &&
               (
                 <ColCard>
 
@@ -498,22 +555,35 @@ export default function Home() {
                     <Text strong>{' casos litigiosos, transacionais e administrativos'}</Text>
                   </div>
 
-                  <BorderedLink
-                    link='/v1_cases'
-                    text='Cases v1 (legado)'
-                  />
+                  {
+                    cards.isVisibleCasesV1 &&
+                    (
+                      <BorderedLink
+                        link='/v1_cases'
+                        text='Cases v1 (legado)'
+                      />
+                    )
+                  }
 
-                  <BorderedLink
-                    link='/v2_case-management'
-                    text='Case Management'
-                  />
+                  {
+                    cards.isVisibleCasesV2 &&
+                    (
+                      <BorderedLink
+                        link='/v2_case-management'
+                        text='Case Management'
+                      />
+                    )
+                  }
 
                 </ColCard>
               )
             }
 
             {
-              cards?.isVisibleTasks &&
+              (
+                cards?.isVisibleTasks ||
+                cards?.isVisibleTaskTemplate
+              ) &&
               (
                 <ColCard>
 
@@ -527,15 +597,25 @@ export default function Home() {
                     <Text strong>{' tarefas'}</Text>
                   </div>
 
-                  <BorderedLink
-                    link='/v2_tasks'
-                    text='Tasks'
-                  />
+                  {
+                    cards.isVisibleTasks &&
+                    (
+                      <BorderedLink
+                        link='/v2_tasks'
+                        text='Tasks'
+                      />
+                    )
+                  }
 
-                  <BorderedLink
-                    link='/v2_task_template'
-                    text='Tasks Template'
-                  />
+                  {
+                    cards.isVisibleTaskTemplate &&
+                    (
+                      <BorderedLink
+                        link='/v2_task_template'
+                        text='Tasks Template'
+                      />
+                    )
+                  }
 
                 </ColCard>
               )
@@ -589,10 +669,17 @@ export default function Home() {
                 </ColCard>
               )
             }
+
             {
-              cards?.isVisibleStandards &&
+              (
+                cards.isVisibleStandardsCodes ||
+                cards.isVisibleStandardsLocale ||
+                cards.isVisibleStandardsOccupation ||
+                cards.isVisibleStandardsPracticeArea
+              ) &&
               (
                 <ColCard>
+
                   <CardHeader
                     title='Standards'
                     icon={<ProfileOutlined style={iconStyle} />}
@@ -602,26 +689,52 @@ export default function Home() {
                     <Text>Grupo de APIs do Looplex Standards </Text>
                   </div>
 
-                  <BorderedLink
-                    link='/v2_activity_task_codes'
-                    text='Activity and Task Codes'
-                  />
-                  <BorderedLink
-                    link='/v2_practice_areas'
-                    text='Practice Areas'
-                  />
-                  <BorderedLink
-                    link='/v2_locales'
-                    text='Locales'
-                  />
-                  <BorderedLink
-                    link='/v2_occupations'
-                    text='Occupations'
-                  />
+                  {
+                    cards.isVisibleStandardsCodes &&
+                    (
+                      <BorderedLink
+                        link='/v2_activity_task_codes'
+                        text='Activity and Task Codes'
+                      />
+                    )
+                  }
+
+                  {
+                    cards.isVisibleStandardsPracticeArea &&
+                    (
+                      <BorderedLink
+                        link='/v2_practice_areas'
+                        text='Practice Areas'
+                      />
+                    )
+                  }
+
+                  {
+                    cards.isVisibleStandardsLocale &&
+                    (
+                      <BorderedLink
+                        link='/v2_locales'
+                        text='Locales'
+                      />
+                    )
+                  }
+
+                  {
+                    cards.isVisibleStandardsOccupation &&
+                    (
+                      <BorderedLink
+                        link='/v2_occupations'
+                        text='Occupations'
+                      />
+                    )
+                  }
 
                 </ColCard>
-              )}
+              )
+            }
+
           </Row>
+
         </Content>
 
         {smallScreen && (
