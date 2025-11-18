@@ -20,12 +20,12 @@ parameters:
   - $ref: ../../..{{PATH_PARAMETERS}}/Filter.yaml
 
   # quando o endpoint está fora de uma pasta
-  - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
-  - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
-  - $ref: ../../..{{PATH_PARAMETERS}}/StartIndex.yaml
-  - $ref: ../../..{{PATH_PARAMETERS}}/Count.yaml
-  - $ref: ../../..{{PATH_PARAMETERS}}/Filter.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/StartIndex.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Count.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Filter.yaml
 
   # demais parametros
 {{PATH_QUERY_PARAMETERS}}

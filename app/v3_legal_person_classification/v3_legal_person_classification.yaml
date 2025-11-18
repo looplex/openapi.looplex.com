@@ -29,3 +29,7 @@ paths:
   /v3/legalPersonClassifications/:id:
     get:
       $ref: public@v3@legalPersonClassifications@id-get.yaml
+
+  /v3/deliberativeBody/:uuidLegalPersonClassification:
+    get:
+      $ref: public@v3@deliberativeBody@uuidLegalPersonClassification-get.yaml
