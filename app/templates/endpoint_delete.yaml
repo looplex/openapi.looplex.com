@@ -39,3 +39,11 @@ responses:
     description: "Not Found"
   "500":
     description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
+
+          # quando o endpoint está fora de uma pasta
+          $ref: ../scim/SCIMError.yaml

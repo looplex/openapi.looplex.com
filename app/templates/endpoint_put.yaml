@@ -49,4 +49,8 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
+
+          # quando o endpoint está fora de uma pasta
+          $ref: ../scim/SCIMError.yaml
