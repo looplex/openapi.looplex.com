@@ -3,4 +3,8 @@
     content:
       application/json:
         schema:
-          $ref: ../schemas/{{DTO_NAME}}.yaml
+          # quando endpoint está dentro de uma pasta
+          $ref: ../../schemas/<api_folder_name>/{{DTO_NAME}}.yaml
+
+          # quando endpoint está fora de uma pasta
+          $ref: ../schemas/<api_folder_name>/{{DTO_NAME}}.yaml 

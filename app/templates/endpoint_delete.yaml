@@ -8,10 +8,20 @@ description: {{DESCRIPTION}}
 # description: {{DESCRIPTION}}
 
 operationId: {{OPERATION_ID}}
+
+# query / path parameters
 parameters:
-  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/Tenant.yaml
-  - $ref: ../../{{PATH_PARAMETERS}}/BearerToken.yaml
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+  # quando o endpoint está fora de uma pasta
+  - $ref: ../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+  # demais parametros
   - name: id
     in: path
     required: true
@@ -19,6 +29,8 @@ parameters:
     schema:
       type: string
       format: uuid
+
+# http responses
 responses:
   {{HTTP_RESPONSES}}
   "204":

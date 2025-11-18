@@ -8,12 +8,25 @@ description: "**Retrieve a {{TAG_NAME}} by id**"
 # description: "{{DESCRIPTION}}"
 
 operationId: {{OPERATION_ID}}
+
+# query / path parameters
 parameters:
+  # quando o endpoint está dentro de uma pasta
   - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/Id.yaml
+
+  # quando o endpoint está fora de uma pasta
+  - $ref: ../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/BearerToken.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Id.yaml
+
+  # demais parametros
 {{PATH_QUERY_PARAMETERS}}
+
+# http responses
 responses:
   {{HTTP_RESPONSES}}
   "400":

@@ -10,10 +10,20 @@ description: |
 # description: {{DESCRIPTION}}
 
 operationId: {{OPERATION_ID}}
+
+# query / path parameters
 parameters:
+  # quando o endpoint está dentro de uma pasta
   - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+  # quando o endpoint está fora de uma pasta
+  - $ref: ../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+  # demais parametros
   - name: id
     in: path
     required: true
@@ -21,6 +31,8 @@ parameters:
     schema:
       type: string
       format: uuid
+
+# request body
 requestBody:
   content:
     application/json:
@@ -28,6 +40,8 @@ requestBody:
         type: array
         items:
           $ref: ../../schemas/common/PatchEntity.yaml
+
+# http responses
 responses:
   "204":
     description: "No Content"
