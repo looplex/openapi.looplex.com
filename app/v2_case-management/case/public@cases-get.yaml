@@ -1,23 +1,25 @@
-# Linhas com # são comentários e podem ser removidas.
 tags:
   - Case Management
+
 summary: "/Cases"
-description: |
-  **Fetch cases paginated**
+
+description: "**Fetch cases paginated**"
+
 operationId: cases-get
-# Parâmetros da requisição
+
+# query / path parameters
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-  - $ref: ../../parameters/common/StartIndex.yaml
-  - $ref: ../../parameters/common/Count.yaml
-  - $ref: ../../parameters/common/Filter.yaml
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
   - $ref: ../../parameters/common/SortBy.yaml
   - $ref: ../../parameters/common/SortOrder.yaml
-# Responses
+
+# http responses
 responses:
-  # Adicione aqui outras respostas HTTP. Verificar menu "Copiar nova resposta HTTP"
   "200":
     description: "OK"
     content:
@@ -40,4 +42,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          $ref: ../../scim/SCIMError.yaml

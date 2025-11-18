@@ -1,19 +1,15 @@
 tags:
   - Locales
-
 summary: "Locales"
-
 description: "**Fetch items paginated**"
-
 operationId: Locales-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
-  - $ref: ../../parameters/common/StartIndex.yaml
-  - $ref: ../../parameters/common/Count.yaml
-  - $ref: ../../parameters/common/Filter.yaml
-
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
   - name: Ids
-    in: query    
+    in: query
     description: "Pode ser passado diversos uuids separados por vírgula"
     schema:
       type: string

@@ -5,8 +5,8 @@ description: "**Fetch contract classifications (paginated)**"
 operationId: v3-contractClassification-get
 parameters:
   - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../app/parameters/v3_court_venue/Page.yaml
-  - $ref: ../../app/parameters/v3_court_venue/PerPage.yaml
+  - $ref: ../../app/parameters/scim/StartIndex.yaml
+  - $ref: ../../app/parameters/scim/Count.yaml
 responses:
   "200":
     description: "OK"

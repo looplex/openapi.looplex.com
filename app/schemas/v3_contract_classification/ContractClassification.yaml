@@ -5,26 +5,33 @@ allOf:
     properties:
       Status:
         type: string
+        example: <status_STRING>
         description: "**Indicate the item's status**"
       Level:
         type: integer
+        example: <level_INTEGER>
         description: "**Indicate the item's level**"
       LevelTitle:
         type: string
+        example: <level_title_STRING>
         description: "**The item's level**"
       Order:
         type: integer
+        example: <order_INTEGER>
         description: "**The item's order of appearance in a list**"
       Title:
         type: string
+        example: <title_STRING>
         description: "**The item's name**"
       CaseType:
         type: string
+        example: <case_type_STRING>
         description: "**The case type's canonical of this item**"
       CustomFields:
         type: object
         description: "**Custom fields for this item**"
       Children:
         type: array
+        example: []
         items:
           $ref: ContractClassification.yaml
