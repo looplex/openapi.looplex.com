@@ -43,10 +43,10 @@
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "$ref": "#/components/parameters/Page"
+            "$ref": "#/components/parameters/StartIndex"
           },
           {
-            "$ref": "#/components/parameters/PerPage"
+            "$ref": "#/components/parameters/Count"
           }
         ],
         "responses": {
@@ -152,7 +152,7 @@
           "Contract type"
         ],
         "summary": "Fetch Contract types",
-        "description": "**Fetch the contract types according to sent contract classification**",
+        "description": "**Fetch the contract types through Contract classification unique identifier**",
         "operationId": "v3-contractTypes-uuidContractClassification-get",
         "parameters": [
           {
@@ -215,20 +215,22 @@
           "type": "string"
         }
       },
-      "Page": {
-        "name": "page",
+      "StartIndex": {
+        "name": "startIndex",
         "in": "query",
-        "required": false,
-        "description": "**The page to search.** `Default: 1`",
+        "required": true,
+        "description": "**Index of search**<br/>`Default: 1`",
+        "example": 1,
         "schema": {
           "type": "integer"
         }
       },
-      "PerPage": {
-        "name": "perPage",
+      "Count": {
+        "name": "count",
         "in": "query",
-        "required": false,
-        "description": "**The quantity of items to fetch in this page.** `Default: 10`",
+        "required": true,
+        "description": "**Total count of items to return**<br />\n`Default: 1` | `Max of 120`\n",
+        "example": 12,
         "schema": {
           "type": "integer"
         }
@@ -332,26 +334,32 @@
             "properties": {
               "Status": {
                 "type": "string",
+                "example": "<status_STRING>",
                 "description": "**Indicate the item's status**"
               },
               "Level": {
                 "type": "integer",
+                "example": "<level_INTEGER>",
                 "description": "**Indicate the item's level**"
               },
               "LevelTitle": {
                 "type": "string",
+                "example": "<level_title_STRING>",
                 "description": "**The item's level**"
               },
               "Order": {
                 "type": "integer",
+                "example": "<order_INTEGER>",
                 "description": "**The item's order of appearance in a list**"
               },
               "Title": {
                 "type": "string",
+                "example": "<title_STRING>",
                 "description": "**The item's name**"
               },
               "CaseType": {
                 "type": "string",
+                "example": "<case_type_STRING>",
                 "description": "**The case type's canonical of this item**"
               },
               "CustomFields": {
@@ -360,6 +368,7 @@
               },
               "Children": {
                 "type": "array",
+                "example": [],
                 "items": {
                   "$ref": "#/components/schemas/ContractClassification"
                 }

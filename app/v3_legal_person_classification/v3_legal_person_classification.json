@@ -1,8 +1,7 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.0.2",
   "info": {
-    "version": "1.0.0",
-    "title": "Looplex Occupations",
+    "title": "Looplex Legal Person Classification v3",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
       "name": "Developers Looplex",
@@ -17,12 +16,12 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "APIs de Occupations\n"
+    "description": "Fetch Legal Person Classifications\n"
   },
   "servers": [
     {
-      "url": "https://apim.looplex.com/standards/v1",
-      "description": "Occupations Server"
+      "url": "https://apim.looplex.com/varas_foros",
+      "description": "Legal Person Classification Server"
     }
   ],
   "security": [],
@@ -31,14 +30,14 @@
     "url": "https://github.com/Rebilly/generator-openapi-repo"
   },
   "paths": {
-    "/Occupations": {
+    "/v3/legalPersonClassifications": {
       "get": {
         "tags": [
-          "Occupations"
+          "Legal Person Classification"
         ],
-        "summary": "Occupations",
-        "description": "**Fetch items paginated**",
-        "operationId": "Ocupations-get",
+        "summary": "Fetch Legal Person Classifications (paginated)",
+        "description": "**Fetch Legal Person Classifications (paginated)**",
+        "operationId": "v3-legalPersonClassifications-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -48,39 +47,6 @@
           },
           {
             "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "name": "Id",
-            "in": "query",
-            "description": "Pode ser passado mais de um Id separado por vírgula",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "Code",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Name",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -99,7 +65,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/OccupationEntityQuery"
+                            "$ref": "#/components/schemas/LegalPersonClassification"
                           }
                         }
                       }
@@ -131,14 +97,14 @@
         }
       }
     },
-    "/Occupations/:id": {
+    "/v3/legalPersonClassifications/:id": {
       "get": {
         "tags": [
-          "Occupations"
+          "Legal Person Classification"
         ],
-        "summary": "Occupations/:Id",
-        "description": "**Retrieve a Pasta padrão de endpoints by id**",
-        "operationId": "Occupations-Id-get",
+        "summary": "Get Legal Person Classification",
+        "description": "**Retrieve a Legal Person Classification by id**",
+        "operationId": "v3-legalPersonClassifications-id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -153,22 +119,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/OccupationEntityRetrieve"
-                          }
-                        }
-                      }
-                    }
-                  ]
+                  "$ref": "#/components/schemas/LegalPersonClassification"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v3/deliberativeBody/:uuidLegalPersonClassification": {
+      "get": {
+        "tags": [
+          "Deliberative Body"
+        ],
+        "summary": "Fetch Deliberative body",
+        "description": "**Fetch Deliberative body through Legal Person Classification unique identifier**",
+        "operationId": "v3-deliberativeBody-uuidLegalPersonClassification-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "name": "uuidLegalPersonClassification",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "**The legal person classification unique identifier**"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcedureV3"
+                  }
                 }
               }
             }
@@ -228,16 +238,6 @@
           "type": "integer"
         }
       },
-      "Filter": {
-        "name": "filter",
-        "in": "query",
-        "required": false,
-        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
-        "schema": {
-          "type": "string"
-        },
-        "example": null
-      },
       "Id": {
         "name": "id",
         "in": "path",
@@ -268,120 +268,6 @@
             "description": "**Total count of items to return**",
             "type": "integer",
             "example": 12
-          }
-        }
-      },
-      "MetaQuery": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "ResourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "Created": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "LastModified": {
-            "type": "string <nullable>",
-            "format": "datetime",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "Location": {
-            "type": "string <nullable>",
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "Version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceQuery": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "ExternalId": {
-            "example": "<external_id>",
-            "type": "string <nullable>",
-            "description": "**External identifier**"
-          },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/MetaQuery"
-          }
-        }
-      },
-      "OccupationEntityQuery": {
-        "title": "OccupationEntity",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "Code": {
-                "type": "string"
-              },
-              "Name": {
-                "type": "string"
-              },
-              "Status": {
-                "type": "string"
-              },
-              "CustomFields": {
-                "type": "object"
-              },
-              "Synonyms": {
-                "type": "array",
-                "example": [],
-                "items": {
-                  "$ref": "#/components/schemas/OccupationEntityQuery"
-                },
-                "nullable": true
-              }
-            }
-          }
-        ]
-      },
-      "SCIMtypeError": {
-        "title": "SCIM Type error",
-        "type": "string <nullable>",
-        "example": "invalidFilter",
-        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
-      },
-      "SCIMError": {
-        "title": "SCIM Error",
-        "type": "object",
-        "properties": {
-          "scimType": {
-            "$ref": "#/components/schemas/SCIMtypeError"
-          },
-          "detail": {
-            "type": "string",
-            "description": "**The error message**",
-            "example": "<exception_message>"
-          },
-          "status": {
-            "type": "string",
-            "description": "**The HTTP Status Code error name**",
-            "example": "InternalServerError"
           }
         }
       },
@@ -440,8 +326,7 @@
           }
         }
       },
-      "OccupationEntityRetrieve": {
-        "title": "OccupationEntity",
+      "LegalPersonClassification": {
         "type": "object",
         "allOf": [
           {
@@ -450,29 +335,140 @@
           {
             "type": "object",
             "properties": {
-              "code": {
-                "type": "string"
+              "Status": {
+                "type": "string",
+                "example": "<status_STRING>",
+                "description": "**Indicate the item's status**"
               },
-              "name": {
-                "type": "string"
+              "Level": {
+                "type": "integer",
+                "example": "<level_INTEGER>",
+                "description": "**Indicate the item's level**"
               },
-              "status": {
-                "type": "string"
+              "LevelTitle": {
+                "type": "string",
+                "example": "<level_title_STRING>",
+                "description": "**The item's level**"
               },
-              "customFields": {
-                "type": "object"
+              "Order": {
+                "type": "integer",
+                "example": "<order_INTEGER>",
+                "description": "**The item's order of appearance in a list**"
               },
-              "synonyms": {
+              "Title": {
+                "type": "string",
+                "example": "<title_STRING>",
+                "description": "**The item's name**"
+              },
+              "CaseType": {
+                "type": "string",
+                "example": "<case_type_STRING>",
+                "description": "**The case type's canonical of this item**"
+              },
+              "CustomFields": {
+                "type": "object",
+                "description": "**Custom fields for this item**"
+              },
+              "Children": {
                 "type": "array",
                 "example": [],
                 "items": {
-                  "$ref": "#/components/schemas/OccupationEntityRetrieve"
-                },
-                "nullable": true
+                  "$ref": "#/components/schemas/LegalPersonClassification"
+                }
               }
             }
           }
         ]
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": "string <nullable>",
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "$ref": "#/components/schemas/SCIMtypeError"
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "<exception_message>"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      },
+      "ProcedureV3": {
+        "type": "object",
+        "properties": {
+          "group": {
+            "type": "string",
+            "description": "**The group name**",
+            "example": "<group_name>"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The group identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "children": {
+            "type": "array",
+            "description": "**The list of subgroups**",
+            "items": {
+              "type": "object",
+              "properties": {
+                "subGroup": {
+                  "type": "string",
+                  "description": "**The subgroup name**",
+                  "example": "<subgroup_name>"
+                },
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "**The subgroup identifier**",
+                  "example": "<global_unique_identifier>"
+                },
+                "children": {
+                  "type": "array",
+                  "description": "**The list of procedures**",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "procedure": {
+                        "type": "string",
+                        "description": "**The procedure name**",
+                        "example": "<procedure_name>"
+                      },
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "description": "**The procedure identifier**",
+                        "example": "<global_unique_identifier>"
+                      },
+                      "cnjCode": {
+                        "type": "string",
+                        "description": "**The CNJ code**",
+                        "example": "<cnj_code>"
+                      },
+                      "customFields": {
+                        "type": "object",
+                        "description": "**Custom fields for this item**"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

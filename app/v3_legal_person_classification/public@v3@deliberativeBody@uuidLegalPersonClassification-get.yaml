@@ -1,24 +1,33 @@
 tags:
-  - Contract type
-summary: "Fetch Contract types"
-description: "**Fetch the contract types through Contract classification unique identifier**"
-operationId: v3-contractTypes-uuidContractClassification-get
+  - Deliberative Body
+
+summary: "Fetch Deliberative body"
+
+description: "**Fetch Deliberative body through Legal Person Classification unique identifier**"
+
+operationId: v3-deliberativeBody-uuidLegalPersonClassification-get
+
+# query / path parameters
 parameters:
   - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
-  - name: uuidContractClassification
+  - name:  uuidLegalPersonClassification
     in: path
     required: true
     schema:
       type: string
       format: uuid
-      description: "**The contract classification unique identifier to fetch the contract types**"
+      description: "**The legal person classification unique identifier**"
+
+# http responses
 responses:
   "200":
     description: "OK"
     content:
       application/json:
         schema:
-          $ref: ../schemas/common/ProcedureV3.yaml
+          type: array
+          items:
+            $ref: ../schemas/common/ProcedureV3.yaml
   "400":
     description: "Bad Request"
   "401":

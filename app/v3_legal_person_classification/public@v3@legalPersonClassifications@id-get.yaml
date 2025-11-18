@@ -1,0 +1,27 @@
+tags:
+  - Legal Person Classification
+summary: "Get Legal Person Classification"
+description: "**Retrieve a Legal Person Classification by id**"
+operationId: v3-legalPersonClassifications-id-get
+parameters:
+  - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../app/parameters/common/Id.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/v3_legal_person_classification/LegalPersonClassification.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../scim/SCIMError.yaml

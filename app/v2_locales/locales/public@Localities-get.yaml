@@ -1,20 +1,15 @@
 tags:
   - Localities
-
 summary: "/Localities"
-# summary: "Localities"
-
 description: "**Fetch items paginated**"
-
 operationId: Localities-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
-  - $ref: ../../parameters/common/StartIndex.yaml
-  - $ref: ../../parameters/common/Count.yaml
-  - $ref: ../../parameters/common/Filter.yaml
-  
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
   - name: RegionId
-    in: query    
+    in: query
     schema:
       type: string
       format: uuid
@@ -32,7 +27,6 @@ responses:
                   type: array
                   items:
                     $ref: ../../schemas/v2_locales/LocalityEntityQuery.yaml
- 
   "400":
     description: "Bad Request"
   "401":

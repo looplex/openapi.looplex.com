@@ -9,11 +9,23 @@ description: |
   Item created's guid is returned in **Location header**
 
 operationId: {{OPERATION_ID}}
+
+# query / path parameters
 parameters:
+  # quando o endpoint está dentro de uma pasta
   - $ref: ../../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/Tenant.yaml
   - $ref: ../../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+  # quando o endpoint está fora de uma pasta
+  - $ref: ../..{{PATH_PARAMETERS}}/OcpApimSubscriptionKey.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/Tenant.yaml
+  - $ref: ../..{{PATH_PARAMETERS}}/BearerToken.yaml
+
+# request body
 {{REQUEST_BODY}}
+
+# http responses
 responses:
   "201":
     description: "Created"
@@ -29,4 +41,8 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../scim/SCIMError.yaml'
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
+
+          # quando o endpoint está fora de uma pasta
+          $ref: ../scim/SCIMError.yaml

@@ -1,26 +1,21 @@
 tags:
   - Occupations
-
 summary: "Occupations"
-
 description: "**Fetch items paginated**"
-
-
 operationId: Ocupations-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml  
-  - $ref: ../../parameters/common/StartIndex.yaml
-  - $ref: ../../parameters/common/Count.yaml
-  - $ref: ../../parameters/common/Filter.yaml
-  
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
   - name: Id
-    in: query    
+    in: query
     description: "Pode ser passado mais de um Id separado por vírgula"
     schema:
       type: string
       format: uuid
   - name: Code
-    in: query    
+    in: query
     schema:
       type: string
   - name: Name

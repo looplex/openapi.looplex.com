@@ -1,19 +1,15 @@
 tags:
   - Countries
-
 summary: "/Countries"
-
 description: "**Fetch items paginated**"
-
 operationId: Countries-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../../parameters/common/StartIndex.yaml
-  - $ref: ../../parameters/common/Count.yaml
-  - $ref: ../../parameters/common/Filter.yaml
-  
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
   - name: CountryId
-    in: query    
+    in: query
     schema:
       type: string
       format: uuid
@@ -31,7 +27,6 @@ responses:
                   type: array
                   items:
                     $ref: ../../schemas/v2_locales/CountryEntityQuery.yaml
- 
   "400":
     description: "Bad Request"
   "401":

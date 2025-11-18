@@ -1,29 +1,23 @@
 tags:
   - TaskCodes
-
 summary: "/TaskCodes"
-
 description: "**Fetch items paginated**"
-
 operationId: TaskCodes-get
 parameters:
   - $ref: ../parameters/common/OcpApimSubscriptionKey.yaml
-  - $ref: ../parameters/common/StartIndex.yaml
-  - $ref: ../parameters/common/Count.yaml
-  - $ref: ../parameters/common/Filter.yaml  
-
+  - $ref: ../parameters/scim/StartIndex.yaml
+  - $ref: ../parameters/scim/Count.yaml
+  - $ref: ../parameters/scim/Filter.yaml
   - name: Id
     description: "Pode ser passado vários Ids separados por vírgula"
-    in: query    
+    in: query
     schema:
       type: string
       format: uuid
   - name: Name
-    in: query    
+    in: query
     schema:
-      type: string    
-
-
+      type: string
 responses:
   "200":
     description: "OK"
@@ -47,4 +41,4 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../scim/SCIMError.yaml'
+          $ref: ../scim/SCIMError.yaml

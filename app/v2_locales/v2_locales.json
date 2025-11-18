@@ -430,7 +430,7 @@
         "name": "startIndex",
         "in": "query",
         "required": true,
-        "description": "**Index of search**",
+        "description": "**Index of search**<br/>`Default: 1`",
         "example": 1,
         "schema": {
           "type": "integer"
@@ -440,8 +440,8 @@
         "name": "count",
         "in": "query",
         "required": true,
-        "description": "**Total count of items to return**<br />\n`Max of 120`\n",
-        "example": 50,
+        "description": "**Total count of items to return**<br />\n`Default: 1` | `Max of 120`\n",
+        "example": 12,
         "schema": {
           "type": "integer"
         }

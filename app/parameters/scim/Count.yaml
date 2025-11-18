@@ -3,7 +3,7 @@ in: query
 required: true
 description: |
   **Total count of items to return**<br />
-  `Max of 120`
-example: 50
+  `Default: 1` | `Max of 120`
+example: 12
 schema:
   type: integer

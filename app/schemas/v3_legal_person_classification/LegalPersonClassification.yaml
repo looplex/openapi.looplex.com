@@ -34,4 +34,4 @@ allOf:
         type: array
         example: []
         items:
-          $ref: ContractClassification.yaml
+          $ref: LegalPersonClassification.yaml

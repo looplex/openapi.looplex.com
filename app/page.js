@@ -112,7 +112,18 @@ export default function Home() {
 
   const arrStandardsOccupationsKeywords = ['standards', 'occupations', 'ocupação', 'ocupações']
 
+  const arrStandardsLegalPersonClassificationKeywords = [
+    'v3', 'standards', 'legal', 'person', 'classification', 'órgão', 'deliberativo', 'societário'
+  ]
+
+  const arrStandardsContractClassificationKeywords = [
+    'v3', 'standards', 'legal', 'contract', 'classification', 'transaction', 'transação', 'type',
+    'negócio', 'jurídico', 'natureza', 'atividade', 'econômica', 'contrato'
+  ]
+
   const [cards, updateCards] = useState({
+    isVisibleContractClassification: true,
+    isVisibleLegalPersonClassification: true,
     isVisibleCasesV1: true,
     isVisibleCasesV2: true,
     isVisibleTasks: true,
@@ -127,12 +138,13 @@ export default function Home() {
     isVisibleStandardsCodes: true,
     isVisibleStandardsPracticeArea: true,
     isVisibleStandardsLocale: true,
-    isVisibleStandardsOccupation: true,
-    isVisibleContractClassification: true
+    isVisibleStandardsOccupation: true
   })
 
   useEffect(() => {
     updateCards({
+      isVisibleContractClassification: (search === '') || arrStandardsContractClassificationKeywords.some(i => i.includes(search)),
+      isVisibleLegalPersonClassification: (search === '') || arrStandardsLegalPersonClassificationKeywords.some(i => i.includes(search)),
       isVisibleCasesV1: (search === '') || arrCasesV1Keywords.some(i => i.includes(search)),
       isVisibleCasesV2: (search === '') || arrCasesV2Keywords.some(i => i.includes(search)),
       isVisibleTasks: (search === '') || arrTasksKeywords.some(i => i.includes(search)),
@@ -148,7 +160,6 @@ export default function Home() {
       isVisibleStandardsLocale: (search === '') || arrStandardsLocaleKeywords.some(i => i.includes(search)),
       isVisibleStandardsOccupation: (search === '') || arrStandardsOccupationsKeywords.some(i => i.includes(search)),
       isVisibleStandardsPracticeArea: (search === '') || arrStandardsPracticeAreasKeywords.some(i => i.includes(search)),
-      isVisibleContractClassification: (search === '') || ['contract', 'classification', 'v3'].some(i => i.includes(search))
     })
   }, [search])
 
@@ -404,7 +415,8 @@ export default function Home() {
               (
                 cards.isVisibleCourtVenueV2_1 ||
                 cards.isVisibleCourtVenueV3 ||
-                cards.isVisibleContractClassification
+                cards.isVisibleContractClassification ||
+                cards.isVisibleLegalPersonClassification
               ) &&
               (
                 <ColCard>
@@ -455,6 +467,16 @@ export default function Home() {
                       <BorderedLink
                         text='Contract Classification v3'
                         link='/v3_contract_classification'
+                      />
+                    )
+                  }
+
+                  {
+                    cards.isVisibleLegalPersonClassification &&
+                    (
+                      <BorderedLink
+                        text='Legal Person Classification v3'
+                        link='/v3_legal_person_classification'
                       />
                     )
                   }

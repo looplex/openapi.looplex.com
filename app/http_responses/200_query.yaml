@@ -4,10 +4,19 @@
       application/json:
         schema:
           allOf:
+            # quando endpoint está dentro de uma pasta
             - $ref: ../../schemas/common/ListResponse.yaml
+
+            # quando endpoint está fora de uma pasta
+            - $ref: ../schemas/common/ListResponse.yaml
+            
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../schemas/{{DTO_NAME}}.yaml
+                    # quando endpoint está dentro de uma pasta
+                    $ref: ../../schemas/<api_folder_name>/{{DTO_NAME}}.yaml
+
+                    # quando endpoint está dentro de uma pasta
+                    $ref: ../schemas/<api_folder_name>/{{DTO_NAME}}.yaml
