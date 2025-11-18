@@ -152,7 +152,7 @@
           "Contract type"
         ],
         "summary": "Fetch Contract types",
-        "description": "**Fetch the contract types according to sent contract classification**",
+        "description": "**Fetch the contract types through Contract classification unique identifier**",
         "operationId": "v3-contractTypes-uuidContractClassification-get",
         "parameters": [
           {
