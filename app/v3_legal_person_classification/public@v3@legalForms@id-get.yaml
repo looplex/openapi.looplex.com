@@ -2,7 +2,7 @@ tags:
   - Legal Person Classification
 summary: "Get Legal Person Classification"
 description: "**Retrieve a Legal Person Classification by id**"
-operationId: v3-legalPersonClassifications-id-get
+operationId: v3-legalForms-id-get
 parameters:
   - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../app/parameters/common/Id.yaml

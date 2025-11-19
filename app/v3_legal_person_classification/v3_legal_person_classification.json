@@ -30,14 +30,14 @@
     "url": "https://github.com/Rebilly/generator-openapi-repo"
   },
   "paths": {
-    "/v3/legalPersonClassifications": {
+    "/v3/legalForms": {
       "get": {
         "tags": [
           "Legal Person Classification"
         ],
         "summary": "Fetch Legal Person Classifications (paginated)",
         "description": "**Fetch Legal Person Classifications (paginated)**",
-        "operationId": "v3-legalPersonClassifications-get",
+        "operationId": "v3-legalForms-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -97,14 +97,14 @@
         }
       }
     },
-    "/v3/legalPersonClassifications/:id": {
+    "/v3/legalForms/:id": {
       "get": {
         "tags": [
           "Legal Person Classification"
         ],
         "summary": "Get Legal Person Classification",
         "description": "**Retrieve a Legal Person Classification by id**",
-        "operationId": "v3-legalPersonClassifications-id-get",
+        "operationId": "v3-legalForms-id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -146,20 +146,20 @@
         }
       }
     },
-    "/v3/deliberativeBody/:uuidLegalPersonClassification": {
+    "/v3/deliberativeBody/:uuidLegalForm": {
       "get": {
         "tags": [
           "Deliberative Body"
         ],
         "summary": "Fetch Deliberative body",
         "description": "**Fetch Deliberative body through Legal Person Classification unique identifier**",
-        "operationId": "v3-deliberativeBody-uuidLegalPersonClassification-get",
+        "operationId": "v3-deliberativeBody-uuidLegalForms-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
           },
           {
-            "name": "uuidLegalPersonClassification",
+            "name": "uuidLegalForm",
             "in": "path",
             "required": true,
             "schema": {

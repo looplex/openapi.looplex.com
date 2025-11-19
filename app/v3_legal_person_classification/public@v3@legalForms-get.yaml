@@ -2,7 +2,7 @@ tags:
   - Legal Person Classification
 summary: "Fetch Legal Person Classifications (paginated)"
 description: "**Fetch Legal Person Classifications (paginated)**"
-operationId: v3-legalPersonClassifications-get
+operationId: v3-legalForms-get
 parameters:
   - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../app/parameters/scim/StartIndex.yaml
