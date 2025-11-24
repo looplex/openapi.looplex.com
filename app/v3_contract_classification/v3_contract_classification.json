@@ -146,7 +146,7 @@
         }
       }
     },
-    "/contractTypes/:uuidContractClassification": {
+    "/v3/contractTypes/:uuidContractClassification": {
       "get": {
         "tags": [
           "Contract type"
