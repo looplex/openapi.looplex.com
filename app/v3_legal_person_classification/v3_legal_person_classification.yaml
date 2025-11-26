@@ -23,13 +23,13 @@ servers:
   - url: "https://apim.looplex.com/varas_foros"
     description: "Legal Person Classification Server"
 paths:
-  /v3/legalPersonClassifications:
+  /v3/legalForms:
     get:
-      $ref: public@v3@legalPersonClassifications-get.yaml
-  /v3/legalPersonClassifications/:id:
+      $ref: public@v3@legalForms-get.yaml
+  /v3/legalForms/:id:
     get:
-      $ref: public@v3@legalPersonClassifications@id-get.yaml
+      $ref: public@v3@legalForms@id-get.yaml
 
-  /v3/deliberativeBody/:uuidLegalPersonClassification:
+  /v3/deliberativeBody/:uuidLegalForm:
     get:
-      $ref: public@v3@deliberativeBody@uuidLegalPersonClassification-get.yaml
+      $ref: public@v3@deliberativeBody@uuidLegalForm-get.yaml

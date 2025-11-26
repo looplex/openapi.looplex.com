@@ -5,12 +5,12 @@ summary: "Fetch Deliberative body"
 
 description: "**Fetch Deliberative body through Legal Person Classification unique identifier**"
 
-operationId: v3-deliberativeBody-uuidLegalPersonClassification-get
+operationId: v3-deliberativeBody-uuidLegalForms-get
 
 # query / path parameters
 parameters:
   - $ref: ../../app/parameters/common/OcpApimSubscriptionKey.yaml
-  - name:  uuidLegalPersonClassification
+  - name:  uuidLegalForm
     in: path
     required: true
     schema:
