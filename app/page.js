@@ -78,7 +78,7 @@ export default function Home() {
   ]
 
   const arrCasesV2Keywords = [
-    'v2', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client', 'legal', 'service',
+    'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client', 'legal', 'service',
     'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom', 'fields'
   ]
 

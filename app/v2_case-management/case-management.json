@@ -3365,17 +3365,35 @@
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityRetrieve"
                 },
-                "description": "**Utilizado em casos consultivos**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+                "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação\n"
               },
               "courtVenue": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityRetrieve"
                 },
-                "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
+                "description": "**Foro do caso, local onde o caso será julgado.**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n"
               },
               "caseProcedure": {
-                "description": "**Rito ou procedimento do caso**<br/>\n",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Rito ou procedimento do caso**<br/> Casos de tipo: <b>judicial, administrativo e arbitragem\n"
+              },
+              "contractClassification": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                }
+              },
+              "contractType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+              },
+              "legalPersonClassification": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                }
+              },
+              "deliberativeBody": {
                 "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "phase": {
@@ -4239,17 +4257,35 @@
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityQuery"
                 },
-                "description": "**Utilizado em casos consultivos**<br />\n**Formato: País - Estado - Cidade**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
+                "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação\n"
               },
               "CourtVenue": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityQuery"
                 },
-                "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
+                "description": "**Foro do caso, local onde o caso será julgado.**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n"
               },
               "CaseProcedure": {
-                "description": "**Rito ou procedimento do caso**\n",
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Rito ou procedimento do caso**<br/> Casos de tipo: <b>judicial, administrativo e arbitragem\n"
+              },
+              "ContractClassification": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntityQuery"
+                }
+              },
+              "ContractType": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              },
+              "LegalPersonClassification": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SimpleEntityQuery"
+                }
+              },
+              "DeliberativeBody": {
                 "$ref": "#/components/schemas/SimpleEntityQuery"
               },
               "Phase": {
@@ -4791,22 +4827,25 @@
             "example": "<observacoes_do_processo>"
           },
           "locale": {
-            "description": "**Utilizado em casos consultivos**",
-            "oneOf": [
+            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação\n",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SimpleEntityWrite"
+            },
+            "example": [
               {
-                "type": "string <nullable>",
-                "example": "<local_do_processo>",
-                "description": "**Local da Jurisdição de um caso, ou cumprimento da obrigação.**"
+                "Name": "<country_name>"
               },
               {
-                "type": "string",
-                "format": "uuid",
-                "description": "**Unique identifier do local**"
+                "Name": "<state_name>"
+              },
+              {
+                "Name": "<city_name>"
               }
             ]
           },
           "courtVenue": {
-            "description": "**Utilizado para casos contenciosos, judiciais ou não**",
+            "description": "**Foro do caso, local onde o caso será julgado.**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n",
             "oneOf": [
               {
                 "type": "string <nullable>",
@@ -4821,7 +4860,7 @@
             ]
           },
           "caseProcedure": {
-            "description": "**Rito ou procedimento do caso**",
+            "description": "**Rito ou procedimento do caso**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n",
             "oneOf": [
               {
                 "type": "string <nullable>",
