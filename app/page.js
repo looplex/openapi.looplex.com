@@ -561,8 +561,8 @@ export default function Home() {
 
             {
               (
-                cards?.isVisibleCasesV1 ||
-                cards?.isVisibleCasesV2
+                cards.isVisibleCasesV1 ||
+                cards.isVisibleCasesV2
               ) &&
               (
                 <ColCard>
