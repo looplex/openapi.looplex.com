@@ -662,8 +662,13 @@
           "Id": {
             "type": "string",
             "format": "uuid",
-            "description": "**The object unique identifier**",
+            "description": "**The item unique identifier**",
             "example": "<global_unique_identifier>"
+          },
+          "Name": {
+            "type": "string <nullable>",
+            "example": "<nome_do_item>",
+            "description": "**The item name**"
           }
         }
       },

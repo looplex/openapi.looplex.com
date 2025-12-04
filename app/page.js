@@ -53,38 +53,32 @@ export default function Home() {
     'children'
   ]
 
-  const arrFeriadosKeywords = [
-    'funcionalidades', 'v1', 'feriado', 'recess',
-    'região', 'dia', 'semana'
-  ]
+  const arrFeriadosKeywords = ['funcionalidades', 'v1', 'feriado', 'recess', 'região', 'dia', 'semana']
 
   const arrLooplex365Keywords = [
-    'funcionalidades', 'v1', 'looplex', '365', 'renderização',
-    'document', 'assembler', 'render', 'easy', 'docs',
-    'surf', 'headless', 'jsbox', 'mjml', 'mustache',
-    'pdf', 'converter', 'word'
+    'funcionalidades', 'v1', 'looplex', '365', 'renderização', 'document', 'assembler', 'pdf',
+    'render', 'easy', 'docs', 'surf', 'headless', 'jsbox', 'mjml', 'mustache', 'converter', 'word'
   ]
 
   const arrCasesV1Keywords = [
     'v1', 'api', 'logon', 'cases', 'legado', 'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
     'administrativos', 'autenticação', 'advogado', 'andamento', 'area', 'busca', 'calculo',
-    'monetário', 'fase', 'categoria', 'cliente', 'contato', 'conteudo', 'julgamento',
-    'contrato', 'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário',
+    'monetário', 'fase', 'categoria', 'cliente', 'contato', 'conteudo', 'julgamento', 'apurados',
+    'contrato', 'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário', 'custom', 'fields',
     'garantia', 'hierarquia', 'informações', 'adicionais', 'dado', 'complementar',
     'liabilities', 'calculation', 'motivo', 'pedir', 'natureza', 'pais', 'partes', 'pedidos',
     'produtos', 'push', 'publicação', 'questões', 'processuais', 'solicitação', 'tabela', 'preço',
-    'tipo', 'decisão', 'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores',
-    'apurados', 'custom', 'fields'
+    'tipo', 'decisão', 'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores'
   ]
 
   const arrCasesV2Keywords = [
-    'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client', 'legal', 'service',
-    'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom', 'fields'
+    'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client',
+    'legal', 'service', 'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom',
+    'fields', 'andamento', 'contrato', 'caso', 'cliente', 'parte', 'funcionario', 'pedido', 'area',
+    'token'
   ]
 
-  const arrTasksKeywords = [
-    'plataforma', 'task', 'tarefas', 'deadline', 'event type'
-  ]
+  const arrTasksKeywords = ['plataforma', 'task', 'tarefas', 'deadline', 'event type']
 
   const arrTaskTemplateKeywords = [...arrTasksKeywords, 'template']
 
