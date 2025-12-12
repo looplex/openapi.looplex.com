@@ -354,14 +354,90 @@
         }
       }
     },
-    "/entries/:id": {
+    "/caseGroups": {
       "get": {
         "tags": [
-          "Entry"
+          "Case Group"
         ],
-        "summary": "/Entries/:id",
-        "description": "**Retrieve an entry by id**\n",
-        "operationId": "entries-entry_id-get",
+        "summary": "/CaseGroups",
+        "description": "**Fetch items paginated**",
+        "operationId": "caseGroups-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseGroupEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caseGroups/:id": {
+      "get": {
+        "tags": [
+          "Case Group"
+        ],
+        "summary": "/CaseGroups/:id",
+        "description": "**Retrieve a Case Group by id**",
+        "operationId": "caseGroups-caseGroup_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -382,7 +458,190 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EntryEntityRetrieve"
+                  "$ref": "#/components/schemas/CaseGroupEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claims": {
+      "get": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/Claims",
+        "description": "**Fetch items paginated**",
+        "operationId": "claims-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseClaimEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/Claims",
+        "description": "**Item created's guid is returned in **Location header**",
+        "operationId": "claims-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaseClaimEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/claim/:id": {
+      "get": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/Claims/:id",
+        "description": "**Retrieve a claim by id**",
+        "operationId": "claims-claim_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
                 }
               }
             }
@@ -410,11 +669,11 @@
       },
       "patch": {
         "tags": [
-          "Entry"
+          "Claim"
         ],
-        "summary": "/Entries/:id",
-        "description": "**Patch Entry**",
-        "operationId": "entries-id-patch",
+        "summary": "/Claims/:id",
+        "description": "**Patch claim property**",
+        "operationId": "claims-claim_id-patch",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -444,317 +703,6 @@
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/entries": {
-      "get": {
-        "tags": [
-          "Entry"
-        ],
-        "summary": "/Entries",
-        "description": "**Fetch entries paginated**\n",
-        "operationId": "entries-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/EntryEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Entry"
-        ],
-        "summary": "/Entries",
-        "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "entries-post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/EntryEntityWrite"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/timesheets": {
-      "get": {
-        "tags": [
-          "Timesheet"
-        ],
-        "summary": "/Timesheets",
-        "description": "**Fetch timesheets paginated**\n",
-        "operationId": "timesheets-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/TimesheetEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Timesheet"
-        ],
-        "summary": "/Timesheets",
-        "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "timesheets-post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TimesheetEntityWrite"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/timesheets/:id": {
-      "get": {
-        "tags": [
-          "Timesheet"
-        ],
-        "summary": "/Timesheets/:id",
-        "description": "**Retrieve a timesheet by id**\n",
-        "operationId": "timesheets-id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TimesheetEntityRetrieve"
-                }
-              }
-            }
           },
           "400": {
             "description": "Bad Request"
@@ -1003,6 +951,758 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/:resource/:id": {
+      "patch": {
+        "tags": [
+          "Custom Fields"
+        ],
+        "summary": "/:resource/:id",
+        "description": "**Patch custom fields property for a resource**<br/>\n**Change '/:resource' to one of these:**<br />\n- /Cases\n- /Claims\n- /TaskTemplates\n\n**Note que 'path' deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n    \n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n// payload deve ser enviado no seguinte formato: \n{\n  \"path\": \"/CustomFields/carro/ano\",\n  \"op\": \"replace\",\n  \"value\": 2025\n}\n\n// vai atualizar o valor do CustomFields em um objeto \n// no seguinte formato:\n\"carro\": {\n  \"ano\": 2025\n}\n\n// 'carro', refere-se a um objeto com uma propriedade 'ano'\n// tudo antes da ultima propriedade sem um array '[]', é um objeto\n// se o objeto não existir, é criado\n```\n\n**Exemplo de valor 'objeto'**\n```json\n// deve ser enviado no seguinte formato: \n{\n  \"path\": \"/CustomFields/carro/dono\",\n  \"op\": \"replace\",\n  \"value\": {\n    \"nome\": \"nome do dono\",\n    \"nacionalidade\": \"brasileiro\",\n    \"idade\": 20\n  }\n}\n\n// vai atualizar o valor do CustomFields em um objeto \n// no seguinte formato:\n\"carro\": {\n  \"dono\": {\n    \"nome\": \"nome do dono\",\n    \"nacionalidade\": \"brasileiro\",\n    \"idade\": 20\n  }\n}\n\n// 'carro', refere-se a um objeto com um objeto 'dono' \n// com as propriedades: \n// - nome\n// - nacionalidade \n// - idade\n// se o objeto não existir, é criado\n\n// para atualizar somente o nome do dono do caso:\n// 'path': /CustomFields/carro/dono/nome\n// 'op': \"replace\",\n// 'value': \"nome do dono atualizado\"\n```\n\n**Exemplo de valor 'array'**\n```json\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"op\": \"replace\",\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"op\": \"replace\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
+        "operationId": "custom_fields-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntityCustomFields"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "/Employees",
+        "description": "**Fetch items paginated**",
+        "operationId": "Employees-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/SortBy"
+          },
+          {
+            "$ref": "#/components/parameters/SortOrder"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/EmployeeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/employees/:id": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "/Employees/:id",
+        "description": "**Retrieve an employee by id**",
+        "operationId": "employees-employee_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entries/:id": {
+      "get": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/Entries/:id",
+        "description": "**Retrieve an entry by id**\n",
+        "operationId": "entries-entry_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EntryEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/Entries/:id",
+        "description": "**Patch Entry**",
+        "operationId": "entries-id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/entries": {
+      "get": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/Entries",
+        "description": "**Fetch entries paginated**\n",
+        "operationId": "entries-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/EntryEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/Entries",
+        "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "entries-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EntryEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/externalServiceProviders": {
+      "get": {
+        "tags": [
+          "External Service Provider"
+        ],
+        "summary": "/External Service Providers",
+        "description": "**Fetch items paginated**",
+        "operationId": "externalServiceProviders-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ExternalServiceProviderQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/externalServiceProviders/:id": {
+      "get": {
+        "tags": [
+          "External Service Provider"
+        ],
+        "summary": "/External Service Providers/:id",
+        "description": "**Retrieve a External Service Provider by id**",
+        "operationId": "externalServiceProviders-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalServiceProviderRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/legalCategories": {
+      "get": {
+        "tags": [
+          "Legal category"
+        ],
+        "summary": "/LegalCategories",
+        "description": "**Fetch items paginated**",
+        "operationId": "legalCategories-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/LegalCategoryEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Legal category"
+        ],
+        "summary": "/LegalCategories",
+        "description": "**Create legal category**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "legalCategories-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalCategoryEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/legalCategories/:id": {
+      "get": {
+        "tags": [
+          "Legal category"
+        ],
+        "summary": "/LegalCategories/:id",
+        "description": "**Retrieve a legal category by id**\n",
+        "operationId": "legalCategories-legalCategory_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LegalCategoryEntityRetrieve"
+                }
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -1399,14 +2099,14 @@
         }
       }
     },
-    "/legalCategories": {
+    "/timesheets": {
       "get": {
         "tags": [
-          "Legal category"
+          "Timesheet"
         ],
-        "summary": "/LegalCategories",
-        "description": "**Fetch items paginated**",
-        "operationId": "legalCategories-get",
+        "summary": "/Timesheets",
+        "description": "**Fetch timesheets paginated**\n",
+        "operationId": "timesheets-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1443,7 +2143,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/LegalCategoryEntityQuery"
+                            "$ref": "#/components/schemas/TimesheetEntityQuery"
                           }
                         }
                       }
@@ -1476,11 +2176,11 @@
       },
       "post": {
         "tags": [
-          "Legal category"
+          "Timesheet"
         ],
-        "summary": "/LegalCategories",
-        "description": "**Create legal category**<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "legalCategories-post",
+        "summary": "/Timesheets",
+        "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "timesheets-post",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1496,7 +2196,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LegalCategoryEntityWrite"
+                "$ref": "#/components/schemas/TimesheetEntityWrite"
               }
             }
           }
@@ -1527,14 +2227,14 @@
         }
       }
     },
-    "/legalCategories/:id": {
+    "/timesheets/:id": {
       "get": {
         "tags": [
-          "Legal category"
+          "Timesheet"
         ],
-        "summary": "/LegalCategories/:id",
-        "description": "**Retrieve a legal category by id**\n",
-        "operationId": "legalCategories-legalCategory_id-get",
+        "summary": "/Timesheets/:id",
+        "description": "**Retrieve a timesheet by id**\n",
+        "operationId": "timesheets-id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -1555,579 +2255,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LegalCategoryEntityRetrieve"
+                  "$ref": "#/components/schemas/TimesheetEntityRetrieve"
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/employees": {
-      "get": {
-        "tags": [
-          "Employee"
-        ],
-        "summary": "/Employees",
-        "description": "**Fetch items paginated**",
-        "operationId": "Employees-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/SortBy"
-          },
-          {
-            "$ref": "#/components/parameters/SortOrder"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/EmployeeEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/employees/:id": {
-      "get": {
-        "tags": [
-          "Employee"
-        ],
-        "summary": "/Employees/:id",
-        "description": "**Retrieve an employee by id**",
-        "operationId": "employees-employee_id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/EmployeeEntityRetrieve"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/claims": {
-      "get": {
-        "tags": [
-          "Claim"
-        ],
-        "summary": "/Claims",
-        "description": "**Fetch items paginated**",
-        "operationId": "claims-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/CaseClaimEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Claim"
-        ],
-        "summary": "/Claims",
-        "description": "**Item created's guid is returned in **Location header**",
-        "operationId": "claims-post",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CaseClaimEntityWrite"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/claim/:id": {
-      "get": {
-        "tags": [
-          "Claim"
-        ],
-        "summary": "/Claims/:id",
-        "description": "**Retrieve a claim by id**",
-        "operationId": "claims-claim_id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "Claim"
-        ],
-        "summary": "/Claims/:id",
-        "description": "**Patch claim property**",
-        "operationId": "claims-claim_id-patch",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PatchEntity"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/caseGroups": {
-      "get": {
-        "tags": [
-          "Case Group"
-        ],
-        "summary": "/CaseGroups",
-        "description": "**Fetch items paginated**",
-        "operationId": "caseGroups-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/StartIndex"
-          },
-          {
-            "$ref": "#/components/parameters/Count"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/ListResponse"
-                    },
-                    {
-                      "type": "object",
-                      "properties": {
-                        "resources": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/CaseGroupEntityQuery"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/caseGroups/:id": {
-      "get": {
-        "tags": [
-          "Case Group"
-        ],
-        "summary": "/CaseGroups/:id",
-        "description": "**Retrieve a Case Group by id**",
-        "operationId": "caseGroups-caseGroup_id-get",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CaseGroupEntityRetrieve"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SCIMError"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/:resource/:id": {
-      "patch": {
-        "tags": [
-          "Custom Fields"
-        ],
-        "summary": "/:resource/:id",
-        "description": "**Patch custom fields property for a resource**<br/>\n**Change '/:resource' to one of these:**<br />\n- /Cases\n- /Claims\n- /TaskTemplates\n\n**Note que 'path' deve começar com _/CustomFields_ para indicar a propriedade do patch**<br/>\n    \n**Exemplo de valor primário: 'string, number, boolean...'**\n```json\n// payload deve ser enviado no seguinte formato: \n{\n  \"path\": \"/CustomFields/carro/ano\",\n  \"op\": \"replace\",\n  \"value\": 2025\n}\n\n// vai atualizar o valor do CustomFields em um objeto \n// no seguinte formato:\n\"carro\": {\n  \"ano\": 2025\n}\n\n// 'carro', refere-se a um objeto com uma propriedade 'ano'\n// tudo antes da ultima propriedade sem um array '[]', é um objeto\n// se o objeto não existir, é criado\n```\n\n**Exemplo de valor 'objeto'**\n```json\n// deve ser enviado no seguinte formato: \n{\n  \"path\": \"/CustomFields/carro/dono\",\n  \"op\": \"replace\",\n  \"value\": {\n    \"nome\": \"nome do dono\",\n    \"nacionalidade\": \"brasileiro\",\n    \"idade\": 20\n  }\n}\n\n// vai atualizar o valor do CustomFields em um objeto \n// no seguinte formato:\n\"carro\": {\n  \"dono\": {\n    \"nome\": \"nome do dono\",\n    \"nacionalidade\": \"brasileiro\",\n    \"idade\": 20\n  }\n}\n\n// 'carro', refere-se a um objeto com um objeto 'dono' \n// com as propriedades: \n// - nome\n// - nacionalidade \n// - idade\n// se o objeto não existir, é criado\n\n// para atualizar somente o nome do dono do caso:\n// 'path': /CustomFields/carro/dono/nome\n// 'op': \"replace\",\n// 'value': \"nome do dono atualizado\"\n```\n\n**Exemplo de valor 'array'**\n```json\n  // Quando é um array, não pode ser um índice negativo\n  // deve ser enviado no seguinte formato: \n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]\"\n    \"op\": \"replace\",\n    \"value\": [\n      {\n        \"logradouro\": \"Nome da rua\",\n        \"numero\": 10,\n        \"cidade\": \"São Paulo\",\n        \"estado\": \"SP\"\n      }\n    ]\n  }\n\n  // vai atualizar o valor do CustomFields em um objeto \n  // no seguinte formato:\n  \"carro\": {\n    ... other properties ommited\n    \"dono\": {\n      ... other properties ommited\n      \"enderecos\": [\n        {\n          \"logradouro\": \"Nome da rua\",\n          \"numero\": 10,\n          \"cidade\": \"São Paulo\",\n          \"estado\": \"SP\"\n        }\n      ]\n    }\n  }\n\n  // 'carro', refere-se a um objeto com um objeto 'dono' \n  // com as propriedades: \n  // - nome (ommited)\n  // - nacionalidade (ommited)\n  // - idade (ommited)\n  // - enderecos\n  // se o objeto no indice informado não existir, é criado\n\n  // para atualizar somente o nome da rua do endereco 0 dono do carro:\n  {\n    \"path\": \"/CustomFields/carro/dono/enderecos[0]/logradouro\",\n    \"op\": \"replace\",\n    \"value\": \"Nome da rua atualizado\"\n  }\n}\n```\n",
-        "operationId": "custom_fields-patch",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
-          },
-          {
-            "$ref": "#/components/parameters/Tenant"
-          },
-          {
-            "$ref": "#/components/parameters/BearerToken"
-          },
-          {
-            "$ref": "#/components/parameters/Id"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PatchEntityCustomFields"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -2560,7 +2691,7 @@
         "title": "Person's type",
         "type": "string",
         "example": "<tipo_de_pessoa>",
-        "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+        "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
       "AddressType": {
         "title": "Address' type",
@@ -5130,30 +5261,15 @@
           "legalServiceAgreement"
         ]
       },
-      "LegacyIdentityEntityQuery": {
-        "title": "Identidade",
-        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string <nullable>",
-            "format": "uuid",
-            "description": "**The unique identifier of this value**",
-            "example": "<global_unique_identifier>"
-          },
-          "IdentityProviderType": {
-            "$ref": "#/components/schemas/LegacyIdentityProviderType"
-          },
-          "Value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        }
+      "SituacaoDaArea": {
+        "title": "Case group status",
+        "type": "string",
+        "example": "<situacao_da_area>",
+        "description": "**Case group status**<br/>\nACTIVE<br/>\nINACTIVE\n"
       },
-      "EntryEntityQuery": {
-        "title": "Dados de andamento",
-        "type": "object",
+      "CaseGroupEntityQuery": {
+        "title": "CaseGroupEntity",
+        "description": "Case groups",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
@@ -5161,222 +5277,154 @@
           {
             "type": "object",
             "properties": {
-              "Date": {
-                "type": "string",
-                "format": "datetime",
-                "example": "<data_do_andamento>",
-                "description": "**Data do andamento**"
+              "Name": {
+                "description": "**Case group name**",
+                "example": "<case_group_name>",
+                "type": "string"
               },
-              "Classification": {
-                "type": "string <nullable>",
-                "description": "**Classificação do andamento**",
-                "example": "<classificacao_do_andamento>"
+              "Status": {
+                "$ref": "#/components/schemas/SituacaoDaArea"
               },
-              "Description": {
-                "type": "string",
-                "example": "<descricao_do_andamento>",
-                "description": "**Texto do andamento**"
-              },
-              "IsInternal": {
+              "IsProductive": {
                 "type": "boolean",
-                "example": false,
-                "description": "**Indica se o andamento é de uso interno**"
-              },
-              "ServiceOfProcess": {
-                "type": "string <nullable>",
-                "format": "uuid",
-                "description": "**Identificador da publicação que criou esse andamento (se houver)**",
-                "example": "<unique_identifier_da_publicacao>"
-              },
-              "CreatedAt": {
-                "type": "string",
-                "format": "datetime",
-                "example": "<data_criacao_do_andamento>",
-                "description": "**Entry creation date**"
-              },
-              "CreatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery"
-              },
-              "ClassificationType": {
-                "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
-              },
-              "CaseId": {
-                "type": "string",
-                "format": "uuid",
-                "description": "**Case's unique identifier**",
-                "example": "<unique_identifier_do_processo>"
+                "description": "**Indicate if the group is productive**",
+                "example": true
               },
               "CustomFields": {
+                "description": "**Custom fields for the case group**",
                 "type": "object",
-                "example": {},
-                "description": "**Entry's custom fields**"
-              },
-              "Identities": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
-                }
+                "example": {}
               }
             }
           }
         ]
       },
-      "TimesheetEntityQuery": {
-        "title": "Timesheet",
-        "type": "object",
+      "CaseGroupEntityRetrieve": {
+        "title": "CaseGroupEntity",
+        "description": "Case groups",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ResourceQuery"
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
           {
             "type": "object",
             "properties": {
-              "ClientId": {
-                "type": "string",
-                "format": "uuid",
-                "description": "**Client unique identifier**",
-                "example": "<global_unique_identifier>"
+              "name": {
+                "description": "**Case group name**",
+                "example": "<case_group_name>",
+                "type": "string"
               },
-              "Classification": {
-                "type": "string <nullable>",
-                "description": "**Classificação**",
-                "example": "<classificacao>"
+              "status": {
+                "$ref": "#/components/schemas/SituacaoDaArea"
               },
-              "Owner": {
-                "$ref": "#/components/schemas/SimpleEntityQuery",
-                "description": "**Responsável**"
+              "isProductive": {
+                "type": "boolean",
+                "description": "**Indicate if the group is productive**",
+                "example": true
               },
-              "Date": {
-                "type": "string",
-                "format": "datetime",
-                "description": "**Data**",
-                "example": "<data>"
-              },
-              "Hours": {
-                "type": "string",
-                "example": "<hora>",
-                "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
-              },
-              "TaskCode": {
-                "type": "string <nullable>",
-                "description": "**Código da Tarefa**",
-                "example": "<codigo_da_tarefa>"
-              },
-              "ActivityCode": {
-                "type": "string <nullable>",
-                "description": "**Código da Atividade**",
-                "example": "<codigo_da_atividade>"
-              },
-              "Applicant": {
-                "$ref": "#/components/schemas/SimpleEntityQuery",
-                "description": "**Solicitante**"
-              },
-              "Description": {
-                "type": "string <nullable>",
-                "example": "<descricao>",
-                "description": "**Descrição**"
-              },
-              "IsInvoiced": {
-                "type": "boolean <nullable>",
-                "example": false,
-                "description": "**Faturado**"
-              },
-              "CreatedAt": {
-                "type": "string <nullable>",
-                "format": "datetime",
-                "example": "<data_de_criacao>",
-                "description": "**Criado em**"
-              },
-              "CreatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery",
-                "description": "**Criado por**"
-              },
-              "UpdatedAt": {
-                "type": "string <nullable>",
-                "format": "datetime",
-                "description": "**Atualizado em**",
-                "example": "<data_de_atualizacao>"
-              },
-              "UpdatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery",
-                "description": "**Atualizado por**"
-              },
-              "Case": {
+              "customFields": {
+                "description": "**Custom fields for the case group**",
                 "type": "object",
-                "description": "**The case unique identifier**",
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "format": "uuid",
-                    "example": "<global_unique_identifier>"
-                  }
-                }
-              },
-              "TaskType": {
-                "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+                "example": {}
               }
             }
           }
         ]
       },
-      "TimesheetEntityWrite": {
-        "title": "Timesheet",
+      "CaseClaimEntityQuery": {
+        "title": "Claim",
         "type": "object",
         "properties": {
-          "clientId": {
+          "CaseId": {
             "type": "string",
             "format": "uuid",
-            "description": "**Client unique identifier**",
+            "description": "**Case's unique identifier of this claim**",
             "example": "<global_unique_identifier>"
           },
-          "owner": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Responsável**"
-          },
-          "date": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data**",
-            "example": "<data>"
-          },
-          "hours": {
-            "type": "string",
-            "example": "<hora>",
-            "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
-          },
-          "taskCode": {
+          "SubjectMatter": {
             "type": "string <nullable>",
-            "description": "**Código da Tarefa**",
-            "example": "<codigo_da_tarefa>"
+            "description": "**Question's general classification**",
+            "example": "<subject_matter>"
           },
-          "activityCode": {
+          "ReliefStatement": {
             "type": "string <nullable>",
-            "description": "**Código da Atividade**",
-            "example": "<codigo_da_atividade>"
+            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
+            "example": "<relief_statement>"
           },
-          "applicant": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Solicitante**"
+          "RemedyType": {
+            "$ref": "#/components/schemas/TipoReparacao"
           },
-          "description": {
-            "type": "string <nullable>",
-            "description": "**Descrição**",
-            "example": "<descricao>"
+          "ProvisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
           },
-          "taskType": {
-            "$ref": "#/components/schemas/TipoDeTarefaTimesheet",
-            "description": "**Tipo da Tarefa**"
+          "AgainstPosition": {
+            "$ref": "#/components/schemas/Position"
           },
-          "case": {
+          "Participants": {
+            "description": "**Participant's identifiers**",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid",
+              "example": "<global_unique_identifier>"
+            }
+          },
+          "CalculationRule": {
             "type": "object",
-            "description": "**The case unique identifier**",
             "properties": {
-              "id": {
+              "Id": {
                 "type": "string",
-                "format": "uuid",
                 "example": "<global_unique_identifier>"
+              },
+              "Title": {
+                "type": "string",
+                "example": "<title>"
               }
             }
+          },
+          "RiskClassification": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "ForeseenValue": {
+            "type": "number",
+            "example": 0
+          },
+          "ContingencyValue": {
+            "type": "number",
+            "description": "**Valor de contingencia**",
+            "example": 0
+          },
+          "Liquidated": {
+            "type": "boolean",
+            "example": false
+          },
+          "EffectiveDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de constituição**",
+            "example": "<data_de_constituicao>"
+          },
+          "DueDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data de vencimento**",
+            "example": "<data_de_vencimento>"
+          },
+          "Recurrence": {
+            "$ref": "#/components/schemas/TipoDeRecorrencia"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/ClaimStatus"
+          },
+          "Granted": {
+            "type": "number",
+            "description": "**Valor deferido pela ultima decisão**",
+            "example": 0
+          },
+          "CustomFields": {
+            "type": "object",
+            "description": "**Claim's custom fields**",
+            "example": {}
           }
         }
       },
@@ -5655,6 +5703,455 @@
           }
         }
       },
+      "PatchEntityCustomFields": {
+        "title": "Patch object",
+        "type": "object",
+        "properties": {
+          "op": {
+            "type": "string",
+            "example": "<operation>",
+            "description": "**The operation**<br />\n**Available option:**<br/>\n_replace_\n"
+          },
+          "value": {
+            "description": "**The new value to set**<br />\n_See examples in endpoint description_\n"
+          },
+          "path": {
+            "type": "string",
+            "description": "**The CustomFields property**<br/>\n_/CustomFields_\n",
+            "example": "/CustomFields"
+          }
+        },
+        "required": [
+          "path",
+          "op",
+          "value"
+        ]
+      },
+      "PersonStatus": {
+        "title": "Status",
+        "type": "string",
+        "example": "<status>",
+        "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
+      },
+      "EmployeeEntityQuery": {
+        "title": "Funcionário",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "description": "**Employee's name**",
+                "example": "<nome>"
+              },
+              "NickName": {
+                "type": "string <nullable>",
+                "description": "**Employee's nickname**",
+                "example": "<apelido>"
+              },
+              "Dob": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's date of birth**",
+                "example": "<data_de_nascimento>"
+              },
+              "Gender": {
+                "type": "string <nullable>",
+                "description": "**Employee's gender**",
+                "example": "<genero>"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                },
+                "description": "**Employee's identities**"
+              },
+              "Nationality": {
+                "type": "string <nullable>",
+                "description": "**Employee's nationality**",
+                "example": "<nacionalidade>"
+              },
+              "MaritalStatus": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "Occupation": {
+                "type": "string <nullable>",
+                "description": "**Employee's occupation**",
+                "example": "<profissao>"
+              },
+              "Role": {
+                "$ref": "#/components/schemas/ParticipantRole"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/PersonStatus"
+              },
+              "Addresses": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntityQuery"
+                },
+                "description": "**Employee's addresses**"
+              },
+              "Emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityQuery"
+                },
+                "description": "**Employee's emails**"
+              },
+              "PhoneNumbers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+                },
+                "description": "**Employee's phone numbers**"
+              }
+            }
+          }
+        ]
+      },
+      "EmployeeEntityRetrieve": {
+        "title": "Funcionário",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "**Employee's name**",
+                "example": "<nome>"
+              },
+              "nickName": {
+                "type": "string <nullable>",
+                "description": "**Employee's nickname**",
+                "example": "<apelido>"
+              },
+              "dob": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's date of birth**",
+                "example": "<data_de_nascimento>"
+              },
+              "gender": {
+                "type": "string <nullable>",
+                "description": "**Employee's gender**",
+                "example": "<genero>"
+              },
+              "identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
+                },
+                "description": "**Employee's identities**"
+              },
+              "nationality": {
+                "type": "string <nullable>",
+                "description": "**Employee's nationality**",
+                "example": "<nacionalidade>"
+              },
+              "maritalStatus": {
+                "$ref": "#/components/schemas/MaritalStatus"
+              },
+              "occupation": {
+                "type": "string <nullable>",
+                "description": "**Employee's occupation**",
+                "example": "<profissao>"
+              },
+              "role": {
+                "$ref": "#/components/schemas/ParticipantRole"
+              },
+              "status": {
+                "$ref": "#/components/schemas/PersonStatus"
+              },
+              "addresses": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/AddressEntityRetrieve"
+                },
+                "description": "**Employee's addresses**"
+              },
+              "emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityRetrieve"
+                },
+                "description": "**Employee's emails**"
+              },
+              "phoneNumbers": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
+                },
+                "description": "**Employee's phone numbers**"
+              }
+            }
+          }
+        ]
+      },
+      "LegacyIdentityEntityQuery": {
+        "title": "Identidade",
+        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string <nullable>",
+            "format": "uuid",
+            "description": "**The unique identifier of this value**",
+            "example": "<global_unique_identifier>"
+          },
+          "IdentityProviderType": {
+            "$ref": "#/components/schemas/LegacyIdentityProviderType"
+          },
+          "Value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        }
+      },
+      "EntryEntityQuery": {
+        "title": "Dados de andamento",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Date": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_do_andamento>",
+                "description": "**Data do andamento**"
+              },
+              "Classification": {
+                "type": "string <nullable>",
+                "description": "**Classificação do andamento**",
+                "example": "<classificacao_do_andamento>"
+              },
+              "Description": {
+                "type": "string",
+                "example": "<descricao_do_andamento>",
+                "description": "**Texto do andamento**"
+              },
+              "IsInternal": {
+                "type": "boolean",
+                "example": false,
+                "description": "**Indica se o andamento é de uso interno**"
+              },
+              "ServiceOfProcess": {
+                "type": "string <nullable>",
+                "format": "uuid",
+                "description": "**Identificador da publicação que criou esse andamento (se houver)**",
+                "example": "<unique_identifier_da_publicacao>"
+              },
+              "CreatedAt": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_criacao_do_andamento>",
+                "description": "**Entry creation date**"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              },
+              "ClassificationType": {
+                "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
+              },
+              "CaseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case's unique identifier**",
+                "example": "<unique_identifier_do_processo>"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "**Entry's custom fields**"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ExternalServiceProviderQuery": {
+        "title": "External service provider",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "example": "<name>",
+                "description": "**External service provider's name**"
+              },
+              "Phone": {
+                "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+              },
+              "Address": {
+                "$ref": "#/components/schemas/AddressEntityQuery"
+              },
+              "Summary": {
+                "type": "string",
+                "example": "<summary>",
+                "description": "**External service provider's summary**"
+              },
+              "Identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
+                }
+              },
+              "Type": {
+                "$ref": "#/components/schemas/TipoPessoa"
+              },
+              "Emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityQuery"
+                }
+              },
+              "Status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "**Custom fields for this item**"
+              }
+            }
+          }
+        ]
+      },
+      "ExternalServiceProviderRetrieve": {
+        "title": "External service provider",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "<name>",
+                "description": "**External service provider's name**"
+              },
+              "phone": {
+                "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
+              },
+              "address": {
+                "$ref": "#/components/schemas/AddressEntityRetrieve"
+              },
+              "summary": {
+                "type": "string",
+                "example": "<summary>",
+                "description": "**External service provider's summary**"
+              },
+              "identities": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegacyIdentityEntityRetrieve"
+                }
+              },
+              "type": {
+                "$ref": "#/components/schemas/TipoPessoa"
+              },
+              "emails": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/EmailEntityRetrieve"
+                }
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": "**Custom fields for this item**"
+              }
+            }
+          }
+        ]
+      },
+      "GrupoNaturezaDaCausa": {
+        "title": "GrupoNaturezaDaCausa",
+        "type": "string",
+        "example": "<grupo_da_natureza>",
+        "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
+      },
+      "LegalCategoryEntityQuery": {
+        "title": "Legal category (Natureza)",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          }
+        ],
+        "properties": {
+          "LegalCategory": {
+            "type": "string",
+            "description": "**The legal category name**",
+            "example": "<nome_da_natureza>"
+          },
+          "Group": {
+            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
+          }
+        }
+      },
+      "LegalCategoryEntityWrite": {
+        "title": "Legal category (Natureza)",
+        "type": "object",
+        "properties": {
+          "legalCategory": {
+            "type": "string",
+            "description": "**The legal category name**",
+            "example": "<nome_da_natureza>"
+          },
+          "group": {
+            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
+          }
+        }
+      },
+      "LegalCategoryEntityRetrieve": {
+        "title": "Legal category (Natureza)",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          }
+        ],
+        "properties": {
+          "legalCategory": {
+            "type": "string",
+            "description": "**The legal category name**",
+            "example": "<nome_da_natureza>"
+          },
+          "group": {
+            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
+          }
+        }
+      },
       "ContratoReembolsoKM": {
         "title": "ContratoReembolsoKM",
         "type": "string",
@@ -5919,72 +6416,8 @@
           }
         }
       },
-      "GrupoNaturezaDaCausa": {
-        "title": "GrupoNaturezaDaCausa",
-        "type": "string",
-        "example": "<grupo_da_natureza>",
-        "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
-      },
-      "LegalCategoryEntityQuery": {
-        "title": "Legal category (Natureza)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          }
-        ],
-        "properties": {
-          "LegalCategory": {
-            "type": "string",
-            "description": "**The legal category name**",
-            "example": "<nome_da_natureza>"
-          },
-          "Group": {
-            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
-          }
-        }
-      },
-      "LegalCategoryEntityWrite": {
-        "title": "Legal category (Natureza)",
-        "type": "object",
-        "properties": {
-          "legalCategory": {
-            "type": "string",
-            "description": "**The legal category name**",
-            "example": "<nome_da_natureza>"
-          },
-          "group": {
-            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
-          }
-        }
-      },
-      "LegalCategoryEntityRetrieve": {
-        "title": "Legal category (Natureza)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          }
-        ],
-        "properties": {
-          "legalCategory": {
-            "type": "string",
-            "description": "**The legal category name**",
-            "example": "<nome_da_natureza>"
-          },
-          "group": {
-            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
-          }
-        }
-      },
-      "PersonStatus": {
-        "title": "Status",
-        "type": "string",
-        "example": "<status>",
-        "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
-      },
-      "EmployeeEntityQuery": {
-        "title": "Funcionário",
+      "TimesheetEntityQuery": {
+        "title": "Timesheet",
         "type": "object",
         "allOf": [
           {
@@ -5993,350 +6426,154 @@
           {
             "type": "object",
             "properties": {
-              "Name": {
+              "ClientId": {
                 "type": "string",
-                "description": "**Employee's name**",
-                "example": "<nome>"
-              },
-              "NickName": {
-                "type": "string <nullable>",
-                "description": "**Employee's nickname**",
-                "example": "<apelido>"
-              },
-              "Dob": {
-                "type": "string <nullable>",
-                "format": "datetime",
-                "description": "**Employee's date of birth**",
-                "example": "<data_de_nascimento>"
-              },
-              "Gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
-              },
-              "Identities": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
-                },
-                "description": "**Employee's identities**"
-              },
-              "Nationality": {
-                "type": "string <nullable>",
-                "description": "**Employee's nationality**",
-                "example": "<nacionalidade>"
-              },
-              "MaritalStatus": {
-                "$ref": "#/components/schemas/MaritalStatus"
-              },
-              "Occupation": {
-                "type": "string <nullable>",
-                "description": "**Employee's occupation**",
-                "example": "<profissao>"
-              },
-              "Role": {
-                "$ref": "#/components/schemas/ParticipantRole"
-              },
-              "Status": {
-                "$ref": "#/components/schemas/PersonStatus"
-              },
-              "Addresses": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/AddressEntityQuery"
-                },
-                "description": "**Employee's addresses**"
-              },
-              "Emails": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EmailEntityQuery"
-                },
-                "description": "**Employee's emails**"
-              },
-              "PhoneNumbers": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PhoneNumberEntityQuery"
-                },
-                "description": "**Employee's phone numbers**"
-              }
-            }
-          }
-        ]
-      },
-      "EmployeeEntityRetrieve": {
-        "title": "Funcionário",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "**Employee's name**",
-                "example": "<nome>"
-              },
-              "nickName": {
-                "type": "string <nullable>",
-                "description": "**Employee's nickname**",
-                "example": "<apelido>"
-              },
-              "dob": {
-                "type": "string <nullable>",
-                "format": "datetime",
-                "description": "**Employee's date of birth**",
-                "example": "<data_de_nascimento>"
-              },
-              "gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
-              },
-              "identities": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
-                },
-                "description": "**Employee's identities**"
-              },
-              "nationality": {
-                "type": "string <nullable>",
-                "description": "**Employee's nationality**",
-                "example": "<nacionalidade>"
-              },
-              "maritalStatus": {
-                "$ref": "#/components/schemas/MaritalStatus"
-              },
-              "occupation": {
-                "type": "string <nullable>",
-                "description": "**Employee's occupation**",
-                "example": "<profissao>"
-              },
-              "role": {
-                "$ref": "#/components/schemas/ParticipantRole"
-              },
-              "status": {
-                "$ref": "#/components/schemas/PersonStatus"
-              },
-              "addresses": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/AddressEntityRetrieve"
-                },
-                "description": "**Employee's addresses**"
-              },
-              "emails": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/EmailEntityRetrieve"
-                },
-                "description": "**Employee's emails**"
-              },
-              "phoneNumbers": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
-                },
-                "description": "**Employee's phone numbers**"
-              }
-            }
-          }
-        ]
-      },
-      "CaseClaimEntityQuery": {
-        "title": "Claim",
-        "type": "object",
-        "properties": {
-          "CaseId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Case's unique identifier of this claim**",
-            "example": "<global_unique_identifier>"
-          },
-          "SubjectMatter": {
-            "type": "string <nullable>",
-            "description": "**Question's general classification**",
-            "example": "<subject_matter>"
-          },
-          "ReliefStatement": {
-            "type": "string <nullable>",
-            "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
-            "example": "<relief_statement>"
-          },
-          "RemedyType": {
-            "$ref": "#/components/schemas/TipoReparacao"
-          },
-          "ProvisionalRelief": {
-            "$ref": "#/components/schemas/TipoTutela"
-          },
-          "AgainstPosition": {
-            "$ref": "#/components/schemas/Position"
-          },
-          "Participants": {
-            "description": "**Participant's identifiers**",
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid",
-              "example": "<global_unique_identifier>"
-            }
-          },
-          "CalculationRule": {
-            "type": "object",
-            "properties": {
-              "Id": {
-                "type": "string",
+                "format": "uuid",
+                "description": "**Client unique identifier**",
                 "example": "<global_unique_identifier>"
               },
-              "Title": {
+              "Classification": {
+                "type": "string <nullable>",
+                "description": "**Classificação**",
+                "example": "<classificacao>"
+              },
+              "Owner": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Responsável**"
+              },
+              "Date": {
                 "type": "string",
-                "example": "<title>"
-              }
-            }
-          },
-          "RiskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
-          },
-          "ForeseenValue": {
-            "type": "number",
-            "example": 0
-          },
-          "ContingencyValue": {
-            "type": "number",
-            "description": "**Valor de contingencia**",
-            "example": 0
-          },
-          "Liquidated": {
-            "type": "boolean",
-            "example": false
-          },
-          "EffectiveDate": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data de constituição**",
-            "example": "<data_de_constituicao>"
-          },
-          "DueDate": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data de vencimento**",
-            "example": "<data_de_vencimento>"
-          },
-          "Recurrence": {
-            "$ref": "#/components/schemas/TipoDeRecorrencia"
-          },
-          "Status": {
-            "$ref": "#/components/schemas/ClaimStatus"
-          },
-          "Granted": {
-            "type": "number",
-            "description": "**Valor deferido pela ultima decisão**",
-            "example": 0
-          },
-          "CustomFields": {
-            "type": "object",
-            "description": "**Claim's custom fields**",
-            "example": {}
-          }
-        }
-      },
-      "SituacaoDaArea": {
-        "title": "Case group status",
-        "type": "string",
-        "example": "<situacao_da_area>",
-        "description": "**Case group status**<br/>\nACTIVE<br/>\nINACTIVE\n"
-      },
-      "CaseGroupEntityQuery": {
-        "title": "CaseGroupEntity",
-        "description": "Case groups",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "Name": {
-                "description": "**Case group name**",
-                "example": "<case_group_name>",
-                "type": "string"
+                "format": "datetime",
+                "description": "**Data**",
+                "example": "<data>"
               },
-              "Status": {
-                "$ref": "#/components/schemas/SituacaoDaArea"
+              "Hours": {
+                "type": "string",
+                "example": "<hora>",
+                "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
               },
-              "IsProductive": {
-                "type": "boolean",
-                "description": "**Indicate if the group is productive**",
-                "example": true
+              "TaskCode": {
+                "type": "string <nullable>",
+                "description": "**Código da Tarefa**",
+                "example": "<codigo_da_tarefa>"
               },
-              "CustomFields": {
-                "description": "**Custom fields for the case group**",
+              "ActivityCode": {
+                "type": "string <nullable>",
+                "description": "**Código da Atividade**",
+                "example": "<codigo_da_atividade>"
+              },
+              "Applicant": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Solicitante**"
+              },
+              "Description": {
+                "type": "string <nullable>",
+                "example": "<descricao>",
+                "description": "**Descrição**"
+              },
+              "IsInvoiced": {
+                "type": "boolean <nullable>",
+                "example": false,
+                "description": "**Faturado**"
+              },
+              "CreatedAt": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "example": "<data_de_criacao>",
+                "description": "**Criado em**"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Criado por**"
+              },
+              "UpdatedAt": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Atualizado em**",
+                "example": "<data_de_atualizacao>"
+              },
+              "UpdatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Atualizado por**"
+              },
+              "Case": {
                 "type": "object",
-                "example": {}
+                "description": "**The case unique identifier**",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "<global_unique_identifier>"
+                  }
+                }
+              },
+              "TaskType": {
+                "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
               }
             }
           }
         ]
       },
-      "CaseGroupEntityRetrieve": {
-        "title": "CaseGroupEntity",
-        "description": "Case groups",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "name": {
-                "description": "**Case group name**",
-                "example": "<case_group_name>",
-                "type": "string"
-              },
-              "status": {
-                "$ref": "#/components/schemas/SituacaoDaArea"
-              },
-              "isProductive": {
-                "type": "boolean",
-                "description": "**Indicate if the group is productive**",
-                "example": true
-              },
-              "customFields": {
-                "description": "**Custom fields for the case group**",
-                "type": "object",
-                "example": {}
-              }
-            }
-          }
-        ]
-      },
-      "PatchEntityCustomFields": {
-        "title": "Patch object",
+      "TimesheetEntityWrite": {
+        "title": "Timesheet",
         "type": "object",
         "properties": {
-          "op": {
+          "clientId": {
             "type": "string",
-            "example": "<operation>",
-            "description": "**The operation**<br />\n**Available option:**<br/>\n_replace_\n"
+            "format": "uuid",
+            "description": "**Client unique identifier**",
+            "example": "<global_unique_identifier>"
           },
-          "value": {
-            "description": "**The new value to set**<br />\n_See examples in endpoint description_\n"
+          "owner": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Responsável**"
           },
-          "path": {
+          "date": {
             "type": "string",
-            "description": "**The CustomFields property**<br/>\n_/CustomFields_\n",
-            "example": "/CustomFields"
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          },
+          "hours": {
+            "type": "string",
+            "example": "<hora>",
+            "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
+          },
+          "taskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**",
+            "example": "<codigo_da_tarefa>"
+          },
+          "activityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**",
+            "example": "<codigo_da_atividade>"
+          },
+          "applicant": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Solicitante**"
+          },
+          "description": {
+            "type": "string <nullable>",
+            "description": "**Descrição**",
+            "example": "<descricao>"
+          },
+          "taskType": {
+            "$ref": "#/components/schemas/TipoDeTarefaTimesheet",
+            "description": "**Tipo da Tarefa**"
+          },
+          "case": {
+            "type": "object",
+            "description": "**The case unique identifier**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<global_unique_identifier>"
+              }
+            }
           }
-        },
-        "required": [
-          "path",
-          "op",
-          "value"
-        ]
+        }
       }
     }
   }

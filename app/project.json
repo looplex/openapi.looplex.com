@@ -373,6 +373,12 @@
 						"folder": "phases"
 					},
 					{
+						"option": 13,
+						"label": "External Service Provider",
+						"detail": "External Service Provider endpoints",
+						"folder": "external_service_providers"
+					},
+					{
 						"option": -1,
 						"label": "Debug (não utilizar essa tag em endpoints oficiais)",
 						"detail": "Debug endpoints",
