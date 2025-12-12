@@ -1,7 +1,7 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
 openapi: 3.1.0
 info:
-  version: 1.35.4
+  version: 1.36.0
   title: "Looplex Case Management"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
