@@ -38,27 +38,25 @@ paths:
     post:
       $ref: case\public@cases-post.yaml
 
-  # Entry
-  /entries/:id:
+  # Case Groups
+  /caseGroups:
     get:
-      $ref: entry\public@entries@entry_id-get.yaml
-    patch:
-      $ref: entry\public@entries@entry_id-patch.yaml
-  /entries:
+      $ref: case_groups\public@caseGroups-get.yaml
+  /caseGroups/:id:
     get:
-      $ref: entry\public@entries-get.yaml
-    post:
-      $ref: entry\public@entries-post.yaml
+      $ref: case_groups\public@caseGroups@case_group_id-get.yaml
 
-  # Timesheet
-  /timesheets:
+  # Claims
+  /claims:
     get:
-      $ref: timesheet\public@timesheets-get.yaml
+      $ref: claim\public@claims-get.yaml
     post:
-      $ref: timesheet\public@timesheets-post.yaml
-  /timesheets/:id:
+      $ref: claim\public@claims-post.yaml
+  /claim/:id:
     get:
-      $ref: timesheet\public@timesheets@id-get.yaml
+      $ref: claim\public@claims@claim_id-get.yaml
+    patch:
+      $ref: claim\public@claims@claim_id-patch.yaml
 
   # Client
   /clients:
@@ -71,6 +69,49 @@ paths:
       $ref: client\public@clients@client_id-get.yaml
     patch:
       $ref: client\public@clients-patch.yaml
+
+  # Custom fields
+  /:resource/:id:
+    patch:
+      $ref: custom_fields\public@custom_fields-patch.yaml
+
+  # Employees
+  /employees:
+    get:
+      $ref: employee\public@Employees-get.yaml
+  /employees/:id:
+    get:
+      $ref: employee\public@employees@employee_id-get.yaml
+
+  # Entry
+  /entries/:id:
+    get:
+      $ref: entry\public@entries@entry_id-get.yaml
+    patch:
+      $ref: entry\public@entries@entry_id-patch.yaml
+  /entries:
+    get:
+      $ref: entry\public@entries-get.yaml
+    post:
+      $ref: entry\public@entries-post.yaml
+
+  # External service provider
+  /externalServiceProviders:
+    get:
+      $ref: external_service_providers\public@externalServiceProviders-get.yaml
+  /externalServiceProviders/:id:
+    get:
+      $ref: external_service_providers\public@externalServiceProviders@id-get.yaml
+
+  # LegalCategory (Natures)
+  /legalCategories:
+    get:
+      $ref: legal_category\public@legalCategories-get.yaml
+    post:
+      $ref: legal_category\public@legalCategories-post.yaml
+  /legalCategories/:id:
+    get:
+      $ref: legal_category\public@legalCategories@legalCategory_id-get.yaml
 
   # Legal service agreement
   /legalServiceAgreements:
@@ -92,44 +133,6 @@ paths:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
 
-  # LegalCategory (Natures)
-  /legalCategories:
-    get:
-      $ref: legal_category\public@legalCategories-get.yaml
-    post:
-      $ref: legal_category\public@legalCategories-post.yaml
-  /legalCategories/:id:
-    get:
-      $ref: legal_category\public@legalCategories@legalCategory_id-get.yaml
-
-  # Employees
-  /employees:
-    get:
-      $ref: employee\public@Employees-get.yaml
-  /employees/:id:
-    get:
-      $ref: employee\public@employees@employee_id-get.yaml
-
-  # Claims
-  /claims:
-    get:
-      $ref: claim\public@claims-get.yaml
-    post:
-      $ref: claim\public@claims-post.yaml
-  /claim/:id:
-    get:
-      $ref: claim\public@claims@claim_id-get.yaml
-    patch:
-      $ref: claim\public@claims@claim_id-patch.yaml
-
-  # Case Groups
-  /caseGroups:
-    get:
-      $ref: case_groups\public@caseGroups-get.yaml
-  /caseGroups/:id:
-    get:
-      $ref: case_groups\public@caseGroups@case_group_id-get.yaml
-
   # Phases (aguardando publicação de pull request do ticket AB#32241)
   # /phases:
   #   get:
@@ -138,7 +141,12 @@ paths:
   #   get:
   #     $ref: v2_case-management\phases\public@phases@id-get.yaml
 
-  # Custom fields
-  /:resource/:id:
-    patch:
-      $ref: custom_fields\public@custom_fields-patch.yaml
+  # Timesheet
+  /timesheets:
+    get:
+      $ref: timesheet\public@timesheets-get.yaml
+    post:
+      $ref: timesheet\public@timesheets-post.yaml
+  /timesheets/:id:
+    get:
+      $ref: timesheet\public@timesheets@id-get.yaml
