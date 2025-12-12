@@ -2099,6 +2099,137 @@
         }
       }
     },
+    "/phases": {
+      "get": {
+        "tags": [
+          "Phase"
+        ],
+        "summary": "/Phases",
+        "description": "**Fetch items paginated**",
+        "operationId": "phases-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/PhaseEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/phases/:id": {
+      "get": {
+        "tags": [
+          "Phase"
+        ],
+        "summary": "/Phases/:id",
+        "description": "**Retrieve a Phase by id**",
+        "operationId": "phases-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhaseEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/timesheets": {
       "get": {
         "tags": [
@@ -6415,6 +6546,64 @@
             "example": false
           }
         }
+      },
+      "PhaseEntityQuery": {
+        "title": "Phase",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "example": "<phase_name>",
+                "description": "**Phase name**"
+              },
+              "CaseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "CustomFields": {
+                "type": "object",
+                "description": "**Phase's custom fields**"
+              }
+            }
+          }
+        ]
+      },
+      "PhaseEntityRetrieve": {
+        "title": "Phase",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "<phase_name>",
+                "description": "**Phase name**"
+              },
+              "caseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "customFields": {
+                "type": "object",
+                "description": "**Phase's custom fields**"
+              }
+            }
+          }
+        ]
       },
       "TimesheetEntityQuery": {
         "title": "Timesheet",
