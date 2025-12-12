@@ -1,0 +1,34 @@
+tags:
+  - External Service Provider
+summary: "/External Service Providers/:id"
+description: "**Retrieve a External Service Provider by id**"
+operationId: externalServiceProviders-id-get
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../app/parameters/common/Tenant.yaml
+  - $ref: ../../../app/parameters/common/BearerToken.yaml
+  - $ref: ../../../app/parameters/common/Id.yaml
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          # quando endpoint está dentro de uma pasta
+          $ref: ../../schemas/v2_case-management/ExternalServiceProviderRetrieve.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml

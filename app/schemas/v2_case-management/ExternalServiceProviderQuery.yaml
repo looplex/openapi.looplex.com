@@ -1,0 +1,34 @@
+title: External service provider
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: string
+        example: <name>
+        description: "**External service provider's name**"
+      Phone:
+        $ref: PhoneNumberEntityQuery.yaml
+      Address:
+        $ref: AddressEntityQuery.yaml
+      Summary:
+        type: string
+        example: <summary>
+        description: "**External service provider's summary**"
+      Identities:
+        type: array
+        items:
+          $ref: ../common/LegacyIdentityEntityQuery.yaml
+      Type:
+        $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+      Emails:
+        type: array
+        items:
+          $ref: EmailEntityQuery.yaml
+      Status:
+        $ref: ../../enums/v2_case-management/Status.yaml
+      CustomFields:
+        type: object
+        example: {}
+        description: "**Custom fields for this item**"
