@@ -9,9 +9,9 @@ allOf:
         example: <phase_name>
         description: "**Phase name**"
       caseType:
-        $ref: ../../common_enums/RamosJudicial.yaml
+        $ref: ../../enums/common/RamosJudicial.yaml
       status:
-        $ref: ../enums/Status.yaml
+        $ref: ../../enums/v2_case-management/Status.yaml
       customFields:
         type: object
         description: "**Phase's custom fields**"
