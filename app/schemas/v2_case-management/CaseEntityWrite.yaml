@@ -30,16 +30,27 @@ properties:
     description: "**Breve descrição sobre o caso**"
     example: <observacoes_do_processo>
   locale:
-    description: "**Utilizado em casos consultivos**"
-    oneOf:
-      - type: string <nullable>
-        example: <local_do_processo>
-        description: "**Local da Jurisdição de um caso, ou cumprimento da obrigação.**"
-      - type: string
-        format: uuid
-        description: "**Unique identifier do local**"
+    description: |
+      **Utilizado para todos os casos menos os judiciais**<br/>
+      Local da Jurisdição de um caso, ou cumprimento da obrigação
+    type: array
+    items:
+      $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    example: [
+      {
+        Name: "<country_name>"
+      },
+      {
+        Name: "<state_name>"
+      },
+      {
+        Name: "<city_name>"
+      }
+    ]
   courtVenue:
-    description: "**Utilizado para casos contenciosos, judiciais ou não**"
+    description: |
+      **Foro do caso, local onde o caso será julgado.**<br/>
+      Casos de tipo: <b>judicial, administrativo e arbitragem
     oneOf:
       - type: string <nullable>
         example: <foro_do_processo>
@@ -48,7 +59,9 @@ properties:
         format: uuid
         description: "**Unique identifier do Court Venue**"
   caseProcedure:
-    description: "**Rito ou procedimento do caso**"
+    description: |
+      **Rito ou procedimento do caso**<br/>
+      Casos de tipo: <b>judicial, administrativo e arbitragem
     oneOf:
       - type: string <nullable>
         example: <rito_do_processo>
@@ -56,6 +69,50 @@ properties:
       - type: string
         format: uuid
         description: "**Unique identifier do CaseProcedure**"
+  contractClassification:
+    description: |
+      **Foro do caso, local onde o caso será julgado**<br/>
+      Utilizado para casos <b>CONTRATO</b>
+    oneOf:
+      - type: string <nullable>
+        example: <foro_do_processo>
+        description: "**Foro do caso, local onde o caso será julgado**"
+      - type: string
+        format: uuid
+        description: "**Unique identifier do Contract Classification**"
+  contractType:
+    description: |
+      **Rito ou procedimento do caso**<br/>
+      Casos de tipo <b>CONTRATO</b>
+    oneOf:
+      - type: string <nullable>
+        example: <rito_do_processo>
+        description: "**Nome do rito**"
+      - type: string
+        format: uuid
+        description: "**Unique identifier do Contract Type**"
+  legalPersonClassification:
+    description: |
+      **Foro do caso, local onde o caso será julgado**<br/>
+      Utilizado para casos **SOCIETARIO**
+    oneOf:
+      - type: string <nullable>
+        example: <foro_do_processo>
+        description: "**Foro do caso, local onde o caso será julgado**"
+      - type: string
+        format: uuid
+        description: "**Unique identifier do Legal Person Classification**"
+  deliberativeBody:
+    description: |
+      **Rito ou procedimento do caso**<br/>
+      Casos de tipo <b>SOCIETARIO</b>
+    oneOf:
+      - type: string <nullable>
+        example: <rito_do_processo>
+        description: "**Nome do rito**"
+      - type: string
+        format: uuid
+        description: "**Unique identifier do Deliberative Body**"
   phase:
     description: |
       **Fase do caso**<br />

@@ -44,19 +44,31 @@ allOf:
         items:
           $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
-          **Utilizado em casos consultivos**<br />
-          **Formato: País - Estado - Cidade**<br />
-          Local da Jurisdição de um caso, ou cumprimento da obrigação.
+          **Utilizado para todos os casos menos os judiciais**<br/>
+          Local da Jurisdição de um caso, ou cumprimento da obrigação
       CourtVenue:
         type: array
         items:
           $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: |
-          **Utilizado para casos contenciosos, judiciais ou não**<br />
-          Foro do caso, local onde o caso será julgado
+          **Foro do caso, local onde o caso será julgado.**<br/>
+          Casos de tipo: <b>judicial, administrativo e arbitragem
       CaseProcedure:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: >
-          **Rito ou procedimento do caso**
+          **Rito ou procedimento do caso**<br/>
+          Casos de tipo: <b>judicial, administrativo e arbitragem
+      ContractClassification:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
+      ContractType:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+      LegalPersonClassification:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
+      DeliberativeBody:
         $ref: ../../schemas/common/SimpleEntityQuery.yaml
       Phase:
         type: string <nullable>
