@@ -1,7 +1,9 @@
 title: TipoDeTarefaTimesheet
 type: string
 example: <tipo_de_tarefa_de_timesheet>
-description: |  
+description: |
+  **Tipo da Tarefa**<br/>
+  **_Valores permitidos:_**<br/>
   APRIMORAMENTO_PROFISSIONAL<br />
   HORAS_DEBITAVEIS<br />
   HORAS_DE_RELACIONAMENTO<br />

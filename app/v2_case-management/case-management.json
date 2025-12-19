@@ -3426,7 +3426,7 @@
         "title": "TipoDeTarefaTimesheet",
         "type": "string",
         "example": "<tipo_de_tarefa_de_timesheet>",
-        "description": "APRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
+        "description": "**Tipo da Tarefa**<br/>\n**_Valores permitidos:_**<br/>\nAPRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
       },
       "TimesheetEntityRetrieve": {
         "title": "Timesheet",
@@ -6748,8 +6748,7 @@
             "example": "<descricao>"
           },
           "taskType": {
-            "$ref": "#/components/schemas/TipoDeTarefaTimesheet",
-            "description": "**Tipo da Tarefa**"
+            "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
           },
           "case": {
             "type": "object",
