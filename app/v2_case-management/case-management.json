@@ -2860,11 +2860,6 @@
                 "example": "<numero_do_logradouro>",
                 "description": "**Street number**"
               },
-              "pobox": {
-                "type": "string <nullable>",
-                "example": "<caixa_postal>",
-                "description": "**PO box**"
-              },
               "locality": {
                 "type": "string <nullable>",
                 "example": "<cidade>",
@@ -2875,14 +2870,9 @@
                 "example": "<sigla_estado>",
                 "description": "**State**"
               },
-              "neighborhood": {
-                "type": "string <nullable>",
-                "example": "<bairro>",
-                "description": "**Neighborhood**"
-              },
-              "complement": {
+              "extendedAddress": {
                 "type": "string",
-                "description": "**Address' complement**",
+                "description": "**Extended address**",
                 "example": "<complemento>"
               },
               "type": {
@@ -4108,11 +4098,6 @@
                 "example": "<numero_do_logradouro>",
                 "description": "**Street number**"
               },
-              "Pobox": {
-                "type": "string <nullable>",
-                "example": "<caixa_postal>",
-                "description": "**PO box**"
-              },
               "Locality": {
                 "type": "string <nullable>",
                 "example": "<cidade>",
@@ -4123,14 +4108,9 @@
                 "example": "<sigla_estado>",
                 "description": "**State**"
               },
-              "Neighborhood": {
-                "type": "string <nullable>",
-                "example": "<bairro>",
-                "description": "**Neighborhood**"
-              },
-              "Complement": {
+              "ExtendedAddress": {
                 "type": "string",
-                "description": "**Address' complement**",
+                "description": "**Extended address**",
                 "example": "<complemento>"
               },
               "Type": {
@@ -5626,11 +5606,6 @@
             "example": "<numero_do_logradouro>",
             "description": "**Street number**"
           },
-          "pobox": {
-            "type": "string <nullable>",
-            "example": "<caixa_postal>",
-            "description": "**PO box**"
-          },
           "locality": {
             "type": "string <nullable>",
             "example": "<cidade>",
@@ -5641,14 +5616,9 @@
             "example": "<sigla_estado>",
             "description": "**State**"
           },
-          "neighborhood": {
-            "type": "string <nullable>",
-            "example": "<bairro>",
-            "description": "**Neighborhood**"
-          },
-          "complement": {
+          "extendedAddress": {
             "type": "string",
-            "description": "**Address' complement**",
+            "description": "**Extended address**",
             "example": "<complemento>"
           },
           "type": {
