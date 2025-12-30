@@ -141,6 +141,14 @@ paths:
     get:
       $ref: phases\public@phases@id-get.yaml
 
+  # Products
+  /products:
+    get:
+      $ref: products\public@products-get.yaml
+  /products/:id:
+    get:
+      $ref: products\public@products@id-get.yaml
+
   # Timesheet
   /timesheets:
     get:

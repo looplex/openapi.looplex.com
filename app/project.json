@@ -373,10 +373,16 @@
 						"folder": "phases"
 					},
 					{
-						"option": 13,
+						"option": 14,
 						"label": "External Service Provider",
 						"detail": "External Service Provider endpoints",
 						"folder": "external_service_providers"
+					},
+					{
+						"option": 15,
+						"label": "Product",
+						"detail": "Product endpoints",
+						"folder": "products"
 					},
 					{
 						"option": -1,
