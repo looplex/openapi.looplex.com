@@ -379,6 +379,12 @@
 						"folder": "external_service_providers"
 					},
 					{
+						"option": 15,
+						"label": "Relief Statement",
+						"detail": "Relief Statement endpoints",
+						"folder": "relief_statements"
+					},
+					{
 						"option": -1,
 						"label": "Debug (não utilizar essa tag em endpoints oficiais)",
 						"detail": "Debug endpoints",
