@@ -1176,7 +1176,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries/:id",
+        "summary": "/entries/:id",
         "description": "**Retrieve an entry by id**\n",
         "operationId": "entries-entry_id-get",
         "parameters": [
@@ -1229,7 +1229,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries/:id",
+        "summary": "/entries/:id",
         "description": "**Patch Entry**",
         "operationId": "entries-id-patch",
         "parameters": [
@@ -1282,6 +1282,53 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/entries/:id",
+        "description": "**Delete an entry by unique identifier**",
+        "operationId": "entries-id-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/entries": {
@@ -1289,7 +1336,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries",
+        "summary": "/entries",
         "description": "**Fetch entries paginated**\n",
         "operationId": "entries-get",
         "parameters": [
@@ -1363,7 +1410,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries",
+        "summary": "/entries",
         "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "entries-post",
         "parameters": [

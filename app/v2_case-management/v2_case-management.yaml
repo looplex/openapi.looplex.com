@@ -89,6 +89,8 @@ paths:
       $ref: entry\public@entries@entry_id-get.yaml
     patch:
       $ref: entry\public@entries@entry_id-patch.yaml
+    delete:
+      $ref: entry\public@entries@id-delete.yaml
   /entries:
     get:
       $ref: entry\public@entries-get.yaml
