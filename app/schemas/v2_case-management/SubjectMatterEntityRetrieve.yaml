@@ -1,0 +1,10 @@
+title: Subject matter
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - properties:
+      caseType:
+        $ref: ../../enums/common/RamosJudicial.yaml
+      subjectMatter:
+        type: string
+        example: <SubjectMatter>
+        description: "**Subject Matters' name**"

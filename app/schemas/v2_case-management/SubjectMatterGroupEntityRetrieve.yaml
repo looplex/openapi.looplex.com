@@ -1,0 +1,12 @@
+title: Subject matter group
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - properties:
+      name:
+        type: string
+        example: <name>
+        description: "**Subject matters' group name**"
+      children:
+        type: array
+        items:
+          $ref: SubjectMatterEntityRetrieve.yaml
