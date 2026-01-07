@@ -2822,7 +2822,7 @@
         "title": "Person's type",
         "type": "string",
         "example": "<tipo_de_pessoa>",
-        "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+        "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
       "AddressType": {
         "title": "Address' type",
@@ -6122,7 +6122,8 @@
                 }
               },
               "Type": {
-                "$ref": "#/components/schemas/TipoPessoa"
+                "type": "string",
+                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
               },
               "Emails": {
                 "type": "array",
@@ -6175,7 +6176,8 @@
                 }
               },
               "type": {
-                "$ref": "#/components/schemas/TipoPessoa"
+                "type": "string",
+                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
               },
               "emails": {
                 "type": "array",

@@ -21,7 +21,12 @@ allOf:
         items:
           $ref: ../common/LegacyIdentityEntityRetrieve.yaml
       type:
-        $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+        type: string
+        description: |
+          **Person's type**<br />
+          UNDEFINED<br/>
+          NATURAL_PERSON<br />
+          LEGAL_PERSON
       emails:
         type: array
         items:
