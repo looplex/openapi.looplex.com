@@ -3054,13 +3054,13 @@
         "title": "Gender",
         "type": "string <nullable>",
         "example": "<genero>",
-        "description": "**Gender**<br/>\nFEMALE<br/>\nMALE\n"
+        "description": "**Gender (available when NATURAL_PERSON)**<br/>\nFEMALE<br/>\nMALE\n"
       },
       "MaritalStatus": {
         "title": "Marital status",
         "type": "string <nullable>",
         "example": "<estado_civil>",
-        "description": "**Marital status**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
+        "description": "**Marital status (available when NATURAL_PERSON)**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
       "ParticipantNaturalPersonRetrieve": {
         "title": "Participante (NATURAL_PERSON)",
@@ -4177,8 +4177,7 @@
             "example": "<data_de_nascimento>"
           },
           "Gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
@@ -5678,12 +5677,10 @@
             "example": "<data_de_nascimento>"
           },
           "gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "maritalStatus": {
-            "$ref": "#/components/schemas/MaritalStatus",
-            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/MaritalStatus"
           },
           "identities": {
             "type": "array",
@@ -5766,12 +5763,10 @@
             "example": "<data_de_nascimento>"
           },
           "gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "maritalStatus": {
-            "$ref": "#/components/schemas/MaritalStatus",
-            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/MaritalStatus"
           },
           "identities": {
             "type": "array",
@@ -5861,9 +5856,7 @@
                 "example": "<data_de_nascimento>"
               },
               "Gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
+                "$ref": "#/components/schemas/Gender"
               },
               "Identities": {
                 "type": "array",
@@ -5943,9 +5936,7 @@
                 "example": "<data_de_nascimento>"
               },
               "gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
+                "$ref": "#/components/schemas/Gender"
               },
               "identities": {
                 "type": "array",
