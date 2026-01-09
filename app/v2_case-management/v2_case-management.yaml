@@ -89,6 +89,8 @@ paths:
       $ref: entry\public@entries@entry_id-get.yaml
     patch:
       $ref: entry\public@entries@entry_id-patch.yaml
+    delete:
+      $ref: entry\public@entries@id-delete.yaml
   /entries:
     get:
       $ref: entry\public@entries-get.yaml
@@ -140,6 +142,14 @@ paths:
   /phases/:id:
     get:
       $ref: phases\public@phases@id-get.yaml
+
+  # Relief Statement
+  /reliefStatements:
+    get:
+      $ref: relief_statements\public@reliefStatements-get.yaml
+  /reliefStatements/:id:
+    get:
+      $ref: relief_statements\public@reliefStatements@id-get.yaml
 
   # Products
   /products:

@@ -1176,7 +1176,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries/:id",
+        "summary": "/entries/:id",
         "description": "**Retrieve an entry by id**\n",
         "operationId": "entries-entry_id-get",
         "parameters": [
@@ -1229,7 +1229,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries/:id",
+        "summary": "/entries/:id",
         "description": "**Patch Entry**",
         "operationId": "entries-id-patch",
         "parameters": [
@@ -1282,6 +1282,53 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Entry"
+        ],
+        "summary": "/entries/:id",
+        "description": "**Delete an entry by unique identifier**",
+        "operationId": "entries-id-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/entries": {
@@ -1289,7 +1336,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries",
+        "summary": "/entries",
         "description": "**Fetch entries paginated**\n",
         "operationId": "entries-get",
         "parameters": [
@@ -1363,7 +1410,7 @@
         "tags": [
           "Entry"
         ],
-        "summary": "/Entries",
+        "summary": "/entries",
         "description": "**Create an entry**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "entries-post",
         "parameters": [
@@ -2230,6 +2277,137 @@
         }
       }
     },
+    "/reliefStatements": {
+      "get": {
+        "tags": [
+          "Relief Statement"
+        ],
+        "summary": "/reliefStatements",
+        "description": "**Fetch items paginated**",
+        "operationId": "reliefStatements-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ReliefStatementEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reliefStatements/:id": {
+      "get": {
+        "tags": [
+          "Relief Statement"
+        ],
+        "summary": "/reliefStatements/:id",
+        "description": "**Retrieve a Relief Statement by id**",
+        "operationId": "reliefStatements-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliefStatementEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products": {
       "get": {
         "tags": [
@@ -2953,7 +3131,7 @@
         "title": "Person's type",
         "type": "string",
         "example": "<tipo_de_pessoa>",
-        "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+        "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
       "AddressType": {
         "title": "Address' type",
@@ -3185,13 +3363,13 @@
         "title": "Gender",
         "type": "string <nullable>",
         "example": "<genero>",
-        "description": "**Gender**<br/>\nFEMALE<br/>\nMALE\n"
+        "description": "**Gender (available when NATURAL_PERSON)**<br/>\nFEMALE<br/>\nMALE\n"
       },
       "MaritalStatus": {
         "title": "Marital status",
         "type": "string <nullable>",
         "example": "<estado_civil>",
-        "description": "**Marital status**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
+        "description": "**Marital status (available when NATURAL_PERSON)**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
       "ParticipantNaturalPersonRetrieve": {
         "title": "Participante (NATURAL_PERSON)",
@@ -3315,7 +3493,7 @@
         "title": "TipoReparacao",
         "type": "string <nullable>",
         "example": "<tipo_da_reparacao>",
-        "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n**Enum Description:**<br/>\n**MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\n**ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\n**COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\n**DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.\n\n**Allowed values:**<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT\n"
+        "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n**Enum Description:**<br/>\n**MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>\n**ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>\n**COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>\n**DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.<br/>\n**DELIVERY_OF_GOODS:** Delivery of goods and services<br/>\n**MANDATE:** Mandate\n\n**Allowed values:**<br/>\nMORAL_DAMAGES<br/>\nECONOMIC_DAMAGES<br/>\nCOERCIVE_REMEDY<br/>\nDECLARATORY_JUDGMENT<br/>\nDELIVERY_OF_GOODS<br/>\nMANDATE\n"
       },
       "TipoTutela": {
         "title": "TipoTutela",
@@ -4308,8 +4486,7 @@
             "example": "<data_de_nascimento>"
           },
           "Gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
@@ -5809,12 +5986,10 @@
             "example": "<data_de_nascimento>"
           },
           "gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "maritalStatus": {
-            "$ref": "#/components/schemas/MaritalStatus",
-            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/MaritalStatus"
           },
           "identities": {
             "type": "array",
@@ -5897,12 +6072,10 @@
             "example": "<data_de_nascimento>"
           },
           "gender": {
-            "$ref": "#/components/schemas/Gender",
-            "description": "**Client's gender (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/Gender"
           },
           "maritalStatus": {
-            "$ref": "#/components/schemas/MaritalStatus",
-            "description": "**Client's marital status (available when NATURAL_PERSON)**"
+            "$ref": "#/components/schemas/MaritalStatus"
           },
           "identities": {
             "type": "array",
@@ -5992,9 +6165,7 @@
                 "example": "<data_de_nascimento>"
               },
               "Gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
+                "$ref": "#/components/schemas/Gender"
               },
               "Identities": {
                 "type": "array",
@@ -6074,9 +6245,7 @@
                 "example": "<data_de_nascimento>"
               },
               "gender": {
-                "type": "string <nullable>",
-                "description": "**Employee's gender**",
-                "example": "<genero>"
+                "$ref": "#/components/schemas/Gender"
               },
               "identities": {
                 "type": "array",
@@ -6253,7 +6422,8 @@
                 }
               },
               "Type": {
-                "$ref": "#/components/schemas/TipoPessoa"
+                "type": "string",
+                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
               },
               "Emails": {
                 "type": "array",
@@ -6306,7 +6476,8 @@
                 }
               },
               "type": {
-                "$ref": "#/components/schemas/TipoPessoa"
+                "type": "string",
+                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
               },
               "emails": {
                 "type": "array",
@@ -6701,66 +6872,6 @@
               "customFields": {
                 "type": "object",
                 "description": "**Phase's custom fields**"
-              }
-            }
-          }
-        ]
-      },
-      "ProductEntityQuery": {
-        "title": "ProductEntity",
-        "description": "Product",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "properties": {
-              "ClientId": {
-                "type": "string",
-                "format": "uuid",
-                "example": "<uuid>",
-                "description": "Client unique identifier"
-              },
-              "ProductName": {
-                "type": "string",
-                "example": "<product_name>",
-                "description": "Product name"
-              },
-              "CustomFields": {
-                "type": "object",
-                "example": {},
-                "description": "Custom fields for this product"
-              }
-            }
-          }
-        ]
-      },
-      "ProductEntityRetrieve": {
-        "title": "ProductEntity",
-        "description": "Product",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "properties": {
-              "clientId": {
-                "type": "string",
-                "format": "uuid",
-                "example": "<uuid>",
-                "description": "Client unique identifier"
-              },
-              "productName": {
-                "type": "string",
-                "example": "<product_name>",
-                "description": "Product name"
-              },
-              "customFields": {
-                "type": "object",
-                "example": {},
-                "description": "Custom fields for this product"
               }
             }
           }

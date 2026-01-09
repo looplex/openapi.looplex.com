@@ -380,6 +380,12 @@
 					},
 					{
 						"option": 15,
+						"label": "Relief Statement",
+						"detail": "Relief Statement endpoints",
+						"folder": "relief_statements"
+					},
+					{
+						"option": 16,
 						"label": "Product",
 						"detail": "Product endpoints",
 						"folder": "products"

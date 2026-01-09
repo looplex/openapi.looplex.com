@@ -1,0 +1,22 @@
+title: Relief Statement
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      reliefStatementCauseId:
+        type: string
+        format: uuid
+        example: <uuid>
+        description: ""
+      reliefStatementCause:
+        type: string
+        example: "<relief_statement_cause>"
+        description: ""
+      reliefStatement:
+        type: string
+        example: "<relief_statement>"
+        description: ""
+      customFields:
+        type: object
+        example: {}
+        description: ""
