@@ -1,0 +1,19 @@
+title: ProductEntity
+description: Product
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - properties:
+      clientId:
+        type: string
+        format: uuid
+        example: "<uuid>"
+        description: "Client unique identifier"
+      productName:
+        type: string
+        example: "<product_name>"
+        description: "Product name"
+      customFields:
+        type: object
+        example: {}
+        description: "Custom fields for this product"

@@ -2408,6 +2408,137 @@
         }
       }
     },
+    "/products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "/Products",
+        "description": "**Fetch items paginated**",
+        "operationId": "products-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ProductEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/:id": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "/Products/:id",
+        "description": "**Retrieve a Product by id**",
+        "operationId": "products-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/timesheets": {
       "get": {
         "tags": [
@@ -6809,6 +6940,66 @@
                 "type": "object",
                 "example": {},
                 "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "ProductEntityQuery": {
+        "title": "ProductEntity",
+        "description": "Product",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "properties": {
+              "ClientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": "Client unique identifier"
+              },
+              "ProductName": {
+                "type": "string",
+                "example": "<product_name>",
+                "description": "Product name"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "Custom fields for this product"
+              }
+            }
+          }
+        ]
+      },
+      "ProductEntityRetrieve": {
+        "title": "ProductEntity",
+        "description": "Product",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "properties": {
+              "clientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": "Client unique identifier"
+              },
+              "productName": {
+                "type": "string",
+                "example": "<product_name>",
+                "description": "Product name"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": "Custom fields for this product"
               }
             }
           }

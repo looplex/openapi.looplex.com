@@ -373,7 +373,7 @@
 						"folder": "phases"
 					},
 					{
-						"option": 13,
+						"option": 14,
 						"label": "External Service Provider",
 						"detail": "External Service Provider endpoints",
 						"folder": "external_service_providers"
@@ -383,6 +383,12 @@
 						"label": "Relief Statement",
 						"detail": "Relief Statement endpoints",
 						"folder": "relief_statements"
+					},
+					{
+						"option": 16,
+						"label": "Product",
+						"detail": "Product endpoints",
+						"folder": "products"
 					},
 					{
 						"option": -1,
