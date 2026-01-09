@@ -6877,6 +6877,134 @@
           }
         ]
       },
+      "ReliefStatementEntityQuery": {
+        "title": "Relief Statement",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ReliefStatementCauseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": ""
+              },
+              "ReliefStatementCause": {
+                "type": "string",
+                "example": "<relief_statement_cause>",
+                "description": ""
+              },
+              "ReliefStatement": {
+                "type": "string",
+                "example": "<relief_statement>",
+                "description": ""
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "ReliefStatementEntityRetrieve": {
+        "title": "Relief Statement",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "reliefStatementCauseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": ""
+              },
+              "reliefStatementCause": {
+                "type": "string",
+                "example": "<relief_statement_cause>",
+                "description": ""
+              },
+              "reliefStatement": {
+                "type": "string",
+                "example": "<relief_statement>",
+                "description": ""
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "ProductEntityQuery": {
+        "title": "ProductEntity",
+        "description": "Product",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "properties": {
+              "ClientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": "Client unique identifier"
+              },
+              "ProductName": {
+                "type": "string",
+                "example": "<product_name>",
+                "description": "Product name"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": "Custom fields for this product"
+              }
+            }
+          }
+        ]
+      },
+      "ProductEntityRetrieve": {
+        "title": "ProductEntity",
+        "description": "Product",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "properties": {
+              "clientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": "Client unique identifier"
+              },
+              "productName": {
+                "type": "string",
+                "example": "<product_name>",
+                "description": "Product name"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": "Custom fields for this product"
+              }
+            }
+          }
+        ]
+      },
       "TimesheetEntityQuery": {
         "title": "Timesheet",
         "type": "object",
