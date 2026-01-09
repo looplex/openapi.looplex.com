@@ -2230,6 +2230,137 @@
         }
       }
     },
+    "/reliefStatements": {
+      "get": {
+        "tags": [
+          "Relief Statement"
+        ],
+        "summary": "/reliefStatements",
+        "description": "**Fetch items paginated**",
+        "operationId": "reliefStatements-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ReliefStatementEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reliefStatements/:id": {
+      "get": {
+        "tags": [
+          "Relief Statement"
+        ],
+        "summary": "/reliefStatements/:id",
+        "description": "**Retrieve a Relief Statement by id**",
+        "operationId": "reliefStatements-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReliefStatementEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/timesheets": {
       "get": {
         "tags": [
@@ -6563,6 +6694,74 @@
               "customFields": {
                 "type": "object",
                 "description": "**Phase's custom fields**"
+              }
+            }
+          }
+        ]
+      },
+      "ReliefStatementEntityQuery": {
+        "title": "Relief Statement",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ReliefStatementCauseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": ""
+              },
+              "ReliefStatementCause": {
+                "type": "string",
+                "example": "<relief_statement_cause>",
+                "description": ""
+              },
+              "ReliefStatement": {
+                "type": "string",
+                "example": "<relief_statement>",
+                "description": ""
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "ReliefStatementEntityRetrieve": {
+        "title": "Relief Statement",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "reliefStatementCauseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<uuid>",
+                "description": ""
+              },
+              "reliefStatementCause": {
+                "type": "string",
+                "example": "<relief_statement_cause>",
+                "description": ""
+              },
+              "reliefStatement": {
+                "type": "string",
+                "example": "<relief_statement>",
+                "description": ""
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
               }
             }
           }

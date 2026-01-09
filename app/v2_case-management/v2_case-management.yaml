@@ -141,6 +141,14 @@ paths:
     get:
       $ref: phases\public@phases@id-get.yaml
 
+  # Relief Statement
+  /reliefStatements:
+    get:
+      $ref: relief_statements\public@reliefStatements-get.yaml
+  /reliefStatements/:id:
+    get:
+      $ref: relief_statements\public@reliefStatements@id-get.yaml
+
   # Timesheet
   /timesheets:
     get:
