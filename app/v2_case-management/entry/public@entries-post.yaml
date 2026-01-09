@@ -1,6 +1,6 @@
 tags:
   - Entry
-summary: "/Entries"
+summary: "/entries"
 description: |
   **Create an entry**<br />
   Item created's guid is returned in **Location header**
