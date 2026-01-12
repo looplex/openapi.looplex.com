@@ -33,10 +33,8 @@ properties:
     example: <data_de_nascimento>
   gender:
     $ref: ../../enums/v2_case-management/Gender.yaml
-    description: "**Client's gender (available when NATURAL_PERSON)**"
   maritalStatus:
     $ref: ../../enums/v2_case-management/MaritalStatus.yaml
-    description: "**Client's marital status (available when NATURAL_PERSON)**"
   identities:
     type: array
     items:

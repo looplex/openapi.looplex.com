@@ -16,11 +16,7 @@ properties:
   streetAddressNumber:
     type: string <nullable>
     example: <numero_do_logradouro>
-    description: "**Street number**"
-  pobox:
-    type: string <nullable>
-    example: <caixa_postal>
-    description: "**PO box**"
+    description: "**Street number**"  
   locality:
     type: string <nullable>
     example: <cidade>
@@ -28,14 +24,10 @@ properties:
   region:
     type: string <nullable>
     example: <sigla_estado>
-    description: "**State**"
-  neighborhood:
-    type: string <nullable>
-    example: <bairro>
-    description: "**Neighborhood**"
-  complement:
+    description: "**State**"  
+  extendedAddress:
     type: string
-    description: "**Address' complement**"
+    description: "**Extended address**"
     example: <complemento>
   type:
     $ref: ../../enums/v2_case-management/AddressType.yaml

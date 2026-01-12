@@ -19,11 +19,7 @@ allOf:
       StreetAddressNumber:
         type: string <nullable>
         example: <numero_do_logradouro>
-        description: "**Street number**"
-      Pobox:
-        type: string <nullable>
-        example: <caixa_postal>
-        description: "**PO box**"
+        description: "**Street number**"      
       Locality:
         type: string <nullable>
         example: <cidade>
@@ -31,14 +27,10 @@ allOf:
       Region:
         type: string <nullable>
         example: <sigla_estado>
-        description: "**State**"
-      Neighborhood:
-        type: string <nullable>
-        example: <bairro>
-        description: "**Neighborhood**"
-      Complement:
+        description: "**State**"      
+      ExtendedAddress:
         type: string
-        description: "**Address' complement**"
+        description: "**Extended address**"
         example: <complemento>
       Type:
         $ref: ../../enums/v2_case-management/AddressType.yaml
