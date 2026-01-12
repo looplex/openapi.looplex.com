@@ -1039,7 +1039,7 @@
         "tags": [
           "Employee"
         ],
-        "summary": "/Employees",
+        "summary": "/employees",
         "description": "**Fetch items paginated**",
         "operationId": "Employees-get",
         "parameters": [
@@ -1114,6 +1114,58 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "summary": "/employees",
+        "description": "****<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "employees-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/employees/:id": {
@@ -1121,7 +1173,7 @@
         "tags": [
           "Employee"
         ],
-        "summary": "/Employees/:id",
+        "summary": "/employees/:id",
         "description": "**Retrieve an employee by id**",
         "operationId": "employees-employee_id-get",
         "parameters": [
@@ -6148,6 +6200,11 @@
           {
             "type": "object",
             "properties": {
+              "CategoryId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Category's unique identifier**"
+              },
               "Name": {
                 "type": "string",
                 "description": "**Employee's name**",
@@ -6163,6 +6220,18 @@
                 "format": "datetime",
                 "description": "**Employee's date of birth**",
                 "example": "<data_de_nascimento>"
+              },
+              "AdmissionDate": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's admission date**",
+                "example": "<data_de_admissao>"
+              },
+              "DemissionDate": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's demission date**",
+                "example": "<data_de_demissao>"
               },
               "Gender": {
                 "$ref": "#/components/schemas/Gender"
@@ -6213,9 +6282,111 @@
                   "$ref": "#/components/schemas/PhoneNumberEntityQuery"
                 },
                 "description": "**Employee's phone numbers**"
+              },
+              "CustomFields": {
+                "type": "object",
+                "description": "**Employee's custom fields**"
               }
             }
           }
+        ]
+      },
+      "EmployeeEntityWrite": {
+        "title": "Funcionário",
+        "type": "object",
+        "properties": {
+          "CategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Category's unique identifier**"
+          },
+          "Name": {
+            "type": "string",
+            "description": "**Employee's name**",
+            "example": "<nome>"
+          },
+          "NickName": {
+            "type": "string",
+            "description": "**Employee's nickname**",
+            "example": "<apelido>"
+          },
+          "Dob": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Employee's date of birth**",
+            "example": "<data_de_nascimento>"
+          },
+          "AdmissionDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Employee's admission date**",
+            "example": "<data_de_admissao>"
+          },
+          "DemissionDate": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "description": "**Employee's demission date**",
+            "example": "<data_de_demissao>"
+          },
+          "Gender": {
+            "$ref": "#/components/schemas/Gender"
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
+            },
+            "description": "**Employee's identities**"
+          },
+          "Nationality": {
+            "type": "string <nullable>",
+            "description": "**Employee's nationality**",
+            "example": "<nacionalidade>"
+          },
+          "MaritalStatus": {
+            "$ref": "#/components/schemas/MaritalStatus"
+          },
+          "Occupation": {
+            "type": "string <nullable>",
+            "description": "**Employee's occupation**",
+            "example": "<profissao>"
+          },
+          "Role": {
+            "$ref": "#/components/schemas/ParticipantRole"
+          },
+          "Status": {
+            "$ref": "#/components/schemas/PersonStatus"
+          },
+          "Addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressEntityWrite"
+            },
+            "description": "**Employee's addresses**"
+          },
+          "Emails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailEntityWrite"
+            },
+            "description": "**Employee's emails**"
+          },
+          "PhoneNumbers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntityWrite"
+            },
+            "description": "**Employee's phone numbers**"
+          },
+          "CustomFields": {
+            "type": "object",
+            "description": "**Employee's custom fields**"
+          }
+        },
+        "required": [
+          "CategoryId",
+          "Name",
+          "NickName"
         ]
       },
       "EmployeeEntityRetrieve": {
@@ -6228,6 +6399,11 @@
           {
             "type": "object",
             "properties": {
+              "categoryId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Category's unique identifier**"
+              },
               "name": {
                 "type": "string",
                 "description": "**Employee's name**",
@@ -6243,6 +6419,18 @@
                 "format": "datetime",
                 "description": "**Employee's date of birth**",
                 "example": "<data_de_nascimento>"
+              },
+              "admissionDate": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's admission date**",
+                "example": "<data_de_admissao>"
+              },
+              "demissionDate": {
+                "type": "string <nullable>",
+                "format": "datetime",
+                "description": "**Employee's demission date**",
+                "example": "<data_de_demissao>"
               },
               "gender": {
                 "$ref": "#/components/schemas/Gender"
@@ -6293,6 +6481,10 @@
                   "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
                 },
                 "description": "**Employee's phone numbers**"
+              },
+              "customFields": {
+                "type": "object",
+                "description": "**Employee's custom fields**"
               }
             }
           }

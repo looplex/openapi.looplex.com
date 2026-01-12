@@ -4,6 +4,10 @@ allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
+      categoryId:
+        type: string
+        format: uuid
+        description: "**Category's unique identifier**"
       name:
         type: string
         description: "**Employee's name**"
@@ -17,6 +21,16 @@ allOf:
         format: datetime
         description: "**Employee's date of birth**"
         example: <data_de_nascimento>
+      admissionDate:
+        type: string <nullable>
+        format: datetime
+        description: "**Employee's admission date**"
+        example: <data_de_admissao>
+      demissionDate:
+        type: string <nullable>
+        format: datetime
+        description: "**Employee's demission date**"
+        example: <data_de_demissao>
       gender:
         $ref: ../../enums/v2_case-management/Gender.yaml
       identities:
@@ -53,3 +67,6 @@ allOf:
         items:
           $ref: PhoneNumberEntityRetrieve.yaml
         description: "**Employee's phone numbers**"
+      customFields:
+        type: object
+        description: "**Employee's custom fields**"

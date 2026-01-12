@@ -1,7 +1,7 @@
 tags:
   - Employee
-summary: "/Employees/:id"
-description: "**Retrieve an employee by id**" # retrieve
+summary: "/employees/:id"
+description: "**Retrieve an employee by id**"
 operationId: employees-employee_id-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
