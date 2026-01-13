@@ -79,6 +79,8 @@ paths:
   /employees:
     get:
       $ref: employee\public@Employees-get.yaml
+    post:
+      $ref: employee\public@employees-post.yaml
   /employees/:id:
     get:
       $ref: employee\public@employees@employee_id-get.yaml
