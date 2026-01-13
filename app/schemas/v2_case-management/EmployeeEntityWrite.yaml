@@ -1,0 +1,73 @@
+title: Funcionário
+type: object
+properties:
+  CategoryId:
+    type: string
+    format: uuid
+    description: "**Category's unique identifier**"
+  Name:
+    type: string
+    description: "**Employee's name**"
+    example: <nome>
+  NickName:
+    type: string
+    description: "**Employee's nickname**"
+    example: <apelido>
+  Dob:
+    type: string <nullable>
+    format: datetime
+    description: "**Employee's date of birth**"
+    example: <data_de_nascimento>
+  AdmissionDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Employee's admission date**"
+    example: <data_de_admissao>
+  DemissionDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Employee's demission date**"
+    example: <data_de_demissao>
+  Gender:
+    $ref: ../../enums/v2_case-management/Gender.yaml
+  Identities:
+    type: array
+    items:
+      $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
+    description: "**Employee's identities**"
+  Nationality:
+    type: string <nullable>
+    description: "**Employee's nationality**"
+    example: <nacionalidade>
+  MaritalStatus:
+    $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+  Occupation:
+    type: string <nullable>
+    description: "**Employee's occupation**"
+    example: <profissao>
+  Role:
+    $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+  Status:
+    $ref: ../../enums/v2_case-management/PersonStatus.yaml
+  Addresses:
+    type: array
+    items:
+      $ref: AddressEntityWrite.yaml
+    description: "**Employee's addresses**"
+  Emails:
+    type: array
+    items:
+      $ref: EmailEntityWrite.yaml
+    description: "**Employee's emails**"
+  PhoneNumbers:
+    type: array
+    items:
+      $ref: PhoneNumberEntityWrite.yaml
+    description: "**Employee's phone numbers**"
+  CustomFields:
+    type: object
+    description: "**Employee's custom fields**"
+required:
+  - CategoryId
+  - Name
+  - NickName

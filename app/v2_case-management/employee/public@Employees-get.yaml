@@ -1,6 +1,6 @@
 tags:
   - Employee
-summary: "/Employees"
+summary: "/employees"
 description: "**Fetch items paginated**"
 operationId: Employees-get
 parameters:
