@@ -1,6 +1,6 @@
 tags:
   - Claim
-summary: "/Claims"
+summary: "/claims"
 description: "**Fetch items paginated**"
 operationId: claims-get
 parameters:
