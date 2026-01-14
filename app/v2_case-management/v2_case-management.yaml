@@ -79,6 +79,8 @@ paths:
   /employees:
     get:
       $ref: employee\public@Employees-get.yaml
+    post:
+      $ref: employee\public@employees-post.yaml
   /employees/:id:
     get:
       $ref: employee\public@employees@employee_id-get.yaml
@@ -89,6 +91,8 @@ paths:
       $ref: entry\public@entries@entry_id-get.yaml
     patch:
       $ref: entry\public@entries@entry_id-patch.yaml
+    delete:
+      $ref: entry\public@entries@id-delete.yaml
   /entries:
     get:
       $ref: entry\public@entries-get.yaml
@@ -140,6 +144,22 @@ paths:
   /phases/:id:
     get:
       $ref: phases\public@phases@id-get.yaml
+
+  # Relief Statement
+  /reliefStatements:
+    get:
+      $ref: relief_statements\public@reliefStatements-get.yaml
+  /reliefStatements/:id:
+    get:
+      $ref: relief_statements\public@reliefStatements@id-get.yaml
+
+  # Products
+  /products:
+    get:
+      $ref: products\public@products-get.yaml
+  /products/:id:
+    get:
+      $ref: products\public@products@id-get.yaml
 
   /subjectMatters:
     get:

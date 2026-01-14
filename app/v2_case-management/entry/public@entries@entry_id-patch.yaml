@@ -1,6 +1,6 @@
 tags:
   - Entry
-summary: "/Entries/:id"
+summary: "/entries/:id"
 description: "**Patch Entry**"
 operationId: entries-id-patch
 parameters:

@@ -1,11 +1,11 @@
 tags:
-  - External Service Provider
-summary: "/External Service Providers"
+  - Product
+summary: "/Products"
 description: "**Fetch items paginated**"
-operationId: externalServiceProviders-get
+operationId: products-get
+
 # query / path parameters
 parameters:
-  # quando o endpoint está dentro de uma pasta
   - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../../app/parameters/common/Tenant.yaml
   - $ref: ../../../app/parameters/common/BearerToken.yaml
@@ -20,13 +20,15 @@ responses:
       application/json:
         schema:
           allOf:
+            # quando endpoint está dentro de uma pasta
             - $ref: ../../schemas/common/ListResponse.yaml
             - type: object
               properties:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v2_case-management/ExternalServiceProviderQuery.yaml
+                    # quando endpoint está dentro de uma pasta
+                    $ref: ../../schemas/v2_case-management/ProductEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

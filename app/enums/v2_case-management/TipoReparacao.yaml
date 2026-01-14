@@ -1,16 +1,11 @@
-title: TipoReparacao
+title: "Tipo de Reparação"
 type: string <nullable>
 example: <tipo_da_reparacao>
 description: |
   **Request for relief or remedy sought by the party in connection with the claim.<br/>**
-  **Enum Description:**<br/>
-  **MORAL_DAMAGES:** Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.<br/>
-  **ECONOMIC_DAMAGES:** Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.<br/>
-  **COERCIVE_REMEDY:** Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.<br/>
-  **DECLARATORY_JUDGMENT:** Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.
-  
-  **Allowed values:**<br/>
-  MORAL_DAMAGES<br/>
-  ECONOMIC_DAMAGES<br/>
-  COERCIVE_REMEDY<br/>
-  DECLARATORY_JUDGMENT
+  <abbr style="text-decoration: none" title="Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.">DANOS_MORAIS</abbr><br/>
+  <abbr style="text-decoration: none" title="Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.">DANOS_MATERIAIS</abbr><br/>
+  <abbr style="text-decoration: none" title="Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.">OBRIGACAO_DE_FAZER</abbr><br/>
+  <abbr style="text-decoration: none" title="Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.">DECLARATORIA</abbr><br/>
+  <abbr style="text-decoration: none" title="Delivery of goods and services">ENTREGA_DE_PRODUTOS_E_SERVICOS</abbr><br/>
+  <abbr style="text-decoration: none" title="Mandate">MANDATO</abbr>

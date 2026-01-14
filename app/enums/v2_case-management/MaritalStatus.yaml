@@ -2,7 +2,7 @@ title: Marital status
 type: string <nullable>
 example: <estado_civil>
 description: |
-  **Marital status**<br />
+  **Marital status (available when NATURAL_PERSON)**<br />
   SOLTEIRO<br/>
   CASADO<br/>
   VIUVO<br/>
