@@ -137,7 +137,7 @@ paths:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
 
-  # Phases (aguardando publicação de pull request do ticket AB#32241)
+  # Phases
   /phases:
     get:
       $ref: phases\public@phases-get.yaml
@@ -160,6 +160,13 @@ paths:
   /products/:id:
     get:
       $ref: products\public@products@id-get.yaml
+
+  /subjectMatters:
+    get:
+      $ref: subjectMatters\public@subjectMatters-get.yaml
+  /subjectMatters/:id:
+    get:
+      $ref: subjectMatters\public@subjectMatters@id-get.yaml
 
   # Timesheet
   /timesheets:
