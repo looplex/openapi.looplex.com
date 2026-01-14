@@ -2591,6 +2591,137 @@
         }
       }
     },
+    "/subjectMatters": {
+      "get": {
+        "tags": [
+          "Subject Matter"
+        ],
+        "summary": "/SubjectMatters",
+        "description": "**Fetch items paginated**",
+        "operationId": "subjectMatters-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/SubjectMatterGroupEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subjectMatters/:id": {
+      "get": {
+        "tags": [
+          "Subject Matter"
+        ],
+        "summary": "/subjectMtters/:id",
+        "description": "**Retrieve a subject matter by id**",
+        "operationId": "subjectMatters-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubjectMatterGroupEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/timesheets": {
       "get": {
         "tags": [
@@ -7192,6 +7323,92 @@
                 "type": "object",
                 "example": {},
                 "description": "Custom fields for this product"
+              }
+            }
+          }
+        ]
+      },
+      "SubjectMatterEntityQuery": {
+        "title": "Subject matter",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "properties": {
+              "CaseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "SubjectMatter": {
+                "type": "string",
+                "example": "<SubjectMatter>",
+                "description": "**Subject Matters' name**"
+              }
+            }
+          }
+        ]
+      },
+      "SubjectMatterGroupEntityQuery": {
+        "title": "Subject matter group",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "properties": {
+              "Name": {
+                "type": "string",
+                "example": "<name>",
+                "description": "**Subject matters' group name**"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SubjectMatterEntityQuery"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SubjectMatterEntityRetrieve": {
+        "title": "Subject matter",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "properties": {
+              "caseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "subjectMatter": {
+                "type": "string",
+                "example": "<SubjectMatter>",
+                "description": "**Subject Matters' name**"
+              }
+            }
+          }
+        ]
+      },
+      "SubjectMatterGroupEntityRetrieve": {
+        "title": "Subject matter group",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "<name>",
+                "description": "**Subject matters' group name**"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/SubjectMatterEntityRetrieve"
+                }
               }
             }
           }
