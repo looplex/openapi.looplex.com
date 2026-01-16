@@ -412,6 +412,12 @@
           "CustomFields": {
             "type": "object"
           },
+          "ActivityCode": {
+            "type": "string"
+          },
+          "TaskCode": {
+            "type": "string"
+          },
           "Children": {
             "type": "array",
             "items": {
@@ -468,6 +474,12 @@
           },
           "CustomFields": {
             "type": "object"
+          },
+          "ActivityCode": {
+            "type": "string"
+          },
+          "TaskCode": {
+            "type": "string"
           },
           "Children": {
             "type": "array",

@@ -32,6 +32,10 @@ properties:
     type: string
   CustomFields:
     type: object
+  ActivityCode:
+    type: string
+  TaskCode:
+    type: string
   Children:
     type: array
     items:

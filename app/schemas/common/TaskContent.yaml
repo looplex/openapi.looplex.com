@@ -52,6 +52,9 @@ properties:
   ActivityCode:
     type: string <nullable>
     description: "**Código da Atividade**"
+  TaskTemplate:
+    $ref: SimpleEntityQuery.yaml
+    description: "**Modelo de Tarefa**"
   Owner:
     $ref: SimpleEntityQuery.yaml
     description: "**Responsável**"

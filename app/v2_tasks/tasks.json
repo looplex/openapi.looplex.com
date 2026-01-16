@@ -487,6 +487,10 @@
             "type": "string <nullable>",
             "description": "**Código da Atividade**"
           },
+          "TaskTemplate": {
+            "$ref": "#/components/schemas/SimpleEntityQuery",
+            "description": "**Modelo de Tarefa**"
+          },
           "Owner": {
             "$ref": "#/components/schemas/SimpleEntityQuery",
             "description": "**Responsável**"
@@ -714,6 +718,12 @@
           "ActivityCode": {
             "type": "string <nullable>",
             "description": "**Código da Atividade**"
+          },
+          "TaskTemplate": {
+            "type": "string <nullable>",
+            "description": "**Modelo de Tarefa**",
+            "example": "<uuid>",
+            "format": "uuid"
           },
           "Owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
