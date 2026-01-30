@@ -7209,21 +7209,21 @@
           {
             "type": "object",
             "properties": {
-              "ReliefStatementCauseId": {
+              "SubjectMatterId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<uuid>",
-                "description": ""
+                "example": "<subject_matter_uuid>",
+                "description": "**Subject matter unique identifier**"
               },
-              "ReliefStatementCause": {
+              "SubjectMatterName": {
                 "type": "string",
-                "example": "<relief_statement_cause>",
-                "description": ""
+                "example": "<subject_matter_name>",
+                "description": "**Subject matter name**"
               },
-              "ReliefStatement": {
+              "Name": {
                 "type": "string",
-                "example": "<relief_statement>",
-                "description": ""
+                "example": "<relief_statement_name>",
+                "description": "**Relief statement name**"
               },
               "CustomFields": {
                 "type": "object",
@@ -7243,21 +7243,21 @@
           {
             "type": "object",
             "properties": {
-              "reliefStatementCauseId": {
+              "subjectMatterId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<uuid>",
-                "description": ""
+                "example": "<subject_matter_uuid>",
+                "description": "**Subject matter unique identifier**"
               },
-              "reliefStatementCause": {
+              "subjectMatterName": {
                 "type": "string",
-                "example": "<relief_statement_cause>",
-                "description": ""
+                "example": "<subject_matter_name>",
+                "description": "**Subject matter name**"
               },
-              "reliefStatement": {
+              "name": {
                 "type": "string",
-                "example": "<relief_statement>",
-                "description": ""
+                "example": "<relief_statement_name>",
+                "description": "**Relief statement name**"
               },
               "customFields": {
                 "type": "object",
