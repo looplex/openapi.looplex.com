@@ -230,10 +230,8 @@ properties:
   participants:
     type: array
     items:
-      oneOf:
-        - $ref: ParticipantNaturalPersonWrite.yaml
-        - $ref: ParticipantLegalPersonWrite.yaml
-    description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+      $ref: ParticipantEntityWrite.yaml
+    desscription: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
   globalValues:
     type: array
     items:

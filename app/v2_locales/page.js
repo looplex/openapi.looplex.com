@@ -10,7 +10,8 @@ export default function Locales() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: false,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_Locales.json'
       }}
     />

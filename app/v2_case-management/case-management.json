@@ -2013,7 +2013,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/Participants",
+        "summary": "/participants",
         "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "participants-post",
         "parameters": [
@@ -2031,14 +2031,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/ParticipantNaturalPersonWrite"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ParticipantLegalPersonWrite"
-                  }
-                ]
+                "$ref": "#/components/schemas/ParticipantEntityWrite"
               }
             }
           }
@@ -3316,6 +3309,12 @@
         "example": "<tipo_de_pessoa>",
         "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
+      "Position": {
+        "title": "Position",
+        "type": "string",
+        "example": "<polo>",
+        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
+      },
       "AddressType": {
         "title": "Address' type",
         "type": "string",
@@ -3463,6 +3462,18 @@
         "example": "<papel_da_parte>",
         "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
       },
+      "Gender": {
+        "title": "Gender",
+        "type": "string <nullable>",
+        "example": "<genero>",
+        "description": "**Gender (available when NATURAL_PERSON)**<br/>\nFEMALE<br/>\nMALE\n"
+      },
+      "MaritalStatus": {
+        "title": "Marital status",
+        "type": "string <nullable>",
+        "example": "<estado_civil>",
+        "description": "**Marital status (NATURAL_PERSON only)**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
+      },
       "ParticipantEntityRetrieve": {
         "title": "Dados de Parte",
         "type": "object",
@@ -3473,6 +3484,24 @@
           {
             "type": "object",
             "properties": {
+              "clientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<client_uuid>",
+                "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
+              },
+              "employeeId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<employee_uuid>",
+                "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+              },
+              "caseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<case_uuid>",
+                "description": "**The participant's case**\n"
+              },
               "createdBy": {
                 "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
@@ -3486,6 +3515,22 @@
                 "example": "<apelido_da_parte>",
                 "description": "**Apelido**"
               },
+              "isMainParty": {
+                "type": "boolean",
+                "example": "<is_main_party>",
+                "description": "**Indicate if this participant is the main party in this case**\n"
+              },
+              "represents": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "document",
+                  "uuid"
+                ],
+                "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
+              },
               "lawyerOffice": {
                 "type": "string <nullable>",
                 "description": "**Escritório do advogado (se houver)**",
@@ -3495,22 +3540,26 @@
                 "example": "NATURAL_PERSON",
                 "$ref": "#/components/schemas/TipoPessoa"
               },
+              "position": {
+                "example": "ACTIVE",
+                "$ref": "#/components/schemas/Position"
+              },
               "addresses": {
-                "description": "**Endereços**",
+                "description": "**Participant's addresses**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntityRetrieve"
                 }
               },
               "emails": {
-                "description": "**Emails**",
+                "description": "**E-mails**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntityRetrieve"
                 }
               },
               "identities": {
-                "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
+                "description": "**Participant's identities**",
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -3537,87 +3586,34 @@
                 "type": "object",
                 "example": {},
                 "description": "**Participant's custom fields**"
-              }
-            }
-          }
-        ]
-      },
-      "Gender": {
-        "title": "Gender",
-        "type": "string <nullable>",
-        "example": "<genero>",
-        "description": "**Gender (available when NATURAL_PERSON)**<br/>\nFEMALE<br/>\nMALE\n"
-      },
-      "MaritalStatus": {
-        "title": "Marital status",
-        "type": "string <nullable>",
-        "example": "<estado_civil>",
-        "description": "**Marital status (available when NATURAL_PERSON)**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
-      },
-      "ParticipantNaturalPersonRetrieve": {
-        "title": "Participante (NATURAL_PERSON)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityRetrieve"
-          },
-          {
-            "type": "object",
-            "properties": {
+              },
+              "caseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "businessStructure": {
+                "type": "string"
+              },
               "dob": {
-                "type": "string <nullable>",
+                "type": "string",
                 "format": "datetime",
-                "example": "<data_de_nascimento>",
-                "description": "**Data de Nascimento**"
+                "description": "**Date of birth (NATURAL_PERSON only)**\n"
               },
               "gender": {
-                "$ref": "#/components/schemas/Gender"
+                "$ref": "#/components/schemas/Gender",
+                "description": "**Gender (NATURAL_PERSON only)**\n"
               },
               "nationality": {
-                "description": "**Nacionalidade**",
-                "example": "<nacionalidade>",
-                "type": "string <nullable>"
+                "type": "string"
               },
               "maritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "occupation": {
-                "type": "string <nullable>",
-                "description": "**Profissão**",
-                "example": "<profissao>"
+                "type": "string"
               }
             }
           }
         ]
-      },
-      "ParticipantBusinessStructure": {
-        "title": "ParticipantBusinessStructure",
-        "type": "string <nullable>",
-        "example": "<business_structure>",
-        "description": "Empresa Pública<br />\nSociedade de Economia Mista<br />\nSociedade Anônima Aberta<br />\nSociedade Anônima Fechada<br />\nSociedade Empresária Limitada<br />\nSociedade Empresária em Nome Coletivo<br />\nSociedade Empresária em Comandita Simples<br />\nSociedade Empresária em Comandita por Ações<br />\nSociedade em Conta de Participação<br />\nCooperativa<br />\nConsórcio de Sociedades<br />\nGrupo de Sociedades<br />\nSociedade Simples Pura<br />\nSociedade Simples Limitada<br />\nSociedade Simples em Nome Coletivo<br />\nSociedade Simples em Comandita Simples<br />\nConsórcio Simples<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Empresária)<br />\nEmpresa Individual de Responsabilidade Limitada (de Natureza Simples)<br />\nFundação Privada<br />\nOrganização Religiosa<br />\nOrganização Social (OS)<br />\nAssociação Privada<br />\nProdutor Rural (Pessoa Física)\n"
-      },
-      "ParticipantLegalPersonRetrieve": {
-        "title": "Participante (LEGAL_PERSON)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityRetrieve"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "businessStructure": {
-                "$ref": "#/components/schemas/ParticipantBusinessStructure"
-              }
-            }
-          }
-        ]
-      },
-      "Position": {
-        "title": "Position",
-        "type": "string",
-        "example": "<polo>",
-        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
       },
       "TipoExpectativaReivindicacao": {
         "title": "TipoExpectativaReivindicacao",
@@ -4251,14 +4247,7 @@
               "participants": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ParticipantNaturalPersonRetrieve"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ParticipantLegalPersonRetrieve"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/ParticipantEntityRetrieve"
                 },
                 "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
               },
@@ -4325,7 +4314,13 @@
           "op": {
             "type": "string",
             "example": "<operation>",
-            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+            "description": "**The operation of this patch**",
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "replace  \n**Substitui o valor da propriedade por outro**\n"
+              }
+            ]
           },
           "value": {
             "description": "**The new value to set**",
@@ -4766,6 +4761,24 @@
           {
             "type": "object",
             "properties": {
+              "ClientId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<client_uuid>",
+                "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
+              },
+              "EmployeeId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<employee_uuid>",
+                "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+              },
+              "CaseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<case_uuid>",
+                "description": "**The participant's case**\n"
+              },
               "CreatedBy": {
                 "$ref": "#/components/schemas/SimpleEntityQuery"
               },
@@ -4779,6 +4792,22 @@
                 "example": "<apelido_da_parte>",
                 "description": "**Apelido**"
               },
+              "IsMainParty": {
+                "type": "boolean",
+                "example": "<is_main_party>",
+                "description": "**Indicate if this participant is the main party in this case**\n"
+              },
+              "Represents": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "document",
+                  "uuid"
+                ],
+                "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
+              },
               "LawyerOffice": {
                 "type": "string <nullable>",
                 "description": "**Escritório do advogado (se houver)**",
@@ -4788,22 +4817,26 @@
                 "example": "NATURAL_PERSON",
                 "$ref": "#/components/schemas/TipoPessoa"
               },
+              "Position": {
+                "example": "ACTIVE",
+                "$ref": "#/components/schemas/Position"
+              },
               "Addresses": {
-                "description": "**Endereços**",
+                "description": "**Participant's addresses**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntityQuery"
                 }
               },
               "Emails": {
-                "description": "**Emails**",
+                "description": "**E-mails**",
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntityQuery"
                 }
               },
               "Identities": {
-                "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
+                "description": "**Participant's identities**",
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -4830,59 +4863,30 @@
                 "type": "object",
                 "example": {},
                 "description": "**Participant's custom fields**"
-              }
-            }
-          }
-        ]
-      },
-      "ParticipantNaturalPersonQuery": {
-        "title": "Participante (NATURAL_PERSON)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
+              },
+              "CaseType": {
+                "$ref": "#/components/schemas/RamosJudicial"
+              },
+              "BusinessStructure": {
+                "type": "string"
+              },
               "Dob": {
-                "type": "string <nullable>",
+                "type": "string",
                 "format": "datetime",
-                "example": "<data_de_nascimento>",
-                "description": "**Data de Nascimento**"
+                "description": "**Date of birth (NATURAL_PERSON only)**\n"
               },
               "Gender": {
-                "$ref": "#/components/schemas/Gender"
+                "$ref": "#/components/schemas/Gender",
+                "description": "**Gender (NATURAL_PERSON only)**\n"
               },
               "Nationality": {
-                "description": "**Nacionalidade**",
-                "example": "<nacionalidade>",
-                "type": "string <nullable>"
+                "type": "string"
               },
               "MaritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "Occupation": {
-                "type": "string <nullable>",
-                "description": "**Profissão**",
-                "example": "<profissao>"
-              }
-            }
-          }
-        ]
-      },
-      "ParticipantLegalPersonQuery": {
-        "title": "Participante (LEGAL_PERSON)",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "BusinessStructure": {
-                "$ref": "#/components/schemas/ParticipantBusinessStructure"
+                "type": "string"
               }
             }
           }
@@ -5116,14 +5120,7 @@
               "Participants": {
                 "type": "array",
                 "items": {
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/ParticipantNaturalPersonQuery"
-                    },
-                    {
-                      "$ref": "#/components/schemas/ParticipantLegalPersonQuery"
-                    }
-                  ]
+                  "$ref": "#/components/schemas/ParticipantEntityQuery"
                 },
                 "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
               },
@@ -5170,189 +5167,142 @@
           }
         }
       },
-      "EmailEntityWrite": {
-        "title": "Email",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "example": "<email>",
-            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
-          }
-        }
-      },
-      "LegalPersonIdentityEntityWrite": {
-        "title": "Identity (LEGAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
-      "NaturalPersonIdentityEntityWrite": {
-        "title": "Identity (NATURAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
       "ParticipantEntityWrite": {
         "title": "Dados de Parte",
         "type": "object",
         "properties": {
-          "caseId": {
+          "ClientId": {
             "type": "string",
             "format": "uuid",
-            "example": "<global_unique_identifier>",
-            "description": "**Identificador único do caso**<br/>\n`Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`\n"
+            "example": "<client_uuid>",
+            "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
           },
-          "name": {
+          "EmployeeId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<employee_uuid>",
+            "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+          },
+          "CaseId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<case_uuid>",
+            "description": "**The participant's case**\n"
+          },
+          "CreatedBy": {
+            "$ref": "#/components/schemas/SimpleEntityQuery"
+          },
+          "Name": {
             "type": "string",
             "example": "<nome_da_parte>",
             "description": "**Participant's name**"
           },
-          "nickname": {
+          "Nickname": {
             "type": "string <nullable>",
             "example": "<apelido_da_parte>",
             "description": "**Apelido**"
           },
-          "isMainParty": {
-            "type": "bool",
-            "example": false,
-            "description": "**Indica se é a parte principal**"
+          "IsMainParty": {
+            "type": "boolean",
+            "example": "<is_main_party>",
+            "description": "**Indicate if this participant is the main party in this case**\n"
           },
-          "represents": {
+          "Represents": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "type": "string (document)",
-                  "example": "<documento_da_parte_representada>",
-                  "description": "**Documento da parte representada**"
-                },
-                {
-                  "type": "string (unique identifier)",
-                  "format": "uuid",
-                  "description": "**Unique identifier da parte representada**"
-                }
-              ]
-            }
+              "type": "string"
+            },
+            "example": [
+              "document",
+              "uuid"
+            ],
+            "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
           },
-          "lawyerOffice": {
+          "LawyerOffice": {
             "type": "string <nullable>",
             "description": "**Escritório do advogado (se houver)**",
-            "example": "<nome_do_escritorio>"
+            "example": "<escritorio>"
           },
-          "nature": {
+          "Nature": {
+            "example": "NATURAL_PERSON",
             "$ref": "#/components/schemas/TipoPessoa"
           },
-          "position": {
-            "example": "OTHER",
+          "Position": {
+            "example": "ACTIVE",
             "$ref": "#/components/schemas/Position"
           },
-          "emails": {
-            "description": "**Emails**",
+          "Addresses": {
+            "description": "**Participant's addresses**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EmailEntityWrite"
+              "$ref": "#/components/schemas/AddressEntityQuery"
             }
           },
-          "identities": {
-            "description": "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**",
+          "Emails": {
+            "description": "**E-mails**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailEntityQuery"
+            }
+          },
+          "Identities": {
+            "description": "**Participant's identities**",
             "type": "array",
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/LegalPersonIdentityEntityWrite"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
                 },
                 {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
                 }
               ]
             }
           },
-          "role": {
+          "PhoneNumbers": {
+            "description": "**Telefones**",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+            }
+          },
+          "Role": {
             "$ref": "#/components/schemas/ParticipantRole"
           },
-          "customFields": {
+          "CustomFields": {
             "type": "object",
             "example": {},
             "description": "**Participant's custom fields**"
-          }
-        }
-      },
-      "ParticipantNaturalPersonWrite": {
-        "title": "Participante Pessoa Física",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityWrite"
           },
-          {
-            "type": "object",
-            "properties": {
-              "dob": {
-                "type": "string <nullable>",
-                "format": "datetime",
-                "example": "<data_de_nascimento>",
-                "description": "**Data de Nascimento**"
-              },
-              "gender": {
-                "$ref": "#/components/schemas/Gender"
-              },
-              "nationality": {
-                "type": "string <nullable>",
-                "description": "**Nacionalidade**",
-                "example": "<nacionalidade>"
-              },
-              "maritalStatus": {
-                "$ref": "#/components/schemas/MaritalStatus"
-              },
-              "occupation": {
-                "type": "string <nullable>",
-                "description": "**Profissão**",
-                "example": "<profissao>"
-              }
-            }
-          }
-        ]
-      },
-      "ParticipantLegalPersonWrite": {
-        "title": "Participante Pessoa Jurídica",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ParticipantEntityWrite"
+          "CaseType": {
+            "$ref": "#/components/schemas/RamosJudicial"
           },
-          {
-            "type": "object",
-            "properties": {
-              "businessStructure": {
-                "$ref": "#/components/schemas/ParticipantBusinessStructure"
-              }
-            }
+          "BusinessStructure": {
+            "type": "string"
+          },
+          "Dob": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Date of birth (NATURAL_PERSON only)**\n"
+          },
+          "Gender": {
+            "$ref": "#/components/schemas/Gender",
+            "description": "**Gender (NATURAL_PERSON only)**\n"
+          },
+          "Nationality": {
+            "type": "string"
+          },
+          "MaritalStatus": {
+            "$ref": "#/components/schemas/MaritalStatus"
+          },
+          "Occupation": {
+            "type": "string"
           }
+        },
+        "required": [
+          "Nature",
+          "Name",
+          "CaseId"
         ]
       },
       "GlobalValuesWrite": {
@@ -5796,16 +5746,9 @@
           "participants": {
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/ParticipantNaturalPersonWrite"
-                },
-                {
-                  "$ref": "#/components/schemas/ParticipantLegalPersonWrite"
-                }
-              ]
+              "$ref": "#/components/schemas/ParticipantEntityWrite"
             },
-            "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+            "desscription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
           },
           "globalValues": {
             "type": "array",
@@ -6029,6 +5972,42 @@
             "example": {}
           }
         }
+      },
+      "NaturalPersonIdentityEntityWrite": {
+        "title": "Identity (NATURAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
+      },
+      "LegalPersonIdentityEntityWrite": {
+        "title": "Identity (LEGAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
       },
       "PhoneNumberEntityWrite": {
         "title": "Phone number",
@@ -6421,6 +6400,17 @@
             }
           }
         ]
+      },
+      "EmailEntityWrite": {
+        "title": "Email",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "<email>",
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
+          }
+        }
       },
       "EmployeeEntityWrite": {
         "title": "Funcionário",

@@ -10,7 +10,8 @@ export default function ContractClassification() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_Contract_Classification.json'
       }}
     />
