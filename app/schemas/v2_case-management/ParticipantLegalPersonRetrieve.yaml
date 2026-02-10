@@ -1,8 +1,0 @@
-title: Participante (LEGAL_PERSON)
-type: object
-allOf:
-  - $ref: ParticipantEntityRetrieve.yaml
-  - type: object
-    properties:
-      businessStructure:
-        $ref: ../../enums/v2_case-management/ParticipantBusinessStructure.yaml

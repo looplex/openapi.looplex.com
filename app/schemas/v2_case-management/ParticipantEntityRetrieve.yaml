@@ -4,6 +4,26 @@ allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
+      clientId:
+        type: string
+        format: uuid
+        example: <client_uuid>
+        description: |
+          **Client's unique identifier**<br/>
+          This property if filled if the participant is a client
+      employeeId:
+        type: string
+        format: uuid
+        example: <employee_uuid>
+        description: |
+          **Employee's unique identifier**<br/>
+          This property if filled if the participant is an employee
+      caseId:
+        type: string
+        format: uuid
+        example: <case_uuid>
+        description: |
+          **The participant's case**
       createdBy:
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       name:
@@ -14,6 +34,18 @@ allOf:
         type: string <nullable>
         example: <apelido_da_parte>
         description: "**Apelido**"
+      isMainParty:
+        type: boolean
+        example: <is_main_party>
+        description: |
+          **Indicate if this participant is the main party in this case**
+      represents:
+        type: array
+        items:
+          type: string
+        example: ["document", "uuid"]
+        description: |
+          **Documents or uuids of parties represented by this participant (if this participant is a lawyer)**
       lawyerOffice:
         type: string <nullable>
         description: "**Escritório do advogado (se houver)**"
@@ -21,18 +53,21 @@ allOf:
       nature:
         example: NATURAL_PERSON
         $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+      position:
+        example: ACTIVE
+        $ref: ../../enums/v2_case-management/Position.yaml
       addresses:
-        description: "**Endereços**"
+        description: "**Participant's addresses**"
         type: array
         items:
           $ref: AddressEntityRetrieve.yaml
       emails:
-        description: "**Emails**"
+        description: "**E-mails**"
         type: array
         items:
           $ref: EmailEntityRetrieve.yaml
       identities:
-        description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+        description: "**Participant's identities**"
         type: array
         items:
           oneOf:
@@ -49,3 +84,22 @@ allOf:
         type: object
         example: {}
         description: "**Participant's custom fields**"
+      caseType:
+        $ref: ../../enums/common/RamosJudicial.yaml
+      businessStructure:
+        type: string
+      dob:
+        type: string
+        format: datetime
+        description: |
+          **Date of birth (NATURAL_PERSON only)**
+      gender:
+        $ref: ../../enums/v2_case-management/Gender.yaml
+        description: |
+          **Gender (NATURAL_PERSON only)**
+      nationality:
+        type: string
+      maritalStatus:
+        $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+      occupation:
+        type: string

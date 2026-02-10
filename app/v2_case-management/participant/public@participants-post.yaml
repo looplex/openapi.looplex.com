@@ -1,6 +1,6 @@
 tags:
   - Participant
-summary: "/Participants"
+summary: "/participants"
 description: |
   **Create participant**<br />
   Item created's guid is returned in **Location header**
@@ -13,9 +13,7 @@ requestBody:
   content:
     application/json:
       schema:
-        oneOf:
-          - $ref: ../../schemas/v2_case-management/ParticipantNaturalPersonWrite.yaml
-          - $ref: ../../schemas/v2_case-management/ParticipantLegalPersonWrite.yaml
+        $ref: ../../schemas/v2_case-management/ParticipantEntityWrite.yaml
 responses:
   "201":
     description: "Created"

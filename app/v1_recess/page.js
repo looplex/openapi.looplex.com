@@ -9,7 +9,8 @@ export default function Recess() {
     <RedocStandalone
       spec={json}
       options={{
-        sortOperationsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_recess.json'
       }}
     />

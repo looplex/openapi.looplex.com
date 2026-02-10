@@ -10,7 +10,8 @@ export default function LegalPersonClassification() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_v3_legal_person_classification.json'
       }}
     />
