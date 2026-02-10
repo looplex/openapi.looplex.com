@@ -604,7 +604,13 @@
           "op": {
             "type": "string",
             "example": "<operation>",
-            "description": "**The operation**<br />\n**Available option:**<br/>\nreplace\n"
+            "description": "**The operation of this patch**",
+            "oneOf": [
+              {
+                "type": "string",
+                "description": "replace  \n**Substitui o valor da propriedade por outro**\n"
+              }
+            ]
           },
           "value": {
             "description": "**The new value to set**",

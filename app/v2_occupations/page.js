@@ -10,7 +10,8 @@ export default function Occupations() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_Occupations.json'
       }}
     />

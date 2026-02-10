@@ -10,7 +10,8 @@ export default function CourtVenuev3() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_Court_Venue_v3.json'
       }}
     />

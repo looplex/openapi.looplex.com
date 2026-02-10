@@ -171,9 +171,7 @@ allOf:
       Participants:
         type: array
         items:
-          oneOf:
-            - $ref: ParticipantNaturalPersonQuery.yaml
-            - $ref: ParticipantLegalPersonQuery.yaml
+          $ref: ParticipantEntityQuery.yaml
         description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
       GlobalValues:
         type: array
