@@ -2,10 +2,16 @@ title: Subject matter group
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
   - properties:
-      Name:
+      GroupName:
         type: string
         example: <name>
         description: "**Subject matters' group name**"
+      CaseTypes:
+        description: "**Group's case types**"
+        type: array
+        items:
+          type: string
+          example: <case_type>
       Children:
         type: array
         items:

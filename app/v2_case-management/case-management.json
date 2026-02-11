@@ -7346,10 +7346,18 @@
           },
           {
             "properties": {
-              "Name": {
+              "GroupName": {
                 "type": "string",
                 "example": "<name>",
                 "description": "**Subject matters' group name**"
+              },
+              "CaseTypes": {
+                "description": "**Group's case types**",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "<case_type>"
+                }
               },
               "Children": {
                 "type": "array",
@@ -7389,10 +7397,18 @@
           },
           {
             "properties": {
-              "name": {
+              "groupName": {
                 "type": "string",
                 "example": "<name>",
                 "description": "**Subject matters' group name**"
+              },
+              "caseTypes": {
+                "description": "**Group's case types**",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "<case_type>"
+                }
               },
               "children": {
                 "type": "array",
