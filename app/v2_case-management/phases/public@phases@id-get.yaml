@@ -1,6 +1,6 @@
 tags:
   - Phase
-summary: "/Phases/:id"
+summary: "/phases/:id"
 description: "**Retrieve a Phase by id**"
 operationId: phases-id-get
 parameters:

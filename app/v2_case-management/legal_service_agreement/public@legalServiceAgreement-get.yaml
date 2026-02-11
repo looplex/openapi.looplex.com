@@ -1,6 +1,6 @@
 tags:
   - Legal service agreement
-summary: "/LegalServiceAgreements"
+summary: "/legalServiceAgreements"
 description: "**Fetch items paginated**"
 operationId: legalServiceAgreement-get
 parameters:

@@ -1,6 +1,6 @@
 tags:
   - Subject Matter
-summary: "/SubjectMatters"
+summary: "/subjectMatters"
 description: "**Fetch items paginated**"
 operationId: subjectMatters-get
 # query / path parameters
