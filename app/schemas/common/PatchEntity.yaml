@@ -10,10 +10,20 @@ properties:
   op:
     type: string
     example: <operation>
-    description: |
-      **The operation**<br />
-      **Available option:**<br/>
-      replace
+    description: "**The operation of this patch**"
+    oneOf:
+      - type: string
+        description: |
+          replace  
+          **Substitui o valor da propriedade por outro**
+      # - type: string
+      #   description: |
+      #     add  
+      #     **Adiciona o valor em uma lista existente**
+      # - type: string
+      #   description: |
+      #     remove  
+      #     **Remove o valor de uma lista existente**
   value:
     description: "**The new value to set**"
     example: <value>

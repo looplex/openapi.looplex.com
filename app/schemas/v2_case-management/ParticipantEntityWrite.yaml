@@ -1,59 +1,106 @@
 title: Dados de Parte
 type: object
 properties:
-  caseId: 
+  ClientId:
     type: string
     format: uuid
-    example: <global_unique_identifier>
+    example: <client_uuid>
     description: |
-      **Identificador único do caso**<br/>
-      `Obrigatório apenas quando a parte não estiver sendo criada junto com o caso`
-  name:
+      **Client's unique identifier**<br/>
+      This property if filled if the participant is a client
+  EmployeeId:
+    type: string
+    format: uuid
+    example: <employee_uuid>
+    description: |
+      **Employee's unique identifier**<br/>
+      This property if filled if the participant is an employee
+  CaseId:
+    type: string
+    format: uuid
+    example: <case_uuid>
+    description: |
+      **The participant's case**
+  CreatedBy:
+    $ref: ../../schemas/common/SimpleEntityQuery.yaml
+  Name:
     type: string
     example: <nome_da_parte>
     description: "**Participant's name**"
-  nickname:
+  Nickname:
     type: string <nullable>
     example: <apelido_da_parte>
     description: "**Apelido**"
-  isMainParty:
-    type: bool
-    example: false
-    description: "**Indica se é a parte principal**"
-  represents:
+  IsMainParty:
+    type: boolean
+    example: <is_main_party>
+    description: |
+      **Indicate if this participant is the main party in this case**
+  Represents:
     type: array
     items:
-      oneOf:
-        - type: string (document)
-          example: <documento_da_parte_representada>
-          description: "**Documento da parte representada**"
-        - type: string (unique identifier)
-          format: uuid
-          description: "**Unique identifier da parte representada**"
-  lawyerOffice:
+      type: string
+    example: ["document", "uuid"]
+    description: |
+      **Documents or uuids of parties represented by this participant (if this participant is a lawyer)**
+  LawyerOffice:
     type: string <nullable>
     description: "**Escritório do advogado (se houver)**"
-    example: <nome_do_escritorio>
-  nature:
+    example: <escritorio>
+  Nature:
+    example: NATURAL_PERSON
     $ref: ../../enums/v2_case-management/TipoPessoa.yaml
-  position:
-    example: OTHER
+  Position:
+    example: ACTIVE
     $ref: ../../enums/v2_case-management/Position.yaml
-  emails:
-    description: "**Emails**"
+  Addresses:
+    description: "**Participant's addresses**"
     type: array
     items:
-      $ref: EmailEntityWrite.yaml
-  identities:
-    description: "**CNPJ, Inscrição estadual, Inscrição municipal, CPF, RG, etc.**"
+      $ref: AddressEntityQuery.yaml
+  Emails:
+    description: "**E-mails**"
+    type: array
+    items:
+      $ref: EmailEntityQuery.yaml
+  Identities:
+    description: "**Participant's identities**"
     type: array
     items:
       oneOf:
-        - $ref: ../../schemas/common/LegalPersonIdentityEntityWrite.yaml
-        - $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
-  role:
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityQuery.yaml
+  PhoneNumbers:
+    description: "**Telefones**"
+    type: array
+    items:
+      $ref: PhoneNumberEntityQuery.yaml
+  Role:
     $ref: ../../enums/v2_case-management/ParticipantRole.yaml
-  customFields:
+  CustomFields:
     type: object
     example: {}
     description: "**Participant's custom fields**"
+  CaseType:
+    $ref: ../../enums/common/RamosJudicial.yaml
+  BusinessStructure:
+    type: string
+  Dob:
+    type: string
+    format: datetime
+    description: |
+      **Date of birth (NATURAL_PERSON only)**
+  Gender:
+    $ref: ../../enums/v2_case-management/Gender.yaml
+    description: |
+      **Gender (NATURAL_PERSON only)**
+  Nationality:
+    type: string
+  MaritalStatus:
+    $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+  Occupation:
+    type: string
+required:
+  - Nature
+  - Name
+  - CaseId

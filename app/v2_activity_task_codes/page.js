@@ -10,7 +10,8 @@ export default function ActivityTaskCodes() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_activity_task_codes.json'
       }}
     />

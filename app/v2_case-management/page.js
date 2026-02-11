@@ -9,7 +9,8 @@ export default function Cases() {
     <RedocStandalone
       spec={json}
       options={{
-        sortOperationsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_cases_v2.json'
       }}
     />

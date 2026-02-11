@@ -10,7 +10,8 @@ export default function TaskTemplate() {
     <RedocStandalone
       spec={json}
       options={{
-        sortTagsAlphabetically: true,
+        requiredPropsFirst: true,
+        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_v2_task_template.json'
       }}
     />
