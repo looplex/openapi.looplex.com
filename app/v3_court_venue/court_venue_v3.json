@@ -1069,7 +1069,7 @@
       "ProcedureV3": {
         "type": "object",
         "properties": {
-          "group": {
+          "name": {
             "type": "string",
             "description": "**The group name**",
             "example": "<group_name>"
@@ -1080,13 +1080,23 @@
             "description": "**The group identifier**",
             "example": "<global_unique_identifier>"
           },
+          "depth": {
+            "type": "integer",
+            "example": 1,
+            "description": "**Depth of this item**"
+          },
+          "depthName": {
+            "type": "string",
+            "example": "Group",
+            "description": "**Depth name of this item**"
+          },
           "children": {
             "type": "array",
             "description": "**The list of subgroups**",
             "items": {
               "type": "object",
               "properties": {
-                "subGroup": {
+                "name": {
                   "type": "string",
                   "description": "**The subgroup name**",
                   "example": "<subgroup_name>"
@@ -1097,13 +1107,23 @@
                   "description": "**The subgroup identifier**",
                   "example": "<global_unique_identifier>"
                 },
+                "depth": {
+                  "type": "integer",
+                  "example": 2,
+                  "description": "**Depth of this item**"
+                },
+                "depthName": {
+                  "type": "string",
+                  "example": "Subgroup",
+                  "description": "**Depth name of this item**"
+                },
                 "children": {
                   "type": "array",
                   "description": "**The list of procedures**",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "procedure": {
+                      "name": {
                         "type": "string",
                         "description": "**The procedure name**",
                         "example": "<procedure_name>"
@@ -1113,6 +1133,16 @@
                         "format": "uuid",
                         "description": "**The procedure identifier**",
                         "example": "<global_unique_identifier>"
+                      },
+                      "depth": {
+                        "type": "integer",
+                        "example": 3,
+                        "description": "**Depth of this item**"
+                      },
+                      "depthName": {
+                        "type": "string",
+                        "example": "Procedure",
+                        "description": "**Depth name of this item**"
                       },
                       "cnjCode": {
                         "type": "string",
