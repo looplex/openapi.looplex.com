@@ -34,6 +34,10 @@ allOf:
         type: string
       customFields:
         type: object
+      activityCode:
+        type: string
+      taskCode:
+        type: string
       children:
         type: array
         items:
