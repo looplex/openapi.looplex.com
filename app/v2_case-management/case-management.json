@@ -7205,11 +7205,6 @@
                 "example": "<subject_matter_uuid>",
                 "description": "**Subject matter unique identifier**"
               },
-              "SubjectMatterName": {
-                "type": "string",
-                "example": "<subject_matter_name>",
-                "description": "**Subject matter name**"
-              },
               "Name": {
                 "type": "string",
                 "example": "<relief_statement_name>",
@@ -7218,7 +7213,7 @@
               "CustomFields": {
                 "type": "object",
                 "example": {},
-                "description": ""
+                "description": "Custom fields' for this item"
               }
             }
           }
@@ -7239,11 +7234,6 @@
                 "example": "<subject_matter_uuid>",
                 "description": "**Subject matter unique identifier**"
               },
-              "subjectMatterName": {
-                "type": "string",
-                "example": "<subject_matter_name>",
-                "description": "**Subject matter name**"
-              },
               "name": {
                 "type": "string",
                 "example": "<relief_statement_name>",
@@ -7252,7 +7242,7 @@
               "customFields": {
                 "type": "object",
                 "example": {},
-                "description": ""
+                "description": "Custom fields' for this item"
               }
             }
           }
