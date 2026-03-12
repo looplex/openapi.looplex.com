@@ -1,6 +1,6 @@
 tags:
   - Subject Matter
-summary: "/subjectMtters/:id"
+summary: "/subjectMatters/:id"
 description: "**Retrieve a subject matter by id**"
 operationId: subjectMatters-id-get
 # query / path parameters

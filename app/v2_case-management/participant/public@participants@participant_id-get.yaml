@@ -1,6 +1,6 @@
 tags:
   - Participant
-summary: "/Participants/:id"
+summary: "/participants/:id"
 description: "**Retrieve a participant by id**"
 operationId: participants-participant_id-get
 parameters:

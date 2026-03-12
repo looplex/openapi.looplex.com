@@ -118,7 +118,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/Cases/:id",
+        "summary": "/cases/:id",
         "description": "**Retrieve information about a case**\n",
         "operationId": "cases-case_id-get",
         "parameters": [
@@ -168,7 +168,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/Cases/:id",
+        "summary": "/cases/:id",
         "description": "**Patch case properties**<br />\n**If you want to patch '_CustomFields_' property see** _<a href=\"/v2_case-management#tag/Custom-Fields\">this link</a>_\n",
         "operationId": "cases-patch-patch",
         "parameters": [
@@ -228,7 +228,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/Cases",
+        "summary": "/cases",
         "description": "**Fetch cases paginated**",
         "operationId": "cases-get",
         "parameters": [
@@ -305,7 +305,7 @@
         "tags": [
           "Case Management"
         ],
-        "summary": "/Cases",
+        "summary": "/cases",
         "description": "**Create a new case**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "cases-post",
         "parameters": [
@@ -359,7 +359,7 @@
         "tags": [
           "Case Group"
         ],
-        "summary": "/CaseGroups",
+        "summary": "/caseGroups",
         "description": "**Fetch items paginated**",
         "operationId": "caseGroups-get",
         "parameters": [
@@ -435,7 +435,7 @@
         "tags": [
           "Case Group"
         ],
-        "summary": "/CaseGroups/:id",
+        "summary": "/caseGroups/:id",
         "description": "**Retrieve a Case Group by id**",
         "operationId": "caseGroups-caseGroup_id-get",
         "parameters": [
@@ -731,7 +731,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/Clients",
+        "summary": "/clients",
         "description": "**Fetch clients paginated**",
         "operationId": "clients-get",
         "parameters": [
@@ -805,7 +805,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/Clients",
+        "summary": "/clients",
         "description": "**Create a client**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "clients-post",
         "parameters": [
@@ -859,7 +859,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/Clients/:id",
+        "summary": "/clients/:id",
         "description": "**Retrieve a client by id**",
         "operationId": "clients-client_id-get",
         "parameters": [
@@ -912,7 +912,7 @@
         "tags": [
           "Client"
         ],
-        "summary": "/Clients/:id",
+        "summary": "/clients/:id",
         "description": "**Patch Client**",
         "operationId": "clients-patch",
         "parameters": [
@@ -1516,7 +1516,7 @@
         "tags": [
           "External Service Provider"
         ],
-        "summary": "/External Service Providers",
+        "summary": "/externalServiceProviders",
         "description": "**Fetch items paginated**",
         "operationId": "externalServiceProviders-get",
         "parameters": [
@@ -1592,7 +1592,7 @@
         "tags": [
           "External Service Provider"
         ],
-        "summary": "/External Service Providers/:id",
+        "summary": "/externalServiceProviders/:id",
         "description": "**Retrieve a External Service Provider by id**",
         "operationId": "externalServiceProviders-id-get",
         "parameters": [
@@ -1647,7 +1647,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/LegalCategories",
+        "summary": "/legalCategories",
         "description": "**Fetch items paginated**",
         "operationId": "legalCategories-get",
         "parameters": [
@@ -1721,7 +1721,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/LegalCategories",
+        "summary": "/legalCategories",
         "description": "**Create legal category**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "legalCategories-post",
         "parameters": [
@@ -1775,7 +1775,7 @@
         "tags": [
           "Legal category"
         ],
-        "summary": "/LegalCategories/:id",
+        "summary": "/legalCategories/:id",
         "description": "**Retrieve a legal category by id**\n",
         "operationId": "legalCategories-legalCategory_id-get",
         "parameters": [
@@ -1830,7 +1830,7 @@
         "tags": [
           "Legal service agreement"
         ],
-        "summary": "/LegalServiceAgreements",
+        "summary": "/legalServiceAgreements",
         "description": "**Create Legal service agreement**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "LegalServiceAgreement-post",
         "parameters": [
@@ -1882,7 +1882,7 @@
         "tags": [
           "Legal service agreement"
         ],
-        "summary": "/LegalServiceAgreements",
+        "summary": "/legalServiceAgreements",
         "description": "**Fetch items paginated**",
         "operationId": "legalServiceAgreement-get",
         "parameters": [
@@ -1958,7 +1958,7 @@
         "tags": [
           "Legal service agreement"
         ],
-        "summary": "/LegalServiceAgreements/:id",
+        "summary": "/legalServiceAgreements/:id",
         "description": "**Retrieve a Legal service agreement by id**",
         "operationId": "legalServiceAgreements-id-get",
         "parameters": [
@@ -2065,7 +2065,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/Participants",
+        "summary": "/participants",
         "description": "**Fetch items paginated**",
         "operationId": "participants-get",
         "parameters": [
@@ -2141,7 +2141,7 @@
         "tags": [
           "Participant"
         ],
-        "summary": "/Participants/:id",
+        "summary": "/participants/:id",
         "description": "**Retrieve a participant by id**",
         "operationId": "participants-participant_id-get",
         "parameters": [
@@ -2196,7 +2196,7 @@
         "tags": [
           "Phase"
         ],
-        "summary": "/Phases",
+        "summary": "/phases",
         "description": "**Fetch items paginated**",
         "operationId": "phases-get",
         "parameters": [
@@ -2272,7 +2272,7 @@
         "tags": [
           "Phase"
         ],
-        "summary": "/Phases/:id",
+        "summary": "/phases/:id",
         "description": "**Retrieve a Phase by id**",
         "operationId": "phases-id-get",
         "parameters": [
@@ -2458,7 +2458,7 @@
         "tags": [
           "Product"
         ],
-        "summary": "/Products",
+        "summary": "/products",
         "description": "**Fetch items paginated**",
         "operationId": "products-get",
         "parameters": [
@@ -2534,7 +2534,7 @@
         "tags": [
           "Product"
         ],
-        "summary": "/Products/:id",
+        "summary": "/products/:id",
         "description": "**Retrieve a Product by id**",
         "operationId": "products-id-get",
         "parameters": [
@@ -2589,7 +2589,7 @@
         "tags": [
           "Subject Matter"
         ],
-        "summary": "/SubjectMatters",
+        "summary": "/subjectMatters",
         "description": "**Fetch items paginated**",
         "operationId": "subjectMatters-get",
         "parameters": [
@@ -2665,7 +2665,7 @@
         "tags": [
           "Subject Matter"
         ],
-        "summary": "/subjectMtters/:id",
+        "summary": "/subjectMatters/:id",
         "description": "**Retrieve a subject matter by id**",
         "operationId": "subjectMatters-id-get",
         "parameters": [
@@ -2720,7 +2720,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/Timesheets",
+        "summary": "/timesheets",
         "description": "**Fetch timesheets paginated**\n",
         "operationId": "timesheets-get",
         "parameters": [
@@ -2794,7 +2794,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/Timesheets",
+        "summary": "/timesheets",
         "description": "**Create timesheet**<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "timesheets-post",
         "parameters": [
@@ -2848,7 +2848,7 @@
         "tags": [
           "Timesheet"
         ],
-        "summary": "/Timesheets/:id",
+        "summary": "/timesheets/:id",
         "description": "**Retrieve a timesheet by id**\n",
         "operationId": "timesheets-id-get",
         "parameters": [
@@ -7199,21 +7199,21 @@
           {
             "type": "object",
             "properties": {
-              "ReliefStatementCauseId": {
+              "SubjectMatterId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<uuid>",
-                "description": ""
+                "example": "<subject_matter_uuid>",
+                "description": "**Subject matter unique identifier**"
               },
-              "ReliefStatementCause": {
+              "SubjectMatterName": {
                 "type": "string",
-                "example": "<relief_statement_cause>",
-                "description": ""
+                "example": "<subject_matter_name>",
+                "description": "**Subject matter name**"
               },
-              "ReliefStatement": {
+              "Name": {
                 "type": "string",
-                "example": "<relief_statement>",
-                "description": ""
+                "example": "<relief_statement_name>",
+                "description": "**Relief statement name**"
               },
               "CustomFields": {
                 "type": "object",
@@ -7233,21 +7233,21 @@
           {
             "type": "object",
             "properties": {
-              "reliefStatementCauseId": {
+              "subjectMatterId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<uuid>",
-                "description": ""
+                "example": "<subject_matter_uuid>",
+                "description": "**Subject matter unique identifier**"
               },
-              "reliefStatementCause": {
+              "subjectMatterName": {
                 "type": "string",
-                "example": "<relief_statement_cause>",
-                "description": ""
+                "example": "<subject_matter_name>",
+                "description": "**Subject matter name**"
               },
-              "reliefStatement": {
+              "name": {
                 "type": "string",
-                "example": "<relief_statement>",
-                "description": ""
+                "example": "<relief_statement_name>",
+                "description": "**Relief statement name**"
               },
               "customFields": {
                 "type": "object",
@@ -7346,10 +7346,18 @@
           },
           {
             "properties": {
-              "Name": {
+              "GroupName": {
                 "type": "string",
                 "example": "<name>",
                 "description": "**Subject matters' group name**"
+              },
+              "CaseTypes": {
+                "description": "**Group's case types**",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "<case_type>"
+                }
               },
               "Children": {
                 "type": "array",
@@ -7389,10 +7397,18 @@
           },
           {
             "properties": {
-              "name": {
+              "groupName": {
                 "type": "string",
                 "example": "<name>",
                 "description": "**Subject matters' group name**"
+              },
+              "caseTypes": {
+                "description": "**Group's case types**",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "<case_type>"
+                }
               },
               "children": {
                 "type": "array",

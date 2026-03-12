@@ -1,6 +1,6 @@
 tags:
   - Client
-summary: "/Clients/:id"
+summary: "/clients/:id"
 description: "**Retrieve a client by id**"
 operationId: clients-client_id-get
 parameters:

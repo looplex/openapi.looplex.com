@@ -1,6 +1,6 @@
 tags:
   - External Service Provider
-summary: "/External Service Providers"
+summary: "/externalServiceProviders"
 description: "**Fetch items paginated**"
 operationId: externalServiceProviders-get
 # query / path parameters

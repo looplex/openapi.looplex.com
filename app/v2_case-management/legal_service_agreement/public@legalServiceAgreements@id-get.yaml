@@ -1,6 +1,6 @@
 tags:
   - Legal service agreement
-summary: "/LegalServiceAgreements/:id"
+summary: "/legalServiceAgreements/:id"
 description: "**Retrieve a Legal service agreement by id**"
 operationId: legalServiceAgreements-id-get
 parameters:

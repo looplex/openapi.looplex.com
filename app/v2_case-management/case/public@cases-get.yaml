@@ -1,12 +1,8 @@
 tags:
   - Case Management
-
-summary: "/Cases"
-
+summary: "/cases"
 description: "**Fetch cases paginated**"
-
 operationId: cases-get
-
 # query / path parameters
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
@@ -17,7 +13,6 @@ parameters:
   - $ref: ../../parameters/scim/Filter.yaml
   - $ref: ../../parameters/common/SortBy.yaml
   - $ref: ../../parameters/common/SortOrder.yaml
-
 # http responses
 responses:
   "200":

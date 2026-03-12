@@ -1,6 +1,6 @@
 tags:
   - Client
-summary: "/Clients/:id"
+summary: "/clients/:id"
 description: "**Patch Client**"
 operationId: clients-patch
 parameters:

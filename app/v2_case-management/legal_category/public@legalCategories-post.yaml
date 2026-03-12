@@ -1,6 +1,6 @@
 tags:
   - Legal category
-summary: "/LegalCategories"
+summary: "/legalCategories"
 description: |
   **Create legal category**<br />
   Item created's guid is returned in **Location header**

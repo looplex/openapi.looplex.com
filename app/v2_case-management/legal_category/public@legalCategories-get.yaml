@@ -1,6 +1,6 @@
 tags:
   - Legal category
-summary: "/LegalCategories"
+summary: "/legalCategories"
 description: "**Fetch items paginated**"
 operationId: legalCategories-get
 parameters:

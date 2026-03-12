@@ -1,6 +1,6 @@
 tags:
   - Client
-summary: "/Clients"
+summary: "/clients"
 description: "**Fetch clients paginated**"
 operationId: clients-get
 parameters:

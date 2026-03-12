@@ -1,6 +1,6 @@
 tags:
   - Client
-summary: "/Clients"
+summary: "/clients"
 description: |
   **Create a client**<br />
   Item created's guid is returned in **Location header**

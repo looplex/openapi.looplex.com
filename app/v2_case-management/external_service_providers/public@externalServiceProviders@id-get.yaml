@@ -1,6 +1,6 @@
 tags:
   - External Service Provider
-summary: "/External Service Providers/:id"
+summary: "/externalServiceProviders/:id"
 description: "**Retrieve a External Service Provider by id**"
 operationId: externalServiceProviders-id-get
 # query / path parameters
