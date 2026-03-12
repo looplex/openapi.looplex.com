@@ -3,19 +3,19 @@ allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
-      reliefStatementCauseId:
+      subjectMatterId:
         type: string
         format: uuid
-        example: <uuid>
-        description: ""
-      reliefStatementCause:
+        example: <subject_matter_uuid>
+        description: "**Subject matter unique identifier**"
+      subjectMatterName:
         type: string
-        example: "<relief_statement_cause>"
-        description: ""
-      reliefStatement:
+        example: <subject_matter_name>
+        description: "**Subject matter name**"
+      name:
         type: string
-        example: "<relief_statement>"
-        description: ""
+        example: "<relief_statement_name>"
+        description: "**Relief statement name**"
       customFields:
         type: object
         example: {}

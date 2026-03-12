@@ -1,6 +1,6 @@
 tags:
   - Phase
-summary: "/Phases"
+summary: "/phases"
 description: "**Fetch items paginated**"
 operationId: phases-get
 parameters:

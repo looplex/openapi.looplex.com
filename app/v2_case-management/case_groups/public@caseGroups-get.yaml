@@ -1,6 +1,6 @@
 tags:
   - Case Group
-summary: "/CaseGroups"
+summary: "/caseGroups"
 description: "**Fetch items paginated**"
 operationId: caseGroups-get
 parameters:

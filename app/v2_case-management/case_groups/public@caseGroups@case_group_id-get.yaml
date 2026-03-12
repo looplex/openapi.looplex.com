@@ -1,6 +1,6 @@
 tags:
   - Case Group
-summary: "/CaseGroups/:id"
+summary: "/caseGroups/:id"
 description: "**Retrieve a Case Group by id**"
 operationId: caseGroups-caseGroup_id-get
 parameters:

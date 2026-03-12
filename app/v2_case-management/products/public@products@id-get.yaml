@@ -1,7 +1,6 @@
 tags:
   - Product
-
-summary: "/Products/:id"
+summary: "/products/:id"
 description: "**Retrieve a Product by id**"
 operationId: products-id-get
 

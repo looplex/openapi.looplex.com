@@ -1,6 +1,6 @@
 tags:
   - Product
-summary: "/Products"
+summary: "/products"
 description: "**Fetch items paginated**"
 operationId: products-get
 

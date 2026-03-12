@@ -1,6 +1,6 @@
 tags:
   - Timesheet
-summary: "/Timesheets"
+summary: "/timesheets"
 description: |
   **Fetch timesheets paginated**
 operationId: timesheets-get
