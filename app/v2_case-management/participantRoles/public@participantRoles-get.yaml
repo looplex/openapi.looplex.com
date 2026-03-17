@@ -1,0 +1,57 @@
+tags:
+  - Participant Roles
+summary: "/participantRoles"
+description: "**Fetch items paginated**"
+operationId: participantRoles-get
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../app/parameters/common/Tenant.yaml
+  - $ref: ../../../app/parameters/common/BearerToken.yaml
+  - $ref: ../../../app/parameters/scim/StartIndex.yaml
+  - $ref: ../../../app/parameters/scim/Count.yaml
+  - $ref: ../../../app/parameters/scim/Filter.yaml
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      CaseProcedure:
+                        type: string
+                        description: "Case procedure name"
+                      Roles:
+                        type: object
+                        properties:
+                          Active:
+                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                          Passive:
+                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                          ThirdParty:
+                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                          Other:
+                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml

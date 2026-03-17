@@ -139,6 +139,11 @@ paths:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
 
+  # Participant Roles
+  /participantRoles:
+    get:
+      $ref: participantRoles\public@participantRoles-get.yaml
+
   # Phases
   /phases:
     get:
