@@ -57,6 +57,8 @@ paths:
       $ref: claim\public@claims@claim_id-get.yaml
     patch:
       $ref: claim\public@claims@claim_id-patch.yaml
+    delete:
+      $ref: claim\public@claims-delete.yaml
 
   # Client
   /clients:
@@ -136,6 +138,11 @@ paths:
   /participants/:id:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
+
+  # Participant Roles
+  /participantRoles:
+    get:
+      $ref: participantRoles\public@participantRoles-get.yaml
 
   # Phases
   /phases:

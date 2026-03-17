@@ -1,0 +1,19 @@
+title: "Participant role"
+example: [
+  {
+    pt: 'portuguese name',
+    en: 'english name'
+  }
+]
+oneOf:
+  - type: null
+  - type: array
+    items:
+      type: object
+      properties:
+        pt:
+          type: string
+          description: "name in portuguese"
+        en:
+          type: string
+          description: "name in english"
