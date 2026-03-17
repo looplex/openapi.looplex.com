@@ -724,6 +724,53 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Claim"
+        ],
+        "summary": "/claims/:id",
+        "description": "**Delete a claim**",
+        "operationId": "claims-delete-id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/clients": {
