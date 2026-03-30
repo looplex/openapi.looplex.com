@@ -1,5 +1,5 @@
 title: TaskTemplateEntity
-description: 
+description:
 properties:
   Title:
     type: string
@@ -11,19 +11,25 @@ properties:
   DeadlineForCompletion:
     description: "Prazo para conclusão (em dias)"
     type: integer
-  ConsecutiveDays:
-    type: boolean
+  DeadlineCalculationType:
+    type: string
+  Priority:
+    type: string
   TimeToExecution:
-    description: "Tempo para execução (em horas)"    
+    description: "Tempo para execução (em horas)"
     type: integer
+  Group:
+    type: string
   DocumentLinkType:
     $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
   DocumentIdentifier:
     description: "Link do documento"
     type: string
+  ConsecutiveDays:
+    type: boolean
   CaseTypes:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
-    description: 
+    description:
       $ref: ../../v2_task_template/v2_task_template.yaml#/components/x-descriptions/RamosJudicial
     type: array
     items:
@@ -32,6 +38,12 @@ properties:
     type: string
   CustomFields:
     type: object
+  ParentId:
+    type: string
+  Description:
+    type: string
+  CanonicalSubjectMatter:
+    type: string
   ActivityCode:
     type: string
   TaskCode:
@@ -39,5 +51,5 @@ properties:
   Children:
     type: array
     items:
-      $ref: ./TaskTemplateEntityWrite.yaml 
-  
+      $ref: ./TaskTemplateEntityWrite.yaml
+

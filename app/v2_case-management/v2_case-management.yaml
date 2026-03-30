@@ -20,12 +20,12 @@ servers:
   - url: "https://apim.looplex.com/case-management/v1"
     description: "Case Management Server"
 paths:
-  
+
   # Authentication
   /token:
     post:
       $ref: authentication\public@token-post.yaml
-  
+
   # Case
   /cases/:id:
     get:
@@ -52,7 +52,7 @@ paths:
       $ref: claim\public@claims-get.yaml
     post:
       $ref: claim\public@claims-post.yaml
-  /claim/:id:
+  /claims/:id:
     get:
       $ref: claim\public@claims@claim_id-get.yaml
     patch:

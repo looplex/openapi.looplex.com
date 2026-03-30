@@ -613,7 +613,7 @@
         }
       }
     },
-    "/claim/:id": {
+    "/claims/:id": {
       "get": {
         "tags": [
           "Claim"
@@ -4355,9 +4355,11 @@
                 "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "group": {
-                "type": "string",
-                "example": "<area_do_processo>",
-                "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n"
+                "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "example": {
+                  "Name": "<area_do_processo>"
+                }
               },
               "product": {
                 "type": "array",
@@ -5237,9 +5239,11 @@
                 "description": "**Usuário que encerrou o caso**"
               },
               "Group": {
-                "type": "string",
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-                "example": "<area_do_processo>"
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "example": {
+                  "Name": "<area_do_processo>"
+                }
               },
               "CaseClient": {
                 "$ref": "#/components/schemas/ClientEntityQuery"
@@ -5833,19 +5837,12 @@
             "example": "<data_prevista_encerramento_do_processo>"
           },
           "group": {
-            "description": "**Área**<br/>\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-            "oneOf": [
-              {
-                "type": "string (name)",
-                "example": "<area_do_processo>",
-                "description": "**Nome da área**"
-              },
-              {
-                "type": "string uuid (unique identifier)",
-                "format": "uuid",
-                "description": "**Unique identifier da área**"
-              }
-            ]
+            "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
+            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "example": {
+              "id": "<uuid_da_area>",
+              "name": "<area_do_processo>"
+            }
           },
           "product": {
             "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
