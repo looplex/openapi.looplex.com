@@ -139,11 +139,13 @@ allOf:
         $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Usuário que encerrou o caso**"
       Group:
-        type: string
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-        example: <area_do_processo>
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        example: {
+          Name: <area_do_processo>
+        }
       CaseClient:
         $ref: ClientEntityQuery.yaml
       LegalServiceAgreement:

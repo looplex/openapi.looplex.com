@@ -444,12 +444,18 @@
             "description": "Prazo para conclusão (em dias)",
             "type": "integer"
           },
-          "ConsecutiveDays": {
-            "type": "boolean"
+          "DeadlineCalculationType": {
+            "type": "string"
+          },
+          "Priority": {
+            "type": "string"
           },
           "TimeToExecution": {
             "description": "Tempo para execução (em horas)",
             "type": "integer"
+          },
+          "Group": {
+            "type": "string"
           },
           "DocumentLinkType": {
             "$ref": "#/components/schemas/TipoVinculoComDocumento"
@@ -457,6 +463,9 @@
           "DocumentIdentifier": {
             "description": "Link do documento",
             "type": "string"
+          },
+          "ConsecutiveDays": {
+            "type": "boolean"
           },
           "CaseTypes": {
             "example": [
@@ -474,6 +483,15 @@
           },
           "CustomFields": {
             "type": "object"
+          },
+          "ParentId": {
+            "type": "string"
+          },
+          "Description": {
+            "type": "string"
+          },
+          "CanonicalSubjectMatter": {
+            "type": "string"
           },
           "ActivityCode": {
             "type": "string"

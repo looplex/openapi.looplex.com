@@ -141,11 +141,13 @@ allOf:
         description: "**Usuário que encerrou o caso**"
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       group:
-        type: string
-        example: <area_do_processo>
         description: |
           **Área** <br />
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        example: {
+          Name: <area_do_processo>
+        }
       product:
         type: array
         items:
