@@ -613,7 +613,7 @@
         }
       }
     },
-    "/claim/:id": {
+    "/claims/:id": {
       "get": {
         "tags": [
           "Claim"
