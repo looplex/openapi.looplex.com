@@ -176,15 +176,13 @@ properties:
     example: <data_prevista_encerramento_do_processo>
   group:
     description: |
-      **Área**<br/>
+      **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-    oneOf:
-      - type: string (name)
-        example: <area_do_processo>
-        description: "**Nome da área**"
-      - type: string uuid (unique identifier)
-        format: uuid
-        description: "**Unique identifier da área**"
+    $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+    example: {
+      id: <uuid_da_area>,
+      name: <area_do_processo>
+    }
   product:
     description: |
       **Produto**<br />
