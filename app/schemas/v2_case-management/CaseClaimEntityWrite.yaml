@@ -11,6 +11,7 @@ properties:
   subjectMatterId:
     type: string
     format: uuid
+    example: <global_unique_identifier>
   subjectMatter:
     type: string
     example: <classificacao_geral_da_questao>
@@ -18,6 +19,7 @@ properties:
   reliefStatementId:
     type: string <nullable>
     format: uuid
+    example: <global_unique_identifier>
   reliefStatement:
     type: string <nullable>
     example: <relief_statement>

@@ -3862,7 +3862,8 @@
               },
               "subjectMatterId": {
                 "type": "string",
-                "format": "uuid"
+                "format": "uuid",
+                "example": "<global_unique_identifier>"
               },
               "subjectMatter": {
                 "type": "string",
@@ -3871,7 +3872,8 @@
               },
               "reliefStatementId": {
                 "type": "string <nullable>",
-                "format": "uuid"
+                "format": "uuid",
+                "example": "<global_unique_identifier>"
               },
               "reliefStatement": {
                 "type": "string <nullable>",
@@ -5571,7 +5573,8 @@
           },
           "subjectMatterId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "subjectMatter": {
             "type": "string",
@@ -5580,7 +5583,8 @@
           },
           "reliefStatementId": {
             "type": "string <nullable>",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "reliefStatement": {
             "type": "string <nullable>",
@@ -6076,7 +6080,8 @@
           },
           "SubjectMatterId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "SubjectMatter": {
             "type": "string <nullable>",
@@ -6085,7 +6090,8 @@
           },
           "ReliefStatementId": {
             "type": "string <nullable>",
-            "format": "uuid"
+            "format": "uuid",
+            "example": "<global_unique_identifier>"
           },
           "ReliefStatement": {
             "type": "string <nullable>",

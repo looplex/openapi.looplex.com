@@ -9,6 +9,7 @@ properties:
   SubjectMatterId:
     type: string
     format: uuid
+    example: <global_unique_identifier>
   SubjectMatter:
     type: string <nullable>
     description: "**Question's general classification**"
@@ -16,6 +17,7 @@ properties:
   ReliefStatementId:
     type: string <nullable>
     format: uuid
+    example: <global_unique_identifier>
   ReliefStatement:
     type: string <nullable>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"

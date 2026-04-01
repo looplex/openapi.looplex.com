@@ -12,6 +12,7 @@ allOf:
       subjectMatterId:
         type: string
         format: uuid
+        example: <global_unique_identifier>
       subjectMatter:
         type: string
         description: "**Question's general classification**"
@@ -19,6 +20,7 @@ allOf:
       reliefStatementId:
         type: string <nullable>
         format: uuid
+        example: <global_unique_identifier>
       reliefStatement:
         type: string <nullable>
         description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
