@@ -6,14 +6,24 @@ properties:
     format: uuid
     description: "**Case's unique identifier of this claim**"
     example: <global_unique_identifier>
+  SubjectMatterId:
+    type: string
+    format: uuid
   SubjectMatter:
     type: string <nullable>
     description: "**Question's general classification**"
     example: <subject_matter>
+  ReliefStatementId:
+    type: string <nullable>
+    format: uuid
   ReliefStatement:
     type: string <nullable>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
     example: <relief_statement>
+  FineSuccumbence:
+    $ref: ../../enums/v2_case-management/MultaSucumbencia.yaml
+  FineSuccumbencePercentage:
+    type: number <nullable>
   RemedyType:
     $ref: ../../enums/v2_case-management/TipoReparacao.yaml
   ProvisionalRelief:
@@ -41,10 +51,16 @@ properties:
   ForeseenValue:
     type: number
     example: 0
+  foreseenValueUpdated:
+    type: number <nullable>
+    example: 0
+    description: "**Foreseen value updated**"
   ContingencyValue:
     type: number
     description: "**Valor de contingencia**"
-    example: 0
+  ContingencyValueUpdated:
+    type: number <nullable>
+    description: "**Valor de contingencia**"
   Liquidated:
     type: boolean
     example: false
@@ -70,3 +86,4 @@ properties:
     type: object
     description: "**Claim's custom fields**"
     example: {}
+  # CalculationRule (TODO)

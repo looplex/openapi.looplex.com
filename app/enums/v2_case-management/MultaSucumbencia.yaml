@@ -1,0 +1,7 @@
+title: MultaSucumbencia
+type: string
+example: <multa_ou_sucumbencia>
+description: |
+  **Define se o claim é multa ou sucumbência (quando preenchido)**<br/>
+  MULTA<br/>
+  SUCUMBENCIA<br/>

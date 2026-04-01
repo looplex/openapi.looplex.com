@@ -3814,6 +3814,12 @@
           }
         }
       },
+      "MultaSucumbencia": {
+        "title": "MultaSucumbencia",
+        "type": "string",
+        "example": "<multa_ou_sucumbencia>",
+        "description": "**Define se o claim é multa ou sucumbência (quando preenchido)**<br/>\nMULTA<br/>\nSUCUMBENCIA<br/>\n"
+      },
       "TipoReparacao": {
         "title": "Tipo de Reparação",
         "type": "string <nullable>",
@@ -3854,15 +3860,29 @@
                 "description": "**Case's unique identifier of this claim**",
                 "example": "<global_unique_identifier>"
               },
+              "subjectMatterId": {
+                "type": "string",
+                "format": "uuid"
+              },
               "subjectMatter": {
-                "type": "string <nullable>",
+                "type": "string",
                 "description": "**Question's general classification**",
                 "example": "<subject_matter>"
+              },
+              "reliefStatementId": {
+                "type": "string <nullable>",
+                "format": "uuid"
               },
               "reliefStatement": {
                 "type": "string <nullable>",
                 "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
                 "example": "<relief_statement>"
+              },
+              "fineSuccumbence": {
+                "$ref": "#/components/schemas/MultaSucumbencia"
+              },
+              "fineSuccumbencePercentage": {
+                "type": "number <nullable>"
               },
               "remedyType": {
                 "$ref": "#/components/schemas/TipoReparacao"
@@ -3902,10 +3922,18 @@
                 "type": "number",
                 "example": 0
               },
+              "foreseenValueUpdated": {
+                "type": "number <nullable>",
+                "example": 0,
+                "description": "**Foreseen value updated**"
+              },
               "contingencyValue": {
                 "type": "number",
-                "description": "**Valor de contingencia**",
-                "example": 0
+                "description": "**Valor de contingencia**"
+              },
+              "contingencyValueUpdated": {
+                "type": "number <nullable>",
+                "description": "**Valor de contingencia**"
               },
               "liquidated": {
                 "type": "boolean",
@@ -5541,15 +5569,29 @@
             "example": "<global_unique_identifier>",
             "description": "**Case's unique identifier of this claim**<br/>\n`Obrigatório apenas quando o pedido não estiver sendo criado junto com o caso`\n"
           },
+          "subjectMatterId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "subjectMatter": {
             "type": "string",
             "example": "<classificacao_geral_da_questao>",
             "description": "**Question's general classification**"
           },
+          "reliefStatementId": {
+            "type": "string <nullable>",
+            "format": "uuid"
+          },
           "reliefStatement": {
             "type": "string <nullable>",
             "example": "<relief_statement>",
             "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
+          },
+          "fineSuccumbence": {
+            "$ref": "#/components/schemas/MultaSucumbencia"
+          },
+          "fineSuccumbencePercentage": {
+            "type": "number <nullable>"
           },
           "remedyType": {
             "$ref": "#/components/schemas/TipoReparacao"
@@ -5576,8 +5618,11 @@
           },
           "foreseenValue": {
             "type": "number",
-            "example": 0,
-            "description": "**Foreseen value**"
+            "example": 0
+          },
+          "contingencyValue": {
+            "type": "number",
+            "description": "**Valor de contingencia**"
           },
           "liquidated": {
             "type": "boolean",
@@ -6029,15 +6074,29 @@
             "description": "**Case's unique identifier of this claim**",
             "example": "<global_unique_identifier>"
           },
+          "SubjectMatterId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "SubjectMatter": {
             "type": "string <nullable>",
             "description": "**Question's general classification**",
             "example": "<subject_matter>"
           },
+          "ReliefStatementId": {
+            "type": "string <nullable>",
+            "format": "uuid"
+          },
           "ReliefStatement": {
             "type": "string <nullable>",
             "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
             "example": "<relief_statement>"
+          },
+          "FineSuccumbence": {
+            "$ref": "#/components/schemas/MultaSucumbencia"
+          },
+          "FineSuccumbencePercentage": {
+            "type": "number <nullable>"
           },
           "RemedyType": {
             "$ref": "#/components/schemas/TipoReparacao"
@@ -6077,10 +6136,18 @@
             "type": "number",
             "example": 0
           },
+          "foreseenValueUpdated": {
+            "type": "number <nullable>",
+            "example": 0,
+            "description": "**Foreseen value updated**"
+          },
           "ContingencyValue": {
             "type": "number",
-            "description": "**Valor de contingencia**",
-            "example": 0
+            "description": "**Valor de contingencia**"
+          },
+          "ContingencyValueUpdated": {
+            "type": "number <nullable>",
+            "description": "**Valor de contingencia**"
           },
           "Liquidated": {
             "type": "boolean",

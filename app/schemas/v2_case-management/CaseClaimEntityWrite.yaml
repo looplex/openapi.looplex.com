@@ -8,19 +8,29 @@ properties:
     description: |
       **Case's unique identifier of this claim**<br/>
       `Obrigatório apenas quando o pedido não estiver sendo criado junto com o caso`
+  subjectMatterId:
+    type: string
+    format: uuid
   subjectMatter:
     type: string
     example: <classificacao_geral_da_questao>
     description: "**Question's general classification**"
+  reliefStatementId:
+    type: string <nullable>
+    format: uuid
   reliefStatement:
     type: string <nullable>
     example: <relief_statement>
     description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
+  fineSuccumbence:
+    $ref: ../../enums/v2_case-management/MultaSucumbencia.yaml
+  fineSuccumbencePercentage:
+    type: number <nullable>
   remedyType:
     $ref: ../../enums/v2_case-management/TipoReparacao.yaml
   provisionalRelief:
     $ref: ../../enums/v2_case-management/TipoTutela.yaml
-  againstPosition: 
+  againstPosition:
     type: string
     example: <polo>
     description: |
@@ -42,7 +52,9 @@ properties:
   foreseenValue:
     type: number
     example: 0
-    description: "**Foreseen value**"
+  contingencyValue:
+    type: number
+    description: "**Valor de contingencia**"
   liquidated:
     type: boolean
     example: false
@@ -65,6 +77,7 @@ properties:
     type: object
     description: "**Claim's custom fields**"
     example: {}
+  # calculationRule (TODO)
 required:
   - caseId
   - subjectMatter
