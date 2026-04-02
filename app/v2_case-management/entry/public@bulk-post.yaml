@@ -1,0 +1,92 @@
+tags:
+  - Entry
+summary: "/bulk"
+description: |
+  **Endpoint to insert multiple entries at once**<br />
+operationId: bulk-post
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../app/parameters/common/Tenant.yaml
+  - $ref: ../../../app/parameters/common/BearerToken.yaml
+# request body
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          failOnErrors:
+            type: integer
+            description: "**Cancel next operations when this quantity of errors occurs**"
+          Operations:
+            type: array
+            items:
+              type: object
+              properties:
+                method:
+                  type: string
+                  example: <http_verb>
+                  description: |
+                    **Options available**<br/>
+                    POST<br/>
+                    PATCH<br/>
+                    DELETE
+                path:
+                  type: string
+                  example: <endpoint_route>
+                  description: |
+                    **The route**<br />
+                    _**e.g:** /entries_
+                bulkId:
+                  type: string
+                  description: |
+                    **unique identifier of this operation**<br/>
+                    _**e.g:** entry-1_
+                  example: "<identifier_that_must_be_unique_in_operations>"
+                data:
+                  $ref: ../../../app/schemas/v2_case-management/EntryEntityWrite.yaml
+                  description: |
+                    **The data to insert**
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            Operations:
+              type: array
+              items:
+                type: object
+                properties:
+                  location:
+                    type: string
+                    description: "**The location of the resource**"
+                    example: "/Entries/<entry_uuid>"
+                  method:
+                    type: integer
+                  path:
+                    type: string
+                    example: /Entries
+                    description: "**The path of the operation**"
+                  status:
+                    type: integer
+                    example: 201
+                    description: "**The http status code for this operation**"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
