@@ -2286,7 +2286,7 @@
                             "properties": {
                               "CaseProcedure": {
                                 "type": "string",
-                                "description": "Case procedure name"
+                                "description": "**Case procedure name**"
                               },
                               "Roles": {
                                 "type": "object",
