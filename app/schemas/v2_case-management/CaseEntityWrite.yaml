@@ -32,19 +32,23 @@ properties:
   locale:
     description: |
       **Utilizado para todos os casos menos os judiciais**<br/>
-      Local da Jurisdição de um caso, ou cumprimento da obrigação
+      Local da Jurisdição de um caso, ou cumprimento da obrigação<br/>
+      `No objeto, enviar: Id ou Name`
     type: array
     items:
       $ref: ../../schemas/common/SimpleEntityWrite.yaml
     example: [
       {
-        Name: "<country_name>"
+        Id: <country_uuid>,
+        Name: <country_name>
       },
       {
-        Name: "<state_name>"
+        Id: <state_uuid>,
+        Name: <state_name>
       },
       {
-        Name: "<city_name>"
+        Id: <locality_uuid>,
+        Name: <locality_name>
       }
     ]
   courtVenue:
@@ -178,7 +182,7 @@ properties:
     description: |
       **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-    $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+    $ref: ../../schemas/common/SimpleEntityQuery.yaml
     example: {
       id: <uuid_da_area>,
       name: <area_do_processo>
@@ -189,39 +193,37 @@ properties:
       Produto ou serviço do cliente que está relacionado ao caso
     type: array
     items:
-      oneOf:
-      - type: string (name)
-        example: <produto_do_processo>
-        description: "**Nome do product**"
-      - type: string uuid (unique identifier)
-        format: uuid
-        description: "**Unique identifier do product**"
-    example: []
+      type: string
+      format: uuid
+      description: "**Unique identifier do produto**"
+    example: [
+      <product_uuid>
+    ]
   caseClient:
-    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
     description: |
       **Cliente**<br />
       Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
   legalServiceAgreement:
-    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
     description: |
       **Contrato**<br />
       Contrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br/>
       `Obrigatório quando o cliente não tem um contrato default definido`
   owner:
-    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
     description: |
       **Responsável**<br />
       Advogado ou membro da equipe jurídica responsável pelo caso
   coowners:
     type: array
     items:
-      $ref: ../../schemas/common/SimpleEntityWrite.yaml
+      $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
     description: |
       **Corresponsáveis**<br />
       Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
   externalServiceProvider:
-    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
     description: |
       **Escritório Responsável / Correspondente**<br />
       Prestador de serviços externo contratado para fornecer serviços jurídicos em um caso
@@ -257,8 +259,7 @@ properties:
       - type: string
         format: uuid
         description: "**Identificador único do caso**"
-      - type: object
-        description: "**Os dados do caso para cadastro**"
+      - $ref: CaseEntityWrite.yaml
 required:
   - status
   - type

@@ -5347,6 +5347,18 @@
           }
         }
       },
+      "SimpleObjectIdWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The item unique identifier**",
+            "example": "<global_unique_identifier>"
+          }
+        }
+      },
       "ParticipantEntityWrite": {
         "title": "Dados de Parte",
         "type": "object",
@@ -5714,20 +5726,23 @@
             "example": "<observacoes_do_processo>"
           },
           "locale": {
-            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação\n",
+            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação<br/>\n`No objeto, enviar: Id ou Name`\n",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SimpleEntityWrite"
             },
             "example": [
               {
+                "Id": "<country_uuid>",
                 "Name": "<country_name>"
               },
               {
+                "Id": "<state_uuid>",
                 "Name": "<state_name>"
               },
               {
-                "Name": "<city_name>"
+                "Id": "<locality_uuid>",
+                "Name": "<locality_name>"
               }
             ]
           },
@@ -5887,7 +5902,7 @@
           },
           "group": {
             "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityQuery",
             "example": {
               "id": "<uuid_da_area>",
               "name": "<area_do_processo>"
@@ -5897,42 +5912,35 @@
             "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n",
             "type": "array",
             "items": {
-              "oneOf": [
-                {
-                  "type": "string (name)",
-                  "example": "<produto_do_processo>",
-                  "description": "**Nome do product**"
-                },
-                {
-                  "type": "string uuid (unique identifier)",
-                  "format": "uuid",
-                  "description": "**Unique identifier do product**"
-                }
-              ]
+              "type": "string",
+              "format": "uuid",
+              "description": "**Unique identifier do produto**"
             },
-            "example": []
+            "example": [
+              "<product_uuid>"
+            ]
           },
           "caseClient": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
             "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
           },
           "legalServiceAgreement": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
             "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente<br/>\n`Obrigatório quando o cliente não tem um contrato default definido`\n"
           },
           "owner": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
             "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
           },
           "coowners": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SimpleEntityWrite"
+              "$ref": "#/components/schemas/SimpleObjectIdWrite"
             },
             "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
           },
           "externalServiceProvider": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
             "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n"
           },
           "participants": {
@@ -5981,8 +5989,7 @@
                 "description": "**Identificador único do caso**"
               },
               {
-                "type": "object",
-                "description": "**Os dados do caso para cadastro**"
+                "$ref": "#/components/schemas/CaseEntityWrite"
               }
             ]
           }

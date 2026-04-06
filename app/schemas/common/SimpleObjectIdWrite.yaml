@@ -1,0 +1,8 @@
+title: Identificador
+type: object
+properties:
+  Id:
+    type: string
+    format: uuid
+    description: "**The item unique identifier**"
+    example: <global_unique_identifier>
