@@ -2292,16 +2292,56 @@
                                 "type": "object",
                                 "properties": {
                                   "Active": {
-                                    "$ref": "#/components/schemas/ParticipantRole-2"
+                                    "type": "object",
+                                    "properties": {
+                                      "pt": {
+                                        "type": "string",
+                                        "description": "name in portuguese"
+                                      },
+                                      "en": {
+                                        "type": "string",
+                                        "description": "name in english"
+                                      }
+                                    }
                                   },
                                   "Passive": {
-                                    "$ref": "#/components/schemas/ParticipantRole-2"
+                                    "type": "object",
+                                    "properties": {
+                                      "pt": {
+                                        "type": "string",
+                                        "description": "name in portuguese"
+                                      },
+                                      "en": {
+                                        "type": "string",
+                                        "description": "name in english"
+                                      }
+                                    }
                                   },
                                   "ThirdParty": {
-                                    "$ref": "#/components/schemas/ParticipantRole-2"
+                                    "type": "object",
+                                    "properties": {
+                                      "pt": {
+                                        "type": "string",
+                                        "description": "name in portuguese"
+                                      },
+                                      "en": {
+                                        "type": "string",
+                                        "description": "name in english"
+                                      }
+                                    }
                                   },
                                   "Other": {
-                                    "$ref": "#/components/schemas/ParticipantRole-2"
+                                    "type": "object",
+                                    "properties": {
+                                      "pt": {
+                                        "type": "string",
+                                        "description": "name in portuguese"
+                                      },
+                                      "en": {
+                                        "type": "string",
+                                        "description": "name in english"
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -7362,36 +7402,6 @@
             "example": false
           }
         }
-      },
-      "ParticipantRole-2": {
-        "title": "Participant role",
-        "example": [
-          {
-            "pt": "portuguese name",
-            "en": "english name"
-          }
-        ],
-        "oneOf": [
-          {
-            "type": null
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "pt": {
-                  "type": "string",
-                  "description": "name in portuguese"
-                },
-                "en": {
-                  "type": "string",
-                  "description": "name in english"
-                }
-              }
-            }
-          }
-        ]
       },
       "PhaseEntityQuery": {
         "title": "Phase",

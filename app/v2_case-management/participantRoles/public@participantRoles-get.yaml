@@ -35,13 +35,41 @@ responses:
                         type: object
                         properties:
                           Active:
-                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                            type: object
+                            properties:
+                              pt:
+                                type: string
+                                description: "name in portuguese"
+                              en:
+                                type: string
+                                description: "name in english"
                           Passive:
-                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                            type: object
+                            properties:
+                              pt:
+                                type: string
+                                description: "name in portuguese"
+                              en:
+                                type: string
+                                description: "name in english"
                           ThirdParty:
-                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                            type: object
+                            properties:
+                              pt:
+                                type: string
+                                description: "name in portuguese"
+                              en:
+                                type: string
+                                description: "name in english"
                           Other:
-                            $ref: ../../schemas/v2_case-management/ParticipantRole.yaml
+                            type: object
+                            properties:
+                              pt:
+                                type: string
+                                description: "name in portuguese"
+                              en:
+                                type: string
+                                description: "name in english"
   "400":
     description: "Bad Request"
   "401":
