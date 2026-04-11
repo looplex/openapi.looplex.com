@@ -26,6 +26,11 @@ paths:
     post:
       $ref: authentication\public@token-post.yaml
 
+  # Bulk operation
+  /bulk:
+    post:
+      $ref: bulk\public@bulk-post.yaml
+
   # Case
   /cases/:id:
     get:
@@ -100,9 +105,6 @@ paths:
       $ref: entry\public@entries-get.yaml
     post:
       $ref: entry\public@entries-post.yaml
-  # /bulk:
-  #   post:
-  #     $ref: entry\public@bulk-post.yaml
 
   # External service provider
   /externalServiceProviders:

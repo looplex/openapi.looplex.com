@@ -113,6 +113,139 @@
         }
       }
     },
+    "/bulk": {
+      "post": {
+        "tags": [
+          "Bulk request"
+        ],
+        "summary": "/bulk",
+        "description": "**Endpoint to [insert] multiple resources at once**<br />\n`Ainda não disponível para utilização`\n",
+        "operationId": "bulk-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "failOnErrors": {
+                    "type": "integer",
+                    "description": "**Cancel next operations when this quantity of errors occurs**"
+                  },
+                  "Operations": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "example": "<http_verb>",
+                          "description": "**Options available**<br/>\nPOST\n"
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "<endpoint_route>",
+                          "description": "**The route**<br />\n**e.g:**\n`/Entries`, `/LegalCategories`, `/Timesheets`\n"
+                        },
+                        "bulkId": {
+                          "type": "string",
+                          "description": "**unique identifier of this operation**<br/>\n**e.g:** `resource-1`\n",
+                          "example": "<identifier_that_must_be_unique_in_operations>"
+                        },
+                        "data": {
+                          "example": {},
+                          "oneOf": [
+                            {
+                              "$ref": "#/components/schemas/EntryEntityWrite"
+                            },
+                            {
+                              "$ref": "#/components/schemas/LegalCategoryEntityWrite"
+                            },
+                            {
+                              "$ref": "#/components/schemas/TimesheetEntityWrite"
+                            }
+                          ],
+                          "description": "**The data to [insert]**\n"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "Operations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "location": {
+                            "type": "string",
+                            "description": "**The location of the resource**<br/>(/Resources mean the type of Resource in the request. e.g: /Entries)",
+                            "example": "/Resources/<resource_uuid>"
+                          },
+                          "method": {
+                            "type": "integer"
+                          },
+                          "path": {
+                            "type": "string",
+                            "example": "/Resources",
+                            "description": "**The path of the operation**<br/>(/Resources mean the type of Resource in the request. e.g: /Entries)"
+                          },
+                          "status": {
+                            "type": "integer",
+                            "example": 201,
+                            "description": "**The http status code for this operation**"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/cases/:id": {
       "get": {
         "tags": [
@@ -3204,6 +3337,156 @@
           }
         }
       },
+      "TipoClassificacaoAutomatica": {
+        "title": "Tipo de classificacao automática",
+        "type": "string",
+        "example": "<tipo_de_classificacao_do_andamento>",
+        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nDOCUMENT_ANALYSIS<br/>\nDOCUMENT_GENERATOR\n"
+      },
+      "EntryEntityWrite": {
+        "title": "Entry (Andamento)",
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_do_andamento>",
+            "description": "**Data do andamento**"
+          },
+          "classification": {
+            "type": "string <nullable>",
+            "description": "**Classificação do andamento**",
+            "example": "<classificacao_do_andamento>"
+          },
+          "description": {
+            "type": "string",
+            "example": "<texto_do_andamento>",
+            "description": "**Texto do andamento**"
+          },
+          "isInternal": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Indica se o andamento é de uso interno**"
+          },
+          "classificationType": {
+            "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
+          },
+          "caseId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>",
+            "description": "**Case's unique identifier**<br/>\n`Obrigatório apenas quando o andamento não estiver sendo criado junto com o caso`\n"
+          },
+          "customFields": {
+            "type": "object",
+            "example": {},
+            "description": "**Entry's custom fields**"
+          }
+        }
+      },
+      "GrupoNaturezaDaCausa": {
+        "title": "GrupoNaturezaDaCausa",
+        "type": "string",
+        "example": "<grupo_da_natureza>",
+        "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
+      },
+      "LegalCategoryEntityWrite": {
+        "title": "Legal category (Natureza)",
+        "type": "object",
+        "properties": {
+          "legalCategory": {
+            "type": "string",
+            "description": "**The legal category name**",
+            "example": "<nome_da_natureza>"
+          },
+          "group": {
+            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
+          }
+        }
+      },
+      "SimpleEntityWrite": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The item unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "Name": {
+            "type": "string <nullable>",
+            "example": "<nome_do_item>",
+            "description": "**The item name**"
+          }
+        }
+      },
+      "TipoDeTarefaTimesheet": {
+        "title": "TipoDeTarefaTimesheet",
+        "type": "string",
+        "example": "<tipo_de_tarefa_de_timesheet>",
+        "description": "**Tipo da Tarefa**<br/>\n**_Valores permitidos:_**<br/>\nAPRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
+      },
+      "TimesheetEntityWrite": {
+        "title": "Timesheet (Lançamento de hora)",
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Client unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Responsável**"
+          },
+          "date": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          },
+          "hours": {
+            "type": "string",
+            "example": "<hora>",
+            "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
+          },
+          "taskCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Tarefa**",
+            "example": "<codigo_da_tarefa>"
+          },
+          "activityCode": {
+            "type": "string <nullable>",
+            "description": "**Código da Atividade**",
+            "example": "<codigo_da_atividade>"
+          },
+          "applicant": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Solicitante**"
+          },
+          "description": {
+            "type": "string <nullable>",
+            "description": "**Descrição**",
+            "example": "<descricao>"
+          },
+          "taskType": {
+            "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+          },
+          "case": {
+            "type": "object",
+            "description": "**The case unique identifier**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<global_unique_identifier>"
+              }
+            }
+          }
+        }
+      },
       "MetaRetrieve": {
         "title": "Meta",
         "type": "object",
@@ -4013,12 +4296,6 @@
           }
         ]
       },
-      "TipoClassificacaoAutomatica": {
-        "title": "Tipo de classificacao automática",
-        "type": "string",
-        "example": "<tipo_de_classificacao_do_andamento>",
-        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nDOCUMENT_ANALYSIS<br/>\nDOCUMENT_GENERATOR\n"
-      },
       "LegacyIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
@@ -4115,12 +4392,6 @@
             }
           }
         ]
-      },
-      "TipoDeTarefaTimesheet": {
-        "title": "TipoDeTarefaTimesheet",
-        "type": "string",
-        "example": "<tipo_de_tarefa_de_timesheet>",
-        "description": "**Tipo da Tarefa**<br/>\n**_Valores permitidos:_**<br/>\nAPRIMORAMENTO_PROFISSIONAL<br />\nHORAS_DEBITAVEIS<br />\nHORAS_DE_RELACIONAMENTO<br />\nHORAS_NAO_DEBITAVEIS\n"
       },
       "TimesheetEntityRetrieve": {
         "title": "Timesheet",
@@ -5370,23 +5641,6 @@
           }
         }
       },
-      "SimpleEntityWrite": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The item unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Name": {
-            "type": "string <nullable>",
-            "example": "<nome_do_item>",
-            "description": "**The item name**"
-          }
-        }
-      },
       "SimpleObjectIdWrite": {
         "title": "Identificador",
         "type": "object",
@@ -5569,47 +5823,6 @@
             "type": "number <nullable>",
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
-          }
-        }
-      },
-      "EntryEntityWrite": {
-        "title": "Dados do andamento",
-        "type": "object",
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "datetime",
-            "example": "<data_do_andamento>",
-            "description": "**Data do andamento**"
-          },
-          "classification": {
-            "type": "string <nullable>",
-            "description": "**Classificação do andamento**",
-            "example": "<classificacao_do_andamento>"
-          },
-          "description": {
-            "type": "string",
-            "example": "<texto_do_andamento>",
-            "description": "**Texto do andamento**"
-          },
-          "isInternal": {
-            "type": "boolean",
-            "example": false,
-            "description": "**Indica se o andamento é de uso interno**"
-          },
-          "classificationType": {
-            "$ref": "#/components/schemas/TipoClassificacaoAutomatica"
-          },
-          "caseId": {
-            "type": "string",
-            "format": "uuid",
-            "example": "<global_unique_identifier>",
-            "description": "**Case's unique identifier**<br/>\n`Obrigatório apenas quando o andamento não estiver sendo criado junto com o caso`\n"
-          },
-          "customFields": {
-            "type": "object",
-            "example": {},
-            "description": "**Entry's custom fields**"
           }
         }
       },
@@ -7081,12 +7294,6 @@
           }
         ]
       },
-      "GrupoNaturezaDaCausa": {
-        "title": "GrupoNaturezaDaCausa",
-        "type": "string",
-        "example": "<grupo_da_natureza>",
-        "description": "PROCESSOS_ADMINISTRATIVOS<br/>\nPROCESSOS_JUDICIAIS_ESTADUAL<br/>\nPROCESSOS_JUDICIAIS_FEDERAL<br/>\nPROCESSOS_JUDICIAIS_TRABALHISTA<br/>\nPROCESSOS_CONSULTIVO<br/>\nPROCESSOS_ELEITORAL<br/>\nPROCESSOS_MILITAR_ESTADUAL<br/>\nPROCESSOS_MILITAR_UNIAO\n"
-      },
       "LegalCategoryEntityQuery": {
         "title": "Legal category (Natureza)",
         "type": "object",
@@ -7102,20 +7309,6 @@
             "example": "<nome_da_natureza>"
           },
           "Group": {
-            "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
-          }
-        }
-      },
-      "LegalCategoryEntityWrite": {
-        "title": "Legal category (Natureza)",
-        "type": "object",
-        "properties": {
-          "legalCategory": {
-            "type": "string",
-            "description": "**The legal category name**",
-            "example": "<nome_da_natureza>"
-          },
-          "group": {
             "$ref": "#/components/schemas/GrupoNaturezaDaCausa"
           }
         }
@@ -7778,66 +7971,6 @@
             }
           }
         ]
-      },
-      "TimesheetEntityWrite": {
-        "title": "Timesheet",
-        "type": "object",
-        "properties": {
-          "clientId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Client unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "owner": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Responsável**"
-          },
-          "date": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data**",
-            "example": "<data>"
-          },
-          "hours": {
-            "type": "string",
-            "example": "<hora>",
-            "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
-          },
-          "taskCode": {
-            "type": "string <nullable>",
-            "description": "**Código da Tarefa**",
-            "example": "<codigo_da_tarefa>"
-          },
-          "activityCode": {
-            "type": "string <nullable>",
-            "description": "**Código da Atividade**",
-            "example": "<codigo_da_atividade>"
-          },
-          "applicant": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Solicitante**"
-          },
-          "description": {
-            "type": "string <nullable>",
-            "description": "**Descrição**",
-            "example": "<descricao>"
-          },
-          "taskType": {
-            "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
-          },
-          "case": {
-            "type": "object",
-            "description": "**The case unique identifier**",
-            "properties": {
-              "id": {
-                "type": "string",
-                "format": "uuid",
-                "example": "<global_unique_identifier>"
-              }
-            }
-          }
-        }
       }
     }
   }

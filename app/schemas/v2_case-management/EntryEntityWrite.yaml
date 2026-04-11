@@ -1,4 +1,4 @@
-title: Dados do andamento
+title: Entry (Andamento)
 type: object
 properties:
   date:

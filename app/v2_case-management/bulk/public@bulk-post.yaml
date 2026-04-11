@@ -1,8 +1,9 @@
 tags:
-  - Entry
+  - Bulk request
 summary: "/bulk"
 description: |
-  **Endpoint to insert multiple entries at once**<br />
+  **Endpoint to [insert] multiple resources at once**<br />
+  `Ainda não disponível para utilização`
 operationId: bulk-post
 # query / path parameters
 parameters:
@@ -30,25 +31,28 @@ requestBody:
                   example: <http_verb>
                   description: |
                     **Options available**<br/>
-                    POST<br/>
-                    PATCH<br/>
-                    DELETE
+                    POST
                 path:
                   type: string
                   example: <endpoint_route>
                   description: |
                     **The route**<br />
-                    _**e.g:** /entries_
+                    **e.g:**
+                    `/Entries`, `/LegalCategories`, `/Timesheets`
                 bulkId:
                   type: string
                   description: |
                     **unique identifier of this operation**<br/>
-                    _**e.g:** entry-1_
+                    **e.g:** `resource-1`
                   example: "<identifier_that_must_be_unique_in_operations>"
                 data:
-                  $ref: ../../../app/schemas/v2_case-management/EntryEntityWrite.yaml
+                  example: {}
+                  oneOf:
+                    - $ref: ../../../app/schemas/v2_case-management/EntryEntityWrite.yaml
+                    - $ref: ../../../app/schemas/v2_case-management/LegalCategoryEntityWrite.yaml
+                    - $ref: ../../../app/schemas/v2_case-management/TimesheetEntityWrite.yaml
                   description: |
-                    **The data to insert**
+                    **The data to [insert]**
 # http responses
 responses:
   "200":
@@ -65,14 +69,14 @@ responses:
                 properties:
                   location:
                     type: string
-                    description: "**The location of the resource**"
-                    example: "/Entries/<entry_uuid>"
+                    description: "**The location of the resource**<br/>(/Resources mean the type of Resource in the request. e.g: /Entries)"
+                    example: "/Resources/<resource_uuid>"
                   method:
                     type: integer
                   path:
                     type: string
-                    example: /Entries
-                    description: "**The path of the operation**"
+                    example: /Resources
+                    description: "**The path of the operation**<br/>(/Resources mean the type of Resource in the request. e.g: /Entries)"
                   status:
                     type: integer
                     example: 201

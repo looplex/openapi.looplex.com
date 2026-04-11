@@ -1,4 +1,4 @@
-title: Timesheet
+title: Timesheet (Lançamento de hora)
 type: object
 properties:
   clientId:
