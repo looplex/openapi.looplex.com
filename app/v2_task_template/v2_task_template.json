@@ -59,7 +59,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskTemplateEntity"
+                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
                 }
               }
             }
@@ -127,7 +127,7 @@
                         "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/TaskTemplateEntity"
+                            "$ref": "#/components/schemas/TaskTemplateEntityQuery"
                           }
                         }
                       }
@@ -177,7 +177,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TaskTemplateEntity"
+                "$ref": "#/components/schemas/TaskTemplateEntityWrite"
               }
             }
           }
@@ -351,11 +351,77 @@
       }
     },
     "schemas": {
+      "MetaRetrieve": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "lastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceRetrieve": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "externalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "meta": {
+            "description": "**Entity's information**",
+            "$ref": "#/components/schemas/MetaRetrieve"
+          }
+        }
+      },
       "TipoEventoDeCobranca": {
         "title": "TipoEventoDeCobranca",
         "type": "string",
         "example": "PRAZO",
         "description": "COMPROMISSO<br/>\nPRAZO<br/>\nATIVIDADE_EXTERNA<br/>\nPUBLICACAO<br/>\nAUDIENCIA\n"
+      },
+      "DeadlineCalculationType": {
+        "type": "string",
+        "example": "BUSINESS_DAYS_ONLY",
+        "description": "**Tipo de cálculo de prazo**<br/>\nBUSINESS_DAYS_ONLY<br/>\nCALENDAR_DAYS_HARD_DEADLINE<br/>\nCALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER<br/>  \n\n**Definitions:**<br />\n**BUSINESS_DAYS_ONLY (Apenas dias úteis, sem contagem de finais de semana e feriados)**<br />\n**CALENDAR_DAYS_HARD_DEADLINE (Próximo dia útil no início e qualquer dia da semana no fim, com contagem de finais de semana e feriados)**<br />\n**CALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER (Próximo dia útil no início e fim, com contagem de finais de semana e feriados)**\n"
+      },
+      "Prioridade": {
+        "title": "Prioridade",
+        "type": "string",
+        "example": "LOW",
+        "description": "**Prioridade de uma tarefa**<br/>\nLOW<br/>\nMEDIUM<br/>\nHIGH\n\n**Definitions:**<br />\n**LOW (Baixa)**<br />\n**MEDIUM (Média)**<br />\n**HIGH (Alta)**\n"
       },
       "TipoVinculoComDocumento": {
         "title": "TipoVinculoComDocumento",
@@ -363,147 +429,113 @@
         "type": "string",
         "description": "BUILDER <br/>\nASSEMBLER\n"
       },
-      "TaskTemplateEntityWrite": {
+      "TaskTemplateEntityRetrieve": {
         "title": "TaskTemplateEntity",
-        "description": null,
-        "properties": {
-          "Title": {
-            "type": "string"
+        "description": "",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
           },
-          "EventType": {
-            "$ref": "#/components/schemas/TipoEventoDeCobranca"
-          },
-          "Status": {
-            "description": "ACTIVE<br/>INACTIVE",
-            "type": "string"
-          },
-          "DeadlineForCompletion": {
-            "description": "Prazo para conclusão (em dias)",
-            "type": "integer"
-          },
-          "ConsecutiveDays": {
-            "type": "boolean"
-          },
-          "TimeToExecution": {
-            "description": "Tempo para execução (em horas)",
-            "type": "integer"
-          },
-          "DocumentLinkType": {
-            "$ref": "#/components/schemas/TipoVinculoComDocumento"
-          },
-          "DocumentIdentifier": {
-            "description": "Link do documento",
-            "type": "string"
-          },
-          "CaseTypes": {
-            "example": [
-              "JUDICIAL_ESTADUAL",
-              "CONTRATO"
-            ],
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "SubjectMatter": {
-            "type": "string"
-          },
-          "CustomFields": {
-            "type": "object"
-          },
-          "ActivityCode": {
-            "type": "string"
-          },
-          "TaskCode": {
-            "type": "string"
-          },
-          "Children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
+          {
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "eventType": {
+                "$ref": "#/components/schemas/TipoEventoDeCobranca"
+              },
+              "status": {
+                "description": "ACTIVE<br/>INACTIVE",
+                "type": "string"
+              },
+              "deadlineForCompletion": {
+                "description": "Prazo para conclusão (em dias)",
+                "type": "integer"
+              },
+              "deadlineCalculationType": {
+                "$ref": "#/components/schemas/DeadlineCalculationType"
+              },
+              "priority": {
+                "$ref": "#/components/schemas/Prioridade"
+              },
+              "consecutiveDays": {
+                "type": "boolean"
+              },
+              "timeToExecution": {
+                "description": "Tempo para execução (em horas)",
+                "type": "integer"
+              },
+              "documentLinkType": {
+                "$ref": "#/components/schemas/TipoVinculoComDocumento"
+              },
+              "documentIdentifier": {
+                "description": "Link do documento",
+                "type": "string"
+              },
+              "caseTypes": {
+                "example": [
+                  "JUDICIAL_ESTADUAL",
+                  "CONTRATO"
+                ],
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "subjectMatter": {
+                "type": "string"
+              },
+              "customFields": {
+                "type": "object"
+              },
+              "activityCode": {
+                "type": "string"
+              },
+              "taskCode": {
+                "type": "string"
+              },
+              "children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
+                }
+              },
+              "parentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "description": {
+                "type": "string"
+              },
+              "canonicalSubjectMatter": {
+                "type": "string"
+              },
+              "createdBy": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+              },
+              "updatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+              }
             }
           }
-        }
+        ]
       },
-      "TaskTemplateEntity": {
-        "title": "TaskTemplateEntity",
-        "description": null,
+      "SimpleEntityRetrieve": {
+        "title": "Identificador",
+        "type": "object",
         "properties": {
-          "Title": {
-            "type": "string"
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**",
+            "example": "<global_unique_identifier>"
           },
-          "EventType": {
-            "$ref": "#/components/schemas/TipoEventoDeCobranca"
-          },
-          "Status": {
-            "description": "ACTIVE<br/>INACTIVE",
-            "type": "string"
-          },
-          "DeadlineForCompletion": {
-            "description": "Prazo para conclusão (em dias)",
-            "type": "integer"
-          },
-          "DeadlineCalculationType": {
-            "type": "string"
-          },
-          "Priority": {
-            "type": "string"
-          },
-          "TimeToExecution": {
-            "description": "Tempo para execução (em horas)",
-            "type": "integer"
-          },
-          "Group": {
-            "type": "string"
-          },
-          "DocumentLinkType": {
-            "$ref": "#/components/schemas/TipoVinculoComDocumento"
-          },
-          "DocumentIdentifier": {
-            "description": "Link do documento",
-            "type": "string"
-          },
-          "ConsecutiveDays": {
-            "type": "boolean"
-          },
-          "CaseTypes": {
-            "example": [
-              "JUDICIAL_ESTADUAL",
-              "CONTRATO"
-            ],
-            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "SubjectMatter": {
-            "type": "string"
-          },
-          "CustomFields": {
-            "type": "object"
-          },
-          "ParentId": {
-            "type": "string"
-          },
-          "Description": {
-            "type": "string"
-          },
-          "CanonicalSubjectMatter": {
-            "type": "string"
-          },
-          "ActivityCode": {
-            "type": "string"
-          },
-          "TaskCode": {
-            "type": "string"
-          },
-          "Children": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
-            }
+          "name": {
+            "type": "string <nullable>",
+            "example": "<nome_do_item>",
+            "description": "**The object name**"
           }
         }
       },
@@ -550,6 +582,241 @@
             "description": "**Total count of items to return**",
             "type": "integer",
             "example": 12
+          }
+        }
+      },
+      "MetaQuery": {
+        "title": "Meta",
+        "type": "object",
+        "description": "**Resource's metadata**",
+        "properties": {
+          "ResourceType": {
+            "type": "string",
+            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
+            "example": "<tipo_do_recurso>"
+          },
+          "Created": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_criacao_do_recurso>",
+            "description": "**The resource creation date**"
+          },
+          "LastModified": {
+            "type": "string <nullable>",
+            "format": "datetime",
+            "example": "<data_de_atualizacao_do_recurso>",
+            "description": "**The resource last update time**"
+          },
+          "Location": {
+            "type": "string <nullable>",
+            "example": "<local_do_recurso>",
+            "description": "**The resource url**"
+          },
+          "Version": {
+            "type": "string",
+            "example": "<versao_do_recurso>",
+            "description": "**The resource version**"
+          }
+        }
+      },
+      "ResourceQuery": {
+        "title": "Resource",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "ExternalId": {
+            "example": "<external_id>",
+            "type": "string <nullable>",
+            "description": "**External identifier**"
+          },
+          "Meta": {
+            "description": "**Informações relacionadas à essa entity**",
+            "$ref": "#/components/schemas/MetaQuery"
+          }
+        }
+      },
+      "TaskTemplateEntityQuery": {
+        "title": "TaskTemplateEntity",
+        "description": "",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "properties": {
+              "Title": {
+                "type": "string"
+              },
+              "EventType": {
+                "$ref": "#/components/schemas/TipoEventoDeCobranca"
+              },
+              "Status": {
+                "description": "ACTIVE<br/>INACTIVE",
+                "type": "string"
+              },
+              "DeadlineForCompletion": {
+                "description": "Prazo para conclusão (em dias)",
+                "type": "integer"
+              },
+              "DeadlineCalculationType": {
+                "$ref": "#/components/schemas/DeadlineCalculationType"
+              },
+              "Priority": {
+                "$ref": "#/components/schemas/Prioridade"
+              },
+              "ConsecutiveDays": {
+                "type": "boolean"
+              },
+              "TimeToExecution": {
+                "description": "Tempo para execução (em horas)",
+                "type": "integer"
+              },
+              "DocumentLinkType": {
+                "$ref": "#/components/schemas/TipoVinculoComDocumento"
+              },
+              "DocumentIdentifier": {
+                "description": "Link do documento",
+                "type": "string"
+              },
+              "CaseTypes": {
+                "example": [
+                  "JUDICIAL_ESTADUAL",
+                  "CONTRATO"
+                ],
+                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "SubjectMatter": {
+                "type": "string"
+              },
+              "CustomFields": {
+                "type": "object"
+              },
+              "ActivityCode": {
+                "type": "string"
+              },
+              "TaskCode": {
+                "type": "string"
+              },
+              "Children": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TaskTemplateEntityQuery"
+                }
+              },
+              "ParentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "CanonicalSubjectMatter": {
+                "type": "string"
+              },
+              "CreatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              },
+              "UpdatedBy": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              }
+            }
+          }
+        ]
+      },
+      "SimpleEntityQuery": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "Name": {
+            "type": "string <nullable>",
+            "example": "<nome_do_item>",
+            "description": "**The object name**"
+          }
+        }
+      },
+      "TaskTemplateEntityWrite": {
+        "title": "TaskTemplateEntity",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string"
+          },
+          "EventType": {
+            "$ref": "#/components/schemas/TipoEventoDeCobranca"
+          },
+          "Status": {
+            "description": "ACTIVE<br/>INACTIVE",
+            "type": "string"
+          },
+          "DeadlineForCompletion": {
+            "description": "Prazo para conclusão (em dias)",
+            "type": "integer"
+          },
+          "DeadlineCalculationType": {
+            "$ref": "#/components/schemas/DeadlineCalculationType"
+          },
+          "Priority": {
+            "$ref": "#/components/schemas/Prioridade"
+          },
+          "ConsecutiveDays": {
+            "type": "boolean"
+          },
+          "TimeToExecution": {
+            "description": "Tempo para execução (em horas)",
+            "type": "integer"
+          },
+          "DocumentLinkType": {
+            "$ref": "#/components/schemas/TipoVinculoComDocumento"
+          },
+          "DocumentIdentifier": {
+            "description": "Link do documento",
+            "type": "string"
+          },
+          "CaseTypes": {
+            "example": [
+              "JUDICIAL_ESTADUAL",
+              "CONTRATO"
+            ],
+            "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "SubjectMatter": {
+            "type": "string"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "ActivityCode": {
+            "type": "string"
+          },
+          "TaskCode": {
+            "type": "string"
+          },
+          "Children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskTemplateEntityWrite"
+            }
           }
         }
       },
