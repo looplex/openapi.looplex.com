@@ -1,32 +1,37 @@
 title: TaskTemplateEntity
-description: 
+description: ""
+type: object
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
   - properties:
       Title:
         type: string
       EventType:
-        $ref: ../enums/TipoEventoDeCobranca.yaml
+        $ref: ../../enums/v2_task_template/TipoEventoDeCobranca.yaml
       Status:
         description: "ACTIVE<br/>INACTIVE"
         type: string
       DeadlineForCompletion:
         description: "Prazo para conclusão (em dias)"
         type: integer
+      DeadlineCalculationType:
+        $ref: ../../enums/common/DeadlineCalculationType.yaml
+      Priority:
+        $ref: ../../enums/common/Prioridade.yaml  
       ConsecutiveDays:
         type: boolean
       TimeToExecution:
         description: "Tempo para execução (em horas)"    
         type: integer
       DocumentLinkType:
-        $ref: ../enums/TipoVinculoComDocumento.yaml
+        $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
       DocumentIdentifier:
         description: "Link do documento"
         type: string
       CaseTypes:
         example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
         description: 
-          $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+          $ref: '../../v2_task_template/v2_task_template.yaml#/components/x-descriptions/RamosJudicial'
         type: array
         items:
           type: string
@@ -41,7 +46,7 @@ allOf:
       Children:
         type: array
         items:
-          $ref: ./TaskTemplateEntityQuery.yaml
+          $ref: TaskTemplateEntityQuery.yaml
       ParentId:
         type: string
         format: uuid
@@ -50,7 +55,7 @@ allOf:
       CanonicalSubjectMatter:
         type: string
       CreatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       UpdatedBy:
-        $ref: ../../common_schemas/SimpleEntityQuery.yaml
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
       

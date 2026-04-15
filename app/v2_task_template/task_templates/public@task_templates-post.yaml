@@ -16,7 +16,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../schemas/v2_task_template/TaskTemplateEntity.yaml
+        $ref: ../../schemas/v2_task_template/TaskTemplateEntityWrite.yaml
 responses:
   "201":
     description: "Created"

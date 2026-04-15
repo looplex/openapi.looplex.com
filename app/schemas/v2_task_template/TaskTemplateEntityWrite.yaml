@@ -1,5 +1,6 @@
 title: TaskTemplateEntity
-description: 
+description: ""
+type: object
 properties:
   Title:
     type: string
@@ -11,6 +12,10 @@ properties:
   DeadlineForCompletion:
     description: "Prazo para conclusão (em dias)"
     type: integer
+  DeadlineCalculationType:
+    $ref: ../../enums/common/DeadlineCalculationType.yaml
+  Priority:
+    $ref: ../../enums/common/Prioridade.yaml  
   ConsecutiveDays:
     type: boolean
   TimeToExecution:
@@ -39,5 +44,5 @@ properties:
   Children:
     type: array
     items:
-      $ref: ./TaskTemplateEntityWrite.yaml 
+      $ref: TaskTemplateEntityWrite.yaml 
   

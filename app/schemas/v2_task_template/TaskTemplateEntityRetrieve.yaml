@@ -1,32 +1,37 @@
 title: TaskTemplateEntity
-description: 
+description: ""
+type: object
 allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - properties:
       title:
         type: string
       eventType:
-        $ref: ../enums/TipoEventoDeCobranca.yaml
+        $ref: ../../enums/v2_task_template/TipoEventoDeCobranca.yaml
       status:
         description: "ACTIVE<br/>INACTIVE"
         type: string
       deadlineForCompletion:
         description: "Prazo para conclusão (em dias)"
         type: integer
+      deadlineCalculationType:
+        $ref: ../../enums/common/DeadlineCalculationType.yaml
+      priority:
+        $ref: ../../enums/common/Prioridade.yaml
       consecutiveDays:
         type: boolean
       timeToExecution:
         description: "Tempo para execução (em horas)"    
         type: integer
       documentLinkType:
-        $ref: ../enums/TipoVinculoComDocumento.yaml
+        $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
       documentIdentifier:
         description: "Link do documento"
         type: string
       caseTypes:
         example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
         description: 
-          $ref: '../../v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
+          $ref: '../../v2_task_template/v2_task_template.yaml#/components/x-descriptions/RamosJudicial'      
         type: array
         items:
           type: string
@@ -41,7 +46,7 @@ allOf:
       children:
         type: array
         items:
-          $ref: ./TaskTemplateEntityRetrieve.yaml
+          $ref: TaskTemplateEntityRetrieve.yaml
       parentId:
         type: string
         format: uuid    
@@ -50,7 +55,7 @@ allOf:
       canonicalSubjectMatter:
         type: string
       createdBy:
-        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       updatedBy:
-        $ref: ../../common_schemas/SimpleEntityRetrieve.yaml
+        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       

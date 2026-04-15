@@ -1,0 +1,14 @@
+type: string
+example: BUSINESS_DAYS_ONLY
+description: |
+  **Tipo de cálculo de prazo**<br/>
+  BUSINESS_DAYS_ONLY<br/>
+  CALENDAR_DAYS_HARD_DEADLINE<br/>
+  CALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER<br/>  
+
+  **Definitions:**<br />
+  **BUSINESS_DAYS_ONLY (Apenas dias úteis, sem contagem de finais de semana e feriados)**<br />
+  **CALENDAR_DAYS_HARD_DEADLINE (Próximo dia útil no início e qualquer dia da semana no fim, com contagem de finais de semana e feriados)**<br />
+  **CALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER (Próximo dia útil no início e fim, com contagem de finais de semana e feriados)**
+
+ 
