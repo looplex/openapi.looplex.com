@@ -1,0 +1,28 @@
+title: Info
+type: object
+properties:
+  CalculationType:
+    type: string
+    description: |
+      Tipo do cálculo. <br/> 
+      BUSINESS_DAYS_ONLY <br/> 
+      CALENDAR_DAYS_HARD_DEADLINE <br/> CALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER 
+    example: "CALENDAR_DAYS_HARD_DEADLINE"
+  QuantityInDays:
+    example: 10
+    type: integer    
+  StartDate:
+    type: string 
+    format: date    
+  CountStartDate:
+    type: string
+    format: date    
+    description: "Data inicial da contagem do cálculo que depende do tipo do cálculo."
+  DeadlineDate:
+    type: string
+    format: date   
+    description: "Data final do prazo calculado." 
+  RegionCode:
+    type: string
+    description: "Código da região. O padrão é \"| BR |\" para feriados nacionais, mas também é possível usar códigos mais específicos para feriados de outros estados, como \"| BR-SP |\" para o estado de São Paulo."
+    example: "| BR-SP |" 
