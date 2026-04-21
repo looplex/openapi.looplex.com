@@ -1,0 +1,21 @@
+title: DeadlineEntity
+type: object
+properties:
+  Date:
+    type: "string"
+    format: "date"    
+  DayOfWeekNumber:
+    type: integer    
+    example: 4
+  DayOfWeek:
+    type: string    
+    example: "Quarta"
+  CustomFields:
+    type: "object"    
+  HolidayName:
+    type: string   
+    example: "Ano novo" 
+  Type:
+    example: "HOLIDAY"
+    description: "Tipo do dia. Pode ser um dia útil (BUSINESS_DAY), um feriado (HOLIDAY) ou um fim de semana (WEEKEND)."
+    type: string 

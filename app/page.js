@@ -115,6 +115,8 @@ export default function Home() {
     'negócio', 'jurídico', 'natureza', 'atividade', 'econômica', 'contrato'
   ]
 
+  const arrStardardsDeadlineCalculatorKeywords = ['standards', 'deadline', 'calculator', 'calculadora', 'prazos', 'v2', 'cálculo', 'prazo', 'regra', 'rule', 'count', 'calendar', 'úteis', 'calendar', 'business']
+
   const [cards, updateCards] = useState({
     isVisibleContractClassification: true,
     isVisibleLegalPersonClassification: true,
@@ -132,7 +134,8 @@ export default function Home() {
     isVisibleStandardsCodes: true,
     isVisibleStandardsPracticeArea: true,
     isVisibleStandardsLocale: true,
-    isVisibleStandardsOccupation: true
+    isVisibleStandardsOccupation: true,
+    isVisibleStardardsDeadlineCalculator: true
   })
 
   useEffect(() => {
@@ -154,6 +157,7 @@ export default function Home() {
       isVisibleStandardsLocale: (search === '') || arrStandardsLocaleKeywords.some(i => i.includes(search)),
       isVisibleStandardsOccupation: (search === '') || arrStandardsOccupationsKeywords.some(i => i.includes(search)),
       isVisibleStandardsPracticeArea: (search === '') || arrStandardsPracticeAreasKeywords.some(i => i.includes(search)),
+      isVisibleStardardsDeadlineCalculator: (search === '') || arrStardardsDeadlineCalculatorKeywords.some(i => i.includes(search))
     })
   }, [search])
 
@@ -741,6 +745,16 @@ export default function Home() {
                       <BorderedLink
                         link='/v2_occupations'
                         text='Occupations'
+                      />
+                    )
+                  }
+
+                  {
+                    cards.isVisibleStardardsDeadlineCalculator &&
+                    (
+                      <BorderedLink
+                        link='/v2_deadline_calculator'
+                        text='Deadline Calculator'
                       />
                     )
                   }
