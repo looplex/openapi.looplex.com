@@ -4660,7 +4660,7 @@
                 "example": "<data_transito_julgado_do_processo>",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
-              "forecastedEndDate": {
+              "forecastEndDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "example": "<data_prevista_encerramento_do_processo>",
@@ -5543,7 +5543,7 @@
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
                 "example": "<data_transito_julgado_do_processo>"
               },
-              "ForecastedEndDate": {
+              "ForecastEndDate": {
                 "type": "string <nullable>",
                 "format": "datetime",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
@@ -6147,7 +6147,7 @@
             "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
             "example": "<data_transito_julgado_do_processo>"
           },
-          "forecastedEndDate": {
+          "forecastEndDate": {
             "type": "string <nullable>",
             "format": "datetime",
             "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
@@ -7387,7 +7387,7 @@
             "example": "<data_inicial>",
             "description": "Legal service agreement's start date"
           },
-          "ForecastedEndDate": {
+          "ForecastEndDate": {
             "type": "string",
             "format": "datetime",
             "example": "<data_prevista_encerramento>",
@@ -7462,7 +7462,7 @@
             "example": "<data_inicial>",
             "description": "Legal service agreement's start date"
           },
-          "forecastedEndDate": {
+          "forecastEndDate": {
             "type": "string",
             "format": "datetime",
             "example": "<data_prevista_encerramento>",
@@ -7547,7 +7547,7 @@
             "example": "<data_inicial>",
             "description": "Legal service agreement's start date"
           },
-          "forecastedEndDate": {
+          "forecastEndDate": {
             "type": "string",
             "format": "datetime",
             "example": "<data_prevista_encerramento>",

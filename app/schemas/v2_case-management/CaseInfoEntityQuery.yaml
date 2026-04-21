@@ -106,7 +106,7 @@ allOf:
           Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
         example: <data_transito_julgado_do_processo>
-      ForecastedEndDate:
+      ForecastEndDate:
         type: string <nullable>
         format: datetime
         description: |

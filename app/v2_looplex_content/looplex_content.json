@@ -1474,7 +1474,7 @@
           "type": "string",
           "description": "ISO 8601 Date string"
         },
-        "ForecastedEndDate": {
+        "ForecastEndDate": {
           "type": "string",
           "description": "ISO 8601 Date string"
         },

@@ -26,7 +26,7 @@ properties:
     format: datetime
     example: <data_inicial>
     description: "Legal service agreement's start date"
-  forecastedEndDate:
+  forecastEndDate:
     type: string
     format: datetime
     example: <data_prevista_encerramento>
