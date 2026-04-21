@@ -1,0 +1,78 @@
+tags:
+  - Deadline_Calculator
+
+summary: "/Deadline Calculator"
+# summary: ""
+
+description: "**Fetch items paginated**"
+# description: "****"
+
+operationId: count_rule-get
+
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/scim/StartIndex.yaml
+  - $ref: ../../parameters/scim/Count.yaml
+  - $ref: ../../parameters/scim/Filter.yaml
+
+  # demais parametros
+  - name: Date
+    in: query
+    required: true    
+    schema:
+      type: string
+  - name: QuantityInDays
+    in: query
+    required: true    
+    schema:
+      type: integer
+  - name: CalculationType
+    in: query
+    required: true    
+    schema:
+      type: string
+  - name: RegionCode
+    in: query
+    required: false    
+    schema:
+      type: string
+
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../schemas/common/ListResponse.yaml'
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      Info:
+                        $ref: '../../schemas/v2_deadline_calculator/Info.yaml'
+                      DaysInPeriod:
+                        type: array
+                        items:
+                          $ref: ../../schemas/v2_deadline_calculator/DeadlineEntity.yaml                    
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
