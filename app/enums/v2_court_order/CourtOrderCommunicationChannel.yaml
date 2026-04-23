@@ -1,0 +1,10 @@
+title: CourtOrderCommunicationChannel
+type: string
+example: "DOMICILIO_ELETRONICO"
+description: |  
+  DOMICILIO_ELETRONICO<br/>
+  DJEN<br/>
+  DIARIO_OFICIAL_MUNICIPAL<br/>
+  DIARIO_OFICIAL_ESTADUAL<br/>
+  DIARIO_OFICIAL_UNIAO<br/>
+  DIARIO_ELETRONICO_DA_JUSTICA<br/>

@@ -1,0 +1,19 @@
+title: OfficialGazette
+description: 
+properties:  
+  Name:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  GazetteSection:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  Page:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  Link:
+    type: string
+    example: "string de exemplo"
+    description: ""
