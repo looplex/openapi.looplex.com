@@ -1,0 +1,19 @@
+title: ClassificationTypeCNJ
+description: 
+properties:  
+  Id:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  ClassificationCode:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  Title:
+    type: string
+    example: "string de exemplo"
+    description: ""
+  CourtNonStandardizedEntryTitle:
+    type: string
+    example: "string de exemplo"
+    description: ""

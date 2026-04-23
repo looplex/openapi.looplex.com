@@ -189,3 +189,9 @@ paths:
   /timesheets/:id:
     get:
       $ref: timesheet\public@timesheets@id-get.yaml
+
+  # Docket Entry
+  /docketEntries:
+    get:
+      $ref: docket_entry\public@DocketEntries-get.yaml
+  

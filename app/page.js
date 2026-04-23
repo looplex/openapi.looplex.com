@@ -75,7 +75,7 @@ export default function Home() {
     'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client',
     'legal', 'service', 'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom',
     'fields', 'andamento', 'contrato', 'caso', 'cliente', 'parte', 'funcionario', 'pedido', 'area',
-    'token'
+    'token', 'andamento', 'docket', 'entry', 'push'
   ]
 
   const arrTasksKeywords = ['plataforma', 'task', 'tarefas', 'deadline', 'event type']
