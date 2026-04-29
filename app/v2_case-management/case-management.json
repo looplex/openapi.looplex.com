@@ -3341,7 +3341,7 @@
         "title": "Tipo de classificacao automática",
         "type": "string",
         "example": "<tipo_de_classificacao_do_andamento>",
-        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nDOCUMENT_ANALYSIS<br/>\nDOCUMENT_GENERATOR\n"
+        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nANALYZED_DOCUMENT<br/>\nGENERATED_DOCUMENT\n"
       },
       "EntryEntityWrite": {
         "title": "Entry (Andamento)",
