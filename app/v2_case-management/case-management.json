@@ -3689,6 +3689,32 @@
           }
         }
       },
+      "Position": {
+        "title": "Position",
+        "type": "string",
+        "example": "<polo>",
+        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
+      },
+      "SimpleClientRetrieve": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "name": {
+            "type": "string <nullable>",
+            "example": "<client_name>",
+            "description": "**The client name**"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Position"
+          }
+        }
+      },
       "NaturalPersonIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
@@ -3777,12 +3803,6 @@
         "type": "string",
         "example": "<tipo_de_pessoa>",
         "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
-      },
-      "Position": {
-        "title": "Position",
-        "type": "string",
-        "example": "<polo>",
-        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
       },
       "AddressType": {
         "title": "Address' type",
@@ -4711,8 +4731,8 @@
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
               },
               "caseClient": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
+                "$ref": "#/components/schemas/SimpleClientRetrieve",
+                "description": "**Cliente**<br /> Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
               },
               "legalServiceAgreement": {
                 "$ref": "#/components/schemas/SimpleEntityRetrieve",
@@ -5158,6 +5178,9 @@
           "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
             "description": "**Client's marital status (available when NATURAL_PERSON)**"
+          },
+          "Role": {
+            "$ref": "#/components/schemas/Position"
           },
           "Identities": {
             "type": "array",
