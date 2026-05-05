@@ -5,9 +5,7 @@ properties:
     $ref: ../../enums/v2_case-management/Position.yaml
     description: "**Contra polo ativo, passivo, terceiro...**"
   Perspective:
-    $ref: ../../enums/v2_case-management/TipoExpectativaReivindicacao.yaml
-  RiskClassification:
-    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
+    $ref: ../../enums/v2_case-management/TipoExpectativaReivindicacao.yaml  
   Currency:
     $ref: ../../enums/v2_case-management/Moeda.yaml
     description: "**Moeda usada para os valores do caso**"

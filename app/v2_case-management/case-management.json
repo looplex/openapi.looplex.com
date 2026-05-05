@@ -4090,12 +4090,6 @@
         "example": "<perspectiva>",
         "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nGAIN\n"
       },
-      "ContingentLiabilityRiskClassification": {
-        "title": "ContingentLiabilityRiskClassification",
-        "type": "string <nullable>",
-        "example": "<risco>",
-        "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
-      },
       "Moeda": {
         "title": "Moeda",
         "type": "string",
@@ -4112,9 +4106,6 @@
           },
           "perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
-          },
-          "riskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "currency": {
             "$ref": "#/components/schemas/Moeda",
@@ -4154,6 +4145,12 @@
         "type": "string <nullable>",
         "example": "<tipo_tutela>",
         "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
+      },
+      "ContingentLiabilityRiskClassification": {
+        "title": "ContingentLiabilityRiskClassification",
+        "type": "string <nullable>",
+        "example": "<risco>",
+        "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
       },
       "TipoDeRecorrencia": {
         "title": "TipoDeRecorrencia",
@@ -5392,9 +5389,6 @@
           "Perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
           },
-          "RiskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
-          },
           "Currency": {
             "$ref": "#/components/schemas/Moeda",
             "description": "**Moeda usada para os valores do caso**"
@@ -5801,9 +5795,6 @@
           },
           "perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
-          },
-          "riskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "currency": {
             "$ref": "#/components/schemas/Moeda",
