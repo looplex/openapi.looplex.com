@@ -429,7 +429,7 @@
       "StartIndex": {
         "name": "startIndex",
         "in": "query",
-        "required": true,
+        "required": false,
         "description": "**Index of search**<br/>`Default: 1`",
         "example": 1,
         "schema": {
@@ -439,8 +439,8 @@
       "Count": {
         "name": "count",
         "in": "query",
-        "required": true,
-        "description": "**Total count of items to return**<br />\n`Default: 1` | `Max of 120`\n",
+        "required": false,
+        "description": "**Total count of items to return**<br />\n`Default: 12` | `Max of 120`\n",
         "example": 12,
         "schema": {
           "type": "integer"
