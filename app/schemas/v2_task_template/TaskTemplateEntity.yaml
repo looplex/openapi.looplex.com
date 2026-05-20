@@ -25,9 +25,7 @@ properties:
     $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
   DocumentIdentifier:
     description: "Link do documento"
-    type: string
-  ConsecutiveDays:
-    type: boolean
+    type: string  
   CaseTypes:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description:
@@ -49,6 +47,8 @@ properties:
     type: string
   TaskCode:
     type: string
+  InterviewTemplateLink:
+    type: string  
   Children:
     type: array
     items:
