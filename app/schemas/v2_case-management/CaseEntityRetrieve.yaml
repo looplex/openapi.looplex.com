@@ -157,8 +157,8 @@ allOf:
           **Produto**<br />
           Produto ou serviço do cliente que está relacionado ao caso
       caseClient:
-        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
-        description: |
+        $ref: ../../schemas/v2_case-management/SimpleClientRetrieve.yaml
+        description: >
           **Cliente**<br />
           Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome
       legalServiceAgreement:

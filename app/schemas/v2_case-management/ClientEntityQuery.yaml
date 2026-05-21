@@ -40,6 +40,8 @@ properties:
   MaritalStatus:
     $ref: ../../enums/v2_case-management/MaritalStatus.yaml
     description: "**Client's marital status (available when NATURAL_PERSON)**"
+  Role:
+    $ref: ../../enums/v2_case-management/Position.yaml
   Identities:
     type: array
     items:
