@@ -1,0 +1,109 @@
+title: Dados da tarefa
+type: object
+properties:
+  parentTaskId:
+    type: string <nullable>
+    format: uuid
+    description: "**Unique identifier of parent task**"
+  type:
+    $ref: ../../enums/common/TaskType.yaml
+    example: COURT_HEARING
+  subType:
+    type: string <nullable>
+    description: "**Subtype of the task**"
+  title:
+    type: string <nullable>
+    description: "**Titulo**"
+  description:
+    type: string <nullable>
+    description: "**Descrição**"
+  startDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Início**"
+  dueDate:
+    type: string <nullable>
+    format: datetime
+    description: "**Data de Vencimento**"
+  createdBy:
+    $ref: SimpleEntityRetrieve.yaml
+    description: "**Criado por**"
+  updatedBy:
+    $ref: SimpleEntityRetrieve.yaml
+    description: "**Atualizado por**"
+  completedAt:
+    type: string <nullable>
+    format: datetime
+    description: "**Concluído em**"
+  completedBy:
+    $ref: SimpleEntityRetrieve.yaml
+    description: "**Concluído por**"
+  locale:
+    type: string <nullable>
+    description: "**Local**"
+  taskCode:
+    type: string <nullable>
+    description: "**Código da Tarefa**"
+  activityCode:
+    type: string <nullable>
+    description: "**Código da Atividade**"
+  taskTemplate:
+    $ref: SimpleEntityRetrieve.yaml
+    description: "**Modelo de Tarefa**"
+  owner:
+    $ref: SimpleEntityRetrieve.yaml
+    description: "**Responsável**"
+  otherParticipants:
+    description: "**Outros Participantes**"
+    type: array
+    items:
+      $ref: SimpleEntityRetrieve.yaml
+  status:
+    $ref: ../../enums/common/StatusTarefa.yaml
+    example: CREATED
+  priority:
+    example: LOW
+    $ref: ../../enums/common/Prioridade.yaml
+  conclusionNotes:
+    type: string <nullable>
+    description: "**Notas de Conclusão**"
+  customFields:
+    type: object
+    example: {}
+    description: "**Tasks's custom fields**"
+  case:
+    description: "Caso de uma tarefa"
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "**Case's unique identifier**"
+      title:
+        type: string
+        description: "**Case title**"
+      identities:
+        type: array
+        items:
+          $ref: LegacyIdentityEntityRetrieve.yaml
+      group:
+        type: string
+        description: "Case's group"
+      clientName:
+        type: string
+        description: "Case's client name"
+      principalActivePosition:
+        type: string
+        description: "Case's principal active position"
+      principalPassivePosition:
+        type: string
+        description: "Case's principal passive position"
+      locale:
+        type: string
+        description: "Case's locale"  
+  identities:
+    type: array
+    items:
+      $ref: LegacyIdentityEntityRetrieve.yaml  
+  taskHierarchy:
+    $ref: TaskHierarchyRetrieve.yaml
