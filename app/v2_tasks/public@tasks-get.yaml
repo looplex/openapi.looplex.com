@@ -50,7 +50,7 @@ responses:
                 Resources:
                   type: array
                   items:
-                    $ref: ../schemas/common/TaskEntity.yaml
+                    $ref: ../schemas/common/TaskEntityQuery.yaml
   "500":
     description: "Internal Server Error"
     content:
