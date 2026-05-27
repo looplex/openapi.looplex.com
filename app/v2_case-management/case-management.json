@@ -246,6 +246,87 @@
         }
       }
     },
+    "/{resource}/.search": {
+      "post": {
+        "tags": [
+          "Search / Filter"
+        ],
+        "summary": "/.search",
+        "description": "**SCIMv2 search / filter items using POST**<br />\n**Exemplos de utilização:** [`/cases/.search`, `/entries/.search`]<br />\n`Ainda não disponível para utilização`\n",
+        "operationId": ".search-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SCIMv2Search"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "description": "**O tipo é o mesmo utilizado no endpoint**<br />\nPor exemplo: <br />\n- se a request for `/cases/.search` o tipo desse retorno será um [CaseInfo](#tag/Case-Management/operation/cases-case_id-get)\n- se a request for `/entries/.search` o tipo desse retorno será um [Entry](#tag/Entry/operation/entries-entry_id-get)\n"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/cases/:id": {
       "get": {
         "tags": [
@@ -3487,6 +3568,71 @@
           }
         }
       },
+      "SCIMv2Search": {
+        "title": "SCIMv2Search",
+        "description": "Model for SCIM v2 /.search endpoint filter",
+        "properties": {
+          "Schemas": {
+            "type": "array",
+            "description": "**The array of URNs**",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+            ]
+          },
+          "Filter": {
+            "type": "string",
+            "example": null,
+            "description": "**The SCIMv2 filter**"
+          },
+          "SortBy": {
+            "type": "string",
+            "example": null,
+            "description": "**The property for sorting results**"
+          },
+          "SortOrder": {
+            "type": "string",
+            "example": null,
+            "description": "**The sort order (ASC / DESC)**"
+          },
+          "StartIndex": {
+            "type": "integer",
+            "example": 1,
+            "description": "**The start index for pagination**"
+          },
+          "Count": {
+            "type": "integer",
+            "example": 10,
+            "description": "**The total count of items to return**"
+          }
+        },
+        "required": [
+          "Schemas"
+        ]
+      },
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
       "MetaRetrieve": {
         "title": "Meta",
         "type": "object",
@@ -4862,27 +5008,6 @@
           "op",
           "value"
         ]
-      },
-      "ListResponse": {
-        "title": "Scim",
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
-          },
-          "startIndex": {
-            "description": "**Index of search**",
-            "type": "integer",
-            "example": 1
-          },
-          "itemsPerPage": {
-            "description": "**Total count of items to return**",
-            "type": "integer",
-            "example": 12
-          }
-        }
       },
       "MetaQuery": {
         "title": "Meta",

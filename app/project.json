@@ -391,6 +391,12 @@
                         "folder": "products"
                     },
                     {
+                        "option": 17,
+                        "label": "Search / Filter",
+                        "detail": "Search / filter endpoint",
+                        "folder": "search"
+                    },
+                    {
                         "option": -1,
                         "label": "Debug (não utilizar essa tag em endpoints oficiais)",
                         "detail": "Debug endpoints",

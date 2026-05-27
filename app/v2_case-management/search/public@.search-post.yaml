@@ -1,0 +1,55 @@
+tags:
+  - Search / Filter
+summary: "/.search"
+description: |
+  **SCIMv2 search / filter items using POST**<br />
+  **Exemplos de utilização:** [`/cases/.search`, `/entries/.search`]<br />
+  `Ainda não disponível para utilização`
+operationId: .search-post
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../app/parameters/common/Tenant.yaml
+  - $ref: ../../../app/parameters/common/BearerToken.yaml
+# request body
+requestBody:
+  content:
+    application/json:
+      schema:
+        $ref: ../../../app/schemas/v2_case-management/SCIMv2Search.yaml
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          allOf:
+            # quando endpoint está dentro de uma pasta
+            - $ref: ../../schemas/common/ListResponse.yaml
+            - type: object
+              properties:
+                resources:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: object
+                        description: |
+                          **O tipo é o mesmo utilizado no endpoint**<br />
+                          Por exemplo: <br />
+                          - se a request for `/cases/.search` o tipo desse retorno será um [CaseInfo](#tag/Case-Management/operation/cases-case_id-get)
+                          - se a request for `/entries/.search` o tipo desse retorno será um [Entry](#tag/Entry/operation/entries-entry_id-get)
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml
