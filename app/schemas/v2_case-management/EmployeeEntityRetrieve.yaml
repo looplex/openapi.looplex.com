@@ -13,21 +13,21 @@ allOf:
         description: "**Employee's name**"
         example: <nome>
       nickName:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Employee's nickname**"
         example: <apelido>
       dob:
-        type: string <nullable>
+        type: [string, "null"]
         format: datetime
         description: "**Employee's date of birth**"
         example: <data_de_nascimento>
       admissionDate:
-        type: string <nullable>
+        type: [string, "null"]
         format: datetime
         description: "**Employee's admission date**"
         example: <data_de_admissao>
       demissionDate:
-        type: string <nullable>
+        type: [string, "null"]
         format: datetime
         description: "**Employee's demission date**"
         example: <data_de_demissao>
@@ -39,13 +39,13 @@ allOf:
           $ref: ../../schemas/common/NaturalPersonIdentityEntityRetrieve.yaml
         description: "**Employee's identities**"
       nationality:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Employee's nationality**"
         example: <nacionalidade>
       maritalStatus:
         $ref: ../../enums/v2_case-management/MaritalStatus.yaml
       occupation:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Employee's occupation**"
         example: <profissao>
       role:

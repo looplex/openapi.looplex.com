@@ -5,11 +5,11 @@ allOf:
   - type: object
     properties:
       Country:
-        type: string <nullable>
+        type: [string, "null"]
         example: <pais>
         description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
       PostalCode:
-        type: string <nullable>
+        type: [string, "null"]
         example: <cep>
         description: "**Postal code**"
       StreetAddress:
@@ -17,17 +17,17 @@ allOf:
         example: <logradouro>
         description: "**Street**"
       StreetAddressNumber:
-        type: string <nullable>
+        type: [string, "null"]
         example: <numero_do_logradouro>
-        description: "**Street number**"      
+        description: "**Street number**"
       Locality:
-        type: string <nullable>
+        type: [string, "null"]
         example: <cidade>
         description: "**Cidade**"
       Region:
-        type: string <nullable>
+        type: [string, "null"]
         example: <sigla_estado>
-        description: "**State**"      
+        description: "**State**"
       ExtendedAddress:
         type: string
         description: "**Extended address**"

@@ -1,6 +1,6 @@
 title: TimelineEntity
 type: object
-properties: 
+properties:
   Type:
     $ref: ../enums/TimelineItemType.yaml
   Id:
@@ -14,10 +14,10 @@ properties:
     example: <data>
     description: "**Data do evento**"
   Title:
-    type: string <nullable>
+    type: [string, "null"]
     example: <titulo>
     description: "**Título do evento**"
   Description:
-    type: string <nullable>
+    type: [string, "null"]
     example: <descricao>
     description: "**Descrição do evento**"

@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.1.1
 info:
   version: 1.0.0
   title: Actions
@@ -87919,7 +87919,7 @@ components:
       example: 1
       description: |
         -2147483648: None
-         
+
         1: Processo
 
         2: Subprocesso
@@ -88593,7 +88593,7 @@ components:
 
         **Atividade externa e Audiência**
 
-        1: Em aberto 
+        1: Em aberto
 
         2: Agendada
 
@@ -88601,7 +88601,7 @@ components:
 
         **Compromisso, prazo e publicação**
 
-        4: Ocupado 
+        4: Ocupado
 
         5: A confirmar
 
@@ -88789,13 +88789,13 @@ components:
       description: |
         0: None
 
-        1: Procedente  
+        1: Procedente
 
-        2: ParcialmenteProcedente  
+        2: ParcialmenteProcedente
 
-        3: Improcedente  
+        3: Improcedente
 
-        4: Acordo  
+        4: Acordo
 
         5: PrescricaoOuDecadencia
 
@@ -88808,17 +88808,17 @@ components:
       title: TipoDeRecorrencia
       example: 0
       description: |
-        -2147483648: None   
+        -2147483648: None
 
-        0: Sem recorrência  
+        0: Sem recorrência
 
-        1: Diaria  
+        1: Diaria
 
-        2: Semanal  
+        2: Semanal
 
-        3: Mensal  
+        3: Mensal
 
-        4: Anual  
+        4: Anual
     TipoReparacao:
       title: TipoReparacao
       example: -2147483648
@@ -92286,21 +92286,21 @@ components:
       title: GrupoNaturezaDaCausa
       example: 2
       description: |
-        1: ProcessosAdministrativos  
+        1: ProcessosAdministrativos
 
-        2: ProcessosJudiciaisEstadual  
+        2: ProcessosJudiciaisEstadual
 
-        3: ProcessosJudiciaisFederal  
+        3: ProcessosJudiciaisFederal
 
-        4: ProcessosJudiciaisTrabalhista  
+        4: ProcessosJudiciaisTrabalhista
 
-        5: ProcessosConsultivo  
+        5: ProcessosConsultivo
 
-        6: ProcessosEleitoral  
+        6: ProcessosEleitoral
 
-        7: ProcessosMilitarEstadual  
+        7: ProcessosMilitarEstadual
 
-        8: ProcessosMilitarUniao  
+        8: ProcessosMilitarUniao
     DTONaturezaCompleto:
       title: DTONaturezaCompleto
       type: object
@@ -92807,13 +92807,13 @@ components:
       example: 1
       description: |
 
-        -2147483648: None  
+        -2147483648: None
 
-        1: DeTrabalho  
+        1: DeTrabalho
 
-        2: Particular  
+        2: Particular
 
-        3: Prazo  
+        3: Prazo
 
         4: Publicacao
     DTOPrazoPublicacao:
@@ -92948,7 +92948,7 @@ components:
 
         1: PorDataDeDisponibilizacao
 
-        2: PorDataDePublicacao  
+        2: PorDataDePublicacao
     SituacaoPublicacao:
       title: SituacaoPublicacao
       example: 1
@@ -92956,24 +92956,24 @@ components:
 
         0: NaoVinculada
 
-        1: Vinculada  
+        1: Vinculada
 
-        2: Todas  
+        2: Todas
     StatusDaPublicacao:
       title: StatusDaPublicacao
       description: |
-        1: Nova  
-        2: Visualizada  
-        3: Finalizada  
+        1: Nova
+        2: Visualizada
+        3: Finalizada
     FornecedorPush:
       title: FornecedorPush
       description: |
 
         1: Vista
 
-        2: Digesto  
+        2: Digesto
 
-        3: XMLAdvise  
+        3: XMLAdvise
     DTOPublicacao:
       title: DTOPublicacao
       type: object

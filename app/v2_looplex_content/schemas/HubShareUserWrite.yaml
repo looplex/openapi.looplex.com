@@ -1,6 +1,5 @@
 title: HubShareUser
-description: ""
-type: "object"
+type: object
 properties:
   Name:
     type: string
@@ -8,4 +7,3 @@ properties:
     type: string
   EmailAddress:
     type: string
-

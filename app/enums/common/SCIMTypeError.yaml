@@ -1,5 +1,5 @@
 title: SCIM Type error
-type: string <nullable>
+type: [string, "null"]
 example: invalidFilter
 description: |
   **The type of SCIM error if request is GET, otherwise null**<br/>

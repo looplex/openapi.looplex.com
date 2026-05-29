@@ -1,5 +1,5 @@
 # API 'Looplex_Content.yaml'
-openapi: 3.0.2
+openapi: 3.1.1
 security: []
 info:
   version: 1.0.0
@@ -25,18 +25,18 @@ servers:
     description: "Looplex Content Server"
 paths:
   /viewhierarchy:
-   get:
+    get:
       $ref: content_views\public@viewhierarchy-get.yaml
-  /views/:viewID/objects:
-   get:
+  /views/{viewID}/objects:
+    get:
       $ref: content_views\public@views@viewID@objects-get.yaml
   /hubshareuser/info:
-   get:
+    get:
       $ref: content_hubshare_users\public@hubshareuser@info-get.yaml
   /hubshareuser/link:
     get:
       $ref: content_hubshare_users\public@hubshareuser@link-get.yaml
-  /hubshareuser/:email/status:
+  /hubshareuser/{email}/status:
     put:
       $ref: content_hubshare_users\public@api@hubshare@email@status-put.yaml
   /hubshareuser:
@@ -47,30 +47,29 @@ paths:
       $ref: content_documents\public@Documents-post.yaml
     get:
       $ref: content_documents\public@Documents-get.yaml
-  /cases/:caseId/Documents:
+  /cases/{caseID}/Documents:
     get:
       $ref: content_documents\public@cases@caseID@documents-get.yaml
     post:
-      $ref: content_documents\public@cases@caseID@Documents-post.yaml 
-  /Documents/:id:
+      $ref: content_documents\public@cases@caseID@Documents-post.yaml
+  /Documents/{id}:
     delete:
       $ref: content_documents\public@Documents@id-delete.yaml
     get:
       $ref: content_documents\public@Documents@id-get.yaml
     patch:
       $ref: content_documents\public@Documents@id-patch.yaml
-  /Documents/:id/check-in:
+  /Documents/{id}/check-in:
     put:
       $ref: content_documents\public@Documents@id@check@in-put.yaml
-  /Documents/:id/check-out:
+  /Documents/{id}/check-out:
     put:
       $ref: content_documents\public@Documents@id@check@out-put.yaml
   /Cases:
     post:
       $ref: content_cases\public@Cases-post.yaml
-    patch: 
+  /Cases/{id}:
+    patch:
       $ref: content_cases\public@Cases-patch.yaml
-    delete: 
+    delete:
       $ref: content_cases\public@Cases-delete.yaml
-      
-      
