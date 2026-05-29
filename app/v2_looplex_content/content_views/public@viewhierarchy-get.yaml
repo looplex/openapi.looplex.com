@@ -1,23 +1,18 @@
 tags:
   - Views
-
 summary: "List all views in a hierarchy"
-
-description: "**List all views in a hierarchy**" 
-
+description: "**List all views in a hierarchy**"
 operationId: viewhierarchy-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-
 responses:
-  
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            $ref: ../schemas/View.yaml  
+            $ref: ../schemas/View.yaml
   "500":
       description: "Internal Server Error"

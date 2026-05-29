@@ -1,18 +1,13 @@
 tags:
   - Documents
-
 summary: "List Documents"
-# summary: ""
-
 # description: "**Retrieve a <schema_name> by id**" # retrieve
 # description: "**Fetch items paginated**" # query
-
 operationId: Documents-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-
   - name: startIndex
     in: query
     description: "**Index of search**"
@@ -36,16 +31,15 @@ parameters:
       _PropertyName_ _co_ _search_term_
     schema:
       type: string
-
 responses:
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            type: array 
+            type: array
             items:
-              $ref: "../schemas/Document.yaml" 
+              $ref: "../schemas/Document.yaml"
   "400":
     description: "Bad Request"
   "401":

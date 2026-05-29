@@ -1,9 +1,6 @@
 tags:
   - Cases
-
 summary: "Update Case"
-
-
 operationId: Cases-patch
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
@@ -16,10 +13,10 @@ parameters:
     schema:
       type: string
       format: uuid
-  - usesLooplexId: 
+  - usesLooplexId:
     in: header
     description: if true uses looplex case guid else M-files guid
-    schema: 
+    schema:
       type: boolean
 requestBody:
   content:
@@ -29,7 +26,6 @@ requestBody:
         items:
           $ref: ../../schemas/common/PatchEntity.yaml
 responses:
-  # 
   "200":
     description: "OK"
     content:

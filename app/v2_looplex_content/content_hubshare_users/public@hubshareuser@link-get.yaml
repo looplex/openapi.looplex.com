@@ -1,16 +1,12 @@
 tags:
   - Hubshare Users
-
 summary: "Get hubshare URL"
-
 description: "Get hubshare URL defined on key vault for curren tenant"
-
 operationId: hubshareuser-link-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-
 responses:
   "200":
       description: "OK"
@@ -24,4 +20,3 @@ responses:
     description: "Unauthorized"
   "500":
     description: "Internal Server Error"
- 

@@ -1,5 +1,5 @@
 title: ObjectFile
-description: ""
+type: object
 properties:
   FileId:
     type: string

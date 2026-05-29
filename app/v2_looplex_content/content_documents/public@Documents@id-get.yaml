@@ -1,14 +1,11 @@
 tags:
   - Documents
-
 summary: "Retrieve Document"
-
 operationId: Documents-documentID-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-  
   - name: id
     in: path
     required: true
@@ -22,11 +19,10 @@ responses:
       content:
         application/json:
           schema:
-              $ref: "../schemas/Document.yaml" 
+              $ref: "../schemas/Document.yaml"
     "400":
       description: "Bad Request"
     "401":
       description: "Unauthorized"
     "500":
       description: "Internal Server Error"
-  

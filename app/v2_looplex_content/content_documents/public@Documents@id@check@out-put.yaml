@@ -1,12 +1,7 @@
 tags:
   - Documents
-
 summary: "Check-out document"
-# summary: ""
-
 description: ""
-# description: "****"
-
 operationId: Documents-id-check-out-put
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
@@ -19,8 +14,6 @@ parameters:
     schema:
       type: string
       format: uuid
-
 responses:
-  
   "204":
     description: "No Content"

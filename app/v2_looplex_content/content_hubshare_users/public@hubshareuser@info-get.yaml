@@ -1,23 +1,18 @@
 tags:
   - Hubshare Users
-
 summary: "Hubshare users informations"
-
-description: "**Retrieve info from user by hubshare**" 
-
+description: "**Retrieve info from user by hubshare**"
 operationId: hubshareuser-info-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-
 responses:
-  
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            $ref: ../schemas/HubShareUsersInfo.yaml  
+            $ref: ../schemas/HubShareUsersInfo.yaml
   "500":
       description: "Internal Server Error"

@@ -25,13 +25,13 @@ servers:
     description: "Looplex Content Server"
 paths:
   /viewhierarchy:
-   get:
+    get:
       $ref: content_views\public@viewhierarchy-get.yaml
   /views/:viewID/objects:
-   get:
+    get:
       $ref: content_views\public@views@viewID@objects-get.yaml
   /hubshareuser/info:
-   get:
+    get:
       $ref: content_hubshare_users\public@hubshareuser@info-get.yaml
   /hubshareuser/link:
     get:
@@ -51,7 +51,7 @@ paths:
     get:
       $ref: content_documents\public@cases@caseID@documents-get.yaml
     post:
-      $ref: content_documents\public@cases@caseID@Documents-post.yaml 
+      $ref: content_documents\public@cases@caseID@Documents-post.yaml
   /Documents/:id:
     delete:
       $ref: content_documents\public@Documents@id-delete.yaml
@@ -68,9 +68,7 @@ paths:
   /Cases:
     post:
       $ref: content_cases\public@Cases-post.yaml
-    patch: 
+    patch:
       $ref: content_cases\public@Cases-patch.yaml
-    delete: 
+    delete:
       $ref: content_cases\public@Cases-delete.yaml
-      
-      

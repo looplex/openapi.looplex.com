@@ -1,5 +1,5 @@
 title: Participant
-description: ""
+type: object
 properties:
   Name:
     type: string

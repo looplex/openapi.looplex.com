@@ -1,11 +1,10 @@
 title: WorkflowInfo
-description: ""
 properties:
-    Name:
-        type: string
-    Alias:
-        type: string
-    State:
-        type: string
-    StateName:
-        type: string
+  Name:
+    type: string
+  Alias:
+    type: string
+  State:
+    type: string
+  StateName:
+    type: string

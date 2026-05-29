@@ -1,18 +1,14 @@
 tags:
   - Views
-
 summary: "List All Objects of a View"
 # summary: "Get all documents of a case"
-
 # description: "**Retrieve a <schema_name> by id**" # retrieve
 # description: "**Fetch items paginated**" # query
-
 operationId: views-viewID-objects-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-  
   - name: startIndex
     in: query
     description: "**Index of search**"
@@ -28,22 +24,20 @@ parameters:
     schema:
       type: integer
   - viewID:
-      in: path 
-      type: string 
-    
+      in: path
+      type: string
 responses:
   "200":
       description: "OK"
       content:
         application/json:
           schema:
-            type: array 
+            type: array
             items:
-              $ref: "../schemas/GenericResource.yaml" 
+              $ref: "../schemas/GenericResource.yaml"
   "400":
     description: "Bad Request"
   "401":
     description: "Unauthorized"
   "500":
     description: "Internal Server Error"
-  
