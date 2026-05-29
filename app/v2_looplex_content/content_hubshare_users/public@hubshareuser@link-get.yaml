@@ -9,11 +9,11 @@ parameters:
   - $ref: ../../parameters/common/BearerToken.yaml
 responses:
   "200":
-      description: "OK"
-      content:
-        application/json:
-          schema:
-            type: string
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: string
   "400":
     description: "Bad Request"
   "401":

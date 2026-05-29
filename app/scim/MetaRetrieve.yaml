@@ -9,17 +9,17 @@ properties:
       e.g. Case, Task, Entry, etc.
     example: <tipo_do_recurso>
   created:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     example: <data_de_criacao_do_recurso>
     description: "**The resource creation date**"
   lastModified:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     example: <data_de_atualizacao_do_recurso>
     description: "**The resource last update time**"
   location:
-    type: string <nullable>
+    type: [string, "null"]
     example: <local_do_recurso>
     description: "**The resource url**"
   version:

@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Tasks Management",
@@ -312,19 +312,28 @@
             "example": "<tipo_do_recurso>"
           },
           "created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "lastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -347,7 +356,10 @@
           },
           "externalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "meta": {
@@ -372,7 +384,10 @@
             "example": "<global_unique_identifier>"
           },
           "name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
           }
@@ -402,7 +417,10 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier>"
@@ -422,7 +440,10 @@
         "type": "object",
         "properties": {
           "parentTaskId": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**Unique identifier of parent task**"
           },
@@ -431,24 +452,39 @@
             "example": "COURT_HEARING"
           },
           "subType": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Subtype of the task**"
           },
           "title": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Titulo**"
           },
           "description": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Descrição**"
           },
           "startDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Início**"
           },
           "dueDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Vencimento**"
           },
@@ -461,7 +497,10 @@
             "description": "**Atualizado por**"
           },
           "completedAt": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Concluído em**"
           },
@@ -470,15 +509,24 @@
             "description": "**Concluído por**"
           },
           "locale": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Local**"
           },
           "taskCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Tarefa**"
           },
           "activityCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Atividade**"
           },
           "taskTemplate": {
@@ -505,7 +553,10 @@
             "$ref": "#/components/schemas/Prioridade"
           },
           "conclusionNotes": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Notas de Conclusão**"
           },
           "customFields": {
@@ -712,19 +763,28 @@
             "example": "<tipo_do_recurso>"
           },
           "Created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -747,7 +807,10 @@
           },
           "ExternalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "Meta": {
@@ -767,7 +830,10 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
           }
@@ -779,7 +845,10 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier>"
@@ -799,7 +868,10 @@
         "type": "object",
         "properties": {
           "ParentTaskId": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**Unique identifier of parent task**"
           },
@@ -808,24 +880,39 @@
             "example": "COURT_HEARING"
           },
           "SubType": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Subtype of the task**"
           },
           "Title": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Titulo**"
           },
           "Description": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Descrição**"
           },
           "StartDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Início**"
           },
           "DueDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Vencimento**"
           },
@@ -838,7 +925,10 @@
             "description": "**Atualizado por**"
           },
           "CompletedAt": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Concluído em**"
           },
@@ -847,15 +937,24 @@
             "description": "**Concluído por**"
           },
           "Locale": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Local**"
           },
           "TaskCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Tarefa**"
           },
           "ActivityCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Atividade**"
           },
           "TaskTemplate": {
@@ -882,7 +981,10 @@
             "$ref": "#/components/schemas/Prioridade"
           },
           "ConclusionNotes": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Notas de Conclusão**"
           },
           "CustomFields": {
@@ -975,7 +1077,10 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The item name**"
           }
@@ -986,7 +1091,10 @@
         "type": "object",
         "properties": {
           "ParentTaskId": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**Unique identifier of parent task**"
           },
@@ -995,24 +1103,39 @@
             "example": "COURT_HEARING"
           },
           "SubType": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Subtype of the task**"
           },
           "Title": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Titulo**"
           },
           "Description": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Descrição**"
           },
           "StartDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Início**"
           },
           "DueDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de Vencimento**"
           },
@@ -1025,7 +1148,10 @@
             "description": "**Atualizado por**"
           },
           "CompletedAt": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Concluído em**"
           },
@@ -1034,15 +1160,24 @@
             "description": "**Concluído por**"
           },
           "Locale": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Local**"
           },
           "TaskCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Tarefa**"
           },
           "ActivityCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Atividade**"
           },
           "TaskTemplate": {
@@ -1069,7 +1204,10 @@
             "$ref": "#/components/schemas/Prioridade"
           },
           "ConclusionNotes": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Notas de Conclusão**"
           },
           "CustomFields": {

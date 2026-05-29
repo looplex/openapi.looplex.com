@@ -14,15 +14,15 @@ allOf:
         format: uuid
         example: <global_unique_identifier>
       SubjectMatter:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Question's general classification**"
         example: <subject_matter>
       ReliefStatementId:
-        type: string <nullable>
+        type: [string, "null"]
         format: uuid
         example: <global_unique_identifier>
       ReliefStatement:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
         example: <relief_statement>
       FineSuccumbence:

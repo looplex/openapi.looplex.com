@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Looplex Content",
@@ -60,6 +60,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -164,6 +170,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -450,19 +462,17 @@
             }
           },
           {
-            "usesLooplexID": {
-              "in": "query",
-              "description": "if true uses Looplex case guid else uses M-files guid",
-              "schema": {
-                "type": "string"
-              }
+            "usesLooplexID": null,
+            "in": "query",
+            "description": "if true uses Looplex case guid else uses M-files guid",
+            "schema": {
+              "type": "string"
             }
           },
           {
-            "caseID": {
-              "in": "path",
-              "type": "string"
-            }
+            "caseID": null,
+            "in": "path",
+            "type": "string"
           }
         ],
         "responses": {
@@ -508,17 +518,15 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "usesLooplexID": {
-              "description": "if true uses Looplex case guid else uses M-files guid",
-              "type": "boolean",
-              "in": "query"
-            }
+            "name": "usesLooplexID",
+            "in": "query",
+            "type": "boolean",
+            "description": "if true uses Looplex case guid else uses M-files guid"
           },
           {
-            "caseID": {
-              "in": "path",
-              "type": "string"
-            }
+            "name": "caseID",
+            "in": "path",
+            "type": "string"
           }
         ],
         "requestBody": {
@@ -533,6 +541,15 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -543,7 +560,6 @@
           "Documents"
         ],
         "summary": "Delete Document",
-        "description": "",
         "operationId": "Documents-documentGUID-delete",
         "parameters": [
           {
@@ -722,6 +738,15 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -758,6 +783,15 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -804,7 +838,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/Cases/:id": {
       "patch": {
         "tags": [
           "Cases"
@@ -832,7 +868,7 @@
             }
           },
           {
-            "usesLooplexId": null,
+            "name": "usesLooplexId",
             "in": "header",
             "description": "if true uses looplex case guid else M-files guid",
             "schema": {
@@ -888,7 +924,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "usesLooplexId": null,
+            "name": "usesLooplexId",
             "in": "header",
             "description": "if true uses looplex case guid else M-files guid",
             "schema": {
@@ -965,19 +1001,28 @@
             "example": "<tipo_do_recurso>"
           },
           "Created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -1000,7 +1045,10 @@
           },
           "ExternalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "Meta": {

@@ -10,13 +10,13 @@ parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-  - usesLooplexID:
-      description: "if true uses Looplex case guid else uses M-files guid"
-      type: boolean
-      in: query
-  - caseID:
-      in: path
-      type: string
+  - name: usesLooplexID
+    in: query
+    type: boolean
+    description: "if true uses Looplex case guid else uses M-files guid"
+  - name: caseID
+    in: path
+    type: string
 requestBody:
   content:
     application/json:
@@ -25,3 +25,9 @@ requestBody:
 responses:
   "201":
     description: "Created"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"

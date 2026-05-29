@@ -1,5 +1,5 @@
 title: Gender
-type: string <nullable>
+type: [string, "null"]
 example: <genero>
 description: |
   **Gender (available when NATURAL_PERSON)**<br/>

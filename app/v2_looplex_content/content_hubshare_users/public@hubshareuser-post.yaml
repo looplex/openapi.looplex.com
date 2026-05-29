@@ -16,7 +16,7 @@ requestBody:
         $ref: ../schemas/HubShareUserWrite.yaml
 responses:
   "200":
-      description: "OK"
+    description: "OK"
   "401":
     description: "Unauthorized"
   "500":

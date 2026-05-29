@@ -2,27 +2,27 @@ title: Dados da tarefa
 type: object
 properties:
   ParentTaskId:
-    type: string <nullable>
+    type: [string, "null"]
     format: uuid
     description: "**Unique identifier of parent task**"
   Type:
     $ref: ../../enums/common/TaskType.yaml
     example: COURT_HEARING
   SubType:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Subtype of the task**"
   Title:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Titulo**"
   Description:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Descrição**"
   StartDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Data de Início**"
   DueDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Data de Vencimento**"
   CreatedBy:
@@ -32,20 +32,20 @@ properties:
     $ref: SimpleEntityWrite.yaml
     description: "**Atualizado por**"
   CompletedAt:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Concluído em**"
   CompletedBy:
     $ref: SimpleEntityWrite.yaml
     description: "**Concluído por**"
   Locale:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Local**"
   TaskCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Tarefa**"
   ActivityCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Atividade**"
   TaskTemplate:
     $ref: SimpleEntityWrite.yaml
@@ -65,12 +65,12 @@ properties:
     example: LOW
     $ref: ../../enums/common/Prioridade.yaml
   ConclusionNotes:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Notas de Conclusão**"
   CustomFields:
     type: object
     example: {}
-    description: "**Tasks's custom fields**"    
+    description: "**Tasks's custom fields**"
   TaskHierarchy:
     $ref: TaskHierarchyWrite.yaml
-    
+

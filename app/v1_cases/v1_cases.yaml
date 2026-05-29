@@ -1,5 +1,5 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
-openapi: 3.0.2
+openapi: 3.1.1
 security: []
 info:
   version: 1.0.0
@@ -21,7 +21,7 @@ info:
     # Introduction
 
     This API definition is intended to to be a good starting point for
-    describing your API in 
+    describing your API in
 
     [OpenAPI/Swagger
     format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
@@ -37,7 +37,7 @@ paths:
   /api/logon:
     post:
       $ref: login/public@api@logon-post.yaml
-      
+
   # Advogado
   # /api/advogado:
   #   post:
@@ -291,21 +291,21 @@ paths:
   # Cumprimentos
   # /api/cumprimentos/ListaComFiltro:
   #   post:
-  #     $ref: 'cumprimentos/public@api@cumprimentos@ListaComFiltro-post.yaml'    
-  /api/cumprimentos/{cdCumprimento}:   
+  #     $ref: 'cumprimentos/public@api@cumprimentos@ListaComFiltro-post.yaml'
+  /api/cumprimentos/{cdCumprimento}:
     get:
       $ref: 'cumprimentos/public@api@cumprimentos-get.yaml'
   # /api/cumprimentos:
   #   put:
-  #     $ref: 'cumprimentos/public@api@cumprimentos-put.yaml'  
+  #     $ref: 'cumprimentos/public@api@cumprimentos-put.yaml'
   #   post:
   #     $ref: 'cumprimentos/public@api@cumprimentos-post.yaml'
   #   delete:
   #     $ref: 'cumprimentos/public@api@cumprimentos@exclui-delete.yaml'
   # /api/Pedidos/{cdPedido}/cumprimentos:
   #   delete:
-  #     $ref: 'cumprimentos/public@api@Pedidos@cdPedido@cumprimentos-delete.yaml'            
-      
+  #     $ref: 'cumprimentos/public@api@Pedidos@cdPedido@cumprimentos-delete.yaml'
+
   # Decisões
   /api/casos/{idCaso}/Decisoes:
     get:
@@ -393,7 +393,7 @@ paths:
   /api/expectativa/valores/{idCaso}:
     get:
       $ref: 'expectativa_reivindicacao/public@api@expectativa@valores@idCaso-get.yaml'
-      
+
   # Fornecedor
   /api/fornecedores:
     get:
@@ -408,10 +408,10 @@ paths:
       $ref: 'funcionario/public@api@funcionarios@porId@IDFuncionario-get.yaml'
   /api/funcionarios:
     get:
-      $ref: 'funcionario/public@api@funcionarios-get.yaml' 
+      $ref: 'funcionario/public@api@funcionarios-get.yaml'
   /api/areas/{IDArea}/funcionarios:
     get:
-      $ref: 'funcionario/public@api@areas@IDArea@funcionarios-get.yaml' 
+      $ref: 'funcionario/public@api@areas@IDArea@funcionarios-get.yaml'
   /api/funcionarios/{IDFuncionario}/areas:
     get:
       $ref: 'funcionario/public@api@funcionarios@IDFuncionario@areas-get.yaml'
@@ -423,7 +423,7 @@ paths:
       $ref: 'funcionario/public@api@escritorios@funcionarios-get.yaml'
   /api/funcionarios/categoriaseareas:
     get:
-      $ref: 'funcionario/public@api@funcionarios@categoriaseareas-get.yaml'    
+      $ref: 'funcionario/public@api@funcionarios@categoriaseareas-get.yaml'
 
   # Garantia
   /api/casos/Garantia/{IDCasoGarantia}:
@@ -462,10 +462,10 @@ paths:
   /api/casos/Garantia/{IDProcessoGarantia}/IdsPedidos:
     get:
       $ref: 'garantia/public@api@casos@Garantia@IDProcessoGarantia@IdsPedidos-get.yaml'
-      
+
   # Hierarquia
   /api/hierarquia/ritos:
-    get: 
+    get:
       $ref: hierarquia/public@api@hierarquia@ritos-get.yaml
   /api/hierarquia/tipos:
     get:
@@ -523,19 +523,19 @@ paths:
       $ref: 'informacoes_adicionais/public@api@dado_complementar@edit-put.yaml'
   /api/dado_complementar/filtro:
     get:
-      $ref: 'informacoes_adicionais/public@api@dado_complementar@filtro-get.yaml'   
+      $ref: 'informacoes_adicionais/public@api@dado_complementar@filtro-get.yaml'
   /api/dado_complementar/json:
     post:
       $ref: 'informacoes_adicionais/public@api@dado_complementar@json-post.yaml'
-  
+
   # Informações adicionais (Valor)
   /api/dado_complementar/valor:
     post:
       $ref: 'informacoes_adicionais_valor/public@api@dado_complementar@valor-post.yaml'
   /api/dado_complementar/valores:
-    delete: 
-      $ref: 'informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml' 
-      
+    delete:
+      $ref: 'informacoes_adicionais_valor/public@api@dado_complementar@valores-delete.yaml'
+
   # Liabilities Calculation
   # /api/liabilitiesCalculation/calculaCaso/{cdProcesso}:
   #   post:
@@ -555,7 +555,7 @@ paths:
       $ref: 'liabilitiesCalculation/public@api@liabilitiesCalculationTemplate-get.yaml'
     # post:
     #   $ref: 'liabilitiesCalculation/public@api@liabilitiesCalculationTemplate-post.yaml'
-  
+
   # Motivo de pedir
   /api/propositionStatements/{id}:
     get:
@@ -626,7 +626,7 @@ paths:
       $ref: 'pedidos/public@api@casos@num@pedidos-get.yaml'
   /api/Pedidos/possiveisStatus:
     get:
-      $ref: 'pedidos/public@api@Pedidos@possiveisStatus-get.yaml'    
+      $ref: 'pedidos/public@api@Pedidos@possiveisStatus-get.yaml'
   /api/Pedidos/possiveisExitos:
     get:
       $ref: 'pedidos/public@api@Pedidos@possiveisExitos-get.yaml'
@@ -641,11 +641,11 @@ paths:
       $ref: 'pedidos/public@api@casos@Pedidos@IDCasoPedido@IdsGarantias-get.yaml'
   # /api/casos/pedidostmp:
   #   post:
-  #     $ref: 'pedidos/public@api@pedidostmp-post.yaml'      
+  #     $ref: 'pedidos/public@api@pedidostmp-post.yaml'
   # /api/casos/{IDCaso}/pedidosComValores:
   #   post:
-  #     $ref: 'pedidos/public@api@casos@IDCaso@pedidosComValores-post.yaml'     
-      
+  #     $ref: 'pedidos/public@api@casos@IDCaso@pedidosComValores-post.yaml'
+
   # Produtos
   /api/casos/{IDCaso}/produtos:
     get:
@@ -718,7 +718,7 @@ paths:
   # /api/publicacao/termo/{IDsTermos}:
   #   delete:
   #     $ref: 'push_publicacao\public@api@publicacao@termo@IDsTermos-delete.yaml'
-  
+
   # Questões Processuais
   /api/questoes_processuais:
     get:
@@ -755,7 +755,7 @@ paths:
       $ref: 'solicitacao/public@api@solicitacao@lista-get.yaml'
   # /api/solicitacao/inclui:
   #   post:
-  #     $ref: 'solicitacao/public@api@solicitacao@inclui-post.yaml'  
+  #     $ref: 'solicitacao/public@api@solicitacao@inclui-post.yaml'
 
   # Tabela de preço
   /api/escritorios/{idEscritorio}/tabelaspreco:
@@ -846,11 +846,11 @@ paths:
   #     $ref: 'tarefa/public@api@tarefas-post.yaml'
   /api/tarefas/tarefas_subtarefas:
     get:
-      $ref: 'tarefa/public@api@tarefas@tarefas_subtarefas-get.yaml'    
+      $ref: 'tarefa/public@api@tarefas@tarefas_subtarefas-get.yaml'
   /api/tarefas/titulos:
     get:
       $ref: 'tarefa/public@api@tarefas@titulos-get.yaml'
-    # patch: 
+    # patch:
     #   $ref: 'tarefa/public@api@tarefas@titulos-patch.yaml'
   /api/tarefas/tarefa_subtarefas/{id}/{tipo}:
     get:
@@ -933,7 +933,7 @@ paths:
   /api/casos/num/valoresapurados:
     get:
       $ref: 'valores_apurados/public@api@casos@num@valoresapurados-get.yaml'
-      
+
 components:
   securitySchemes:
     api_key:

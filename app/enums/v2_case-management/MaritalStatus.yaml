@@ -1,5 +1,5 @@
 title: Marital status
-type: string <nullable>
+type: [string, "null"]
 example: <estado_civil>
 description: |
   **Marital status (NATURAL_PERSON only)**<br />

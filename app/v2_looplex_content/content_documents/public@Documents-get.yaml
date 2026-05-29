@@ -33,13 +33,13 @@ parameters:
       type: string
 responses:
   "200":
-      description: "OK"
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "../schemas/Document.yaml"
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "../schemas/Document.yaml"
   "400":
     description: "Bad Request"
   "401":

@@ -7,7 +7,7 @@ properties:
     description: "**The object unique identifier**"
     example: <global_unique_identifier>
   name:
-    type: string <nullable>
+    type: [string, "null"]
     example: <client_name>
     description: "**The client name**"
   role:

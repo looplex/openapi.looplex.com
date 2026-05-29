@@ -3,7 +3,7 @@ description: "**Identificação do caso, como número CNJ, NIRE, Número do cont
 type: object
 properties:
   Id:
-    type: string <nullable>
+    type: [string, "null"]
     format: uuid
     description: "**The unique identifier of this value**"
     example: <global_unique_identifier>

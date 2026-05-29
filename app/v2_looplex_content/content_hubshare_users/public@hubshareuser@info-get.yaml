@@ -9,10 +9,14 @@ parameters:
   - $ref: ../../parameters/common/BearerToken.yaml
 responses:
   "200":
-      description: "OK"
-      content:
-        application/json:
-          schema:
-            $ref: ../schemas/HubShareUsersInfo.yaml
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../schemas/HubShareUsersInfo.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
   "500":
       description: "Internal Server Error"

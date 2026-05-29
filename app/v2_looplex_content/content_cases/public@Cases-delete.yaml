@@ -6,7 +6,7 @@ parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-  - usesLooplexId:
+  - name: usesLooplexId
     in: header
     description: if true uses looplex case guid else M-files guid
     schema:

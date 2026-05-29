@@ -13,7 +13,7 @@ parameters:
     schema:
       type: string
       format: uuid
-  - usesLooplexId:
+  - name: usesLooplexId
     in: header
     description: if true uses looplex case guid else M-files guid
     schema:

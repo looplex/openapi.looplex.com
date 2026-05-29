@@ -24,22 +24,22 @@ parameters:
     schema:
       type: integer
   - usesLooplexID:
-      in: query
-      description: "if true uses Looplex case guid else uses M-files guid"
-      schema:
-        type: string
-  - caseID:
-      in: path
+    in: query
+    description: "if true uses Looplex case guid else uses M-files guid"
+    schema:
       type: string
+  - caseID:
+    in: path
+    type: string
 responses:
   "200":
-      description: "OK"
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "../schemas/Document.yaml"
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: "../schemas/Document.yaml"
   "400":
     description: "Bad Request"
   "401":
