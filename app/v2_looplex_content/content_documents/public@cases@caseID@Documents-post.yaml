@@ -12,11 +12,13 @@ parameters:
   - $ref: ../../parameters/common/BearerToken.yaml
   - name: usesLooplexID
     in: query
-    type: boolean
+    schema:
+      type: boolean
     description: "if true uses Looplex case guid else uses M-files guid"
   - name: caseID
     in: path
-    type: string
+    schema:
+      type: string
 requestBody:
   content:
     application/json:

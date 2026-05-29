@@ -73,7 +73,7 @@
         }
       }
     },
-    "/views/:viewID/objects": {
+    "/views/{viewID}/objects": {
       "get": {
         "tags": [
           "Views"
@@ -109,8 +109,9 @@
             }
           },
           {
-            "viewID": {
-              "in": "path",
+            "name": "viewID",
+            "in": "path",
+            "schema": {
               "type": "string"
             }
           }
@@ -225,7 +226,7 @@
         }
       }
     },
-    "/hubshareuser/:email/status": {
+    "/hubshareuser/{email}/status": {
       "put": {
         "tags": [
           "Hubshare Users"
@@ -426,7 +427,7 @@
         }
       }
     },
-    "/cases/:caseId/Documents": {
+    "/cases/{caseID}/Documents": {
       "get": {
         "tags": [
           "Documents"
@@ -462,7 +463,7 @@
             }
           },
           {
-            "usesLooplexID": null,
+            "name": "usesLooplexID",
             "in": "query",
             "description": "if true uses Looplex case guid else uses M-files guid",
             "schema": {
@@ -470,9 +471,11 @@
             }
           },
           {
-            "caseID": null,
+            "name": "caseID",
             "in": "path",
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -520,13 +523,17 @@
           {
             "name": "usesLooplexID",
             "in": "query",
-            "type": "boolean",
+            "schema": {
+              "type": "boolean"
+            },
             "description": "if true uses Looplex case guid else uses M-files guid"
           },
           {
             "name": "caseID",
             "in": "path",
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -554,7 +561,7 @@
         }
       }
     },
-    "/Documents/:id": {
+    "/Documents/{id}": {
       "delete": {
         "tags": [
           "Documents"
@@ -706,7 +713,7 @@
         }
       }
     },
-    "/Documents/:id/check-in": {
+    "/Documents/{id}/check-in": {
       "put": {
         "tags": [
           "Documents"
@@ -751,7 +758,7 @@
         }
       }
     },
-    "/Documents/:id/check-out": {
+    "/Documents/{id}/check-out": {
       "put": {
         "tags": [
           "Documents"
@@ -840,7 +847,7 @@
         }
       }
     },
-    "/Cases/:id": {
+    "/Cases/{id}": {
       "patch": {
         "tags": [
           "Cases"
@@ -1476,6 +1483,18 @@
           }
         }
       },
+      "LegalServiceAgreement": {
+        "title": "LegalServiceAgreement",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          }
+        }
+      },
       "Case": {
         "title": "Case",
         "type": "object",
@@ -1570,7 +1589,7 @@
             "$ref": "#/components/schemas/CaseClient"
           },
           "LegalServiceAgreement": {
-            "type": "LegalServiceAgreement"
+            "$ref": "#/components/schemas/LegalServiceAgreement"
           },
           "Participants": {
             "type": "array",

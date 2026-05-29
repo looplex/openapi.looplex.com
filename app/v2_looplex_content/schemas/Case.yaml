@@ -64,8 +64,8 @@ properties:
   CaseClient:
     $ref: CaseClient.yaml
   LegalServiceAgreement:
-    type: LegalServiceAgreement
+    $ref: LegalServiceAgreement.yaml
   Participants:
     type: array
     items:
-        $ref: Participant.yaml
+      $ref: Participant.yaml

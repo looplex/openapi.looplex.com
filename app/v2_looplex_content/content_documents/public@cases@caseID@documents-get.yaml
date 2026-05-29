@@ -23,14 +23,15 @@ parameters:
     example: 50
     schema:
       type: integer
-  - usesLooplexID:
+  - name: usesLooplexID
     in: query
     description: "if true uses Looplex case guid else uses M-files guid"
     schema:
       type: string
-  - caseID:
+  - name: caseID
     in: path
-    type: string
+    schema:
+      type: string
 responses:
   "200":
     description: "OK"
