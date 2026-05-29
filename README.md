@@ -1,26 +1,39 @@
-# Looplex OpenAPI  
+# Looplex OpenAPI
 
 Essas são as documentações das APIs da Looplex
 
-## APIs disponíveis  
-> Actions  
-> Assembler  
-> Cases  
-> Looplex 365  
-> Varas e Foros  
+## APIs disponíveis
+### Sem versão definida
+- Actions
+- Assembler
+- Looplex 365
 
-## Estrutura do projeto  
-Na pasta `api_yaml_files` estão os arquivos **yaml** contendo:  
-- Os componentes das apis (headers, parametros, DTOs, enums, etc.) na pasta `components`
-- Os endpoints separados por projetos (APIs) na pasta `paths` 
-- Os arquivos `actions.yaml`, `assembler.yaml`, `cases.yaml`, `looplex365.yaml` e `varas_foros_v2.yaml` que são os arquivos que referenciam as rotas dos endpoints.  
+### v1
+- Cases (MobileService)
+- Varas e Foros
 
-## Run project (localhost)  
-Abra o terminal e rode o comando `yarn <nome_arquivo_projeto>.`  
-Exemplo: `yarn varas_foros_v2.yaml`  
-> NOTA  
-**<nome_arquivo_projeto>** são os arquivos que estão na pasta `api_yaml_files`  
-Qualquer alteração feita nesse arquivo será refletida na página enquanto estiver em debug.  
+### v2
+- Feriados
+- Task e Activity Codes
+- Case Management
+- Court Venue
+- Deadline Calculator
+- Locales
+- Looplex Content
+- Occupations
+- Practice Areas
+- Task Template
+- Task Management
+- Contract Classifications
+- Legal Person Classifications
 
-## Build após criação do endpoint  
-Após criar endpoint novo e queira fazer o commit para atualizar as documentações dos ambientes, clique na extensão da `Looplex no painel esquerdo > OpenAPI > Build + Run da documentação`, aguarde o build terminar e faça o commit das alterações dos arquivos .json que forem compilados para a pasta `app/<version_number>/<api_name>/*.json`
+## Estrutura do projeto
+Na pasta `app/` estão os arquivos do projeto:
+- Os componentes das apis (DTOs, enums, etc.) na pasta `schemas` separados por `{api_name}`
+- Os endpoints separados por projetos (APIs) na pasta `v{version}_{api_name}`
+
+## Run project (localhost)
+// TODO
+
+## Build após criação do endpoint
+// TODO
