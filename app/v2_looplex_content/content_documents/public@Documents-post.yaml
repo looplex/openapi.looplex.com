@@ -1,13 +1,9 @@
 tags:
   - Documents
-
 summary: "Create Document"
-# summary: ""
-
 description: |
   ****<br />
   Item created's guid is returned in **Location header**
-
 operationId: Documents-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
@@ -25,4 +21,3 @@ responses:
     description: "Unauthorized"
   "500":
     description: "Internal Server Error"
- 

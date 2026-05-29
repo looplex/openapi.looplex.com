@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.1.1
 info:
   version: 1.0.0
   title: Actions
@@ -86748,7 +86748,7 @@ components:
       example: 1
       description: |
         -2147483648: None
-         
+
         1: Processo
 
         2: Subprocesso
@@ -87393,11 +87393,11 @@ components:
 
         1: Em aberto,
 
-        2: Agendada, 
+        2: Agendada,
 
-        3: Realizada, 
+        3: Realizada,
 
-        4: Ocupado, 
+        4: Ocupado,
 
         5: A confirmar
 
@@ -89849,7 +89849,7 @@ components:
       title: TipoDadoComplementar
       example: 1
       description: |
-        `O tipo do dado complementar` 
+        `O tipo do dado complementar`
 
         -2147483648: None
 
@@ -90945,21 +90945,21 @@ components:
       title: GrupoNaturezaDaCausa
       example: 2
       description: |
-        1: ProcessosAdministrativos  
+        1: ProcessosAdministrativos
 
-        2: ProcessosJudiciaisEstadual  
+        2: ProcessosJudiciaisEstadual
 
-        3: ProcessosJudiciaisFederal  
+        3: ProcessosJudiciaisFederal
 
-        4: ProcessosJudiciaisTrabalhista  
+        4: ProcessosJudiciaisTrabalhista
 
-        5: ProcessosConsultivo  
+        5: ProcessosConsultivo
 
-        6: ProcessosEleitoral  
+        6: ProcessosEleitoral
 
-        7: ProcessosMilitarEstadual  
+        7: ProcessosMilitarEstadual
 
-        8: ProcessosMilitarUniao  
+        8: ProcessosMilitarUniao
     DTONaturezaCompleto:
       title: DTONaturezaCompleto
       type: object
@@ -91397,13 +91397,13 @@ components:
       example: 1
       description: |
 
-        -2147483648: None  
+        -2147483648: None
 
-        1: DeTrabalho  
+        1: DeTrabalho
 
-        2: Particular  
+        2: Particular
 
-        3: Prazo  
+        3: Prazo
 
         4: Publicacao
     DTOPrazoPublicacao:

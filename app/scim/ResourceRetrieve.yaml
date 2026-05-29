@@ -8,7 +8,7 @@ properties:
     example: <global_unique_identifier>
   externalId:
     example: <external_id>
-    type: string <nullable>
+    type: [string, "null"]
     description: "**External identifier**"
   meta:
     description: "**Entity's information**"

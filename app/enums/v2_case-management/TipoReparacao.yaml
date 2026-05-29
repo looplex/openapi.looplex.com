@@ -1,5 +1,5 @@
 title: "Tipo de Reparação"
-type: string <nullable>
+type: [string, "null"]
 example: <tipo_da_reparacao>
 description: |
   **Request for relief or remedy sought by the party in connection with the claim.<br/>**

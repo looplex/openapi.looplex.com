@@ -1,8 +1,7 @@
 title: View
-description: ""
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
-  - type: object    
+  - type: object
     properties:
       Name:
         type: string
@@ -13,4 +12,4 @@ allOf:
       Children:
         type: array
         items:
-         $ref: View.yaml 
+          $ref: View.yaml

@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Task Template",
@@ -362,19 +362,28 @@
             "example": "<tipo_do_recurso>"
           },
           "created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "lastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -397,7 +406,10 @@
           },
           "externalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "meta": {
@@ -533,7 +545,10 @@
             "example": "<global_unique_identifier>"
           },
           "name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
           }
@@ -541,7 +556,10 @@
       },
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "invalidFilter",
         "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },
@@ -648,19 +666,28 @@
             "example": "<tipo_do_recurso>"
           },
           "Created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -683,7 +710,10 @@
           },
           "ExternalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "Meta": {
@@ -796,7 +826,10 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
           }

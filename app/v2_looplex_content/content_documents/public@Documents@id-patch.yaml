@@ -1,12 +1,7 @@
 tags:
   - Documents
-
 summary: "Update Document"
-# summary: ""
-
 description: ""
-# description: ****
-
 operationId: Documents-documentID-patch
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

@@ -1,5 +1,5 @@
 # API 'v2_task_template.yaml'
-openapi: 3.0.2
+openapi: 3.1.1
 security: []
 info:
   version: 1.0.0
@@ -27,13 +27,13 @@ paths:
   /TaskTemplates/:id:
     get:
       $ref: task_templates\public@task_templates@id-get.yaml
-    patch: 
+    patch:
       $ref: task_templates\public@task_templates@id-patch.yaml
   /TaskTemplates:
     get:
-      $ref: task_templates\public@task_templates-get.yaml  
+      $ref: task_templates\public@task_templates-get.yaml
     post:
-      $ref: task_templates\public@task_templates-post.yaml    
+      $ref: task_templates\public@task_templates-post.yaml
 
 components:
   # Crie uma seção customizada para guardar trechos de texto
