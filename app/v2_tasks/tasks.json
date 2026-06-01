@@ -393,6 +393,21 @@
           }
         }
       },
+      "TaskTemplateSimpleEntityRetrieve": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "type": "object",
+            "properties": {
+              "interviewTemplateLink": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
       "StatusTarefa": {
         "title": "Status Tarefa",
         "type": "string",
@@ -530,7 +545,7 @@
             "description": "**Código da Atividade**"
           },
           "taskTemplate": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/TaskTemplateSimpleEntityRetrieve",
             "description": "**Modelo de Tarefa**"
           },
           "owner": {
@@ -839,6 +854,21 @@
           }
         }
       },
+      "TaskTemplateSimpleEntityQuery": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SimpleEntityQuery",
+            "type": "object",
+            "properties": {
+              "InterviewTemplateLink": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
       "LegacyIdentityEntityQuery": {
         "title": "Identidade",
         "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
@@ -958,7 +988,7 @@
             "description": "**Código da Atividade**"
           },
           "TaskTemplate": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
+            "$ref": "#/components/schemas/TaskTemplateSimpleEntityQuery",
             "description": "**Modelo de Tarefa**"
           },
           "Owner": {
@@ -1077,10 +1107,7 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "example": "<nome_do_item>",
             "description": "**The item name**"
           }
@@ -1096,18 +1123,12 @@
               "null"
             ],
             "format": "uuid",
-            "description": "**Unique identifier of parent task**"
+            "description": "**Unique identifier of parent task**",
+            "example": null
           },
           "Type": {
             "$ref": "#/components/schemas/TaskType",
             "example": "COURT_HEARING"
-          },
-          "SubType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Subtype of the task**"
           },
           "Title": {
             "type": [
@@ -1138,26 +1159,6 @@
             ],
             "format": "datetime",
             "description": "**Data de Vencimento**"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Criado por**"
-          },
-          "UpdatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Atualizado por**"
-          },
-          "CompletedAt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "datetime",
-            "description": "**Concluído em**"
-          },
-          "CompletedBy": {
-            "$ref": "#/components/schemas/SimpleEntityWrite",
-            "description": "**Concluído por**"
           },
           "Locale": {
             "type": [
@@ -1203,17 +1204,14 @@
             "example": "LOW",
             "$ref": "#/components/schemas/Prioridade"
           },
-          "ConclusionNotes": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Notas de Conclusão**"
-          },
           "CustomFields": {
             "type": "object",
             "example": {},
             "description": "**Tasks's custom fields**"
+          },
+          "Case": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Processo**"
           },
           "TaskHierarchy": {
             "$ref": "#/components/schemas/TaskHierarchyWrite"

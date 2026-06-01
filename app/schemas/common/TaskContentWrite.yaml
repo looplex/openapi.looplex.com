@@ -5,12 +5,10 @@ properties:
     type: [string, "null"]
     format: uuid
     description: "**Unique identifier of parent task**"
+    example: null
   Type:
     $ref: ../../enums/common/TaskType.yaml
-    example: COURT_HEARING
-  SubType:
-    type: [string, "null"]
-    description: "**Subtype of the task**"
+    example: COURT_HEARING  
   Title:
     type: [string, "null"]
     description: "**Titulo**"
@@ -24,20 +22,7 @@ properties:
   DueDate:
     type: [string, "null"]
     format: datetime
-    description: "**Data de Vencimento**"
-  CreatedBy:
-    $ref: SimpleEntityWrite.yaml
-    description: "**Criado por**"
-  UpdatedBy:
-    $ref: SimpleEntityWrite.yaml
-    description: "**Atualizado por**"
-  CompletedAt:
-    type: [string, "null"]
-    format: datetime
-    description: "**Concluído em**"
-  CompletedBy:
-    $ref: SimpleEntityWrite.yaml
-    description: "**Concluído por**"
+    description: "**Data de Vencimento**"    
   Locale:
     type: [string, "null"]
     description: "**Local**"
@@ -63,14 +48,14 @@ properties:
     example: CREATED
   Priority:
     example: LOW
-    $ref: ../../enums/common/Prioridade.yaml
-  ConclusionNotes:
-    type: [string, "null"]
-    description: "**Notas de Conclusão**"
+    $ref: ../../enums/common/Prioridade.yaml  
   CustomFields:
     type: object
     example: {}
     description: "**Tasks's custom fields**"
+  Case:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Processo**"
   TaskHierarchy:
     $ref: TaskHierarchyWrite.yaml
 
