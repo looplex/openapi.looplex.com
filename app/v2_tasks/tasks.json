@@ -393,6 +393,21 @@
           }
         }
       },
+      "TaskTemplateSimpleEntityRetrieve": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "type": "object",
+            "properties": {
+              "interviewTemplateLink": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
       "StatusTarefa": {
         "title": "Status Tarefa",
         "type": "string",
@@ -530,7 +545,7 @@
             "description": "**Código da Atividade**"
           },
           "taskTemplate": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/TaskTemplateSimpleEntityRetrieve",
             "description": "**Modelo de Tarefa**"
           },
           "owner": {
@@ -839,6 +854,21 @@
           }
         }
       },
+      "TaskTemplateSimpleEntityQuery": {
+        "title": "Dados da tarefa",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SimpleEntityQuery",
+            "type": "object",
+            "properties": {
+              "InterviewTemplateLink": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
       "LegacyIdentityEntityQuery": {
         "title": "Identidade",
         "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
@@ -958,7 +988,7 @@
             "description": "**Código da Atividade**"
           },
           "TaskTemplate": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
+            "$ref": "#/components/schemas/TaskTemplateSimpleEntityQuery",
             "description": "**Modelo de Tarefa**"
           },
           "Owner": {

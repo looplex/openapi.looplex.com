@@ -48,7 +48,7 @@ properties:
     type: [string, "null"]
     description: "**Código da Atividade**"
   TaskTemplate:
-    $ref: SimpleEntityQuery.yaml
+    $ref: TaskTemplateSimpleEntityQuery.yaml
     description: "**Modelo de Tarefa**"
   Owner:
     $ref: SimpleEntityQuery.yaml
