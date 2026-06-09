@@ -57,32 +57,30 @@ properties:
     description: "**Participant's addresses**"
     type: array
     items:
-      $ref: AddressEntityQuery.yaml
+      $ref: AddressEntityWrite.yaml
   Emails:
     description: "**E-mails**"
     type: array
     items:
-      $ref: EmailEntityQuery.yaml
+      $ref: EmailEntityWrite.yaml
   Identities:
     description: "**Participant's identities**"
     type: array
     items:
       oneOf:
-        - $ref: ../../schemas/common/NaturalPersonIdentityEntityQuery.yaml
-        - $ref: ../../schemas/common/LegalPersonIdentityEntityQuery.yaml
+        - $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
+        - $ref: ../../schemas/common/LegalPersonIdentityEntityWrite.yaml
   PhoneNumbers:
     description: "**Telefones**"
     type: array
     items:
-      $ref: PhoneNumberEntityQuery.yaml
+      $ref: PhoneNumberEntityWrite.yaml
   Role:
     $ref: ../../enums/v2_case-management/ParticipantRole.yaml
   CustomFields:
     type: object
     example: {}
-    description: "**Participant's custom fields**"
-  CaseType:
-    $ref: ../../enums/common/RamosJudicial.yaml
+    description: "**Participant's custom fields**"  
   BusinessStructure:
     type: string
   Dob:

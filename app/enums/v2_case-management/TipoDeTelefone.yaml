@@ -2,10 +2,10 @@ title: Tipo de telefone
 type: string
 example: <tipo_de_telefone>
 description: |
-  **A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />
-  work<br />
-  home<br />
-  mobile<br />
-  fax<br />
-  pager<br />
-  other
+  **A label indicating the attribute's function, e.g., 'WORK', 'HOME', 'MOBILE'.**<br />
+  WORK<br />
+  HOME<br />
+  MOBILE<br />
+  FAX<br />
+  PAGER<br />
+  OTHER

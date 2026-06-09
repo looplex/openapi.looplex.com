@@ -3502,10 +3502,7 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "example": "<nome_do_item>",
             "description": "**The item name**"
           }
@@ -4011,7 +4008,7 @@
         "title": "Address' type",
         "type": "string",
         "example": "<tipo_de_endereco>",
-        "description": "**Address' type**<br/>\nhome<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
+        "description": "**Address' type**<br/>\nHOME<br/>\nWORK<br/>\nOTHER<br/>\nBILLING<br/>\nDELIVERY<br/>\n"
       },
       "AddressEntityRetrieve": {
         "title": "Address",
@@ -4118,7 +4115,7 @@
         "title": "Tipo de telefone",
         "type": "string",
         "example": "<tipo_de_telefone>",
-        "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother\n"
+        "description": "**A label indicating the attribute's function, e.g., 'WORK', 'HOME', 'MOBILE'.**<br />\nWORK<br />\nHOME<br />\nMOBILE<br />\nFAX<br />\nPAGER<br />\nOTHER\n"
       },
       "PhoneNumberEntityRetrieve": {
         "title": "Phone number",
@@ -4308,9 +4305,6 @@
                 "type": "object",
                 "example": {},
                 "description": "**Participant's custom fields**"
-              },
-              "caseType": {
-                "$ref": "#/components/schemas/RamosJudicial"
               },
               "businessStructure": {
                 "type": "string"
@@ -5729,9 +5723,6 @@
                 "example": {},
                 "description": "**Participant's custom fields**"
               },
-              "CaseType": {
-                "$ref": "#/components/schemas/RamosJudicial"
-              },
               "BusinessStructure": {
                 "type": "string"
               },
@@ -6059,6 +6050,167 @@
           }
         }
       },
+      "AddressEntityWrite": {
+        "title": "Address",
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<pais>",
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
+          },
+          "postalCode": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<cep>",
+            "description": "**Postal code**"
+          },
+          "streetAddress": {
+            "type": "string",
+            "example": "<logradouro>",
+            "description": "**Street**"
+          },
+          "streetAddressNumber": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<numero_do_logradouro>",
+            "description": "**Street number**"
+          },
+          "locality": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<cidade>",
+            "description": "**Cidade**"
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<sigla_estado>",
+            "description": "**State**"
+          },
+          "extendedAddress": {
+            "type": "string",
+            "description": "**Extended address**",
+            "example": "<complemento>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AddressType"
+          },
+          "primary": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Is this the main address?**"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Address' custom fields**"
+          }
+        },
+        "required": [
+          "streetAddress"
+        ]
+      },
+      "EmailEntityWrite": {
+        "title": "Email",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "<email>",
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
+          }
+        }
+      },
+      "NaturalPersonIdentityEntityWrite": {
+        "title": "Identity (NATURAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
+      },
+      "LegalPersonIdentityEntityWrite": {
+        "title": "Identity (LEGAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
+      },
+      "PhoneNumberEntityWrite": {
+        "title": "Phone number",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "**Phone number**",
+            "example": "<numero_do_telefone>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDeTelefone"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "example": true
+          },
+          "contact": {
+            "type": "string",
+            "description": "**Contact name**",
+            "example": "<contato>"
+          },
+          "extension": {
+            "type": "string",
+            "description": "**Phone's extension**",
+            "example": "<extensao>"
+          },
+          "countryCode": {
+            "type": "integer",
+            "description": "**Phone's country code**",
+            "example": "<codigo_do_pais>"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Phone's custom fields**"
+          }
+        },
+        "required": [
+          "value",
+          "type",
+          "primary"
+        ]
+      },
       "ParticipantEntityWrite": {
         "title": "Dados de Parte",
         "type": "object",
@@ -6133,14 +6285,14 @@
             "description": "**Participant's addresses**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AddressEntityQuery"
+              "$ref": "#/components/schemas/AddressEntityWrite"
             }
           },
           "Emails": {
             "description": "**E-mails**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EmailEntityQuery"
+              "$ref": "#/components/schemas/EmailEntityWrite"
             }
           },
           "Identities": {
@@ -6149,10 +6301,10 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
                 },
                 {
-                  "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityWrite"
                 }
               ]
             }
@@ -6161,7 +6313,7 @@
             "description": "**Telefones**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+              "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             }
           },
           "Role": {
@@ -6171,9 +6323,6 @@
             "type": "object",
             "example": {},
             "description": "**Participant's custom fields**"
-          },
-          "CaseType": {
-            "$ref": "#/components/schemas/RamosJudicial"
           },
           "BusinessStructure": {
             "type": "string"
@@ -6920,156 +7069,6 @@
           }
         ]
       },
-      "NaturalPersonIdentityEntityWrite": {
-        "title": "Identity (NATURAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
-      "LegalPersonIdentityEntityWrite": {
-        "title": "Identity (LEGAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
-      "PhoneNumberEntityWrite": {
-        "title": "Phone number",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "**Phone number**",
-            "example": "<numero_do_telefone>"
-          },
-          "type": {
-            "$ref": "#/components/schemas/TipoDeTelefone"
-          },
-          "primary": {
-            "type": "boolean",
-            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
-            "example": true
-          },
-          "contact": {
-            "type": "string",
-            "description": "**Contact name**",
-            "example": "<contato>"
-          },
-          "extension": {
-            "type": "string",
-            "description": "**Phone's extension**",
-            "example": "<extensao>"
-          },
-          "countryCode": {
-            "type": "integer",
-            "description": "**Phone's country code**",
-            "example": "<codigo_do_pais>"
-          },
-          "customFields": {
-            "type": "object",
-            "description": "**Phone's custom fields**"
-          }
-        },
-        "required": [
-          "value",
-          "type",
-          "primary"
-        ]
-      },
-      "AddressEntityWrite": {
-        "title": "Address",
-        "type": "object",
-        "properties": {
-          "country": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<pais>",
-            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
-          },
-          "postalCode": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<cep>",
-            "description": "**Postal code**"
-          },
-          "streetAddress": {
-            "type": "string",
-            "example": "<logradouro>",
-            "description": "**Street**"
-          },
-          "streetAddressNumber": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<numero_do_logradouro>",
-            "description": "**Street number**"
-          },
-          "locality": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<cidade>",
-            "description": "**Cidade**"
-          },
-          "region": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<sigla_estado>",
-            "description": "**State**"
-          },
-          "extendedAddress": {
-            "type": "string",
-            "description": "**Extended address**",
-            "example": "<complemento>"
-          },
-          "type": {
-            "$ref": "#/components/schemas/AddressType"
-          },
-          "primary": {
-            "type": "boolean",
-            "example": false,
-            "description": "**Is this the main address?**"
-          },
-          "customFields": {
-            "type": "object",
-            "description": "**Address' custom fields**"
-          }
-        },
-        "required": [
-          "streetAddress"
-        ]
-      },
       "ClientEntityWrite": {
         "title": "Cliente",
         "type": "object",
@@ -7404,17 +7403,6 @@
             }
           }
         ]
-      },
-      "EmailEntityWrite": {
-        "title": "Email",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "example": "<email>",
-            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
-          }
-        }
       },
       "EmployeeEntityWrite": {
         "title": "Funcionário",

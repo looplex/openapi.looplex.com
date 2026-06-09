@@ -3,8 +3,8 @@ type: string
 example: <tipo_de_endereco>
 description: |
   **Address' type**<br/>
-  home<br/>
-  work<br/>
-  other<br/>
-  billing<br/>
-  delivery<br/>
+  HOME<br/>
+  WORK<br/>
+  OTHER<br/>
+  BILLING<br/>
+  DELIVERY<br/>
