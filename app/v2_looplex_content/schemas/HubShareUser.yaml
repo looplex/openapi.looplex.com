@@ -1,5 +1,5 @@
 title: HubShareUser
-description: ""
+type: object
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
   - type: object

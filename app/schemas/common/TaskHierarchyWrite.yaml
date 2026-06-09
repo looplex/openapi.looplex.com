@@ -1,0 +1,10 @@
+title: Dados da tarefa
+type: object
+allOf:
+  - $ref: TaskContentWrite.yaml
+  - type: object
+    properties:
+      Descendants:
+        type: array
+        items:
+          $ref: TaskContentDescendantsWrite.yaml

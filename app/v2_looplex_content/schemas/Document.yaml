@@ -1,5 +1,5 @@
 title: Document
-description: ""
+type: object
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
   - type: object
@@ -30,17 +30,17 @@ allOf:
       Participants:
         type: array
         items:
-          $ref: "Participant.yaml"
+          $ref: Participant.yaml
       PracticeArea:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       DocumentClass:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       DocumentSubClass:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       DocumentType:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       Files:
-        $ref: "ObjectFile.yaml"
+        $ref: ObjectFile.yaml
       Language:
         type: string
       Tenant:
@@ -60,20 +60,20 @@ allOf:
       CreatedOnBehalfOf:
         type: string
       ConfidentialityLevel:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       LifecycleStatus:
-        $ref: "SchemaEnumElement.yaml"
+        $ref: SchemaEnumElement.yaml
       IsArchived:
         type: boolean
       Links:
         description: "Define relationship between document and external resource"
         type: array
         items:
-          $ref: "Link.yaml"
+          $ref: Link.yaml
       DownloadFile:
         description: "presigned url that will be returned on retrieve"
         type: string
       subjectMatter:
         type: string
       Workflow:
-        $ref: "WorkflowInfo.yaml"
+        $ref: WorkflowInfo.yaml

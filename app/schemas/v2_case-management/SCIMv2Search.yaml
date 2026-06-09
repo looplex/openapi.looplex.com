@@ -1,0 +1,33 @@
+title: SCIMv2Search
+description: "Model for SCIM v2 /.search endpoint filter"
+properties:
+  Schemas:
+    type: array
+    description: "**The array of URNs**"
+    items:
+      type: string
+    example: [
+      "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+    ]
+  Filter:
+    type: string
+    example: null
+    description: "**The SCIMv2 filter**"
+  SortBy:
+    type: string
+    example: null
+    description: "**The property for sorting results**"
+  SortOrder:
+    type: string
+    example: null
+    description: "**The sort order (ASC / DESC)**"
+  StartIndex:
+    type: integer
+    example: 1
+    description: "**The start index for pagination**"
+  Count:
+    type: integer
+    example: 10
+    description: "**The total count of items to return**"
+required:
+  - Schemas

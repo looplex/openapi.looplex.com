@@ -1,27 +1,24 @@
 tags:
   - Documents
-
 summary: "Create Document on Case"
 # summary: "Create Document inside a case"
-
 description: |
   **Create Document inside a case**<br />
   Item created's guid is returned in **Location header**
-
 operationId: cases-caseID-Documents-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
-
-  - usesLooplexID: 
-      description: "if true uses Looplex case guid else uses M-files guid"
+  - name: usesLooplexID
+    in: query
+    schema:
       type: boolean
-      in: query
-  - caseID:
-      in: path 
+    description: "if true uses Looplex case guid else uses M-files guid"
+  - name: caseID
+    in: path
+    schema:
       type: string
-    
 requestBody:
   content:
     application/json:
@@ -30,4 +27,9 @@ requestBody:
 responses:
   "201":
     description: "Created"
-  
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "500":
+    description: "Internal Server Error"

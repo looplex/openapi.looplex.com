@@ -1,5 +1,5 @@
 title: TipoExpectativaReivindicacao
-type: string <nullable>
+type: [string, "null"]
 example: <perspectiva>
 description: |
   **Perpectiva**<br />

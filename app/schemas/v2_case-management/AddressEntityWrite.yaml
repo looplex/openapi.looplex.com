@@ -2,11 +2,11 @@ title: Address
 type: object
 properties:
   country:
-    type: string <nullable>
+    type: [string, "null"]
     example: <pais>
     description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
   postalCode:
-    type: string <nullable>
+    type: [string, "null"]
     example: <cep>
     description: "**Postal code**"
   streetAddress:
@@ -14,17 +14,17 @@ properties:
     example: <logradouro>
     description: "**Street**"
   streetAddressNumber:
-    type: string <nullable>
+    type: [string, "null"]
     example: <numero_do_logradouro>
-    description: "**Street number**"  
+    description: "**Street number**"
   locality:
-    type: string <nullable>
+    type: [string, "null"]
     example: <cidade>
     description: "**Cidade**"
   region:
-    type: string <nullable>
+    type: [string, "null"]
     example: <sigla_estado>
-    description: "**State**"  
+    description: "**State**"
   extendedAddress:
     type: string
     description: "**Extended address**"
@@ -38,5 +38,5 @@ properties:
   customFields:
     type: object
     description: "**Address' custom fields**"
-required: 
+required:
   - streetAddress

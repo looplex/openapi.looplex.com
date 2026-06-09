@@ -1,5 +1,5 @@
 title: Identity
-description: ""
+type: object
 properties:
   Id:
     type: string

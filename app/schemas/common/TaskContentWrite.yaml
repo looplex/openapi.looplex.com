@@ -2,40 +2,39 @@ title: Dados da tarefa
 type: object
 properties:
   ParentTaskId:
-    type: string <nullable>
+    type: [string, "null"]
     format: uuid
     description: "**Unique identifier of parent task**"
+    example: null
   Type:
     $ref: ../../enums/common/TaskType.yaml
-    example: COURT_HEARING
+    example: COURT_HEARING  
   Title:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Titulo**"
   Description:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Descrição**"
   StartDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Data de Início**"
   DueDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
-    description: "**Data de Vencimento**"
+    description: "**Data de Vencimento**"    
   Locale:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Local**"
   TaskCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Tarefa**"
   ActivityCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Atividade**"
   TaskTemplate:
-    type: string <nullable>
+    $ref: SimpleEntityWrite.yaml
     description: "**Modelo de Tarefa**"
-    example: <uuid>
-    format: uuid
   Owner:
     $ref: SimpleEntityWrite.yaml
     description: "**Responsável**"
@@ -49,18 +48,14 @@ properties:
     example: CREATED
   Priority:
     example: LOW
-    $ref: ../../enums/common/Prioridade.yaml
-  Case:
-    description: "**Caso de uma tarefa**"
-    type: object
-    properties:
-      Id:
-        type: string
-        format: uuid
-        description: |
-          **Case's unique identifier**<br/>
-          `Obrigatório apenas quando a tarefa não estiver sendo criada junto com o caso`
+    $ref: ../../enums/common/Prioridade.yaml  
   CustomFields:
     type: object
     example: {}
     description: "**Tasks's custom fields**"
+  Case:
+    $ref: SimpleEntityWrite.yaml
+    description: "**Processo**"
+  TaskHierarchy:
+    $ref: TaskHierarchyWrite.yaml
+

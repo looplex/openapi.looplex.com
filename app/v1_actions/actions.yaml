@@ -1,4 +1,4 @@
-openapi: 3.0.2
+openapi: 3.1.1
 info:
   version: 1.0.0
   title: Actions
@@ -10,7 +10,7 @@ info:
   license:
     name: Apache 2.0
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-  x-logo: 
+  x-logo:
     url: "https://www.looplex.com.br/img/logo-default.png"
     href: "/"
   description: >
@@ -22,7 +22,7 @@ servers:
     description: Actions Server
 tags:
   - name: Operations
-    description: 
+    description:
       Actions is the group of APIs consumed by the templates,
       related to document flows.
   - name: Code
@@ -45,10 +45,10 @@ paths:
     delete:
         $ref: ./paths/actions/code/code@{id}-delete.yaml
   /office-render:
-    post: 
+    post:
         $ref: ./paths/actions/office-render.yaml
   /dictionary-lookup:
-    post: 
+    post:
       $ref:  ./paths/actions/dictionary-lookup.yaml
   /echo:
     post:
@@ -57,40 +57,40 @@ paths:
     get:
       $ref: ./paths/actions/keyvault.yaml
   /oauth2-pkce-pair:
-    post: 
+    post:
       $ref: ./paths/actions/oauth2-pkce-pair.yaml
   /qrcode:
-    post: 
+    post:
       $ref: ./paths/actions/qrcode.yaml
   /spellcheck:
-    post: 
+    post:
       $ref: ./paths/actions/spellcheck.yaml
   /mustache-render:
-    post: 
+    post:
       $ref: ./paths/actions/mustache-render.yaml
   /text-recognize:
     post:
       $ref: ./paths/actions/text-recognize.yaml
   /puppeteer:
-    post: 
+    post:
       $ref: ./paths/actions/puppeteer.yaml
   /presigned-url:
-    get: 
+    get:
       $ref: ./paths/actions/presigned-url.yaml
   /plot:
-    post: 
+    post:
       $ref: ./paths/actions/plot.yaml
   /matchAdobeAnnotationsWithMSFormRecognizerAnalysis:
     post:
-     $ref:  ./paths/actions/matchAdobeAnnotationsWithMSFormRecognizerAnalysis.yaml 
+     $ref:  ./paths/actions/matchAdobeAnnotationsWithMSFormRecognizerAnalysis.yaml
   /vm2:
     post:
      $ref: ./paths/actions/vm2.yaml
   /sendmail:
-    post: 
+    post:
       $ref: ./paths/actions/sendmail.yaml
   /mjml-render:
-    post: 
+    post:
       $ref: ./paths/actions/mjml-render.yaml
   /mssql:
     post:
@@ -100,7 +100,7 @@ paths:
      $ref: ./paths/actions/looplex-headless-surf.yaml
   /looplex/sendmail:
     post:
-     $ref: ./paths/actions/looplex-sendmail.yaml 
+     $ref: ./paths/actions/looplex-sendmail.yaml
   /looplex/contextAwareSpellcheck:
     post:
      $ref: ./paths/actions/looplex-contextAwareSpellcheck.yaml
@@ -119,17 +119,17 @@ paths:
     get:
       $ref: ./paths/actions/tinyurl/tinyurl@{id}-get.yaml
     delete:
-      $ref: ./paths/actions/tinyurl/tinyurl@{id}-delete.yaml            
+      $ref: ./paths/actions/tinyurl/tinyurl@{id}-delete.yaml
   /jwt/sign:
     post:
       $ref: ./paths/actions/jwt/sign.yaml
   /jwt/verify:
     post:
-      $ref: ./paths/actions/jwt/verify.yaml         
-      
-      
-      
-           
+      $ref: ./paths/actions/jwt/verify.yaml
+
+
+
+
 components:
   securitySchemes:
     Subscription-Key:

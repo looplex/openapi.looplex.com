@@ -1,5 +1,5 @@
 title: ContingentLiabilityRiskClassification
-type: string <nullable>
+type: [string, "null"]
 example: <risco>
 description: |
   **Risco**<br />

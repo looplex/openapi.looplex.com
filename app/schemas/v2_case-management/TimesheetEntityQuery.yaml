@@ -10,7 +10,7 @@ allOf:
         description: "**Client unique identifier**"
         example: <global_unique_identifier>
       Classification:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Classificação**"
         example: <classificacao>
       Owner:
@@ -28,18 +28,18 @@ allOf:
           **Horas (quantidade de horas do lançamento)**<br />
           `Format: hh:mm:ss`
       TaskCode:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Código da Tarefa**"
         example: <codigo_da_tarefa>
       ActivityCode:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Código da Atividade**"
         example: <codigo_da_atividade>
       Applicant:
         $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Solicitante**"
       Description:
-        type: string <nullable>
+        type: [string, "null"]
         example: <descricao>
         description: "**Descrição**"
       IsInvoiced:
@@ -47,7 +47,7 @@ allOf:
         example: false
         description: "**Faturado**"
       CreatedAt:
-        type: string <nullable>
+        type: [string, "null"]
         format: datetime
         example: <data_de_criacao>
         description: "**Criado em**"
@@ -55,7 +55,7 @@ allOf:
         $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Criado por**"
       UpdatedAt:
-        type: string <nullable>
+        type: [string, "null"]
         format: datetime
         description: "**Atualizado em**"
         example: <data_de_atualizacao>

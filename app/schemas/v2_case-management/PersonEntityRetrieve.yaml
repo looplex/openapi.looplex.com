@@ -4,7 +4,7 @@ allOf:
   - $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
   - properties:
       email:
-        type: string <nullable>
+        type: [string, "null"]
         description: owner's email
         example: <email>
       identities:
