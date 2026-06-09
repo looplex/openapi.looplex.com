@@ -5,8 +5,4 @@ allOf:
   - type: object
     properties:
       Data:
-        $ref: TaskContent.yaml
-      Children:
-        type: array
-        items:
-          $ref: TaskContent.yaml
+        $ref: TaskContentQuery.yaml

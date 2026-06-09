@@ -1,0 +1,14 @@
+title: Identificador
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "**The object unique identifier**"
+    example: <global_unique_identifier>
+  name:
+    type: [string, "null"]
+    example: <client_name>
+    description: "**The client name**"
+  role:
+    $ref: ../../enums/v2_case-management/Position.yaml

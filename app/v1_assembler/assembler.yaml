@@ -1,5 +1,5 @@
 
-openapi: 3.0.2
+openapi: 3.1.1
 info:
   version: 1.0.0
   title: Assembler
@@ -110,5 +110,5 @@ components:
       $ref: ./components/securitySchemes/ocp_apim_subscription_key.yaml
 security:
   -  Subscription-Key: []
-    
-  
+
+

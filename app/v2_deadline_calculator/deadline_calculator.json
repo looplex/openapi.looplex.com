@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Deadline Calculator",
@@ -186,7 +186,7 @@
       "StartIndex": {
         "name": "startIndex",
         "in": "query",
-        "required": true,
+        "required": false,
         "description": "**Index of search**<br/>`Default: 1`",
         "example": 1,
         "schema": {
@@ -196,8 +196,8 @@
       "Count": {
         "name": "count",
         "in": "query",
-        "required": true,
-        "description": "**Total count of items to return**<br />\n`Default: 1` | `Max of 120`\n",
+        "required": false,
+        "description": "**Total count of items to return**<br />\n`Default: 12` | `Max of 120`\n",
         "example": 12,
         "schema": {
           "type": "integer"
@@ -302,7 +302,10 @@
       },
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "invalidFilter",
         "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },

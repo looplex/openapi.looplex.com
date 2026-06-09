@@ -1,5 +1,5 @@
 title: HubShareUsersInfo
-description: ""
+type: object
 properties:
   MaxLicenses:
     description: "Max number of licenses for tenant"

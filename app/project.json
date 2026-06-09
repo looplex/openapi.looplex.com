@@ -392,6 +392,12 @@
                     },
                     {
                         "option": 17,
+                        "label": "Search / Filter",
+                        "detail": "Search / filter endpoint",
+                        "folder": "search"
+                    },
+                    {
+                        "option": 19,
                         "label": "Court Order",
                         "detail": "Court Order endpoints",
                         "folder": "court_order"

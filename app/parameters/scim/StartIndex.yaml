@@ -1,6 +1,6 @@
 name: startIndex
 in: query
-required: true
+required: false
 description: "**Index of search**<br/>`Default: 1`"
 example: 1
 schema:

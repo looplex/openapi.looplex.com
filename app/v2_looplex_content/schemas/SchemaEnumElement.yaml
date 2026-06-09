@@ -1,5 +1,5 @@
 title: SchemaEnumElement
-description: ""
+type: object
 properties:
   Id:
     type: string

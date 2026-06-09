@@ -2,58 +2,53 @@ title: Dados da tarefa
 type: object
 properties:
   ParentTaskId:
-    type: string <nullable>
+    type: [string, "null"]
     format: uuid
     description: "**Unique identifier of parent task**"
   Type:
     $ref: ../../enums/common/TaskType.yaml
     example: COURT_HEARING
+  SubType:
+    type: [string, "null"]
+    description: "**Subtype of the task**"
   Title:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Titulo**"
   Description:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Descrição**"
   StartDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Data de Início**"
   DueDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Data de Vencimento**"
   CreatedBy:
     $ref: SimpleEntityQuery.yaml
     description: "**Criado por**"
-  CreatedAt:
-    type: string <nullable>
-    format: datetime
-    description: "**Criado em**"
-  UpdatedAt:
-    type: string <nullable>
-    format: datetime
-    description: "**Atualizado em**"
   UpdatedBy:
     $ref: SimpleEntityQuery.yaml
     description: "**Atualizado por**"
   CompletedAt:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Concluído em**"
   CompletedBy:
     $ref: SimpleEntityQuery.yaml
     description: "**Concluído por**"
   Locale:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Local**"
   TaskCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Tarefa**"
   ActivityCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Atividade**"
   TaskTemplate:
-    $ref: SimpleEntityQuery.yaml
+    $ref: TaskTemplateSimpleEntityQuery.yaml
     description: "**Modelo de Tarefa**"
   Owner:
     $ref: SimpleEntityQuery.yaml
@@ -70,12 +65,12 @@ properties:
     example: LOW
     $ref: ../../enums/common/Prioridade.yaml
   ConclusionNotes:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Notas de Conclusão**"
-  Identities:
-    type: array
-    items:
-      $ref: LegacyIdentityEntityQuery.yaml
+  CustomFields:
+    type: object
+    example: {}
+    description: "**Tasks's custom fields**"
   Case:
     description: "Caso de uma tarefa"
     type: object
@@ -94,7 +89,25 @@ properties:
       Group:
         type: string
         description: "Case's group"
-  CustomFields:
-    type: object
-    example: {}
-    description: "**Tasks's custom fields**"
+      ClientName:
+        type: string
+        description: "Case's client name"
+      PrincipalActivePosition:
+        type: string
+        description: "Case's principal active position"
+      PrincipalPassivePosition:
+        type: string
+        description: "Case's principal passive position"
+      Locale:
+        type: string
+        description: "Case's locale"
+  Identities:
+    type: array
+    items:
+      $ref: LegacyIdentityEntityQuery.yaml
+  HasAncestor:
+    type: boolean
+    description: "**Indicates if the task has ancestor tasks**"
+  HasDescendant:
+    type: boolean
+    description: "**Indicates if the task has descendant tasks**"

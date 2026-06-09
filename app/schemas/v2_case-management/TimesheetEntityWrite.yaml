@@ -21,18 +21,18 @@ properties:
       **Horas (quantidade de horas do lançamento)**<br />
       `Format: hh:mm:ss`
   taskCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Tarefa**"
     example: <codigo_da_tarefa>
   activityCode:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Código da Atividade**"
     example: <codigo_da_atividade>
   applicant:
     $ref: ../../schemas/common/SimpleEntityWrite.yaml
     description: "**Solicitante**"
   description:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Descrição**"
     example: <descricao>
   taskType:

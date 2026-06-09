@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "2.0.0",
     "title": "Looplex Varas e Foros",
@@ -1118,7 +1118,10 @@
       },
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "invalidFilter",
         "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },

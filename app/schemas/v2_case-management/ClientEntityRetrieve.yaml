@@ -17,19 +17,19 @@ properties:
   type:
     $ref: ../../enums/v2_case-management/TipoPessoa.yaml
   email:
-    type: string <nullable>
+    type: [string, "null"]
     example: <email>
     description: "**Client's email address**"
   website:
-    type: string <nullable>
+    type: [string, "null"]
     example: <website>
     description: "**The client's website page**"
   comments:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Comments about the client**"
     example: <observacoes_sobre_o_cliente>
   dob:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: "**Client's date of birth (available when NATURAL_PERSON)**"
     example: <data_de_nascimento>

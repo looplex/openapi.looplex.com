@@ -17,17 +17,12 @@ allOf:
       deadlineCalculationType:
         $ref: ../../enums/common/DeadlineCalculationType.yaml
       priority:
-        $ref: ../../enums/common/Prioridade.yaml
-      consecutiveDays:
-        type: boolean
+        $ref: ../../enums/common/Prioridade.yaml      
       timeToExecution:
         description: "Tempo para execução (em horas)"    
         type: integer
       documentLinkType:
-        $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
-      documentIdentifier:
-        description: "Link do documento"
-        type: string
+        $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml      
       caseTypes:
         example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
         description: 
@@ -43,6 +38,8 @@ allOf:
         type: string
       taskCode:
         type: string
+      interviewTemplateLink:
+        type: string  
       children:
         type: array
         items:

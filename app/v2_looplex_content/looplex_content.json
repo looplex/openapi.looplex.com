@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Looplex Content",
@@ -61,13 +61,19 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       }
     },
-    "/views/:viewID/objects": {
+    "/views/{viewID}/objects": {
       "get": {
         "tags": [
           "Views"
@@ -103,8 +109,9 @@
             }
           },
           {
-            "viewID": {
-              "in": "path",
+            "name": "viewID",
+            "in": "path",
+            "schema": {
               "type": "string"
             }
           }
@@ -165,6 +172,12 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -213,7 +226,7 @@
         }
       }
     },
-    "/hubshareuser/:email/status": {
+    "/hubshareuser/{email}/status": {
       "put": {
         "tags": [
           "Hubshare Users"
@@ -414,7 +427,7 @@
         }
       }
     },
-    "/cases/:caseId/Documents": {
+    "/cases/{caseID}/Documents": {
       "get": {
         "tags": [
           "Documents"
@@ -450,17 +463,17 @@
             }
           },
           {
-            "usesLooplexID": {
-              "in": "query",
-              "description": "if true uses Looplex case guid else uses M-files guid",
-              "schema": {
-                "type": "string"
-              }
+            "name": "usesLooplexID",
+            "in": "query",
+            "description": "if true uses Looplex case guid else uses M-files guid",
+            "schema": {
+              "type": "string"
             }
           },
           {
-            "caseID": {
-              "in": "path",
+            "name": "caseID",
+            "in": "path",
+            "schema": {
               "type": "string"
             }
           }
@@ -508,15 +521,17 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "usesLooplexID": {
-              "description": "if true uses Looplex case guid else uses M-files guid",
-              "type": "boolean",
-              "in": "query"
-            }
+            "name": "usesLooplexID",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "if true uses Looplex case guid else uses M-files guid"
           },
           {
-            "caseID": {
-              "in": "path",
+            "name": "caseID",
+            "in": "path",
+            "schema": {
               "type": "string"
             }
           }
@@ -533,17 +548,25 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/Documents/:id": {
+    "/Documents/{id}": {
       "delete": {
         "tags": [
           "Documents"
         ],
         "summary": "Delete Document",
-        "description": "",
         "operationId": "Documents-documentGUID-delete",
         "parameters": [
           {
@@ -690,7 +713,7 @@
         }
       }
     },
-    "/Documents/:id/check-in": {
+    "/Documents/{id}/check-in": {
       "put": {
         "tags": [
           "Documents"
@@ -722,11 +745,20 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/Documents/:id/check-out": {
+    "/Documents/{id}/check-out": {
       "put": {
         "tags": [
           "Documents"
@@ -758,6 +790,15 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -804,7 +845,9 @@
             "description": "Internal Server Error"
           }
         }
-      },
+      }
+    },
+    "/Cases/{id}": {
       "patch": {
         "tags": [
           "Cases"
@@ -832,7 +875,7 @@
             }
           },
           {
-            "usesLooplexId": null,
+            "name": "usesLooplexId",
             "in": "header",
             "description": "if true uses looplex case guid else M-files guid",
             "schema": {
@@ -888,7 +931,7 @@
             "$ref": "#/components/parameters/BearerToken"
           },
           {
-            "usesLooplexId": null,
+            "name": "usesLooplexId",
             "in": "header",
             "description": "if true uses looplex case guid else M-files guid",
             "schema": {
@@ -965,19 +1008,28 @@
             "example": "<tipo_do_recurso>"
           },
           "Created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -1000,7 +1052,10 @@
           },
           "ExternalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "Meta": {
@@ -1011,7 +1066,6 @@
       },
       "View": {
         "title": "View",
-        "description": "",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
@@ -1040,7 +1094,7 @@
       },
       "GenericProperty": {
         "title": "GenericProperty",
-        "description": "",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string"
@@ -1055,7 +1109,6 @@
       },
       "GenericResource": {
         "title": "GenericResource",
-        "description": "",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
@@ -1075,7 +1128,7 @@
       },
       "HubShareUser": {
         "title": "HubShareUser",
-        "description": "",
+        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
@@ -1104,7 +1157,7 @@
       },
       "HubShareUsersInfo": {
         "title": "HubShareUsersInfo",
-        "description": "",
+        "type": "object",
         "properties": {
           "MaxLicenses": {
             "description": "Max number of licenses for tenant",
@@ -1132,7 +1185,6 @@
       },
       "HubShareUserWrite": {
         "title": "HubShareUser",
-        "description": "",
         "type": "object",
         "properties": {
           "Name": {
@@ -1148,7 +1200,7 @@
       },
       "Identity": {
         "title": "Identity",
-        "description": "",
+        "type": "object",
         "properties": {
           "Id": {
             "type": "string"
@@ -1163,7 +1215,7 @@
       },
       "Participant": {
         "title": "Participant",
-        "description": "",
+        "type": "object",
         "properties": {
           "Name": {
             "type": "string"
@@ -1181,7 +1233,7 @@
       },
       "SchemaEnumElement": {
         "title": "SchemaEnumElement",
-        "description": "",
+        "type": "object",
         "properties": {
           "Id": {
             "type": "string"
@@ -1196,7 +1248,7 @@
       },
       "ObjectFile": {
         "title": "ObjectFile",
-        "description": "",
+        "type": "object",
         "properties": {
           "FileId": {
             "type": "string"
@@ -1214,7 +1266,7 @@
       },
       "Link": {
         "title": "Link",
-        "description": "",
+        "type": "object",
         "properties": {
           "Rel": {
             "type": "string"
@@ -1226,7 +1278,6 @@
       },
       "WorkflowInfo": {
         "title": "WorkflowInfo",
-        "description": "",
         "properties": {
           "Name": {
             "type": "string"
@@ -1244,7 +1295,7 @@
       },
       "Document": {
         "title": "Document",
-        "description": "",
+        "type": "object",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"
@@ -1414,107 +1465,137 @@
           "value"
         ]
       },
+      "CaseClient": {
+        "title": "CaseClient",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Identities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Identity"
+            }
+          }
+        }
+      },
+      "LegalServiceAgreement": {
+        "title": "LegalServiceAgreement",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          }
+        }
+      },
       "Case": {
         "title": "Case",
-        "description": null,
+        "type": "object",
         "properties": {
           "Status": {
             "$ref": "#/components/schemas/SchemaEnumElement"
-          }
-        },
-        "Type": {
-          "$ref": "../schemas/SchemaEnumElement.yaml"
-        },
-        "SubType": {
-          "$ref": "../schemas/SchemaEnumElement.yaml"
-        },
-        "Identities": {
-          "$ref": "../schemas/Identity.yaml"
-        },
-        "Title": {
-          "type": "string"
-        },
-        "Summary": {
-          "type": "string"
-        },
-        "Locale": {
-          "type": "string"
-        },
-        "CourtVenue": {
-          "type": "string"
-        },
-        "CaseProcedure": {
-          "type": "string"
-        },
-        "Phase": {
-          "type": "string"
-        },
-        "PracticeArea": {
-          "type": "string"
-        },
-        "Nature": {
-          "type": "array",
-          "items": {
+          },
+          "Type": {
+            "$ref": "#/components/schemas/SchemaEnumElement"
+          },
+          "SubType": {
+            "$ref": "#/components/schemas/SchemaEnumElement"
+          },
+          "Identities": {
+            "$ref": "#/components/schemas/Identity"
+          },
+          "Title": {
             "type": "string"
-          }
-        },
-        "RetentionDate": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "StartDate": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "FormationDate": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "ResJudicataDate": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "ForecastedEndDate": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "CreatedAt": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "CreatedBy": {
-          "type": "string"
-        },
-        "UpdatedAt": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "UpdatedBy": {
-          "type": "string"
-        },
-        "ClosedAt": {
-          "type": "string",
-          "description": "ISO 8601 Date string"
-        },
-        "Group": {
-          "type": "string"
-        },
-        "Product": {
-          "type": "array",
-          "items": {
+          },
+          "Summary": {
             "type": "string"
-          }
-        },
-        "CaseClient": {
-          "$ref": "../schemas/CaseClient.yaml"
-        },
-        "LegalServiceAgreement": {
-          "type": "../schemas/LegalServiceAgreement"
-        },
-        "Participants": {
-          "type": "array",
-          "items": {
-            "$ref": "../schemas/Participant.yaml"
+          },
+          "Locale": {
+            "type": "string"
+          },
+          "CourtVenue": {
+            "type": "string"
+          },
+          "CaseProcedure": {
+            "type": "string"
+          },
+          "Phase": {
+            "type": "string"
+          },
+          "PracticeArea": {
+            "type": "string"
+          },
+          "Nature": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "RetentionDate": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "StartDate": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "FormationDate": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "ResJudicataDate": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "ForecastedEndDate": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "CreatedAt": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "CreatedBy": {
+            "type": "string"
+          },
+          "UpdatedAt": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "UpdatedBy": {
+            "type": "string"
+          },
+          "ClosedAt": {
+            "type": "string",
+            "description": "ISO 8601 Date string"
+          },
+          "Group": {
+            "type": "string"
+          },
+          "Product": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "CaseClient": {
+            "$ref": "#/components/schemas/CaseClient"
+          },
+          "LegalServiceAgreement": {
+            "$ref": "#/components/schemas/LegalServiceAgreement"
+          },
+          "Participants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Participant"
+            }
           }
         }
       }
