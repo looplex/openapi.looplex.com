@@ -1,5 +1,5 @@
 title: TipoTutela
-type: string <nullable>
+type: [string, "null"]
 example: <tipo_tutela>
 description: |
   **Tutela provisória**<br/>

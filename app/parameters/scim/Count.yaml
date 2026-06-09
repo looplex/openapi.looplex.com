@@ -1,9 +1,9 @@
 name: count
 in: query
-required: true
+required: false
 description: |
   **Total count of items to return**<br />
-  `Default: 1` | `Max of 120`
+  `Default: 12` | `Max of 120`
 example: 12
 schema:
   type: integer

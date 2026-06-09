@@ -1,5 +1,5 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
-openapi: 3.0.2
+openapi: 3.1.1
 security: []
 info:
   version: 1.0.0

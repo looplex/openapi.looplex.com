@@ -2,7 +2,7 @@ title: Identidade (LEGAL_PERSON)
 type: object
 properties:
   Id:
-    type: string <nullable>
+    type: [string, "null"]
     format: uuid
     description: "**The unique identifier of this value**"
     example: <global_unique_identifier_ou_null>"

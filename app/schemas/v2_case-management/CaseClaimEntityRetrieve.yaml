@@ -18,11 +18,11 @@ allOf:
         description: "**Question's general classification**"
         example: <subject_matter>
       reliefStatementId:
-        type: string <nullable>
+        type: [string, "null"]
         format: uuid
         example: <global_unique_identifier>
       reliefStatement:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
         example: <relief_statement>
       fineSuccumbence:

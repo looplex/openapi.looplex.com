@@ -24,7 +24,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: "../schemas/common/TaskEntity.yaml"
+          $ref: "../schemas/common/TaskEntityRetrieve.yaml"
   "500":
     description: "Internal Server Error"
     content:

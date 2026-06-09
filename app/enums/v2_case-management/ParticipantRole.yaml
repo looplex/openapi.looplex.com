@@ -1,5 +1,5 @@
 title: ParticipantRole
-type: string <nullable>
+type: [string, "null"]
 example: <papel_da_parte>
 description: |
   **Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />

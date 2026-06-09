@@ -24,13 +24,13 @@ properties:
     example: <titulo_do_processo>
     description: "**Nome Jurídico do caso**"
   Locale:
-    type: string <nullable>
+    type: [string, "null"]
     example: <local_do_processo>
     description: |
       **Utilizado em casos consultivos**<br />
       Local da Jurisdição de um caso, ou cumprimento da obrigação.
   CourtVenue:
-    type: string <nullable>
+    type: [string, "null"]
     example: <foro_do_processo>
     description: |
       **Utilizado para casos contenciosos, judiciais ou não**<br />
@@ -40,7 +40,7 @@ properties:
     example: <rito_do_processo>
     description: "**Rito ou procedimento do caso**"
   Phase:
-    type: string <nullable>
+    type: [string, "null"]
     description: |
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso

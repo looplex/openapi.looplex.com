@@ -1,9 +1,7 @@
 title: Tarefa
 type: object
-properties:
-  Data:
-    $ref: TaskContentWrite.yaml
-  Children:
-    type: array
-    items:
-      $ref: TaskContentWrite.yaml
+allOf:  
+  - type: object
+    properties:
+      Data:
+        $ref: TaskContentWrite.yaml

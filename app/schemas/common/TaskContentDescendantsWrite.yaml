@@ -1,0 +1,4 @@
+title: Dados da tarefa
+type: object
+allOf:
+  - $ref: TaskContentWrite.yaml

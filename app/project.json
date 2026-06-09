@@ -391,6 +391,12 @@
                         "folder": "products"
                     },
                     {
+                        "option": 17,
+                        "label": "Search / Filter",
+                        "detail": "Search / filter endpoint",
+                        "folder": "search"
+                    },
+                    {
                         "option": 18,
                         "label": "Docket Entry",
                         "detail": "Docket Entry endpoints",

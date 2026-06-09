@@ -31,7 +31,7 @@ allOf:
         example: <nome_da_parte>
         description: "**Participant's name**"
       Nickname:
-        type: string <nullable>
+        type: [string, "null"]
         example: <apelido_da_parte>
         description: "**Apelido**"
       IsMainParty:
@@ -47,7 +47,7 @@ allOf:
         description: |
           **Documents or uuids of parties represented by this participant (if this participant is a lawyer)**
       LawyerOffice:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Escritório do advogado (se houver)**"
         example: <escritorio>
       Nature:

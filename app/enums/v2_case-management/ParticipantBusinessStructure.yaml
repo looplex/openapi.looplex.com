@@ -1,5 +1,5 @@
 title: ParticipantBusinessStructure
-type: string <nullable>
+type: [string, "null"]
 example: <business_structure>
 description: |
   Empresa Pública<br />

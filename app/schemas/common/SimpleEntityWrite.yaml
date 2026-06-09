@@ -7,6 +7,6 @@ properties:
     description: "**The item unique identifier**"
     example: <global_unique_identifier>
   Name:
-    type: string <nullable>
+    type: string
     example: <nome_do_item>
     description: "**The item name**"
