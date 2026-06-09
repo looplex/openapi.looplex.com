@@ -1,0 +1,30 @@
+# API 'Deadline_Calculator.yaml'
+openapi: 3.1.1
+security: []
+info:
+  version: 1.0.0
+  title: Looplex Deadline Calculator
+  termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
+  contact:
+    name: Developers Looplex
+    email: developer@looplex.com.br
+    url: "https://www.looplex.com.br"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://www.looplex.com.br/img/logo-default.png"
+    href: "/"
+  description: >
+    API para cálculo de prazos
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+servers:
+  - url: "https://apim.looplex.com/standards/v1"
+    description: "Deadline Calculator Server"
+paths:
+
+  /count_rule:
+    get:
+      $ref: ./Deadline_Calculator/public@count_rule-get.yaml

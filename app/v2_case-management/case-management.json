@@ -246,6 +246,87 @@
         }
       }
     },
+    "/{resource}/.search": {
+      "post": {
+        "tags": [
+          "Search / Filter"
+        ],
+        "summary": "/.search",
+        "description": "**SCIMv2 search / filter items using POST**<br />\n**Exemplos de utilização:** [`/cases/.search`, `/entries/.search`]<br />\n`Ainda não disponível para utilização`\n",
+        "operationId": ".search-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SCIMv2Search"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "description": "**O tipo é o mesmo utilizado no endpoint**<br />\nPor exemplo: <br />\n- se a request for `/cases/.search` o tipo desse retorno será um [CaseInfo](#tag/Case-Management/operation/cases-case_id-get)\n- se a request for `/entries/.search` o tipo desse retorno será um [Entry](#tag/Entry/operation/entries-entry_id-get)\n"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/cases/:id": {
       "get": {
         "tags": [
@@ -3263,7 +3344,7 @@
       "StartIndex": {
         "name": "startIndex",
         "in": "query",
-        "required": true,
+        "required": false,
         "description": "**Index of search**<br/>`Default: 1`",
         "example": 1,
         "schema": {
@@ -3273,8 +3354,8 @@
       "Count": {
         "name": "count",
         "in": "query",
-        "required": true,
-        "description": "**Total count of items to return**<br />\n`Default: 1` | `Max of 120`\n",
+        "required": false,
+        "description": "**Total count of items to return**<br />\n`Default: 12` | `Max of 120`\n",
         "example": 12,
         "schema": {
           "type": "integer"
@@ -3314,7 +3395,10 @@
     "schemas": {
       "SCIMtypeError": {
         "title": "SCIM Type error",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "invalidFilter",
         "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
       },
@@ -3341,7 +3425,7 @@
         "title": "Tipo de classificacao automática",
         "type": "string",
         "example": "<tipo_de_classificacao_do_andamento>",
-        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nDOCUMENT_ANALYSIS<br/>\nDOCUMENT_GENERATOR\n"
+        "description": "**Tipo de classificação do andamento**<br />\nTIMESHEET<br/>\nCOURT_NOTICES_AND_SERVICE<br/>\nDOCKET_ENTRY<br/>\nEMAIL<br/>\nAUTOMATIC<br/>\nMANUAL<br/>\nANALYZED_DOCUMENT<br/>\nGENERATED_DOCUMENT\n"
       },
       "EntryEntityWrite": {
         "title": "Entry (Andamento)",
@@ -3354,7 +3438,10 @@
             "description": "**Data do andamento**"
           },
           "classification": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Classificação do andamento**",
             "example": "<classificacao_do_andamento>"
           },
@@ -3415,7 +3502,10 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The item name**"
           }
@@ -3453,12 +3543,18 @@
             "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
           },
           "taskCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Tarefa**",
             "example": "<codigo_da_tarefa>"
           },
           "activityCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Código da Atividade**",
             "example": "<codigo_da_atividade>"
           },
@@ -3467,7 +3563,10 @@
             "description": "**Solicitante**"
           },
           "description": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Descrição**",
             "example": "<descricao>"
           },
@@ -3487,6 +3586,71 @@
           }
         }
       },
+      "SCIMv2Search": {
+        "title": "SCIMv2Search",
+        "description": "Model for SCIM v2 /.search endpoint filter",
+        "properties": {
+          "Schemas": {
+            "type": "array",
+            "description": "**The array of URNs**",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
+            ]
+          },
+          "Filter": {
+            "type": "string",
+            "example": null,
+            "description": "**The SCIMv2 filter**"
+          },
+          "SortBy": {
+            "type": "string",
+            "example": null,
+            "description": "**The property for sorting results**"
+          },
+          "SortOrder": {
+            "type": "string",
+            "example": null,
+            "description": "**The sort order (ASC / DESC)**"
+          },
+          "StartIndex": {
+            "type": "integer",
+            "example": 1,
+            "description": "**The start index for pagination**"
+          },
+          "Count": {
+            "type": "integer",
+            "example": 10,
+            "description": "**The total count of items to return**"
+          }
+        },
+        "required": [
+          "Schemas"
+        ]
+      },
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
       "MetaRetrieve": {
         "title": "Meta",
         "type": "object",
@@ -3498,19 +3662,28 @@
             "example": "<tipo_do_recurso>"
           },
           "created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "lastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -3533,7 +3706,10 @@
           },
           "externalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "meta": {
@@ -3583,7 +3759,10 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identitier_or_null>"
@@ -3637,12 +3816,18 @@
             "description": "**Nome Jurídico do caso**"
           },
           "locale": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_processo>",
             "description": "**Utilizado em casos consultivos**<br />\nLocal da Jurisdição de um caso, ou cumprimento da obrigação.\n"
           },
           "courtVenue": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<foro_do_processo>",
             "description": "**Utilizado para casos contenciosos, judiciais ou não**<br />\nForo do caso, local onde o caso será julgado\n"
           },
@@ -3652,7 +3837,10 @@
             "description": "**Rito ou procedimento do caso**"
           },
           "phase": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
             "example": "<fase_do_processo>"
           },
@@ -3683,9 +3871,41 @@
             "example": "<global_unique_identifier>"
           },
           "name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
+          }
+        }
+      },
+      "Position": {
+        "title": "Position",
+        "type": "string",
+        "example": "<polo>",
+        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
+      },
+      "SimpleClientRetrieve": {
+        "title": "Identificador",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The object unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<client_name>",
+            "description": "**The client name**"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Position"
           }
         }
       },
@@ -3700,7 +3920,10 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>"
@@ -3726,7 +3949,10 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>\""
@@ -3751,7 +3977,10 @@
           {
             "properties": {
               "email": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "owner's email",
                 "example": "<email>"
               },
@@ -3778,12 +4007,6 @@
         "example": "<tipo_de_pessoa>",
         "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
-      "Position": {
-        "title": "Position",
-        "type": "string",
-        "example": "<polo>",
-        "description": "**Posição do participante**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY<br/>\nNONE<br/>\nOTHER\n"
-      },
       "AddressType": {
         "title": "Address' type",
         "type": "string",
@@ -3801,12 +4024,18 @@
             "type": "object",
             "properties": {
               "country": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<pais>",
                 "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
               },
               "postalCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<cep>",
                 "description": "**Postal code**"
               },
@@ -3816,17 +4045,26 @@
                 "description": "**Street**"
               },
               "streetAddressNumber": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<numero_do_logradouro>",
                 "description": "**Street number**"
               },
               "locality": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<cidade>",
                 "description": "**Cidade**"
               },
               "region": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<sigla_estado>",
                 "description": "**State**"
               },
@@ -3927,19 +4165,28 @@
       },
       "ParticipantRole": {
         "title": "ParticipantRole",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<papel_da_parte>",
         "description": "**Papel do participante no processo, ex: Autor, Réu, Testemunha, Juiz, Perito**<br />\nOs papéis são definidos de acordo com o tipo de caso e o rito do caso.<br />\nAUTOR<br />\nREU<br />\nADVOGADO<br />\nPERITO<br />\nJUIZ<br />\nTESTEMUNHA\n"
       },
       "Gender": {
         "title": "Gender",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<genero>",
         "description": "**Gender (available when NATURAL_PERSON)**<br/>\nFEMALE<br/>\nMALE\n"
       },
       "MaritalStatus": {
         "title": "Marital status",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<estado_civil>",
         "description": "**Marital status (NATURAL_PERSON only)**<br />\nSOLTEIRO<br/>\nCASADO<br/>\nVIUVO<br/>\nDESQUITADO<br/>\nDIVORCIADO\n"
       },
@@ -3980,7 +4227,10 @@
                 "description": "**Participant's name**"
               },
               "nickname": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<apelido_da_parte>",
                 "description": "**Apelido**"
               },
@@ -4001,7 +4251,10 @@
                 "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
               },
               "lawyerOffice": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Escritório do advogado (se houver)**",
                 "example": "<escritorio>"
               },
@@ -4086,13 +4339,19 @@
       },
       "TipoExpectativaReivindicacao": {
         "title": "TipoExpectativaReivindicacao",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<perspectiva>",
         "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nGAIN\n"
       },
       "ContingentLiabilityRiskClassification": {
         "title": "ContingentLiabilityRiskClassification",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<risco>",
         "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
       },
@@ -4145,13 +4404,19 @@
       },
       "TipoReparacao": {
         "title": "Tipo de Reparação",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<tipo_da_reparacao>",
         "description": "**Request for relief or remedy sought by the party in connection with the claim.<br/>**\n<abbr style=\"text-decoration: none\" title=\"Compensation for non-economic harm affecting a person's dignity, honor, or reputation, causing emotional pain or suffering, without direct economic impact.\">DANOS_MORAIS</abbr><br/>\n<abbr style=\"text-decoration: none\" title=\"Compensation for financial loss, including actual losses (past expenses) and loss of future earnings (lost profits), based on the victim's monetary harm.\">DANOS_MATERIAIS</abbr><br/>\n<abbr style=\"text-decoration: none\" title=\"Court order compelling a party to act or refrain from acting, such as injunctions and specific performance, aimed at enforcing legal obligations.\">OBRIGACAO_DE_FAZER</abbr><br/>\n<abbr style=\"text-decoration: none\" title=\"Court ruling that clarifies the legal rights or obligations of parties without ordering action or awarding damages.\">DECLARATORIA</abbr><br/>\n<abbr style=\"text-decoration: none\" title=\"Delivery of goods and services\">ENTREGA_DE_PRODUTOS_E_SERVICOS</abbr><br/>\n<abbr style=\"text-decoration: none\" title=\"Mandate\">MANDATO</abbr>\n"
       },
       "TipoTutela": {
         "title": "TipoTutela",
-        "type": "string <nullable>",
+        "type": [
+          "string",
+          "null"
+        ],
         "example": "<tipo_tutela>",
         "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
       },
@@ -4194,12 +4459,18 @@
                 "example": "<subject_matter>"
               },
               "reliefStatementId": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "uuid",
                 "example": "<global_unique_identifier>"
               },
               "reliefStatement": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
                 "example": "<relief_statement>"
               },
@@ -4308,7 +4579,10 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier>"
@@ -4340,7 +4614,10 @@
                 "description": "**Data do andamento**"
               },
               "classification": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Classificação do andamento**",
                 "example": "<classificacao_do_andamento>"
               },
@@ -4355,7 +4632,10 @@
                 "description": "**Indica se o andamento é de uso interno**"
               },
               "serviceOfProcess": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "uuid",
                 "description": "**Identificador da publicação que criou esse andamento (se houver)**",
                 "example": "<unique_identifier_da_publicacao>"
@@ -4410,7 +4690,10 @@
                 "example": "<global_unique_identifier>"
               },
               "classification": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Classificação**",
                 "example": "<classificacao>"
               },
@@ -4430,12 +4713,18 @@
                 "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
               },
               "taskCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Código da Tarefa**",
                 "example": "<codigo_da_tarefa>"
               },
               "activityCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Código da Atividade**",
                 "example": "<codigo_da_atividade>"
               },
@@ -4444,7 +4733,10 @@
                 "description": "**Solicitante**"
               },
               "description": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<descricao>",
                 "description": "**Descrição**"
               },
@@ -4454,7 +4746,10 @@
                 "description": "**Faturado**"
               },
               "createdAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_de_criacao>",
                 "description": "**Criado em**"
@@ -4464,7 +4759,10 @@
                 "description": "**Criado por**"
               },
               "updatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Atualizado em**",
                 "example": "<data_de_atualizacao>"
@@ -4517,12 +4815,18 @@
             "description": "**Data do evento**"
           },
           "title": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<titulo>",
             "description": "**Título do evento**"
           },
           "description": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<descricao>",
             "description": "**Descrição do evento**"
           }
@@ -4583,7 +4887,10 @@
                 "example": "<titulo_do_processo>"
               },
               "summary": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<observacoes_do_processo>",
                 "description": "**Breve descrição sobre o caso**"
               },
@@ -4624,7 +4931,10 @@
                 "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "phase": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<fase_do_processo>",
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n"
               },
@@ -4637,37 +4947,55 @@
                 }
               },
               "retentionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_entrada_do_processo>",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n"
               },
               "startDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_distribuicao_do_processo>",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n"
               },
               "formationDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_citacao_do_processo>",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n"
               },
               "resJudicataDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_transito_julgado_do_processo>",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n"
               },
               "forecastEndDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_prevista_encerramento_do_processo>",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n"
               },
               "createdAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_criacao_do_processo>",
                 "description": "**Data de criação do caso**"
@@ -4677,7 +5005,10 @@
                 "description": "**Usuário que criou o caso**"
               },
               "updatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<data_atualizacao_do_processo>",
                 "description": "**Atualizado em**"
               },
@@ -4686,7 +5017,10 @@
                 "$ref": "#/components/schemas/SimpleEntityRetrieve"
               },
               "closedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_encerramento_do_processo>",
                 "description": "**Data de encerramento**"
@@ -4711,8 +5045,8 @@
                 "description": "**Produto**<br />\nProduto ou serviço do cliente que está relacionado ao caso\n"
               },
               "caseClient": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Cliente**<br />\nQualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
+                "$ref": "#/components/schemas/SimpleClientRetrieve",
+                "description": "**Cliente**<br /> Qualquer pessoa ou entidade que contrata ou retém uma equipe jurídica para gerenciar ou conduzir atividades em um caso em seu nome\n"
               },
               "legalServiceAgreement": {
                 "$ref": "#/components/schemas/SimpleEntityRetrieve",
@@ -4843,27 +5177,6 @@
           "value"
         ]
       },
-      "ListResponse": {
-        "title": "Scim",
-        "type": "object",
-        "properties": {
-          "totalResults": {
-            "description": "**Total count of items in the filter**",
-            "type": "integer",
-            "example": 100
-          },
-          "startIndex": {
-            "description": "**Index of search**",
-            "type": "integer",
-            "example": 1
-          },
-          "itemsPerPage": {
-            "description": "**Total count of items to return**",
-            "type": "integer",
-            "example": 12
-          }
-        }
-      },
       "MetaQuery": {
         "title": "Meta",
         "type": "object",
@@ -4875,19 +5188,28 @@
             "example": "<tipo_do_recurso>"
           },
           "Created": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
           "LastModified": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
           "Location": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<local_do_recurso>",
             "description": "**The resource url**"
           },
@@ -4910,7 +5232,10 @@
           },
           "ExternalId": {
             "example": "<external_id>",
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**External identifier**"
           },
           "Meta": {
@@ -4924,7 +5249,10 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identitier_or_null>"
@@ -4950,7 +5278,10 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<nome_do_item>",
             "description": "**The object name**"
           }
@@ -4966,7 +5297,10 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>"
@@ -4986,7 +5320,10 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier_ou_null>\""
@@ -5055,12 +5392,18 @@
             "type": "object",
             "properties": {
               "Country": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<pais>",
                 "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
               },
               "PostalCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<cep>",
                 "description": "**Postal code**"
               },
@@ -5070,17 +5413,26 @@
                 "description": "**Street**"
               },
               "StreetAddressNumber": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<numero_do_logradouro>",
                 "description": "**Street number**"
               },
               "Locality": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<cidade>",
                 "description": "**Cidade**"
               },
               "Region": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<sigla_estado>",
                 "description": "**State**"
               },
@@ -5132,22 +5484,34 @@
             "$ref": "#/components/schemas/TipoPessoa"
           },
           "Email": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<email>",
             "description": "**Client's email address**"
           },
           "Website": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<website>",
             "description": "**The client's website page**"
           },
           "Comments": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Comments about the client**",
             "example": "<observacoes_sobre_o_cliente>"
           },
           "Dob": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Client's date of birth (available when NATURAL_PERSON)**",
             "example": "<data_de_nascimento>"
@@ -5158,6 +5522,9 @@
           "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus",
             "description": "**Client's marital status (available when NATURAL_PERSON)**"
+          },
+          "Role": {
+            "$ref": "#/components/schemas/Position"
           },
           "Identities": {
             "type": "array",
@@ -5200,7 +5567,10 @@
           {
             "properties": {
               "Email": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "owner's email",
                 "example": "<email>"
               },
@@ -5277,7 +5647,10 @@
                 "description": "**Participant's name**"
               },
               "Nickname": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<apelido_da_parte>",
                 "description": "**Apelido**"
               },
@@ -5298,7 +5671,10 @@
                 "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
               },
               "LawyerOffice": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Escritório do advogado (se houver)**",
                 "example": "<escritorio>"
               },
@@ -5474,7 +5850,10 @@
                 "example": "<titulo_do_processo>"
               },
               "Summary": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Breve descrição sobre o caso**",
                 "example": "<observacoes_do_processo>"
               },
@@ -5515,42 +5894,63 @@
                 "$ref": "#/components/schemas/SimpleEntityQuery"
               },
               "Phase": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
                 "example": "<fase_do_processo>"
               },
               "RetentionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n",
                 "example": "<data_de_entrada_do_processo>"
               },
               "StartDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n",
                 "example": "<data_distribuicao_do_processo>"
               },
               "FormationDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
                 "example": "<data_de_citacao_do_processo>"
               },
               "ResJudicataDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
                 "example": "<data_transito_julgado_do_processo>"
               },
               "ForecastEndDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
                 "example": "<data_prevista_encerramento_do_processo>"
               },
               "CreatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de criação do caso**",
                 "example": "<data_criacao_do_processo>"
@@ -5560,7 +5960,10 @@
                 "description": "**Usuário que criou o caso**"
               },
               "UpdatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Atualizado em**",
                 "example": "<data_de_atualizacao_do_processo>"
@@ -5570,7 +5973,10 @@
                 "$ref": "#/components/schemas/SimpleEntityQuery"
               },
               "ClosedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Data de encerramento**",
                 "example": "<data_encerramento_do_processo>"
@@ -5684,7 +6090,10 @@
             "description": "**Participant's name**"
           },
           "Nickname": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<apelido_da_parte>",
             "description": "**Apelido**"
           },
@@ -5705,7 +6114,10 @@
             "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
           },
           "LawyerOffice": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Escritório do advogado (se houver)**",
             "example": "<escritorio>"
           },
@@ -5847,12 +6259,18 @@
             "description": "**Question's general classification**"
           },
           "reliefStatementId": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "example": "<global_unique_identifier>"
           },
           "reliefStatement": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<relief_statement>",
             "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**"
           },
@@ -5974,7 +6392,10 @@
             "example": "<titulo_do_processo>"
           },
           "summary": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Breve descrição sobre o caso**",
             "example": "<observacoes_do_processo>"
           },
@@ -6003,7 +6424,10 @@
             "description": "**Foro do caso, local onde o caso será julgado.**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<foro_do_processo>",
                 "description": "**Foro do caso, local onde o caso será julgado**"
               },
@@ -6018,7 +6442,10 @@
             "description": "**Rito ou procedimento do caso**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<rito_do_processo>",
                 "description": "**Nome do rito**"
               },
@@ -6033,7 +6460,10 @@
             "description": "**Foro do caso, local onde o caso será julgado**<br/>\nUtilizado para casos <b>CONTRATO</b>\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<foro_do_processo>",
                 "description": "**Foro do caso, local onde o caso será julgado**"
               },
@@ -6048,7 +6478,10 @@
             "description": "**Rito ou procedimento do caso**<br/>\nCasos de tipo <b>CONTRATO</b>\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<rito_do_processo>",
                 "description": "**Nome do rito**"
               },
@@ -6063,7 +6496,10 @@
             "description": "**Foro do caso, local onde o caso será julgado**<br/>\nUtilizado para casos **SOCIETARIO**\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<foro_do_processo>",
                 "description": "**Foro do caso, local onde o caso será julgado**"
               },
@@ -6078,7 +6514,10 @@
             "description": "**Rito ou procedimento do caso**<br/>\nCasos de tipo <b>SOCIETARIO</b>\n",
             "oneOf": [
               {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<rito_do_processo>",
                 "description": "**Nome do rito**"
               },
@@ -6124,31 +6563,46 @@
             "example": []
           },
           "retentionDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n",
             "example": "<data_de_entrada_do_processo>"
           },
           "startDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n",
             "example": "<data_de_distribuicao_do_processo>"
           },
           "formationDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
             "example": "<data_de_citacao_do_processo>"
           },
           "resJudicataDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
             "example": "<data_transito_julgado_do_processo>"
           },
           "forecastEndDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
             "example": "<data_prevista_encerramento_do_processo>"
@@ -6350,17 +6804,26 @@
                 "example": "<global_unique_identifier>"
               },
               "SubjectMatter": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Question's general classification**",
                 "example": "<subject_matter>"
               },
               "ReliefStatementId": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "uuid",
                 "example": "<global_unique_identifier>"
               },
               "ReliefStatement": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Request for resolution of a dispute, stating interpretation of situation or status, or creating an obligation to pay, to do, or not to do**",
                 "example": "<relief_statement>"
               },
@@ -6541,12 +7004,18 @@
         "type": "object",
         "properties": {
           "country": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<pais>",
             "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
           },
           "postalCode": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<cep>",
             "description": "**Postal code**"
           },
@@ -6556,17 +7025,26 @@
             "description": "**Street**"
           },
           "streetAddressNumber": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<numero_do_logradouro>",
             "description": "**Street number**"
           },
           "locality": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<cidade>",
             "description": "**Cidade**"
           },
           "region": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<sigla_estado>",
             "description": "**State**"
           },
@@ -6611,22 +7089,34 @@
             "$ref": "#/components/schemas/TipoPessoa"
           },
           "email": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<email>",
             "description": "**Client's email address**"
           },
           "website": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<website>",
             "description": "**The client's website page**"
           },
           "comments": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Comments about the client**",
             "example": "<observacoes>"
           },
           "dob": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Client's date of birth (available when NATURAL_PERSON)**",
             "example": "<data_de_nascimento>"
@@ -6697,22 +7187,34 @@
             "$ref": "#/components/schemas/TipoPessoa"
           },
           "email": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<email>",
             "description": "**Client's email address**"
           },
           "website": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "<website>",
             "description": "**The client's website page**"
           },
           "comments": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Comments about the client**",
             "example": "<observacoes_sobre_o_cliente>"
           },
           "dob": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Client's date of birth (available when NATURAL_PERSON)**",
             "example": "<data_de_nascimento>"
@@ -6805,24 +7307,36 @@
                 "example": "<nome>"
               },
               "NickName": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's nickname**",
                 "example": "<apelido>"
               },
               "Dob": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's date of birth**",
                 "example": "<data_de_nascimento>"
               },
               "AdmissionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's admission date**",
                 "example": "<data_de_admissao>"
               },
               "DemissionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's demission date**",
                 "example": "<data_de_demissao>"
@@ -6838,7 +7352,10 @@
                 "description": "**Employee's identities**"
               },
               "Nationality": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's nationality**",
                 "example": "<nacionalidade>"
               },
@@ -6846,7 +7363,10 @@
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "Occupation": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's occupation**",
                 "example": "<profissao>"
               },
@@ -6916,19 +7436,28 @@
             "example": "<apelido>"
           },
           "Dob": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Employee's date of birth**",
             "example": "<data_de_nascimento>"
           },
           "AdmissionDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Employee's admission date**",
             "example": "<data_de_admissao>"
           },
           "DemissionDate": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "datetime",
             "description": "**Employee's demission date**",
             "example": "<data_de_demissao>"
@@ -6944,7 +7473,10 @@
             "description": "**Employee's identities**"
           },
           "Nationality": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Employee's nationality**",
             "example": "<nacionalidade>"
           },
@@ -6952,7 +7484,10 @@
             "$ref": "#/components/schemas/MaritalStatus"
           },
           "Occupation": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "description": "**Employee's occupation**",
             "example": "<profissao>"
           },
@@ -7015,24 +7550,36 @@
                 "example": "<nome>"
               },
               "nickName": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's nickname**",
                 "example": "<apelido>"
               },
               "dob": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's date of birth**",
                 "example": "<data_de_nascimento>"
               },
               "admissionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's admission date**",
                 "example": "<data_de_admissao>"
               },
               "demissionDate": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Employee's demission date**",
                 "example": "<data_de_demissao>"
@@ -7048,7 +7595,10 @@
                 "description": "**Employee's identities**"
               },
               "nationality": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's nationality**",
                 "example": "<nacionalidade>"
               },
@@ -7056,7 +7606,10 @@
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "occupation": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Employee's occupation**",
                 "example": "<profissao>"
               },
@@ -7101,7 +7654,10 @@
         "type": "object",
         "properties": {
           "Id": {
-            "type": "string <nullable>",
+            "type": [
+              "string",
+              "null"
+            ],
             "format": "uuid",
             "description": "**The unique identifier of this value**",
             "example": "<global_unique_identifier>"
@@ -7133,7 +7689,10 @@
                 "description": "**Data do andamento**"
               },
               "Classification": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Classificação do andamento**",
                 "example": "<classificacao_do_andamento>"
               },
@@ -7148,7 +7707,10 @@
                 "description": "**Indica se o andamento é de uso interno**"
               },
               "ServiceOfProcess": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "uuid",
                 "description": "**Identificador da publicação que criou esse andamento (se houver)**",
                 "example": "<unique_identifier_da_publicacao>"
@@ -7891,7 +8453,10 @@
                 "example": "<global_unique_identifier>"
               },
               "Classification": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Classificação**",
                 "example": "<classificacao>"
               },
@@ -7911,12 +8476,18 @@
                 "description": "**Horas (quantidade de horas do lançamento)**<br />\n`Format: hh:mm:ss`\n"
               },
               "TaskCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Código da Tarefa**",
                 "example": "<codigo_da_tarefa>"
               },
               "ActivityCode": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "description": "**Código da Atividade**",
                 "example": "<codigo_da_atividade>"
               },
@@ -7925,7 +8496,10 @@
                 "description": "**Solicitante**"
               },
               "Description": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "example": "<descricao>",
                 "description": "**Descrição**"
               },
@@ -7935,7 +8509,10 @@
                 "description": "**Faturado**"
               },
               "CreatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "example": "<data_de_criacao>",
                 "description": "**Criado em**"
@@ -7945,7 +8522,10 @@
                 "description": "**Criado por**"
               },
               "UpdatedAt": {
-                "type": "string <nullable>",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "format": "datetime",
                 "description": "**Atualizado em**",
                 "example": "<data_de_atualizacao>"

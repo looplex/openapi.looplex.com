@@ -1,5 +1,5 @@
 {
-  "openapi": "3.0.2",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.0.0",
     "title": "Looplex Cases",
@@ -17,7 +17,7 @@
       "url": "https://www.looplex.com.br/img/logo-default.png",
       "href": "/"
     },
-    "description": "This is an **example** API to demonstrate features of OpenAPI specification\n# Introduction\nThis API definition is intended to to be a good starting point for describing your API in \n[OpenAPI/Swagger format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).\n"
+    "description": "This is an **example** API to demonstrate features of OpenAPI specification\n# Introduction\nThis API definition is intended to to be a good starting point for describing your API in\n[OpenAPI/Swagger format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).\n"
   },
   "servers": [
     {

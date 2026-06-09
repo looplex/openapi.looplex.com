@@ -1,0 +1,11 @@
+title: Dados da tarefa
+type: object
+allOf:
+  - $ref: TaskContentQuery.yaml
+  - type: object
+    properties:
+      Descendants:
+        type: array
+        items:
+          $ref: TaskContentDescendantsQuery.yaml
+      

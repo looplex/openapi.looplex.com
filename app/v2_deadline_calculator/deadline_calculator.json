@@ -1,0 +1,333 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "version": "1.0.0",
+    "title": "Looplex Deadline Calculator",
+    "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
+    "contact": {
+      "name": "Developers Looplex",
+      "email": "developer@looplex.com.br",
+      "url": "https://www.looplex.com.br"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "x-logo": {
+      "url": "https://www.looplex.com.br/img/logo-default.png",
+      "href": "/"
+    },
+    "description": "API para cálculo de prazos\n"
+  },
+  "servers": [
+    {
+      "url": "https://apim.looplex.com/standards/v1",
+      "description": "Deadline Calculator Server"
+    }
+  ],
+  "security": [],
+  "externalDocs": {
+    "description": "Find out how to create a GitHub repo for your OpenAPI definition.",
+    "url": "https://github.com/Rebilly/generator-openapi-repo"
+  },
+  "paths": {
+    "/count_rule": {
+      "get": {
+        "tags": [
+          "Deadline_Calculator"
+        ],
+        "summary": "/Deadline Calculator",
+        "description": "**Fetch items paginated**",
+        "operationId": "count_rule-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "name": "Date",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "QuantityInDays",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "CalculationType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "RegionCode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Info": {
+                                "$ref": "#/components/schemas/Info"
+                              },
+                              "DaysInPeriod": {
+                                "type": "array",
+                                "items": {
+                                  "$ref": "#/components/schemas/DeadlineEntity"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "OcpApimSubscriptionKey": {
+        "name": "Ocp-Apim-Subscription-Key",
+        "in": "header",
+        "description": "**Subscription key provided by Looplex**",
+        "example": "{{Ocp-Apim-Subscription-Key}}",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "Tenant": {
+        "name": "x-looplex-tenant",
+        "in": "header",
+        "description": "**Client domain**",
+        "example": "{{client_domain}}",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "BearerToken": {
+        "name": "Authorization",
+        "in": "header",
+        "description": "**The authorization token**<br/>\n_Bearer \\<token_from_authentication_endpoint_response\\>_\n",
+        "required": true,
+        "example": "Bearer {{token}}",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "StartIndex": {
+        "name": "startIndex",
+        "in": "query",
+        "required": false,
+        "description": "**Index of search**<br/>`Default: 1`",
+        "example": 1,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Count": {
+        "name": "count",
+        "in": "query",
+        "required": false,
+        "description": "**Total count of items to return**<br />\n`Default: 12` | `Max of 120`\n",
+        "example": 12,
+        "schema": {
+          "type": "integer"
+        }
+      },
+      "Filter": {
+        "name": "filter",
+        "in": "query",
+        "required": false,
+        "description": "**SCIM filter to search**<br />\n**e.g:**<br />\n_Description_ _co_ _search_term_\n",
+        "schema": {
+          "type": "string"
+        },
+        "example": null
+      }
+    },
+    "schemas": {
+      "ListResponse": {
+        "title": "Scim",
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "description": "**Total count of items in the filter**",
+            "type": "integer",
+            "example": 100
+          },
+          "startIndex": {
+            "description": "**Index of search**",
+            "type": "integer",
+            "example": 1
+          },
+          "itemsPerPage": {
+            "description": "**Total count of items to return**",
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "Info": {
+        "title": "Info",
+        "type": "object",
+        "properties": {
+          "CalculationType": {
+            "type": "string",
+            "description": "Tipo do cálculo. <br/> \nBUSINESS_DAYS_ONLY <br/> \nCALENDAR_DAYS_HARD_DEADLINE <br/> CALENDAR_DAYS_NEXT_BUSINESS_DAY_ROLLOVER \n",
+            "example": "CALENDAR_DAYS_HARD_DEADLINE"
+          },
+          "QuantityInDays": {
+            "example": 10,
+            "type": "integer"
+          },
+          "StartDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "CountStartDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data inicial da contagem do cálculo que depende do tipo do cálculo."
+          },
+          "DeadlineDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Data final do prazo calculado."
+          },
+          "RegionCode": {
+            "type": "string",
+            "description": "Código da região. O padrão é \"| BR |\" para feriados nacionais, mas também é possível usar códigos mais específicos para feriados de outros estados, como \"| BR-SP |\" para o estado de São Paulo.",
+            "example": "| BR-SP |"
+          }
+        }
+      },
+      "DeadlineEntity": {
+        "title": "DeadlineEntity",
+        "type": "object",
+        "properties": {
+          "Date": {
+            "type": "string",
+            "format": "date"
+          },
+          "DayOfWeekNumber": {
+            "type": "integer",
+            "example": 4
+          },
+          "DayOfWeek": {
+            "type": "string",
+            "example": "Quarta"
+          },
+          "CustomFields": {
+            "type": "object"
+          },
+          "HolidayName": {
+            "type": "string",
+            "example": "Ano novo"
+          },
+          "Type": {
+            "example": "HOLIDAY",
+            "description": "Tipo do dia. Pode ser um dia útil (BUSINESS_DAY), um feriado (HOLIDAY) ou um fim de semana (WEEKEND).",
+            "type": "string"
+          }
+        }
+      },
+      "SCIMtypeError": {
+        "title": "SCIM Type error",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "invalidFilter",
+        "description": "**The type of SCIM error if request is GET, otherwise null**<br/>\ninvalidFilter<br/>\ntooMany<br/>\nuniqueness<br/>\nmutability<br/>\ninvalidSyntax<br/>\ninvalidPath<br/>\nnoTarget<br/>\ninvalidValue<br/>\ninvalidVers<br/>\nsensitive\n"
+      },
+      "SCIMError": {
+        "title": "SCIM Error",
+        "type": "object",
+        "properties": {
+          "scimType": {
+            "$ref": "#/components/schemas/SCIMtypeError"
+          },
+          "detail": {
+            "type": "string",
+            "description": "**The error message**",
+            "example": "<exception_message>"
+          },
+          "status": {
+            "type": "string",
+            "description": "**The HTTP Status Code error name**",
+            "example": "InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}

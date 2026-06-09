@@ -7,7 +7,7 @@ properties:
     example: <data_do_andamento>
     description: "**Data do andamento**"
   classification:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Classificação do andamento**"
     example: <classificacao_do_andamento>
   description:

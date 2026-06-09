@@ -26,7 +26,7 @@ properties:
     description: "**Nome Jurídico do caso**"
     example: <titulo_do_processo>
   summary:
-    type: string <nullable>
+    type: [string, "null"]
     description: "**Breve descrição sobre o caso**"
     example: <observacoes_do_processo>
   locale:
@@ -56,7 +56,7 @@ properties:
       **Foro do caso, local onde o caso será julgado.**<br/>
       Casos de tipo: <b>judicial, administrativo e arbitragem
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <foro_do_processo>
         description: "**Foro do caso, local onde o caso será julgado**"
       - type: string
@@ -67,7 +67,7 @@ properties:
       **Rito ou procedimento do caso**<br/>
       Casos de tipo: <b>judicial, administrativo e arbitragem
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <rito_do_processo>
         description: "**Nome do rito**"
       - type: string
@@ -78,7 +78,7 @@ properties:
       **Foro do caso, local onde o caso será julgado**<br/>
       Utilizado para casos <b>CONTRATO</b>
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <foro_do_processo>
         description: "**Foro do caso, local onde o caso será julgado**"
       - type: string
@@ -89,7 +89,7 @@ properties:
       **Rito ou procedimento do caso**<br/>
       Casos de tipo <b>CONTRATO</b>
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <rito_do_processo>
         description: "**Nome do rito**"
       - type: string
@@ -100,7 +100,7 @@ properties:
       **Foro do caso, local onde o caso será julgado**<br/>
       Utilizado para casos **SOCIETARIO**
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <foro_do_processo>
         description: "**Foro do caso, local onde o caso será julgado**"
       - type: string
@@ -111,7 +111,7 @@ properties:
       **Rito ou procedimento do caso**<br/>
       Casos de tipo <b>SOCIETARIO</b>
     oneOf:
-      - type: string <nullable>
+      - type: [string, "null"]
         example: <rito_do_processo>
         description: "**Nome do rito**"
       - type: string
@@ -141,21 +141,21 @@ properties:
         description: "**Unique identifier da legal category**"
     example: []
   retentionDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: |
       **Data de entrada** <br />
       Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
     example: <data_de_entrada_do_processo>
   startDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: |
       **Data de distribuição**<br />
       Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
     example: <data_de_distribuicao_do_processo>
   formationDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: |
       **Data de citação**<br />
@@ -163,7 +163,7 @@ properties:
       Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
     example: <data_de_citacao_do_processo>
   resJudicataDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: |
       **Data de trânsito em julgado**<br />
@@ -171,7 +171,7 @@ properties:
       A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
     example: <data_transito_julgado_do_processo>
   forecastEndDate:
-    type: string <nullable>
+    type: [string, "null"]
     format: datetime
     description: |
       **Data prevista para encerramento**<br />

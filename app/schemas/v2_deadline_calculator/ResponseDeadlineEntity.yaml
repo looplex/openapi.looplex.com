@@ -1,0 +1,9 @@
+title: ResponseDeadlineEntity
+type: object
+properties:
+  Info:
+    $ref: "../../v2_deadline_calculator/Info.yaml"    
+  DaysInPeriod:
+    type: array
+    items: 
+      $ref: "../../DeadlineEntity.yaml"

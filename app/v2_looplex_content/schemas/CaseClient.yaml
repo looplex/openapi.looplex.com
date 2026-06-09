@@ -1,11 +1,11 @@
 title: CaseClient
-description: 
+type: object
 properties:
   Id:
     type: string
   Name:
     type: string
   Identities:
-    type: array 
+    type: array
     items:
-      $ref: "../schemas/Identity.yaml"
+      $ref: Identity.yaml

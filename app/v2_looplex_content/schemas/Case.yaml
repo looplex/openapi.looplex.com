@@ -1,73 +1,71 @@
 title: Case
-description: 
+type: object
 properties:
   Status:
-    $ref: "../schemas/SchemaEnumElement.yaml"
-
-Type:
-    $ref: "../schemas/SchemaEnumElement.yaml"
-SubType:
-    $ref: "../schemas/SchemaEnumElement.yaml"
-Identities:
-    $ref: "../schemas/Identity.yaml"
-Title:
+    $ref: SchemaEnumElement.yaml
+  Type:
+    $ref: SchemaEnumElement.yaml
+  SubType:
+    $ref: SchemaEnumElement.yaml
+  Identities:
+    $ref: Identity.yaml
+  Title:
     type: string
-Summary:
+  Summary:
     type: string
-Locale:
+  Locale:
     type: string
-CourtVenue:
+  CourtVenue:
     type: string
-CaseProcedure:
+  CaseProcedure:
     type: string
-Phase:
+  Phase:
     type: string
-PracticeArea:
+  PracticeArea:
     type: string
-Nature:
-    type: array 
+  Nature:
+    type: array
     items:
       type: string
-RetentionDate:
+  RetentionDate:
     type: string
     description: "ISO 8601 Date string"
-StartDate:
+  StartDate:
     type: string
     description: "ISO 8601 Date string"
-FormationDate:
+  FormationDate:
     type: string
     description: "ISO 8601 Date string"
-ResJudicataDate:
+  ResJudicataDate:
     type: string
     description: "ISO 8601 Date string"
 ForecastEndDate:
     type: string
     description: "ISO 8601 Date string"
-CreatedAt:
+  CreatedAt:
     type: string
     description: "ISO 8601 Date string"
-CreatedBy:
+  CreatedBy:
     type: string
-UpdatedAt:
-    type: string
-    description: "ISO 8601 Date string"
-UpdatedBy:
-    type: string
-ClosedAt:
+  UpdatedAt:
     type: string
     description: "ISO 8601 Date string"
-
-Group:
+  UpdatedBy:
     type: string
-Product:
-    type: array 
+  ClosedAt:
+    type: string
+    description: "ISO 8601 Date string"
+  Group:
+    type: string
+  Product:
+    type: array
     items:
       type: string
-CaseClient:
-    $ref: "../schemas/CaseClient.yaml"
-LegalServiceAgreement:
-    type: "../schemas/LegalServiceAgreement"
-Participants:
-    type: array 
+  CaseClient:
+    $ref: CaseClient.yaml
+  LegalServiceAgreement:
+    $ref: LegalServiceAgreement.yaml
+  Participants:
+    type: array
     items:
-      $ref: "../schemas/Participant.yaml"
+      $ref: Participant.yaml

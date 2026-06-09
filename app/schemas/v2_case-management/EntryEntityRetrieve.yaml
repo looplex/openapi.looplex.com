@@ -10,7 +10,7 @@ allOf:
         example: <data_do_andamento>
         description: "**Data do andamento**"
       classification:
-        type: string <nullable>
+        type: [string, "null"]
         description: "**Classificação do andamento**"
         example: <classificacao_do_andamento>
       description:
@@ -22,7 +22,7 @@ allOf:
         example: false
         description: "**Indica se o andamento é de uso interno**"
       serviceOfProcess:
-        type: string <nullable>
+        type: [string, "null"]
         format: uuid
         description: "**Identificador da publicação que criou esse andamento (se houver)**"
         example: <unique_identifier_da_publicacao>

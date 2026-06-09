@@ -1,0 +1,8 @@
+title: Tarefa
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      Data:
+        $ref: TaskContentRetrieve.yaml
