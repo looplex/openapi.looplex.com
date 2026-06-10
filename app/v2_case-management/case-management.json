@@ -3502,10 +3502,7 @@
             "example": "<global_unique_identifier>"
           },
           "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "example": "<nome_do_item>",
             "description": "**The item name**"
           }
