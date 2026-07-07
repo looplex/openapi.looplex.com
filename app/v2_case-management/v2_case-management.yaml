@@ -199,3 +199,10 @@ paths:
   /CourtOrders:
     get:
       $ref: court_order/public@CourtOrders-get.yaml    
+      
+   # Docket Entry
+  /docketEntries:
+    get:
+      $ref: docket_entry\public@DocketEntries-get.yaml
+  
+  

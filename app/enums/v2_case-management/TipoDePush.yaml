@@ -1,0 +1,6 @@
+title: TipoDePush
+type: string
+example: "ANDAMENTO"
+description: |  
+  PUBLICACAO<br/>
+  ANDAMENTO<br/>

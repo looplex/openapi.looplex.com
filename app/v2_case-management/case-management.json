@@ -3373,6 +3373,82 @@
           }
         }
       }
+    },
+    "/docketEntries": {
+      "get": {
+        "tags": [
+          "Docket Entry"
+        ],
+        "summary": "Docket Entries",
+        "description": "**Fetch items paginated**",
+        "operationId": "api-v1-DocketEntries-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DocketEntryEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -8806,6 +8882,96 @@
               },
               "OfficialGazette": {
                 "$ref": "#/components/schemas/OfficialGazette"
+              },
+              "CaseProcedure": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
+              }
+            }
+          }
+        ]
+      },
+      "TipoDePush-2": {
+        "title": "TipoDePush",
+        "type": "string",
+        "example": "ANDAMENTO",
+        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
+      },
+      "DocketEntryEntity": {
+        "title": "DocketEntryEntity",
+        "description": null,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Provider": {
+                "$ref": "#/components/schemas/PushProvider"
+              },
+              "Court": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "JurisdictionTitle": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "AdjudicatingCourt": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "DateOfAvailability": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "DocketEntryDate": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "CaptureDate": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "Content": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "Region": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "CourtHouse": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "CourtLevel": {
+                "$ref": "#/components/schemas/Instance"
+              },
+              "CourtSystem": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "ExternalCnjClassification": {
+                "$ref": "#/components/schemas/ClassificationTypeCNJ"
+              },
+              "ExternalCnjId": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "Type": {
+                "$ref": "#/components/schemas/TipoDePush-2"
               },
               "CaseProcedure": {
                 "$ref": "#/components/schemas/SimpleEntityQuery"
