@@ -397,6 +397,12 @@
                         "folder": "search"
                     },
                     {
+                        "option": 19,
+                        "label": "Court Order",
+                        "detail": "Court Order endpoints",
+                        "folder": "court_order"
+                    },
+                    {
                         "option": -1,
                         "label": "Debug (não utilizar essa tag em endpoints oficiais)",
                         "detail": "Debug endpoints",
@@ -711,6 +717,6 @@
                     }
                 ]
             }
-        }
+        }        
     ]
 }

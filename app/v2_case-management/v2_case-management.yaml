@@ -194,3 +194,8 @@ paths:
   /timesheets/:id:
     get:
       $ref: timesheet\public@timesheets@id-get.yaml
+
+  # Court Order
+  /CourtOrders:
+    get:
+      $ref: court_order/public@CourtOrders-get.yaml    

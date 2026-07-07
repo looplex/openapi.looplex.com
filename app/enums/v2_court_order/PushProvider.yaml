@@ -1,0 +1,9 @@
+title: PushProvider
+type: string
+example: "SOLUCIONARE"
+description: |  
+  SOLUCIONARE<br/>
+  DIGESTO<br/>
+  XMLADVISE<br/>
+  OYSTR<br/>
+  POL<br/>

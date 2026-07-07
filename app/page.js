@@ -75,7 +75,7 @@ export default function Home() {
     'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client',
     'legal', 'service', 'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom',
     'fields', 'andamento', 'contrato', 'caso', 'cliente', 'parte', 'funcionario', 'pedido', 'area',
-    'token'
+    'token', 'court', 'order', 'push', 'publicação'
   ]
 
   const arrTasksKeywords = ['plataforma', 'task', 'tarefas', 'deadline', 'event type']
@@ -115,8 +115,9 @@ export default function Home() {
     'negócio', 'jurídico', 'natureza', 'atividade', 'econômica', 'contrato'
   ]
 
-  const arrStardardsDeadlineCalculatorKeywords = ['standards', 'deadline', 'calculator', 'calculadora', 'prazos', 'v2', 'cálculo', 'prazo', 'regra', 'rule', 'count', 'calendar', 'úteis', 'calendar', 'business']
-
+  const arrStardardsDeadlineCalculatorKeywords = ['standards', 'deadline', 'calculator', 'calculadora', 'prazos', 
+    'v2', 'cálculo', 'prazo', 'regra', 'rule', 'count', 'calendar', 'úteis', 'calendar', 'business']
+  
   const [cards, updateCards] = useState({
     isVisibleContractClassification: true,
     isVisibleLegalPersonClassification: true,
@@ -135,7 +136,7 @@ export default function Home() {
     isVisibleStandardsPracticeArea: true,
     isVisibleStandardsLocale: true,
     isVisibleStandardsOccupation: true,
-    isVisibleStardardsDeadlineCalculator: true
+    isVisibleStardardsDeadlineCalculator: true    
   })
 
   useEffect(() => {
@@ -157,7 +158,7 @@ export default function Home() {
       isVisibleStandardsLocale: (search === '') || arrStandardsLocaleKeywords.some(i => i.includes(search)),
       isVisibleStandardsOccupation: (search === '') || arrStandardsOccupationsKeywords.some(i => i.includes(search)),
       isVisibleStandardsPracticeArea: (search === '') || arrStandardsPracticeAreasKeywords.some(i => i.includes(search)),
-      isVisibleStardardsDeadlineCalculator: (search === '') || arrStardardsDeadlineCalculatorKeywords.some(i => i.includes(search))
+      isVisibleStardardsDeadlineCalculator: (search === '') || arrStardardsDeadlineCalculatorKeywords.some(i => i.includes(search))      
     })
   }, [search])
 
@@ -593,7 +594,7 @@ export default function Home() {
                         text='Case Management'
                       />
                     )
-                  }
+                  }                  
 
                 </ColCard>
               )
@@ -695,7 +696,8 @@ export default function Home() {
                 cards.isVisibleStandardsCodes ||
                 cards.isVisibleStandardsLocale ||
                 cards.isVisibleStandardsOccupation ||
-                cards.isVisibleStandardsPracticeArea
+                cards.isVisibleStandardsPracticeArea ||
+                cards.isVisibleStardardsDeadlineCalculator
               ) &&
               (
                 <ColCard>
@@ -757,7 +759,7 @@ export default function Home() {
                         text='Deadline Calculator'
                       />
                     )
-                  }
+                  }                 
 
                 </ColCard>
               )

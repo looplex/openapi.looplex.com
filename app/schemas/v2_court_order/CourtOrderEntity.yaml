@@ -1,0 +1,75 @@
+title: CourtOrderEntity
+description: ""
+allOf:
+  - $ref: '../../scim/ResourceQuery.yaml'
+  - type: object    
+    properties:  
+      CourtLevel:
+        $ref: '../../enums/v2_court_order/Instance.yaml'
+      Court:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      CourtSystem:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      Region:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      JurisdictionTitle:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      CourtHouse:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      AdjucatingCourt:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      Provider:
+        $ref: '../../enums/v2_court_order/PushProvider.yaml'    
+      ExternalCnjId:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      SearchTerms:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      DateOfAvailability:
+        type: string
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      PublicationDate:
+        type: string
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      CaptureDate:
+        type: string
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      Content:
+        type: string
+        example: "string de exemplo"
+        description: ""
+      CourtOrderCommunicationChannel:
+        $ref: '../../enums/v2_court_order/CourtOrderCommunicationChannel.yaml'    
+      CourtOrderServiceType:
+        $ref: '../../enums/v2_court_order/CourtOrderServiceType.yaml'    
+      CourtOrderType:
+        $ref: '../../enums/v2_court_order/CourtOrderType.yaml'    
+      ExternalCnjClassification:
+        $ref: '../../schemas/v2_court_order/ClassificationTypeCNJ.yaml'    
+      Type:
+        $ref: '../../enums/v2_court_order/TipoDePush.yaml'    
+      OfficialGazette:
+        $ref: '../../schemas/v2_court_order/OfficialGazette.yaml'    
+      CaseProcedure:
+        $ref: '../../schemas/common/SimpleEntityQuery.yaml'
+
+      #CourtDecision: --- dependência objeto Decision 
+        

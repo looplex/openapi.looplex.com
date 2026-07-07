@@ -3297,6 +3297,82 @@
           }
         }
       }
+    },
+    "/CourtOrders": {
+      "get": {
+        "tags": [
+          "Court Order"
+        ],
+        "summary": "/courtorders",
+        "description": "**Fetch items paginated**",
+        "operationId": "api-v1-CourtOrders-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CourtOrderEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -8544,6 +8620,195 @@
               },
               "TaskType": {
                 "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+              }
+            }
+          }
+        ]
+      },
+      "Instance": {
+        "title": "Instance",
+        "type": "string",
+        "example": "PRIMEIRA_INSTANCIA",
+        "description": "PRIMEIRA_INSTANCIA<br/>\nSEGUNDA_INSTANCIA<br/>\nINSTANCIA_SUPERIOR<br/>\n"
+      },
+      "PushProvider": {
+        "title": "PushProvider",
+        "type": "string",
+        "example": "SOLUCIONARE",
+        "description": "SOLUCIONARE<br/>\nDIGESTO<br/>\nXMLADVISE<br/>\nOYSTR<br/>\nPOL<br/>\n"
+      },
+      "CourtOrderCommunicationChannel": {
+        "title": "CourtOrderCommunicationChannel",
+        "type": "string",
+        "example": "DOMICILIO_ELETRONICO",
+        "description": "DOMICILIO_ELETRONICO<br/>\nDJEN<br/>\nDIARIO_OFICIAL_MUNICIPAL<br/>\nDIARIO_OFICIAL_ESTADUAL<br/>\nDIARIO_OFICIAL_UNIAO<br/>\nDIARIO_ELETRONICO_DA_JUSTICA<br/>\n"
+      },
+      "CourtOrderServiceType": {
+        "title": "CourtOrderServiceType",
+        "type": "string",
+        "example": "ELETRONICO",
+        "description": "ELETRONICO<br/>\nCARTA_COM_AR<br/>\nOFICIAL_DE_JUSTICA<br/>\nEDITAL<br/>\nEM_AUDIENCIA<br/>\n"
+      },
+      "CourtOrderType": {
+        "title": "CourtOrderType",
+        "type": "string",
+        "example": "PAUTA_DE_JULGAMENTO",
+        "description": "PAUTA_DE_JULGAMENTO<br/>\nDESPACHO<br/>\nSENTENCA<br/>\nACORDAO<br/>\nDECISAO_MONOCRATICA<br/>\nDECISAO_INTERLOCUTORIA<br/>\n"
+      },
+      "ClassificationTypeCNJ": {
+        "title": "ClassificationTypeCNJ",
+        "description": null,
+        "properties": {
+          "Id": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "ClassificationCode": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "Title": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "CourtNonStandardizedEntryTitle": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          }
+        }
+      },
+      "TipoDePush": {
+        "title": "TipoDePush",
+        "type": "string",
+        "example": "PUBLICACAO",
+        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
+      },
+      "OfficialGazette": {
+        "title": "OfficialGazette",
+        "description": null,
+        "properties": {
+          "Name": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "GazetteSection": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "Page": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "Link": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": ""
+          }
+        }
+      },
+      "CourtOrderEntity": {
+        "title": "CourtOrderEntity",
+        "description": "",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "CourtLevel": {
+                "$ref": "#/components/schemas/Instance"
+              },
+              "Court": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "CourtSystem": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "Region": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "JurisdictionTitle": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "CourtHouse": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "AdjucatingCourt": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "Provider": {
+                "$ref": "#/components/schemas/PushProvider"
+              },
+              "ExternalCnjId": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "SearchTerms": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "DateOfAvailability": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "PublicationDate": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "CaptureDate": {
+                "type": "string",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "Content": {
+                "type": "string",
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "CourtOrderCommunicationChannel": {
+                "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
+              },
+              "CourtOrderServiceType": {
+                "$ref": "#/components/schemas/CourtOrderServiceType"
+              },
+              "CourtOrderType": {
+                "$ref": "#/components/schemas/CourtOrderType"
+              },
+              "ExternalCnjClassification": {
+                "$ref": "#/components/schemas/ClassificationTypeCNJ"
+              },
+              "Type": {
+                "$ref": "#/components/schemas/TipoDePush"
+              },
+              "OfficialGazette": {
+                "$ref": "#/components/schemas/OfficialGazette"
+              },
+              "CaseProcedure": {
+                "$ref": "#/components/schemas/SimpleEntityQuery"
               }
             }
           }

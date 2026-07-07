@@ -1,0 +1,10 @@
+title: CourtOrderType
+type: string
+example: "PAUTA_DE_JULGAMENTO"
+description: |  
+  PAUTA_DE_JULGAMENTO<br/>
+  DESPACHO<br/>
+  SENTENCA<br/>
+  ACORDAO<br/>
+  DECISAO_MONOCRATICA<br/>
+  DECISAO_INTERLOCUTORIA<br/>
