@@ -101,6 +101,12 @@ properties:
       locale:
         type: string
         description: "Case's locale"
+      courtVenue:
+        type: string
+        description: "Case's court venue"
+      type: 
+        type: string
+        description: "Case's type"
   identities:
     type: array
     items:

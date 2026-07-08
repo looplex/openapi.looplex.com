@@ -617,6 +617,14 @@
               "locale": {
                 "type": "string",
                 "description": "Case's locale"
+              },
+              "courtVenue": {
+                "type": "string",
+                "description": "Case's court venue"
+              },
+              "type": {
+                "type": "string",
+                "description": "Case's type"
               }
             }
           },
@@ -1060,6 +1068,14 @@
               "Locale": {
                 "type": "string",
                 "description": "Case's locale"
+              },
+              "CourtVenue": {
+                "type": "string",
+                "description": "Case's court venue"
+              },
+              "Type": {
+                "type": "string",
+                "description": "Case's type"
               }
             }
           },
