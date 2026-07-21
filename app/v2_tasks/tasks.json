@@ -493,7 +493,7 @@
               "null"
             ],
             "format": "datetime",
-            "description": "**Data de Início**"
+            "description": "**Data de Início**<br/>\n_Date in UTC timezone_\n"
           },
           "dueDate": {
             "type": [
@@ -501,7 +501,7 @@
               "null"
             ],
             "format": "datetime",
-            "description": "**Data de Vencimento**"
+            "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
           },
           "createdBy": {
             "$ref": "#/components/schemas/SimpleEntityRetrieve",
@@ -936,7 +936,7 @@
               "null"
             ],
             "format": "datetime",
-            "description": "**Data de Início**"
+            "description": "**Data de Início**<br/>\n_Date in UTC timezone_\n"
           },
           "DueDate": {
             "type": [
@@ -944,7 +944,7 @@
               "null"
             ],
             "format": "datetime",
-            "description": "**Data de Vencimento**"
+            "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
           },
           "CreatedBy": {
             "$ref": "#/components/schemas/SimpleEntityQuery",
@@ -1120,7 +1120,7 @@
           "ParentTaskId": {
             "type": [
               "string",
-              "null"
+              null
             ],
             "format": "uuid",
             "description": "**Unique identifier of parent task**",
@@ -1133,52 +1133,59 @@
           "Title": {
             "type": [
               "string",
-              "null"
+              null
             ],
+            "example": "<title>",
             "description": "**Titulo**"
           },
           "Description": {
             "type": [
               "string",
-              "null"
+              null
             ],
+            "example": "<description>",
             "description": "**Descrição**"
           },
           "StartDate": {
             "type": [
               "string",
-              "null"
+              null
             ],
             "format": "datetime",
-            "description": "**Data de Início**"
+            "example": "<start_date>",
+            "description": "**Data de Início**<br/>\n_Date must be send in UTC timezone_\n"
           },
           "DueDate": {
             "type": [
               "string",
-              "null"
+              null
             ],
             "format": "datetime",
-            "description": "**Data de Vencimento**"
+            "example": "<due_date>",
+            "description": "**Data de Vencimento**<br/>\n_Date must be send in UTC timezone_\n"
           },
           "Locale": {
             "type": [
               "string",
-              "null"
+              null
             ],
+            "example": "<locale>",
             "description": "**Local**"
           },
           "TaskCode": {
             "type": [
               "string",
-              "null"
+              null
             ],
+            "example": "<task_code>",
             "description": "**Código da Tarefa**"
           },
           "ActivityCode": {
             "type": [
               "string",
-              "null"
+              null
             ],
+            "example": "<activity_code>",
             "description": "**Código da Atividade**"
           },
           "TaskTemplate": {
@@ -1198,10 +1205,10 @@
           },
           "Status": {
             "$ref": "#/components/schemas/StatusTarefa",
-            "example": "CREATED"
+            "example": "<status>"
           },
           "Priority": {
-            "example": "LOW",
+            "example": "<priority>",
             "$ref": "#/components/schemas/Prioridade"
           },
           "CustomFields": {

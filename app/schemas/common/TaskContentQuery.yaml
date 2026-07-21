@@ -20,11 +20,15 @@ properties:
   StartDate:
     type: [string, "null"]
     format: datetime
-    description: "**Data de Início**"
+    description: |
+      **Data de Início**<br/>
+      _Date in UTC timezone_
   DueDate:
     type: [string, "null"]
     format: datetime
-    description: "**Data de Vencimento**"
+    description: |
+      **Data de Vencimento**<br/>
+      _Date in UTC timezone_
   CreatedBy:
     $ref: SimpleEntityQuery.yaml
     description: "**Criado por**"
