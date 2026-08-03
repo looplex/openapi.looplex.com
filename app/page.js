@@ -60,16 +60,16 @@ export default function Home() {
     'render', 'easy', 'docs', 'surf', 'headless', 'jsbox', 'mjml', 'mustache', 'converter', 'word'
   ]
 
-  const arrCasesV1Keywords = [
-    'v1', 'api', 'logon', 'cases', 'legado', 'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
-    'administrativos', 'autenticação', 'advogado', 'andamento', 'area', 'busca', 'calculo',
-    'monetário', 'fase', 'categoria', 'cliente', 'contato', 'conteudo', 'julgamento', 'apurados',
-    'contrato', 'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário', 'custom', 'fields',
-    'garantia', 'hierarquia', 'informações', 'adicionais', 'dado', 'complementar',
-    'liabilities', 'calculation', 'motivo', 'pedir', 'natureza', 'pais', 'partes', 'pedidos',
-    'produtos', 'push', 'publicação', 'questões', 'processuais', 'solicitação', 'tabela', 'preço',
-    'tipo', 'decisão', 'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores'
-  ]
+  // const arrCasesV1Keywords = [
+  //   'v1', 'api', 'logon', 'cases', 'legado', 'mobile', 'service', 'litigiosos', 'casos', 'transacionais',
+  //   'administrativos', 'autenticação', 'advogado', 'andamento', 'area', 'busca', 'calculo',
+  //   'monetário', 'fase', 'categoria', 'cliente', 'contato', 'conteudo', 'julgamento', 'apurados',
+  //   'contrato', 'cumprimentos', 'decisões', 'despesas', 'pedido', 'funcionário', 'custom', 'fields',
+  //   'garantia', 'hierarquia', 'informações', 'adicionais', 'dado', 'complementar',
+  //   'liabilities', 'calculation', 'motivo', 'pedir', 'natureza', 'pais', 'partes', 'pedidos',
+  //   'produtos', 'push', 'publicação', 'questões', 'processuais', 'solicitação', 'tabela', 'preço',
+  //   'tipo', 'decisão', 'julgamnto', 'tarefa', 'agenda', 'timeline', 'timesheet', 'valores'
+  // ]
 
   const arrCasesV2Keywords = [
     'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client',
@@ -143,7 +143,7 @@ export default function Home() {
     updateCards({
       isVisibleContractClassification: (search === '') || arrStandardsContractClassificationKeywords.some(i => i.includes(search)),
       isVisibleLegalPersonClassification: (search === '') || arrStandardsLegalPersonClassificationKeywords.some(i => i.includes(search)),
-      isVisibleCasesV1: (search === '') || arrCasesV1Keywords.some(i => i.includes(search)),
+      // isVisibleCasesV1: (search === '') || arrCasesV1Keywords.some(i => i.includes(search)),
       isVisibleCasesV2: (search === '') || arrCasesV2Keywords.some(i => i.includes(search)),
       isVisibleTasks: (search === '') || arrTasksKeywords.some(i => i.includes(search)),
       isVisibleTaskTemplate: (search === '') || arrTaskTemplateKeywords.some(i => i.includes(search)),
@@ -534,7 +534,7 @@ export default function Home() {
 
           {
             (
-              cards.isVisibleCasesV1 ||
+              // cards.isVisibleCasesV1 ||
               cards.isVisibleCasesV2 ||
               cards.isVisibleTasks ||
               cards.isVisibleTaskTemplate ||
@@ -560,7 +560,7 @@ export default function Home() {
 
             {
               (
-                cards.isVisibleCasesV1 ||
+                // cards.isVisibleCasesV1 ||
                 cards.isVisibleCasesV2
               ) &&
               (
