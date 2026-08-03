@@ -2,35 +2,46 @@ title: Dados da tarefa
 type: object
 properties:
   ParentTaskId:
-    type: [string, "null"]
+    type: [string, null]
     format: uuid
     description: "**Unique identifier of parent task**"
     example: null
   Type:
     $ref: ../../enums/common/TaskType.yaml
-    example: COURT_HEARING  
+    example: COURT_HEARING
   Title:
-    type: [string, "null"]
+    type: [string, null]
+    example: <title>
     description: "**Titulo**"
   Description:
-    type: [string, "null"]
+    type: [string, null]
+    example: <description>
     description: "**Descrição**"
   StartDate:
-    type: [string, "null"]
+    type: [string, null]
     format: datetime
-    description: "**Data de Início**"
+    example: <start_date>
+    description: |
+      **Data de Início**<br/>
+      _Date must be send in UTC timezone_
   DueDate:
-    type: [string, "null"]
+    type: [string, null]
     format: datetime
-    description: "**Data de Vencimento**"    
+    example: <due_date>
+    description: |
+      **Data de Vencimento**<br/>
+      _Date must be send in UTC timezone_
   Locale:
-    type: [string, "null"]
+    type: [string, null]
+    example: <locale>
     description: "**Local**"
   TaskCode:
-    type: [string, "null"]
+    type: [string, null]
+    example: <task_code>
     description: "**Código da Tarefa**"
   ActivityCode:
-    type: [string, "null"]
+    type: [string, null]
+    example: <activity_code>
     description: "**Código da Atividade**"
   TaskTemplate:
     $ref: SimpleEntityWrite.yaml
@@ -45,10 +56,10 @@ properties:
       $ref: SimpleEntityWrite.yaml
   Status:
     $ref: ../../enums/common/StatusTarefa.yaml
-    example: CREATED
+    example: <status>
   Priority:
-    example: LOW
-    $ref: ../../enums/common/Prioridade.yaml  
+    example: <priority>
+    $ref: ../../enums/common/Prioridade.yaml
   CustomFields:
     type: object
     example: {}
