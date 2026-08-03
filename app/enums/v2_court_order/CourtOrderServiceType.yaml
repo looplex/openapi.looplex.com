@@ -1,0 +1,9 @@
+title: CourtOrderServiceType
+type: string
+example: "ELETRONICO"
+description: |
+  ELETRONICO<br/>
+  CARTA_COM_AR<br/>
+  OFICIAL_DE_JUSTICA<br/>
+  EDITAL<br/>
+  EM_AUDIENCIA<br/>

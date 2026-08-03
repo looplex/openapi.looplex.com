@@ -478,10 +478,6 @@
               "documentLinkType": {
                 "$ref": "#/components/schemas/TipoVinculoComDocumento"
               },
-              "documentIdentifier": {
-                "description": "Link do documento",
-                "type": "string"
-              },
               "caseTypes": {
                 "example": [
                   "JUDICIAL_ESTADUAL",
@@ -759,10 +755,6 @@
               "DocumentLinkType": {
                 "$ref": "#/components/schemas/TipoVinculoComDocumento"
               },
-              "DocumentIdentifier": {
-                "description": "Link do documento",
-                "type": "string"
-              },
               "CaseTypes": {
                 "example": [
                   "JUDICIAL_ESTADUAL",
@@ -866,10 +858,6 @@
           },
           "DocumentLinkType": {
             "$ref": "#/components/schemas/TipoVinculoComDocumento"
-          },
-          "DocumentIdentifier": {
-            "description": "Link do documento",
-            "type": "string"
           },
           "CaseTypes": {
             "example": [

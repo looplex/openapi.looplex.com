@@ -20,11 +20,15 @@ properties:
   startDate:
     type: [string, "null"]
     format: datetime
-    description: "**Data de Início**"
+    description: |
+      **Data de Início**<br/>
+      _Date in UTC timezone_
   dueDate:
     type: [string, "null"]
     format: datetime
-    description: "**Data de Vencimento**"
+    description: |
+      **Data de Vencimento**<br/>
+      _Date in UTC timezone_
   createdBy:
     $ref: SimpleEntityRetrieve.yaml
     description: "**Criado por**"
@@ -48,7 +52,7 @@ properties:
     type: [string, "null"]
     description: "**Código da Atividade**"
   taskTemplate:
-    $ref: SimpleEntityRetrieve.yaml
+    $ref: TaskTemplateSimpleEntityRetrieve.yaml
     description: "**Modelo de Tarefa**"
   owner:
     $ref: SimpleEntityRetrieve.yaml

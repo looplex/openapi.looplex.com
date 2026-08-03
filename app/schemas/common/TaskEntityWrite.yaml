@@ -1,6 +1,6 @@
 title: Tarefa
 type: object
-allOf:  
+allOf:
   - type: object
     properties:
       Data:

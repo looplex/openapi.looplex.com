@@ -1,0 +1,7 @@
+title: Instance
+type: string
+example: "PRIMEIRA_INSTANCIA"
+description: |  
+  PRIMEIRA_INSTANCIA<br/>
+  SEGUNDA_INSTANCIA<br/>
+  INSTANCIA_SUPERIOR<br/>

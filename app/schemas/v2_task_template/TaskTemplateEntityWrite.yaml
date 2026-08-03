@@ -20,10 +20,7 @@ properties:
     description: "Tempo para execução (em horas)"    
     type: integer
   DocumentLinkType:
-    $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml
-  DocumentIdentifier:
-    description: "Link do documento"
-    type: string
+    $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml  
   CaseTypes:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description: 
