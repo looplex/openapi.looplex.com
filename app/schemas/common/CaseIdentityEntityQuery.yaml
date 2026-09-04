@@ -12,3 +12,10 @@ properties:
     type: string
     description: "**The identity value**"
     example: <value>
+  IdentityContext:
+    $ref: ../../enums/common/IdentityContext.yaml
+  ContextId:
+    type: string
+    format: uuid
+    description: ""
+    example: <global_unique_identifier>

@@ -1,0 +1,17 @@
+title: Dados simplificados do caso (CaseFlatten)
+type: object
+properties:
+  Id:
+    type: string
+    format: uuid
+    description: "**The case unique identifier**"
+    example: <global_unique_identifier>
+  Title:
+    type: string
+    description: "**Nome jurídico do caso**"
+    example: <titulo_do_processo>
+  Identities:
+    type: array
+    description: "**Identificação do caso, como número CNJ, ids de sistemas externos, etc**"
+    items:
+      $ref: ../../schemas/common/CaseIdentityEntityQuery.yaml

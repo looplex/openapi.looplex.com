@@ -1,0 +1,8 @@
+title: IdentityContext
+type: string
+example: "CASE_INFO"
+description: |
+  CASE_INFO<br/>
+  EMPLOYEE<br/>
+  PARTY<br/>
+  CLIENT

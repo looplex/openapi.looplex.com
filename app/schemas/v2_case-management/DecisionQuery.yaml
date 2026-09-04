@@ -1,0 +1,122 @@
+title: Decision
+type: object
+properties:
+  ResolutionType:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  Date:
+    type: string
+    format: date-time
+    example: "2025-01-01T12:00:00.000Z"
+    description: ""
+  Judge:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  ResolutionContent:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  Excerpt:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  SummaryOfFindings:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  DocumentType:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  JudgementType:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  IssuePreservation:
+    type: [boolean, "null"]
+    description: ""
+  JudgementContent:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  MotivationForInvoluntaryDismissal:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  RulingOnProceduralIssuesGroup:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  RulingOnMotionsGroup:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  RulingOnProceduralIssues:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  RulingOnProceduralIssuesHierarchy:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  ProvisionalMeasures:
+    type: [boolean, "null"]
+    description: ""
+  TransferOfVenue:
+    type: [boolean, "null"]
+    description: ""
+  RejectionOfProceduralObjections:
+    type: [boolean, "null"]
+    description: ""
+  AdmissibilityReviewOfAppeal:
+    type: [boolean, "null"]
+    description: ""
+  RulingOnMotions:
+    type: [boolean, "null"]
+    description: ""
+  PeriodForFilingResponse:
+    type: [boolean, "null"]
+    description: ""
+  ProvisionalMeasuresObservation:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  Result:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  GrantedValue:
+    type: [number, "null"]
+    description: ""
+  FinePlaintiff:
+    oneOf:
+      - type: array
+        items:
+          $ref: ./FineDefeatCostQuery.yaml
+      - type: "null"
+  FineDefendant:
+    oneOf:
+      - type: array
+        items:
+          $ref: ./FineDefeatCostQuery.yaml
+      - type: "null"
+  FineThirdParties:
+    oneOf:
+      - type: array
+        items:
+          $ref: ./FineDefeatCostQuery.yaml
+      - type: "null"
+  DefeatCostPlaintiff:
+    oneOf:
+      - type: array
+        items:
+          $ref: ./FineDefeatCostQuery.yaml
+      - type: "null"
+  DefeatCostDefendant:
+    oneOf:
+      - type: array
+        items:
+          $ref: ./FineDefeatCostQuery.yaml
+      - type: "null"
