@@ -10,7 +10,6 @@ export default function Cases() {
       spec={json}
       options={{
         requiredPropsFirst: true,
-        sortPropsAlphabetically: true,
         downloadFileName: 'openapi_looplex_cases_v2.json'
       }}
     />
