@@ -2,74 +2,100 @@ title: CourtOrderEntity
 description: ""
 allOf:
   - $ref: '../../scim/ResourceQuery.yaml'
-  - type: object    
-    properties:  
+  - type: object
+    properties:
       CourtLevel:
-        $ref: '../../enums/v2_court_order/Instance.yaml'
+        oneOf:
+          - $ref: '../../enums/v2_court_order/Instance.yaml'
+          - type: "null"
       Court:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       CourtSystem:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       Region:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       JurisdictionTitle:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       CourtHouse:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      AdjucatingCourt:
-        type: string
+      AdjudicatingCourt:
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       Provider:
-        $ref: '../../enums/v2_court_order/PushProvider.yaml'    
+        oneOf:
+          - $ref: '../../enums/v2_court_order/PushProvider.yaml'
+          - type: "null"
       ExternalCnjId:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       SearchTerms:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       DateOfAvailability:
-        type: string
+        type: [string, "null"]
+        format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
       PublicationDate:
-        type: string
+        type: [string, "null"]
+        format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
       CaptureDate:
-        type: string
+        type: [string, "null"]
+        format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
       Content:
-        type: string
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       CourtOrderCommunicationChannel:
-        $ref: '../../enums/v2_court_order/CourtOrderCommunicationChannel.yaml'    
+        oneOf:
+          - $ref: '../../enums/v2_court_order/CourtOrderCommunicationChannel.yaml'
+          - type: "null"
       CourtOrderServiceType:
-        $ref: '../../enums/v2_court_order/CourtOrderServiceType.yaml'    
+        oneOf:
+          - $ref: '../../enums/v2_court_order/CourtOrderServiceType.yaml'
+          - type: "null"
       CourtOrderType:
-        $ref: '../../enums/v2_court_order/CourtOrderType.yaml'    
-      ExternalCnjClassification:
-        $ref: '../../schemas/v2_court_order/ClassificationTypeCNJ.yaml'    
-      Type:
-        $ref: '../../enums/v2_court_order/TipoDePush.yaml'    
+        oneOf:
+          - $ref: '../../enums/v2_court_order/CourtOrderType.yaml'
+          - type: "null"
       OfficialGazette:
-        $ref: '../../schemas/v2_court_order/OfficialGazette.yaml'    
+        oneOf:
+          - $ref: '../../schemas/v2_court_order/OfficialGazette.yaml'
+          - type: "null"
+      CourtDecision:
+        oneOf:
+          - $ref: '../../schemas/v2_case-management/DecisionQuery.yaml'
+          - type: "null"
+      ExternalCnjClassification:
+        type: array
+        items:
+          $ref: '../../schemas/v2_court_order/ClassificationTypeCNJ.yaml'
+      Type:
+        oneOf:
+          - $ref: '../../enums/v2_court_order/TipoDePush.yaml'
+          - type: "null"
       CaseProcedure:
-        $ref: '../../schemas/common/SimpleEntityQuery.yaml'
-
-      #CourtDecision: --- dependência objeto Decision 
-        
+        oneOf:
+          - $ref: '../../schemas/common/SimpleEntityQuery.yaml'
+          - type: "null"
+      CaseInfo:
+        oneOf:
+          - $ref: '../../schemas/v2_case-management/CaseFlattenQuery.yaml'
+          - type: "null"

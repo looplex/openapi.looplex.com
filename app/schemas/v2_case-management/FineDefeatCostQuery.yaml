@@ -1,0 +1,14 @@
+title: FineDefeatCost
+type: object
+properties:
+  Parties:
+    type: [array, "null"]
+    items: {}
+    description: ""
+  ValueType:
+    type: [string, "null"]
+    example: "string de exemplo"
+    description: ""
+  Value:
+    type: [number, "null"]
+    description: ""

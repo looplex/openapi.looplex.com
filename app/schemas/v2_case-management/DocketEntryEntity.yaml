@@ -1,62 +1,81 @@
 title: DocketEntryEntity
-description: 
+description:
 allOf:
   - $ref: ../../scim/ResourceQuery.yaml
   - type: object
-    properties:  
+    properties:
       Provider:
-        $ref: ../../enums/v2_case-management/PushProvider.yaml    
-      Court:
-        type: string
+        oneOf:
+          - $ref: ../../enums/v2_case-management/PushProvider.yaml
+          - type: "null"
+      ExternalCnjId:
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      JurisdictionTitle:
-        type: string
-        example: "string de exemplo"
-        description: ""
-      AdjudicatingCourt:
-        type: string
-        example: "string de exemplo"
-        description: ""
-      DateOfAvailability:
-        type: string
-        example: "2025-01-01T12:00:00.000Z"
-        description: ""
-      DocketEntryDate:
-        type: string
-        example: "2025-01-01T12:00:00.000Z"
-        description: ""
-      CaptureDate:
-        type: string
-        example: "2025-01-01T12:00:00.000Z"
-        description: ""
-      Content:
-        type: string
-        example: "string de exemplo"
-        description: ""
-      Region:
-        type: string
-        example: "string de exemplo"
-        description: ""
-      CourtHouse:
-        type: string
+      CourtSystem:
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
       CourtLevel:
-        $ref: ../../enums/v2_case-management/Instance.yaml    
-      CourtSystem:
-        type: string
+        oneOf:
+          - $ref: ../../enums/v2_case-management/Instance.yaml
+          - type: "null"
+      Court:
+        type: [string, "null"]
         example: "string de exemplo"
+        description: ""
+      Region:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      JurisdictionTitle:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      CourtHouse:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      AdjudicatingCourt:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      DateOfAvailability:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      DocketEntryDate:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      CaptureDate:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
         description: ""
       ExternalCnjClassification:
-        $ref: ./ClassificationTypeCNJ.yaml    
-      ExternalCnjId:
-        type: string
+        type: array
+        items:
+          $ref: ./ClassificationTypeCNJ.yaml
+      CaseProcedure:
+        oneOf:
+          - $ref: ../common/SimpleEntityQuery.yaml
+          - type: "null"
+      Content:
+        type: [string, "null"]
         example: "string de exemplo"
         description: ""
+      CourtDecision:
+        oneOf:
+          - $ref: ./DecisionQuery.yaml
+          - type: "null"
       Type:
-        $ref: ../../enums/v2_case-management/TipoDePush.yaml    
-      CaseProcedure:
-        $ref: ../common/SimpleEntityQuery.yaml    
-      
-      #CourtDecision: -- referência objeto Decision
+        oneOf:
+          - $ref: ../../enums/v2_case-management/TipoDePush.yaml
+          - type: "null"
+      CaseInfo:
+        oneOf:
+          - $ref: ./CaseFlattenQuery.yaml
+          - type: "null"
