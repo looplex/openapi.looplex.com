@@ -12,6 +12,12 @@ parameters:
   - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../../app/parameters/common/Tenant.yaml
   - $ref: ../../../app/parameters/common/BearerToken.yaml
+  - name: resource
+    in: path
+    required: true
+    schema:
+      type: string
+    description: "**Nome do recurso a ser pesquisado**"
 # request body
 requestBody:
   content:

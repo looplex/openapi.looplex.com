@@ -12,19 +12,19 @@ properties:
     $ref: ../../enums/v2_case-management/Moeda.yaml
     description: "**Moeda usada para os valores do caso**"
   caseDeclaredValue:
-    type: number <nullable>
+    type: [number, "null"]
     description: |
       **Valor da causa**<br />
       Valor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação
     example: 0
   caseForeseenValue:
-    type: number <nullable>
+    type: [number, "null"]
     description: |
       **Valor previsto**<br />
       Valor estimado para a resolução do caso, transação ou disputa
     example: 0
   caseContingencyValue:
-    type: number <nullable>
+    type: [number, "null"]
     description: |
       **Valor de contingência**<br />
       Valor de provisionamento vinculado a perspectiva e risco do caso. <br />

@@ -122,10 +122,10 @@ properties:
       **Fase do caso**<br />
       Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
     oneOf:
-      - type: string (name)
+      - type: string
         example: <fase_do_processo>
         description: "**Nome da fase**"
-      - type: string uuid (unique identifier)
+      - type: string
         format: uuid
         description: "**Unique identifier da fase**"
   legalCategories:
@@ -133,10 +133,10 @@ properties:
     type: array
     items:
       oneOf:
-      - type: string (name)
+      - type: string
         example: <natureza_do_processo>
         description: "**Nome da legal category**"
-      - type: string uuid (unique identifier)
+      - type: string
         format: uuid
         description: "**Unique identifier da legal category**"
     example: []
@@ -231,7 +231,7 @@ properties:
     type: array
     items:
       $ref: ParticipantEntityWrite.yaml
-    desscription: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+    description: "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
   globalValues:
     type: array
     items:

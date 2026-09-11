@@ -16,19 +16,16 @@ requestBody:
         properties:
           grant_type:
             type: string
-            required: true
             example: 'urn:ietf:params:oauth:grant-type:token-exchange'
             description: |
               **The grant type**<br/>
               _e.g. urn:ietf:params:oauth:grant-type:token-exchange_
           subject_token:
             type: string
-            required: true
             example: '{{access_token}}'
             description: '**The access token returned by the identity provider**'
           subject_token_type:
             type: string
-            required: true
             example: 'urn:ietf:params:oauth:token-type:access_token'
             description: |
               **The token type**<br/>

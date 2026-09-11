@@ -43,7 +43,7 @@ allOf:
         example: <descricao>
         description: "**Descrição**"
       IsInvoiced:
-        type: boolean <nullable>
+        type: [boolean, "null"]
         example: false
         description: "**Faturado**"
       CreatedAt:

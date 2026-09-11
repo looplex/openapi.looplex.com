@@ -122,6 +122,12 @@ parameters:
   - $ref: ../../parameters/common/Tenant.yaml
   - $ref: ../../parameters/common/BearerToken.yaml
   - $ref: ../../parameters/common/Id.yaml
+  - name: resource
+    in: path
+    required: true
+    schema:
+      type: string
+    description: "**Nome do recurso cujos campos customizados serão atualizados**"
 requestBody:
   content:
     application/json:

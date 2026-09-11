@@ -28,7 +28,7 @@ allOf:
       fineSuccumbence:
         $ref: ../../enums/v2_case-management/MultaSucumbencia.yaml
       fineSuccumbencePercentage:
-        type: number <nullable>
+        type: [number, "null"]
       remedyType:
         $ref: ../../enums/v2_case-management/TipoReparacao.yaml
       provisionalRelief:
@@ -57,14 +57,14 @@ allOf:
         type: number
         example: 0
       foreseenValueUpdated:
-        type: number <nullable>
+        type: [number, "null"]
         example: 0
         description: "**Foreseen value updated**"
       contingencyValue:
         type: number
         description: "**Valor de contingencia**"
       contingencyValueUpdated:
-        type: number <nullable>
+        type: [number, "null"]
         description: "**Valor de contingencia**"
       liquidated:
         type: boolean

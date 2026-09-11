@@ -27,7 +27,7 @@ properties:
   fineSuccumbence:
     $ref: ../../enums/v2_case-management/MultaSucumbencia.yaml
   fineSuccumbencePercentage:
-    type: number <nullable>
+    type: [number, "null"]
   remedyType:
     $ref: ../../enums/v2_case-management/TipoReparacao.yaml
   provisionalRelief:
