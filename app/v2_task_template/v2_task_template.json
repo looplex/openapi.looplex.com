@@ -885,6 +885,9 @@
           "InterviewTemplateLink": {
             "type": "string"
           },
+          "Description": {
+            "type": "string"
+          },
           "Children": {
             "type": "array",
             "items": {
