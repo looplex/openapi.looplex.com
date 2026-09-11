@@ -1,5 +1,5 @@
 {
-  "openapi": "3.1.0",
+  "openapi": "3.1.1",
   "info": {
     "version": "1.43.0",
     "title": "Looplex Case Management",
@@ -47,19 +47,16 @@
                 "properties": {
                   "grant_type": {
                     "type": "string",
-                    "required": true,
                     "example": "urn:ietf:params:oauth:grant-type:token-exchange",
                     "description": "**The grant type**<br/>\n_e.g. urn:ietf:params:oauth:grant-type:token-exchange_\n"
                   },
                   "subject_token": {
                     "type": "string",
-                    "required": true,
                     "example": "{{access_token}}",
                     "description": "**The access token returned by the identity provider**"
                   },
                   "subject_token_type": {
                     "type": "string",
-                    "required": true,
                     "example": "urn:ietf:params:oauth:token-type:access_token",
                     "description": "**The token type**<br/>\n_e.g. urn:ietf:params:oauth:token-type:access_token_\n"
                   }
@@ -263,6 +260,15 @@
           },
           {
             "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "**Nome do recurso a ser pesquisado**"
           }
         ],
         "requestBody": {
@@ -327,7 +333,7 @@
         }
       }
     },
-    "/cases/:id": {
+    "/cases/{id}": {
       "get": {
         "tags": [
           "Case Management"
@@ -644,7 +650,7 @@
         }
       }
     },
-    "/caseGroups/:id": {
+    "/caseGroups/{id}": {
       "get": {
         "tags": [
           "Case Group"
@@ -827,7 +833,7 @@
         }
       }
     },
-    "/claims/:id": {
+    "/claims/{id}": {
       "get": {
         "tags": [
           "Claim"
@@ -1115,7 +1121,7 @@
         }
       }
     },
-    "/clients/:id": {
+    "/clients/{id}": {
       "get": {
         "tags": [
           "Client"
@@ -1235,7 +1241,7 @@
         }
       }
     },
-    "/:resource/:id": {
+    "/{resource}/{id}": {
       "patch": {
         "tags": [
           "Custom Fields"
@@ -1255,6 +1261,15 @@
           },
           {
             "$ref": "#/components/parameters/Id"
+          },
+          {
+            "name": "resource",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "**Nome do recurso cujos campos customizados serão atualizados**"
           }
         ],
         "requestBody": {
@@ -1429,7 +1444,7 @@
         }
       }
     },
-    "/employees/:id": {
+    "/employees/{id}": {
       "get": {
         "tags": [
           "Employee"
@@ -1484,7 +1499,7 @@
         }
       }
     },
-    "/entries/:id": {
+    "/entries/{id}": {
       "get": {
         "tags": [
           "Entry"
@@ -1848,7 +1863,7 @@
         }
       }
     },
-    "/externalServiceProviders/:id": {
+    "/externalServiceProviders/{id}": {
       "get": {
         "tags": [
           "External Service Provider"
@@ -2031,7 +2046,7 @@
         }
       }
     },
-    "/legalCategories/:id": {
+    "/legalCategories/{id}": {
       "get": {
         "tags": [
           "Legal category"
@@ -2214,7 +2229,7 @@
         }
       }
     },
-    "/legalServiceAgreements/:id": {
+    "/legalServiceAgreements/{id}": {
       "get": {
         "tags": [
           "Legal service agreement"
@@ -2397,7 +2412,7 @@
         }
       }
     },
-    "/participants/:id": {
+    "/participants/{id}": {
       "get": {
         "tags": [
           "Participant"
@@ -2667,7 +2682,7 @@
         }
       }
     },
-    "/phases/:id": {
+    "/phases/{id}": {
       "get": {
         "tags": [
           "Phase"
@@ -2798,7 +2813,7 @@
         }
       }
     },
-    "/reliefStatements/:id": {
+    "/reliefStatements/{id}": {
       "get": {
         "tags": [
           "Relief Statement"
@@ -2929,7 +2944,7 @@
         }
       }
     },
-    "/products/:id": {
+    "/products/{id}": {
       "get": {
         "tags": [
           "Product"
@@ -3060,7 +3075,7 @@
         }
       }
     },
-    "/subjectMatters/:id": {
+    "/subjectMatters/{id}": {
       "get": {
         "tags": [
           "Subject Matter"
@@ -3243,7 +3258,7 @@
         }
       }
     },
-    "/timesheets/:id": {
+    "/timesheets/{id}": {
       "get": {
         "tags": [
           "Timesheet"
@@ -4544,17 +4559,26 @@
             "description": "**Moeda usada para os valores do caso**"
           },
           "caseDeclaredValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
             "example": 0
           },
           "caseForeseenValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
             "example": 0
           },
           "caseContingencyValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
           }
@@ -4642,7 +4666,10 @@
                 "$ref": "#/components/schemas/MultaSucumbencia"
               },
               "fineSuccumbencePercentage": {
-                "type": "number <nullable>"
+                "type": [
+                  "number",
+                  "null"
+                ]
               },
               "remedyType": {
                 "$ref": "#/components/schemas/TipoReparacao"
@@ -4683,7 +4710,10 @@
                 "example": 0
               },
               "foreseenValueUpdated": {
-                "type": "number <nullable>",
+                "type": [
+                  "number",
+                  "null"
+                ],
                 "example": 0,
                 "description": "**Foreseen value updated**"
               },
@@ -4692,7 +4722,10 @@
                 "description": "**Valor de contingencia**"
               },
               "contingencyValueUpdated": {
-                "type": "number <nullable>",
+                "type": [
+                  "number",
+                  "null"
+                ],
                 "description": "**Valor de contingencia**"
               },
               "liquidated": {
@@ -4905,7 +4938,10 @@
                 "description": "**Descrição**"
               },
               "isInvoiced": {
-                "type": "boolean <nullable>",
+                "type": [
+                  "boolean",
+                  "null"
+                ],
                 "example": false,
                 "description": "**Faturado**"
               },
@@ -5949,17 +5985,26 @@
             "description": "**Moeda usada para os valores do caso**"
           },
           "CaseDeclaredValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
             "example": 0
           },
           "CaseForeseenValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
             "example": 0
           },
           "CaseContingencyValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
           }
@@ -6395,17 +6440,26 @@
             "description": "**Moeda usada para os valores do caso**"
           },
           "caseDeclaredValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor da causa**<br />\nValor declarado na petição inicial, no contrato ou no documento que formaliza a obrigação\n",
             "example": 0
           },
           "caseForeseenValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor previsto**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
             "example": 0
           },
           "caseContingencyValue": {
-            "type": "number <nullable>",
+            "type": [
+              "number",
+              "null"
+            ],
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
           }
@@ -6451,7 +6505,10 @@
             "$ref": "#/components/schemas/MultaSucumbencia"
           },
           "fineSuccumbencePercentage": {
-            "type": "number <nullable>"
+            "type": [
+              "number",
+              "null"
+            ]
           },
           "remedyType": {
             "$ref": "#/components/schemas/TipoReparacao"
@@ -6705,12 +6762,12 @@
             "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
             "oneOf": [
               {
-                "type": "string (name)",
+                "type": "string",
                 "example": "<fase_do_processo>",
                 "description": "**Nome da fase**"
               },
               {
-                "type": "string uuid (unique identifier)",
+                "type": "string",
                 "format": "uuid",
                 "description": "**Unique identifier da fase**"
               }
@@ -6722,12 +6779,12 @@
             "items": {
               "oneOf": [
                 {
-                  "type": "string (name)",
+                  "type": "string",
                   "example": "<natureza_do_processo>",
                   "description": "**Nome da legal category**"
                 },
                 {
-                  "type": "string uuid (unique identifier)",
+                  "type": "string",
                   "format": "uuid",
                   "description": "**Unique identifier da legal category**"
                 }
@@ -6828,7 +6885,7 @@
             "items": {
               "$ref": "#/components/schemas/ParticipantEntityWrite"
             },
-            "desscription": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
+            "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
           },
           "globalValues": {
             "type": "array",
@@ -7004,7 +7061,10 @@
                 "$ref": "#/components/schemas/MultaSucumbencia"
               },
               "FineSuccumbencePercentage": {
-                "type": "number <nullable>"
+                "type": [
+                  "number",
+                  "null"
+                ]
               },
               "RemedyType": {
                 "$ref": "#/components/schemas/TipoReparacao"
@@ -7045,7 +7105,10 @@
                 "example": 0
               },
               "foreseenValueUpdated": {
-                "type": "number <nullable>",
+                "type": [
+                  "number",
+                  "null"
+                ],
                 "example": 0,
                 "description": "**Foreseen value updated**"
               },
@@ -7054,7 +7117,10 @@
                 "description": "**Valor de contingencia**"
               },
               "ContingencyValueUpdated": {
-                "type": "number <nullable>",
+                "type": [
+                  "number",
+                  "null"
+                ],
                 "description": "**Valor de contingencia**"
               },
               "Liquidated": {
@@ -8677,7 +8743,10 @@
                 "description": "**Descrição**"
               },
               "IsInvoiced": {
-                "type": "boolean <nullable>",
+                "type": [
+                  "boolean",
+                  "null"
+                ],
                 "example": false,
                 "description": "**Faturado**"
               },
@@ -8757,7 +8826,7 @@
       },
       "OfficialGazette": {
         "title": "OfficialGazette",
-        "description": null,
+        "description": "",
         "properties": {
           "Name": {
             "type": "string",
@@ -9065,7 +9134,7 @@
       },
       "ClassificationTypeCNJ": {
         "title": "ClassificationTypeCNJ",
-        "description": null,
+        "description": "",
         "properties": {
           "Id": {
             "type": "string",
@@ -9346,7 +9415,7 @@
       },
       "DocketEntryEntity": {
         "title": "DocketEntryEntity",
-        "description": null,
+        "description": "",
         "allOf": [
           {
             "$ref": "#/components/schemas/ResourceQuery"

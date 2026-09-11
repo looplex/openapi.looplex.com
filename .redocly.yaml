@@ -1,0 +1,9 @@
+apis:
+  v2_case-management:
+    root: app/v2_case-management/v2_case-management.yaml
+
+rules:
+  # Autenticação é feita via parâmetro de header (BearerToken), não via security schemes OpenAPI
+  security-defined: off
+  # O path /{resource}/{id} é intencional — usado pelo endpoint genérico de custom fields (PATCH)
+  no-ambiguous-paths: off

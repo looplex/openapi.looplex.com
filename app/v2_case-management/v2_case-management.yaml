@@ -1,5 +1,5 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   version: 1.43.0
   title: "Looplex Case Management"
@@ -37,7 +37,7 @@ paths:
       $ref: search\public@.search-post.yaml
 
   # Case
-  /cases/:id:
+  /cases/{id}:
     get:
       $ref: case\public@cases@uniqueId-get.yaml
     patch:
@@ -52,7 +52,7 @@ paths:
   /caseGroups:
     get:
       $ref: case_groups\public@caseGroups-get.yaml
-  /caseGroups/:id:
+  /caseGroups/{id}:
     get:
       $ref: case_groups\public@caseGroups@case_group_id-get.yaml
 
@@ -62,7 +62,7 @@ paths:
       $ref: claim\public@claims-get.yaml
     post:
       $ref: claim\public@claims-post.yaml
-  /claims/:id:
+  /claims/{id}:
     get:
       $ref: claim\public@claims@claim_id-get.yaml
     patch:
@@ -76,14 +76,14 @@ paths:
       $ref: client\public@clients-get.yaml
     post:
       $ref: client\public@clients-post.yaml
-  /clients/:id:
+  /clients/{id}:
     get:
       $ref: client\public@clients@client_id-get.yaml
     patch:
       $ref: client\public@clients-patch.yaml
 
   # Custom fields
-  /:resource/:id:
+  /{resource}/{id}:
     patch:
       $ref: custom_fields\public@custom_fields-patch.yaml
 
@@ -93,12 +93,12 @@ paths:
       $ref: employee\public@Employees-get.yaml
     post:
       $ref: employee\public@employees-post.yaml
-  /employees/:id:
+  /employees/{id}:
     get:
       $ref: employee\public@employees@employee_id-get.yaml
 
   # Entry
-  /entries/:id:
+  /entries/{id}:
     get:
       $ref: entry\public@entries@entry_id-get.yaml
     patch:
@@ -115,7 +115,7 @@ paths:
   /externalServiceProviders:
     get:
       $ref: external_service_providers\public@externalServiceProviders-get.yaml
-  /externalServiceProviders/:id:
+  /externalServiceProviders/{id}:
     get:
       $ref: external_service_providers\public@externalServiceProviders@id-get.yaml
 
@@ -125,7 +125,7 @@ paths:
       $ref: legal_category\public@legalCategories-get.yaml
     post:
       $ref: legal_category\public@legalCategories-post.yaml
-  /legalCategories/:id:
+  /legalCategories/{id}:
     get:
       $ref: legal_category\public@legalCategories@legalCategory_id-get.yaml
 
@@ -135,7 +135,7 @@ paths:
       $ref: legal_service_agreement\public@LegalServiceAgreement-post.yaml
     get:
       $ref: legal_service_agreement\public@legalServiceAgreement-get.yaml
-  /legalServiceAgreements/:id:
+  /legalServiceAgreements/{id}:
     get:
       $ref: legal_service_agreement\public@legalServiceAgreements@id-get.yaml
 
@@ -145,7 +145,7 @@ paths:
       $ref: participant\public@participants-post.yaml
     get:
       $ref: participant\public@participants-get.yaml
-  /participants/:id:
+  /participants/{id}:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
 
@@ -158,7 +158,7 @@ paths:
   /phases:
     get:
       $ref: phases\public@phases-get.yaml
-  /phases/:id:
+  /phases/{id}:
     get:
       $ref: phases\public@phases@id-get.yaml
 
@@ -166,7 +166,7 @@ paths:
   /reliefStatements:
     get:
       $ref: relief_statements\public@reliefStatements-get.yaml
-  /reliefStatements/:id:
+  /reliefStatements/{id}:
     get:
       $ref: relief_statements\public@reliefStatements@id-get.yaml
 
@@ -174,14 +174,14 @@ paths:
   /products:
     get:
       $ref: products\public@products-get.yaml
-  /products/:id:
+  /products/{id}:
     get:
       $ref: products\public@products@id-get.yaml
 
   /subjectMatters:
     get:
       $ref: subjectMatters\public@subjectMatters-get.yaml
-  /subjectMatters/:id:
+  /subjectMatters/{id}:
     get:
       $ref: subjectMatters\public@subjectMatters@id-get.yaml
 
@@ -191,7 +191,7 @@ paths:
       $ref: timesheet\public@timesheets-get.yaml
     post:
       $ref: timesheet\public@timesheets-post.yaml
-  /timesheets/:id:
+  /timesheets/{id}:
     get:
       $ref: timesheet\public@timesheets@id-get.yaml
 
