@@ -87,6 +87,20 @@ paths:
     patch:
       $ref: custom_fields\public@custom_fields-patch.yaml
 
+  # Decisions
+  /decisions:
+    get:
+      $ref: decision\public@decisions-get.yaml
+    post:
+      $ref: decision\public@decisions-post.yaml
+  /decisions/{id}:
+    get:
+      $ref: decision\public@decisions@decision_id-get.yaml
+    patch:
+      $ref: decision\public@decisions@decision_id-patch.yaml
+    delete:
+      $ref: decision\public@decisions-delete.yaml
+
   # Employees
   /employees:
     get:

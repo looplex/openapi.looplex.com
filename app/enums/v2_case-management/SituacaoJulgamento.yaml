@@ -1,0 +1,12 @@
+title: SituacaoJulgamento
+type: [string, "null"]
+example: <situacao_julgamento>
+description: |
+  **Situação do julgamento**<br />
+  **Valores permitidos:**<br />
+  IMPROCEDENCIA<br/>
+  PROCEDENCIA<br/>
+  PROCEDENCIA_EM_PARTE<br/>
+  PREJUDICADO<br/>
+  ACORDO<br/>
+  NAO_JULGADO

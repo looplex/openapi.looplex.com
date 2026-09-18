@@ -1310,6 +1310,287 @@
         }
       }
     },
+    "/decisions": {
+      "get": {
+        "tags": [
+          "Decision"
+        ],
+        "summary": "/decisions",
+        "description": "**Fetch items paginated**",
+        "operationId": "decisions-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DecisionEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Decision"
+        ],
+        "summary": "/decisions",
+        "description": "**Item created's guid is returned in **Location header**",
+        "operationId": "decisions-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DecisionEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/decisions/{id}": {
+      "get": {
+        "tags": [
+          "Decision"
+        ],
+        "summary": "/decisions/:id",
+        "description": "**Retrieve a decision by id**",
+        "operationId": "decisions-decision_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DecisionEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Decision"
+        ],
+        "summary": "/decisions/:id",
+        "description": "**Patch decision property**",
+        "operationId": "decisions-decision_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Decision"
+        ],
+        "summary": "/decisions/:id",
+        "description": "**Delete a decision**",
+        "operationId": "decisions-delete-id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/employees": {
       "get": {
         "tags": [
@@ -7519,6 +7800,1106 @@
           "value"
         ]
       },
+      "SituacaoJulgamento": {
+        "title": "SituacaoJulgamento",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<situacao_julgamento>",
+        "description": "**Situação do julgamento**<br />\n**Valores permitidos:**<br />\nIMPROCEDENCIA<br/>\nPROCEDENCIA<br/>\nPROCEDENCIA_EM_PARTE<br/>\nPREJUDICADO<br/>\nACORDO<br/>\nNAO_JULGADO\n"
+      },
+      "DecisionClaimEntityQuery": {
+        "title": "DecisionClaim",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**gdUniqueId do registro em TProcessoDecisaoValor**",
+            "example": "<global_unique_identifier>"
+          },
+          "ClaimId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
+            "example": "<global_unique_identifier>"
+          },
+          "JudgementResult": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "ForesseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "ContingencyValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "GrantedValue": {
+            "type": "number",
+            "example": 0,
+            "description": "**Valor deferido (vlDeferido)**"
+          },
+          "Currency": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Moeda (nrMoeda)**"
+          },
+          "Justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
+            "example": "<justificativa_do_pedido>"
+          },
+          "Situation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação (nrSituacao)**"
+          },
+          "InjunctionResult": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
+          },
+          "JudgementSituation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+          },
+          "Risk": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "ProvisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          }
+        }
+      },
+      "MotivoDeExtincao": {
+        "title": "MotivoDeExtincao",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<motivo_de_extincao>",
+        "description": "**Motivo da extinção**<br />\nMotivo que gerou a extinção do processo sem julgamento de mérito<br />\n**Valores permitidos:**<br />\nINCOMPETENCIA_DE_JUIZO<br/>\nAUSENCIA_DE_LEGITIMIDADE_OU_DE_INTERESSE_PROCESSUAL<br/>\nINCAPACIDADE_DA_PARTE_DEFEITO_DE_REPRESENTACAO_OU_FALTA_DE_AUTORIZACAO<br/>\nFALTA_DE_CAUCAO_OU_DE_OUTRA_PRESTACAO<br/>\nLITISCONSORCIO_NECESSARIO<br/>\nINEPCIA_DE_PETICAO_INICIAL<br/>\nABANDONO_OU_PARALISACAO_DA_CAUSA\n"
+      },
+      "ValorApuradoExitoPerda": {
+        "title": "ValorApuradoExitoPerda",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<valor_apurado_exito_perda>",
+        "description": "**Resultado do Julgamento**<br />\n**Valores permitidos:**<br />\nPROVAVEL<br/>\nPOSSIVEL<br/>\nREMOTO\n"
+      },
+      "FineDefeatCostQuery": {
+        "title": "FineDefeatCost",
+        "type": "object",
+        "properties": {
+          "Parties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {},
+            "description": ""
+          },
+          "ValueType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "Value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": ""
+          }
+        }
+      },
+      "DecisionEntityQuery": {
+        "title": "Decision",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "CaseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "LastDecisionId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`\n",
+                "example": "<global_unique_identifier>"
+              },
+              "Date": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data da Resolução**",
+                "example": "<data_da_resolucao>"
+              },
+              "ResolutionContent": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
+                "example": "<conteudo_da_resolucao>"
+              },
+              "Excerpt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
+                "example": "<trecho_da_resolucao>"
+              },
+              "SummaryOfFindings": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
+                "example": "<sumario_da_resolucao>"
+              },
+              "RemedyType": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**A decisão**"
+              },
+              "DecisionType": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+              },
+              "TrialType": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Tipo de Julgamento**"
+              },
+              "IssuePreservation": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
+              },
+              "JudgementContent": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Conteúdo do Julgamento**"
+              },
+              "ProceduralMatter": {
+                "$ref": "#/components/schemas/SimpleEntityQuery",
+                "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
+              },
+              "Claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DecisionClaimEntityQuery"
+                },
+                "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
+              },
+              "MotivationForInvoluntaryDismissal": {
+                "$ref": "#/components/schemas/MotivoDeExtincao"
+              },
+              "RulingOnProceduralIssuesGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
+                "example": "<grupo_questoes_processuais>"
+              },
+              "RulingOnMotionsGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
+                "example": "<sub_agrupamento_requerimentos>"
+              },
+              "RulingOnProceduralIssues": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Decisão sobre Questões Meramente Processuais**",
+                "example": "<decisao_sobre_questoes_processuais>"
+              },
+              "RulingOnProceduralIssuesHierarchy": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por RulingOnProceduralIssuesGroup | RulingOnMotionsGroup | RulingOnProceduralIssues\n",
+                "example": "<hierarquia_questoes_processuais>"
+              },
+              "ProvisionalMeasures": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Concessão de tutela provisória e liminares**"
+              },
+              "TransferOfVenue": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Incompetência reconhecida**"
+              },
+              "RejectionOfProceduralObjections": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Rejeição de preliminares e condições da ação**"
+              },
+              "AdmissibilityReviewOfAppeal": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Juízo de admissibilidade de recurso**"
+              },
+              "RulingOnMotions": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Decisão sobre requerimentos das partes**"
+              },
+              "PeriodForFilingResponse": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Abertura de prazo para manifestação**"
+              },
+              "ProvisionalMeasuresObservation": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Observação da tutela de urgência e cautelar**",
+                "example": "<observacao_tutela>"
+              },
+              "Result": {
+                "$ref": "#/components/schemas/ValorApuradoExitoPerda"
+              },
+              "IsClosing": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Indica se a decisão encerra o processo**"
+              },
+              "GrantedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor Deferido**"
+              },
+              "FinePlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "FineDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "FineThirdParties": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "DefeatCostPlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "DefeatCostDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "DecisionClaimEntityWrite": {
+        "title": "DecisionClaim",
+        "type": "object",
+        "properties": {
+          "claimId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
+            "example": "<global_unique_identifier>"
+          },
+          "judgementResult": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "foresseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "contingencyValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "grantedValue": {
+            "type": "number",
+            "example": 0,
+            "description": "**Valor deferido (vlDeferido)**"
+          },
+          "currency": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Moeda (nrMoeda)**"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
+            "example": "<justificativa_do_pedido>"
+          },
+          "situation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação (nrSituacao)**"
+          },
+          "injunctionResult": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
+          },
+          "judgementSituation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+          },
+          "risk": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "provisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          }
+        },
+        "required": [
+          "foresseenValue",
+          "contingencyValue",
+          "grantedValue"
+        ]
+      },
+      "FineDefeatCostWrite": {
+        "title": "FineDefeatCost",
+        "type": "object",
+        "properties": {
+          "parties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {},
+            "description": "**LegalPerson | NaturalPerson**"
+          },
+          "valueType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<value_type>",
+            "description": "**Define se o valor informado será em número absoluto ou percentual**<br />\n**Valores permitidos:**<br />\nValor<br/>\nPercentual\n"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**O valor absoluto ou percentual**"
+          }
+        }
+      },
+      "DecisionEntityWrite": {
+        "title": "Decision",
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "lastDecisionId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`<br />\n`Required quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n",
+            "example": "<global_unique_identifier>"
+          },
+          "date": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data da Resolução**",
+            "example": "<data_da_resolucao>"
+          },
+          "resolutionContent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
+            "example": "<conteudo_da_resolucao>"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
+            "example": "<trecho_da_resolucao>"
+          },
+          "summaryOfFindings": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
+            "example": "<sumario_da_resolucao>"
+          },
+          "remedyType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**A decisão**"
+          },
+          "decisionType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+          },
+          "trialType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Tipo de Julgamento**"
+          },
+          "issuePreservation": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento",
+            "example": false
+          },
+          "judgementContent": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Conteúdo do Julgamento**"
+          },
+          "proceduralMatter": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionClaimEntityWrite"
+            },
+            "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
+          },
+          "motivationForInvoluntaryDismissal": {
+            "$ref": "#/components/schemas/MotivoDeExtincao"
+          },
+          "rulingOnProceduralIssuesGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
+            "example": "<grupo_questoes_processuais>"
+          },
+          "rulingOnMotionsGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
+            "example": "<sub_agrupamento_requerimentos>"
+          },
+          "rulingOnProceduralIssues": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Decisão sobre Questões Meramente Processuais**",
+            "example": "<decisao_sobre_questoes_processuais>"
+          },
+          "rulingOnProceduralIssuesHierarchy": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
+            "example": "<hierarquia_questoes_processuais>"
+          },
+          "provisionalMeasures": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Concessão de tutela provisória e liminares**",
+            "example": false
+          },
+          "transferOfVenue": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Incompetência reconhecida**",
+            "example": false
+          },
+          "rejectionOfProceduralObjections": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Rejeição de preliminares e condições da ação**",
+            "example": false
+          },
+          "admissibilityReviewOfAppeal": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Juízo de admissibilidade de recurso**",
+            "example": false
+          },
+          "rulingOnMotions": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Decisão sobre requerimentos das partes**",
+            "example": false
+          },
+          "periodForFilingResponse": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Abertura de prazo para manifestação**",
+            "example": false
+          },
+          "provisionalMeasuresObservation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Observação da tutela de urgência e cautelar**",
+            "example": "<observacao_tutela>"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ValorApuradoExitoPerda"
+          },
+          "isClosing": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Indica se a decisão encerra o processo**",
+            "example": false
+          },
+          "grantedValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor Deferido**"
+          },
+          "finePlaintiff": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "fineDefendant": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "fineThirdParties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "defeatCostPlaintiff": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "defeatCostDefendant": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "caseId",
+          "decisionType",
+          "trialType",
+          "remedyType"
+        ]
+      },
+      "DecisionClaimEntityRetrieve": {
+        "title": "DecisionClaim",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**gdUniqueId do registro em TProcessoDecisaoValor**",
+            "example": "<global_unique_identifier>"
+          },
+          "claimId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
+            "example": "<global_unique_identifier>"
+          },
+          "judgementResult": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "foresseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "contingencyValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "grantedValue": {
+            "type": "number",
+            "example": 0,
+            "description": "**Valor deferido (vlDeferido)**"
+          },
+          "currency": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Moeda (nrMoeda)**"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
+            "example": "<justificativa_do_pedido>"
+          },
+          "situation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação (nrSituacao)**"
+          },
+          "injunctionResult": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
+          },
+          "judgementSituation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+          },
+          "risk": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "provisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          }
+        }
+      },
+      "DecisionEntityRetrieve": {
+        "title": "Decision",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "caseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "lastDecisionId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`\n",
+                "example": "<global_unique_identifier>"
+              },
+              "date": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data da Resolução**",
+                "example": "<data_da_resolucao>"
+              },
+              "resolutionContent": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
+                "example": "<conteudo_da_resolucao>"
+              },
+              "excerpt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
+                "example": "<trecho_da_resolucao>"
+              },
+              "summaryOfFindings": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
+                "example": "<sumario_da_resolucao>"
+              },
+              "remedyType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**A decisão**"
+              },
+              "decisionType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+              },
+              "trialType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Tipo de Julgamento**"
+              },
+              "issuePreservation": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
+              },
+              "judgementContent": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Conteúdo do Julgamento**"
+              },
+              "proceduralMatter": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
+              },
+              "claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DecisionClaimEntityRetrieve"
+                },
+                "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
+              },
+              "motivationForInvoluntaryDismissal": {
+                "$ref": "#/components/schemas/MotivoDeExtincao"
+              },
+              "rulingOnProceduralIssuesGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
+                "example": "<grupo_questoes_processuais>"
+              },
+              "rulingOnMotionsGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
+                "example": "<sub_agrupamento_requerimentos>"
+              },
+              "rulingOnProceduralIssues": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Decisão sobre Questões Meramente Processuais**",
+                "example": "<decisao_sobre_questoes_processuais>"
+              },
+              "rulingOnProceduralIssuesHierarchy": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
+                "example": "<hierarquia_questoes_processuais>"
+              },
+              "provisionalMeasures": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Concessão de tutela provisória e liminares**"
+              },
+              "transferOfVenue": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Incompetência reconhecida**"
+              },
+              "rejectionOfProceduralObjections": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Rejeição de preliminares e condições da ação**"
+              },
+              "admissibilityReviewOfAppeal": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Juízo de admissibilidade de recurso**"
+              },
+              "rulingOnMotions": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Decisão sobre requerimentos das partes**"
+              },
+              "periodForFilingResponse": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Abertura de prazo para manifestação**"
+              },
+              "provisionalMeasuresObservation": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Observação da tutela de urgência e cautelar**",
+                "example": "<observacao_tutela>"
+              },
+              "result": {
+                "$ref": "#/components/schemas/ValorApuradoExitoPerda"
+              },
+              "isClosing": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Indica se a decisão encerra o processo**"
+              },
+              "grantedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor Deferido**"
+              },
+              "finePlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "fineDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "fineThirdParties": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "defeatCostPlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "defeatCostDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostQuery"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
       "PersonStatus": {
         "title": "Status",
         "type": "string",
@@ -8846,35 +10227,6 @@
           "Link": {
             "type": "string",
             "example": "string de exemplo",
-            "description": ""
-          }
-        }
-      },
-      "FineDefeatCostQuery": {
-        "title": "FineDefeatCost",
-        "type": "object",
-        "properties": {
-          "Parties": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {},
-            "description": ""
-          },
-          "ValueType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Value": {
-            "type": [
-              "number",
-              "null"
-            ],
             "description": ""
           }
         }

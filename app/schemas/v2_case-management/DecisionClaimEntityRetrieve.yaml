@@ -1,0 +1,47 @@
+title: DecisionClaim
+type: object
+properties:
+  id:
+    type: [string, "null"]
+    format: uuid
+    description: "**gdUniqueId do registro em TProcessoDecisaoValor**"
+    example: <global_unique_identifier>
+  claimId:
+    type: [string, "null"]
+    format: uuid
+    description: "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**"
+    example: <global_unique_identifier>
+  judgementResult:
+    $ref: ../../enums/v2_case-management/SituacaoJulgamento.yaml
+  foresseenValue:
+    type: number
+    example: 0
+    description: ""
+  contingencyValue:
+    type: number
+    example: 0
+    description: ""
+  grantedValue:
+    type: number
+    example: 0
+    description: "**Valor deferido (vlDeferido)**"
+  currency:
+    type: [number, "null"]
+    description: "**Moeda (nrMoeda)**"
+  justification:
+    type: [string, "null"]
+    description: "**Justificativa do pedido (dsJustificativaPedido)**"
+    example: <justificativa_do_pedido>
+  situation:
+    type: [number, "null"]
+    description: "**Situação (nrSituacao)**"
+  injunctionResult:
+    type: [number, "null"]
+    description: "**Resultado da tutela provisória (nrResultadoTutela)**"
+  judgementSituation:
+    type: [number, "null"]
+    description: "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+  risk:
+    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
+  provisionalRelief:
+    $ref: ../../enums/v2_case-management/TipoTutela.yaml
