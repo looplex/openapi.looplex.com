@@ -1,0 +1,29 @@
+tags:
+  - Case Guarantee
+summary: "/caseGuarantees/:id"
+description: "**Retrieve a case guarantee by id**"
+operationId: caseGuarantees-caseGuarantee_id-get
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          $ref: ../../schemas/v2_case-management/CaseGuaranteeEntityRetrieve.yaml
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

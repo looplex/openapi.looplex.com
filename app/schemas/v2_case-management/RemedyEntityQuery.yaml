@@ -1,0 +1,10 @@
+title: Remedy
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: [string, "null"]
+        example: <remedy_name>
+        description: "**Remedy name**<br />Filterable by `Name.pt-BR`"

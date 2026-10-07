@@ -1,0 +1,45 @@
+title: CaseGuaranteeEntity
+description: "**Garantias dadas ou recebidas**"
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Type:
+        $ref: ../../enums/v2_case-management/FormaGarantia.yaml
+      Classification:
+        type: [string, "null"]
+        example: <classificacao>
+        description: "**Classificação**"
+      Date:
+        type: [string, "null"]
+        format: datetime
+        example: <data_da_garantia>
+        description: "**Data**"
+      Description:
+        type: [string, "null"]
+        example: <descricao_da_garantia>
+        description: "**Descrição**"
+      Claims:
+        type: array
+        items:
+          $ref: CaseClaimEntityQuery.yaml
+        description: "**Pedido**"
+      Obligation:
+        $ref: ObligationRetrieve.yaml
+        description: "**Obrigação**<br />`Schema ainda não existe`"
+      Currency:
+        $ref: ../../enums/v2_case-management/Moeda.yaml
+      Value:
+        type: [number, "null"]
+        example: 0
+        description: "**Valor**"
+      UpdatedValue:
+        type: [number, "null"]
+        example: 0
+        description: "**Valor Atualizado**"
+      CustomFields:
+        type: object
+        example: {}
+        description: ""
+      # caseId: não é serializado (ShouldSerializeCaseId = false), por isso não consta na resposta

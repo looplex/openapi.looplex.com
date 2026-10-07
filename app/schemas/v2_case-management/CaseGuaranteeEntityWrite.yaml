@@ -2,17 +2,31 @@ title: CaseGuaranteeEntity
 description: "**Garantias dadas ou recebidas**"
 type: object
 properties:
+  caseId:
+    type: string
+    format: uuid
+    description: "**Case unique identifier**<br />Obrigatório na criação avulsa (POST /caseGuarantees); quando a garantia é enviada dentro do caso (POST /cases) é herdado dele, por isso não consta em `required`"
+    example: <global_unique_identifier>
   type:
     $ref: ../../enums/v2_case-management/FormaGarantia.yaml
   classification:
-    type: [string, "null"]
+    type: string
     example: <classificacao>
-    description: "**Classificação**"
+    description: |
+      **Classificação**<br />
+      **Valores permitidos na criação:**<br />
+      Fiança<br />
+      Penhor<br />
+      Hipoteca<br />
+      Alienação Fiduciária<br />
+      Seguro Garantia<br />
+      Carta de Fiança<br />
+      Outros
   date:
-    type: [string, "null"]
+    type: string
     format: datetime
     example: <data_da_garantia>
-    description: "**Data**"
+    description: "**Data**<br />Deve ser enviada em UTC"
   description:
     type: [string, "null"]
     example: <descricao_da_garantia>
@@ -20,8 +34,8 @@ properties:
   claims:
     type: array
     items:
-      $ref: CaseClaimEntityWrite.yaml
-    description: "**Pedido**"
+      $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: "**Pedidos vinculados à garantia**<br />Apenas o `Id` de cada pedido é utilizado"
   obligation:
     $ref: ObligationWrite.yaml
     description: "**Obrigação**<br />`Schema ainda não existe`"
@@ -39,4 +53,8 @@ properties:
     type: object
     example: {}
     description: ""
-  # caseId: obrigatório apenas na criação avulsa da garantia (não existe endpoint próprio); quando enviada dentro do caso é herdada dele
+required:
+  - type
+  - classification
+  - date
+  - currency

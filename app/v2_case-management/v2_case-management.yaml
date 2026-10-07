@@ -82,6 +82,34 @@ paths:
     patch:
       $ref: client\public@clients-patch.yaml
 
+  # Case Guarantees
+  /caseGuarantees:
+    get:
+      $ref: case_guarantee\public@caseGuarantees-get.yaml
+    post:
+      $ref: case_guarantee\public@caseGuarantees-post.yaml
+  /caseGuarantees/{id}:
+    get:
+      $ref: case_guarantee\public@caseGuarantees@caseGuarantee_id-get.yaml
+    patch:
+      $ref: case_guarantee\public@caseGuarantees@caseGuarantee_id-patch.yaml
+    delete:
+      $ref: case_guarantee\public@caseGuarantees-delete.yaml
+
+  # Case Guarantee Movements
+  /caseGuaranteeMovements:
+    get:
+      $ref: case_guarantee_movement\public@caseGuaranteeMovements-get.yaml
+    post:
+      $ref: case_guarantee_movement\public@caseGuaranteeMovements-post.yaml
+  /caseGuaranteeMovements/{id}:
+    get:
+      $ref: case_guarantee_movement\public@caseGuaranteeMovements@caseGuaranteeMovement_id-get.yaml
+    patch:
+      $ref: case_guarantee_movement\public@caseGuaranteeMovements@caseGuaranteeMovement_id-patch.yaml
+    delete:
+      $ref: case_guarantee_movement\public@caseGuaranteeMovements-delete.yaml
+
   # Custom fields
   /{resource}/{id}:
     patch:
@@ -162,6 +190,24 @@ paths:
   /participants/{id}:
     get:
       $ref: participant\public@participants@participant_id-get.yaml
+    patch:
+      $ref: participant\public@participants@participant_id-patch.yaml
+    delete:
+      $ref: participant\public@participants@participant_id-delete.yaml
+
+  # Performances
+  /performances:
+    get:
+      $ref: performance\public@performances-get.yaml
+    post:
+      $ref: performance\public@performances-post.yaml
+  /performances/{id}:
+    get:
+      $ref: performance\public@performances@performance_id-get.yaml
+    patch:
+      $ref: performance\public@performances@performance_id-patch.yaml
+    delete:
+      $ref: performance\public@performances-delete.yaml
 
   # Participant Roles
   /participantRoles:
@@ -220,3 +266,27 @@ paths:
       $ref: docket_entry\public@DocketEntries-get.yaml
   
   
+  # Decision Types
+  /decisionTypes:
+    get:
+      $ref: decision_types\public@decisionTypes-get.yaml
+
+  # Judgement Contents
+  /judgementContents:
+    get:
+      $ref: judgement_contents\public@judgementContents-get.yaml
+
+  # Procedural Matters
+  /proceduralMatters:
+    get:
+      $ref: procedural_matters\public@proceduralMatters-get.yaml
+
+  # Remedies
+  /remedies:
+    get:
+      $ref: remedies\public@remedies-get.yaml
+
+  # Trial Types
+  /trialTypes:
+    get:
+      $ref: trial_types\public@trialTypes-get.yaml

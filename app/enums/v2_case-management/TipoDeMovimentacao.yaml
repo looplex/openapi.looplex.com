@@ -1,0 +1,8 @@
+title: TipoDeMovimentacao
+type: [string, "null"]
+example: <tipo_de_movimentacao>
+description: |
+  **Tipo de movimentação da garantia**<br />
+  **Valores permitidos:**<br />
+  Transferencia<br/>
+  Recuperacao

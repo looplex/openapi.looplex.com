@@ -29,6 +29,8 @@ paths:
       $ref: public@tasks@task_id-get.yaml
     patch:
       $ref: public@tasks-patch.yaml
+    delete:
+      $ref: public@tasks@task_id-delete.yaml
   /tasks:
     get:
       $ref: public@tasks-get.yaml

@@ -1,0 +1,35 @@
+tags:
+  - Case Guarantee Movement
+summary: "/caseGuaranteeMovements/:id"
+description: |
+  **Patch case guarantee movement property**<br />
+  **Paths suportados:** type, date (UTC), transferredTo, justification, value, remainingBalance, alvaraStatus<br />
+  O vínculo guaranteeId não pode ser alterado via patch
+operationId: caseGuaranteeMovements-caseGuaranteeMovement_id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

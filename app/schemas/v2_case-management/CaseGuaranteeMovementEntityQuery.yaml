@@ -1,0 +1,37 @@
+title: CaseGuaranteeMovement
+description: "**Movimentação de garantia**<br />Uma garantia pode ter N movimentações"
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Type:
+        $ref: ../../enums/v2_case-management/TipoDeMovimentacao.yaml
+      Date:
+        type: [string, "null"]
+        format: datetime
+        description: "**Data da movimentação**<br />Em UTC"
+        example: <data_da_movimentacao>
+      TransferredTo:
+        type: [string, "null"]
+        description: "**Transferido para**<br />Para quem/onde o valor foi transferido"
+        example: <transferido_para>
+      Justification:
+        type: [string, "null"]
+        description: "**Justificativa da movimentação**"
+        example: <justificativa>
+      Value:
+        type: [number, "null"]
+        description: "**Valor movimentado**"
+        example: 0
+      RemainingBalance:
+        type: [number, "null"]
+        description: "**Saldo remanescente após a movimentação**"
+        example: 0
+      AlvaraStatus:
+        $ref: ../../enums/v2_case-management/StatusAlvara.yaml
+      CustomFields:
+        type: object
+        example: {}
+        description: ""
+      # guaranteeId: não é serializado (ShouldSerializeGuaranteeId = false), por isso não consta na resposta

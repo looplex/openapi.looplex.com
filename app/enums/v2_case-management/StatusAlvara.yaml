@@ -1,0 +1,9 @@
+title: StatusAlvara
+type: [string, "null"]
+example: <status_alvara>
+description: |
+  **Situação do alvará**<br />
+  **Valores permitidos:**<br />
+  AguardandoExpedicaoAlvara<br/>
+  AlvaraRetirado<br/>
+  AlvaraRecuperado

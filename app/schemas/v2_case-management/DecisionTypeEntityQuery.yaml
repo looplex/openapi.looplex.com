@@ -1,0 +1,25 @@
+title: Decision Type
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: object
+        description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
+        properties:
+          pt-BR:
+            type: [string, "null"]
+          en-US:
+            type: [string, "null"]
+        example:
+          pt-BR: <nome_pt_br>
+          en-US: <name_en_us>
+      Instance:
+        type: [integer, "null"]
+        example: 1
+        description: "**Instance number**<br />Filterable"
+      IsClosure:
+        type: [boolean, "null"]
+        example: false
+        description: "**Indicates whether the decision type represents case closure**"

@@ -1,0 +1,49 @@
+title: Performance
+description: "**Cumprimento**<br />Pagamento/cumprimento de uma obrigação decorrente de um pedido, opcionalmente custeado por uma garantia"
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      paidValue:
+        type: [number, "null"]
+        description: "**Valor pago**"
+        example: 0
+      discountedValue:
+        type: [number, "null"]
+        description: "**Valor abatido**"
+        example: 0
+      discountedPercentage:
+        type: [number, "null"]
+        description: "**Percentual abatido**"
+        example: 0
+      paymentDate:
+        type: [string, "null"]
+        format: datetime
+        description: "**Data do pagamento**<br />Em UTC"
+        example: <data_do_pagamento>
+      description:
+        type: [string, "null"]
+        description: "**Descrição do cumprimento**"
+        example: <descricao_do_cumprimento>
+      status:
+        $ref: ../../enums/v2_case-management/Status.yaml
+      createdAt:
+        type: [string, "null"]
+        format: datetime
+        description: "**Data de criação**<br />Em UTC"
+        example: <data_de_criacao>
+      caseClaimId:
+        type: string
+        format: uuid
+        description: "**Pedido ao qual o cumprimento está vinculado**"
+        example: <global_unique_identifier>
+      caseGuaranteeId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Garantia que custeou o cumprimento**<br />Vínculo opcional"
+        example: <global_unique_identifier>
+      customFields:
+        type: object
+        example: {}
+        description: ""

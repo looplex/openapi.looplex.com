@@ -1,0 +1,35 @@
+tags:
+  - Case Guarantee
+summary: "/caseGuarantees/:id"
+description: |
+  **Patch case guarantee property**<br />
+  **Paths suportados:** type, classification, date (UTC), description, currency, value, updatedValue<br />
+  **Vínculo com pedidos:** path `claims` com op `add` (vincula) ou `remove` (desvincula); o value é o guid do pedido ou um objeto com `id`
+operationId: caseGuarantees-caseGuarantee_id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

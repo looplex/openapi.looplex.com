@@ -1,0 +1,35 @@
+tags:
+  - Performance
+summary: "/performances/:id"
+description: |
+  **Patch performance property**<br />
+  **Paths suportados:** paidValue, discountedValue, discountedPercentage, paymentDate (UTC), description, status (ACTIVE ou INACTIVE)<br />
+  Os vínculos caseClaimId e caseGuaranteeId não podem ser alterados via patch
+operationId: performances-performance_id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

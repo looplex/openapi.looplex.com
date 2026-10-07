@@ -1241,6 +1241,568 @@
         }
       }
     },
+    "/caseGuarantees": {
+      "get": {
+        "tags": [
+          "Case Guarantee"
+        ],
+        "summary": "/caseGuarantees",
+        "description": "**Fetch items paginated**<br />\n**Atributos filtráveis:** Id, Type, Classification, Date, Description, Claims, Currency, Value, UpdatedValue, CaseId<br />\n**e.g:** CaseId eq \"<case_id>\"\n",
+        "operationId": "caseGuarantees-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseGuaranteeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Case Guarantee"
+        ],
+        "summary": "/caseGuarantees",
+        "description": "**Item created's guid is returned in Location header**<br />\n`caseId`, `type`, `classification`, `date` (UTC) e `currency` são obrigatórios; os pedidos vinculados são informados em `claims` (apenas o `id` é utilizado)\n",
+        "operationId": "caseGuarantees-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaseGuaranteeEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caseGuarantees/{id}": {
+      "get": {
+        "tags": [
+          "Case Guarantee"
+        ],
+        "summary": "/caseGuarantees/:id",
+        "description": "**Retrieve a case guarantee by id**",
+        "operationId": "caseGuarantees-caseGuarantee_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseGuaranteeEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Case Guarantee"
+        ],
+        "summary": "/caseGuarantees/:id",
+        "description": "**Patch case guarantee property**<br />\n**Paths suportados:** type, classification, date (UTC), description, currency, value, updatedValue<br />\n**Vínculo com pedidos:** path `claims` com op `add` (vincula) ou `remove` (desvincula); o value é o guid do pedido ou um objeto com `id`\n",
+        "operationId": "caseGuarantees-caseGuarantee_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Case Guarantee"
+        ],
+        "summary": "/caseGuarantees/:id",
+        "description": "**Delete a case guarantee**",
+        "operationId": "caseGuarantees-delete-id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caseGuaranteeMovements": {
+      "get": {
+        "tags": [
+          "Case Guarantee Movement"
+        ],
+        "summary": "/caseGuaranteeMovements",
+        "description": "**Fetch items paginated**<br />\n**Atributos filtráveis:** Id, Type, Date, TransferredTo, Justification, Value, RemainingBalance, AlvaraStatus, GuaranteeId<br />\n**e.g:** GuaranteeId eq \"<case_guarantee_id>\"\n",
+        "operationId": "caseGuaranteeMovements-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/CaseGuaranteeMovementEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Case Guarantee Movement"
+        ],
+        "summary": "/caseGuaranteeMovements",
+        "description": "**Item created's guid is returned in Location header**<br />\n`guaranteeId`, `type`, `date` (UTC), `transferredTo`, `value` e `alvaraStatus` são obrigatórios\n",
+        "operationId": "caseGuaranteeMovements-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaseGuaranteeMovementEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caseGuaranteeMovements/{id}": {
+      "get": {
+        "tags": [
+          "Case Guarantee Movement"
+        ],
+        "summary": "/caseGuaranteeMovements/:id",
+        "description": "**Retrieve a case guarantee movement by id**",
+        "operationId": "caseGuaranteeMovements-caseGuaranteeMovement_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CaseGuaranteeMovementEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Case Guarantee Movement"
+        ],
+        "summary": "/caseGuaranteeMovements/:id",
+        "description": "**Patch case guarantee movement property**<br />\n**Paths suportados:** type, date (UTC), transferredTo, justification, value, remainingBalance, alvaraStatus<br />\nO vínculo guaranteeId não pode ser alterado via patch\n",
+        "operationId": "caseGuaranteeMovements-caseGuaranteeMovement_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Case Guarantee Movement"
+        ],
+        "summary": "/caseGuaranteeMovements/:id",
+        "description": "**Delete a case guarantee movement**",
+        "operationId": "caseGuaranteeMovements-delete-id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/{resource}/{id}": {
       "patch": {
         "tags": [
@@ -2746,6 +3308,391 @@
             }
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Participant"
+        ],
+        "summary": "/participants/:id",
+        "description": "**Patch participant properties**\n\nAplica operações de patch (RFC 6902) em uma parte. Campos suportados em `path` (não diferencia maiúsculas/minúsculas, exceto `Dob`):\n\n- `Name`, `NickName`, `IsMainParty` (boolean), `Represents` (array de string), `LawyerOffice`, `BusinessStructure`, `Nationality`, `Occupation`: substituem o valor.\n- `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`), `Gender`, `Position`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Dob`: data de nascimento (case-sensitive).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado.\n- `CustomFields`: patch em campos customizados.\n- `Role`: não pode ser atualizado aqui (atualize o vínculo caso-parte).\n\nPartes que são cliente ou funcionário não podem ser atualizadas por este endpoint.\n",
+        "operationId": "participants-participant_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Participant"
+        ],
+        "summary": "/participants/:id",
+        "description": "**Delete a participant**\n\nPartes que são cliente ou funcionário não podem ser excluídas por este endpoint.\n",
+        "operationId": "participants-participant_id-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performances": {
+      "get": {
+        "tags": [
+          "Performance"
+        ],
+        "summary": "/performances",
+        "description": "**Fetch items paginated**<br />\n`O filtro é obrigatório`: a listagem sem filter retorna erro (USP_performance_pquery).<br />\n**Atributos filtráveis:** Id, PaidValue, DiscountedValue, DiscountedPercentage, PaymentDate, Description, Status, CreatedAt, CaseClaimId, CaseGuaranteeId<br />\n**e.g:** CaseClaimId eq \"<case_claim_id>\"\n",
+        "operationId": "performances-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/PerformanceEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Performance"
+        ],
+        "summary": "/performances",
+        "description": "**Item created's guid is returned in Location header**<br />\n`caseClaimId`, `paidValue`, `paymentDate` (UTC) e `status` são obrigatórios; `caseGuaranteeId` é opcional\n",
+        "operationId": "performances-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PerformanceEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/performances/{id}": {
+      "get": {
+        "tags": [
+          "Performance"
+        ],
+        "summary": "/performances/:id",
+        "description": "**Retrieve a performance by id**",
+        "operationId": "performances-performance_id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PerformanceEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Performance"
+        ],
+        "summary": "/performances/:id",
+        "description": "**Patch performance property**<br />\n**Paths suportados:** paidValue, discountedValue, discountedPercentage, paymentDate (UTC), description, status (ACTIVE ou INACTIVE)<br />\nOs vínculos caseClaimId e caseGuaranteeId não podem ser alterados via patch\n",
+        "operationId": "performances-performance_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Performance"
+        ],
+        "summary": "/performances/:id",
+        "description": "**Delete a performance**",
+        "operationId": "performances-delete-id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/participantRoles": {
@@ -3715,6 +4662,386 @@
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/DocketEntryEntity"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/decisionTypes": {
+      "get": {
+        "tags": [
+          "Decision Type"
+        ],
+        "summary": "/decisionTypes",
+        "description": "**Fetch decision types paginated**",
+        "operationId": "decisionTypes-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/DecisionTypeEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/judgementContents": {
+      "get": {
+        "tags": [
+          "Judgement Content"
+        ],
+        "summary": "/judgementContents",
+        "description": "**Fetch judgement contents paginated**",
+        "operationId": "judgementContents-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/JudgementContentEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proceduralMatters": {
+      "get": {
+        "tags": [
+          "Procedural Matter"
+        ],
+        "summary": "/proceduralMatters",
+        "description": "**Fetch procedural matters paginated**",
+        "operationId": "proceduralMatters-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ProceduralMatterEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/remedies": {
+      "get": {
+        "tags": [
+          "Remedy"
+        ],
+        "summary": "/remedies",
+        "description": "**Fetch remedies paginated**",
+        "operationId": "remedies-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/RemedyEntityQuery"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trialTypes": {
+      "get": {
+        "tags": [
+          "Trial Type"
+        ],
+        "summary": "/trialTypes",
+        "description": "**Fetch trial types paginated**",
+        "operationId": "trialTypes-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/StartIndex"
+          },
+          {
+            "$ref": "#/components/parameters/Count"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/ListResponse"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "resources": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/TrialTypeEntityQuery"
                           }
                         }
                       }
@@ -9367,25 +10694,25 @@
         "description": "**Garantias dadas ou recebidas**",
         "type": "object",
         "properties": {
+          "caseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case unique identifier**<br />Obrigatório na criação avulsa (POST /caseGuarantees); quando a garantia é enviada dentro do caso (POST /cases) é herdado dele, por isso não consta em `required`",
+            "example": "<global_unique_identifier>"
+          },
           "type": {
             "$ref": "#/components/schemas/FormaGarantia"
           },
           "classification": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "example": "<classificacao>",
-            "description": "**Classificação**"
+            "description": "**Classificação**<br />\n**Valores permitidos na criação:**<br />\nFiança<br />\nPenhor<br />\nHipoteca<br />\nAlienação Fiduciária<br />\nSeguro Garantia<br />\nCarta de Fiança<br />\nOutros\n"
           },
           "date": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "datetime",
             "example": "<data_da_garantia>",
-            "description": "**Data**"
+            "description": "**Data**<br />Deve ser enviada em UTC"
           },
           "description": {
             "type": [
@@ -9398,9 +10725,9 @@
           "claims": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CaseClaimEntityWrite"
+              "$ref": "#/components/schemas/SimpleObjectIdWrite"
             },
-            "description": "**Pedido**"
+            "description": "**Pedidos vinculados à garantia**<br />Apenas o `Id` de cada pedido é utilizado"
           },
           "obligation": {
             "$ref": "#/components/schemas/ObligationWrite",
@@ -9430,7 +10757,13 @@
             "example": {},
             "description": ""
           }
-        }
+        },
+        "required": [
+          "type",
+          "classification",
+          "date",
+          "currency"
+        ]
       },
       "CaseEntityWrite": {
         "title": "Dados de caso",
@@ -10267,6 +11600,300 @@
             "description": "**Client's custom fields**"
           }
         }
+      },
+      "CaseGuaranteeEntityQuery": {
+        "title": "CaseGuaranteeEntity",
+        "description": "**Garantias dadas ou recebidas**",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Type": {
+                "$ref": "#/components/schemas/FormaGarantia"
+              },
+              "Classification": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<classificacao>",
+                "description": "**Classificação**"
+              },
+              "Date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "example": "<data_da_garantia>",
+                "description": "**Data**"
+              },
+              "Description": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<descricao_da_garantia>",
+                "description": "**Descrição**"
+              },
+              "Claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CaseClaimEntityQuery"
+                },
+                "description": "**Pedido**"
+              },
+              "Obligation": {
+                "$ref": "#/components/schemas/ObligationRetrieve",
+                "description": "**Obrigação**<br />`Schema ainda não existe`"
+              },
+              "Currency": {
+                "$ref": "#/components/schemas/Moeda"
+              },
+              "Value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "example": 0,
+                "description": "**Valor**"
+              },
+              "UpdatedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "example": 0,
+                "description": "**Valor Atualizado**"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "TipoDeMovimentacao": {
+        "title": "TipoDeMovimentacao",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<tipo_de_movimentacao>",
+        "description": "**Tipo de movimentação da garantia**<br />\n**Valores permitidos:**<br />\nTransferencia<br/>\nRecuperacao\n"
+      },
+      "StatusAlvara": {
+        "title": "StatusAlvara",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<status_alvara>",
+        "description": "**Situação do alvará**<br />\n**Valores permitidos:**<br />\nAguardandoExpedicaoAlvara<br/>\nAlvaraRetirado<br/>\nAlvaraRecuperado\n"
+      },
+      "CaseGuaranteeMovementEntityQuery": {
+        "title": "CaseGuaranteeMovement",
+        "description": "**Movimentação de garantia**<br />Uma garantia pode ter N movimentações",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Type": {
+                "$ref": "#/components/schemas/TipoDeMovimentacao"
+              },
+              "Date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data da movimentação**<br />Em UTC",
+                "example": "<data_da_movimentacao>"
+              },
+              "TransferredTo": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Transferido para**<br />Para quem/onde o valor foi transferido",
+                "example": "<transferido_para>"
+              },
+              "Justification": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Justificativa da movimentação**",
+                "example": "<justificativa>"
+              },
+              "Value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor movimentado**",
+                "example": 0
+              },
+              "RemainingBalance": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Saldo remanescente após a movimentação**",
+                "example": 0
+              },
+              "AlvaraStatus": {
+                "$ref": "#/components/schemas/StatusAlvara"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "CaseGuaranteeMovementEntityWrite": {
+        "title": "CaseGuaranteeMovement",
+        "description": "**Movimentação de garantia**<br />Uma garantia pode ter N movimentações",
+        "type": "object",
+        "properties": {
+          "guaranteeId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Garantia à qual a movimentação pertence**",
+            "example": "<global_unique_identifier>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDeMovimentacao"
+          },
+          "date": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data da movimentação**<br />Deve ser enviada em UTC",
+            "example": "<data_da_movimentacao>"
+          },
+          "transferredTo": {
+            "type": "string",
+            "description": "**Transferido para**<br />Para quem/onde o valor foi transferido",
+            "example": "<transferido_para>"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa da movimentação**",
+            "example": "<justificativa>"
+          },
+          "value": {
+            "type": "number",
+            "description": "**Valor movimentado**",
+            "example": 0
+          },
+          "remainingBalance": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Saldo remanescente após a movimentação**",
+            "example": 0
+          },
+          "alvaraStatus": {
+            "$ref": "#/components/schemas/StatusAlvara"
+          },
+          "customFields": {
+            "type": "object",
+            "example": {},
+            "description": ""
+          }
+        },
+        "required": [
+          "guaranteeId",
+          "type",
+          "date",
+          "transferredTo",
+          "value",
+          "alvaraStatus"
+        ]
+      },
+      "CaseGuaranteeMovementEntityRetrieve": {
+        "title": "CaseGuaranteeMovement",
+        "description": "**Movimentação de garantia**<br />Uma garantia pode ter N movimentações",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/TipoDeMovimentacao"
+              },
+              "date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data da movimentação**<br />Em UTC",
+                "example": "<data_da_movimentacao>"
+              },
+              "transferredTo": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Transferido para**<br />Para quem/onde o valor foi transferido",
+                "example": "<transferido_para>"
+              },
+              "justification": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Justificativa da movimentação**",
+                "example": "<justificativa>"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor movimentado**",
+                "example": 0
+              },
+              "remainingBalance": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Saldo remanescente após a movimentação**",
+                "example": 0
+              },
+              "alvaraStatus": {
+                "$ref": "#/components/schemas/StatusAlvara"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
       },
       "PatchEntityCustomFields": {
         "title": "Patch object",
@@ -11536,6 +13163,253 @@
           }
         }
       },
+      "PerformanceEntityQuery": {
+        "title": "Performance",
+        "description": "**Cumprimento**<br />Pagamento/cumprimento de uma obrigação decorrente de um pedido, opcionalmente custeado por uma garantia",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "PaidValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor pago**",
+                "example": 0
+              },
+              "DiscountedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor abatido**",
+                "example": 0
+              },
+              "DiscountedPercentage": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Percentual abatido**",
+                "example": 0
+              },
+              "PaymentDate": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data do pagamento**<br />Em UTC",
+                "example": "<data_do_pagamento>"
+              },
+              "Description": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Descrição do cumprimento**",
+                "example": "<descricao_do_cumprimento>"
+              },
+              "Status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "CreatedAt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data de criação**<br />Em UTC",
+                "example": "<data_de_criacao>"
+              },
+              "CaseClaimId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Pedido ao qual o cumprimento está vinculado**",
+                "example": "<global_unique_identifier>"
+              },
+              "CaseGuaranteeId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Garantia que custeou o cumprimento**<br />Vínculo opcional",
+                "example": "<global_unique_identifier>"
+              },
+              "CustomFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "PerformanceEntityWrite": {
+        "title": "Performance",
+        "description": "**Cumprimento**<br />Pagamento/cumprimento de uma obrigação decorrente de um pedido, opcionalmente custeado por uma garantia",
+        "type": "object",
+        "properties": {
+          "paidValue": {
+            "type": "number",
+            "description": "**Valor pago**",
+            "example": 0
+          },
+          "discountedValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor abatido**",
+            "example": 0
+          },
+          "discountedPercentage": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Percentual abatido**",
+            "example": 0
+          },
+          "paymentDate": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data do pagamento**<br />Deve ser enviada em UTC",
+            "example": "<data_do_pagamento>"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Descrição do cumprimento**",
+            "example": "<descricao_do_cumprimento>"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "caseClaimId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Pedido ao qual o cumprimento está vinculado**",
+            "example": "<global_unique_identifier>"
+          },
+          "caseGuaranteeId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Garantia que custeia o cumprimento**<br />Vínculo opcional",
+            "example": "<global_unique_identifier>"
+          },
+          "customFields": {
+            "type": "object",
+            "example": {},
+            "description": ""
+          }
+        },
+        "required": [
+          "caseClaimId",
+          "paidValue",
+          "paymentDate",
+          "status"
+        ]
+      },
+      "PerformanceEntityRetrieve": {
+        "title": "Performance",
+        "description": "**Cumprimento**<br />Pagamento/cumprimento de uma obrigação decorrente de um pedido, opcionalmente custeado por uma garantia",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "paidValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor pago**",
+                "example": 0
+              },
+              "discountedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor abatido**",
+                "example": 0
+              },
+              "discountedPercentage": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Percentual abatido**",
+                "example": 0
+              },
+              "paymentDate": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data do pagamento**<br />Em UTC",
+                "example": "<data_do_pagamento>"
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Descrição do cumprimento**",
+                "example": "<descricao_do_cumprimento>"
+              },
+              "status": {
+                "$ref": "#/components/schemas/Status"
+              },
+              "createdAt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "description": "**Data de criação**<br />Em UTC",
+                "example": "<data_de_criacao>"
+              },
+              "caseClaimId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Pedido ao qual o cumprimento está vinculado**",
+                "example": "<global_unique_identifier>"
+              },
+              "caseGuaranteeId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Garantia que custeou o cumprimento**<br />Vínculo opcional",
+                "example": "<global_unique_identifier>"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
       "PhaseEntityQuery": {
         "title": "Phase",
         "type": "object",
@@ -12750,6 +14624,229 @@
                     "type": "null"
                   }
                 ]
+              }
+            }
+          }
+        ]
+      },
+      "DecisionTypeEntityQuery": {
+        "title": "Decision Type",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "object",
+                "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
+                "properties": {
+                  "pt-BR": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en-US": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "example": {
+                  "pt-BR": "<nome_pt_br>",
+                  "en-US": "<name_en_us>"
+                }
+              },
+              "Instance": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 1,
+                "description": "**Instance number**<br />Filterable"
+              },
+              "IsClosure": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "example": false,
+                "description": "**Indicates whether the decision type represents case closure**"
+              }
+            }
+          }
+        ]
+      },
+      "JudgementContentEntityQuery": {
+        "title": "Judgement Content",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "TrialTypeId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<trial_type_uuid>",
+                "description": "**Trial type unique identifier**<br />Filterable"
+              },
+              "Name": {
+                "type": "object",
+                "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
+                "properties": {
+                  "pt-BR": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en-US": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "example": {
+                  "pt-BR": "<nome_pt_br>",
+                  "en-US": "<name_en_us>"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "ProceduralMatterEntityQuery": {
+        "title": "Procedural Matter",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "object",
+                "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
+                "properties": {
+                  "pt-BR": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en-US": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "example": {
+                  "pt-BR": "<nome_pt_br>",
+                  "en-US": "<name_en_us>"
+                }
+              },
+              "Acceptance": {
+                "type": "object",
+                "description": "**Accepted / not accepted labels**",
+                "properties": {
+                  "yes": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "no": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "example": {
+                  "yes": "<accepted_label>",
+                  "no": "<not_accepted_label>"
+                }
+              },
+              "Children": {
+                "type": "array",
+                "description": "**Child procedural matters**<br />Only root items are returned in the list; children are nested here",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "RemedyEntityQuery": {
+        "title": "Remedy",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<remedy_name>",
+                "description": "**Remedy name**<br />Filterable by `Name.pt-BR`"
+              }
+            }
+          }
+        ]
+      },
+      "TrialTypeEntityQuery": {
+        "title": "Trial Type",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceQuery"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "DecisionTypeId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<decision_type_uuid>",
+                "description": "**Decision type unique identifier**<br />Filterable"
+              },
+              "Name": {
+                "type": "object",
+                "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
+                "properties": {
+                  "pt-BR": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "en-US": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "example": {
+                  "pt-BR": "<nome_pt_br>",
+                  "en-US": "<name_en_us>"
+                }
               }
             }
           }

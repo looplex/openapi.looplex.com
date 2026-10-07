@@ -1,0 +1,22 @@
+title: Trial Type
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      DecisionTypeId:
+        type: string
+        format: uuid
+        example: <decision_type_uuid>
+        description: "**Decision type unique identifier**<br />Filterable"
+      Name:
+        type: object
+        description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
+        properties:
+          pt-BR:
+            type: [string, "null"]
+          en-US:
+            type: [string, "null"]
+        example:
+          pt-BR: <nome_pt_br>
+          en-US: <name_en_us>

@@ -1,0 +1,33 @@
+title: Procedural Matter
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: object
+        description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
+        properties:
+          pt-BR:
+            type: [string, "null"]
+          en-US:
+            type: [string, "null"]
+        example:
+          pt-BR: <nome_pt_br>
+          en-US: <name_en_us>
+      Acceptance:
+        type: object
+        description: "**Accepted / not accepted labels**"
+        properties:
+          "yes":
+            type: [string, "null"]
+          "no":
+            type: [string, "null"]
+        example:
+          "yes": <accepted_label>
+          "no": <not_accepted_label>
+      Children:
+        type: array
+        description: "**Child procedural matters**<br />Only root items are returned in the list; children are nested here"
+        items:
+          type: object
