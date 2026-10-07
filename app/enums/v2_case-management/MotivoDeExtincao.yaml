@@ -1,0 +1,14 @@
+title: MotivoDeExtincao
+type: [string, "null"]
+example: <motivo_de_extincao>
+description: |
+  **Motivo da extinção**<br />
+  Motivo que gerou a extinção do processo sem julgamento de mérito<br />
+  **Valores permitidos:**<br />
+  INCOMPETENCIA_DE_JUIZO<br/>
+  AUSENCIA_DE_LEGITIMIDADE_OU_DE_INTERESSE_PROCESSUAL<br/>
+  INCAPACIDADE_DA_PARTE_DEFEITO_DE_REPRESENTACAO_OU_FALTA_DE_AUTORIZACAO<br/>
+  FALTA_DE_CAUCAO_OU_DE_OUTRA_PRESTACAO<br/>
+  LITISCONSORCIO_NECESSARIO<br/>
+  INEPCIA_DE_PETICAO_INICIAL<br/>
+  ABANDONO_OU_PARALISACAO_DA_CAUSA

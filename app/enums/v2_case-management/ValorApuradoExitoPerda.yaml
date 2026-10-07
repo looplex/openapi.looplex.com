@@ -1,0 +1,9 @@
+title: ValorApuradoExitoPerda
+type: [string, "null"]
+example: <valor_apurado_exito_perda>
+description: |
+  **Resultado do Julgamento**<br />
+  **Valores permitidos:**<br />
+  PROVAVEL<br/>
+  POSSIVEL<br/>
+  REMOTO

@@ -1,0 +1,147 @@
+title: Decision
+type: object
+properties:
+  caseId:
+    type: string
+    format: uuid
+    description: "**Case unique identifier**"
+    example: <global_unique_identifier>
+  lastDecisionId:
+    type: [string, "null"]
+    format: uuid
+    description: |
+      **Decisão anterior referente ao embargo de declaração**<br />
+      `Required no saas`<br />
+      `Required quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`
+    example: <global_unique_identifier>
+  date:
+    type: string
+    format: datetime
+    description: "**Data da Resolução**"
+    example: <data_da_resolucao>
+  resolutionContent:
+    type: [string, "null"]
+    description: "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução"
+    example: <conteudo_da_resolucao>
+  excerpt:
+    type: [string, "null"]
+    description: "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)"
+    example: <trecho_da_resolucao>
+  summaryOfFindings:
+    type: [string, "null"]
+    description: "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução"
+    example: <sumario_da_resolucao>
+  remedyType:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: "**A decisão**"
+  decisionType:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+  trialType:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: "**Tipo de Julgamento**"
+  issuePreservation:
+    type: [boolean, "null"]
+    description: "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
+    example: false
+  judgementContent:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: "**Conteúdo do Julgamento**"
+  proceduralMatter:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: |
+      **Questão processual**<br />
+      `Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`
+  claims:
+    type: array
+    items:
+      $ref: ./DecisionClaimEntityWrite.yaml
+    description: |
+      **Claim's uuids**<br />
+      `Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`
+  motivationForInvoluntaryDismissal:
+    $ref: ../../enums/v2_case-management/MotivoDeExtincao.yaml
+  rulingOnProceduralIssuesGroup:
+    type: [string, "null"]
+    description: |
+      **Grupo sobre questões meramente processuais**<br />
+      Agrupamento para melhor seleção de questões processuais<br />
+      "Concessão de tutela provisória e liminares", "Incompetência reconhecida", "Rejeição de preliminares e condições da ação", "Juízo de admissibilidade de recurso", "Decisão sobre requerimentos das partes", "Abertura de prazo para manifestação"
+    example: <grupo_questoes_processuais>
+  rulingOnMotionsGroup:
+    type: [string, "null"]
+    description: "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'"
+    example: <sub_agrupamento_requerimentos>
+  rulingOnProceduralIssues:
+    type: [string, "null"]
+    description: "**Decisão sobre Questões Meramente Processuais**"
+    example: <decisao_sobre_questoes_processuais>
+  rulingOnProceduralIssuesHierarchy:
+    type: [string, "null"]
+    description: |
+      **Hierarquia das variáveis de questões meramente processuais**<br />
+      Será composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues
+    example: <hierarquia_questoes_processuais>
+  provisionalMeasures:
+    type: [boolean, "null"]
+    description: "**Concessão de tutela provisória e liminares**"
+    example: false
+  transferOfVenue:
+    type: [boolean, "null"]
+    description: "**Incompetência reconhecida**"
+    example: false
+  rejectionOfProceduralObjections:
+    type: [boolean, "null"]
+    description: "**Rejeição de preliminares e condições da ação**"
+    example: false
+  admissibilityReviewOfAppeal:
+    type: [boolean, "null"]
+    description: "**Juízo de admissibilidade de recurso**"
+    example: false
+  rulingOnMotions:
+    type: [boolean, "null"]
+    description: "**Decisão sobre requerimentos das partes**"
+    example: false
+  periodForFilingResponse:
+    type: [boolean, "null"]
+    description: "**Abertura de prazo para manifestação**"
+    example: false
+  provisionalMeasuresObservation:
+    type: [string, "null"]
+    description: "**Observação da tutela de urgência e cautelar**"
+    example: <observacao_tutela>
+  result:
+    $ref: ../../enums/v2_case-management/ValorApuradoExitoPerda.yaml
+  isClosing:
+    type: [boolean, "null"]
+    description: "**Indica se a decisão encerra o processo**"
+    example: false
+  grantedValue:
+    type: [number, "null"]
+    description: "**Valor Deferido**"
+  finePlaintiff:
+    type: [array, "null"]
+    items:
+      $ref: ./FineDefeatCostWrite.yaml
+  fineDefendant:
+    type: [array, "null"]
+    items:
+      $ref: ./FineDefeatCostWrite.yaml
+  fineThirdParties:
+    type: [array, "null"]
+    items:
+      $ref: ./FineDefeatCostWrite.yaml
+  defeatCostPlaintiff:
+    type: [array, "null"]
+    items:
+      $ref: ./FineDefeatCostWrite.yaml
+  defeatCostDefendant:
+    type: [array, "null"]
+    items:
+      $ref: ./FineDefeatCostWrite.yaml
+required:
+  - date
+  - caseId
+  - decisionType
+  - trialType
+  - remedyType

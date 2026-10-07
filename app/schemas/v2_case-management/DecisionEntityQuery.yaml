@@ -1,0 +1,145 @@
+title: Decision
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      CaseId:
+        type: string
+        format: uuid
+        description: "**Case unique identifier**"
+        example: <global_unique_identifier>
+      LastDecisionId:
+        type: [string, "null"]
+        format: uuid
+        description: |
+          **Decisão anterior referente ao embargo de declaração**<br />
+          `Required no saas`
+        example: <global_unique_identifier>
+      Date:
+        type: string
+        format: datetime
+        description: "**Data da Resolução**"
+        example: <data_da_resolucao>
+      ResolutionContent:
+        type: [string, "null"]
+        description: "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução"
+        example: <conteudo_da_resolucao>
+      Excerpt:
+        type: [string, "null"]
+        description: "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)"
+        example: <trecho_da_resolucao>
+      SummaryOfFindings:
+        type: [string, "null"]
+        description: "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução"
+        example: <sumario_da_resolucao>
+      RemedyType:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**A decisão**"
+      DecisionType:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+      TrialType:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**Tipo de Julgamento**"
+      IssuePreservation:
+        type: [boolean, "null"]
+        description: "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
+      JudgementContent:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**Conteúdo do Julgamento**"
+      ProceduralMatter:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: |
+          **Questão processual**<br />
+          `Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`
+      Claims:
+        type: array
+        items:
+          $ref: ./DecisionClaimEntityQuery.yaml
+        description: |
+          **Claim's uuids**<br />
+          `Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`
+      MotivationForInvoluntaryDismissal:
+        $ref: ../../enums/v2_case-management/MotivoDeExtincao.yaml
+      RulingOnProceduralIssuesGroup:
+        type: [string, "null"]
+        description: |
+          **Grupo sobre questões meramente processuais**<br />
+          Agrupamento para melhor seleção de questões processuais<br />
+          "Concessão de tutela provisória e liminares", "Incompetência reconhecida", "Rejeição de preliminares e condições da ação", "Juízo de admissibilidade de recurso", "Decisão sobre requerimentos das partes", "Abertura de prazo para manifestação"
+        example: <grupo_questoes_processuais>
+      RulingOnMotionsGroup:
+        type: [string, "null"]
+        description: "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'"
+        example: <sub_agrupamento_requerimentos>
+      RulingOnProceduralIssues:
+        type: [string, "null"]
+        description: "**Decisão sobre Questões Meramente Processuais**"
+        example: <decisao_sobre_questoes_processuais>
+      RulingOnProceduralIssuesHierarchy:
+        type: [string, "null"]
+        description: |
+          **Hierarquia das variáveis de questões meramente processuais**<br />
+          Será composto por RulingOnProceduralIssuesGroup | RulingOnMotionsGroup | RulingOnProceduralIssues
+        example: <hierarquia_questoes_processuais>
+      ProvisionalMeasures:
+        type: [boolean, "null"]
+        description: "**Concessão de tutela provisória e liminares**"
+      TransferOfVenue:
+        type: [boolean, "null"]
+        description: "**Incompetência reconhecida**"
+      RejectionOfProceduralObjections:
+        type: [boolean, "null"]
+        description: "**Rejeição de preliminares e condições da ação**"
+      AdmissibilityReviewOfAppeal:
+        type: [boolean, "null"]
+        description: "**Juízo de admissibilidade de recurso**"
+      RulingOnMotions:
+        type: [boolean, "null"]
+        description: "**Decisão sobre requerimentos das partes**"
+      PeriodForFilingResponse:
+        type: [boolean, "null"]
+        description: "**Abertura de prazo para manifestação**"
+      ProvisionalMeasuresObservation:
+        type: [string, "null"]
+        description: "**Observação da tutela de urgência e cautelar**"
+        example: <observacao_tutela>
+      Result:
+        $ref: ../../enums/v2_case-management/ValorApuradoExitoPerda.yaml
+      IsClosing:
+        type: [boolean, "null"]
+        description: "**Indica se a decisão encerra o processo**"
+      GrantedValue:
+        type: [number, "null"]
+        description: "**Valor Deferido**"
+      FinePlaintiff:
+        oneOf:
+          - type: array
+            items:
+              $ref: ./FineDefeatCostQuery.yaml
+          - type: "null"
+      FineDefendant:
+        oneOf:
+          - type: array
+            items:
+              $ref: ./FineDefeatCostQuery.yaml
+          - type: "null"
+      FineThirdParties:
+        oneOf:
+          - type: array
+            items:
+              $ref: ./FineDefeatCostQuery.yaml
+          - type: "null"
+      DefeatCostPlaintiff:
+        oneOf:
+          - type: array
+            items:
+              $ref: ./FineDefeatCostQuery.yaml
+          - type: "null"
+      DefeatCostDefendant:
+        oneOf:
+          - type: array
+            items:
+              $ref: ./FineDefeatCostQuery.yaml
+          - type: "null"

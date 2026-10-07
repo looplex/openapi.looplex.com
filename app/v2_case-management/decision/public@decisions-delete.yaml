@@ -1,0 +1,21 @@
+tags:
+  - Decision
+summary: "/decisions/:id"
+description: "**Delete a decision**"
+operationId: decisions-delete-id
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+responses:
+  "204":
+    description: "No Content"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../../scim/SCIMError.yaml
