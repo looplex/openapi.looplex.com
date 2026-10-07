@@ -1,0 +1,27 @@
+title: OppositionToClaim
+description: |
+  **Oposição às reivindicações**<br />
+  Negação a reivindicações de obrigações contingentes ou disputadas feitas pela parte contrária
+type: object
+properties:
+  oppositionToClaimSummary:
+    type: [string, "null"]
+    example: <resumo_da_oposicao>
+    description: "**Resumo dos principais argumentos e fatos alegados em refutação a reinvindicações**"
+  effectiveDate:
+    type: [string, "null"]
+    format: datetime
+    example: <data_de_constituicao>
+    description: "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+  subjectMatter:
+    type: [string, "null"]
+    example: <classificacao_geral_da_questao>
+    description: "**Classificação geral da questão**"
+  oppositionToPropositionStatement:
+    $ref: OppositionToPropositionStatementRetrieve.yaml
+    description: "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+  oppositionToReparationStatements:
+    type: array
+    items:
+      $ref: OppositionToReparationStatementsRetrieve.yaml
+    description: "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária"

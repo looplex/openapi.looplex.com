@@ -106,7 +106,7 @@ allOf:
         description: "**Observação da tutela de urgência e cautelar**"
         example: <observacao_tutela>
       Result:
-        $ref: ../../enums/v2_case-management/ValorApuradoExitoPerda.yaml
+        $ref: ../../enums/v2_case-management/SituacaoJulgamento.yaml
       IsClosing:
         type: [boolean, "null"]
         description: "**Indica se a decisão encerra o processo**"

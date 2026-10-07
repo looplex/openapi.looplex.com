@@ -1,0 +1,23 @@
+title: OppositionToReparationStatements
+description: "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária"
+type: object
+properties:
+  remedyType:
+    type: [string, "null"]
+    example: <tipo_de_reparacao>
+    description: |
+      **Dano patrimonial = Dano material; Dano extrapatrimonial = Dano moral**<br />
+      **Valores permitidos:**<br />
+      "Dano material", "Dano moral", "Obrigação de fazer", "Declaratória"
+  obligationDescription:
+    type: [string, "null"]
+    example: <descricao_da_obrigacao>
+    description: "**Especificação da obrigação de fazer**"
+  foreseenValue:
+    type: number
+    example: 0
+    description: ""
+  isSplit:
+    type: boolean
+    example: false
+    description: "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"

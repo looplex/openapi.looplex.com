@@ -21,18 +21,13 @@ allOf:
         items:
           $ref: ../common/LegacyIdentityEntityQuery.yaml
       Type:
-        type: string
-        description: |
-          **Person's type**<br />
-          UNDEFINED<br/>
-          NATURAL_PERSON<br />
-          LEGAL_PERSON
+        $ref: ../../enums/v2_case-management/TipoPessoa.yaml
       Emails:
         type: array
         items:
           $ref: EmailEntityQuery.yaml
       Status:
-        $ref: ../../enums/v2_case-management/Status.yaml
+        $ref: ../../enums/v2_case-management/BooleanStatus.yaml
       CustomFields:
         type: object
         example: {}

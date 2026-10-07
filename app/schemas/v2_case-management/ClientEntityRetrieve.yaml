@@ -14,6 +14,8 @@ properties:
     type: string
     example: <apelido_do_cliente>
     description: "**Client's nickname**"
+  status:
+    $ref: ../../enums/v2_case-management/Status.yaml
   type:
     $ref: ../../enums/v2_case-management/TipoPessoa.yaml
   email:
@@ -37,6 +39,8 @@ properties:
     $ref: ../../enums/v2_case-management/Gender.yaml
   maritalStatus:
     $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+  role:
+    $ref: ../../enums/v2_case-management/Position.yaml
   identities:
     type: array
     items:

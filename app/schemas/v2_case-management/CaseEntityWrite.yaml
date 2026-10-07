@@ -246,6 +246,49 @@ properties:
     items:
       $ref: CaseClaimEntityWrite.yaml
     description: "**Case claims**"
+  oppositionToClaims:
+    type: array
+    items:
+      $ref: OppositionToClaimWrite.yaml
+    description: |
+      **Pedidos Contrapostos**<br />
+      Pedidos contrapostos feitos pelas partes dentro de um caso
+  proceduralObjections:
+    type: array
+    items:
+      $ref: ProceduralObjectionEntityWrite.yaml
+    description: |
+      **Exceções Processuais**<br />
+      Exceções processuais feitas pelas partes dentro de um caso
+  resolution:
+    type: array
+    items:
+      oneOf:
+        - $ref: DecisionEntityWrite.yaml
+        - $ref: ResolutionWrite.yaml
+    description: |
+      **Decisões**<br />
+      Decisões tomadas em um caso, como sentenças, acórdãos e despachos
+  paymentOrDischarge:
+    type: array
+    items:
+      $ref: PaymentOrDischargeEntityWrite.yaml
+    description: |
+      **Cumprimento**<br />
+      Pagamentos ou cumprimentos de pedidos ou obrigações
+  guaranties:
+    type: array
+    items:
+      $ref: CaseGuaranteeEntityWrite.yaml
+    description: "**Garantias dadas ou recebidas**"
+  timesheet:
+    type: array
+    items:
+      $ref: TimesheetEntityWrite.yaml
+    description: "**Registro de horas trabalhadas**"
+  folder:
+    $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+    description: ""
   customFields:
     type: object
     example: {}

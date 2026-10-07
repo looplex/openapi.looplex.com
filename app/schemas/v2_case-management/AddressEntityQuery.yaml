@@ -5,8 +5,7 @@ allOf:
   - type: object
     properties:
       Country:
-        type: [string, "null"]
-        example: <pais>
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
       PostalCode:
         type: [string, "null"]
@@ -21,12 +20,10 @@ allOf:
         example: <numero_do_logradouro>
         description: "**Street number**"
       Locality:
-        type: [string, "null"]
-        example: <cidade>
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**Cidade**"
       Region:
-        type: [string, "null"]
-        example: <sigla_estado>
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
         description: "**State**"
       ExtendedAddress:
         type: string
@@ -34,6 +31,11 @@ allOf:
         example: <complemento>
       Type:
         $ref: ../../enums/v2_case-management/AddressType.yaml
+      ContextId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Identifier of the owner (client, employee, etc.) of this address**"
+        example: <global_unique_identifier>
       Primary:
         type: boolean
         example: true

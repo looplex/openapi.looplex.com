@@ -2,18 +2,18 @@ title: OfficialGazette
 description: ""
 properties:  
   Name:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   GazetteSection:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   Page:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   Link:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""

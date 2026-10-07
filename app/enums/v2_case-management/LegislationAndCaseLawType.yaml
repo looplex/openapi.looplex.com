@@ -1,0 +1,9 @@
+title: LegislationAndCaseLawType
+type: string
+example: <tipo_legislacao_e_jurisprudencia>
+description: |
+  **Tipo de legislação e jurisprudência**<br />
+  **Valores permitidos:**<br />
+  CASE_LAW<br/>
+  LEGISLATION<br/>
+  NORMATIVE_AND_ADVISORY_ACTS

@@ -4296,6 +4296,38 @@
             "example": "<rito_do_processo>",
             "description": "**Rito ou procedimento do caso**"
           },
+          "contractClassification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_do_contrato>",
+            "description": "**Classificação do contrato**<br />\nUtilizado para casos <b>CONTRATO</b>\n"
+          },
+          "contractType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_do_contrato>",
+            "description": "**Tipo do contrato**<br />\nCasos de tipo <b>CONTRATO</b>\n"
+          },
+          "legalPersonClassification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_da_pessoa_juridica>",
+            "description": "**Classificação da pessoa jurídica**<br />\nUtilizado para casos <b>SOCIETARIO</b>\n"
+          },
+          "deliberativeBody": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<orgao_deliberativo>",
+            "description": "**Órgão deliberativo**<br />\nCasos de tipo <b>SOCIETARIO</b>\n"
+          },
           "phase": {
             "type": [
               "string",
@@ -4465,7 +4497,7 @@
         "title": "Person's type",
         "type": "string",
         "example": "<tipo_de_pessoa>",
-        "description": "**Person's type**<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+        "description": "**Person's type**<br />\nUNDEFINED<br />\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
       },
       "AddressType": {
         "title": "Address' type",
@@ -4484,11 +4516,7 @@
             "type": "object",
             "properties": {
               "country": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<pais>",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
               },
               "postalCode": {
@@ -4513,19 +4541,11 @@
                 "description": "**Street number**"
               },
               "locality": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<cidade>",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**Cidade**"
               },
               "region": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<sigla_estado>",
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
                 "description": "**State**"
               },
               "extendedAddress": {
@@ -4535,6 +4555,15 @@
               },
               "type": {
                 "$ref": "#/components/schemas/AddressType"
+              },
+              "contextId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Identifier of the owner (client, employee, etc.) of this address**",
+                "example": "<global_unique_identifier>"
               },
               "primary": {
                 "type": "boolean",
@@ -4596,6 +4625,23 @@
             "type": "boolean",
             "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
             "example": true
+          },
+          "context": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Indicates whether the phone belongs to a client, employee, etc.**",
+            "example": "<contexto>"
+          },
+          "contextId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identifier of the owner (client, employee, etc.) of this phone**",
+            "example": "<global_unique_identifier>"
           },
           "contact": {
             "type": "string",
@@ -4686,7 +4732,7 @@
                 "example": "<nome_da_parte>",
                 "description": "**Participant's name**"
               },
-              "nickname": {
+              "nickName": {
                 "type": [
                   "string",
                   "null"
@@ -4773,7 +4819,11 @@
                 "$ref": "#/components/schemas/RamosJudicial"
               },
               "businessStructure": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               },
               "dob": {
                 "type": "string",
@@ -4785,13 +4835,21 @@
                 "description": "**Gender (NATURAL_PERSON only)**\n"
               },
               "nationality": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               },
               "maritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "occupation": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               }
             }
           }
@@ -4805,15 +4863,6 @@
         ],
         "example": "<perspectiva>",
         "description": "**Perpectiva**<br />\nIndicação da perspectiva do valor, se é um valor a favor (ativo) ou contra (passivo) o cliente<br />\n**Valores permitidos:**<br />\nLOSS <br />\nGAIN\n"
-      },
-      "ContingentLiabilityRiskClassification": {
-        "title": "ContingentLiabilityRiskClassification",
-        "type": [
-          "string",
-          "null"
-        ],
-        "example": "<risco>",
-        "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
       },
       "Moeda": {
         "title": "Moeda",
@@ -4831,9 +4880,6 @@
           },
           "perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
-          },
-          "riskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "currency": {
             "$ref": "#/components/schemas/Moeda",
@@ -4862,6 +4908,22 @@
             ],
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
+          },
+          "caseForeseenValueUpdated": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor previsto atualizado**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "example": 0
+          },
+          "caseContingencyValueUpdated": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor de contingência atualizado**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "example": 0
           }
         }
       },
@@ -4889,6 +4951,15 @@
         "example": "<tipo_tutela>",
         "description": "**Tutela provisória**<br/>\nURGENCIA_SATISFATIVA<br/>\nEVIDENCIA_SATISFATIVA\n"
       },
+      "ContingentLiabilityRiskClassification": {
+        "title": "ContingentLiabilityRiskClassification",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<risco>",
+        "description": "**Risco**<br />\nIndicação do risco associado ao valor. <br />\nSe a probabilidade for maior que 50% devemos considerar como Provável.  <br />\nSe a probabilidade de ocorrência estiver entre 10% e 50%, pode ser considerada como Possível. <br />\nE se essa probabilidade for inferior a 10%, é então Remota. <br />\n**Valores permitidos:**<br />\nPROBABLE<br/>\nPOSSIBLE<br/>\nREMOTE\n"
+      },
       "TipoDeRecorrencia": {
         "title": "TipoDeRecorrencia",
         "type": "string",
@@ -4911,6 +4982,14 @@
           {
             "type": "object",
             "properties": {
+              "idPedido": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 0,
+                "description": ""
+              },
               "caseId": {
                 "type": "string",
                 "format": "uuid",
@@ -5045,6 +5124,253 @@
           }
         ]
       },
+      "OppositionToPropositionStatementRetrieve": {
+        "title": "OppositionToPropositionStatement",
+        "description": "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos da parte que justificam sua posição em relação às alegações da parte contrária. Inclui fundamentação, valores, circunstâncias**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          }
+        }
+      },
+      "OppositionToReparationStatementsRetrieve": {
+        "title": "OppositionToReparationStatements",
+        "description": "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária",
+        "type": "object",
+        "properties": {
+          "remedyType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_de_reparacao>",
+            "description": "**Dano patrimonial = Dano material; Dano extrapatrimonial = Dano moral**<br />\n**Valores permitidos:**<br />\n\"Dano material\", \"Dano moral\", \"Obrigação de fazer\", \"Declaratória\"\n"
+          },
+          "obligationDescription": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_da_obrigacao>",
+            "description": "**Especificação da obrigação de fazer**"
+          },
+          "foreseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "isSplit": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"
+          }
+        }
+      },
+      "OppositionToClaimRetrieve": {
+        "title": "OppositionToClaim",
+        "description": "**Oposição às reivindicações**<br />\nNegação a reivindicações de obrigações contingentes ou disputadas feitas pela parte contrária\n",
+        "type": "object",
+        "properties": {
+          "oppositionToClaimSummary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<resumo_da_oposicao>",
+            "description": "**Resumo dos principais argumentos e fatos alegados em refutação a reinvindicações**"
+          },
+          "effectiveDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_de_constituicao>",
+            "description": "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+          },
+          "subjectMatter": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_geral_da_questao>",
+            "description": "**Classificação geral da questão**"
+          },
+          "oppositionToPropositionStatement": {
+            "$ref": "#/components/schemas/OppositionToPropositionStatementRetrieve",
+            "description": "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+          },
+          "oppositionToReparationStatements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OppositionToReparationStatementsRetrieve"
+            },
+            "description": "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária"
+          }
+        }
+      },
+      "SubjectMatter": {
+        "title": "SubjectMatter",
+        "type": "string",
+        "example": "<assunto_da_excecao_processual>",
+        "description": "**Classificação geral da questão processual**<br />\n**Valores permitidos:**<br />\nINSUFFICIENT_SERVICE_OF_PROCESS<br/>\nINSUFFICIENT_PROCESS<br/>\nLACK_OF_SUBJECT_MATTER_JURISDICTION<br/>\nLACK_OF_PERSONAL_JURISDICTION<br/>\nLACK_OF_FUNCTIONAL_JURISDICTION<br/>\nLACK_OF_AMOUNT_INCONTROVERSY_JURISDICTION<br/>\nARBITRATION_AGREEMENT<br/>\nFAILURE_TO_PROSECUTE<br/>\nPENDING_LITIGATION<br/>\nRES_JUDICATA<br/>\nCONSOLIDATION_OF_ACTIONS<br/>\nCHOICE_OF_VENUE<br/>\nLACK_OF_STANDING_OR_LEGAL_INTEREST<br/>\nINCAPACITY_OR_DEFECTIVE_REPRESENTATION<br/>\nFAILURE_TO_POST_BOND_OR_PROVIDE_OTHER_SECURITY<br/>\nFAILURE_TO_JOIN_A_PARTY_UNDER<br/>\nFAILURE_TO_STATE_A_CLAIM<br/>\nINCORRECT_DISPUTED_VALUE<br/>\nJUDICIAL_DISQUALIFICATION_OR_RECUSAL<br/>\nIMPROPER_GRANT_OF_IN_FORMA_PAUPERIS_STATUS\n"
+      },
+      "ObjectionStatementRetrieve": {
+        "title": "ObjectionStatement",
+        "description": "**Objeção**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos da parte que justificam sua posição em relação às alegações da parte contrária. Inclui fundamentação, valores, circunstâncias**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          }
+        }
+      },
+      "LegislationAndCaseLawType": {
+        "title": "LegislationAndCaseLawType",
+        "type": "string",
+        "example": "<tipo_legislacao_e_jurisprudencia>",
+        "description": "**Tipo de legislação e jurisprudência**<br />\n**Valores permitidos:**<br />\nCASE_LAW<br/>\nLEGISLATION<br/>\nNORMATIVE_AND_ADVISORY_ACTS\n"
+      },
+      "LegislationAndCaseLawRetrieve": {
+        "title": "LegislationAndCaseLaw",
+        "type": "object",
+        "properties": {
+          "legislationAndCaseLawType": {
+            "$ref": "#/components/schemas/LegislationAndCaseLawType"
+          },
+          "legislationAndCaseLawStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<referencia_legislacao_ou_jurisprudencia>",
+            "description": "**Reference that summarizes specific legislation or case law relevant to a legal issue or case**"
+          }
+        }
+      },
+      "ProceduralObjectionType": {
+        "title": "ProceduralObjectionType",
+        "type": "string",
+        "example": "<tipo_excecao_processual>",
+        "description": "**Tipo de exceção processual**<br />\n**Valores permitidos:**<br />\nMOTION_TO_COMPEL<br/>\nMOTION_TO_DISMISSAL<br/>\nMOTION_TO_NULLIFY<br/>\nMOTION_FOR_JURISDICTION_REMOVAL\n"
+      },
+      "ProceduralObjectionRetrieve": {
+        "title": "ProceduralObjection",
+        "type": "object",
+        "properties": {
+          "proceduralObjectionType": {
+            "$ref": "#/components/schemas/ProceduralObjectionType"
+          },
+          "proceduralObjectionStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_da_excecao_processual>",
+            "description": "**Specific motion used in this legal issue or case**"
+          }
+        }
+      },
+      "ProceduralObjectionEntityRetrieve": {
+        "title": "ProceduralObjectionEntity",
+        "description": "**Preliminares e objeções processuais**<br />\nObjeções sobre métodos e processos, tais como competência, legitimidade e pressupostos processuais, em vez das reivindicações de mérito\n",
+        "type": "object",
+        "properties": {
+          "proceduralObjectionsSummary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<resumo_das_excecoes_processuais>",
+            "description": "**Resumo das preliminares, exceções e impugnações processuais apresentadas pela parte**"
+          },
+          "subjectMatter": {
+            "$ref": "#/components/schemas/SubjectMatter"
+          },
+          "objectionStatement": {
+            "$ref": "#/components/schemas/ObjectionStatementRetrieve",
+            "description": "**Objeção**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+          },
+          "legislationAndCaseLaw": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LegislationAndCaseLawRetrieve"
+            },
+            "description": ""
+          },
+          "proceduralObjection": {
+            "$ref": "#/components/schemas/ProceduralObjectionRetrieve",
+            "description": ""
+          }
+        }
+      },
       "LegacyIdentityProviderType": {
         "title": "IdentityProviderType",
         "type": "string",
@@ -5150,6 +5476,890 @@
             }
           }
         ]
+      },
+      "SituacaoJulgamento": {
+        "title": "SituacaoJulgamento",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<situacao_julgamento>",
+        "description": "**Situação do julgamento**<br />\n**Valores permitidos:**<br />\nIMPROCEDENCIA<br/>\nPROCEDENCIA<br/>\nPROCEDENCIA_EM_PARTE<br/>\nPREJUDICADO<br/>\nACORDO<br/>\nNAO_JULGADO\n"
+      },
+      "DecisionClaimEntityRetrieve": {
+        "title": "DecisionClaim",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**gdUniqueId do registro em TProcessoDecisaoValor**",
+            "example": "<global_unique_identifier>"
+          },
+          "claimId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
+            "example": "<global_unique_identifier>"
+          },
+          "judgementResult": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "foresseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "contingencyValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "grantedValue": {
+            "type": "number",
+            "example": 0,
+            "description": "**Valor deferido (vlDeferido)**"
+          },
+          "currency": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Moeda (nrMoeda)**"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
+            "example": "<justificativa_do_pedido>"
+          },
+          "situation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação (nrSituacao)**"
+          },
+          "injunctionResult": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
+          },
+          "judgementSituation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+          },
+          "risk": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "provisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          }
+        }
+      },
+      "MotivoDeExtincao": {
+        "title": "MotivoDeExtincao",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<motivo_de_extincao>",
+        "description": "**Motivo da extinção**<br />\nMotivo que gerou a extinção do processo sem julgamento de mérito<br />\n**Valores permitidos:**<br />\nINCOMPETENCIA_DE_JUIZO<br/>\nAUSENCIA_DE_LEGITIMIDADE_OU_DE_INTERESSE_PROCESSUAL<br/>\nINCAPACIDADE_DA_PARTE_DEFEITO_DE_REPRESENTACAO_OU_FALTA_DE_AUTORIZACAO<br/>\nFALTA_DE_CAUCAO_OU_DE_OUTRA_PRESTACAO<br/>\nLITISCONSORCIO_NECESSARIO<br/>\nINEPCIA_DE_PETICAO_INICIAL<br/>\nABANDONO_OU_PARALISACAO_DA_CAUSA\n"
+      },
+      "FineDefeatCostRetrieve": {
+        "title": "FineDefeatCost",
+        "type": "object",
+        "properties": {
+          "parties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {},
+            "description": ""
+          },
+          "valueType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": ""
+          }
+        }
+      },
+      "DecisionEntityRetrieve": {
+        "title": "Decision",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "caseId": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**Case unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "lastDecisionId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`\n",
+                "example": "<global_unique_identifier>"
+              },
+              "date": {
+                "type": "string",
+                "format": "datetime",
+                "description": "**Data da Resolução**",
+                "example": "<data_da_resolucao>"
+              },
+              "resolutionContent": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
+                "example": "<conteudo_da_resolucao>"
+              },
+              "excerpt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
+                "example": "<trecho_da_resolucao>"
+              },
+              "summaryOfFindings": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
+                "example": "<sumario_da_resolucao>"
+              },
+              "remedyType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**A decisão**"
+              },
+              "decisionType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+              },
+              "trialType": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Tipo de Julgamento**"
+              },
+              "issuePreservation": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
+              },
+              "judgementContent": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Conteúdo do Julgamento**"
+              },
+              "proceduralMatter": {
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
+              },
+              "claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DecisionClaimEntityRetrieve"
+                },
+                "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
+              },
+              "motivationForInvoluntaryDismissal": {
+                "$ref": "#/components/schemas/MotivoDeExtincao"
+              },
+              "rulingOnProceduralIssuesGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
+                "example": "<grupo_questoes_processuais>"
+              },
+              "rulingOnMotionsGroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
+                "example": "<sub_agrupamento_requerimentos>"
+              },
+              "rulingOnProceduralIssues": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Decisão sobre Questões Meramente Processuais**",
+                "example": "<decisao_sobre_questoes_processuais>"
+              },
+              "rulingOnProceduralIssuesHierarchy": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
+                "example": "<hierarquia_questoes_processuais>"
+              },
+              "provisionalMeasures": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Concessão de tutela provisória e liminares**"
+              },
+              "transferOfVenue": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Incompetência reconhecida**"
+              },
+              "rejectionOfProceduralObjections": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Rejeição de preliminares e condições da ação**"
+              },
+              "admissibilityReviewOfAppeal": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Juízo de admissibilidade de recurso**"
+              },
+              "rulingOnMotions": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Decisão sobre requerimentos das partes**"
+              },
+              "periodForFilingResponse": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Abertura de prazo para manifestação**"
+              },
+              "provisionalMeasuresObservation": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**Observação da tutela de urgência e cautelar**",
+                "example": "<observacao_tutela>"
+              },
+              "result": {
+                "$ref": "#/components/schemas/SituacaoJulgamento"
+              },
+              "isClosing": {
+                "type": [
+                  "boolean",
+                  "null"
+                ],
+                "description": "**Indica se a decisão encerra o processo**"
+              },
+              "grantedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "description": "**Valor Deferido**"
+              },
+              "finePlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostRetrieve"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "fineDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostRetrieve"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "fineThirdParties": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostRetrieve"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "defeatCostPlaintiff": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostRetrieve"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "defeatCostDefendant": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FineDefeatCostRetrieve"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "ResolutionRetrieve": {
+        "title": "Resolution",
+        "type": "object",
+        "properties": {
+          "resolutionType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_da_resolucao>",
+            "description": "**Tipo de Resolução**"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_da_resolucao>",
+            "description": "**Data da Resolução**"
+          },
+          "content": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<conteudo_da_resolucao>",
+            "description": "**Conteúdo da Resolução**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_da_resolucao>",
+            "description": ""
+          },
+          "summaryOfFindings": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<sumario_da_resolucao>",
+            "description": ""
+          }
+        }
+      },
+      "PropositionStatementRetrieve": {
+        "title": "PropositionStatement",
+        "description": "**Alegação**<br />\nUma afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa\n",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos utilizados pelo redator do documento para justificar sua posição em relação a este pedido**<br />\nInclui tempo de atraso, valores, causas, circunstâncias\n"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "hasEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<tipo_de_evidencia>"
+            ],
+            "description": "**Evidência relacionada a esta alegação através da variável evidenceToBePresented**<br />\n**Valores permitidos:**<br />\n\"Documental\", \"Autoridades Legais\", \"Regras de classificação\", \"Declaração de testemunha\", \"Relatório de perito\"\n"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          },
+          "triggeringEvents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<evento_gatilho>"
+            ],
+            "description": "**Evento ou situação de fato que ao ocorrer gera uma obrigação ou reivindicação**"
+          },
+          "contributingFactors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<fator_contribuinte>"
+            ],
+            "description": "**Circunstâncias, ações ou influências que desempenham um papel na origem, desenvolvimento ou avaliação de um incidente ou evento**"
+          }
+        }
+      },
+      "ReparationStatementRetrieve": {
+        "title": "ReparationStatement",
+        "description": "**Pedido**<br />\nPedido de resolução de uma disputa, declarando interpretação de situação ou status, ou criando obrigação de pagar, de fazer ou de não fazer\n",
+        "type": "object",
+        "properties": {
+          "reliefStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<relief_statement>",
+            "description": "**Descrição do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+          },
+          "reliefStatementType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_do_pedido>",
+            "description": "**Tipo do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+          },
+          "remedyType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_de_reparacao>",
+            "description": "**Request for relief or remedy sought by the party in connection with the claim**<br />\n**Valores permitidos:**<br />\n\"Dano material\", \"Dano moral\", \"Obrigação de fazer\", \"Declaratória\"\n"
+          },
+          "specificPerformanceStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<especificacao_obrigacao_de_fazer>",
+            "description": "**Especificação da obrigação de fazer**<br />\nUsado apenas quando remedyType for coerciveRemedy (Obrigação de fazer)\n"
+          },
+          "foreseenValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor do pedido, usado apenas nos casos de remedyType ser economicDamages (Dano material) ou moralDamages (Dano moral)**"
+          },
+          "isSplit": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"
+          }
+        }
+      },
+      "LegalThesisRetrieve": {
+        "title": "LegalThesis",
+        "description": "**Tese jurídica**<br />\nSumário da discussão e fundamentação jurídica normalmente utilizada\n",
+        "type": "object",
+        "properties": {
+          "legalThesisType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tese_especifica>",
+            "description": "**Tese específica**"
+          },
+          "pathS3": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<path_s3>",
+            "description": "**Path do S3 onde está a partial do render correspondente**"
+          }
+        }
+      },
+      "ClaimEntityRetrieve": {
+        "title": "ClaimEntity",
+        "description": "**Reivindicação**<br />\nAfirmação ou demanda feita por uma parte contra outra que represente uma obrigação contingente ou disputada\n",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "claimSummary": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<resumo_da_reivindicacao>",
+                "description": "**Resumo dos principais argumentos e fatos alegados relacionados com o assunto da reinvindicação**"
+              },
+              "effectiveDate": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_de_constituicao>",
+                "description": "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+              },
+              "dueDate": {
+                "type": "string",
+                "format": "datetime",
+                "example": "<data_de_vencimento>",
+                "description": "**Data de vencimento**"
+              },
+              "subjectMatter": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<classificacao_geral_da_questao>",
+                "description": "**Classificação geral da questão**"
+              },
+              "claimIsEnforceable": {
+                "type": "boolean",
+                "example": false,
+                "description": "**O pedido é executável?**<br />\nIndica se uma reivindicação deve ser imediatamente adimplida. Se houver condição pendente ou evento suspensivo, ela será considerada não executável\n"
+              },
+              "pendingJudgment": {
+                "type": "boolean",
+                "example": false,
+                "description": ""
+              },
+              "propositionStatement": {
+                "$ref": "#/components/schemas/PropositionStatementRetrieve",
+                "description": ""
+              },
+              "reparationStatements": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ReparationStatementRetrieve"
+                },
+                "description": ""
+              },
+              "legalThesis": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/LegalThesisRetrieve"
+                },
+                "description": "**Teses jurídicas**"
+              },
+              "caseId": {
+                "type": "string",
+                "format": "uuid",
+                "example": "<global_unique_identifier>",
+                "description": "**Case unique identifier**"
+              }
+            }
+          }
+        ]
+      },
+      "ObligationRetrieve": {
+        "title": "Obligation",
+        "description": "**Obrigação**<br />O schema ainda não existe no C# (classe sem propriedades)",
+        "type": "object",
+        "properties": {}
+      },
+      "PaymentRetrieve": {
+        "title": "Payment",
+        "type": "object",
+        "properties": {
+          "claim": {
+            "$ref": "#/components/schemas/ClaimEntityRetrieve",
+            "description": "**Pedidos (pedido de casos judiciais)**"
+          },
+          "obligation": {
+            "$ref": "#/components/schemas/ObligationRetrieve",
+            "description": "**Obrigações (pedido de caso consultivo)**<br />\n`Ainda não existe`\n"
+          },
+          "classification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao>",
+            "description": "**Classificação**"
+          },
+          "paid": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor pago**"
+          },
+          "balance": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Saldo**"
+          },
+          "complied": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor cumprido**"
+          },
+          "percentage": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Percentual cumprido**"
+          }
+        }
+      },
+      "PaymentOrDischargeEntityRetrieve": {
+        "title": "PaymentOrDischargeEntity",
+        "description": "**Cumprimento**<br />\nRegistro de informações sobre o cumprimento de obrigações contratuais, judiciais ou administrativas\n",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>",
+            "description": "**Unique identifier**"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_do_cumprimento>",
+            "description": ""
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_do_cumprimento>",
+            "description": "**Descrição**"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/DecisionEntityRetrieve",
+            "description": "**Decisão**"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRetrieve"
+            },
+            "description": "**Pagamentos**"
+          }
+        }
+      },
+      "FormaGarantia": {
+        "title": "FormaGarantia",
+        "type": [
+          "string",
+          "null"
+        ],
+        "example": "<forma_garantia>",
+        "description": "**Forma da garantia**<br />\n**Valores permitidos:**<br />\nDINHEIRO<br/>\nBENS<br/>\nSEGURO_OU_FIANCA<br/>\nBLOQUEIO\n"
+      },
+      "CaseGuaranteeEntityRetrieve": {
+        "title": "CaseGuaranteeEntity",
+        "description": "**Garantias dadas ou recebidas**",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "$ref": "#/components/schemas/FormaGarantia"
+              },
+              "classification": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<classificacao>",
+                "description": "**Classificação**"
+              },
+              "date": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "datetime",
+                "example": "<data_da_garantia>",
+                "description": "**Data**"
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "<descricao_da_garantia>",
+                "description": "**Descrição**"
+              },
+              "claims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
+                },
+                "description": "**Pedido**"
+              },
+              "obligation": {
+                "$ref": "#/components/schemas/ObligationRetrieve",
+                "description": "**Obrigação**<br />`Schema ainda não existe`"
+              },
+              "currency": {
+                "$ref": "#/components/schemas/Moeda"
+              },
+              "value": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "example": 0,
+                "description": "**Valor**"
+              },
+              "updatedValue": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "example": 0,
+                "description": "**Valor Atualizado**"
+              },
+              "customFields": {
+                "type": "object",
+                "example": {},
+                "description": ""
+              }
+            }
+          }
+        ]
+      },
+      "TipoDePush": {
+        "title": "TipoDePush",
+        "type": "string",
+        "example": "ANDAMENTO",
+        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
+      },
+      "PushFlattenRetrieve": {
+        "title": "Dados simplificados do push (PushFlatten)",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identificador do push (publicação ou andamento)**",
+            "example": "<global_unique_identifier>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDePush"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          }
+        }
       },
       "TimesheetEntityRetrieve": {
         "title": "Timesheet",
@@ -5265,6 +6475,12 @@
               },
               "taskType": {
                 "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PushFlattenRetrieve"
+                }
               }
             }
           }
@@ -5353,7 +6569,8 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/CaseHierarchyRetrieve"
-                }
+                },
+                "description": "**Hierarquia do caso, mostra todos os casos relacionados a este, seus antecessores e sucessores**"
               },
               "identities": {
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
@@ -5397,19 +6614,23 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityRetrieve"
-                }
+                },
+                "description": "**Classificação do contrato**<br />\nUtilizado para casos <b>CONTRATO</b>\n"
               },
               "contractType": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Tipo do contrato**<br />\nCasos de tipo <b>CONTRATO</b>\n"
               },
               "legalPersonClassification": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityRetrieve"
-                }
+                },
+                "description": "**Classificação da pessoa jurídica**<br />\nUtilizado para casos <b>SOCIETARIO</b>\n"
               },
               "deliberativeBody": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": "**Órgão deliberativo**<br />\nCasos de tipo <b>SOCIETARIO</b>\n"
               },
               "phase": {
                 "type": [
@@ -5490,6 +6711,7 @@
                   "string",
                   "null"
                 ],
+                "format": "datetime",
                 "example": "<data_atualizacao_do_processo>",
                 "description": "**Atualizado em**"
               },
@@ -5540,7 +6762,7 @@
               "coowners": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                  "$ref": "#/components/schemas/PersonEntityRetrieve"
                 },
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
@@ -5559,13 +6781,29 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/GlobalValuesRetrieve"
-                }
+                },
+                "description": "**Valores globais**<br />\nValores globais do caso, definidos por polo\n"
               },
               "claims": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/CaseClaimEntityRetrieve"
-                }
+                },
+                "description": "**Pedidos**<br />\nReinvidicações feitas pelas partes dentro de um caso\n"
+              },
+              "oppositionToClaims": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OppositionToClaimRetrieve"
+                },
+                "description": "**Pedidos Contrapostos**<br />\nPedidos contrapostos feitos pelas partes dentro de um caso\n"
+              },
+              "proceduralObjections": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ProceduralObjectionEntityRetrieve"
+                },
+                "description": "**Exceções Processuais**<br />\nExceções processuais feitas pelas partes dentro de um caso\n"
               },
               "entries": {
                 "type": "array",
@@ -5573,6 +6811,34 @@
                   "$ref": "#/components/schemas/EntryEntityRetrieve"
                 },
                 "description": "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
+              },
+              "resolution": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/DecisionEntityRetrieve"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ResolutionRetrieve"
+                    }
+                  ]
+                },
+                "description": "**Decisões**<br />\nDecisões tomadas em um caso, como sentenças, acórdãos e despachos\n"
+              },
+              "paymentOrDischarge": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PaymentOrDischargeEntityRetrieve"
+                },
+                "description": "**Cumprimento**<br />\nPagamentos ou cumprimentos de pedidos ou obrigações\n"
+              },
+              "guaranties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CaseGuaranteeEntityRetrieve"
+                },
+                "description": "**Garantias dadas ou recebidas**"
               },
               "timesheet": {
                 "type": "array",
@@ -5594,7 +6860,8 @@
                 "description": "**Linha do Tempo**<br />\nLog de eventos\n"
               },
               "folder": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                "$ref": "#/components/schemas/SimpleEntityRetrieve",
+                "description": ""
               },
               "parentCase": {
                 "type": "string",
@@ -5845,6 +7112,23 @@
             "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
             "example": true
           },
+          "Context": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Indicates whether the phone belongs to a client, employee, etc.**",
+            "example": "<contexto>"
+          },
+          "ContextId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identifier of the owner (client, employee, etc.) of this phone**",
+            "example": "<global_unique_identifier>"
+          },
           "Contact": {
             "type": "string",
             "description": "**Contact name**",
@@ -5882,11 +7166,7 @@
             "type": "object",
             "properties": {
               "Country": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<pais>",
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
               },
               "PostalCode": {
@@ -5911,19 +7191,11 @@
                 "description": "**Street number**"
               },
               "Locality": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<cidade>",
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**Cidade**"
               },
               "Region": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "<sigla_estado>",
+                "$ref": "#/components/schemas/SimpleEntityQuery",
                 "description": "**State**"
               },
               "ExtendedAddress": {
@@ -5933,6 +7205,15 @@
               },
               "Type": {
                 "$ref": "#/components/schemas/AddressType"
+              },
+              "ContextId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Identifier of the owner (client, employee, etc.) of this address**",
+                "example": "<global_unique_identifier>"
               },
               "Primary": {
                 "type": "boolean",
@@ -6136,7 +7417,7 @@
                 "example": "<nome_da_parte>",
                 "description": "**Participant's name**"
               },
-              "Nickname": {
+              "NickName": {
                 "type": [
                   "string",
                   "null"
@@ -6223,7 +7504,11 @@
                 "$ref": "#/components/schemas/RamosJudicial"
               },
               "BusinessStructure": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               },
               "Dob": {
                 "type": "string",
@@ -6235,13 +7520,21 @@
                 "description": "**Gender (NATURAL_PERSON only)**\n"
               },
               "Nationality": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               },
               "MaritalStatus": {
                 "$ref": "#/components/schemas/MaritalStatus"
               },
               "Occupation": {
-                "type": "string"
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": ""
               }
             }
           }
@@ -6257,9 +7550,6 @@
           },
           "Perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
-          },
-          "RiskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "Currency": {
             "$ref": "#/components/schemas/Moeda",
@@ -6287,6 +7577,22 @@
               "null"
             ],
             "description": "**Valor de contingência**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
+            "example": 0
+          },
+          "CaseForeseenValueUpdated": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor previsto atualizado**<br />\nValor estimado para a resolução do caso, transação ou disputa\n",
+            "example": 0
+          },
+          "CaseContingencyValueUpdated": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor de contingência atualizado**<br />\nValor de provisionamento vinculado a perspectiva e risco do caso. <br />\nPara os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar\n",
             "example": 0
           }
         }
@@ -6505,7 +7811,7 @@
               "Coowners": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/SimpleEntityQuery"
+                  "$ref": "#/components/schemas/PersonEntityQuery"
                 },
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
@@ -6558,6 +7864,211 @@
           }
         }
       },
+      "AddressEntityWrite": {
+        "title": "Address",
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "object",
+            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**The item unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**The item name**",
+                "example": "<nome_do_item>"
+              }
+            }
+          },
+          "postalCode": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<cep>",
+            "description": "**Postal code**"
+          },
+          "streetAddress": {
+            "type": "string",
+            "example": "<logradouro>",
+            "description": "**Street**"
+          },
+          "streetAddressNumber": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<numero_do_logradouro>",
+            "description": "**Street number**"
+          },
+          "locality": {
+            "type": "object",
+            "description": "**Cidade**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**The item unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**The item name**",
+                "example": "<nome_do_item>"
+              }
+            }
+          },
+          "region": {
+            "type": "object",
+            "description": "**State**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "description": "**The item unique identifier**",
+                "example": "<global_unique_identifier>"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "**The item name**",
+                "example": "<nome_do_item>"
+              }
+            }
+          },
+          "extendedAddress": {
+            "type": "string",
+            "description": "**Extended address**",
+            "example": "<complemento>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/AddressType"
+          },
+          "primary": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Is this the main address?**"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Address' custom fields**"
+          }
+        },
+        "required": [
+          "streetAddress"
+        ]
+      },
+      "EmailEntityWrite": {
+        "title": "Email",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "example": "<email>",
+            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
+          },
+          "type": {
+            "$ref": "#/components/schemas/EmailType"
+          },
+          "primary": {
+            "type": "boolean",
+            "example": false,
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred mailing address or primary email address**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n"
+          }
+        }
+      },
+      "NaturalPersonIdentityEntityWrite": {
+        "title": "Identity (NATURAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
+      },
+      "LegalPersonIdentityEntityWrite": {
+        "title": "Identity (LEGAL_PERSON)",
+        "type": "object",
+        "properties": {
+          "identityProviderType": {
+            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
+          },
+          "value": {
+            "type": "string",
+            "description": "**The identity value**",
+            "example": "<value>"
+          }
+        },
+        "required": [
+          "identityProviderType",
+          "value"
+        ]
+      },
+      "PhoneNumberEntityWrite": {
+        "title": "Phone number",
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "description": "**Phone number**",
+            "example": "<numero_do_telefone>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDeTelefone"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
+            "example": true
+          },
+          "contact": {
+            "type": "string",
+            "description": "**Contact name**",
+            "example": "<contato>"
+          },
+          "extension": {
+            "type": "string",
+            "description": "**Phone's extension**",
+            "example": "<extensao>"
+          },
+          "countryCode": {
+            "type": "integer",
+            "description": "**Phone's country code**",
+            "example": "<codigo_do_pais>"
+          },
+          "customFields": {
+            "type": "object",
+            "description": "**Phone's custom fields**"
+          }
+        },
+        "required": [
+          "value",
+          "type",
+          "primary"
+        ]
+      },
       "ParticipantEntityWrite": {
         "title": "Dados de Parte",
         "type": "object",
@@ -6581,14 +8092,14 @@
             "description": "**The participant's case**\n"
           },
           "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityQuery"
+            "$ref": "#/components/schemas/SimpleObjectIdWrite"
           },
           "Name": {
             "type": "string",
             "example": "<nome_da_parte>",
             "description": "**Participant's name**"
           },
-          "Nickname": {
+          "NickName": {
             "type": [
               "string",
               "null"
@@ -6632,14 +8143,14 @@
             "description": "**Participant's addresses**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AddressEntityQuery"
+              "$ref": "#/components/schemas/AddressEntityWrite"
             }
           },
           "Emails": {
             "description": "**E-mails**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/EmailEntityQuery"
+              "$ref": "#/components/schemas/EmailEntityWrite"
             }
           },
           "Identities": {
@@ -6648,10 +8159,10 @@
             "items": {
               "oneOf": [
                 {
-                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
+                  "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
                 },
                 {
-                  "$ref": "#/components/schemas/LegalPersonIdentityEntityQuery"
+                  "$ref": "#/components/schemas/LegalPersonIdentityEntityWrite"
                 }
               ]
             }
@@ -6660,7 +8171,7 @@
             "description": "**Telefones**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PhoneNumberEntityQuery"
+              "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             }
           },
           "Role": {
@@ -6675,7 +8186,11 @@
             "$ref": "#/components/schemas/RamosJudicial"
           },
           "BusinessStructure": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": ""
           },
           "Dob": {
             "type": "string",
@@ -6687,13 +8202,21 @@
             "description": "**Gender (NATURAL_PERSON only)**\n"
           },
           "Nationality": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": ""
           },
           "MaritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus"
           },
           "Occupation": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": ""
           }
         },
         "required": [
@@ -6712,9 +8235,6 @@
           },
           "perspective": {
             "$ref": "#/components/schemas/TipoExpectativaReivindicacao"
-          },
-          "riskClassification": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
           },
           "currency": {
             "$ref": "#/components/schemas/Moeda",
@@ -6798,9 +8318,8 @@
             "$ref": "#/components/schemas/TipoTutela"
           },
           "againstPosition": {
-            "type": "string",
-            "example": "<polo>",
-            "description": "**Participant's position**<br />\nACTIVE<br/>\nPASSIVE<br/>\nTHIRD_PARTY\n"
+            "$ref": "#/components/schemas/Position",
+            "description": "**Polo do participante**"
           },
           "participants": {
             "description": "**Participant's identifiers**<br/>\n_These participants should be binded to this case in the same position as the claim_\n",
@@ -6849,6 +8368,22 @@
             "type": "object",
             "description": "**Claim's custom fields**",
             "example": {}
+          },
+          "calculationRule": {
+            "type": "object",
+            "description": "**Regra de cálculo**",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "<global_unique_identifier>",
+                "description": ""
+              },
+              "title": {
+                "type": "string",
+                "example": "<title>",
+                "description": ""
+              }
+            }
           }
         },
         "required": [
@@ -6859,6 +8394,1043 @@
           "recurrence",
           "liquidated"
         ]
+      },
+      "OppositionToPropositionStatementWrite": {
+        "title": "OppositionToPropositionStatement",
+        "description": "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos da parte que justificam sua posição em relação às alegações da parte contrária. Inclui fundamentação, valores, circunstâncias**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          }
+        }
+      },
+      "OppositionToReparationStatementsWrite": {
+        "title": "OppositionToReparationStatements",
+        "description": "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária",
+        "type": "object",
+        "properties": {
+          "remedyType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_de_reparacao>",
+            "description": "**Dano patrimonial = Dano material; Dano extrapatrimonial = Dano moral**<br />\n**Valores permitidos:**<br />\n\"Dano material\", \"Dano moral\", \"Obrigação de fazer\", \"Declaratória\"\n"
+          },
+          "obligationDescription": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_da_obrigacao>",
+            "description": "**Especificação da obrigação de fazer**"
+          },
+          "foreseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "isSplit": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"
+          }
+        }
+      },
+      "OppositionToClaimWrite": {
+        "title": "OppositionToClaim",
+        "description": "**Oposição às reivindicações**<br />\nNegação a reivindicações de obrigações contingentes ou disputadas feitas pela parte contrária\n",
+        "type": "object",
+        "properties": {
+          "oppositionToClaimSummary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<resumo_da_oposicao>",
+            "description": "**Resumo dos principais argumentos e fatos alegados em refutação a reinvindicações**"
+          },
+          "effectiveDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_de_constituicao>",
+            "description": "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+          },
+          "subjectMatter": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_geral_da_questao>",
+            "description": "**Classificação geral da questão**"
+          },
+          "oppositionToPropositionStatement": {
+            "$ref": "#/components/schemas/OppositionToPropositionStatementWrite",
+            "description": "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+          },
+          "oppositionToReparationStatements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OppositionToReparationStatementsWrite"
+            },
+            "description": "**Pedidos**<br />Pedido de improcedência, não conhecimento ou desconsideração do pedido da parte contrária"
+          }
+        }
+      },
+      "ObjectionStatementWrite": {
+        "title": "ObjectionStatement",
+        "description": "**Objeção**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos da parte que justificam sua posição em relação às alegações da parte contrária. Inclui fundamentação, valores, circunstâncias**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          }
+        },
+        "required": [
+          "canonical"
+        ]
+      },
+      "LegislationAndCaseLawWrite": {
+        "title": "LegislationAndCaseLaw",
+        "type": "object",
+        "properties": {
+          "legislationAndCaseLawType": {
+            "$ref": "#/components/schemas/LegislationAndCaseLawType"
+          },
+          "legislationAndCaseLawStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<referencia_legislacao_ou_jurisprudencia>",
+            "description": "**Reference that summarizes specific legislation or case law relevant to a legal issue or case**"
+          }
+        },
+        "required": [
+          "legislationAndCaseLawType",
+          "legislationAndCaseLawStatement"
+        ]
+      },
+      "ProceduralObjectionWrite": {
+        "title": "ProceduralObjection",
+        "type": "object",
+        "properties": {
+          "proceduralObjectionType": {
+            "$ref": "#/components/schemas/ProceduralObjectionType"
+          },
+          "proceduralObjectionStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_da_excecao_processual>",
+            "description": "**Specific motion used in this legal issue or case**"
+          }
+        },
+        "required": [
+          "proceduralObjectionType",
+          "proceduralObjectionStatement"
+        ]
+      },
+      "ProceduralObjectionEntityWrite": {
+        "title": "ProceduralObjectionEntity",
+        "description": "**Preliminares e objeções processuais**<br />\nObjeções sobre métodos e processos, tais como competência, legitimidade e pressupostos processuais, em vez das reivindicações de mérito\n",
+        "type": "object",
+        "properties": {
+          "proceduralObjectionsSummary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<resumo_das_excecoes_processuais>",
+            "description": "**Resumo das preliminares, exceções e impugnações processuais apresentadas pela parte**"
+          },
+          "subjectMatter": {
+            "$ref": "#/components/schemas/SubjectMatter"
+          },
+          "objectionStatement": {
+            "$ref": "#/components/schemas/ObjectionStatementWrite",
+            "description": "**Objeção**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+          },
+          "legislationAndCaseLaw": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LegislationAndCaseLawWrite"
+            },
+            "description": ""
+          },
+          "proceduralObjection": {
+            "$ref": "#/components/schemas/ProceduralObjectionWrite",
+            "description": ""
+          }
+        },
+        "required": [
+          "subjectMatter",
+          "objectionStatement",
+          "legislationAndCaseLaw",
+          "proceduralObjection"
+        ]
+      },
+      "DecisionClaimEntityWrite": {
+        "title": "DecisionClaim",
+        "type": "object",
+        "properties": {
+          "claimId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
+            "example": "<global_unique_identifier>"
+          },
+          "judgementResult": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "foresseenValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "contingencyValue": {
+            "type": "number",
+            "example": 0,
+            "description": ""
+          },
+          "grantedValue": {
+            "type": "number",
+            "example": 0,
+            "description": "**Valor deferido (vlDeferido)**"
+          },
+          "currency": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Moeda (nrMoeda)**"
+          },
+          "justification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
+            "example": "<justificativa_do_pedido>"
+          },
+          "situation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação (nrSituacao)**"
+          },
+          "injunctionResult": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
+          },
+          "judgementSituation": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
+          },
+          "risk": {
+            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
+          },
+          "provisionalRelief": {
+            "$ref": "#/components/schemas/TipoTutela"
+          }
+        },
+        "required": [
+          "foresseenValue",
+          "contingencyValue",
+          "grantedValue"
+        ]
+      },
+      "FineDefeatCostWrite": {
+        "title": "FineDefeatCost",
+        "type": "object",
+        "properties": {
+          "parties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {},
+            "description": "**LegalPerson | NaturalPerson**"
+          },
+          "valueType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<value_type>",
+            "description": "**Define se o valor informado será em número absoluto ou percentual**<br />\n**Valores permitidos:**<br />\nValor<br/>\nPercentual\n"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**O valor absoluto ou percentual**"
+          }
+        }
+      },
+      "DecisionEntityWrite": {
+        "title": "Decision",
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Case unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "lastDecisionId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`<br />\n`Required quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n",
+            "example": "<global_unique_identifier>"
+          },
+          "date": {
+            "type": "string",
+            "format": "datetime",
+            "description": "**Data da Resolução**",
+            "example": "<data_da_resolucao>"
+          },
+          "resolutionContent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
+            "example": "<conteudo_da_resolucao>"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
+            "example": "<trecho_da_resolucao>"
+          },
+          "summaryOfFindings": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
+            "example": "<sumario_da_resolucao>"
+          },
+          "remedyType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**A decisão**"
+          },
+          "decisionType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
+          },
+          "trialType": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Tipo de Julgamento**"
+          },
+          "issuePreservation": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento",
+            "example": false
+          },
+          "judgementContent": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Conteúdo do Julgamento**"
+          },
+          "proceduralMatter": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionClaimEntityWrite"
+            },
+            "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
+          },
+          "motivationForInvoluntaryDismissal": {
+            "$ref": "#/components/schemas/MotivoDeExtincao"
+          },
+          "rulingOnProceduralIssuesGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
+            "example": "<grupo_questoes_processuais>"
+          },
+          "rulingOnMotionsGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
+            "example": "<sub_agrupamento_requerimentos>"
+          },
+          "rulingOnProceduralIssues": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Decisão sobre Questões Meramente Processuais**",
+            "example": "<decisao_sobre_questoes_processuais>"
+          },
+          "rulingOnProceduralIssuesHierarchy": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
+            "example": "<hierarquia_questoes_processuais>"
+          },
+          "provisionalMeasures": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Concessão de tutela provisória e liminares**",
+            "example": false
+          },
+          "transferOfVenue": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Incompetência reconhecida**",
+            "example": false
+          },
+          "rejectionOfProceduralObjections": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Rejeição de preliminares e condições da ação**",
+            "example": false
+          },
+          "admissibilityReviewOfAppeal": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Juízo de admissibilidade de recurso**",
+            "example": false
+          },
+          "rulingOnMotions": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Decisão sobre requerimentos das partes**",
+            "example": false
+          },
+          "periodForFilingResponse": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Abertura de prazo para manifestação**",
+            "example": false
+          },
+          "provisionalMeasuresObservation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Observação da tutela de urgência e cautelar**",
+            "example": "<observacao_tutela>"
+          },
+          "result": {
+            "$ref": "#/components/schemas/SituacaoJulgamento"
+          },
+          "isClosing": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "**Indica se a decisão encerra o processo**",
+            "example": false
+          },
+          "grantedValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "**Valor Deferido**"
+          },
+          "finePlaintiff": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "fineDefendant": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "fineThirdParties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "defeatCostPlaintiff": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          },
+          "defeatCostDefendant": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/FineDefeatCostWrite"
+            }
+          }
+        },
+        "required": [
+          "date",
+          "caseId",
+          "decisionType",
+          "trialType",
+          "remedyType"
+        ]
+      },
+      "ResolutionWrite": {
+        "title": "Resolution",
+        "type": "object",
+        "properties": {
+          "resolutionType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_da_resolucao>",
+            "description": "**Tipo de Resolução**"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_da_resolucao>",
+            "description": "**Data da Resolução**"
+          },
+          "content": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<conteudo_da_resolucao>",
+            "description": "**Conteúdo da Resolução**"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_da_resolucao>",
+            "description": ""
+          },
+          "summaryOfFindings": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<sumario_da_resolucao>",
+            "description": ""
+          }
+        }
+      },
+      "PropositionStatementWrite": {
+        "title": "PropositionStatement",
+        "description": "**Alegação**<br />\nUma afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa\n",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<argumento>"
+            ],
+            "description": "**Argumentos utilizados pelo redator do documento para justificar sua posição em relação a este pedido**<br />\nInclui tempo de atraso, valores, causas, circunstâncias\n"
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<trecho_do_documento>",
+            "description": "**Trecho do documento original**"
+          },
+          "canonical": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_interna>",
+            "description": "**Classificação interna**"
+          },
+          "hasEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<tipo_de_evidencia>"
+            ],
+            "description": "**Evidência relacionada a esta alegação através da variável evidenceToBePresented**<br />\n**Valores permitidos:**<br />\n\"Documental\", \"Autoridades Legais\", \"Regras de classificação\", \"Declaração de testemunha\", \"Relatório de perito\"\n"
+          },
+          "customClassifications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<classificacao_customizada>"
+            ],
+            "description": "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+          },
+          "triggeringEvents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<evento_gatilho>"
+            ],
+            "description": "**Evento ou situação de fato que ao ocorrer gera uma obrigação ou reivindicação**"
+          },
+          "contributingFactors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "<fator_contribuinte>"
+            ],
+            "description": "**Circunstâncias, ações ou influências que desempenham um papel na origem, desenvolvimento ou avaliação de um incidente ou evento**"
+          }
+        }
+      },
+      "ReparationStatementWrite": {
+        "title": "ReparationStatement",
+        "description": "**Pedido**<br />\nPedido de resolução de uma disputa, declarando interpretação de situação ou status, ou criando obrigação de pagar, de fazer ou de não fazer\n",
+        "type": "object",
+        "properties": {
+          "reliefStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<relief_statement>",
+            "description": "**Descrição do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+          },
+          "reliefStatementType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_do_pedido>",
+            "description": "**Tipo do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+          },
+          "remedyType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tipo_de_reparacao>",
+            "description": "**Request for relief or remedy sought by the party in connection with the claim**<br />\n**Valores permitidos:**<br />\n\"Dano material\", \"Dano moral\", \"Obrigação de fazer\", \"Declaratória\"\n"
+          },
+          "specificPerformanceStatement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<especificacao_obrigacao_de_fazer>",
+            "description": "**Especificação da obrigação de fazer**<br />\nUsado apenas quando remedyType for coerciveRemedy (Obrigação de fazer)\n"
+          },
+          "foreseenValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor do pedido, usado apenas nos casos de remedyType ser economicDamages (Dano material) ou moralDamages (Dano moral)**"
+          },
+          "isSplit": {
+            "type": "boolean",
+            "example": false,
+            "description": "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"
+          }
+        }
+      },
+      "LegalThesisWrite": {
+        "title": "LegalThesis",
+        "description": "**Tese jurídica**<br />\nSumário da discussão e fundamentação jurídica normalmente utilizada\n",
+        "type": "object",
+        "properties": {
+          "legalThesisType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<tese_especifica>",
+            "description": "**Tese específica**"
+          },
+          "pathS3": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<path_s3>",
+            "description": "**Path do S3 onde está a partial do render correspondente**"
+          }
+        }
+      },
+      "ClaimEntityWrite": {
+        "title": "ClaimEntity",
+        "description": "**Reivindicação**<br />\nAfirmação ou demanda feita por uma parte contra outra que represente uma obrigação contingente ou disputada\n",
+        "type": "object",
+        "properties": {
+          "claimSummary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<resumo_da_reivindicacao>",
+            "description": "**Resumo dos principais argumentos e fatos alegados relacionados com o assunto da reinvindicação**"
+          },
+          "effectiveDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_de_constituicao>",
+            "description": "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "datetime",
+            "example": "<data_de_vencimento>",
+            "description": "**Data de vencimento**"
+          },
+          "subjectMatter": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao_geral_da_questao>",
+            "description": "**Classificação geral da questão**"
+          },
+          "claimIsEnforceable": {
+            "type": "boolean",
+            "example": false,
+            "description": "**O pedido é executável?**<br />\nIndica se uma reivindicação deve ser imediatamente adimplida. Se houver condição pendente ou evento suspensivo, ela será considerada não executável\n"
+          },
+          "pendingJudgment": {
+            "type": "boolean",
+            "example": false,
+            "description": ""
+          },
+          "propositionStatement": {
+            "$ref": "#/components/schemas/PropositionStatementWrite",
+            "description": ""
+          },
+          "reparationStatements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReparationStatementWrite"
+            },
+            "description": ""
+          },
+          "legalThesis": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LegalThesisWrite"
+            },
+            "description": "**Teses jurídicas**"
+          },
+          "caseId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>",
+            "description": "**Case unique identifier**"
+          }
+        }
+      },
+      "ObligationWrite": {
+        "title": "Obligation",
+        "description": "**Obrigação**<br />O schema ainda não existe no C# (classe sem propriedades)",
+        "type": "object",
+        "properties": {}
+      },
+      "PaymentWrite": {
+        "title": "Payment",
+        "type": "object",
+        "properties": {
+          "claim": {
+            "$ref": "#/components/schemas/ClaimEntityWrite",
+            "description": "**Pedidos (pedido de casos judiciais)**"
+          },
+          "obligation": {
+            "$ref": "#/components/schemas/ObligationWrite",
+            "description": "**Obrigações (pedido de caso consultivo)**<br />\n`Ainda não existe`\n"
+          },
+          "classification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao>",
+            "description": "**Classificação**"
+          },
+          "paid": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor pago**"
+          },
+          "balance": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Saldo**"
+          },
+          "complied": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor cumprido**"
+          },
+          "percentage": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Percentual cumprido**"
+          }
+        }
+      },
+      "PaymentOrDischargeEntityWrite": {
+        "title": "PaymentOrDischargeEntity",
+        "description": "**Cumprimento**<br />\nRegistro de informações sobre o cumprimento de obrigações contratuais, judiciais ou administrativas\n",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "<global_unique_identifier>",
+            "description": "**Unique identifier**"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_do_cumprimento>",
+            "description": ""
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_do_cumprimento>",
+            "description": "**Descrição**"
+          },
+          "decision": {
+            "$ref": "#/components/schemas/DecisionEntityWrite",
+            "description": "**Decisão**"
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentWrite"
+            },
+            "description": "**Pagamentos**"
+          }
+        }
+      },
+      "CaseGuaranteeEntityWrite": {
+        "title": "CaseGuaranteeEntity",
+        "description": "**Garantias dadas ou recebidas**",
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/FormaGarantia"
+          },
+          "classification": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<classificacao>",
+            "description": "**Classificação**"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "example": "<data_da_garantia>",
+            "description": "**Data**"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<descricao_da_garantia>",
+            "description": "**Descrição**"
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseClaimEntityWrite"
+            },
+            "description": "**Pedido**"
+          },
+          "obligation": {
+            "$ref": "#/components/schemas/ObligationWrite",
+            "description": "**Obrigação**<br />`Schema ainda não existe`"
+          },
+          "currency": {
+            "$ref": "#/components/schemas/Moeda"
+          },
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor**"
+          },
+          "updatedValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "example": 0,
+            "description": "**Valor Atualizado**"
+          },
+          "customFields": {
+            "type": "object",
+            "example": {},
+            "description": ""
+          }
+        }
       },
       "CaseEntityWrite": {
         "title": "Dados de caso",
@@ -7188,6 +9760,59 @@
             },
             "description": "**Case claims**"
           },
+          "oppositionToClaims": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OppositionToClaimWrite"
+            },
+            "description": "**Pedidos Contrapostos**<br />\nPedidos contrapostos feitos pelas partes dentro de um caso\n"
+          },
+          "proceduralObjections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProceduralObjectionEntityWrite"
+            },
+            "description": "**Exceções Processuais**<br />\nExceções processuais feitas pelas partes dentro de um caso\n"
+          },
+          "resolution": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/DecisionEntityWrite"
+                },
+                {
+                  "$ref": "#/components/schemas/ResolutionWrite"
+                }
+              ]
+            },
+            "description": "**Decisões**<br />\nDecisões tomadas em um caso, como sentenças, acórdãos e despachos\n"
+          },
+          "paymentOrDischarge": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentOrDischargeEntityWrite"
+            },
+            "description": "**Cumprimento**<br />\nPagamentos ou cumprimentos de pedidos ou obrigações\n"
+          },
+          "guaranties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaseGuaranteeEntityWrite"
+            },
+            "description": "**Garantias dadas ou recebidas**"
+          },
+          "timesheet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TimesheetEntityWrite"
+            },
+            "description": "**Registro de horas trabalhadas**"
+          },
+          "folder": {
+            "$ref": "#/components/schemas/SimpleObjectIdWrite",
+            "description": ""
+          },
           "customFields": {
             "type": "object",
             "example": {},
@@ -7303,6 +9928,14 @@
           {
             "type": "object",
             "properties": {
+              "IdPedido": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 0,
+                "description": ""
+              },
               "CaseId": {
                 "type": "string",
                 "format": "uuid",
@@ -7385,7 +10018,7 @@
                 "type": "number",
                 "example": 0
               },
-              "foreseenValueUpdated": {
+              "ForeseenValueUpdated": {
                 "type": [
                   "number",
                   "null"
@@ -7440,156 +10073,6 @@
           }
         ]
       },
-      "NaturalPersonIdentityEntityWrite": {
-        "title": "Identity (NATURAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/NaturalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
-      "LegalPersonIdentityEntityWrite": {
-        "title": "Identity (LEGAL_PERSON)",
-        "type": "object",
-        "properties": {
-          "identityProviderType": {
-            "$ref": "#/components/schemas/LegalPersonIdentityProviderType"
-          },
-          "value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        },
-        "required": [
-          "identityProviderType",
-          "value"
-        ]
-      },
-      "PhoneNumberEntityWrite": {
-        "title": "Phone number",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "description": "**Phone number**",
-            "example": "<numero_do_telefone>"
-          },
-          "type": {
-            "$ref": "#/components/schemas/TipoDeTelefone"
-          },
-          "primary": {
-            "type": "boolean",
-            "description": "**A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />\nThe primary attribute value 'true' MUST appear no more than once.\n",
-            "example": true
-          },
-          "contact": {
-            "type": "string",
-            "description": "**Contact name**",
-            "example": "<contato>"
-          },
-          "extension": {
-            "type": "string",
-            "description": "**Phone's extension**",
-            "example": "<extensao>"
-          },
-          "countryCode": {
-            "type": "integer",
-            "description": "**Phone's country code**",
-            "example": "<codigo_do_pais>"
-          },
-          "customFields": {
-            "type": "object",
-            "description": "**Phone's custom fields**"
-          }
-        },
-        "required": [
-          "value",
-          "type",
-          "primary"
-        ]
-      },
-      "AddressEntityWrite": {
-        "title": "Address",
-        "type": "object",
-        "properties": {
-          "country": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<pais>",
-            "description": "**ISO 3166-1 alpha2 value (2 caracteres)**"
-          },
-          "postalCode": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<cep>",
-            "description": "**Postal code**"
-          },
-          "streetAddress": {
-            "type": "string",
-            "example": "<logradouro>",
-            "description": "**Street**"
-          },
-          "streetAddressNumber": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<numero_do_logradouro>",
-            "description": "**Street number**"
-          },
-          "locality": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<cidade>",
-            "description": "**Cidade**"
-          },
-          "region": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<sigla_estado>",
-            "description": "**State**"
-          },
-          "extendedAddress": {
-            "type": "string",
-            "description": "**Extended address**",
-            "example": "<complemento>"
-          },
-          "type": {
-            "$ref": "#/components/schemas/AddressType"
-          },
-          "primary": {
-            "type": "boolean",
-            "example": false,
-            "description": "**Is this the main address?**"
-          },
-          "customFields": {
-            "type": "object",
-            "description": "**Address' custom fields**"
-          }
-        },
-        "required": [
-          "streetAddress"
-        ]
-      },
       "ClientEntityWrite": {
         "title": "Cliente",
         "type": "object",
@@ -7604,6 +10087,9 @@
             "type": "string",
             "example": "<apelido_do_cliente>",
             "description": "**Client's nickname**"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
           },
           "type": {
             "$ref": "#/components/schemas/TipoPessoa"
@@ -7703,6 +10189,9 @@
             "example": "<apelido_do_cliente>",
             "description": "**Client's nickname**"
           },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
           "type": {
             "$ref": "#/components/schemas/TipoPessoa"
           },
@@ -7744,6 +10233,9 @@
           },
           "maritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Position"
           },
           "identities": {
             "type": "array",
@@ -7799,15 +10291,6 @@
           "op",
           "value"
         ]
-      },
-      "SituacaoJulgamento": {
-        "title": "SituacaoJulgamento",
-        "type": [
-          "string",
-          "null"
-        ],
-        "example": "<situacao_julgamento>",
-        "description": "**Situação do julgamento**<br />\n**Valores permitidos:**<br />\nIMPROCEDENCIA<br/>\nPROCEDENCIA<br/>\nPROCEDENCIA_EM_PARTE<br/>\nPREJUDICADO<br/>\nACORDO<br/>\nNAO_JULGADO\n"
       },
       "DecisionClaimEntityQuery": {
         "title": "DecisionClaim",
@@ -7892,24 +10375,6 @@
             "$ref": "#/components/schemas/TipoTutela"
           }
         }
-      },
-      "MotivoDeExtincao": {
-        "title": "MotivoDeExtincao",
-        "type": [
-          "string",
-          "null"
-        ],
-        "example": "<motivo_de_extincao>",
-        "description": "**Motivo da extinção**<br />\nMotivo que gerou a extinção do processo sem julgamento de mérito<br />\n**Valores permitidos:**<br />\nINCOMPETENCIA_DE_JUIZO<br/>\nAUSENCIA_DE_LEGITIMIDADE_OU_DE_INTERESSE_PROCESSUAL<br/>\nINCAPACIDADE_DA_PARTE_DEFEITO_DE_REPRESENTACAO_OU_FALTA_DE_AUTORIZACAO<br/>\nFALTA_DE_CAUCAO_OU_DE_OUTRA_PRESTACAO<br/>\nLITISCONSORCIO_NECESSARIO<br/>\nINEPCIA_DE_PETICAO_INICIAL<br/>\nABANDONO_OU_PARALISACAO_DA_CAUSA\n"
-      },
-      "ValorApuradoExitoPerda": {
-        "title": "ValorApuradoExitoPerda",
-        "type": [
-          "string",
-          "null"
-        ],
-        "example": "<valor_apurado_exito_perda>",
-        "description": "**Resultado do Julgamento**<br />\n**Valores permitidos:**<br />\nPROVAVEL<br/>\nPOSSIVEL<br/>\nREMOTO\n"
       },
       "FineDefeatCostQuery": {
         "title": "FineDefeatCost",
@@ -8115,7 +10580,7 @@
                 "example": "<observacao_tutela>"
               },
               "Result": {
-                "$ref": "#/components/schemas/ValorApuradoExitoPerda"
+                "$ref": "#/components/schemas/SituacaoJulgamento"
               },
               "IsClosing": {
                 "type": [
@@ -8184,706 +10649,6 @@
                 ]
               },
               "DefeatCostDefendant": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/FineDefeatCostQuery"
-                    }
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "DecisionClaimEntityWrite": {
-        "title": "DecisionClaim",
-        "type": "object",
-        "properties": {
-          "claimId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
-            "example": "<global_unique_identifier>"
-          },
-          "judgementResult": {
-            "$ref": "#/components/schemas/SituacaoJulgamento"
-          },
-          "foresseenValue": {
-            "type": "number",
-            "example": 0,
-            "description": ""
-          },
-          "contingencyValue": {
-            "type": "number",
-            "example": 0,
-            "description": ""
-          },
-          "grantedValue": {
-            "type": "number",
-            "example": 0,
-            "description": "**Valor deferido (vlDeferido)**"
-          },
-          "currency": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Moeda (nrMoeda)**"
-          },
-          "justification": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
-            "example": "<justificativa_do_pedido>"
-          },
-          "situation": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Situação (nrSituacao)**"
-          },
-          "injunctionResult": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
-          },
-          "judgementSituation": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
-          },
-          "risk": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
-          },
-          "provisionalRelief": {
-            "$ref": "#/components/schemas/TipoTutela"
-          }
-        },
-        "required": [
-          "foresseenValue",
-          "contingencyValue",
-          "grantedValue"
-        ]
-      },
-      "FineDefeatCostWrite": {
-        "title": "FineDefeatCost",
-        "type": "object",
-        "properties": {
-          "parties": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {},
-            "description": "**LegalPerson | NaturalPerson**"
-          },
-          "valueType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<value_type>",
-            "description": "**Define se o valor informado será em número absoluto ou percentual**<br />\n**Valores permitidos:**<br />\nValor<br/>\nPercentual\n"
-          },
-          "value": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**O valor absoluto ou percentual**"
-          }
-        }
-      },
-      "DecisionEntityWrite": {
-        "title": "Decision",
-        "type": "object",
-        "properties": {
-          "caseId": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Case unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "lastDecisionId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`<br />\n`Required quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n",
-            "example": "<global_unique_identifier>"
-          },
-          "date": {
-            "type": "string",
-            "format": "datetime",
-            "description": "**Data da Resolução**",
-            "example": "<data_da_resolucao>"
-          },
-          "resolutionContent": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
-            "example": "<conteudo_da_resolucao>"
-          },
-          "excerpt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
-            "example": "<trecho_da_resolucao>"
-          },
-          "summaryOfFindings": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
-            "example": "<sumario_da_resolucao>"
-          },
-          "remedyType": {
-            "$ref": "#/components/schemas/SimpleObjectIdWrite",
-            "description": "**A decisão**"
-          },
-          "decisionType": {
-            "$ref": "#/components/schemas/SimpleObjectIdWrite",
-            "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
-          },
-          "trialType": {
-            "$ref": "#/components/schemas/SimpleObjectIdWrite",
-            "description": "**Tipo de Julgamento**"
-          },
-          "issuePreservation": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento",
-            "example": false
-          },
-          "judgementContent": {
-            "$ref": "#/components/schemas/SimpleObjectIdWrite",
-            "description": "**Conteúdo do Julgamento**"
-          },
-          "proceduralMatter": {
-            "$ref": "#/components/schemas/SimpleObjectIdWrite",
-            "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
-          },
-          "claims": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DecisionClaimEntityWrite"
-            },
-            "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
-          },
-          "motivationForInvoluntaryDismissal": {
-            "$ref": "#/components/schemas/MotivoDeExtincao"
-          },
-          "rulingOnProceduralIssuesGroup": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
-            "example": "<grupo_questoes_processuais>"
-          },
-          "rulingOnMotionsGroup": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
-            "example": "<sub_agrupamento_requerimentos>"
-          },
-          "rulingOnProceduralIssues": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Decisão sobre Questões Meramente Processuais**",
-            "example": "<decisao_sobre_questoes_processuais>"
-          },
-          "rulingOnProceduralIssuesHierarchy": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
-            "example": "<hierarquia_questoes_processuais>"
-          },
-          "provisionalMeasures": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Concessão de tutela provisória e liminares**",
-            "example": false
-          },
-          "transferOfVenue": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Incompetência reconhecida**",
-            "example": false
-          },
-          "rejectionOfProceduralObjections": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Rejeição de preliminares e condições da ação**",
-            "example": false
-          },
-          "admissibilityReviewOfAppeal": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Juízo de admissibilidade de recurso**",
-            "example": false
-          },
-          "rulingOnMotions": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Decisão sobre requerimentos das partes**",
-            "example": false
-          },
-          "periodForFilingResponse": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Abertura de prazo para manifestação**",
-            "example": false
-          },
-          "provisionalMeasuresObservation": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Observação da tutela de urgência e cautelar**",
-            "example": "<observacao_tutela>"
-          },
-          "result": {
-            "$ref": "#/components/schemas/ValorApuradoExitoPerda"
-          },
-          "isClosing": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": "**Indica se a decisão encerra o processo**",
-            "example": false
-          },
-          "grantedValue": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Valor Deferido**"
-          },
-          "finePlaintiff": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/FineDefeatCostWrite"
-            }
-          },
-          "fineDefendant": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/FineDefeatCostWrite"
-            }
-          },
-          "fineThirdParties": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/FineDefeatCostWrite"
-            }
-          },
-          "defeatCostPlaintiff": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/FineDefeatCostWrite"
-            }
-          },
-          "defeatCostDefendant": {
-            "type": [
-              "array",
-              "null"
-            ],
-            "items": {
-              "$ref": "#/components/schemas/FineDefeatCostWrite"
-            }
-          }
-        },
-        "required": [
-          "date",
-          "caseId",
-          "decisionType",
-          "trialType",
-          "remedyType"
-        ]
-      },
-      "DecisionClaimEntityRetrieve": {
-        "title": "DecisionClaim",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**gdUniqueId do registro em TProcessoDecisaoValor**",
-            "example": "<global_unique_identifier>"
-          },
-          "claimId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**Referência ao pedido (cdProcessoExpectativaReivindicacao via gdUniqueId)**",
-            "example": "<global_unique_identifier>"
-          },
-          "judgementResult": {
-            "$ref": "#/components/schemas/SituacaoJulgamento"
-          },
-          "foresseenValue": {
-            "type": "number",
-            "example": 0,
-            "description": ""
-          },
-          "contingencyValue": {
-            "type": "number",
-            "example": 0,
-            "description": ""
-          },
-          "grantedValue": {
-            "type": "number",
-            "example": 0,
-            "description": "**Valor deferido (vlDeferido)**"
-          },
-          "currency": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Moeda (nrMoeda)**"
-          },
-          "justification": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Justificativa do pedido (dsJustificativaPedido)**",
-            "example": "<justificativa_do_pedido>"
-          },
-          "situation": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Situação (nrSituacao)**"
-          },
-          "injunctionResult": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Resultado da tutela provisória (nrResultadoTutela)**"
-          },
-          "judgementSituation": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": "**Situação do julgamento da tutela (nrSituacaoJulgamento)**"
-          },
-          "risk": {
-            "$ref": "#/components/schemas/ContingentLiabilityRiskClassification"
-          },
-          "provisionalRelief": {
-            "$ref": "#/components/schemas/TipoTutela"
-          }
-        }
-      },
-      "DecisionEntityRetrieve": {
-        "title": "Decision",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceRetrieve"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "caseId": {
-                "type": "string",
-                "format": "uuid",
-                "description": "**Case unique identifier**",
-                "example": "<global_unique_identifier>"
-              },
-              "lastDecisionId": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "format": "uuid",
-                "description": "**Decisão anterior referente ao embargo de declaração**<br />\n`Required no saas`\n",
-                "example": "<global_unique_identifier>"
-              },
-              "date": {
-                "type": "string",
-                "format": "datetime",
-                "description": "**Data da Resolução**",
-                "example": "<data_da_resolucao>"
-              },
-              "resolutionContent": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Conteúdo da Resolução**<br />Campo aberto para resumo da resolução",
-                "example": "<conteudo_da_resolucao>"
-              },
-              "excerpt": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Trecho da Resolução**<br />Cópia literal de trecho presente na resolução (texto da decisão)",
-                "example": "<trecho_da_resolucao>"
-              },
-              "summaryOfFindings": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Sumário da Resolução**<br />Resumo dos principais pontos da Resolução",
-                "example": "<sumario_da_resolucao>"
-              },
-              "remedyType": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**A decisão**"
-              },
-              "decisionType": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Tipo da Decisão**<br />Classificação dos tipos possíveis de decisão"
-              },
-              "trialType": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Tipo de Julgamento**"
-              },
-              "issuePreservation": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Contém prequestionamento?**<br />No caso de embargos de declaração de acórdão, é necessário prequestionamento"
-              },
-              "judgementContent": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Conteúdo do Julgamento**"
-              },
-              "proceduralMatter": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve",
-                "description": "**Questão processual**<br />\n`Required quando TrialType for 'Decisão sobre outras questões processuais' ou quando DecisionType for 'Decisão Interlocutória' e TrialType for 'Embargos de declaração'`\n"
-              },
-              "claims": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DecisionClaimEntityRetrieve"
-                },
-                "description": "**Claim's uuids**<br />\n`Required quando DecisionType for 'Sentença' ou 'Acórdão', ou quando DecisionType for 'Decisão Interlocutória' e JudgementContent for 'Julgamento de Mérito dos Pedidos'`\n"
-              },
-              "motivationForInvoluntaryDismissal": {
-                "$ref": "#/components/schemas/MotivoDeExtincao"
-              },
-              "rulingOnProceduralIssuesGroup": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Grupo sobre questões meramente processuais**<br />\nAgrupamento para melhor seleção de questões processuais<br />\n\"Concessão de tutela provisória e liminares\", \"Incompetência reconhecida\", \"Rejeição de preliminares e condições da ação\", \"Juízo de admissibilidade de recurso\", \"Decisão sobre requerimentos das partes\", \"Abertura de prazo para manifestação\"\n",
-                "example": "<grupo_questoes_processuais>"
-              },
-              "rulingOnMotionsGroup": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Questões Meramente Processuais envolvendo requerimentos**<br />Sub-agrupamento para o caso 'Decisão sobre requerimentos das partes'",
-                "example": "<sub_agrupamento_requerimentos>"
-              },
-              "rulingOnProceduralIssues": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Decisão sobre Questões Meramente Processuais**",
-                "example": "<decisao_sobre_questoes_processuais>"
-              },
-              "rulingOnProceduralIssuesHierarchy": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Hierarquia das variáveis de questões meramente processuais**<br />\nSerá composto por rulingOnProceduralIssuesGroup | rulingOnMotionsGroup | rulingOnProceduralIssues\n",
-                "example": "<hierarquia_questoes_processuais>"
-              },
-              "provisionalMeasures": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Concessão de tutela provisória e liminares**"
-              },
-              "transferOfVenue": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Incompetência reconhecida**"
-              },
-              "rejectionOfProceduralObjections": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Rejeição de preliminares e condições da ação**"
-              },
-              "admissibilityReviewOfAppeal": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Juízo de admissibilidade de recurso**"
-              },
-              "rulingOnMotions": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Decisão sobre requerimentos das partes**"
-              },
-              "periodForFilingResponse": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Abertura de prazo para manifestação**"
-              },
-              "provisionalMeasuresObservation": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "description": "**Observação da tutela de urgência e cautelar**",
-                "example": "<observacao_tutela>"
-              },
-              "result": {
-                "$ref": "#/components/schemas/ValorApuradoExitoPerda"
-              },
-              "isClosing": {
-                "type": [
-                  "boolean",
-                  "null"
-                ],
-                "description": "**Indica se a decisão encerra o processo**"
-              },
-              "grantedValue": {
-                "type": [
-                  "number",
-                  "null"
-                ],
-                "description": "**Valor Deferido**"
-              },
-              "finePlaintiff": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/FineDefeatCostQuery"
-                    }
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "fineDefendant": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/FineDefeatCostQuery"
-                    }
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "fineThirdParties": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/FineDefeatCostQuery"
-                    }
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "defeatCostPlaintiff": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/FineDefeatCostQuery"
-                    }
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "defeatCostDefendant": {
                 "oneOf": [
                   {
                     "type": "array",
@@ -9024,17 +10789,6 @@
             }
           }
         ]
-      },
-      "EmailEntityWrite": {
-        "title": "Email",
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "example": "<email>",
-            "description": "**Email addresses for the user.**<br />\nThe value SHOULD be canonicalized by the service provider, e.g., 'bjensen@example.com' instead of 'bjensen@EXAMPLE.COM'.<br />\nCanonical type values of 'work', 'home', and 'other'.\n"
-          }
-        }
       },
       "EmployeeEntityWrite": {
         "title": "Funcionário",
@@ -9368,6 +11122,12 @@
           }
         ]
       },
+      "BooleanStatus": {
+        "title": "BooleanStatus",
+        "type": "string",
+        "example": "<status>",
+        "description": "**Status**<br/>\nINACTIVE<br/>\nACTIVE\n"
+      },
       "ExternalServiceProviderQuery": {
         "title": "External service provider",
         "type": "object",
@@ -9401,8 +11161,7 @@
                 }
               },
               "Type": {
-                "type": "string",
-                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+                "$ref": "#/components/schemas/TipoPessoa"
               },
               "Emails": {
                 "type": "array",
@@ -9411,7 +11170,7 @@
                 }
               },
               "Status": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/BooleanStatus"
               },
               "CustomFields": {
                 "type": "object",
@@ -9455,8 +11214,7 @@
                 }
               },
               "type": {
-                "type": "string",
-                "description": "**Person's type**<br />\nUNDEFINED<br/>\nNATURAL_PERSON<br />\nLEGAL_PERSON\n"
+                "$ref": "#/components/schemas/TipoPessoa"
               },
               "emails": {
                 "type": "array",
@@ -9465,7 +11223,7 @@
                 }
               },
               "status": {
-                "$ref": "#/components/schemas/Status"
+                "$ref": "#/components/schemas/BooleanStatus"
               },
               "customFields": {
                 "type": "object",
@@ -9962,9 +11720,6 @@
           },
           {
             "properties": {
-              "CaseType": {
-                "$ref": "#/components/schemas/RamosJudicial"
-              },
               "SubjectMatter": {
                 "type": "string",
                 "example": "<SubjectMatter>",
@@ -10013,9 +11768,6 @@
           },
           {
             "properties": {
-              "caseType": {
-                "$ref": "#/components/schemas/RamosJudicial"
-              },
               "subjectMatter": {
                 "type": "string",
                 "example": "<SubjectMatter>",
@@ -10055,6 +11807,33 @@
             }
           }
         ]
+      },
+      "PushFlattenQuery": {
+        "title": "Dados simplificados do push (PushFlatten)",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identificador do push (publicação ou andamento)**",
+            "example": "<global_unique_identifier>"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TipoDePush"
+          },
+          "Date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          }
+        }
       },
       "TimesheetEntityQuery": {
         "title": "Timesheet",
@@ -10170,6 +11949,12 @@
               },
               "TaskType": {
                 "$ref": "#/components/schemas/TipoDeTarefaTimesheet"
+              },
+              "Links": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PushFlattenQuery"
+                }
               }
             }
           }
@@ -10210,22 +11995,34 @@
         "description": "",
         "properties": {
           "Name": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "GazetteSection": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "Page": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "Link": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           }
@@ -10489,28 +12286,40 @@
         "description": "",
         "properties": {
           "Id": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "ClassificationCode": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "Title": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           },
           "CourtNonStandardizedEntryTitle": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "example": "string de exemplo",
             "description": ""
           }
         }
       },
-      "TipoDePush": {
+      "TipoDePush-2": {
         "title": "TipoDePush",
         "type": "string",
         "example": "PUBLICACAO",
@@ -10728,12 +12537,20 @@
               "Type": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/TipoDePush"
+                    "$ref": "#/components/schemas/TipoDePush-2"
                   },
                   {
                     "type": "null"
                   }
                 ]
+              },
+              "EventType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
               },
               "CaseProcedure": {
                 "oneOf": [
@@ -10758,12 +12575,6 @@
             }
           }
         ]
-      },
-      "TipoDePush-2": {
-        "title": "TipoDePush",
-        "type": "string",
-        "example": "ANDAMENTO",
-        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
       },
       "DocketEntryEntity": {
         "title": "DocketEntryEntity",
@@ -10915,12 +12726,20 @@
               "Type": {
                 "oneOf": [
                   {
-                    "$ref": "#/components/schemas/TipoDePush-2"
+                    "$ref": "#/components/schemas/TipoDePush"
                   },
                   {
                     "type": "null"
                   }
                 ]
+              },
+              "EventType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
               },
               "CaseInfo": {
                 "oneOf": [

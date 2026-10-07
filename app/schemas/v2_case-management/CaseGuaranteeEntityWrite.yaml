@@ -1,0 +1,42 @@
+title: CaseGuaranteeEntity
+description: "**Garantias dadas ou recebidas**"
+type: object
+properties:
+  type:
+    $ref: ../../enums/v2_case-management/FormaGarantia.yaml
+  classification:
+    type: [string, "null"]
+    example: <classificacao>
+    description: "**Classificação**"
+  date:
+    type: [string, "null"]
+    format: datetime
+    example: <data_da_garantia>
+    description: "**Data**"
+  description:
+    type: [string, "null"]
+    example: <descricao_da_garantia>
+    description: "**Descrição**"
+  claims:
+    type: array
+    items:
+      $ref: CaseClaimEntityWrite.yaml
+    description: "**Pedido**"
+  obligation:
+    $ref: ObligationWrite.yaml
+    description: "**Obrigação**<br />`Schema ainda não existe`"
+  currency:
+    $ref: ../../enums/v2_case-management/Moeda.yaml
+  value:
+    type: [number, "null"]
+    example: 0
+    description: "**Valor**"
+  updatedValue:
+    type: [number, "null"]
+    example: 0
+    description: "**Valor Atualizado**"
+  customFields:
+    type: object
+    example: {}
+    description: ""
+  # caseId: obrigatório apenas na criação avulsa da garantia (não existe endpoint próprio); quando enviada dentro do caso é herdada dele

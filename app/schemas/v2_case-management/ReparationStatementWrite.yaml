@@ -1,0 +1,35 @@
+title: ReparationStatement
+description: |
+  **Pedido**<br />
+  Pedido de resolução de uma disputa, declarando interpretação de situação ou status, ou criando obrigação de pagar, de fazer ou de não fazer
+type: object
+properties:
+  reliefStatement:
+    type: [string, "null"]
+    example: <relief_statement>
+    description: "**Descrição do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+  reliefStatementType:
+    type: [string, "null"]
+    example: <tipo_do_pedido>
+    description: "**Tipo do pedido feito pela parte para a reivindicação indicada na causa de pedir**"
+  remedyType:
+    type: [string, "null"]
+    example: <tipo_de_reparacao>
+    description: |
+      **Request for relief or remedy sought by the party in connection with the claim**<br />
+      **Valores permitidos:**<br />
+      "Dano material", "Dano moral", "Obrigação de fazer", "Declaratória"
+  specificPerformanceStatement:
+    type: [string, "null"]
+    example: <especificacao_obrigacao_de_fazer>
+    description: |
+      **Especificação da obrigação de fazer**<br />
+      Usado apenas quando remedyType for coerciveRemedy (Obrigação de fazer)
+  foreseenValue:
+    type: [number, "null"]
+    example: 0
+    description: "**Valor do pedido, usado apenas nos casos de remedyType ser economicDamages (Dano material) ou moralDamages (Dano moral)**"
+  isSplit:
+    type: boolean
+    example: false
+    description: "**Marcar como `true`, caso o valor atribuído ao foreseenValue seja individualizado por parte ou `false` caso contrário**"

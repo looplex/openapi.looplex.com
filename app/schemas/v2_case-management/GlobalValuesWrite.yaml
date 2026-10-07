@@ -6,8 +6,9 @@ properties:
     description: "**Contra polo ativo, passivo, terceiro...**"
   perspective:
     $ref: ../../enums/v2_case-management/TipoExpectativaReivindicacao.yaml
-  riskClassification:
-    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
+# Removido do C# (GlobalValues não possui mais RiskClassification); mantido comentado por histórico
+#  riskClassification:
+#    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
   currency:
     $ref: ../../enums/v2_case-management/Moeda.yaml
     description: "**Moeda usada para os valores do caso**"

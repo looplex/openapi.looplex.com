@@ -1,0 +1,15 @@
+title: Dados simplificados do push (PushFlatten)
+type: object
+properties:
+  Id:
+    type: [string, "null"]
+    format: uuid
+    description: "**Identificador do push (publicação ou andamento)**"
+    example: <global_unique_identifier>
+  Type:
+    $ref: ../../enums/v2_case-management/TipoDePush.yaml
+  Date:
+    type: [string, "null"]
+    format: datetime
+    description: "**Data**"
+    example: <data>

@@ -1,0 +1,28 @@
+title: PaymentOrDischargeEntity
+description: |
+  **Cumprimento**<br />
+  Registro de informações sobre o cumprimento de obrigações contratuais, judiciais ou administrativas
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: "**Unique identifier**"
+  date:
+    type: [string, "null"]
+    format: datetime
+    example: <data_do_cumprimento>
+    description: ""
+  description:
+    type: [string, "null"]
+    example: <descricao_do_cumprimento>
+    description: "**Descrição**"
+  decision:
+    $ref: DecisionEntityRetrieve.yaml
+    description: "**Decisão**"
+  payments:
+    type: array
+    items:
+      $ref: PaymentRetrieve.yaml
+    description: "**Pagamentos**"

@@ -13,6 +13,15 @@ properties:
       **A Boolean value indicating the 'primary' or preferred attribute value for this attribute, e.g., the preferred phone number or primary phone number**<br />
       The primary attribute value 'true' MUST appear no more than once.
     example: true
+  context:
+    type: [string, "null"]
+    description: "**Indicates whether the phone belongs to a client, employee, etc.**"
+    example: <contexto>
+  contextId:
+    type: [string, "null"]
+    format: uuid
+    description: "**Identifier of the owner (client, employee, etc.) of this phone**"
+    example: <global_unique_identifier>
   contact:
     type: string
     description: "**Contact name**"

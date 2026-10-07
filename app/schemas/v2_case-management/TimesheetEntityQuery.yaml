@@ -72,3 +72,7 @@ allOf:
             example: <global_unique_identifier>
       TaskType:
         $ref: ../../enums/v2_case-management/TipoDeTarefaTimesheet.yaml
+      Links:
+        type: array
+        items:
+          $ref: ./PushFlattenQuery.yaml

@@ -58,7 +58,7 @@ allOf:
       ExternalCnjClassification:
         type: array
         items:
-          $ref: ./ClassificationTypeCNJ.yaml
+          $ref: ../../schemas/common/ClassificationTypeCNJ.yaml
       CaseProcedure:
         oneOf:
           - $ref: ../common/SimpleEntityQuery.yaml
@@ -75,6 +75,10 @@ allOf:
         oneOf:
           - $ref: ../../enums/v2_case-management/TipoDePush.yaml
           - type: "null"
+      EventType:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
       CaseInfo:
         oneOf:
           - $ref: ./CaseFlattenQuery.yaml

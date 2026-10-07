@@ -23,6 +23,7 @@ allOf:
         type: array
         items:
           $ref: CaseHierarchyRetrieve.yaml
+        description: "**Hierarquia do caso, mostra todos os casos relacionados a este, seus antecessores e sucessores**"
       identities:
         description: "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**"
         type: array
@@ -59,14 +60,26 @@ allOf:
         type: array
         items:
           $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Classificação do contrato**<br />
+          Utilizado para casos <b>CONTRATO</b>
       contractType:
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Tipo do contrato**<br />
+          Casos de tipo <b>CONTRATO</b>
       legalPersonClassification:
         type: array
         items:
           $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Classificação da pessoa jurídica**<br />
+          Utilizado para casos <b>SOCIETARIO</b>
       deliberativeBody:
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: |
+          **Órgão deliberativo**<br />
+          Casos de tipo <b>SOCIETARIO</b>
       phase:
         type: [string, "null"]
         example: <fase_do_processo>
@@ -127,6 +140,7 @@ allOf:
         description: "**Usuário que criou o caso**"
       updatedAt:
         type: [string, "null"]
+        format: datetime
         example: <data_atualizacao_do_processo>
         description: "**Atualizado em**"
       updatedBy:
@@ -174,7 +188,7 @@ allOf:
       coowners:
         type: array
         items:
-          $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+          $ref: ./PersonEntityRetrieve.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
@@ -192,15 +206,56 @@ allOf:
         type: array
         items:
           $ref: GlobalValuesRetrieve.yaml
+        description: |
+          **Valores globais**<br />
+          Valores globais do caso, definidos por polo
       claims:
         type: array
         items:
           $ref: CaseClaimEntityRetrieve.yaml
+        description: |
+          **Pedidos**<br />
+          Reinvidicações feitas pelas partes dentro de um caso
+      oppositionToClaims:
+        type: array
+        items:
+          $ref: OppositionToClaimRetrieve.yaml
+        description: |
+          **Pedidos Contrapostos**<br />
+          Pedidos contrapostos feitos pelas partes dentro de um caso
+      proceduralObjections:
+        type: array
+        items:
+          $ref: ProceduralObjectionEntityRetrieve.yaml
+        description: |
+          **Exceções Processuais**<br />
+          Exceções processuais feitas pelas partes dentro de um caso
       entries:
         type: array
         items:
           $ref: EntryEntityRetrieve.yaml
         description: "**Registro de andamentos do caso, criados por usuários ou automaticamente através de integrações**"
+      resolution:
+        type: array
+        items:
+          oneOf:
+            - $ref: DecisionEntityRetrieve.yaml
+            - $ref: ResolutionRetrieve.yaml
+        description: |
+          **Decisões**<br />
+          Decisões tomadas em um caso, como sentenças, acórdãos e despachos
+      paymentOrDischarge:
+        type: array
+        items:
+          $ref: PaymentOrDischargeEntityRetrieve.yaml
+        description: |
+          **Cumprimento**<br />
+          Pagamentos ou cumprimentos de pedidos ou obrigações
+      guaranties:
+        type: array
+        items:
+          $ref: CaseGuaranteeEntityRetrieve.yaml
+        description: "**Garantias dadas ou recebidas**"
       timesheet:
         type: array
         items:
@@ -219,6 +274,7 @@ allOf:
           Log de eventos
       folder:
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        description: ""
       parentCase:
         type: string
         format: uuid

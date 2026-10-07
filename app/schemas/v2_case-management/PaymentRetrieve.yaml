@@ -1,0 +1,31 @@
+title: Payment
+type: object
+properties:
+  claim:
+    $ref: ClaimEntityRetrieve.yaml
+    description: "**Pedidos (pedido de casos judiciais)**"
+  obligation:
+    $ref: ObligationRetrieve.yaml
+    description: |
+      **Obrigações (pedido de caso consultivo)**<br />
+      `Ainda não existe`
+  classification:
+    type: [string, "null"]
+    example: <classificacao>
+    description: "**Classificação**"
+  paid:
+    type: [number, "null"]
+    example: 0
+    description: "**Valor pago**"
+  balance:
+    type: [number, "null"]
+    example: 0
+    description: "**Saldo**"
+  complied:
+    type: [number, "null"]
+    example: 0
+    description: "**Valor cumprido**"
+  percentage:
+    type: [number, "null"]
+    example: 0
+    description: "**Percentual cumprido**"

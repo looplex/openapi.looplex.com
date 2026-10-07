@@ -2,18 +2,18 @@ title: ClassificationTypeCNJ
 description: ""
 properties:
   Id:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   ClassificationCode:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   Title:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""
   CourtNonStandardizedEntryTitle:
-    type: string
+    type: [string, "null"]
     example: "string de exemplo"
     description: ""

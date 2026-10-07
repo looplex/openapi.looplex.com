@@ -1,0 +1,23 @@
+title: ProceduralObjectionEntity
+description: |
+  **Preliminares e objeções processuais**<br />
+  Objeções sobre métodos e processos, tais como competência, legitimidade e pressupostos processuais, em vez das reivindicações de mérito
+type: object
+properties:
+  proceduralObjectionsSummary:
+    type: [string, "null"]
+    example: <resumo_das_excecoes_processuais>
+    description: "**Resumo das preliminares, exceções e impugnações processuais apresentadas pela parte**"
+  subjectMatter:
+    $ref: ../../enums/v2_case-management/SubjectMatter.yaml
+  objectionStatement:
+    $ref: ObjectionStatementRetrieve.yaml
+    description: "**Objeção**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+  legislationAndCaseLaw:
+    type: array
+    items:
+      $ref: LegislationAndCaseLawRetrieve.yaml
+    description: ""
+  proceduralObjection:
+    $ref: ProceduralObjectionRetrieve.yaml
+    description: ""

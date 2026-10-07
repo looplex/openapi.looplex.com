@@ -4,6 +4,10 @@ allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
   - type: object
     properties:
+      idPedido:
+        type: [integer, "null"]
+        example: 0
+        description: ""
       caseId:
         type: string
         format: uuid

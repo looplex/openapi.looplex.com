@@ -1,0 +1,7 @@
+title: BooleanStatus
+type: string
+example: <status>
+description: |
+  **Status**<br/>
+  INACTIVE<br/>
+  ACTIVE

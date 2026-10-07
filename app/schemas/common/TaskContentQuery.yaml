@@ -118,6 +118,10 @@ properties:
   HasAncestor:
     type: boolean
     description: "**Indicates if the task has ancestor tasks**"
-  HasDescendant:
+  HasDescendants:
     type: boolean
     description: "**Indicates if the task has descendant tasks**"
+  Links:
+    type: array
+    items:
+      $ref: ../v2_case-management/PushFlattenQuery.yaml

@@ -33,13 +33,8 @@ properties:
   provisionalRelief:
     $ref: ../../enums/v2_case-management/TipoTutela.yaml
   againstPosition:
-    type: string
-    example: <polo>
-    description: |
-      **Participant's position**<br />
-      ACTIVE<br/>
-      PASSIVE<br/>
-      THIRD_PARTY
+    $ref: ../../enums/v2_case-management/Position.yaml
+    description: "**Polo do participante**"
   participants:
     description: |
       **Participant's identifiers**<br/>
@@ -79,7 +74,18 @@ properties:
     type: object
     description: "**Claim's custom fields**"
     example: {}
-  # calculationRule (TODO)
+  calculationRule:
+    type: object
+    description: "**Regra de cálculo**"
+    properties:
+      id:
+        type: string
+        example: <global_unique_identifier>
+        description: ""
+      title:
+        type: string
+        example: <title>
+        description: ""
 required:
   - caseId
   - subjectMatter

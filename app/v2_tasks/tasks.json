@@ -450,6 +450,39 @@
           }
         }
       },
+      "TipoDePush": {
+        "title": "TipoDePush",
+        "type": "string",
+        "example": "ANDAMENTO",
+        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
+      },
+      "PushFlattenRetrieve": {
+        "title": "Dados simplificados do push (PushFlatten)",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identificador do push (publicação ou andamento)**",
+            "example": "<global_unique_identifier>"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TipoDePush"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          }
+        }
+      },
       "TaskContentRetrieve": {
         "title": "Dados da tarefa",
         "type": "object",
@@ -632,6 +665,20 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LegacyIdentityEntityRetrieve"
+            }
+          },
+          "hasAncestor": {
+            "type": "boolean",
+            "description": "**Indicates if the task has ancestor tasks**"
+          },
+          "hasDescendants": {
+            "type": "boolean",
+            "description": "**Indicates if the task has descendant tasks**"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PushFlattenRetrieve"
             }
           },
           "taskHierarchy": {
@@ -901,6 +948,33 @@
           }
         }
       },
+      "PushFlattenQuery": {
+        "title": "Dados simplificados do push (PushFlatten)",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Identificador do push (publicação ou andamento)**",
+            "example": "<global_unique_identifier>"
+          },
+          "Type": {
+            "$ref": "#/components/schemas/TipoDePush"
+          },
+          "Date": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "datetime",
+            "description": "**Data**",
+            "example": "<data>"
+          }
+        }
+      },
       "TaskContentQuery": {
         "title": "Dados da tarefa",
         "type": "object",
@@ -1089,9 +1163,15 @@
             "type": "boolean",
             "description": "**Indicates if the task has ancestor tasks**"
           },
-          "HasDescendant": {
+          "HasDescendants": {
             "type": "boolean",
             "description": "**Indicates if the task has descendant tasks**"
+          },
+          "Links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PushFlattenQuery"
+            }
           }
         }
       },

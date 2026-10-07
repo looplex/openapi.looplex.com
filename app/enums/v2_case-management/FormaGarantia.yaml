@@ -1,0 +1,10 @@
+title: FormaGarantia
+type: [string, "null"]
+example: <forma_garantia>
+description: |
+  **Forma da garantia**<br />
+  **Valores permitidos:**<br />
+  DINHEIRO<br/>
+  BENS<br/>
+  SEGURO_OU_FIANCA<br/>
+  BLOQUEIO

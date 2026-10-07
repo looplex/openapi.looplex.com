@@ -39,6 +39,30 @@ properties:
     type: string
     example: <rito_do_processo>
     description: "**Rito ou procedimento do caso**"
+  contractClassification:
+    type: [string, "null"]
+    example: <classificacao_do_contrato>
+    description: |
+      **Classificação do contrato**<br />
+      Utilizado para casos <b>CONTRATO</b>
+  contractType:
+    type: [string, "null"]
+    example: <tipo_do_contrato>
+    description: |
+      **Tipo do contrato**<br />
+      Casos de tipo <b>CONTRATO</b>
+  legalPersonClassification:
+    type: [string, "null"]
+    example: <classificacao_da_pessoa_juridica>
+    description: |
+      **Classificação da pessoa jurídica**<br />
+      Utilizado para casos <b>SOCIETARIO</b>
+  deliberativeBody:
+    type: [string, "null"]
+    example: <orgao_deliberativo>
+    description: |
+      **Órgão deliberativo**<br />
+      Casos de tipo <b>SOCIETARIO</b>
   phase:
     type: [string, "null"]
     description: |

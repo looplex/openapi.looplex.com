@@ -18,6 +18,7 @@ allOf:
         description: |
           **Employee's unique identifier**<br/>
           This property if filled if the participant is an employee
+      # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
       caseId:
         type: string
         format: uuid
@@ -30,7 +31,7 @@ allOf:
         type: string
         example: <nome_da_parte>
         description: "**Participant's name**"
-      nickname:
+      nickName:
         type: [string, "null"]
         example: <apelido_da_parte>
         description: "**Apelido**"
@@ -84,10 +85,12 @@ allOf:
         type: object
         example: {}
         description: "**Participant's custom fields**"
+      # CaseType nao existe em ParticipantEntity (C#); mantido por compatibilidade com a documentacao existente
       caseType:
         $ref: ../../enums/common/RamosJudicial.yaml
       businessStructure:
-        type: string
+        type: [string, "null"]
+        description: ""
       dob:
         type: string
         format: datetime
@@ -98,8 +101,10 @@ allOf:
         description: |
           **Gender (NATURAL_PERSON only)**
       nationality:
-        type: string
+        type: [string, "null"]
+        description: ""
       maritalStatus:
         $ref: ../../enums/v2_case-management/MaritalStatus.yaml
       occupation:
-        type: string
+        type: [string, "null"]
+        description: ""

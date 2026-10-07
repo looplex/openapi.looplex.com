@@ -115,5 +115,15 @@ properties:
     type: array
     items:
       $ref: LegacyIdentityEntityRetrieve.yaml
+  hasAncestor:
+    type: boolean
+    description: "**Indicates if the task has ancestor tasks**"
+  hasDescendants:
+    type: boolean
+    description: "**Indicates if the task has descendant tasks**"
+  links:
+    type: array
+    items:
+      $ref: ../v2_case-management/PushFlattenRetrieve.yaml
   taskHierarchy:
     $ref: TaskHierarchyRetrieve.yaml

@@ -30,6 +30,8 @@ allOf:
         type: array
         items:
           type: string
+      Group:
+        type: string
       SubjectMatter:
         type: string
       CustomFields:

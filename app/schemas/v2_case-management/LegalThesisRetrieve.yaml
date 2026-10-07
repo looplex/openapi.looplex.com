@@ -1,0 +1,14 @@
+title: LegalThesis
+description: |
+  **Tese jurídica**<br />
+  Sumário da discussão e fundamentação jurídica normalmente utilizada
+type: object
+properties:
+  legalThesisType:
+    type: [string, "null"]
+    example: <tese_especifica>
+    description: "**Tese específica**"
+  pathS3:
+    type: [string, "null"]
+    example: <path_s3>
+    description: "**Path do S3 onde está a partial do render correspondente**"

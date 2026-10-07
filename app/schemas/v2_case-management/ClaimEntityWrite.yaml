@@ -1,0 +1,52 @@
+title: ClaimEntity
+description: |
+  **Reivindicação**<br />
+  Afirmação ou demanda feita por uma parte contra outra que represente uma obrigação contingente ou disputada
+type: object
+properties:
+  claimSummary:
+    type: [string, "null"]
+    example: <resumo_da_reivindicacao>
+    description: "**Resumo dos principais argumentos e fatos alegados relacionados com o assunto da reinvindicação**"
+  effectiveDate:
+    type: string
+    format: datetime
+    example: <data_de_constituicao>
+    description: "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
+  dueDate:
+    type: string
+    format: datetime
+    example: <data_de_vencimento>
+    description: "**Data de vencimento**"
+  subjectMatter:
+    type: [string, "null"]
+    example: <classificacao_geral_da_questao>
+    description: "**Classificação geral da questão**"
+  claimIsEnforceable:
+    type: boolean
+    example: false
+    description: |
+      **O pedido é executável?**<br />
+      Indica se uma reivindicação deve ser imediatamente adimplida. Se houver condição pendente ou evento suspensivo, ela será considerada não executável
+  pendingJudgment:
+    type: boolean
+    example: false
+    description: ""
+  propositionStatement:
+    $ref: PropositionStatementWrite.yaml
+    description: ""
+  reparationStatements:
+    type: array
+    items:
+      $ref: ReparationStatementWrite.yaml
+    description: ""
+  legalThesis:
+    type: array
+    items:
+      $ref: LegalThesisWrite.yaml
+    description: "**Teses jurídicas**"
+  caseId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: "**Case unique identifier**"

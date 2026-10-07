@@ -1,0 +1,49 @@
+title: PropositionStatement
+description: |
+  **Alegação**<br />
+  Uma afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa
+type: object
+properties:
+  arguments:
+    type: array
+    items:
+      type: string
+    example: [<argumento>]
+    description: |
+      **Argumentos utilizados pelo redator do documento para justificar sua posição em relação a este pedido**<br />
+      Inclui tempo de atraso, valores, causas, circunstâncias
+  excerpt:
+    type: [string, "null"]
+    example: <trecho_do_documento>
+    description: "**Trecho do documento original**"
+  canonical:
+    type: [string, "null"]
+    example: <classificacao_interna>
+    description: "**Classificação interna**"
+  hasEvidence:
+    type: array
+    items:
+      type: string
+    example: [<tipo_de_evidencia>]
+    description: |
+      **Evidência relacionada a esta alegação através da variável evidenceToBePresented**<br />
+      **Valores permitidos:**<br />
+      "Documental", "Autoridades Legais", "Regras de classificação", "Declaração de testemunha", "Relatório de perito"
+  customClassifications:
+    type: array
+    items:
+      type: string
+    example: [<classificacao_customizada>]
+    description: "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"
+  triggeringEvents:
+    type: array
+    items:
+      type: string
+    example: [<evento_gatilho>]
+    description: "**Evento ou situação de fato que ao ocorrer gera uma obrigação ou reivindicação**"
+  contributingFactors:
+    type: array
+    items:
+      type: string
+    example: [<fator_contribuinte>]
+    description: "**Circunstâncias, ações ou influências que desempenham um papel na origem, desenvolvimento ou avaliação de um incidente ou evento**"

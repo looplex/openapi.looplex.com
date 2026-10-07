@@ -1,0 +1,10 @@
+title: ProceduralObjectionType
+type: string
+example: <tipo_excecao_processual>
+description: |
+  **Tipo de exceção processual**<br />
+  **Valores permitidos:**<br />
+  MOTION_TO_COMPEL<br/>
+  MOTION_TO_DISMISSAL<br/>
+  MOTION_TO_NULLIFY<br/>
+  MOTION_FOR_JURISDICTION_REMOVAL

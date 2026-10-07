@@ -2,9 +2,18 @@ title: Address
 type: object
 properties:
   country:
-    type: [string, "null"]
-    example: <pais>
+    type: object
     description: "**ISO 3166-1 alpha2 value (2 caracteres)**"
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "**The item unique identifier**"
+        example: <global_unique_identifier>
+      name:
+        type: [string, "null"]
+        description: "**The item name**"
+        example: <nome_do_item>
   postalCode:
     type: [string, "null"]
     example: <cep>
@@ -18,13 +27,31 @@ properties:
     example: <numero_do_logradouro>
     description: "**Street number**"
   locality:
-    type: [string, "null"]
-    example: <cidade>
+    type: object
     description: "**Cidade**"
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "**The item unique identifier**"
+        example: <global_unique_identifier>
+      name:
+        type: [string, "null"]
+        description: "**The item name**"
+        example: <nome_do_item>
   region:
-    type: [string, "null"]
-    example: <sigla_estado>
+    type: object
     description: "**State**"
+    properties:
+      id:
+        type: string
+        format: uuid
+        description: "**The item unique identifier**"
+        example: <global_unique_identifier>
+      name:
+        type: [string, "null"]
+        description: "**The item name**"
+        example: <nome_do_item>
   extendedAddress:
     type: string
     description: "**Extended address**"

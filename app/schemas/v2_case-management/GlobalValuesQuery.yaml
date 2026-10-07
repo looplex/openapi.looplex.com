@@ -6,8 +6,9 @@ properties:
     description: "**Contra polo ativo, passivo, terceiro...**"
   Perspective:
     $ref: ../../enums/v2_case-management/TipoExpectativaReivindicacao.yaml
-  RiskClassification:
-    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
+# Removido do C# (GlobalValues não possui mais RiskClassification); mantido comentado por histórico
+#  RiskClassification:
+#    $ref: ../../enums/v2_case-management/ContingentLiabilityRiskClassification.yaml
   Currency:
     $ref: ../../enums/v2_case-management/Moeda.yaml
     description: "**Moeda usada para os valores do caso**"
@@ -27,6 +28,19 @@ properties:
     type: [number, "null"]
     description: |
       **Valor de contingência**<br />
+      Valor de provisionamento vinculado a perspectiva e risco do caso. <br />
+      Para os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar
+    example: 0
+  CaseForeseenValueUpdated:
+    type: [number, "null"]
+    description: |
+      **Valor previsto atualizado**<br />
+      Valor estimado para a resolução do caso, transação ou disputa
+    example: 0
+  CaseContingencyValueUpdated:
+    type: [number, "null"]
+    description: |
+      **Valor de contingência atualizado**<br />
       Valor de provisionamento vinculado a perspectiva e risco do caso. <br />
       Para os casos de êxito é uma estimativa do valor que poderá receber, e para os casos de perda é uma estimativa do valor que poderá pagar
     example: 0

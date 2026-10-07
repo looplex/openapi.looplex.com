@@ -489,6 +489,9 @@
                   "type": "string"
                 }
               },
+              "group": {
+                "type": "string"
+              },
               "subjectMatter": {
                 "type": "string"
               },
@@ -765,6 +768,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "Group": {
+                "type": "string"
               },
               "SubjectMatter": {
                 "type": "string"

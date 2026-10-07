@@ -9,16 +9,16 @@ properties:
     example: <global_unique_identifier>
   Status:
     example: ATIVO
-    $ref: ../enums/SituacaoDoProcesso.yaml
+    $ref: ../../enums/v2_case-management/SituacaoDoProcesso.yaml
   Type:
-    $ref: ../../common_enums/RamosJudicial.yaml
+    $ref: ../../enums/common/RamosJudicial.yaml
   SubType:
     description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
     example: <subtipo_do_processo>
     oneOf:
-      - $ref: ../enums/ClasseProcessoContrato.yaml
-      - $ref: ../enums/ClasseProcessoSocietario.yaml
-      - $ref: ../enums/ClasseProcesso.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcessoContrato.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcessoSocietario.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcesso.yaml
   Title:
     type: string
     example: <titulo_do_processo>
@@ -39,6 +39,30 @@ properties:
     type: string
     example: <rito_do_processo>
     description: "**Rito ou procedimento do caso**"
+  ContractClassification:
+    type: [string, "null"]
+    example: <classificacao_do_contrato>
+    description: |
+      **Classificação do contrato**<br />
+      Utilizado para casos <b>CONTRATO</b>
+  ContractType:
+    type: [string, "null"]
+    example: <tipo_do_contrato>
+    description: |
+      **Tipo do contrato**<br />
+      Casos de tipo <b>CONTRATO</b>
+  LegalPersonClassification:
+    type: [string, "null"]
+    example: <classificacao_da_pessoa_juridica>
+    description: |
+      **Classificação da pessoa jurídica**<br />
+      Utilizado para casos <b>SOCIETARIO</b>
+  DeliberativeBody:
+    type: [string, "null"]
+    example: <orgao_deliberativo>
+    description: |
+      **Órgão deliberativo**<br />
+      Casos de tipo <b>SOCIETARIO</b>
   Phase:
     type: [string, "null"]
     description: |

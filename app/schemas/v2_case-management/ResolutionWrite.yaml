@@ -1,0 +1,24 @@
+title: Resolution
+type: object
+properties:
+  resolutionType:
+    type: [string, "null"]
+    example: <tipo_da_resolucao>
+    description: "**Tipo de Resolução**"
+  date:
+    type: [string, "null"]
+    format: datetime
+    example: <data_da_resolucao>
+    description: "**Data da Resolução**"
+  content:
+    type: [string, "null"]
+    example: <conteudo_da_resolucao>
+    description: "**Conteúdo da Resolução**"
+  excerpt:
+    type: [string, "null"]
+    example: <trecho_da_resolucao>
+    description: ""
+  summaryOfFindings:
+    type: [string, "null"]
+    example: <sumario_da_resolucao>
+    description: ""

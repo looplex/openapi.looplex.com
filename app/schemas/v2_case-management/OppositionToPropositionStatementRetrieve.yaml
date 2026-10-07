@@ -1,0 +1,24 @@
+title: OppositionToPropositionStatement
+description: "**Alegação**<br />Uma refutação de afirmação ou uma ideia considerada para discussão a ser decidida se é verdadeira ou falsa"
+type: object
+properties:
+  arguments:
+    type: array
+    items:
+      type: string
+    example: [<argumento>]
+    description: "**Argumentos da parte que justificam sua posição em relação às alegações da parte contrária. Inclui fundamentação, valores, circunstâncias**"
+  excerpt:
+    type: [string, "null"]
+    example: <trecho_do_documento>
+    description: "**Trecho do documento original**"
+  canonical:
+    type: [string, "null"]
+    example: <classificacao_interna>
+    description: "**Classificação interna**"
+  customClassifications:
+    type: array
+    items:
+      type: string
+    example: [<classificacao_customizada>]
+    description: "**Agrupamento de diferentes tipos de princípios, normas, áreas do direito ou objetos de um caso, baseado em sua natureza, finalidade ou escopo**"

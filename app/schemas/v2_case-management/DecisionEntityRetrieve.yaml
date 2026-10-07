@@ -106,7 +106,7 @@ allOf:
         description: "**Observação da tutela de urgência e cautelar**"
         example: <observacao_tutela>
       result:
-        $ref: ../../enums/v2_case-management/ValorApuradoExitoPerda.yaml
+        $ref: ../../enums/v2_case-management/SituacaoJulgamento.yaml
       isClosing:
         type: [boolean, "null"]
         description: "**Indica se a decisão encerra o processo**"
@@ -117,29 +117,29 @@ allOf:
         oneOf:
           - type: array
             items:
-              $ref: ./FineDefeatCostQuery.yaml
+              $ref: ./FineDefeatCostRetrieve.yaml
           - type: "null"
       fineDefendant:
         oneOf:
           - type: array
             items:
-              $ref: ./FineDefeatCostQuery.yaml
+              $ref: ./FineDefeatCostRetrieve.yaml
           - type: "null"
       fineThirdParties:
         oneOf:
           - type: array
             items:
-              $ref: ./FineDefeatCostQuery.yaml
+              $ref: ./FineDefeatCostRetrieve.yaml
           - type: "null"
       defeatCostPlaintiff:
         oneOf:
           - type: array
             items:
-              $ref: ./FineDefeatCostQuery.yaml
+              $ref: ./FineDefeatCostRetrieve.yaml
           - type: "null"
       defeatCostDefendant:
         oneOf:
           - type: array
             items:
-              $ref: ./FineDefeatCostQuery.yaml
+              $ref: ./FineDefeatCostRetrieve.yaml
           - type: "null"

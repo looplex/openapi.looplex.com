@@ -161,7 +161,7 @@ allOf:
       Coowners:
         type: array
         items:
-          $ref: ../../schemas/common/SimpleEntityQuery.yaml
+          $ref: ./PersonEntityQuery.yaml
         description: |
           **Corresponsáveis**<br />
           Advogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso
