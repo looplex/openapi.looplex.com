@@ -1,0 +1,18 @@
+title: FineDefeatCost
+type: object
+properties:
+  parties:
+    type: [array, "null"]
+    items: {}
+    description: "**LegalPerson | NaturalPerson**"
+  valueType:
+    type: [string, "null"]
+    example: <value_type>
+    description: |
+      **Define se o valor informado será em número absoluto ou percentual**<br />
+      **Valores permitidos:**<br />
+      Valor<br/>
+      Percentual
+  value:
+    type: [number, "null"]
+    description: "**O valor absoluto ou percentual**"
