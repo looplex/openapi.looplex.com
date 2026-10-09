@@ -1,8 +1,10 @@
 tags:
-  - Employee
-summary: "/employees"
-description: "**Fetch items paginated**"
-operationId: Employees-get
+  - Collaborator
+summary: "/collaborators"
+description: |
+  **Fetch items paginated**<br />
+  Valid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`
+operationId: collaborators-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
@@ -25,7 +27,7 @@ responses:
                   resources:
                     type: array
                     items:
-                      $ref: ../../schemas/v2_case-management/EmployeeEntityQuery.yaml
+                      $ref: ../../schemas/v2_case-management/CollaboratorEntityQuery.yaml
   "400":
     description: "Bad Request"
   "401":

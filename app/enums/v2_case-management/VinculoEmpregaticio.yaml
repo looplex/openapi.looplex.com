@@ -1,0 +1,14 @@
+title: VinculoEmpregaticio
+type: string
+example: <vinculo_empregaticio>
+description: |
+  **Vínculo empregatício do colaborador**<br />
+  ESTAGIARIO<br />
+  CLT<br />
+  AUTONOMO<br />
+  TERCEIRIZADO<br />
+  OUTRO<br />
+  SOCIO<br />
+  CORRESPONDENTE<br />
+  ADVOGADO<br />
+  APRENDIZ

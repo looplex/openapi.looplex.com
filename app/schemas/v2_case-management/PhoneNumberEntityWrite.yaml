@@ -3,7 +3,9 @@ type: object
 properties:
   value:
     type: string
-    description: "**Phone number**"
+    description: |
+      **Phone number**<br />
+      Normalizado antes da validação (sem máscara e sem zero à esquerda do DDD). Tamanho (com DDD): `home`, `work` e `fax` de 8 a 10 dígitos; `mobile` e `pager` de 9 a 11 dígitos; `other` sem validação de tamanho
     example: <numero_do_telefone>
   type:
     $ref: ../../enums/v2_case-management/TipoDeTelefone.yaml

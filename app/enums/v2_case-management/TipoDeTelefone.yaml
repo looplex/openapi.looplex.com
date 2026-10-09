@@ -8,4 +8,5 @@ description: |
   mobile<br />
   fax<br />
   pager<br />
-  other
+  other<br />
+  Valor validado sem diferenciar maiúsculas de minúsculas e gravado em minúsculas (nome canônico do enum)

@@ -1180,7 +1180,7 @@
           "Client"
         ],
         "summary": "/clients/:id",
-        "description": "**Patch Client**",
+        "description": "**Patch Client**\n\nAplica operações de patch (RFC 6902) em um cliente.\n\nValidação de enums no `PATCH` (**não diferencia maiúsculas de minúsculas**; o valor é gravado pelo nome canônico do enum, e.g. `\"male\"` vira `\"MALE\"`; não aceita espaços nas pontas nem valores numéricos):\n\n- `Gender`: `FEMALE`, `MALE`. Valor inválido retorna `Gender '<valor>' is invalid`.\n- `MaritalStatus`: `SOLTEIRO`, `CASADO`, `VIUVO`, `DESQUITADO`, `DIVORCIADO`. Valor inválido retorna `MaritalStatus '<valor>' is invalid`.\n- `Status`: `ACTIVE`, `INACTIVE`. Valor inválido retorna `Status '<valor>' is invalid`.\n- `Addresses.Type` (`HOME`, `WORK`, `OTHER`, `BILLING`, `DELIVERY`) e `PhoneNumbers.Type` (`work`, `home`, `mobile`, `fax`, `pager`, `other`) também são validados sem diferenciar maiúsculas de minúsculas.\n\nValidação de tamanho de telefone (`PhoneNumbers`, `Value`): verificada sobre o número **normalizado** (a máscara, e.g. `(11) 99999-5555`, e o zero à esquerda do DDD não contam como dígitos), exatamente como na criação:\n\n| Tipo | Regra |\n|------|-------|\n| `home`, `work`, `fax` | mínimo de 8 dígitos (sem DDD) e máximo de 10 dígitos (com DDD) |\n| `mobile`, `pager` | mínimo de 9 dígitos (sem DDD) e máximo de 11 dígitos (com DDD) |\n| `other` | sem validação de tamanho |\n\nNúmeros fora da faixa retornam **400 Bad Request**. Endereços e telefones atualizados junto ao cliente usam o contexto `CLIENT`.\n",
         "operationId": "clients-patch",
         "parameters": [
           {
@@ -2153,14 +2153,14 @@
         }
       }
     },
-    "/employees": {
+    "/collaborators": {
       "get": {
         "tags": [
-          "Employee"
+          "Collaborator"
         ],
-        "summary": "/employees",
-        "description": "**Fetch items paginated**",
-        "operationId": "Employees-get",
+        "summary": "/collaborators",
+        "description": "**Fetch items paginated**<br />\nValid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`\n",
+        "operationId": "collaborators-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -2203,7 +2203,7 @@
                         "resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/EmployeeEntityQuery"
+                            "$ref": "#/components/schemas/CollaboratorEntityQuery"
                           }
                         }
                       }
@@ -2236,11 +2236,11 @@
       },
       "post": {
         "tags": [
-          "Employee"
+          "Collaborator"
         ],
-        "summary": "/employees",
-        "description": "****<br />\nItem created's guid is returned in **Location header**\n",
-        "operationId": "employees-post",
+        "summary": "/collaborators",
+        "description": "**Create a collaborator**<br />\nRequired: `Name` (max 60), `NickName` (max 60), `Role` (VinculoEmpregaticio), `AdmissionDate`, `MaritalStatus`, `Occupation`, `Status` (BooleanStatus), `Gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />\nDates (`Dob`, `AdmissionDate`, `DemissionDate`) must be sent in UTC.<br />\nItem created's guid is returned in **Location header**\n",
+        "operationId": "collaborators-post",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -2256,7 +2256,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/EmployeeEntityWrite"
+                "$ref": "#/components/schemas/CollaboratorEntityWrite"
               }
             }
           }
@@ -2287,14 +2287,14 @@
         }
       }
     },
-    "/employees/{id}": {
+    "/collaborators/{id}": {
       "get": {
         "tags": [
-          "Employee"
+          "Collaborator"
         ],
-        "summary": "/employees/:id",
-        "description": "**Retrieve an employee by id**",
-        "operationId": "employees-employee_id-get",
+        "summary": "/collaborators/:id",
+        "description": "**Retrieve a collaborator by id**",
+        "operationId": "collaborators-collaborator_id-get",
         "parameters": [
           {
             "$ref": "#/components/parameters/OcpApimSubscriptionKey"
@@ -2315,10 +2315,68 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EmployeeEntityRetrieve"
+                  "$ref": "#/components/schemas/CollaboratorEntityRetrieve"
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Collaborator"
+        ],
+        "summary": "/collaborators/:id",
+        "description": "**Patch collaborator properties**\n\nAplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):\n\n- `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.\n- `CategoryId`: UUID.\n- `Dob`, `AdmissionDate`, `DemissionDate`: datas.\n- `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.\n- `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.\n- `CustomFields`: patch em campos customizados.\n\nOs campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.\nSó é permitido um e-mail e um endereço por colaborador.\n",
+        "operationId": "collaborators-collaborator_id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
           },
           "400": {
             "description": "Bad Request"
@@ -3133,7 +3191,7 @@
           "Participant"
         ],
         "summary": "/participants",
-        "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n",
+        "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n\nValidações na criação:\n- `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`) e `Gender` (quando `NATURAL_PERSON`) são validados contra o enum **sem diferenciar maiúsculas de minúsculas** e gravados pelo nome canônico (e.g. `\"male\"` vira `\"MALE\"`).\n- `PhoneNumbers`: o número é normalizado (sem máscara e sem zero à esquerda do DDD) e deve ter, para `home`, `work` e `fax`, entre 8 (sem DDD) e 10 dígitos (com DDD); para `mobile` e `pager`, entre 9 (sem DDD) e 11 dígitos (com DDD). O tipo `other` não tem validação de tamanho. Fora da faixa retorna 400.\n- A parte não pode ser, ao mesmo tempo, cliente (`ClientId`) e colaborador (`CollaboratorId`).\n- Se já existir uma parte com o mesmo CPF/CNPJ (ou, sem documento, com o mesmo nome exato), ela é reaproveitada em vez de criar uma nova.\n- `Represents` é ignorado neste endpoint (só tem efeito na criação de participantes dentro de um caso).\n",
         "operationId": "participants-post",
         "parameters": [
           {
@@ -3314,7 +3372,7 @@
           "Participant"
         ],
         "summary": "/participants/:id",
-        "description": "**Patch participant properties**\n\nAplica operações de patch (RFC 6902) em uma parte. Campos suportados em `path` (não diferencia maiúsculas/minúsculas, exceto `Dob`):\n\n- `Name`, `NickName`, `IsMainParty` (boolean), `Represents` (array de string), `LawyerOffice`, `BusinessStructure`, `Nationality`, `Occupation`: substituem o valor.\n- `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`), `Gender`, `Position`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Dob`: data de nascimento (case-sensitive).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado.\n- `CustomFields`: patch em campos customizados.\n- `Role`: não pode ser atualizado aqui (atualize o vínculo caso-parte).\n\nPartes que são cliente ou funcionário não podem ser atualizadas por este endpoint.\n",
+        "description": "**Patch participant properties**\n\nAplica operações de patch (RFC 6902) em uma parte. Campos suportados em `path` (não diferencia maiúsculas/minúsculas, exceto `Dob`):\n\n- `Name`, `NickName`, `IsMainParty` (boolean), `Represents` (array de string; no `PATCH` os valores são gravados como informados, sem busca por documento ou nome), `LawyerOffice`, `BusinessStructure`, `Nationality`, `Occupation`: substituem o valor.\n- `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`), `Gender`, `Position`, `MaritalStatus`: devem ser valores válidos do respectivo enum (`Gender`: `FEMALE`, `MALE`; `Position`: `ACTIVE`, `PASSIVE`, `THIRD_PARTY`, `NONE`, `OTHER`; `MaritalStatus`: `SOLTEIRO`, `CASADO`, `VIUVO`, `DESQUITADO`, `DIVORCIADO`). A validação **não diferencia maiúsculas de minúsculas** e o valor é gravado pelo nome canônico (e.g. `\"male\"` vira `\"MALE\"`); espaços nas pontas e valores numéricos são inválidos. Valor inválido retorna 400.\n- `Dob`: data de nascimento (case-sensitive).\n- `Addresses` e `PhoneNumbers`: o `Type` do item também é validado sem diferenciar maiúsculas de minúsculas e, em `PhoneNumbers`, o `Value` é verificado sobre o número normalizado (sem máscara e sem zero à esquerda do DDD): `home`, `work` e `fax` aceitam de 8 a 10 dígitos; `mobile` e `pager`, de 9 a 11 dígitos; `other` não tem validação de tamanho (fora da faixa retorna 400). Operações: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado.\n- `CustomFields`: patch em campos customizados.\n- `Role`: não pode ser atualizado aqui (atualize o vínculo caso-parte).\n\nPartes que são cliente ou colaborador não podem ser atualizadas por este endpoint.\n",
         "operationId": "participants-participant_id-patch",
         "parameters": [
           {
@@ -5830,7 +5888,7 @@
         "title": "Address' type",
         "type": "string",
         "example": "<tipo_de_endereco>",
-        "description": "**Address' type**<br/>\nhome<br/>\nwork<br/>\nother<br/>\nbilling<br/>\ndelivery<br/>\n"
+        "description": "**Address' type**<br/>\nHOME<br/>\nWORK<br/>\nOTHER<br/>\nBILLING<br/>\nDELIVERY<br/>\nValidado sem diferenciar maiúsculas de minúsculas (PATCH) e gravado pelo nome canônico em maiúsculas\n"
       },
       "AddressEntityRetrieve": {
         "title": "Address",
@@ -5934,7 +5992,7 @@
         "title": "Tipo de telefone",
         "type": "string",
         "example": "<tipo_de_telefone>",
-        "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother\n"
+        "description": "**A label indicating the attribute's function, e.g., 'work', 'home', 'mobile'.**<br />\nwork<br />\nhome<br />\nmobile<br />\nfax<br />\npager<br />\nother<br />\nValor validado sem diferenciar maiúsculas de minúsculas e gravado em minúsculas (nome canônico do enum)\n"
       },
       "PhoneNumberEntityRetrieve": {
         "title": "Phone number",
@@ -5942,7 +6000,7 @@
         "properties": {
           "value": {
             "type": "string",
-            "description": "**Phone number**",
+            "description": "**Phone number**<br />\nNormalizado antes da validação (sem máscara e sem zero à esquerda do DDD). Tamanho (com DDD): `home`, `work` e `fax` de 8 a 10 dígitos; `mobile` e `pager` de 9 a 11 dígitos; `other` sem validação de tamanho\n",
             "example": "<numero_do_telefone>"
           },
           "type": {
@@ -6039,11 +6097,11 @@
                 "example": "<client_uuid>",
                 "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
               },
-              "employeeId": {
+              "collaboratorId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<employee_uuid>",
-                "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+                "example": "<collaborator_uuid>",
+                "description": "**Collaborator's unique identifier**<br/>\nThis property if filled if the participant is a collaborator\n"
               },
               "caseId": {
                 "type": "string",
@@ -6081,7 +6139,7 @@
                   "document",
                   "uuid"
                 ],
-                "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
+                "description": "**Uuids of parties represented by this participant in the case (if this participant is a lawyer)**<br />\nOnly filled when the participant is returned within a case; empty in `GET /participants` and `GET /participants/:id`\n"
               },
               "lawyerOffice": {
                 "type": [
@@ -6402,7 +6460,7 @@
                   "null"
                 ],
                 "example": 0,
-                "description": "**Foreseen value updated**"
+                "description": "**Valor previsto atualizado**"
               },
               "contingencyValue": {
                 "type": "number",
@@ -6413,7 +6471,7 @@
                   "number",
                   "null"
                 ],
-                "description": "**Valor de contingencia**"
+                "description": "**Valor de contingência atualizado**"
               },
               "liquidated": {
                 "type": "boolean",
@@ -8428,7 +8486,7 @@
         "properties": {
           "Value": {
             "type": "string",
-            "description": "**Phone number**",
+            "description": "**Phone number**<br />\nNormalizado antes da validação (sem máscara e sem zero à esquerda do DDD). Tamanho (com DDD): `home`, `work` e `fax` de 8 a 10 dígitos; `mobile` e `pager` de 9 a 11 dígitos; `other` sem validação de tamanho\n",
             "example": "<numero_do_telefone>"
           },
           "Type": {
@@ -8724,11 +8782,11 @@
                 "example": "<client_uuid>",
                 "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
               },
-              "EmployeeId": {
+              "CollaboratorId": {
                 "type": "string",
                 "format": "uuid",
-                "example": "<employee_uuid>",
-                "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+                "example": "<collaborator_uuid>",
+                "description": "**Collaborator's unique identifier**<br/>\nThis property if filled if the participant is a collaborator\n"
               },
               "CaseId": {
                 "type": "string",
@@ -8766,7 +8824,7 @@
                   "document",
                   "uuid"
                 ],
-                "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
+                "description": "**Uuids of parties represented by this participant in the case (if this participant is a lawyer)**<br />\nOnly filled when the participant is returned within a case; empty in `GET /participants` and `GET /participants/:id`\n"
               },
               "LawyerOffice": {
                 "type": [
@@ -8869,6 +8927,7 @@
       },
       "GlobalValuesQuery": {
         "title": "Valores globais do caso por polo",
+        "description": "**Valores globais do caso por polo**<br />\nNa listagem de casos, os valores previstos e de contingência (inclusive os atualizados) são a soma dos pedidos **retornados** para o caso (até 120 pedidos por página de casos), não necessariamente de todos os pedidos do caso\n",
         "type": "object",
         "properties": {
           "AgainstPosition": {
@@ -9359,7 +9418,7 @@
         "properties": {
           "value": {
             "type": "string",
-            "description": "**Phone number**",
+            "description": "**Phone number**<br />\nNormalizado antes da validação (sem máscara e sem zero à esquerda do DDD). Tamanho (com DDD): `home`, `work` e `fax` de 8 a 10 dígitos; `mobile` e `pager` de 9 a 11 dígitos; `other` sem validação de tamanho\n",
             "example": "<numero_do_telefone>"
           },
           "type": {
@@ -9406,11 +9465,11 @@
             "example": "<client_uuid>",
             "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
           },
-          "EmployeeId": {
+          "CollaboratorId": {
             "type": "string",
             "format": "uuid",
-            "example": "<employee_uuid>",
-            "description": "**Employee's unique identifier**<br/>\nThis property if filled if the participant is an employee\n"
+            "example": "<collaborator_uuid>",
+            "description": "**Collaborator's unique identifier**<br/>\nThis property if filled if the participant is a collaborator\n"
           },
           "CaseId": {
             "type": "string",
@@ -9448,7 +9507,7 @@
               "document",
               "uuid"
             ],
-            "description": "**Documents or uuids of parties represented by this participant (if this participant is a lawyer)**\n"
+            "description": "**Documents, names or uuids of parties represented by this participant (if this participant is a lawyer)**<br />\nUsed when the participant is created within a case (`POST /cases`); ignored in `POST /participants` (without case context).<br />\nA value that is not a guid is looked up as a document (CPF/CNPJ) or, failing that, as the exact name of an existing participant, client or collaborator; if no party is found, the request fails (400).<br />\nParticipants of the same case are created in ascending order of the number of `Represents`, so the represented parties may be created in the same request\n"
           },
           "LawyerOffice": {
             "type": [
@@ -10816,7 +10875,7 @@
             "example": "<observacoes_do_processo>"
           },
           "locale": {
-            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação<br/>\n`No objeto, enviar: Id ou Name`\n",
+            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação<br/>\n`No objeto, enviar: Id ou Name`<br/>\nHierarquia: país, estado e cidade (nessa ordem). Informar a cidade exige o estado, e informar o estado exige o país (400 caso contrário).<br/>\nItens `null` ou objetos sem `Id` e sem `Name` (e.g. `{ \"Id\": null }`) significam \"sem valor\" e são gravados como `null`; se o país não for informado, nenhum local é gravado\n",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SimpleEntityWrite"
@@ -11357,7 +11416,7 @@
                   "null"
                 ],
                 "example": 0,
-                "description": "**Foreseen value updated**"
+                "description": "**Valor previsto atualizado**"
               },
               "ContingencyValue": {
                 "type": "number",
@@ -11368,7 +11427,7 @@
                   "number",
                   "null"
                 ],
-                "description": "**Valor de contingencia**"
+                "description": "**Valor de contingência atualizado**"
               },
               "Liquidated": {
                 "type": "boolean",
@@ -12292,14 +12351,20 @@
           }
         ]
       },
-      "PersonStatus": {
-        "title": "Status",
+      "VinculoEmpregaticio": {
+        "title": "VinculoEmpregaticio",
+        "type": "string",
+        "example": "<vinculo_empregaticio>",
+        "description": "**Vínculo empregatício do colaborador**<br />\nESTAGIARIO<br />\nCLT<br />\nAUTONOMO<br />\nTERCEIRIZADO<br />\nOUTRO<br />\nSOCIO<br />\nCORRESPONDENTE<br />\nADVOGADO<br />\nAPRENDIZ\n"
+      },
+      "BooleanStatus": {
+        "title": "BooleanStatus",
         "type": "string",
         "example": "<status>",
-        "description": "**Person status**<br/>\nATIVO<br/>\nINATIVO\n"
+        "description": "**Status**<br/>\nINACTIVE<br/>\nACTIVE\n"
       },
-      "EmployeeEntityQuery": {
-        "title": "Funcionário",
+      "CollaboratorEntityQuery": {
+        "title": "Collaborator",
         "type": "object",
         "allOf": [
           {
@@ -12315,7 +12380,7 @@
               },
               "Name": {
                 "type": "string",
-                "description": "**Employee's name**",
+                "description": "**Collaborator's name**",
                 "example": "<nome>"
               },
               "NickName": {
@@ -12323,7 +12388,7 @@
                   "string",
                   "null"
                 ],
-                "description": "**Employee's nickname**",
+                "description": "**Collaborator's nickname**",
                 "example": "<apelido>"
               },
               "Dob": {
@@ -12331,8 +12396,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's date of birth**",
+                "format": "date-time",
+                "description": "**Collaborator's date of birth**",
                 "example": "<data_de_nascimento>"
               },
               "AdmissionDate": {
@@ -12340,8 +12405,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's admission date**",
+                "format": "date-time",
+                "description": "**Collaborator's admission date**",
                 "example": "<data_de_admissao>"
               },
               "DemissionDate": {
@@ -12349,8 +12414,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's demission date**",
+                "format": "date-time",
+                "description": "**Collaborator's demission date**",
                 "example": "<data_de_demissao>"
               },
               "Gender": {
@@ -12361,14 +12426,14 @@
                 "items": {
                   "$ref": "#/components/schemas/NaturalPersonIdentityEntityQuery"
                 },
-                "description": "**Employee's identities**"
+                "description": "**Collaborator's identities**"
               },
               "Nationality": {
                 "type": [
                   "string",
                   "null"
                 ],
-                "description": "**Employee's nationality**",
+                "description": "**Collaborator's nationality**",
                 "example": "<nacionalidade>"
               },
               "MaritalStatus": {
@@ -12379,46 +12444,46 @@
                   "string",
                   "null"
                 ],
-                "description": "**Employee's occupation**",
+                "description": "**Collaborator's occupation**",
                 "example": "<profissao>"
               },
               "Role": {
-                "$ref": "#/components/schemas/ParticipantRole"
+                "$ref": "#/components/schemas/VinculoEmpregaticio"
               },
               "Status": {
-                "$ref": "#/components/schemas/PersonStatus"
+                "$ref": "#/components/schemas/BooleanStatus"
               },
               "Addresses": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntityQuery"
                 },
-                "description": "**Employee's addresses**"
+                "description": "**Collaborator's addresses**"
               },
               "Emails": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntityQuery"
                 },
-                "description": "**Employee's emails**"
+                "description": "**Collaborator's emails**"
               },
               "PhoneNumbers": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PhoneNumberEntityQuery"
                 },
-                "description": "**Employee's phone numbers**"
+                "description": "**Collaborator's phone numbers**"
               },
               "CustomFields": {
                 "type": "object",
-                "description": "**Employee's custom fields**"
+                "description": "**Collaborator's custom fields**"
               }
             }
           }
         ]
       },
-      "EmployeeEntityWrite": {
-        "title": "Funcionário",
+      "CollaboratorEntityWrite": {
+        "title": "Collaborator",
         "type": "object",
         "properties": {
           "CategoryId": {
@@ -12428,12 +12493,12 @@
           },
           "Name": {
             "type": "string",
-            "description": "**Employee's name**",
+            "description": "**Collaborator's name**",
             "example": "<nome>"
           },
           "NickName": {
             "type": "string",
-            "description": "**Employee's nickname**",
+            "description": "**Collaborator's nickname**",
             "example": "<apelido>"
           },
           "Dob": {
@@ -12441,8 +12506,8 @@
               "string",
               "null"
             ],
-            "format": "datetime",
-            "description": "**Employee's date of birth**",
+            "format": "date-time",
+            "description": "**Collaborator's date of birth**",
             "example": "<data_de_nascimento>"
           },
           "AdmissionDate": {
@@ -12450,8 +12515,8 @@
               "string",
               "null"
             ],
-            "format": "datetime",
-            "description": "**Employee's admission date**",
+            "format": "date-time",
+            "description": "**Collaborator's admission date**",
             "example": "<data_de_admissao>"
           },
           "DemissionDate": {
@@ -12459,8 +12524,8 @@
               "string",
               "null"
             ],
-            "format": "datetime",
-            "description": "**Employee's demission date**",
+            "format": "date-time",
+            "description": "**Collaborator's demission date**",
             "example": "<data_de_demissao>"
           },
           "Gender": {
@@ -12471,14 +12536,14 @@
             "items": {
               "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
             },
-            "description": "**Employee's identities**"
+            "description": "**Collaborator's identities**"
           },
           "Nationality": {
             "type": [
               "string",
               "null"
             ],
-            "description": "**Employee's nationality**",
+            "description": "**Collaborator's nationality**",
             "example": "<nacionalidade>"
           },
           "MaritalStatus": {
@@ -12489,49 +12554,55 @@
               "string",
               "null"
             ],
-            "description": "**Employee's occupation**",
+            "description": "**Collaborator's occupation**",
             "example": "<profissao>"
           },
           "Role": {
-            "$ref": "#/components/schemas/ParticipantRole"
+            "$ref": "#/components/schemas/VinculoEmpregaticio"
           },
           "Status": {
-            "$ref": "#/components/schemas/PersonStatus"
+            "$ref": "#/components/schemas/BooleanStatus"
           },
           "Addresses": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AddressEntityWrite"
             },
-            "description": "**Employee's addresses**"
+            "description": "**Collaborator's addresses**"
           },
           "Emails": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailEntityWrite"
             },
-            "description": "**Employee's emails**"
+            "description": "**Collaborator's emails**"
           },
           "PhoneNumbers": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             },
-            "description": "**Employee's phone numbers**"
+            "description": "**Collaborator's phone numbers**"
           },
           "CustomFields": {
             "type": "object",
-            "description": "**Employee's custom fields**"
+            "description": "**Collaborator's custom fields**"
           }
         },
         "required": [
-          "CategoryId",
           "Name",
-          "NickName"
+          "NickName",
+          "Role",
+          "AdmissionDate",
+          "MaritalStatus",
+          "Occupation",
+          "Status",
+          "Gender",
+          "Identities"
         ]
       },
-      "EmployeeEntityRetrieve": {
-        "title": "Funcionário",
+      "CollaboratorEntityRetrieve": {
+        "title": "Collaborator",
         "type": "object",
         "allOf": [
           {
@@ -12547,7 +12618,7 @@
               },
               "name": {
                 "type": "string",
-                "description": "**Employee's name**",
+                "description": "**Collaborator's name**",
                 "example": "<nome>"
               },
               "nickName": {
@@ -12555,7 +12626,7 @@
                   "string",
                   "null"
                 ],
-                "description": "**Employee's nickname**",
+                "description": "**Collaborator's nickname**",
                 "example": "<apelido>"
               },
               "dob": {
@@ -12563,8 +12634,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's date of birth**",
+                "format": "date-time",
+                "description": "**Collaborator's date of birth**",
                 "example": "<data_de_nascimento>"
               },
               "admissionDate": {
@@ -12572,8 +12643,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's admission date**",
+                "format": "date-time",
+                "description": "**Collaborator's admission date**",
                 "example": "<data_de_admissao>"
               },
               "demissionDate": {
@@ -12581,8 +12652,8 @@
                   "string",
                   "null"
                 ],
-                "format": "datetime",
-                "description": "**Employee's demission date**",
+                "format": "date-time",
+                "description": "**Collaborator's demission date**",
                 "example": "<data_de_demissao>"
               },
               "gender": {
@@ -12593,14 +12664,14 @@
                 "items": {
                   "$ref": "#/components/schemas/NaturalPersonIdentityEntityRetrieve"
                 },
-                "description": "**Employee's identities**"
+                "description": "**Collaborator's identities**"
               },
               "nationality": {
                 "type": [
                   "string",
                   "null"
                 ],
-                "description": "**Employee's nationality**",
+                "description": "**Collaborator's nationality**",
                 "example": "<nacionalidade>"
               },
               "maritalStatus": {
@@ -12611,39 +12682,39 @@
                   "string",
                   "null"
                 ],
-                "description": "**Employee's occupation**",
+                "description": "**Collaborator's occupation**",
                 "example": "<profissao>"
               },
               "role": {
-                "$ref": "#/components/schemas/ParticipantRole"
+                "$ref": "#/components/schemas/VinculoEmpregaticio"
               },
               "status": {
-                "$ref": "#/components/schemas/PersonStatus"
+                "$ref": "#/components/schemas/BooleanStatus"
               },
               "addresses": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/AddressEntityRetrieve"
                 },
-                "description": "**Employee's addresses**"
+                "description": "**Collaborator's addresses**"
               },
               "emails": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/EmailEntityRetrieve"
                 },
-                "description": "**Employee's emails**"
+                "description": "**Collaborator's emails**"
               },
               "phoneNumbers": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PhoneNumberEntityRetrieve"
                 },
-                "description": "**Employee's phone numbers**"
+                "description": "**Collaborator's phone numbers**"
               },
               "customFields": {
                 "type": "object",
-                "description": "**Employee's custom fields**"
+                "description": "**Collaborator's custom fields**"
               }
             }
           }
@@ -12748,12 +12819,6 @@
             }
           }
         ]
-      },
-      "BooleanStatus": {
-        "title": "BooleanStatus",
-        "type": "string",
-        "example": "<status>",
-        "description": "**Status**<br/>\nINACTIVE<br/>\nACTIVE\n"
       },
       "ExternalServiceProviderQuery": {
         "title": "External service provider",

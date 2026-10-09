@@ -1,4 +1,7 @@
 title: Valores globais do caso por polo
+description: |
+  **Valores globais do caso por polo**<br />
+  Na listagem de casos, os valores previstos e de contingência (inclusive os atualizados) são a soma dos pedidos **retornados** para o caso (até 120 pedidos por página de casos), não necessariamente de todos os pedidos do caso
 type: object
 properties: 
   AgainstPosition:

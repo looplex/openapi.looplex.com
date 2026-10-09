@@ -11,13 +11,13 @@ allOf:
         description: |
           **Client's unique identifier**<br/>
           This property if filled if the participant is a client
-      employeeId:
+      collaboratorId:
         type: string
         format: uuid
-        example: <employee_uuid>
+        example: <collaborator_uuid>
         description: |
-          **Employee's unique identifier**<br/>
-          This property if filled if the participant is an employee
+          **Collaborator's unique identifier**<br/>
+          This property if filled if the participant is a collaborator
       # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
       caseId:
         type: string
@@ -46,7 +46,8 @@ allOf:
           type: string
         example: ["document", "uuid"]
         description: |
-          **Documents or uuids of parties represented by this participant (if this participant is a lawyer)**
+          **Uuids of parties represented by this participant in the case (if this participant is a lawyer)**<br />
+          Only filled when the participant is returned within a case; empty in `GET /participants` and `GET /participants/:id`
       lawyerOffice:
         type: [string, "null"]
         description: "**Escritório do advogado (se houver)**"

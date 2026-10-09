@@ -4,6 +4,13 @@ summary: "/participants"
 description: |
   **Create participant**<br />
   Item created's guid is returned in **Location header**
+
+  Validações na criação:
+  - `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`) e `Gender` (quando `NATURAL_PERSON`) são validados contra o enum **sem diferenciar maiúsculas de minúsculas** e gravados pelo nome canônico (e.g. `"male"` vira `"MALE"`).
+  - `PhoneNumbers`: o número é normalizado (sem máscara e sem zero à esquerda do DDD) e deve ter, para `home`, `work` e `fax`, entre 8 (sem DDD) e 10 dígitos (com DDD); para `mobile` e `pager`, entre 9 (sem DDD) e 11 dígitos (com DDD). O tipo `other` não tem validação de tamanho. Fora da faixa retorna 400.
+  - A parte não pode ser, ao mesmo tempo, cliente (`ClientId`) e colaborador (`CollaboratorId`).
+  - Se já existir uma parte com o mesmo CPF/CNPJ (ou, sem documento, com o mesmo nome exato), ela é reaproveitada em vez de criar uma nova.
+  - `Represents` é ignorado neste endpoint (só tem efeito na criação de participantes dentro de um caso).
 operationId: participants-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
