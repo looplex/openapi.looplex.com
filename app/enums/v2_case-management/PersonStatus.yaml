@@ -1,7 +1,0 @@
-title: Status
-type: string
-example: <status>
-description: |
-  **Person status**<br/>
-  ATIVO<br/>
-  INATIVO

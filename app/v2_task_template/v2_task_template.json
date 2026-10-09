@@ -87,7 +87,7 @@
           "Task Templates"
         ],
         "summary": "/TaskTemplates/:id",
-        "description": "**Patch Task Templates properties**<br/>\n**If you want to patch '_CustomFields_' property see** _<a href=\"/v2_case-management#tag/Custom-Fields\">this link</a>_\n",
+        "description": "**Patch Task Templates properties**<br/>\n**If you want to patch '_CustomFields_' property see** _<a href=\"/v2_case-management#tag/Custom-Fields\">this link</a>_<br/>\n`TimeToExecution` é um inteiro em **minutos**\n",
         "operationId": "task_templates-id-patch",
         "parameters": [
           {
@@ -225,7 +225,7 @@
           "Task Templates"
         ],
         "summary": "/TaskTemplates",
-        "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**\n",
+        "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**<br />\n`TimeToExecution` é um inteiro em **minutos**\n",
         "operationId": "task_templates-post",
         "parameters": [
           {
@@ -472,7 +472,7 @@
                 "$ref": "#/components/schemas/Prioridade"
               },
               "timeToExecution": {
-                "description": "Tempo para execução (em horas)",
+                "description": "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente",
                 "type": "integer"
               },
               "documentLinkType": {
@@ -752,7 +752,7 @@
                 "$ref": "#/components/schemas/Prioridade"
               },
               "TimeToExecution": {
-                "description": "Tempo para execução (em horas)",
+                "description": "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente",
                 "type": "integer"
               },
               "DocumentLinkType": {
@@ -859,8 +859,11 @@
             "$ref": "#/components/schemas/Prioridade"
           },
           "TimeToExecution": {
-            "description": "Tempo para execução (em horas)",
+            "description": "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente",
             "type": "integer"
+          },
+          "Group": {
+            "type": "string"
           },
           "DocumentLinkType": {
             "$ref": "#/components/schemas/TipoVinculoComDocumento"
@@ -890,6 +893,11 @@
           },
           "InterviewTemplateLink": {
             "type": "string"
+          },
+          "ParentId": {
+            "description": "**Id do task template pai (quando for um filho)**",
+            "type": "string",
+            "format": "uuid"
           },
           "Description": {
             "type": "string"

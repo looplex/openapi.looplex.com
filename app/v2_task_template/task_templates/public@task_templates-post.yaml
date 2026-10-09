@@ -5,7 +5,8 @@ summary: "/TaskTemplates"
 
 description: |
   **Create task templates**<br />
-  Item created's guid is returned in **Location header**
+  Item created's guid is returned in **Location header**<br />
+  `TimeToExecution` é um inteiro em **minutos**
 
 operationId: task_templates-post
 parameters:

@@ -63,13 +63,13 @@ allOf:
       foreseenValueUpdated:
         type: [number, "null"]
         example: 0
-        description: "**Foreseen value updated**"
+        description: "**Valor previsto atualizado**"
       contingencyValue:
         type: number
         description: "**Valor de contingencia**"
       contingencyValueUpdated:
         type: [number, "null"]
-        description: "**Valor de contingencia**"
+        description: "**Valor de contingência atualizado**"
       liquidated:
         type: boolean
         example: false

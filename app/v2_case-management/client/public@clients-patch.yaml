@@ -1,7 +1,27 @@
 tags:
   - Client
 summary: "/clients/:id"
-description: "**Patch Client**"
+description: |
+  **Patch Client**
+
+  Aplica operações de patch (RFC 6902) em um cliente.
+
+  Validação de enums no `PATCH` (**não diferencia maiúsculas de minúsculas**; o valor é gravado pelo nome canônico do enum, e.g. `"male"` vira `"MALE"`; não aceita espaços nas pontas nem valores numéricos):
+
+  - `Gender`: `FEMALE`, `MALE`. Valor inválido retorna `Gender '<valor>' is invalid`.
+  - `MaritalStatus`: `SOLTEIRO`, `CASADO`, `VIUVO`, `DESQUITADO`, `DIVORCIADO`. Valor inválido retorna `MaritalStatus '<valor>' is invalid`.
+  - `Status`: `ACTIVE`, `INACTIVE`. Valor inválido retorna `Status '<valor>' is invalid`.
+  - `Addresses.Type` (`HOME`, `WORK`, `OTHER`, `BILLING`, `DELIVERY`) e `PhoneNumbers.Type` (`work`, `home`, `mobile`, `fax`, `pager`, `other`) também são validados sem diferenciar maiúsculas de minúsculas.
+
+  Validação de tamanho de telefone (`PhoneNumbers`, `Value`): verificada sobre o número **normalizado** (a máscara, e.g. `(11) 99999-5555`, e o zero à esquerda do DDD não contam como dígitos), exatamente como na criação:
+
+  | Tipo | Regra |
+  |------|-------|
+  | `home`, `work`, `fax` | mínimo de 8 dígitos (sem DDD) e máximo de 10 dígitos (com DDD) |
+  | `mobile`, `pager` | mínimo de 9 dígitos (sem DDD) e máximo de 11 dígitos (com DDD) |
+  | `other` | sem validação de tamanho |
+
+  Números fora da faixa retornam **400 Bad Request**. Endereços e telefones atualizados junto ao cliente usam o contexto `CLIENT`.
 operationId: clients-patch
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

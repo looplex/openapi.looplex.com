@@ -1,8 +1,8 @@
 tags:
-  - Employee
-summary: "/employees/:id"
-description: "**Retrieve an employee by id**"
-operationId: employees-employee_id-get
+  - Collaborator
+summary: "/collaborators/:id"
+description: "**Retrieve a collaborator by id**"
+operationId: collaborators-collaborator_id-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../parameters/common/Tenant.yaml
@@ -14,7 +14,7 @@ responses:
       content:
         application/json:
           schema:
-            $ref: ../../schemas/v2_case-management/EmployeeEntityRetrieve.yaml
+            $ref: ../../schemas/v2_case-management/CollaboratorEntityRetrieve.yaml
   "400":
     description: "Bad Request"
   "401":

@@ -1,0 +1,49 @@
+tags:
+  - Collaborator
+summary: "/collaborators/:id"
+description: |
+  **Patch collaborator properties**
+
+  Aplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):
+
+  - `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.
+  - `CategoryId`: UUID.
+  - `Dob`, `AdmissionDate`, `DemissionDate`: datas.
+  - `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.
+  - `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.
+  - `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).
+  - `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).
+  - `Emails`: somente `replace`.
+  - `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.
+  - `CustomFields`: patch em campos customizados.
+
+  Os campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.
+  Só é permitido um e-mail e um endereço por colaborador.
+operationId: collaborators-collaborator_id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'

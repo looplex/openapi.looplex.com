@@ -17,8 +17,10 @@ properties:
   Priority:
     $ref: ../../enums/common/Prioridade.yaml    
   TimeToExecution:
-    description: "Tempo para execução (em horas)"    
+    description: "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente"    
     type: integer
+  Group:
+    type: string
   DocumentLinkType:
     $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml  
   CaseTypes:
@@ -38,6 +40,10 @@ properties:
     type: string
   InterviewTemplateLink:
     type: string
+  ParentId:
+    description: "**Id do task template pai (quando for um filho)**"
+    type: string
+    format: uuid
   Description:
     type: string
   Children:

@@ -19,7 +19,7 @@ allOf:
       Priority:
         $ref: ../../enums/common/Prioridade.yaml        
       TimeToExecution:
-        description: "Tempo para execução (em horas)"    
+        description: "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente"    
         type: integer
       DocumentLinkType:
         $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml      

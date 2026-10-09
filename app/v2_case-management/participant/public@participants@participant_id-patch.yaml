@@ -6,16 +6,16 @@ description: |
 
   Aplica operações de patch (RFC 6902) em uma parte. Campos suportados em `path` (não diferencia maiúsculas/minúsculas, exceto `Dob`):
 
-  - `Name`, `NickName`, `IsMainParty` (boolean), `Represents` (array de string), `LawyerOffice`, `BusinessStructure`, `Nationality`, `Occupation`: substituem o valor.
-  - `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`), `Gender`, `Position`, `MaritalStatus`: devem ser valores válidos do respectivo enum.
+  - `Name`, `NickName`, `IsMainParty` (boolean), `Represents` (array de string; no `PATCH` os valores são gravados como informados, sem busca por documento ou nome), `LawyerOffice`, `BusinessStructure`, `Nationality`, `Occupation`: substituem o valor.
+  - `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`), `Gender`, `Position`, `MaritalStatus`: devem ser valores válidos do respectivo enum (`Gender`: `FEMALE`, `MALE`; `Position`: `ACTIVE`, `PASSIVE`, `THIRD_PARTY`, `NONE`, `OTHER`; `MaritalStatus`: `SOLTEIRO`, `CASADO`, `VIUVO`, `DESQUITADO`, `DIVORCIADO`). A validação **não diferencia maiúsculas de minúsculas** e o valor é gravado pelo nome canônico (e.g. `"male"` vira `"MALE"`); espaços nas pontas e valores numéricos são inválidos. Valor inválido retorna 400.
   - `Dob`: data de nascimento (case-sensitive).
-  - `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).
+  - `Addresses` e `PhoneNumbers`: o `Type` do item também é validado sem diferenciar maiúsculas de minúsculas e, em `PhoneNumbers`, o `Value` é verificado sobre o número normalizado (sem máscara e sem zero à esquerda do DDD): `home`, `work` e `fax` aceitam de 8 a 10 dígitos; `mobile` e `pager`, de 9 a 11 dígitos; `other` não tem validação de tamanho (fora da faixa retorna 400). Operações: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).
   - `Emails`: somente `replace`.
   - `Identities`: `replace` e `add`; `remove` não é suportado.
   - `CustomFields`: patch em campos customizados.
   - `Role`: não pode ser atualizado aqui (atualize o vínculo caso-parte).
 
-  Partes que são cliente ou funcionário não podem ser atualizadas por este endpoint.
+  Partes que são cliente ou colaborador não podem ser atualizadas por este endpoint.
 operationId: participants-participant_id-patch
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

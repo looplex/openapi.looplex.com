@@ -1,10 +1,12 @@
 tags:
-  - Employee
-summary: "/employees"
+  - Collaborator
+summary: "/collaborators"
 description: |
-  ****<br />
+  **Create a collaborator**<br />
+  Required: `Name` (max 60), `NickName` (max 60), `Role` (VinculoEmpregaticio), `AdmissionDate`, `MaritalStatus`, `Occupation`, `Status` (BooleanStatus), `Gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />
+  Dates (`Dob`, `AdmissionDate`, `DemissionDate`) must be sent in UTC.<br />
   Item created's guid is returned in **Location header**
-operationId: employees-post
+operationId: collaborators-post
 parameters:
   - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
   - $ref: ../../../app/parameters/common/Tenant.yaml
@@ -13,7 +15,7 @@ requestBody:
   content:
     application/json:
       schema:
-        $ref: ../../../app/schemas/v2_case-management/EmployeeEntityWrite.yaml
+        $ref: ../../../app/schemas/v2_case-management/CollaboratorEntityWrite.yaml
 responses:
   "201":
     description: "Created"
