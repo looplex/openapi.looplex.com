@@ -33,7 +33,9 @@ properties:
     description: |
       **Utilizado para todos os casos menos os judiciais**<br/>
       Local da Jurisdição de um caso, ou cumprimento da obrigação<br/>
-      `No objeto, enviar: Id ou Name`
+      `No objeto, enviar: Id ou Name`<br/>
+      Hierarquia: país, estado e cidade (nessa ordem). Informar a cidade exige o estado, e informar o estado exige o país (400 caso contrário).<br/>
+      Itens `null` ou objetos sem `Id` e sem `Name` (e.g. `{ "Id": null }`) significam "sem valor" e são gravados como `null`; se o país não for informado, nenhum local é gravado
     type: array
     items:
       $ref: ../../schemas/common/SimpleEntityWrite.yaml

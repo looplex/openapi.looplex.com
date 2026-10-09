@@ -1,4 +1,4 @@
-title: Funcionário
+title: Collaborator
 type: object
 allOf:
   - $ref: ../../scim/ResourceRetrieve.yaml
@@ -10,26 +10,26 @@ allOf:
         description: "**Category's unique identifier**"
       name:
         type: string
-        description: "**Employee's name**"
+        description: "**Collaborator's name**"
         example: <nome>
       nickName:
         type: [string, "null"]
-        description: "**Employee's nickname**"
+        description: "**Collaborator's nickname**"
         example: <apelido>
       dob:
         type: [string, "null"]
-        format: datetime
-        description: "**Employee's date of birth**"
+        format: date-time
+        description: "**Collaborator's date of birth**"
         example: <data_de_nascimento>
       admissionDate:
         type: [string, "null"]
-        format: datetime
-        description: "**Employee's admission date**"
+        format: date-time
+        description: "**Collaborator's admission date**"
         example: <data_de_admissao>
       demissionDate:
         type: [string, "null"]
-        format: datetime
-        description: "**Employee's demission date**"
+        format: date-time
+        description: "**Collaborator's demission date**"
         example: <data_de_demissao>
       gender:
         $ref: ../../enums/v2_case-management/Gender.yaml
@@ -37,36 +37,36 @@ allOf:
         type: array
         items:
           $ref: ../../schemas/common/NaturalPersonIdentityEntityRetrieve.yaml
-        description: "**Employee's identities**"
+        description: "**Collaborator's identities**"
       nationality:
         type: [string, "null"]
-        description: "**Employee's nationality**"
+        description: "**Collaborator's nationality**"
         example: <nacionalidade>
       maritalStatus:
         $ref: ../../enums/v2_case-management/MaritalStatus.yaml
       occupation:
         type: [string, "null"]
-        description: "**Employee's occupation**"
+        description: "**Collaborator's occupation**"
         example: <profissao>
       role:
-        $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+        $ref: ../../enums/v2_case-management/VinculoEmpregaticio.yaml
       status:
-        $ref: ../../enums/v2_case-management/PersonStatus.yaml
+        $ref: ../../enums/v2_case-management/BooleanStatus.yaml
       addresses:
         type: array
         items:
           $ref: AddressEntityRetrieve.yaml
-        description: "**Employee's addresses**"
+        description: "**Collaborator's addresses**"
       emails:
         type: array
         items:
           $ref: EmailEntityRetrieve.yaml
-        description: "**Employee's emails**"
+        description: "**Collaborator's emails**"
       phoneNumbers:
         type: array
         items:
           $ref: PhoneNumberEntityRetrieve.yaml
-        description: "**Employee's phone numbers**"
+        description: "**Collaborator's phone numbers**"
       customFields:
         type: object
-        description: "**Employee's custom fields**"
+        description: "**Collaborator's custom fields**"

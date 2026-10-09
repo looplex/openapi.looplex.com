@@ -5,7 +5,8 @@ summary: "/TaskTemplates/:id"
 
 description: |
   **Patch Task Templates properties**<br/>
-  **If you want to patch '_CustomFields_' property see** _<a href="/v2_case-management#tag/Custom-Fields">this link</a>_
+  **If you want to patch '_CustomFields_' property see** _<a href="/v2_case-management#tag/Custom-Fields">this link</a>_<br/>
+  `TimeToExecution` é um inteiro em **minutos**
 # description: ****
 
 operationId: task_templates-id-patch

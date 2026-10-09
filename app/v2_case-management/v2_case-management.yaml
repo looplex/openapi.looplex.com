@@ -129,15 +129,17 @@ paths:
     delete:
       $ref: decision\public@decisions-delete.yaml
 
-  # Employees
-  /employees:
+  # Collaborators
+  /collaborators:
     get:
-      $ref: employee\public@Employees-get.yaml
+      $ref: collaborators\public@collaborators-get.yaml
     post:
-      $ref: employee\public@employees-post.yaml
-  /employees/{id}:
+      $ref: collaborators\public@collaborators-post.yaml
+  /collaborators/{id}:
     get:
-      $ref: employee\public@employees@employee_id-get.yaml
+      $ref: collaborators\public@collaborators@collaborator_id-get.yaml
+    patch:
+      $ref: collaborators\public@collaborators@collaborator_id-patch.yaml
 
   # Entry
   /entries/{id}:

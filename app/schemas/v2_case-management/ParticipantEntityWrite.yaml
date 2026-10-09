@@ -8,13 +8,13 @@ properties:
     description: |
       **Client's unique identifier**<br/>
       This property if filled if the participant is a client
-  EmployeeId:
+  CollaboratorId:
     type: string
     format: uuid
-    example: <employee_uuid>
+    example: <collaborator_uuid>
     description: |
-      **Employee's unique identifier**<br/>
-      This property if filled if the participant is an employee
+      **Collaborator's unique identifier**<br/>
+      This property if filled if the participant is a collaborator
   # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
   CaseId:
     type: string
@@ -43,7 +43,10 @@ properties:
       type: string
     example: ["document", "uuid"]
     description: |
-      **Documents or uuids of parties represented by this participant (if this participant is a lawyer)**
+      **Documents, names or uuids of parties represented by this participant (if this participant is a lawyer)**<br />
+      Used when the participant is created within a case (`POST /cases`); ignored in `POST /participants` (without case context).<br />
+      A value that is not a guid is looked up as a document (CPF/CNPJ) or, failing that, as the exact name of an existing participant, client or collaborator; if no party is found, the request fails (400).<br />
+      Participants of the same case are created in ascending order of the number of `Represents`, so the represented parties may be created in the same request
   LawyerOffice:
     type: [string, "null"]
     description: "**Escritório do advogado (se houver)**"

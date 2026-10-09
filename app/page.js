@@ -73,7 +73,7 @@ export default function Home() {
 
   const arrCasesV2Keywords = [
     'v2', 'case', 'management', 'token', 'timeline', 'timesheet', 'authentication', 'entry', 'client',
-    'legal', 'service', 'agreement', 'participant', 'category', 'employee', 'claim', 'group', 'custom',
+    'legal', 'service', 'agreement', 'participant', 'category', 'collaborator', 'claim', 'group', 'custom',
     'fields', 'andamento', 'contrato', 'caso', 'cliente', 'parte', 'funcionario', 'pedido', 'area',
     'token', 'court', 'order', 'push', 'publicação', 'andamento', 'docket', 'entry'
   ]
