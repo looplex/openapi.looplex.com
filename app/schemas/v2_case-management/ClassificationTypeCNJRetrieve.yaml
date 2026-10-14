@@ -1,0 +1,20 @@
+title: ClassificationTypeCNJ
+description: ""
+type: object
+properties:
+  id:
+    type: [string, "null"]
+    example: <id_do_movimento_cnj>
+    description: ""
+  classificationCode:
+    type: [string, "null"]
+    example: <codigo_do_movimento_cnj>
+    description: ""
+  title:
+    type: [string, "null"]
+    example: <titulo_do_movimento_cnj>
+    description: ""
+  courtNonStandardizedEntryTitle:
+    type: [string, "null"]
+    example: <titulo_nao_padronizado_do_tribunal>
+    description: ""

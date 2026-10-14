@@ -1,0 +1,20 @@
+title: OfficialGazette
+description: ""
+type: object
+properties:
+  name:
+    type: [string, "null"]
+    example: <nome_do_diario>
+    description: ""
+  gazetteSection:
+    type: [string, "null"]
+    example: <caderno>
+    description: ""
+  page:
+    type: [string, "null"]
+    example: <pagina>
+    description: ""
+  link:
+    type: [string, "null"]
+    example: <link_da_publicacao>
+    description: ""

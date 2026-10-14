@@ -1,0 +1,136 @@
+title: Publicação (CourtOrder)
+description: |
+  **Dados para criar uma publicação**<br/>
+  `Type` não é enviado: toda publicação é criada com o tipo PUBLICACAO.
+type: object
+required:
+  - provider
+  - content
+  - publicationDate
+properties:
+  provider:
+    $ref: ../../enums/v2_court_order/PushProvider.yaml
+  content:
+    type: string
+    example: "string de exemplo"
+    description: "**Conteúdo da publicação**"
+  publicationDate:
+    type: string
+    format: date-time
+    example: "2025-01-01T12:00:00.000Z"
+    description: ""
+  captureDate:
+    type: [string, "null"]
+    format: date-time
+    example: "2025-01-01T12:00:00.000Z"
+    description: "**Quando não enviada, usa a data e hora atual**"
+  dateOfAvailability:
+    type: [string, "null"]
+    format: date-time
+    example: "2025-01-01T12:00:00.000Z"
+    description: ""
+  searchTerms:
+    type: [string, "null"]
+    maxLength: 400
+    example: "string de exemplo"
+    description: ""
+  court:
+    type: [string, "null"]
+    maxLength: 400
+    example: "string de exemplo"
+    description: ""
+  courtSystem:
+    type: [string, "null"]
+    maxLength: 255
+    example: "string de exemplo"
+    description: ""
+  region:
+    type: [string, "null"]
+    maxLength: 400
+    example: "string de exemplo"
+    description: ""
+  jurisdictionTitle:
+    type: [string, "null"]
+    maxLength: 400
+    example: "string de exemplo"
+    description: ""
+  courtHouse:
+    type: [string, "null"]
+    maxLength: 255
+    example: "string de exemplo"
+    description: ""
+  adjudicatingCourt:
+    type: [string, "null"]
+    maxLength: 400
+    example: "string de exemplo"
+    description: ""
+  externalCnjId:
+    type: [string, "null"]
+    maxLength: 40
+    example: "string de exemplo"
+    description: ""
+  eventType:
+    type: [string, "null"]
+    maxLength: 255
+    example: "string de exemplo"
+    description: ""
+  courtLevel:
+    oneOf:
+      - $ref: ../../enums/v2_court_order/Instance.yaml
+      - type: "null"
+  courtOrderCommunicationChannel:
+    oneOf:
+      - $ref: ../../enums/v2_court_order/CourtOrderCommunicationChannel.yaml
+      - type: "null"
+  courtOrderServiceType:
+    oneOf:
+      - $ref: ../../enums/v2_court_order/CourtOrderServiceType.yaml
+      - type: "null"
+  courtOrderType:
+    oneOf:
+      - $ref: ../../enums/v2_court_order/CourtOrderType.yaml
+      - type: "null"
+  officialGazette:
+    oneOf:
+      - type: object
+        properties:
+          name:
+            type: [string, "null"]
+            maxLength: 400
+            example: <nome_do_diario>
+            description: ""
+          gazetteSection:
+            type: [string, "null"]
+            maxLength: 255
+            example: <caderno>
+            description: ""
+          page:
+            type: [string, "null"]
+            maxLength: 255
+            example: <pagina>
+            description: ""
+          link:
+            type: [string, "null"]
+            maxLength: 255
+            example: <link_da_publicacao>
+            description: ""
+      - type: "null"
+  externalCnjClassification:
+    type: array
+    description: "**Movimentos CNJ da publicação. Cada código deve existir no cadastro de movimentos CNJ**"
+    items:
+      type: object
+      required:
+        - classificationCode
+      properties:
+        classificationCode:
+          type: string
+          example: <codigo_do_movimento_cnj>
+          description: "**Código do movimento CNJ (número inteiro)**"
+  caseInfo:
+    description: |
+      **Processo vinculado à publicação**<br/>
+      `Apenas o Id é utilizado e o processo deve existir`
+    oneOf:
+      - $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
+      - type: "null"

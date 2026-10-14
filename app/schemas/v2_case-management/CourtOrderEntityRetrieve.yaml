@@ -1,0 +1,115 @@
+title: Dados de publicação (CourtOrder)
+description: ""
+type: object
+allOf:
+  - $ref: ../../scim/ResourceRetrieve.yaml
+  - type: object
+    properties:
+      courtLevel:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/Instance.yaml
+          - type: "null"
+      court:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      courtSystem:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      region:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      jurisdictionTitle:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      courtHouse:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      adjudicatingCourt:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      provider:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/PushProvider.yaml
+          - type: "null"
+      externalCnjId:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      searchTerms:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      dateOfAvailability:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      publicationDate:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      captureDate:
+        type: [string, "null"]
+        format: date-time
+        example: "2025-01-01T12:00:00.000Z"
+        description: ""
+      content:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: ""
+      courtOrderCommunicationChannel:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/CourtOrderCommunicationChannel.yaml
+          - type: "null"
+      courtOrderServiceType:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/CourtOrderServiceType.yaml
+          - type: "null"
+      courtOrderType:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/CourtOrderType.yaml
+          - type: "null"
+      officialGazette:
+        oneOf:
+          - $ref: ./OfficialGazetteRetrieve.yaml
+          - type: "null"
+      # courtDecision: não populado ainda (vínculo da publicação com decisão, andamento e/ou tarefa ainda não foi implementado)
+      externalCnjClassification:
+        type: array
+        items:
+          $ref: ./ClassificationTypeCNJRetrieve.yaml
+      type:
+        oneOf:
+          - $ref: ../../enums/v2_court_order/TipoDePush.yaml
+          - type: "null"
+      eventType:
+        type: [string, "null"]
+        example: "string de exemplo"
+        description: |
+          **Tipo do evento**<br/>
+          `Preenchido por IA após a captura da publicação`
+      caseProcedure:
+        oneOf:
+          - $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+          - type: "null"
+      caseInfo:
+        oneOf:
+          - $ref: ./CaseFlattenRetrieve.yaml
+          - type: "null"
+      createdBy:
+        description: "**Funcionário que criou a publicação (null quando o e-mail gravado não corresponde a um funcionário)**"
+        oneOf:
+          - $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+          - type: "null"
+      updatedBy:
+        description: "**Funcionário que atualizou a publicação por último (null quando nunca foi atualizada ou o e-mail gravado não corresponde a um funcionário)**"
+        oneOf:
+          - $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+          - type: "null"
