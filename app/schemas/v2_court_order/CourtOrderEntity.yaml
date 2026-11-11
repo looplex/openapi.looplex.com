@@ -103,3 +103,13 @@ allOf:
         oneOf:
           - $ref: '../../schemas/v2_case-management/CaseFlattenQuery.yaml'
           - type: "null"
+      CreatedBy:
+        description: "**Funcionário que criou a publicação (null quando o e-mail gravado não corresponde a um funcionário)**"
+        oneOf:
+          - $ref: '../../schemas/common/SimpleEntityQuery.yaml'
+          - type: "null"
+      UpdatedBy:
+        description: "**Funcionário que atualizou a publicação por último (null quando nunca foi atualizada ou o e-mail gravado não corresponde a um funcionário)**"
+        oneOf:
+          - $ref: '../../schemas/common/SimpleEntityQuery.yaml'
+          - type: "null"

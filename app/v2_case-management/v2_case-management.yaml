@@ -261,6 +261,13 @@ paths:
   /CourtOrders:
     get:
       $ref: court_order/public@CourtOrders-get.yaml
+    post:
+      $ref: court_order/public@CourtOrders-post.yaml
+  /CourtOrders/{id}:
+    get:
+      $ref: court_order/public@CourtOrders@id-get.yaml
+    patch:
+      $ref: court_order/public@CourtOrders@id-patch.yaml
 
    # Docket Entry
   /docketEntries:
