@@ -19,14 +19,14 @@ properties:
     description: "**Descrição**"
   StartDate:
     type: [string, null]
-    format: datetime
+    format: date-time
     example: <start_date>
     description: |
       **Data de Início**<br/>
       _Date must be send in UTC timezone_
   DueDate:
     type: [string, null]
-    format: datetime
+    format: date-time
     example: <due_date>
     description: |
       **Data de Vencimento**<br/>

@@ -19,7 +19,7 @@ allOf:
         example: 0
       PaymentDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         description: "**Data do pagamento**<br />Em UTC"
         example: <data_do_pagamento>
       Description:
@@ -30,7 +30,7 @@ allOf:
         $ref: ../../enums/v2_case-management/Status.yaml
       CreatedAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         description: "**Data de criação**<br />Em UTC"
         example: <data_de_criacao>
       CaseClaimId:

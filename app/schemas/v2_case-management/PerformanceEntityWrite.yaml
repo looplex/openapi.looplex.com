@@ -16,7 +16,7 @@ properties:
     example: 0
   paymentDate:
     type: string
-    format: datetime
+    format: date-time
     description: "**Data do pagamento**<br />Deve ser enviada em UTC"
     example: <data_do_pagamento>
   description:

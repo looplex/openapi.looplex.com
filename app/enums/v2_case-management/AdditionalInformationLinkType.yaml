@@ -1,0 +1,7 @@
+title: Additional information's link type
+type: string
+example: CASE
+description: |
+  **Define se o dado complementar recebe valores de processos ou de funcionários**<br/>
+  CASE (padrão)<br/>
+  EMPLOYEE

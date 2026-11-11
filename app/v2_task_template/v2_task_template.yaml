@@ -29,6 +29,8 @@ paths:
       $ref: task_templates\public@task_templates@id-get.yaml
     patch:
       $ref: task_templates\public@task_templates@id-patch.yaml
+    delete:
+      $ref: task_templates\public@task_templates@id-delete.yaml
   /TaskTemplates:
     get:
       $ref: task_templates\public@task_templates-get.yaml

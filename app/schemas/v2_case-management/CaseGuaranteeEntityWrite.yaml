@@ -7,6 +7,10 @@ properties:
     format: uuid
     description: "**Case unique identifier**<br />Obrigatório na criação avulsa (POST /caseGuarantees); quando a garantia é enviada dentro do caso (POST /cases) é herdado dele, por isso não consta em `required`"
     example: <global_unique_identifier>
+  title:
+    type: [string, "null"]
+    description: "**Título**"
+    example: <titulo_da_garantia>
   type:
     $ref: ../../enums/v2_case-management/FormaGarantia.yaml
   classification:
@@ -24,7 +28,7 @@ properties:
       Outros
   date:
     type: string
-    format: datetime
+    format: date-time
     example: <data_da_garantia>
     description: "**Data**<br />Deve ser enviada em UTC"
   description:

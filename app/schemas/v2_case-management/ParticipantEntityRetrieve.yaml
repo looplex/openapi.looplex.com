@@ -18,6 +18,14 @@ allOf:
         description: |
           **Collaborator's unique identifier**<br/>
           This property if filled if the participant is a collaborator
+      employeeId:
+        type: string
+        format: uuid
+        deprecated: true
+        example: <collaborator_uuid>
+        description: |
+          **Alias legado de `collaboratorId`** (mantido para clientes de `/Employees`)<br/>
+          Mesmo valor, na leitura e na escrita
       # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
       caseId:
         type: string
@@ -82,6 +90,11 @@ allOf:
           $ref: PhoneNumberEntityRetrieve.yaml
       role:
         $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+      comments:
+        type: [string, "null"]
+        description: |
+          **Observações do vínculo da parte com o caso**<br />
+          Só preenchido quando o participante é retornado dentro de um caso; vazio em `GET /participants` e `GET /participants/:id`
       customFields:
         type: object
         example: {}
@@ -94,7 +107,7 @@ allOf:
         description: ""
       dob:
         type: string
-        format: datetime
+        format: date-time
         description: |
           **Date of birth (NATURAL_PERSON only)**
       gender:

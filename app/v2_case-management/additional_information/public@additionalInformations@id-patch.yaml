@@ -1,0 +1,34 @@
+tags:
+  - Additional information
+summary: "/additionalInformations/:id"
+description: |
+  **Patch properties**<br />
+  Propriedades que podem ser alteradas: `Name` (até 60 caracteres), `FieldSize`, `IsMandatory`, `Status`, `Schema`, `CustomFields`, `LinkType`, `Client`, `ClientGroups`, `Groups` e `Values`. `Groups`, `ClientGroups` e `Values` são substituídos pela lista enviada. `FieldType` e `CaseTypes` só podem ser definidos na criação; `Cases`, `Employees`, `Id`, `CreatedBy` e `UpdatedBy` não podem ser alterados por PATCH
+operationId: additionalInformations-id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../../scim/SCIMError.yaml

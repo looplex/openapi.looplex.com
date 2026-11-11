@@ -75,12 +75,12 @@ allOf:
         example: false
       effectiveDate:
         type: string
-        format: datetime
+        format: date-time
         description: "**Data de constituição**"
         example: <data_de_constituicao>
       dueDate:
         type: string
-        format: datetime
+        format: date-time
         description: "**Data de vencimento**"
         example: <data_de_vencimento>
       recurrence:

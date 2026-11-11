@@ -10,12 +10,12 @@ properties:
     description: "**Resumo dos principais argumentos e fatos alegados relacionados com o assunto da reinvindicação**"
   effectiveDate:
     type: string
-    format: datetime
+    format: date-time
     example: <data_de_constituicao>
     description: "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
   dueDate:
     type: string
-    format: datetime
+    format: date-time
     example: <data_de_vencimento>
     description: "**Data de vencimento**"
   subjectMatter:

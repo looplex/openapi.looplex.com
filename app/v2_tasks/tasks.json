@@ -366,7 +366,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
@@ -375,7 +375,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
@@ -527,7 +527,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data**",
             "example": "<data>"
           }
@@ -575,7 +575,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data de Início**<br/>\n_Date in UTC timezone_\n"
           },
           "dueDate": {
@@ -583,7 +583,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
           },
           "createdBy": {
@@ -599,7 +599,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Concluído em**"
           },
           "completedBy": {
@@ -887,7 +887,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
@@ -896,7 +896,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
@@ -1019,7 +1019,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data**",
             "example": "<data>"
           }
@@ -1067,7 +1067,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data de Início**<br/>\n_Date in UTC timezone_\n"
           },
           "DueDate": {
@@ -1075,7 +1075,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
           },
           "CreatedBy": {
@@ -1091,7 +1091,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "description": "**Concluído em**"
           },
           "CompletedBy": {
@@ -1297,7 +1297,7 @@
               "string",
               null
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<start_date>",
             "description": "**Data de Início**<br/>\n_Date must be send in UTC timezone_\n"
           },
@@ -1306,7 +1306,7 @@
               "string",
               null
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<due_date>",
             "description": "**Data de Vencimento**<br/>\n_Date must be send in UTC timezone_\n"
           },

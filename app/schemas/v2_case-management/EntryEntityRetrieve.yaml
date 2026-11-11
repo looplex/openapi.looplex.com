@@ -6,7 +6,7 @@ allOf:
     properties:
       date:
         type: string
-        format: datetime
+        format: date-time
         example: <data_do_andamento>
         description: "**Data do andamento**"
       classification:
@@ -28,7 +28,7 @@ allOf:
         example: <unique_identifier_da_publicacao>
       createdAt:
         type: string
-        format: datetime
+        format: date-time
         example: <data_criacao_do_andamento>
         description: "**Entry creation date**"
       createdBy:

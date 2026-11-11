@@ -1,0 +1,23 @@
+title: Additional information's field type
+type: string
+example: TEXTBOX
+description: |
+  **Tipo do campo do dado complementar**<br/>
+  TEXTBOX<br/>
+  NUMERIC_DECIMAL<br/>
+  NUMERIC_INTEGER<br/>
+  DATE_TIME<br/>
+  MULTILINE_TEXTBOX<br/>
+  COMBOBOX<br/>
+  CHECKBOX<br/>
+  PAYER_COMBO<br/>
+  COMPANY_COMBO<br/>
+  CLIENT_COMBO<br/>
+  CLIENTGROUP_COMBO<br/>
+  LEGAL_SERVICE_AGREEMENT_SELECTION<br/>
+  CLIENT_SELECTION<br/>
+  CASE_SELECTION<br/>
+  GROUP_COMBO<br/>
+  EMPLOYEE_COMBO<br/>
+  ADDITIONAL_INFORMATION_SCHEMA_JSON<br/>
+  Todos os tipos, exceto TEXTBOX, NUMERIC_DECIMAL, NUMERIC_INTEGER, DATE_TIME, MULTILINE_TEXTBOX e ADDITIONAL_INFORMATION_SCHEMA_JSON, são dropdown (aceitam `values`)

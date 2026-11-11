@@ -7,7 +7,7 @@ properties:
     description: "**Tipo de Resolução**"
   date:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     example: <data_da_resolucao>
     description: "**Data da Resolução**"
   content:

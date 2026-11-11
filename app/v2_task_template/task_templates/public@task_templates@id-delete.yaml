@@ -1,0 +1,33 @@
+tags:
+  - Task Templates
+summary: "/TaskTemplates/:id"
+description: |
+  **Delete a task template by unique identifier**<br />
+  A exclusão é física. Não é possível excluir um task template que esteja em uso por alguma task ou subtask, nem um template pai que ainda tenha templates filhos (retorna erro). Para apenas deixar de usá-lo, inative-o via `PATCH` (`Status`)
+operationId: task_templates-id-delete
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - name: id
+    in: path
+    required: true
+    description: "**The item's unique identifier**"
+    schema:
+      type: string
+      format: uuid
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../../scim/SCIMError.yaml

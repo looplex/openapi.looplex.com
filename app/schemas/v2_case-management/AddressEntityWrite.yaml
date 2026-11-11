@@ -1,6 +1,13 @@
 title: Address
 type: object
 properties:
+  contextId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: |
+      **Identificador do dono do endereço (cliente, funcionário etc.)**<br />
+      O `Context` correspondente não é lido do corpo da requisição
   country:
     type: object
     description: "**ISO 3166-1 alpha2 value (2 caracteres)**"

@@ -16,7 +16,7 @@ properties:
     example: <global_unique_identifier>
   date:
     type: string
-    format: datetime
+    format: date-time
     description: "**Data da Resolução**"
     example: <data_da_resolucao>
   resolutionContent:

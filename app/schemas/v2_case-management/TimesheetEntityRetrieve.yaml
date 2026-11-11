@@ -18,7 +18,7 @@ allOf:
         description: "**Responsável**"
       date:
         type: string
-        format: datetime
+        format: date-time
         description: "**Data**"
         example: <data>
       hours:
@@ -48,7 +48,7 @@ allOf:
         description: "**Faturado**"
       createdAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_de_criacao>
         description: "**Criado em**"
       createdBy:
@@ -56,7 +56,7 @@ allOf:
         description: "**Criado por**"
       updatedAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         description: "**Atualizado em**"
         example: <data_de_atualizacao>
       updatedBy:
