@@ -144,21 +144,21 @@ properties:
     example: []
   retentionDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de entrada** <br />
       Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
     example: <data_de_entrada_do_processo>
   startDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de distribuição**<br />
       Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
     example: <data_de_distribuicao_do_processo>
   formationDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de citação**<br />
       Data em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />
@@ -166,7 +166,7 @@ properties:
     example: <data_de_citacao_do_processo>
   resJudicataDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de trânsito em julgado**<br />
       Data em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />
@@ -174,7 +174,7 @@ properties:
     example: <data_transito_julgado_do_processo>
   forecastedEndDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data prevista para encerramento**<br />
       Data estimada para a conclusão de um caso, transação ou disputa. <br />
@@ -271,10 +271,10 @@ properties:
     description: |
       **Decisões**<br />
       Decisões tomadas em um caso, como sentenças, acórdãos e despachos
-  paymentOrDischarge:
+  performance:
     type: array
     items:
-      $ref: PaymentOrDischargeEntityWrite.yaml
+      $ref: PerformanceEntityWrite.yaml
     description: |
       **Cumprimento**<br />
       Pagamentos ou cumprimentos de pedidos ou obrigações

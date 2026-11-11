@@ -9,3 +9,7 @@ properties:
     example: <nome_da_natureza>
   group:
     $ref: ../../enums/v2_case-management/GrupoNaturezaDaCausa.yaml
+  createdBy:
+    $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+  updatedBy:
+    $ref: ../../schemas/common/SimpleEntityRetrieve.yaml

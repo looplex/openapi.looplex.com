@@ -18,22 +18,22 @@ properties:
     description: "Legal service agreement's summary"
   createdAt:
     type: string
-    format: datetime
+    format: date-time
     example: <data_de_criacao>
     description: "Legal service agreement's created date"
   startDate:
     type: string
-    format: datetime
+    format: date-time
     example: <data_inicial>
     description: "Legal service agreement's start date"
   forecastedEndDate:
     type: string
-    format: datetime
+    format: date-time
     example: <data_prevista_encerramento>
     description: "Legal service agreement's forecasted end date"
   dueDate:
     type: string
-    format: datetime
+    format: date-time
     example: <data_de_vencimento>
     description: "Legal service agreement's due date"
   isSameReviewerAttorneyFeesAndExpenses:

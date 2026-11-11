@@ -10,7 +10,7 @@ properties:
     example: <global_unique_identifier>
   Date:
     type: string
-    format: datetime
+    format: date-time
     example: <data>
     description: "**Data do evento**"
   Title:

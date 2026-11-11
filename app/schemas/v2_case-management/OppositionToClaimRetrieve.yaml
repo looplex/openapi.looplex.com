@@ -10,7 +10,7 @@ properties:
     description: "**Resumo dos principais argumentos e fatos alegados em refutação a reinvindicações**"
   effectiveDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     example: <data_de_constituicao>
     description: "**Data na qual as obrigações de um ato ou negócio jurídico ocorreram ou começaram a ter efeito**"
   subjectMatter:

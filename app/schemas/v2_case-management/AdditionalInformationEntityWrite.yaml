@@ -1,0 +1,58 @@
+title: Additional information (Dado complementar)
+type: object
+required:
+  - name
+  - fieldType
+properties:
+  name:
+    type: string
+    maxLength: 60
+    example: <nome_do_dado_complementar>
+    description: "**Nome**"
+  fieldType:
+    $ref: ../../enums/v2_case-management/AdditionalInformationType.yaml
+  fieldSize:
+    type: [integer, "null"]
+    example: 100
+    description: "**Tamanho**<br />Obrigatório nos tipos texto (TEXTBOX e MULTILINE_TEXTBOX)"
+  isMandatory:
+    type: boolean
+    default: true
+    description: "**Indica se o preenchimento é obrigatório**"
+  status:
+    type: boolean
+    default: true
+    description: "**Indica se o dado complementar está ativo**"
+  schema:
+    type: [string, "null"]
+    default: "[]"
+    description: "**Schema JSON**<br />Para o tipo ADDITIONAL_INFORMATION_SCHEMA_JSON"
+  customFields:
+    type: object
+    example: {}
+    description: "**Additional information's custom fields**"
+  values:
+    type: array
+    items:
+      type: string
+    description: "**Opções do dropdown**<br />Só aceito em tipos dropdown"
+  linkType:
+    $ref: ../../enums/v2_case-management/AdditionalInformationLinkType.yaml
+  client:
+    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    description: "**Vínculo com cliente**"
+  clientGroups:
+    type: array
+    items:
+      $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    description: "**Vínculos com grupos de cliente**"
+  groups:
+    type: array
+    items:
+      $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    description: "**Vínculos com áreas**"
+  caseTypes:
+    type: array
+    items:
+      $ref: ../../enums/common/RamosJudicial.yaml
+    description: "**Tipos de processo vinculados**<br />Só podem ser informados na criação"

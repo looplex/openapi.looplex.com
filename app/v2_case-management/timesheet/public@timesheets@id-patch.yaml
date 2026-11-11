@@ -1,0 +1,36 @@
+tags:
+  - Timesheet
+summary: "/timesheets/:id"
+description: |
+  **Patch timesheet properties**<br />
+  Propriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner` e `Applicant`.<br />
+  `Description`, `Date`, `Hours`, `TaskType` e `Owner` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />
+  Um lançamento que já está em faturamento não pode ser alterado (retorna erro)
+operationId: timesheets-id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: ../../scim/SCIMError.yaml

@@ -1,0 +1,82 @@
+title: Additional information (Dado complementar)
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      Name:
+        type: [string, "null"]
+        example: <nome_do_dado_complementar>
+        description: "**Nome**"
+      FieldType:
+        $ref: ../../enums/v2_case-management/AdditionalInformationType.yaml
+      FieldSize:
+        type: [integer, "null"]
+        description: "**Tamanho (tipos texto)**"
+      IsMandatory:
+        type: boolean
+        description: "**Indica se o preenchimento é obrigatório**"
+      Status:
+        type: boolean
+        description: "**Indica se o dado complementar está ativo**"
+      Schema:
+        type: [string, "null"]
+        description: "**Schema JSON**"
+      CustomFields:
+        type: object
+        example: {}
+        description: "**Additional information's custom fields**"
+      Values:
+        type: array
+        items:
+          type: string
+        description: "**Opções do dropdown**"
+      LinkType:
+        $ref: ../../enums/v2_case-management/AdditionalInformationLinkType.yaml
+      Client:
+        $ref: ../../schemas/common/SimpleEntityQuery.yaml
+      ClientGroups:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**Grupos de cliente vinculados**"
+      Groups:
+        type: array
+        items:
+          $ref: ../../schemas/common/SimpleEntityQuery.yaml
+        description: "**Áreas vinculadas**"
+      Employees:
+        type: array
+        description: "**Funcionários e seus valores**<br />Somente leitura"
+        items:
+          type: object
+          properties:
+            Id:
+              type: string
+              format: uuid
+            Name:
+              type: [string, "null"]
+            Value:
+              type: [string, "null"]
+      Cases:
+        type: array
+        description: "**Processos e seus valores**<br />Somente leitura"
+        items:
+          type: object
+          properties:
+            Id:
+              type: string
+              format: uuid
+            Name:
+              type: [string, "null"]
+            Value:
+              type: [string, "null"]
+      CaseTypes:
+        type: array
+        items:
+          $ref: ../../enums/common/RamosJudicial.yaml
+        description: "**Tipos de processo vinculados**"
+      CreatedBy:
+        type: [string, "null"]
+      UpdatedBy:
+        type: [string, "null"]

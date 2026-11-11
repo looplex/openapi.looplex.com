@@ -146,6 +146,59 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Task Templates"
+        ],
+        "summary": "/TaskTemplates/:id",
+        "description": "**Delete a task template by unique identifier**<br />\nA exclusão é física. Não é possível excluir um task template que esteja em uso por alguma task ou subtask, nem um template pai que ainda tenha templates filhos (retorna erro). Para apenas deixar de usá-lo, inative-o via `PATCH` (`Status`)\n",
+        "operationId": "task_templates-id-delete",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "**The item's unique identifier**",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/TaskTemplates": {
@@ -366,7 +419,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
@@ -375,7 +428,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },
@@ -669,7 +722,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
@@ -678,7 +731,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },

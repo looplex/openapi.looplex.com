@@ -3,6 +3,7 @@ tags:
 summary: "/cases/:id"
 description: |
   **Patch case properties**<br />
+  **Vínculo parte ↔ caso:** `op: replace` em `Participants/{participantId}` com `value` = `{ "Comments": "...", "Role": "..." }` altera as observações e/ou o papel da parte no caso. Propriedades ausentes do `value` não são alteradas e `null` limpa o campo. `Role` aceita texto não vazio de até 100 caracteres, gravado como enviado. `Position` e `IsMainParty` só são definidos no `add` (para mudá-los, `remove` + `add`)<br />
   **If you want to patch '_CustomFields_' property see** _<a href="/v2_case-management#tag/Custom-Fields">this link</a>_
 operationId: cases-patch-patch
 parameters:

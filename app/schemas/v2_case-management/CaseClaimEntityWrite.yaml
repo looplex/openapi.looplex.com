@@ -58,12 +58,12 @@ properties:
     description: "**Indicação se o valor previsto é líquido (ainda que o montante seja disputado) ou apenas uma estimativa**"
   effectiveDate:
     type: string
-    format: datetime
+    format: date-time
     example: <effective_date>
     description: "**Data de constituição**"
   dueDate:
     type: string
-    format: datetime
+    format: date-time
     example: <due_date>
     description: "**Data de vencimento**"
   recurrence:

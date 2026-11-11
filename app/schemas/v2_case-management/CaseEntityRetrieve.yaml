@@ -94,21 +94,21 @@ allOf:
           example: <natureza_do_processo>
       retentionDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_entrada_do_processo>
         description: |
           **Data de entrada** <br />
           Data em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso
       startDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_distribuicao_do_processo>
         description: |
           **Data de distribuição**<br />
           Data em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes
       formationDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_citacao_do_processo>
         description: |
           **Data de citação**<br />
@@ -116,7 +116,7 @@ allOf:
           Para contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível
       resJudicataDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_transito_julgado_do_processo>
         description: |
           **Data de trânsito em julgado**<br />
@@ -124,7 +124,7 @@ allOf:
           A partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais
       forecastedEndDate:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_prevista_encerramento_do_processo>
         description: |
           **Data prevista para encerramento**<br />
@@ -132,7 +132,7 @@ allOf:
           Essa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso
       createdAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_criacao_do_processo>
         description: "**Data de criação do caso**"
       createdBy:
@@ -140,7 +140,7 @@ allOf:
         description: "**Usuário que criou o caso**"
       updatedAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_atualizacao_do_processo>
         description: "**Atualizado em**"
       updatedBy:
@@ -148,7 +148,7 @@ allOf:
         $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
       closedAt:
         type: [string, "null"]
-        format: datetime
+        format: date-time
         example: <data_encerramento_do_processo>
         description: "**Data de encerramento**"
       closedBy:
@@ -244,10 +244,10 @@ allOf:
         description: |
           **Decisões**<br />
           Decisões tomadas em um caso, como sentenças, acórdãos e despachos
-      paymentOrDischarge:
+      performance:
         type: array
         items:
-          $ref: PaymentOrDischargeEntityRetrieve.yaml
+          $ref: PerformanceEntityRetrieve.yaml
         description: |
           **Cumprimento**<br />
           Pagamentos ou cumprimentos de pedidos ou obrigações

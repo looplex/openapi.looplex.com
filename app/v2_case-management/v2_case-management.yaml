@@ -1,7 +1,7 @@
 # https://redocly.com/docs/openapi-visual-reference/info/
 openapi: 3.1.1
 info:
-  version: 2.0.0
+  version: 2.3.0
   title: "Looplex Case Management"
   termsOfService: "https://docs.looplex.com.br/legal/termos-de-uso"
   contact:
@@ -172,6 +172,10 @@ paths:
   /legalCategories/{id}:
     get:
       $ref: legal_category\public@legalCategories@legalCategory_id-get.yaml
+    patch:
+      $ref: legal_category\public@legalCategories@legalCategory_id-patch.yaml
+    delete:
+      $ref: legal_category\public@legalCategories@legalCategory_id-delete.yaml
 
   # Legal service agreement
   /legalServiceAgreements:
@@ -211,10 +215,52 @@ paths:
     delete:
       $ref: performance\public@performances-delete.yaml
 
-  # Participant Roles
-  /participantRoles:
+  # Address
+  /addresses:
     get:
-      $ref: participantRoles\public@participantRoles-get.yaml
+      $ref: address\public@addresses-get.yaml
+    post:
+      $ref: address\public@addresses-post.yaml
+  /addresses/{id}:
+    get:
+      $ref: address\public@addresses@id-get.yaml
+    patch:
+      $ref: address\public@addresses@id-patch.yaml
+    delete:
+      $ref: address\public@addresses@id-delete.yaml
+
+  # Additional Information
+  /additionalInformations:
+    get:
+      $ref: additional_information\public@additionalInformations-get.yaml
+    post:
+      $ref: additional_information\public@additionalInformations-post.yaml
+  /additionalInformations/{id}:
+    get:
+      $ref: additional_information\public@additionalInformations@id-get.yaml
+    patch:
+      $ref: additional_information\public@additionalInformations@id-patch.yaml
+    delete:
+      $ref: additional_information\public@additionalInformations@id-delete.yaml
+
+  # Additional Information Value
+  /additionalInformationValues:
+    get:
+      $ref: additional_information_value\public@additionalInformationValues-get.yaml
+    post:
+      $ref: additional_information_value\public@additionalInformationValues-post.yaml
+  /additionalInformationValues/{id}:
+    get:
+      $ref: additional_information_value\public@additionalInformationValues@id-get.yaml
+    patch:
+      $ref: additional_information_value\public@additionalInformationValues@id-patch.yaml
+    delete:
+      $ref: additional_information_value\public@additionalInformationValues@id-delete.yaml
+
+  # Participant Roles
+  /participantRoles/{id}:
+    get:
+      $ref: participantRoles\public@participantRoles@id-get.yaml
 
   # Phases
   /phases:
@@ -256,6 +302,10 @@ paths:
   /timesheets/{id}:
     get:
       $ref: timesheet\public@timesheets@id-get.yaml
+    patch:
+      $ref: timesheet\public@timesheets@id-patch.yaml
+    delete:
+      $ref: timesheet\public@timesheets@id-delete.yaml
 
   # Court Order
   /CourtOrders:

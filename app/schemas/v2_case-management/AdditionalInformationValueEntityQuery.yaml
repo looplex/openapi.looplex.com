@@ -1,0 +1,28 @@
+title: Additional information value (Valor de dado complementar)
+type: object
+allOf:
+  - $ref: ../../scim/ResourceQuery.yaml
+  - type: object
+    properties:
+      AdditionalInformationId:
+        type: string
+        format: uuid
+        description: "**Unique identifier do dado complementar**"
+      EmployeeId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Funcionário**<br />Só um entre employeeId e caseId é preenchido"
+      CaseId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Processo**<br />Só um entre employeeId e caseId é preenchido"
+      Value:
+        type: [string, "null"]
+        description: "**Valor gravado**"
+      CustomFields:
+        type: object
+        example: {}
+      CreatedBy:
+        type: [string, "null"]
+      UpdatedBy:
+        type: [string, "null"]
