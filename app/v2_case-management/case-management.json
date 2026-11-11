@@ -4673,6 +4673,171 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Court Order"
+        ],
+        "summary": "/courtorders",
+        "description": "**Create a court order**<br />\nItem created's guid is returned in **Location header**<br />\n`provider`, `content` and `publicationDate` are required. The court order is always created with the type PUBLICACAO.\n",
+        "operationId": "api-v1-CourtOrders-post",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourtOrderEntityWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CourtOrders/{id}": {
+      "get": {
+        "tags": [
+          "Court Order"
+        ],
+        "summary": "/courtorders/:id",
+        "description": "**Retrieve a court order by id**\n",
+        "operationId": "api-v1-CourtOrders-id-get",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourtOrderEntityRetrieve"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Court Order"
+        ],
+        "summary": "/courtorders/:id",
+        "description": "**Patch Court Order**<br />\nThe court orders come from an external service, so only the properties below can be patched. Any other property is rejected with the error `Property 'X' cannot be updated by patch`.\n\n| Property | Description |\n|---|---|\n| `EventType` | Event type (filled by AI after the capture of the court order) |\n| `CaseInfo` | Case linked to the court order. Send `{ \"id\": \"<case id>\" }` to link, or `null` to unlink |\n\nOnly the `replace` operation is supported.\n\n```json\n[\n  { \"op\": \"replace\", \"path\": \"EventType\", \"value\": \"<event_type>\" },\n  { \"op\": \"replace\", \"path\": \"CaseInfo\", \"value\": { \"id\": \"<case_unique_identifier>\" } }\n]\n```\n",
+        "operationId": "api-v1-CourtOrders-id-patch",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/OcpApimSubscriptionKey"
+          },
+          {
+            "$ref": "#/components/parameters/Tenant"
+          },
+          {
+            "$ref": "#/components/parameters/BearerToken"
+          },
+          {
+            "$ref": "#/components/parameters/Id"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PatchEntity"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SCIMError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/docketEntries": {
@@ -14505,6 +14670,614 @@
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/CaseFlattenQuery"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "CreatedBy": {
+                "description": "**Funcionário que criou a publicação (null quando o e-mail gravado não corresponde a um funcionário)**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntityQuery"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "UpdatedBy": {
+                "description": "**Funcionário que atualizou a publicação por último (null quando nunca foi atualizada ou o e-mail gravado não corresponde a um funcionário)**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntityQuery"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "CourtOrderEntityWrite": {
+        "title": "Publicação (CourtOrder)",
+        "description": "**Dados para criar uma publicação**<br/>\n`Type` não é enviado: toda publicação é criada com o tipo PUBLICACAO.\n",
+        "type": "object",
+        "required": [
+          "provider",
+          "content",
+          "publicationDate"
+        ],
+        "properties": {
+          "provider": {
+            "$ref": "#/components/schemas/PushProvider"
+          },
+          "content": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": "**Conteúdo da publicação**"
+          },
+          "publicationDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": ""
+          },
+          "captureDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": "**Quando não enviada, usa a data e hora atual**"
+          },
+          "dateOfAvailability": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": ""
+          },
+          "searchTerms": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "court": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtSystem": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "jurisdictionTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtHouse": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "adjudicatingCourt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "externalCnjId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 40,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "eventType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtLevel": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Instance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderCommunicationChannel": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderServiceType": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderServiceType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderType": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "officialGazette": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 400,
+                    "example": "<nome_do_diario>",
+                    "description": ""
+                  },
+                  "gazetteSection": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<caderno>",
+                    "description": ""
+                  },
+                  "page": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<pagina>",
+                    "description": ""
+                  },
+                  "link": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<link_da_publicacao>",
+                    "description": ""
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "externalCnjClassification": {
+            "type": "array",
+            "description": "**Movimentos CNJ da publicação. Cada código deve existir no cadastro de movimentos CNJ**",
+            "items": {
+              "type": "object",
+              "required": [
+                "classificationCode"
+              ],
+              "properties": {
+                "classificationCode": {
+                  "type": "string",
+                  "example": "<codigo_do_movimento_cnj>",
+                  "description": "**Código do movimento CNJ (número inteiro)**"
+                }
+              }
+            }
+          },
+          "caseInfo": {
+            "description": "**Processo vinculado à publicação**<br/>\n`Apenas o Id é utilizado e o processo deve existir`\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleObjectIdWrite"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "OfficialGazetteRetrieve": {
+        "title": "OfficialGazette",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<nome_do_diario>",
+            "description": ""
+          },
+          "gazetteSection": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<caderno>",
+            "description": ""
+          },
+          "page": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<pagina>",
+            "description": ""
+          },
+          "link": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<link_da_publicacao>",
+            "description": ""
+          }
+        }
+      },
+      "ClassificationTypeCNJRetrieve": {
+        "title": "ClassificationTypeCNJ",
+        "description": "",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<id_do_movimento_cnj>",
+            "description": ""
+          },
+          "classificationCode": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<codigo_do_movimento_cnj>",
+            "description": ""
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<titulo_do_movimento_cnj>",
+            "description": ""
+          },
+          "courtNonStandardizedEntryTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "<titulo_nao_padronizado_do_tribunal>",
+            "description": ""
+          }
+        }
+      },
+      "CaseFlattenRetrieve": {
+        "title": "Dados simplificados do caso (CaseFlatten)",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**The case unique identifier**",
+            "example": "<global_unique_identifier>"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "**Nome jurídico do caso**",
+            "example": "<titulo_do_processo>"
+          },
+          "identities": {
+            "type": "array",
+            "description": "**Identificação do caso, como número CNJ, ids de sistemas externos, etc**",
+            "items": {
+              "$ref": "#/components/schemas/CaseIdentityEntityRetrieve"
+            }
+          }
+        }
+      },
+      "CourtOrderEntityRetrieve": {
+        "title": "Dados de publicação (CourtOrder)",
+        "description": "",
+        "type": "object",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ResourceRetrieve"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "courtLevel": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/Instance"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "court": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "courtSystem": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "region": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "jurisdictionTitle": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "courtHouse": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "adjudicatingCourt": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "provider": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/PushProvider"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "externalCnjId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "searchTerms": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "dateOfAvailability": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "publicationDate": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "captureDate": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2025-01-01T12:00:00.000Z",
+                "description": ""
+              },
+              "content": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": ""
+              },
+              "courtOrderCommunicationChannel": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "courtOrderServiceType": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CourtOrderServiceType"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "courtOrderType": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CourtOrderType"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "officialGazette": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/OfficialGazetteRetrieve"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "externalCnjClassification": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ClassificationTypeCNJRetrieve"
+                }
+              },
+              "type": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/TipoDePush-2"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "eventType": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "string de exemplo",
+                "description": "**Tipo do evento**<br/>\n`Preenchido por IA após a captura da publicação`\n"
+              },
+              "caseProcedure": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "caseInfo": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CaseFlattenRetrieve"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "createdBy": {
+                "description": "**Funcionário que criou a publicação (null quando o e-mail gravado não corresponde a um funcionário)**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "updatedBy": {
+                "description": "**Funcionário que atualizou a publicação por último (null quando nunca foi atualizada ou o e-mail gravado não corresponde a um funcionário)**",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/SimpleEntityRetrieve"
                   },
                   {
                     "type": "null"

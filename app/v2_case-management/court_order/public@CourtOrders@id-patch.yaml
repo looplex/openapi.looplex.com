@@ -1,0 +1,48 @@
+tags:
+  - Court Order
+summary: "/courtorders/:id"
+description: |
+  **Patch Court Order**<br />
+  The court orders come from an external service, so only the properties below can be patched. Any other property is rejected with the error `Property 'X' cannot be updated by patch`.
+
+  | Property | Description |
+  |---|---|
+  | `EventType` | Event type (filled by AI after the capture of the court order) |
+  | `CaseInfo` | Case linked to the court order. Send `{ "id": "<case id>" }` to link, or `null` to unlink |
+
+  Only the `replace` operation is supported.
+
+  ```json
+  [
+    { "op": "replace", "path": "EventType", "value": "<event_type>" },
+    { "op": "replace", "path": "CaseInfo", "value": { "id": "<case_unique_identifier>" } }
+  ]
+  ```
+operationId: api-v1-CourtOrders-id-patch
+parameters:
+  - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../parameters/common/Tenant.yaml
+  - $ref: ../../parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: array
+        items:
+          $ref: ../../schemas/common/PatchEntity.yaml
+responses:
+  "204":
+    description: "No Content"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          $ref: '../../scim/SCIMError.yaml'
