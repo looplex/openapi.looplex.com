@@ -15,6 +15,14 @@ properties:
     description: |
       **Collaborator's unique identifier**<br/>
       This property if filled if the participant is a collaborator
+  EmployeeId:
+    type: string
+    format: uuid
+    deprecated: true
+    example: <collaborator_uuid>
+    description: |
+      **Alias legado de `collaboratorId`** (mantido para clientes de `/Employees`)<br/>
+      Mesmo valor, na leitura e na escrita
   # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
   CaseId:
     type: string
@@ -93,7 +101,7 @@ properties:
     description: ""
   Dob:
     type: string
-    format: datetime
+    format: date-time
     description: |
       **Date of birth (NATURAL_PERSON only)**
   Gender:

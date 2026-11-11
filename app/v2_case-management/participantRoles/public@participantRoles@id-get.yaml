@@ -1,0 +1,76 @@
+tags:
+  - Participant Roles
+summary: "/participantRoles/:id"
+description: "**Retrieve the roles of a case procedure (rito) by id**"
+operationId: participantRoles-id-get
+# query / path parameters
+parameters:
+  # quando o endpoint está dentro de uma pasta
+  - $ref: ../../../app/parameters/common/OcpApimSubscriptionKey.yaml
+  - $ref: ../../../app/parameters/common/Tenant.yaml
+  - $ref: ../../../app/parameters/common/BearerToken.yaml
+  - $ref: ../../parameters/common/Id.yaml
+# http responses
+responses:
+  "200":
+    description: "OK"
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            CaseProcedure:
+              type: string
+              description: "**Case procedure name**"
+            Roles:
+              type: object
+              properties:
+                Active:
+                  type: object
+                  properties:
+                    pt:
+                      type: string
+                      description: "name in portuguese"
+                    en:
+                      type: string
+                      description: "name in english"
+                Passive:
+                  type: object
+                  properties:
+                    pt:
+                      type: string
+                      description: "name in portuguese"
+                    en:
+                      type: string
+                      description: "name in english"
+                ThirdParty:
+                  type: object
+                  properties:
+                    pt:
+                      type: string
+                      description: "name in portuguese"
+                    en:
+                      type: string
+                      description: "name in english"
+                Other:
+                  type: object
+                  properties:
+                    pt:
+                      type: string
+                      description: "name in portuguese"
+                    en:
+                      type: string
+                      description: "name in english"
+  "400":
+    description: "Bad Request"
+  "401":
+    description: "Unauthorized"
+  "404":
+    description: "Not Found"
+  "500":
+    description: "Internal Server Error"
+    content:
+      application/json:
+        schema:
+          # quando o endpoint está dentro de uma pasta
+          $ref: ../../scim/SCIMError.yaml

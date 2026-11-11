@@ -19,13 +19,13 @@ properties:
     description: "**Descrição**"
   startDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de Início**<br/>
       _Date in UTC timezone_
   dueDate:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: |
       **Data de Vencimento**<br/>
       _Date in UTC timezone_
@@ -37,7 +37,7 @@ properties:
     description: "**Atualizado por**"
   completedAt:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: "**Concluído em**"
   completedBy:
     $ref: SimpleEntityRetrieve.yaml

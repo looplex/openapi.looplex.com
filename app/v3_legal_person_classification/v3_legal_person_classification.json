@@ -286,7 +286,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_criacao_do_recurso>",
             "description": "**The resource creation date**"
           },
@@ -295,7 +295,7 @@
               "string",
               "null"
             ],
-            "format": "datetime",
+            "format": "date-time",
             "example": "<data_de_atualizacao_do_recurso>",
             "description": "**The resource last update time**"
           },

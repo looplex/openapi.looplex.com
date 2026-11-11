@@ -30,7 +30,7 @@ properties:
     example: <observacoes>
   dob:
     type: [string, "null"]
-    format: datetime
+    format: date-time
     description: "**Client's date of birth (available when NATURAL_PERSON)**"
     example: <data_de_nascimento>
   gender:

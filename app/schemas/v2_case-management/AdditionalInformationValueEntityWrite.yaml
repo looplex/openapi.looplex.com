@@ -1,0 +1,26 @@
+title: Additional information value (Valor de dado complementar)
+type: object
+required:
+  - additionalInformationId
+properties:
+  additionalInformationId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: "**Unique identifier do dado complementar**"
+  employeeId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: "**Funcionário**<br />Informe apenas um entre employeeId e caseId"
+  caseId:
+    type: string
+    format: uuid
+    example: <global_unique_identifier>
+    description: "**Processo**<br />Informe apenas um entre employeeId e caseId"
+  value:
+    type: [string, "null"]
+    description: "**Valor**<br />Validado de acordo com o tipo e o tamanho do dado complementar"
+  customFields:
+    type: object
+    example: {}
