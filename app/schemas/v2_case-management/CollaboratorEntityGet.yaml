@@ -1,0 +1,72 @@
+title: Collaborator
+type: object
+allOf:
+  - $ref: ../../scim/ResourceGet.yaml
+  - type: object
+    properties:
+      categoryId:
+        type: string
+        format: uuid
+        description: "**Category's unique identifier**"
+      name:
+        type: string
+        description: "**Collaborator's name**"
+        example: <nome>
+      nickName:
+        type: [string, "null"]
+        description: "**Collaborator's nickname**"
+        example: <apelido>
+      dob:
+        type: [string, "null"]
+        format: date-time
+        description: "**Collaborator's date of birth**"
+        example: <data_de_nascimento>
+      admissionDate:
+        type: [string, "null"]
+        format: date-time
+        description: "**Collaborator's admission date**"
+        example: <data_de_admissao>
+      demissionDate:
+        type: [string, "null"]
+        format: date-time
+        description: "**Collaborator's demission date**"
+        example: <data_de_demissao>
+      gender:
+        $ref: ../../enums/v2_case-management/Gender.yaml
+      identities:
+        type: array
+        items:
+          $ref: ../common/NaturalPersonIdentityEntityGet.yaml
+        description: "**Collaborator's identities**"
+      nationality:
+        type: [string, "null"]
+        description: "**Collaborator's nationality**"
+        example: <nacionalidade>
+      maritalStatus:
+        $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+      occupation:
+        type: [string, "null"]
+        description: "**Collaborator's occupation**"
+        example: <profissao>
+      role:
+        $ref: ../../enums/v2_case-management/VinculoEmpregaticio.yaml
+      status:
+        $ref: ../../enums/v2_case-management/BooleanStatus.yaml
+      addresses:
+        type: array
+        items:
+          $ref: AddressEntityGet.yaml
+        description: "**Collaborator's addresses**"
+      emails:
+        type: array
+        items:
+          $ref: EmailEntityGet.yaml
+        description: "**Collaborator's emails**"
+      phoneNumbers:
+        type: array
+        items:
+          $ref: PhoneNumberEntityGet.yaml
+        description: "**Collaborator's phone numbers**"
+      customFields:
+        type: object
+        description: "**Collaborator's custom fields**"

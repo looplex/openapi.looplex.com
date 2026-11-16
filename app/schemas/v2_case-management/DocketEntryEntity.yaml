@@ -1,7 +1,7 @@
 title: DocketEntryEntity
 description: ""
 allOf:
-  - $ref: ../../scim/ResourceQuery.yaml
+  - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
       Provider:
@@ -61,7 +61,7 @@ allOf:
           $ref: ../../schemas/common/ClassificationTypeCNJ.yaml
       CaseProcedure:
         oneOf:
-          - $ref: ../common/SimpleEntityQuery.yaml
+          - $ref: ../common/SimpleEntityGet.yaml
           - type: "null"
       Content:
         type: [string, "null"]
@@ -69,7 +69,7 @@ allOf:
         description: ""
       CourtDecision:
         oneOf:
-          - $ref: ./DecisionQuery.yaml
+          - $ref: ./DecisionGet.yaml
           - type: "null"
       Type:
         oneOf:
@@ -81,5 +81,5 @@ allOf:
         description: ""
       CaseInfo:
         oneOf:
-          - $ref: ./CaseFlattenQuery.yaml
+          - $ref: ./CaseFlattenGet.yaml
           - type: "null"

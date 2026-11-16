@@ -184,7 +184,7 @@ properties:
     description: |
       **Área** <br />
       Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
-    $ref: ../../schemas/common/SimpleEntityQuery.yaml
+    $ref: ../common/SimpleEntityGet.yaml
     example: {
       id: <uuid_da_area>,
       name: <area_do_processo>

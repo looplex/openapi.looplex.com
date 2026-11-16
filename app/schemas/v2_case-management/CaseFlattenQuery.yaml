@@ -14,4 +14,4 @@ properties:
     type: array
     description: "**Identificação do caso, como número CNJ, ids de sistemas externos, etc**"
     items:
-      $ref: ../../schemas/common/CaseIdentityEntityQuery.yaml
+      $ref: ../common/CaseIdentityEntityGet.yaml

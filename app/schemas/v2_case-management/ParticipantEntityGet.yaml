@@ -1,0 +1,124 @@
+title: Dados de Parte
+type: object
+allOf:
+  - $ref: ../../scim/ResourceGet.yaml
+  - type: object
+    properties:
+      clientId:
+        type: string
+        format: uuid
+        example: <client_uuid>
+        description: |
+          **Client's unique identifier**<br/>
+          This property if filled if the participant is a client
+      collaboratorId:
+        type: string
+        format: uuid
+        example: <collaborator_uuid>
+        description: |
+          **Collaborator's unique identifier**<br/>
+          This property if filled if the participant is a collaborator
+      employeeId:
+        type: string
+        format: uuid
+        deprecated: true
+        example: <collaborator_uuid>
+        description: |
+          **Alias legado de `collaboratorId`** (mantido para clientes de `/Employees`)<br/>
+          Mesmo valor, na leitura e na escrita
+      # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
+      caseId:
+        type: string
+        format: uuid
+        example: <case_uuid>
+        description: |
+          **The participant's case**
+      createdBy:
+        $ref: ../common/SimpleEntityGet.yaml
+      name:
+        type: string
+        example: <nome_da_parte>
+        description: "**Participant's name**"
+      nickName:
+        type: [string, "null"]
+        example: <apelido_da_parte>
+        description: "**Apelido**"
+      isMainParty:
+        type: boolean
+        example: <is_main_party>
+        description: |
+          **Indicate if this participant is the main party in this case**
+      represents:
+        type: array
+        items:
+          type: string
+        example: ["document", "uuid"]
+        description: |
+          **Uuids of parties represented by this participant in the case (if this participant is a lawyer)**<br />
+          Only filled when the participant is returned within a case; empty in `GET /participants` and `GET /participants/:id`
+      lawyerOffice:
+        type: [string, "null"]
+        description: "**Escritório do advogado (se houver)**"
+        example: <escritorio>
+      nature:
+        example: NATURAL_PERSON
+        $ref: ../../enums/v2_case-management/TipoPessoa.yaml
+      position:
+        example: ACTIVE
+        $ref: ../../enums/v2_case-management/Position.yaml
+      addresses:
+        description: "**Participant's addresses**"
+        type: array
+        items:
+          $ref: AddressEntityGet.yaml
+      emails:
+        description: "**E-mails**"
+        type: array
+        items:
+          $ref: EmailEntityGet.yaml
+      identities:
+        description: "**Participant's identities**"
+        type: array
+        items:
+          oneOf:
+            - $ref: ../common/NaturalPersonIdentityEntityGet.yaml
+            - $ref: ../common/LegalPersonIdentityEntityGet.yaml
+      phoneNumbers:
+        description: "**Telefones**"
+        type: array
+        items:
+          $ref: PhoneNumberEntityGet.yaml
+      role:
+        $ref: ../../enums/v2_case-management/ParticipantRole.yaml
+      comments:
+        type: [string, "null"]
+        description: |
+          **Observações do vínculo da parte com o caso**<br />
+          Só preenchido quando o participante é retornado dentro de um caso; vazio em `GET /participants` e `GET /participants/:id`
+      customFields:
+        type: object
+        example: {}
+        description: "**Participant's custom fields**"
+      # CaseType nao existe em ParticipantEntity (C#); mantido por compatibilidade com a documentacao existente
+      caseType:
+        $ref: ../../enums/common/RamosJudicial.yaml
+      businessStructure:
+        type: [string, "null"]
+        description: ""
+      dob:
+        type: string
+        format: date-time
+        description: |
+          **Date of birth (NATURAL_PERSON only)**
+      gender:
+        $ref: ../../enums/v2_case-management/Gender.yaml
+        description: |
+          **Gender (NATURAL_PERSON only)**
+      nationality:
+        type: [string, "null"]
+        description: ""
+      maritalStatus:
+        $ref: ../../enums/v2_case-management/MaritalStatus.yaml
+      occupation:
+        type: [string, "null"]
+        description: ""

@@ -124,6 +124,6 @@ properties:
   links:
     type: array
     items:
-      $ref: ../v2_case-management/PushFlattenRetrieve.yaml
+      $ref: ../v2_case-management/PushFlattenGet.yaml
   taskHierarchy:
     $ref: TaskHierarchyRetrieve.yaml

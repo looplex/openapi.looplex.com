@@ -18,7 +18,7 @@ responses:
       application/json:
         schema:
           # quando endpoint está dentro de uma pasta
-          $ref: ../../schemas/v2_case-management/SubjectMatterGroupEntityRetrieve.yaml
+          $ref: ../../schemas/v2_case-management/SubjectMatterGroupEntityGet.yaml
   "400":
     description: "Bad Request"
   "401":
