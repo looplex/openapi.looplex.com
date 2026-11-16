@@ -1,0 +1,81 @@
+title: CaseHierarchy
+description: Hierarquia do caso, mostra todos os casos relacionados a este, seus antecessores e sucessores
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+    description: "**Case unique identifier**"
+    example: <global_unique_identifier>
+  status:
+    example: ATIVO
+    $ref: ../../enums/v2_case-management/SituacaoDoProcesso.yaml
+  type:
+    $ref: ../../enums/common/RamosJudicial.yaml
+  subType:
+    description: "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**"
+    example: <subtipo_do_processo>
+    oneOf:
+      - $ref: ../../enums/v2_case-management/ClasseProcessoContrato.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcessoSocietario.yaml
+      - $ref: ../../enums/v2_case-management/ClasseProcesso.yaml
+  title:
+    type: string
+    example: <titulo_do_processo>
+    description: "**Nome Jurídico do caso**"
+  locale:
+    type: [string, "null"]
+    example: <local_do_processo>
+    description: |
+      **Utilizado em casos consultivos**<br />
+      Local da Jurisdição de um caso, ou cumprimento da obrigação.
+  courtVenue:
+    type: [string, "null"]
+    example: <foro_do_processo>
+    description: |
+      **Utilizado para casos contenciosos, judiciais ou não**<br />
+      Foro do caso, local onde o caso será julgado
+  caseProcedure:
+    type: string
+    example: <rito_do_processo>
+    description: "**Rito ou procedimento do caso**"
+  contractClassification:
+    type: [string, "null"]
+    example: <classificacao_do_contrato>
+    description: |
+      **Classificação do contrato**<br />
+      Utilizado para casos <b>CONTRATO</b>
+  contractType:
+    type: [string, "null"]
+    example: <tipo_do_contrato>
+    description: |
+      **Tipo do contrato**<br />
+      Casos de tipo <b>CONTRATO</b>
+  legalPersonClassification:
+    type: [string, "null"]
+    example: <classificacao_da_pessoa_juridica>
+    description: |
+      **Classificação da pessoa jurídica**<br />
+      Utilizado para casos <b>SOCIETARIO</b>
+  deliberativeBody:
+    type: [string, "null"]
+    example: <orgao_deliberativo>
+    description: |
+      **Órgão deliberativo**<br />
+      Casos de tipo <b>SOCIETARIO</b>
+  phase:
+    type: [string, "null"]
+    description: |
+      **Fase do caso**<br />
+      Etapas que determinam os procedimentos que devem ser seguidos para a resolução do caso
+    example: <fase_do_processo>
+  identities:
+    description: "**Case identities**"
+    type: array
+    items:
+      $ref: ../common/CaseIdentityEntityGet.yaml
+  descendants:
+    description: "**Case hierarchy**"
+    type: array
+    items:
+      $ref: CaseHierarchyGet.yaml

@@ -25,7 +25,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v2_case-management/AddressEntityQuery.yaml
+                    $ref: ../../schemas/v2_case-management/AddressEntityGet.yaml
   "400":
     description: "Bad Request"
   "401":

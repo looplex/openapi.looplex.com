@@ -1,0 +1,11 @@
+title: Subject matter
+allOf:
+  - $ref: ../../scim/ResourceGet.yaml
+  - properties:
+      # caseType removido: não existe mais em SubjectMatterEntity (C#); tipos de caso estão em SubjectMatterGroupEntity.caseTypes
+      # caseType:
+      #   $ref: ../../enums/common/RamosJudicial.yaml
+      subjectMatter:
+        type: string
+        example: <SubjectMatter>
+        description: "**Subject Matters' name**"

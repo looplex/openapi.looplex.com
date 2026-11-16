@@ -26,7 +26,7 @@ responses:
                 resources:
                   type: array
                   items:
-                    $ref: ../../schemas/v2_case-management/CaseGuaranteeMovementEntityQuery.yaml
+                    $ref: ../../schemas/v2_case-management/CaseGuaranteeMovementEntityGet.yaml
   "400":
     description: "Bad Request"
   "401":

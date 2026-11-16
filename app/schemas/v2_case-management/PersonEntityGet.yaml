@@ -1,0 +1,15 @@
+title: "Dados de pessoa"
+type: object
+allOf:
+  - $ref: ../common/SimpleEntityGet.yaml
+  - properties:
+      email:
+        type: [string, "null"]
+        description: owner's email
+        example: <email>
+      identities:
+        type: array
+        items:
+          oneOf:
+            - $ref: ../common/NaturalPersonIdentityEntityGet.yaml
+            - $ref: ../common/LegalPersonIdentityEntityGet.yaml

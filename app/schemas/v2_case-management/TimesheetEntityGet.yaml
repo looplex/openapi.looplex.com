@@ -1,0 +1,78 @@
+title: Timesheet
+type: object
+allOf:
+  - $ref: ../../scim/ResourceGet.yaml
+  - type: object
+    properties:
+      clientId:
+        type: string
+        format: uuid
+        description: "**Client unique identifier**"
+        example: <global_unique_identifier>
+      classification:
+        type: [string, "null"]
+        description: "**Classificação**"
+        example: <classificacao>
+      owner:
+        $ref: ../common/SimpleEntityGet.yaml
+        description: "**Responsável**"
+      date:
+        type: string
+        format: date-time
+        description: "**Data**"
+        example: <data>
+      hours:
+        type: string
+        example: <hora>
+        description: |
+          **Horas (quantidade de horas do lançamento)**<br />
+          `Format: hh:mm:ss`
+      taskCode:
+        type: [string, "null"]
+        description: "**Código da Tarefa**"
+        example: <codigo_da_tarefa>
+      activityCode:
+        type: [string, "null"]
+        description: "**Código da Atividade**"
+        example: <codigo_da_atividade>
+      applicant:
+        $ref: ../common/SimpleEntityGet.yaml
+        description: "**Solicitante**"
+      description:
+        type: [string, "null"]
+        example: <descricao>
+        description: "**Descrição**"
+      isInvoiced:
+        type: [boolean, "null"]
+        example: false
+        description: "**Faturado**"
+      createdAt:
+        type: [string, "null"]
+        format: date-time
+        example: <data_de_criacao>
+        description: "**Criado em**"
+      createdBy:
+        $ref: ../common/SimpleEntityGet.yaml
+        description: "**Criado por**"
+      updatedAt:
+        type: [string, "null"]
+        format: date-time
+        description: "**Atualizado em**"
+        example: <data_de_atualizacao>
+      updatedBy:
+        $ref: ../common/SimpleEntityGet.yaml
+        description: "**Atualizado por**"
+      case:
+        type: object
+        description: "**The case unique identifier**"
+        properties:
+          id:
+            type: string
+            format: uuid
+            example: <global_unique_identifier>
+      taskType:
+        $ref: ../../enums/v2_case-management/TipoDeTarefaTimesheet.yaml
+      links:
+        type: array
+        items:
+          $ref: ./PushFlattenGet.yaml

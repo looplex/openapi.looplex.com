@@ -1,0 +1,18 @@
+title: Relief Statement
+allOf:
+  - $ref: ../../scim/ResourceGet.yaml
+  - type: object
+    properties:
+      subjectMatterId:
+        type: string
+        format: uuid
+        example: <subject_matter_uuid>
+        description: "**Subject matter unique identifier**"
+      name:
+        type: string
+        example: "<relief_statement_name>"
+        description: "**Relief statement name**"
+      customFields:
+        type: object
+        example: {}
+        description: "Custom fields' for this item"

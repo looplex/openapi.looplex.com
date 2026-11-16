@@ -6,9 +6,7 @@ properties:
     description: "**The array of URNs**"
     items:
       type: string
-    example: [
-      "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
-    ]
+    example: ["urn:ietf:params:scim:api:messages:2.0:SearchRequest"]
   Filter:
     type: string
     example: null
