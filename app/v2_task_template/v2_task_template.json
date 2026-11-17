@@ -59,7 +59,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
+                  "$ref": "#/components/schemas/TaskTemplateEntityGet"
                 }
               }
             }
@@ -245,7 +245,7 @@
                         "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/TaskTemplateEntityQuery"
+                            "$ref": "#/components/schemas/TaskTemplateEntityGet"
                           }
                         }
                       }
@@ -278,7 +278,7 @@
           "Task Templates"
         ],
         "summary": "/TaskTemplates",
-        "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**<br />\n`TimeToExecution` é um inteiro em **minutos**\n",
+        "description": "**Create task templates**<br />\nItem created's guid is returned in **Location header**<br />\n`timeToExecution` é um inteiro em **minutos**\n",
         "operationId": "task_templates-post",
         "parameters": [
           {
@@ -404,7 +404,7 @@
       }
     },
     "schemas": {
-      "MetaRetrieve": {
+      "MetaGet": {
         "title": "Meta",
         "type": "object",
         "description": "**Resource's metadata**",
@@ -447,7 +447,7 @@
           }
         }
       },
-      "ResourceRetrieve": {
+      "ResourceGet": {
         "title": "Resource",
         "type": "object",
         "properties": {
@@ -467,7 +467,7 @@
           },
           "meta": {
             "description": "**Entity's information**",
-            "$ref": "#/components/schemas/MetaRetrieve"
+            "$ref": "#/components/schemas/MetaGet"
           }
         }
       },
@@ -494,13 +494,13 @@
         "type": "string",
         "description": "BUILDER <br/>\nASSEMBLER\n"
       },
-      "TaskTemplateEntityRetrieve": {
+      "TaskTemplateEntityGet": {
         "title": "TaskTemplateEntity",
         "description": "",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ResourceRetrieve"
+            "$ref": "#/components/schemas/ResourceGet"
           },
           {
             "properties": {
@@ -563,7 +563,7 @@
               "children": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityRetrieve"
+                  "$ref": "#/components/schemas/TaskTemplateEntityGet"
                 }
               },
               "parentId": {
@@ -577,16 +577,16 @@
                 "type": "string"
               },
               "createdBy": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                "$ref": "#/components/schemas/SimpleEntityGet"
               },
               "updatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityRetrieve"
+                "$ref": "#/components/schemas/SimpleEntityGet"
               }
             }
           }
         ]
       },
-      "SimpleEntityRetrieve": {
+      "SimpleEntityGet": {
         "title": "Identificador",
         "type": "object",
         "properties": {
@@ -707,221 +707,42 @@
           }
         }
       },
-      "MetaQuery": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "ResourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "Created": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "LastModified": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "Location": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "Version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceQuery": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "ExternalId": {
-            "example": "<external_id>",
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**External identifier**"
-          },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/MetaQuery"
-          }
-        }
-      },
-      "TaskTemplateEntityQuery": {
-        "title": "TaskTemplateEntity",
-        "description": "",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "properties": {
-              "Title": {
-                "type": "string"
-              },
-              "EventType": {
-                "$ref": "#/components/schemas/TipoEventoDeCobranca"
-              },
-              "Status": {
-                "description": "ACTIVE<br/>INACTIVE",
-                "type": "string"
-              },
-              "DeadlineForCompletion": {
-                "description": "Prazo para conclusão (em dias)",
-                "type": "integer"
-              },
-              "DeadlineCalculationType": {
-                "$ref": "#/components/schemas/DeadlineCalculationType"
-              },
-              "Priority": {
-                "$ref": "#/components/schemas/Prioridade"
-              },
-              "TimeToExecution": {
-                "description": "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente",
-                "type": "integer"
-              },
-              "DocumentLinkType": {
-                "$ref": "#/components/schemas/TipoVinculoComDocumento"
-              },
-              "CaseTypes": {
-                "example": [
-                  "JUDICIAL_ESTADUAL",
-                  "CONTRATO"
-                ],
-                "description": "**Indicação do tipo de caso, define o tipo de justiça ou o tipo de transação jurídica**<br />\nADMINISTRATIVO<br />\nCONSULTIVO<br />\nJUDICIAL_ESTADUAL<br />\nJUDICIAL_FEDERAL<br />\nJUDICIAL_TRABALHISTA<br />\nMILITAR_ESTADUAL<br />\nELEITORAL<br />\nMILITAR_UNIAO<br />\nCONTRATO<br />\nDUE_DILIGENCE_E_ANALISE_DOCUMENTAL<br />\nCOBRANCA_EXTRAJUDICIAL<br />\nSOCIETARIO<br />\nARBITRAGEM\n",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "Group": {
-                "type": "string"
-              },
-              "SubjectMatter": {
-                "type": "string"
-              },
-              "CustomFields": {
-                "type": "object"
-              },
-              "ActivityCode": {
-                "type": "string"
-              },
-              "TaskCode": {
-                "type": "string"
-              },
-              "InterviewTemplateLink": {
-                "type": "string"
-              },
-              "Children": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/TaskTemplateEntityQuery"
-                }
-              },
-              "ParentId": {
-                "type": "string",
-                "format": "uuid"
-              },
-              "Description": {
-                "type": "string"
-              },
-              "CanonicalSubjectMatter": {
-                "type": "string"
-              },
-              "CreatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery"
-              },
-              "UpdatedBy": {
-                "$ref": "#/components/schemas/SimpleEntityQuery"
-              }
-            }
-          }
-        ]
-      },
-      "SimpleEntityQuery": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<nome_do_item>",
-            "description": "**The object name**"
-          }
-        }
-      },
       "TaskTemplateEntityWrite": {
         "title": "TaskTemplateEntity",
         "description": "",
         "type": "object",
         "properties": {
-          "Title": {
+          "title": {
             "type": "string"
           },
-          "EventType": {
+          "eventType": {
             "$ref": "#/components/schemas/TipoEventoDeCobranca"
           },
-          "Status": {
+          "status": {
             "description": "ACTIVE<br/>INACTIVE",
             "type": "string"
           },
-          "DeadlineForCompletion": {
+          "deadlineForCompletion": {
             "description": "Prazo para conclusão (em dias)",
             "type": "integer"
           },
-          "DeadlineCalculationType": {
+          "deadlineCalculationType": {
             "$ref": "#/components/schemas/DeadlineCalculationType"
           },
-          "Priority": {
+          "priority": {
             "$ref": "#/components/schemas/Prioridade"
           },
-          "TimeToExecution": {
+          "timeToExecution": {
             "description": "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente",
             "type": "integer"
           },
-          "Group": {
+          "group": {
             "type": "string"
           },
-          "DocumentLinkType": {
+          "documentLinkType": {
             "$ref": "#/components/schemas/TipoVinculoComDocumento"
           },
-          "CaseTypes": {
+          "caseTypes": {
             "example": [
               "JUDICIAL_ESTADUAL",
               "CONTRATO"
@@ -932,30 +753,30 @@
               "type": "string"
             }
           },
-          "SubjectMatter": {
+          "subjectMatter": {
             "type": "string"
           },
-          "CustomFields": {
+          "customFields": {
             "type": "object"
           },
-          "ActivityCode": {
+          "activityCode": {
             "type": "string"
           },
-          "TaskCode": {
+          "taskCode": {
             "type": "string"
           },
-          "InterviewTemplateLink": {
+          "interviewTemplateLink": {
             "type": "string"
           },
-          "ParentId": {
+          "parentId": {
             "description": "**Id do task template pai (quando for um filho)**",
             "type": "string",
             "format": "uuid"
           },
-          "Description": {
+          "description": {
             "type": "string"
           },
-          "Children": {
+          "children": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/TaskTemplateEntityWrite"

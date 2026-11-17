@@ -3,8 +3,8 @@ tags:
 summary: "/collaborators"
 description: |
   **Create a collaborator**<br />
-  Required: `Name` (max 60), `NickName` (max 60), `Role` (VinculoEmpregaticio), `AdmissionDate`, `MaritalStatus`, `Occupation`, `Status` (BooleanStatus), `Gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />
-  Dates (`Dob`, `AdmissionDate`, `DemissionDate`) must be sent in UTC.<br />
+  Required: `name` (max 60), `nickName` (max 60), `role` (VinculoEmpregaticio), `admissionDate`, `maritalStatus`, `occupation`, `status` (BooleanStatus), `gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />
+  Dates (`dob`, `admissionDate`, `demissionDate`) must be sent in UTC.<br />
   Item created's guid is returned in **Location header**
 operationId: collaborators-post
 parameters:

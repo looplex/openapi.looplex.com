@@ -160,7 +160,7 @@ allOf:
           Grupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso
         $ref: ../common/SimpleEntityGet.yaml
         example: {
-          Name: <area_do_processo>
+          name: <area_do_processo>
         }
       product:
         type: array

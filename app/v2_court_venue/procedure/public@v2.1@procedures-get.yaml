@@ -67,7 +67,7 @@ responses:
             - allOf:
               - $ref: ../../schemas/common/ListResponse.yaml
               - properties:
-                  resources:
+                  Resources:
                     type: array
                     items:
                       type: object

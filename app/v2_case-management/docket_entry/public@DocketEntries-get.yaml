@@ -34,11 +34,11 @@ responses:
 
             - type: object
               properties:
-                resources:
+                Resources:
                   type: array
                   items:
                     # quando endpoint está dentro de uma pasta
-                    $ref: ../../schemas/v2_case-management/DocketEntryEntity.yaml
+                    $ref: ../../schemas/v2_case-management/DocketEntryEntityGet.yaml
  
   "400":
     description: "Bad Request"

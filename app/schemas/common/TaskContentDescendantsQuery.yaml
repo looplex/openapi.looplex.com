@@ -1,4 +1,0 @@
-title: Dados da tarefa
-type: object
-allOf:
-  - $ref: TaskContentQuery.yaml

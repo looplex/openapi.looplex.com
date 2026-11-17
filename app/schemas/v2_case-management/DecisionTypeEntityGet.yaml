@@ -4,7 +4,7 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      Name:
+      name:
         type: object
         description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
         properties:
@@ -15,11 +15,11 @@ allOf:
         example:
           pt-BR: <nome_pt_br>
           en-US: <name_en_us>
-      Instance:
+      instance:
         type: [integer, "null"]
         example: 1
         description: "**Instance number**<br />Filterable"
-      IsClosure:
+      isClosure:
         type: [boolean, "null"]
         example: false
         description: "**Indicates whether the decision type represents case closure**"

@@ -49,10 +49,10 @@ allOf:
       calculationRule:
         type: object
         properties:
-          Id:
+          id:
             type: string
             example: <global_unique_identifier>
-          Title:
+          title:
             type: string
             example: <title>
       riskClassification:

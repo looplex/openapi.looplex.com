@@ -4,82 +4,82 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      Provider:
+      provider:
         oneOf:
           - $ref: ../../enums/v2_case-management/PushProvider.yaml
           - type: "null"
-      ExternalCnjId:
+      externalCnjId:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      CourtSystem:
+      courtSystem:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      CourtLevel:
+      courtLevel:
         oneOf:
           - $ref: ../../enums/v2_case-management/Instance.yaml
           - type: "null"
-      Court:
+      court:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      Region:
+      region:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      JurisdictionTitle:
+      jurisdictionTitle:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      CourtHouse:
+      courtHouse:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      AdjudicatingCourt:
+      adjudicatingCourt:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      DateOfAvailability:
+      dateOfAvailability:
         type: [string, "null"]
         format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
-      DocketEntryDate:
+      docketEntryDate:
         type: [string, "null"]
         format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
-      CaptureDate:
+      captureDate:
         type: [string, "null"]
         format: date-time
         example: "2025-01-01T12:00:00.000Z"
         description: ""
-      ExternalCnjClassification:
+      externalCnjClassification:
         type: array
         items:
-          $ref: ../../schemas/common/ClassificationTypeCNJ.yaml
-      CaseProcedure:
+          $ref: ./ClassificationTypeCNJGet.yaml
+      caseProcedure:
         oneOf:
           - $ref: ../common/SimpleEntityGet.yaml
           - type: "null"
-      Content:
+      content:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      CourtDecision:
+      courtDecision:
         oneOf:
           - $ref: ./DecisionGet.yaml
           - type: "null"
-      Type:
+      type:
         oneOf:
           - $ref: ../../enums/v2_case-management/TipoDePush.yaml
           - type: "null"
-      EventType:
+      eventType:
         type: [string, "null"]
         example: "string de exemplo"
         description: ""
-      CaseInfo:
+      caseInfo:
         oneOf:
           - $ref: ./CaseFlattenGet.yaml
           - type: "null"

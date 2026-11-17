@@ -1,72 +1,72 @@
 title: Dados da tarefa
 type: object
 properties:
-  ParentTaskId:
+  parentTaskId:
     type: [string, null]
     format: uuid
     description: "**Unique identifier of parent task**"
     example: null
-  Type:
+  type:
     $ref: ../../enums/common/TaskType.yaml
     example: COURT_HEARING
-  Title:
+  title:
     type: [string, null]
     example: <title>
     description: "**Titulo**"
-  Description:
+  description:
     type: [string, null]
     example: <description>
     description: "**Descrição**"
-  StartDate:
+  startDate:
     type: [string, null]
     format: date-time
     example: <start_date>
     description: |
       **Data de Início**<br/>
       _Date must be send in UTC timezone_
-  DueDate:
+  dueDate:
     type: [string, null]
     format: date-time
     example: <due_date>
     description: |
       **Data de Vencimento**<br/>
       _Date must be send in UTC timezone_
-  Locale:
+  locale:
     type: [string, null]
     example: <locale>
     description: "**Local**"
-  TaskCode:
+  taskCode:
     type: [string, null]
     example: <task_code>
     description: "**Código da Tarefa**"
-  ActivityCode:
+  activityCode:
     type: [string, null]
     example: <activity_code>
     description: "**Código da Atividade**"
-  TaskTemplate:
+  taskTemplate:
     $ref: SimpleEntityWrite.yaml
     description: "**Modelo de Tarefa**"
-  Owner:
+  owner:
     $ref: SimpleEntityWrite.yaml
     description: "**Responsável**"
-  OtherParticipants:
+  otherParticipants:
     description: "**Outros Participantes**"
     type: array
     items:
       $ref: SimpleEntityWrite.yaml
-  Status:
+  status:
     $ref: ../../enums/common/StatusTarefa.yaml
     example: <status>
-  Priority:
+  priority:
     example: <priority>
     $ref: ../../enums/common/Prioridade.yaml
-  CustomFields:
+  customFields:
     type: object
     example: {}
     description: "**Tasks's custom fields**"
-  Case:
+  case:
     $ref: SimpleEntityWrite.yaml
     description: "**Processo**"
-  TaskHierarchy:
+  taskHierarchy:
     $ref: TaskHierarchyWrite.yaml
 

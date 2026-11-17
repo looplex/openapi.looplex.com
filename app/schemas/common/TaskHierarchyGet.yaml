@@ -1,11 +1,11 @@
 title: Dados da tarefa
 type: object
 allOf:
-  - $ref: TaskContentRetrieve.yaml
+  - $ref: TaskContentGet.yaml
   - type: object
     properties:
-      Descendants:
+      descendants:
         type: array
         items:
-          $ref: TaskContentDescendantsRetrieve.yaml
+          $ref: TaskContentDescendantsGet.yaml
       

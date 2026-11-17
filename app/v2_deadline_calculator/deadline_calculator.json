@@ -104,7 +104,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "type": "object",

@@ -2,7 +2,7 @@ title: TaskTemplateEntity
 description: ""
 type: object
 allOf:
-  - $ref: ../../scim/ResourceRetrieve.yaml
+  - $ref: ../../scim/ResourceGet.yaml
   - properties:
       title:
         type: string
@@ -45,7 +45,7 @@ allOf:
       children:
         type: array
         items:
-          $ref: TaskTemplateEntityRetrieve.yaml
+          $ref: TaskTemplateEntityGet.yaml
       parentId:
         type: string
         format: uuid    
@@ -54,7 +54,7 @@ allOf:
       canonicalSubjectMatter:
         type: string
       createdBy:
-        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        $ref: ../common/SimpleEntityGet.yaml
       updatedBy:
-        $ref: ../../schemas/common/SimpleEntityRetrieve.yaml
+        $ref: ../common/SimpleEntityGet.yaml
       

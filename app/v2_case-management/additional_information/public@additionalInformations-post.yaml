@@ -4,7 +4,7 @@ summary: "/additionalInformations"
 description: |
   **Create Additional information**<br />
   Item created's guid is returned in **Location header**<br />
-  Só pode haver um tipo de vínculo entre `Client`, `ClientGroups`, `Groups` e `CaseTypes`. `Values` só é aceito em tipos dropdown. `FieldSize` é obrigatório nos tipos texto. `Cases` e `Employees` são somente leitura (use `/additionalInformationValues`)
+  Só pode haver um tipo de vínculo entre `client`, `clientGroups`, `groups` e `caseTypes`. `values` só é aceito em tipos dropdown. `fieldSize` é obrigatório nos tipos texto. `cases` e `employees` são somente leitura (use `/additionalInformationValues`)
 operationId: additionalInformations-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

@@ -1,8 +1,8 @@
 title: Dados da tarefa
 type: object
 allOf:
-  - $ref: SimpleEntityQuery.yaml
+  - $ref: SimpleEntityGet.yaml
     type: object
     properties:
-      InterviewTemplateLink:
+      interviewTemplateLink:
         type: string

@@ -4,12 +4,12 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      TrialTypeId:
+      trialTypeId:
         type: string
         format: uuid
         example: <trial_type_uuid>
         description: "**Trial type unique identifier**<br />Filterable"
-      Name:
+      name:
         type: object
         description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
         properties:
