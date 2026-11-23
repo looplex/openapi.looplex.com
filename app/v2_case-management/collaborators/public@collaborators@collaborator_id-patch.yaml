@@ -8,6 +8,7 @@ description: |
 
   - `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.
   - `CategoryId`: UUID.
+  - `ExternalServiceProviderId` e `CompanyId`: UUID do fornecedor ou da empresa a que o colaborador está vinculado. O vínculo é exclusivo: informar um com valor desfaz o outro, e `null` (ou `remove`) desfaz o vínculo. Os dois com valor no mesmo patch são recusados (`ExternalServiceProviderId and CompanyId cannot be both informed`). `Affiliation` é só leitura.
   - `Dob`, `AdmissionDate`, `DemissionDate`: datas.
   - `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.
   - `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.
