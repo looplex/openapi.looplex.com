@@ -2239,7 +2239,7 @@
           "Collaborator"
         ],
         "summary": "/collaborators",
-        "description": "**Create a collaborator**<br />\nRequired: `name` (max 60), `nickName` (max 60), `role` (VinculoEmpregaticio), `admissionDate`, `maritalStatus`, `occupation`, `status` (BooleanStatus), `gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />\nDates (`dob`, `admissionDate`, `demissionDate`) must be sent in UTC.<br />\nItem created's guid is returned in **Location header**\n",
+        "description": "**Create a collaborator**<br />\nRequired: `name` (max 60), `nickName` (max 60), `role` (VinculoEmpregaticio), `admissionDate`, `maritalStatus`, `occupation`, `status` (BooleanStatus), `gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />\nDates (`dob`, `admissionDate`, `demissionDate`) must be sent in UTC.<br />\nOptional link: `externalServiceProviderId` **or** `companyId` (never both). Without either, the collaborator belongs to the law office.<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "collaborators-post",
         "parameters": [
           {
@@ -2346,7 +2346,7 @@
           "Collaborator"
         ],
         "summary": "/collaborators/:id",
-        "description": "**Patch collaborator properties**\n\nAplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):\n\n- `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.\n- `CategoryId`: UUID.\n- `Dob`, `AdmissionDate`, `DemissionDate`: datas.\n- `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.\n- `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.\n- `CustomFields`: patch em campos customizados.\n\nOs campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.\nSó é permitido um e-mail e um endereço por colaborador.\n",
+        "description": "**Patch collaborator properties**\n\nAplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):\n\n- `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.\n- `CategoryId`: UUID.\n- `ExternalServiceProviderId` e `CompanyId`: UUID do fornecedor ou da empresa a que o colaborador está vinculado. O vínculo é exclusivo: informar um com valor desfaz o outro, e `null` (ou `remove`) desfaz o vínculo. Os dois com valor no mesmo patch são recusados (`ExternalServiceProviderId and CompanyId cannot be both informed`). `Affiliation` é só leitura.\n- `Dob`, `AdmissionDate`, `DemissionDate`: datas.\n- `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.\n- `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.\n- `CustomFields`: patch em campos customizados.\n\nOs campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.\nSó é permitido um e-mail e um endereço por colaborador.\n",
         "operationId": "collaborators-collaborator_id-patch",
         "parameters": [
           {
@@ -11881,6 +11881,60 @@
               "status": {
                 "$ref": "#/components/schemas/BooleanStatus"
               },
+              "externalServiceProviderId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Unique identifier of the external service provider the collaborator works for**; `null` when not linked to one"
+              },
+              "companyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Unique identifier of the company the collaborator works for**; `null` when not linked to one"
+              },
+              "affiliation": {
+                "type": "object",
+                "description": "**Who the collaborator works for** (read-only, always returned)<br/>\nThe external service provider, the company (name, CNPJ and e-mail of its branch) or, when the collaborator has no link, the law office itself, whose `id` is `null`.\n",
+                "properties": {
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uuid",
+                    "description": "**Provider's or company's unique identifier**; `null` for the law office"
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**Name**",
+                    "example": "<nome>"
+                  },
+                  "document": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**CPF or CNPJ**",
+                    "example": "<cpf_ou_cnpj>"
+                  },
+                  "email": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**E-mail**",
+                    "example": "<email>"
+                  }
+                }
+              },
               "addresses": {
                 "type": "array",
                 "items": {
@@ -11991,6 +12045,22 @@
           "status": {
             "$ref": "#/components/schemas/BooleanStatus"
           },
+          "externalServiceProviderId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Unique identifier of the external service provider the collaborator works for**. Cannot be sent together with `companyId`"
+          },
+          "companyId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Unique identifier of the company the collaborator works for**. Cannot be sent together with `externalServiceProviderId`"
+          },
           "addresses": {
             "type": "array",
             "items": {
@@ -12077,6 +12147,36 @@
                 "type": "object",
                 "example": {},
                 "description": "**Custom fields for this item**"
+              },
+              "collaborators": {
+                "type": "array",
+                "description": "**Collaborators linked to this external service provider** (read-only, ordered by name, including inactive ones)",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "**Collaborator's unique identifier**"
+                    },
+                    "name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "**Collaborator's name**",
+                      "example": "<nome>"
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "**Collaborator's e-mail**",
+                      "example": "<email>"
+                    }
+                  }
+                }
               }
             }
           }
