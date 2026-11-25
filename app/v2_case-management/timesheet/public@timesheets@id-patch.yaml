@@ -3,8 +3,9 @@ tags:
 summary: "/timesheets/:id"
 description: |
   **Patch timesheet properties**<br />
-  Propriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner` e `Applicant`.<br />
-  `Description`, `Date`, `Hours`, `TaskType` e `Owner` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />
+  Propriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner`, `Applicant`, `Area` e `ClassificationId`.<br />
+  `Area` precisa ser uma das áreas ativas do responsável e `ClassificationId` uma classificação ativa que valha para a área.<br />
+  `Description`, `Date`, `Hours`, `TaskType`, `Owner`, `Area` e `ClassificationId` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />
   Um lançamento que já está em faturamento não pode ser alterado (retorna erro)
 operationId: timesheets-id-patch
 parameters:

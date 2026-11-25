@@ -13,6 +13,16 @@ allOf:
         type: [string, "null"]
         description: "**Classificação**"
         example: <classificacao>
+      classificationId:
+        type: [string, "null"]
+        format: uuid
+        description: |
+          **Identificador da classificação**<br />
+          A lista de classificações vem de `/timesheetClassifications`
+        example: <global_unique_identifier>
+      area:
+        $ref: ../common/SimpleEntityGet.yaml
+        description: "**Área do lançamento**"
       owner:
         $ref: ../common/SimpleEntityGet.yaml
         description: "**Responsável**"
