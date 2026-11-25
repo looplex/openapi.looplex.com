@@ -4,7 +4,7 @@ summary: "/additionalInformationValues"
 description: |
   **Create Additional information value**<br />
   Item created's guid is returned in **Location header**<br />
-  Informe `AdditionalInformationId` e **exatamente um** entre `CaseId` e `EmployeeId`; só existe um valor por par dado complementar + processo/funcionário. O valor é validado pelo tipo e tamanho do dado complementar e, em tipos dropdown, precisa estar em `Values`
+  Informe `additionalInformationId` e **exatamente um** entre `caseId` e `employeeId`; só existe um valor por par dado complementar + processo/funcionário. O valor é validado pelo tipo e tamanho do dado complementar e, em tipos dropdown, precisa estar em `values`
 operationId: additionalInformationValues-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

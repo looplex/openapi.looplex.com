@@ -4,12 +4,12 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      DecisionTypeId:
+      decisionTypeId:
         type: string
         format: uuid
         example: <decision_type_uuid>
         description: "**Decision type unique identifier**<br />Filterable"
-      Name:
+      name:
         type: object
         description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
         properties:

@@ -1,4 +1,4 @@
-name: SortOrder
+name: sortOrder
 in: query
 required: false
 description: "**Order of sort (ASC | DESC)**"

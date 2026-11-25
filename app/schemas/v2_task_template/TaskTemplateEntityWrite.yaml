@@ -2,51 +2,51 @@ title: TaskTemplateEntity
 description: ""
 type: object
 properties:
-  Title:
+  title:
     type: string
-  EventType:
+  eventType:
     $ref: ../../enums/v2_task_template/TipoEventoDeCobranca.yaml
-  Status:
+  status:
     description: "ACTIVE<br/>INACTIVE"
     type: string
-  DeadlineForCompletion:
+  deadlineForCompletion:
     description: "Prazo para conclusão (em dias)"
     type: integer
-  DeadlineCalculationType:
+  deadlineCalculationType:
     $ref: ../../enums/common/DeadlineCalculationType.yaml
-  Priority:
+  priority:
     $ref: ../../enums/common/Prioridade.yaml    
-  TimeToExecution:
+  timeToExecution:
     description: "**Tempo para execução em minutos (valor inteiro)**<br />A conversão para exibição/entrada em outras unidades (ex.: horas) é responsabilidade do cliente"    
     type: integer
-  Group:
+  group:
     type: string
-  DocumentLinkType:
+  documentLinkType:
     $ref: ../../enums/v2_task_template/TipoVinculoComDocumento.yaml  
-  CaseTypes:
+  caseTypes:
     example: [ "JUDICIAL_ESTADUAL" , "CONTRATO" ]
     description: 
       $ref: ../../v2_task_template/v2_task_template.yaml#/components/x-descriptions/RamosJudicial
     type: array
     items:
       type: string
-  SubjectMatter:
+  subjectMatter:
     type: string
-  CustomFields:
+  customFields:
     type: object
-  ActivityCode:
+  activityCode:
     type: string
-  TaskCode:
+  taskCode:
     type: string
-  InterviewTemplateLink:
+  interviewTemplateLink:
     type: string
-  ParentId:
+  parentId:
     description: "**Id do task template pai (quando for um filho)**"
     type: string
     format: uuid
-  Description:
+  description:
     type: string
-  Children:
+  children:
     type: array
     items:
       $ref: TaskTemplateEntityWrite.yaml 

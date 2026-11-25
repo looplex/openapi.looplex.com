@@ -1,7 +1,7 @@
-name: SortBy
+name: sortBy
 in: query
 required: false
 description: "**Property to be sorted**"
-example: <Name>
+example: <name>
 schema:
   type: string

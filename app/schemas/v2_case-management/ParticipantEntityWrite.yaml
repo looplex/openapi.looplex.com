@@ -1,21 +1,21 @@
 title: Dados de Parte
 type: object
 properties:
-  ClientId:
+  clientId:
     type: string
     format: uuid
     example: <client_uuid>
     description: |
       **Client's unique identifier**<br/>
       This property if filled if the participant is a client
-  CollaboratorId:
+  collaboratorId:
     type: string
     format: uuid
     example: <collaborator_uuid>
     description: |
       **Collaborator's unique identifier**<br/>
       This property if filled if the participant is a collaborator
-  EmployeeId:
+  employeeId:
     type: string
     format: uuid
     deprecated: true
@@ -24,28 +24,28 @@ properties:
       **Alias legado de `collaboratorId`** (mantido para clientes de `/Employees`)<br/>
       Mesmo valor, na leitura e na escrita
   # CaseId nao existe em ParticipantEntity (C#); mantido pois o participante e vinculado ao caso (ParticipantAdapter.CaseId)
-  CaseId:
+  caseId:
     type: string
     format: uuid
     example: <case_uuid>
     description: |
       **The participant's case**
-  CreatedBy:
+  createdBy:
     $ref: ../../schemas/common/SimpleObjectIdWrite.yaml
-  Name:
+  name:
     type: string
     example: <nome_da_parte>
     description: "**Participant's name**"
-  NickName:
+  nickName:
     type: [string, "null"]
     example: <apelido_da_parte>
     description: "**Apelido**"
-  IsMainParty:
+  isMainParty:
     type: boolean
     example: <is_main_party>
     description: |
       **Indicate if this participant is the main party in this case**
-  Represents:
+  represents:
     type: array
     items:
       type: string
@@ -54,66 +54,66 @@ properties:
       **Documents, names or uuids of parties represented by this participant (if this participant is a lawyer)**<br />
       Used when the participant is created within a case (`POST /cases`); ignored in `POST /participants` (without case context).<br />
       A value that is not a guid is looked up as a document (CPF/CNPJ) or, failing that, as the exact name of an existing participant, client or collaborator; if no party is found, the request fails (400).<br />
-      Participants of the same case are created in ascending order of the number of `Represents`, so the represented parties may be created in the same request
-  LawyerOffice:
+      Participants of the same case are created in ascending order of the number of `represents`, so the represented parties may be created in the same request
+  lawyerOffice:
     type: [string, "null"]
     description: "**Escritório do advogado (se houver)**"
     example: <escritorio>
-  Nature:
+  nature:
     example: NATURAL_PERSON
     $ref: ../../enums/v2_case-management/TipoPessoa.yaml
-  Position:
+  position:
     example: ACTIVE
     $ref: ../../enums/v2_case-management/Position.yaml
-  Addresses:
+  addresses:
     description: "**Participant's addresses**"
     type: array
     items:
       $ref: AddressEntityWrite.yaml
-  Emails:
+  emails:
     description: "**E-mails**"
     type: array
     items:
       $ref: EmailEntityWrite.yaml
-  Identities:
+  identities:
     description: "**Participant's identities**"
     type: array
     items:
       oneOf:
         - $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
         - $ref: ../../schemas/common/LegalPersonIdentityEntityWrite.yaml
-  PhoneNumbers:
+  phoneNumbers:
     description: "**Telefones**"
     type: array
     items:
       $ref: PhoneNumberEntityWrite.yaml
-  Role:
+  role:
     $ref: ../../enums/v2_case-management/ParticipantRole.yaml
-  CustomFields:
+  customFields:
     type: object
     example: {}
     description: "**Participant's custom fields**"
   # CaseType nao existe em ParticipantEntity (C#); mantido por compatibilidade com a documentacao existente
-  CaseType:
+  caseType:
     $ref: ../../enums/common/RamosJudicial.yaml
-  BusinessStructure:
+  businessStructure:
     type: [string, "null"]
     description: ""
-  Dob:
+  dob:
     type: string
     format: date-time
     description: |
       **Date of birth (NATURAL_PERSON only)**
-  Gender:
+  gender:
     $ref: ../../enums/v2_case-management/Gender.yaml
     description: |
       **Gender (NATURAL_PERSON only)**
-  Nationality:
+  nationality:
     type: [string, "null"]
     description: ""
-  MaritalStatus:
+  maritalStatus:
     $ref: ../../enums/v2_case-management/MaritalStatus.yaml
-  Occupation:
+  occupation:
     type: [string, "null"]
     description: ""
 required:

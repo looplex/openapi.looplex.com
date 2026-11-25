@@ -3,5 +3,5 @@ type: object
 allOf:
   - type: object
     properties:
-      Data:
+      data:
         $ref: TaskContentWrite.yaml

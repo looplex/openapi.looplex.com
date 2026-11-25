@@ -6,6 +6,18 @@ properties:
     format: uuid
     description: "**Client unique identifier**"
     example: <global_unique_identifier>
+  classificationId:
+    type: string
+    format: uuid
+    description: |
+      **Identificador da classificação**<br />
+      A lista de classificações vem de `/timesheetClassifications`. A classificação precisa ser ativa e valer para a área do lançamento
+    example: <global_unique_identifier>
+  area:
+    $ref: ../../schemas/common/SimpleEntityWrite.yaml
+    description: |
+      **Área do lançamento**<br />
+      Precisa ser uma das áreas ativas do responsável. Sem ela na criação, vale a área padrão do responsável
   owner:
     $ref: ../../schemas/common/SimpleEntityWrite.yaml
     description: "**Responsável**"

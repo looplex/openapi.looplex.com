@@ -1,70 +1,78 @@
 title: Collaborator
 type: object
 properties:
-  CategoryId:
+  categoryId:
     type: string
     format: uuid
     description: "**Category's unique identifier**"
-  Name:
+  name:
     type: string
     description: "**Collaborator's name**"
     example: <nome>
-  NickName:
+  nickName:
     type: string
     description: "**Collaborator's nickname**"
     example: <apelido>
-  Dob:
+  dob:
     type: [string, "null"]
     format: date-time
     description: "**Collaborator's date of birth**"
     example: <data_de_nascimento>
-  AdmissionDate:
+  admissionDate:
     type: [string, "null"]
     format: date-time
     description: "**Collaborator's admission date**"
     example: <data_de_admissao>
-  DemissionDate:
+  demissionDate:
     type: [string, "null"]
     format: date-time
     description: "**Collaborator's demission date**"
     example: <data_de_demissao>
-  Gender:
+  gender:
     $ref: ../../enums/v2_case-management/Gender.yaml
-  Identities:
+  identities:
     type: array
     items:
       $ref: ../../schemas/common/NaturalPersonIdentityEntityWrite.yaml
     description: "**Collaborator's identities**"
-  Nationality:
+  nationality:
     type: [string, "null"]
     description: "**Collaborator's nationality**"
     example: <nacionalidade>
-  MaritalStatus:
+  maritalStatus:
     $ref: ../../enums/v2_case-management/MaritalStatus.yaml
-  Occupation:
+  occupation:
     type: [string, "null"]
     description: "**Collaborator's occupation**"
     example: <profissao>
-  Role:
+  role:
     $ref: ../../enums/v2_case-management/VinculoEmpregaticio.yaml
-  Status:
+  status:
     $ref: ../../enums/v2_case-management/BooleanStatus.yaml
-  Addresses:
+  externalServiceProviderId:
+    type: [string, "null"]
+    format: uuid
+    description: "**Unique identifier of the external service provider the collaborator works for**. Cannot be sent together with `companyId`"
+  companyId:
+    type: [string, "null"]
+    format: uuid
+    description: "**Unique identifier of the company the collaborator works for**. Cannot be sent together with `externalServiceProviderId`"
+  addresses:
     type: array
     items:
       $ref: AddressEntityWrite.yaml
     description: "**Collaborator's addresses**"
-  Emails:
+  emails:
     type: array
     items:
       $ref: EmailEntityWrite.yaml
     description: "**Collaborator's emails**"
-  PhoneNumbers:
+  phoneNumbers:
     type: array
     items:
       $ref: PhoneNumberEntityWrite.yaml
     description: "**Collaborator's phone numbers**"
-  CustomFields:
+  customFields:
     type: object
     description: "**Collaborator's custom fields**"
 required:

@@ -24,7 +24,7 @@ responses:
             - $ref: ../../schemas/common/ListResponse.yaml
             - type: object
               properties:
-                resources:
+                Resources:
                   type: array
                   items:
                     # quando endpoint está dentro de uma pasta

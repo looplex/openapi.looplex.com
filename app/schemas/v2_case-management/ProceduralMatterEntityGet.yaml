@@ -4,7 +4,7 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      Name:
+      name:
         type: object
         description: "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)"
         properties:
@@ -15,7 +15,7 @@ allOf:
         example:
           pt-BR: <nome_pt_br>
           en-US: <name_en_us>
-      Acceptance:
+      acceptance:
         type: object
         description: "**Accepted / not accepted labels**"
         properties:
@@ -26,7 +26,7 @@ allOf:
         example:
           "yes": <accepted_label>
           "no": <not_accepted_label>
-      Children:
+      children:
         type: array
         description: "**Child procedural matters**<br />Only root items are returned in the list; children are nested here"
         items:

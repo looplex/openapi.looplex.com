@@ -1,4 +1,4 @@
 title: Dados da tarefa
 type: object
 allOf:
-  - $ref: TaskContentRetrieve.yaml
+  - $ref: TaskContentGet.yaml

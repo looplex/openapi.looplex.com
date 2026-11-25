@@ -19,13 +19,13 @@ responses:
         schema:
           type: object
           properties:
-            CaseProcedure:
+            caseProcedure:
               type: string
               description: "**Case procedure name**"
-            Roles:
+            roles:
               type: object
               properties:
-                Active:
+                active:
                   type: object
                   properties:
                     pt:
@@ -34,7 +34,7 @@ responses:
                     en:
                       type: string
                       description: "name in english"
-                Passive:
+                passive:
                   type: object
                   properties:
                     pt:
@@ -43,7 +43,7 @@ responses:
                     en:
                       type: string
                       description: "name in english"
-                ThirdParty:
+                thirdParty:
                   type: object
                   properties:
                     pt:
@@ -52,7 +52,7 @@ responses:
                     en:
                       type: string
                       description: "name in english"
-                Other:
+                other:
                   type: object
                   properties:
                     pt:

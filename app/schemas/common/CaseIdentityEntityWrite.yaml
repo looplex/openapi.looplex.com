@@ -1,14 +1,14 @@
 title: Identidade (Case)
 type: object
 properties:
-  IdentityProviderType:
+  identityProviderType:
     type: string
     description: |
       **The identity provider**<br/>
       **Allowed value:**<br/>
       CNJ<br/>
     example: <identity_provider>
-  Value:
+  value:
     type: string
     description: "**The identity value**"
     example: <value>

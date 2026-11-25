@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.1",
   "info": {
-    "version": "2.3.0",
+    "version": "3.0.0",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -293,7 +293,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "oneOf": [
@@ -490,7 +490,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CaseInfoEntityGet"
@@ -615,7 +615,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CaseGroupEntityGet"
@@ -746,7 +746,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CaseClaimEntityGet"
@@ -1034,7 +1034,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ClientEntityGet"
@@ -1282,7 +1282,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CaseGuaranteeEntityGet"
@@ -1563,7 +1563,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CaseGuaranteeMovementEntityGet"
@@ -1913,7 +1913,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/DecisionEntityGet"
@@ -2200,7 +2200,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/CollaboratorEntityGet"
@@ -2239,7 +2239,7 @@
           "Collaborator"
         ],
         "summary": "/collaborators",
-        "description": "**Create a collaborator**<br />\nRequired: `Name` (max 60), `NickName` (max 60), `Role` (VinculoEmpregaticio), `AdmissionDate`, `MaritalStatus`, `Occupation`, `Status` (BooleanStatus), `Gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />\nDates (`Dob`, `AdmissionDate`, `DemissionDate`) must be sent in UTC.<br />\nItem created's guid is returned in **Location header**\n",
+        "description": "**Create a collaborator**<br />\nRequired: `name` (max 60), `nickName` (max 60), `role` (VinculoEmpregaticio), `admissionDate`, `maritalStatus`, `occupation`, `status` (BooleanStatus), `gender` and a `CPF` identity (11 digits). `RG` max 30 characters.<br />\nDates (`dob`, `admissionDate`, `demissionDate`) must be sent in UTC.<br />\nOptional link: `externalServiceProviderId` **or** `companyId` (never both). Without either, the collaborator belongs to the law office.<br />\nItem created's guid is returned in **Location header**\n",
         "operationId": "collaborators-post",
         "parameters": [
           {
@@ -2346,7 +2346,7 @@
           "Collaborator"
         ],
         "summary": "/collaborators/:id",
-        "description": "**Patch collaborator properties**\n\nAplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):\n\n- `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.\n- `CategoryId`: UUID.\n- `Dob`, `AdmissionDate`, `DemissionDate`: datas.\n- `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.\n- `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.\n- `CustomFields`: patch em campos customizados.\n\nOs campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.\nSó é permitido um e-mail e um endereço por colaborador.\n",
+        "description": "**Patch collaborator properties**\n\nAplica operações de patch (RFC 6902) em um colaborador. Campos suportados em `path` (não diferencia maiúsculas/minúsculas):\n\n- `Name`, `NickName`, `Nationality`, `Occupation`: substituem o valor.\n- `CategoryId`: UUID.\n- `ExternalServiceProviderId` e `CompanyId`: UUID do fornecedor ou da empresa a que o colaborador está vinculado. O vínculo é exclusivo: informar um com valor desfaz o outro, e `null` (ou `remove`) desfaz o vínculo. Os dois com valor no mesmo patch são recusados (`ExternalServiceProviderId and CompanyId cannot be both informed`). `Affiliation` é só leitura.\n- `Dob`, `AdmissionDate`, `DemissionDate`: datas.\n- `Gender`, `MaritalStatus`: devem ser valores válidos do respectivo enum.\n- `Role`: vínculo empregatício, deve ser um valor válido de `VinculoEmpregaticio`.\n- `Status`: deve ser um valor válido de `BooleanStatus` (`INACTIVE` ou `ACTIVE`).\n- `Addresses` e `PhoneNumbers`: `add` (acrescenta os itens do array informado em `value`), `replace` (substitui toda a lista) e `remove` (`path` no formato `Addresses/{id}` ou `PhoneNumbers/{id}`, com `id` UUID).\n- `Emails`: somente `replace`.\n- `Identities`: `replace` e `add`; `remove` não é suportado. Cada item deve ter `IdentityProviderType` e `Value`; é obrigatório existir uma identidade `CPF`.\n- `CustomFields`: patch em campos customizados.\n\nOs campos `Name`, `NickName`, `Role`, `Occupation`, `MaritalStatus`, `Status`, `Gender` e `AdmissionDate` são obrigatórios após aplicar o patch: vale o valor do patch, quando existir, senão o valor atual do colaborador. Um patch que esvazie um deles falha com `<Campo> is required`.\nSó é permitido um e-mail e um endereço por colaborador.\n",
         "operationId": "collaborators-collaborator_id-patch",
         "parameters": [
           {
@@ -2601,7 +2601,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/EntryEntityGet"
@@ -2729,7 +2729,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ExternalServiceProviderGet"
@@ -2860,7 +2860,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/LegalCategoryEntityGet"
@@ -3199,7 +3199,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/LegalServiceAgreementEntityGet"
@@ -3295,7 +3295,7 @@
           "Participant"
         ],
         "summary": "/participants",
-        "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n\nValidações na criação:\n- `Nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`) e `Gender` (quando `NATURAL_PERSON`) são validados contra o enum **sem diferenciar maiúsculas de minúsculas** e gravados pelo nome canônico (e.g. `\"male\"` vira `\"MALE\"`).\n- `PhoneNumbers`: o número é normalizado (sem máscara e sem zero à esquerda do DDD) e deve ter, para `home`, `work` e `fax`, entre 8 (sem DDD) e 10 dígitos (com DDD); para `mobile` e `pager`, entre 9 (sem DDD) e 11 dígitos (com DDD). O tipo `other` não tem validação de tamanho. Fora da faixa retorna 400.\n- A parte não pode ser, ao mesmo tempo, cliente (`ClientId`) e colaborador (`CollaboratorId`).\n- Se já existir uma parte com o mesmo CPF/CNPJ (ou, sem documento, com o mesmo nome exato), ela é reaproveitada em vez de criar uma nova.\n- `Represents` é ignorado neste endpoint (só tem efeito na criação de participantes dentro de um caso).\n",
+        "description": "**Create participant**<br />\nItem created's guid is returned in **Location header**\n\nValidações na criação:\n- `nature` (`NATURAL_PERSON` ou `LEGAL_PERSON`) e `gender` (quando `NATURAL_PERSON`) são validados contra o enum **sem diferenciar maiúsculas de minúsculas** e gravados pelo nome canônico (e.g. `\"male\"` vira `\"MALE\"`).\n- `phoneNumbers`: o número é normalizado (sem máscara e sem zero à esquerda do DDD) e deve ter, para `home`, `work` e `fax`, entre 8 (sem DDD) e 10 dígitos (com DDD); para `mobile` e `pager`, entre 9 (sem DDD) e 11 dígitos (com DDD). O tipo `other` não tem validação de tamanho. Fora da faixa retorna 400.\n- A parte não pode ser, ao mesmo tempo, cliente (`clientId`) e colaborador (`collaboratorId`).\n- Se já existir uma parte com o mesmo CPF/CNPJ (ou, sem documento, com o mesmo nome exato), ela é reaproveitada em vez de criar uma nova.\n- `represents` é ignorado neste endpoint (só tem efeito na criação de participantes dentro de um caso).\n",
         "operationId": "participants-post",
         "parameters": [
           {
@@ -3382,7 +3382,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ParticipantEntityGet"
@@ -3617,7 +3617,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/PerformanceEntityGet"
@@ -3898,7 +3898,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/AddressEntityGet"
@@ -3937,7 +3937,7 @@
           "Address"
         ],
         "summary": "/addresses",
-        "description": "**Create Address**<br />\nItem created's guid is returned in **Location header**<br />\n`StreetAddress`, `Type` (valor de `AddressType`, sem diferenciar maiúsculas), `Region.Name` (sigla do estado, 2 letras) e `PostalCode` (8 dígitos, qualquer máscara) são obrigatórios.<br />\n**Atenção:** o contexto do endereço (`Context`) não é lido do corpo da requisição (`[JsonIgnore]`) e a criação exige `Context` e `ContextId`; conferido apenas no código, não em execução\n",
+        "description": "**Create Address**<br />\nItem created's guid is returned in **Location header**<br />\n`streetAddress`, `type` (valor de `AddressType`, sem diferenciar maiúsculas), `region.name` (sigla do estado, 2 letras) e `postalCode` (8 dígitos, qualquer máscara) são obrigatórios.<br />\n**Atenção:** o contexto do endereço (`context`) não é lido do corpo da requisição (`[JsonIgnore]`) e a criação exige `context` e `contextId`; conferido apenas no código, não em execução\n",
         "operationId": "addresses-post",
         "parameters": [
           {
@@ -4185,7 +4185,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/AdditionalInformationEntityGet"
@@ -4224,7 +4224,7 @@
           "Additional information"
         ],
         "summary": "/additionalInformations",
-        "description": "**Create Additional information**<br />\nItem created's guid is returned in **Location header**<br />\nSó pode haver um tipo de vínculo entre `Client`, `ClientGroups`, `Groups` e `CaseTypes`. `Values` só é aceito em tipos dropdown. `FieldSize` é obrigatório nos tipos texto. `Cases` e `Employees` são somente leitura (use `/additionalInformationValues`)\n",
+        "description": "**Create Additional information**<br />\nItem created's guid is returned in **Location header**<br />\nSó pode haver um tipo de vínculo entre `client`, `clientGroups`, `groups` e `caseTypes`. `values` só é aceito em tipos dropdown. `fieldSize` é obrigatório nos tipos texto. `cases` e `employees` são somente leitura (use `/additionalInformationValues`)\n",
         "operationId": "additionalInformations-post",
         "parameters": [
           {
@@ -4472,7 +4472,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/AdditionalInformationValueEntityGet"
@@ -4511,7 +4511,7 @@
           "Additional information value"
         ],
         "summary": "/additionalInformationValues",
-        "description": "**Create Additional information value**<br />\nItem created's guid is returned in **Location header**<br />\nInforme `AdditionalInformationId` e **exatamente um** entre `CaseId` e `EmployeeId`; só existe um valor por par dado complementar + processo/funcionário. O valor é validado pelo tipo e tamanho do dado complementar e, em tipos dropdown, precisa estar em `Values`\n",
+        "description": "**Create Additional information value**<br />\nItem created's guid is returned in **Location header**<br />\nInforme `additionalInformationId` e **exatamente um** entre `caseId` e `employeeId`; só existe um valor por par dado complementar + processo/funcionário. O valor é validado pelo tipo e tamanho do dado complementar e, em tipos dropdown, precisa estar em `values`\n",
         "operationId": "additionalInformationValues-post",
         "parameters": [
           {
@@ -4748,14 +4748,14 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "CaseProcedure": {
+                    "caseProcedure": {
                       "type": "string",
                       "description": "**Case procedure name**"
                     },
-                    "Roles": {
+                    "roles": {
                       "type": "object",
                       "properties": {
-                        "Active": {
+                        "active": {
                           "type": "object",
                           "properties": {
                             "pt": {
@@ -4768,7 +4768,7 @@
                             }
                           }
                         },
-                        "Passive": {
+                        "passive": {
                           "type": "object",
                           "properties": {
                             "pt": {
@@ -4781,7 +4781,7 @@
                             }
                           }
                         },
-                        "ThirdParty": {
+                        "thirdParty": {
                           "type": "object",
                           "properties": {
                             "pt": {
@@ -4794,7 +4794,7 @@
                             }
                           }
                         },
-                        "Other": {
+                        "other": {
                           "type": "object",
                           "properties": {
                             "pt": {
@@ -4877,7 +4877,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/PhaseEntityGet"
@@ -5008,7 +5008,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ReliefStatementEntityGet"
@@ -5139,7 +5139,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ProductEntityGet"
@@ -5270,7 +5270,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/SubjectMatterGroupEntityGet"
@@ -5366,7 +5366,7 @@
           "Timesheet"
         ],
         "summary": "/timesheets",
-        "description": "**Fetch timesheets paginated**\n",
+        "description": "**Fetch timesheets paginated**<br />\nFiltros SCIM aceitos: `Id`, `WorkDate`, `TaskCode`, `ActivityCode`, `CreatedAt`, `UpdatedAt`, `IsInvoiced`, `Owner.Id`, `ClientId`, `Area.Id`, `ClassificationId`<br />\n`Area.Id` é a área do lançamento, não a do caso\n",
         "operationId": "timesheets-get",
         "parameters": [
           {
@@ -5401,7 +5401,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TimesheetEntityGet"
@@ -5547,7 +5547,7 @@
           "Timesheet"
         ],
         "summary": "/timesheets/:id",
-        "description": "**Patch timesheet properties**<br />\nPropriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner` e `Applicant`.<br />\n`Description`, `Date`, `Hours`, `TaskType` e `Owner` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />\nUm lançamento que já está em faturamento não pode ser alterado (retorna erro)\n",
+        "description": "**Patch timesheet properties**<br />\nPropriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner`, `Applicant`, `Area` e `ClassificationId`.<br />\n`Area` precisa ser uma das áreas ativas do responsável e `ClassificationId` uma classificação ativa que valha para a área.<br />\n`Description`, `Date`, `Hours`, `TaskType`, `Owner`, `Area` e `ClassificationId` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />\nUm lançamento que já está em faturamento não pode ser alterado (retorna erro)\n",
         "operationId": "timesheets-id-patch",
         "parameters": [
           {
@@ -5688,10 +5688,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/CourtOrderEntity"
+                            "$ref": "#/components/schemas/CourtOrderEntityGet"
                           }
                         }
                       }
@@ -5929,10 +5929,10 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/DocketEntryEntity"
+                            "$ref": "#/components/schemas/DocketEntryEntityGet"
                           }
                         }
                       }
@@ -6005,7 +6005,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/DecisionTypeEntityGet"
@@ -6081,7 +6081,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/JudgementContentEntityGet"
@@ -6157,7 +6157,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/ProceduralMatterEntityGet"
@@ -6233,7 +6233,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/RemedyEntityGet"
@@ -6309,7 +6309,7 @@
                     {
                       "type": "object",
                       "properties": {
-                        "resources": {
+                        "Resources": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/TrialTypeEntityGet"
@@ -6418,17 +6418,17 @@
         "example": null
       },
       "SortBy": {
-        "name": "SortBy",
+        "name": "sortBy",
         "in": "query",
         "required": false,
         "description": "**Property to be sorted**",
-        "example": "<Name>",
+        "example": "<name>",
         "schema": {
           "type": "string"
         }
       },
       "SortOrder": {
-        "name": "SortOrder",
+        "name": "sortOrder",
         "in": "query",
         "required": false,
         "description": "**Order of sort (ASC | DESC)**",
@@ -6471,13 +6471,13 @@
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string",
             "format": "uuid",
             "description": "**The item unique identifier**",
             "example": "<global_unique_identifier>"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "example": "<nome_do_item>",
             "description": "**The item name**"
@@ -6574,6 +6574,16 @@
             "description": "**Client unique identifier**",
             "example": "<global_unique_identifier>"
           },
+          "classificationId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Identificador da classificação**<br />\nA lista de classificações vem de `/timesheetClassifications`. A classificação precisa ser ativa e valer para a área do lançamento\n",
+            "example": "<global_unique_identifier>"
+          },
+          "area": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Área do lançamento**<br />\nPrecisa ser uma das áreas ativas do responsável. Sem ela na criação, vale a área padrão do responsável\n"
+          },
           "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**Responsável**"
@@ -6651,7 +6661,7 @@
         "title": "SCIMv2Search",
         "description": "Model for SCIM v2 /.search endpoint filter",
         "properties": {
-          "Schemas": {
+          "schemas": {
             "type": "array",
             "description": "**The array of URNs**",
             "items": {
@@ -6661,34 +6671,34 @@
               "urn:ietf:params:scim:api:messages:2.0:SearchRequest"
             ]
           },
-          "Filter": {
+          "filter": {
             "type": "string",
             "example": null,
             "description": "**The SCIMv2 filter**"
           },
-          "SortBy": {
+          "sortBy": {
             "type": "string",
             "example": null,
             "description": "**The property for sorting results**"
           },
-          "SortOrder": {
+          "sortOrder": {
             "type": "string",
             "example": null,
             "description": "**The sort order (ASC / DESC)**"
           },
-          "StartIndex": {
+          "startIndex": {
             "type": "integer",
             "example": 1,
             "description": "**The start index for pagination**"
           },
-          "Count": {
+          "count": {
             "type": "integer",
             "example": 10,
             "description": "**The total count of items to return**"
           }
         },
         "required": [
-          "Schemas"
+          "schemas"
         ]
       },
       "ListResponse": {
@@ -7682,11 +7692,11 @@
               "calculationRule": {
                 "type": "object",
                 "properties": {
-                  "Id": {
+                  "id": {
                     "type": "string",
                     "example": "<global_unique_identifier>"
                   },
-                  "Title": {
+                  "title": {
                     "type": "string",
                     "example": "<title>"
                   }
@@ -8796,6 +8806,19 @@
                 "description": "**Classificação**",
                 "example": "<classificacao>"
               },
+              "classificationId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Identificador da classificação**<br />\nA lista de classificações vem de `/timesheetClassifications`\n",
+                "example": "<global_unique_identifier>"
+              },
+              "area": {
+                "$ref": "#/components/schemas/SimpleEntityGet",
+                "description": "**Área do lançamento**"
+              },
               "owner": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Responsável**"
@@ -9147,7 +9170,7 @@
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "example": {
-                  "Name": "<area_do_processo>"
+                  "name": "<area_do_processo>"
                 }
               },
               "product": {
@@ -9445,13 +9468,13 @@
           {
             "type": "object",
             "properties": {
-              "Status": {
+              "status": {
                 "$ref": "#/components/schemas/SituacaoDoProcesso"
               },
-              "Type": {
+              "type": {
                 "$ref": "#/components/schemas/RamosJudicial"
               },
-              "SubType": {
+              "subType": {
                 "description": "**Indicação do subtipo de caso, define se ele é um caso originário ou uma continuação como um recurso, incidente ou um subcaso**",
                 "oneOf": [
                   {
@@ -9465,34 +9488,34 @@
                   }
                 ]
               },
-              "HasAncestor": {
+              "hasAncestor": {
                 "type": "boolean",
                 "example": false,
                 "description": "**Indica se o caso possui um caso primário**"
               },
-              "HasDescendants": {
+              "hasDescendants": {
                 "type": "boolean",
                 "example": false,
                 "description": "**Indica se o caso possui casos filhos**"
               },
-              "Level": {
+              "level": {
                 "type": "integer",
                 "example": 1,
                 "description": "**Instância do caso**"
               },
-              "Identities": {
+              "identities": {
                 "type": "array",
                 "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
                 "items": {
                   "$ref": "#/components/schemas/CaseIdentityEntityGet"
                 }
               },
-              "Title": {
+              "title": {
                 "type": "string",
                 "description": "**Nome Jurídico do caso**",
                 "example": "<titulo_do_processo>"
               },
-              "Summary": {
+              "summary": {
                 "type": [
                   "string",
                   "null"
@@ -9500,43 +9523,43 @@
                 "description": "**Breve descrição sobre o caso**",
                 "example": "<observacoes_do_processo>"
               },
-              "Locale": {
+              "locale": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityGet"
                 },
                 "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação\n"
               },
-              "CourtVenue": {
+              "courtVenue": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityGet"
                 },
                 "description": "**Foro do caso, local onde o caso será julgado.**<br/>\nCasos de tipo: <b>judicial, administrativo e arbitragem\n"
               },
-              "CaseProcedure": {
+              "caseProcedure": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Rito ou procedimento do caso**<br/> Casos de tipo: <b>judicial, administrativo e arbitragem\n"
               },
-              "ContractClassification": {
+              "contractClassification": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityGet"
                 }
               },
-              "ContractType": {
+              "contractType": {
                 "$ref": "#/components/schemas/SimpleEntityGet"
               },
-              "LegalPersonClassification": {
+              "legalPersonClassification": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/SimpleEntityGet"
                 }
               },
-              "DeliberativeBody": {
+              "deliberativeBody": {
                 "$ref": "#/components/schemas/SimpleEntityGet"
               },
-              "Phase": {
+              "phase": {
                 "type": [
                   "string",
                   "null"
@@ -9544,7 +9567,7 @@
                 "description": "**Fase do caso**<br />\nEtapas que determinam os procedimentos que devem ser seguidos para a resolução do caso\n",
                 "example": "<fase_do_processo>"
               },
-              "RetentionDate": {
+              "retentionDate": {
                 "type": [
                   "string",
                   "null"
@@ -9553,7 +9576,7 @@
                 "description": "**Data de entrada** <br />\nData em que a organização (escritório de advocacia ou departamento jurídico) foi oficialmente contratada pelo cliente para representar ou gerenciar o caso\n",
                 "example": "<data_de_entrada_do_processo>"
               },
-              "StartDate": {
+              "startDate": {
                 "type": [
                   "string",
                   "null"
@@ -9562,7 +9585,7 @@
                 "description": "**Data de distribuição**<br />\nData em que um caso foi distribuído para um tribunal em disputas ou data em que um contrato ou negócio jurídico foi assinado pelas partes\n",
                 "example": "<data_distribuicao_do_processo>"
               },
-              "FormationDate": {
+              "formationDate": {
                 "type": [
                   "string",
                   "null"
@@ -9571,7 +9594,7 @@
                 "description": "**Data de citação**<br />\nData em que uma ação judicial ou negócio se torna ativo. Para disputas, é a data da citação. <br />\nPara contratos e atos societários, é a data em que o instrumento entra em vigor ou se torna exigível\n",
                 "example": "<data_de_citacao_do_processo>"
               },
-              "ResJudicataDate": {
+              "resJudicataDate": {
                 "type": [
                   "string",
                   "null"
@@ -9580,7 +9603,7 @@
                 "description": "**Data de trânsito em julgado**<br />\nData em que uma decisão se torna final e irrecorrível, tornando a sentença conclusiva e obrigatória. <br />\nA partir dessa data, o caso não pode ser reaberto ou contestado. Utilizado apenas para casos judiciais\n",
                 "example": "<data_transito_julgado_do_processo>"
               },
-              "ForecastedEndDate": {
+              "forecastedEndDate": {
                 "type": [
                   "string",
                   "null"
@@ -9589,7 +9612,7 @@
                 "description": "**Data prevista para encerramento**<br />\nData estimada para a conclusão de um caso, transação ou disputa. <br />\nEssa data é utilizada para fins de planejamento e pode ser ajustada conforme o andamento do caso\n",
                 "example": "<data_prevista_encerramento_do_processo>"
               },
-              "CreatedAt": {
+              "createdAt": {
                 "type": [
                   "string",
                   "null"
@@ -9598,11 +9621,11 @@
                 "description": "**Data de criação do caso**",
                 "example": "<data_criacao_do_processo>"
               },
-              "CreatedBy": {
+              "createdBy": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Usuário que criou o caso**"
               },
-              "UpdatedAt": {
+              "updatedAt": {
                 "type": [
                   "string",
                   "null"
@@ -9611,11 +9634,11 @@
                 "description": "**Atualizado em**",
                 "example": "<data_de_atualizacao_do_processo>"
               },
-              "UpdatedBy": {
+              "updatedBy": {
                 "description": "**Atualizado por**",
                 "$ref": "#/components/schemas/SimpleEntityGet"
               },
-              "ClosedAt": {
+              "closedAt": {
                 "type": [
                   "string",
                   "null"
@@ -9624,47 +9647,47 @@
                 "description": "**Data de encerramento**",
                 "example": "<data_encerramento_do_processo>"
               },
-              "ClosedBy": {
+              "closedBy": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Usuário que encerrou o caso**"
               },
-              "Group": {
+              "group": {
                 "description": "**Área** <br />\nGrupo ou área do escritório de advocacia ou departamento jurídico responsável pelo caso\n",
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "example": {
-                  "Name": "<area_do_processo>"
+                  "name": "<area_do_processo>"
                 }
               },
-              "CaseClient": {
+              "caseClient": {
                 "$ref": "#/components/schemas/ClientEntityGet"
               },
-              "LegalServiceAgreement": {
+              "legalServiceAgreement": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Contrato**<br />\nContrato de prestação de serviços jurídicos que rege a relação entre o escritório de advocacia ou departamento jurídico e o cliente\n"
               },
-              "Owner": {
+              "owner": {
                 "$ref": "#/components/schemas/PersonEntityGet",
                 "description": "**Responsável**<br />\nAdvogado ou membro da equipe jurídica responsável pelo caso\n"
               },
-              "Coowners": {
+              "coowners": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/PersonEntityGet"
                 },
                 "description": "**Corresponsáveis**<br />\nAdvogados ou membros da equipe jurídica que compartilham a responsabilidade pelo caso\n"
               },
-              "ExternalServiceProvider": {
+              "externalServiceProvider": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
                 "description": "**Escritório Responsável / Correspondente**<br />\nPrestador de serviços externo contratado para fornecer serviços jurídicos em um caso\n"
               },
-              "Participants": {
+              "participants": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/ParticipantEntityGet"
                 },
                 "description": "**Quaisquer pessoas envolvidas em um caso, incluindo não apenas as partes, mas também outros interessados, como testemunhas, representantes legais, ou quaisquer outros que desempenhem um papel**"
               },
-              "GlobalValues": {
+              "globalValues": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/GlobalValuesGet"
@@ -9678,12 +9701,12 @@
         "title": "Identidade (Case)",
         "type": "object",
         "properties": {
-          "IdentityProviderType": {
+          "identityProviderType": {
             "type": "string",
             "description": "**The identity provider**<br/>\n**Allowed value:**<br/>\nCNJ<br/>\n",
             "example": "<identity_provider>"
           },
-          "Value": {
+          "value": {
             "type": "string",
             "description": "**The identity value**",
             "example": "<value>"
@@ -9694,7 +9717,7 @@
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string",
             "format": "uuid",
             "description": "**The item unique identifier**",
@@ -9917,40 +9940,40 @@
         "title": "Dados de Parte",
         "type": "object",
         "properties": {
-          "ClientId": {
+          "clientId": {
             "type": "string",
             "format": "uuid",
             "example": "<client_uuid>",
             "description": "**Client's unique identifier**<br/>\nThis property if filled if the participant is a client\n"
           },
-          "CollaboratorId": {
+          "collaboratorId": {
             "type": "string",
             "format": "uuid",
             "example": "<collaborator_uuid>",
             "description": "**Collaborator's unique identifier**<br/>\nThis property if filled if the participant is a collaborator\n"
           },
-          "EmployeeId": {
+          "employeeId": {
             "type": "string",
             "format": "uuid",
             "deprecated": true,
             "example": "<collaborator_uuid>",
             "description": "**Alias legado de `collaboratorId`** (mantido para clientes de `/Employees`)<br/>\nMesmo valor, na leitura e na escrita\n"
           },
-          "CaseId": {
+          "caseId": {
             "type": "string",
             "format": "uuid",
             "example": "<case_uuid>",
             "description": "**The participant's case**\n"
           },
-          "CreatedBy": {
+          "createdBy": {
             "$ref": "#/components/schemas/SimpleObjectIdWrite"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "example": "<nome_da_parte>",
             "description": "**Participant's name**"
           },
-          "NickName": {
+          "nickName": {
             "type": [
               "string",
               "null"
@@ -9958,12 +9981,12 @@
             "example": "<apelido_da_parte>",
             "description": "**Apelido**"
           },
-          "IsMainParty": {
+          "isMainParty": {
             "type": "boolean",
             "example": "<is_main_party>",
             "description": "**Indicate if this participant is the main party in this case**\n"
           },
-          "Represents": {
+          "represents": {
             "type": "array",
             "items": {
               "type": "string"
@@ -9972,9 +9995,9 @@
               "document",
               "uuid"
             ],
-            "description": "**Documents, names or uuids of parties represented by this participant (if this participant is a lawyer)**<br />\nUsed when the participant is created within a case (`POST /cases`); ignored in `POST /participants` (without case context).<br />\nA value that is not a guid is looked up as a document (CPF/CNPJ) or, failing that, as the exact name of an existing participant, client or collaborator; if no party is found, the request fails (400).<br />\nParticipants of the same case are created in ascending order of the number of `Represents`, so the represented parties may be created in the same request\n"
+            "description": "**Documents, names or uuids of parties represented by this participant (if this participant is a lawyer)**<br />\nUsed when the participant is created within a case (`POST /cases`); ignored in `POST /participants` (without case context).<br />\nA value that is not a guid is looked up as a document (CPF/CNPJ) or, failing that, as the exact name of an existing participant, client or collaborator; if no party is found, the request fails (400).<br />\nParticipants of the same case are created in ascending order of the number of `represents`, so the represented parties may be created in the same request\n"
           },
-          "LawyerOffice": {
+          "lawyerOffice": {
             "type": [
               "string",
               "null"
@@ -9982,29 +10005,29 @@
             "description": "**Escritório do advogado (se houver)**",
             "example": "<escritorio>"
           },
-          "Nature": {
+          "nature": {
             "example": "NATURAL_PERSON",
             "$ref": "#/components/schemas/TipoPessoa"
           },
-          "Position": {
+          "position": {
             "example": "ACTIVE",
             "$ref": "#/components/schemas/Position"
           },
-          "Addresses": {
+          "addresses": {
             "description": "**Participant's addresses**",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AddressEntityWrite"
             }
           },
-          "Emails": {
+          "emails": {
             "description": "**E-mails**",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailEntityWrite"
             }
           },
-          "Identities": {
+          "identities": {
             "description": "**Participant's identities**",
             "type": "array",
             "items": {
@@ -10018,51 +10041,51 @@
               ]
             }
           },
-          "PhoneNumbers": {
+          "phoneNumbers": {
             "description": "**Telefones**",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             }
           },
-          "Role": {
+          "role": {
             "$ref": "#/components/schemas/ParticipantRole"
           },
-          "CustomFields": {
+          "customFields": {
             "type": "object",
             "example": {},
             "description": "**Participant's custom fields**"
           },
-          "CaseType": {
+          "caseType": {
             "$ref": "#/components/schemas/RamosJudicial"
           },
-          "BusinessStructure": {
+          "businessStructure": {
             "type": [
               "string",
               "null"
             ],
             "description": ""
           },
-          "Dob": {
+          "dob": {
             "type": "string",
             "format": "date-time",
             "description": "**Date of birth (NATURAL_PERSON only)**\n"
           },
-          "Gender": {
+          "gender": {
             "$ref": "#/components/schemas/Gender",
             "description": "**Gender (NATURAL_PERSON only)**\n"
           },
-          "Nationality": {
+          "nationality": {
             "type": [
               "string",
               "null"
             ],
             "description": ""
           },
-          "MaritalStatus": {
+          "maritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus"
           },
-          "Occupation": {
+          "occupation": {
             "type": [
               "string",
               "null"
@@ -11107,23 +11130,23 @@
             "example": "<observacoes_do_processo>"
           },
           "locale": {
-            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação<br/>\n`No objeto, enviar: Id ou Name`<br/>\nHierarquia: país, estado e cidade (nessa ordem). Informar a cidade exige o estado, e informar o estado exige o país (400 caso contrário).<br/>\nItens `null` ou objetos sem `Id` e sem `Name` (e.g. `{ \"Id\": null }`) significam \"sem valor\" e são gravados como `null`; se o país não for informado, nenhum local é gravado\n",
+            "description": "**Utilizado para todos os casos menos os judiciais**<br/>\nLocal da Jurisdição de um caso, ou cumprimento da obrigação<br/>\n`No objeto, enviar: id ou name`<br/>\nHierarquia: país, estado e cidade (nessa ordem). Informar a cidade exige o estado, e informar o estado exige o país (400 caso contrário).<br/>\nItens `null` ou objetos sem `id` e sem `name` (e.g. `{ \"id\": null }`) significam \"sem valor\" e são gravados como `null`; se o país não for informado, nenhum local é gravado\n",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SimpleEntityWrite"
             },
             "example": [
               {
-                "Id": "<country_uuid>",
-                "Name": "<country_name>"
+                "id": "<country_uuid>",
+                "name": "<country_name>"
               },
               {
-                "Id": "<state_uuid>",
-                "Name": "<state_name>"
+                "id": "<state_uuid>",
+                "name": "<state_name>"
               },
               {
-                "Id": "<locality_uuid>",
-                "Name": "<locality_name>"
+                "id": "<locality_uuid>",
+                "name": "<locality_name>"
               }
             ]
           },
@@ -11881,6 +11904,60 @@
               "status": {
                 "$ref": "#/components/schemas/BooleanStatus"
               },
+              "externalServiceProviderId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Unique identifier of the external service provider the collaborator works for**; `null` when not linked to one"
+              },
+              "companyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Unique identifier of the company the collaborator works for**; `null` when not linked to one"
+              },
+              "affiliation": {
+                "type": "object",
+                "description": "**Who the collaborator works for** (read-only, always returned)<br/>\nThe external service provider, the company (name, CNPJ and e-mail of its branch) or, when the collaborator has no link, the law office itself, whose `id` is `null`.\n",
+                "properties": {
+                  "id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "format": "uuid",
+                    "description": "**Provider's or company's unique identifier**; `null` for the law office"
+                  },
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**Name**",
+                    "example": "<nome>"
+                  },
+                  "document": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**CPF or CNPJ**",
+                    "example": "<cpf_ou_cnpj>"
+                  },
+                  "email": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "description": "**E-mail**",
+                    "example": "<email>"
+                  }
+                }
+              },
               "addresses": {
                 "type": "array",
                 "items": {
@@ -11914,22 +11991,22 @@
         "title": "Collaborator",
         "type": "object",
         "properties": {
-          "CategoryId": {
+          "categoryId": {
             "type": "string",
             "format": "uuid",
             "description": "**Category's unique identifier**"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "description": "**Collaborator's name**",
             "example": "<nome>"
           },
-          "NickName": {
+          "nickName": {
             "type": "string",
             "description": "**Collaborator's nickname**",
             "example": "<apelido>"
           },
-          "Dob": {
+          "dob": {
             "type": [
               "string",
               "null"
@@ -11938,7 +12015,7 @@
             "description": "**Collaborator's date of birth**",
             "example": "<data_de_nascimento>"
           },
-          "AdmissionDate": {
+          "admissionDate": {
             "type": [
               "string",
               "null"
@@ -11947,7 +12024,7 @@
             "description": "**Collaborator's admission date**",
             "example": "<data_de_admissao>"
           },
-          "DemissionDate": {
+          "demissionDate": {
             "type": [
               "string",
               "null"
@@ -11956,17 +12033,17 @@
             "description": "**Collaborator's demission date**",
             "example": "<data_de_demissao>"
           },
-          "Gender": {
+          "gender": {
             "$ref": "#/components/schemas/Gender"
           },
-          "Identities": {
+          "identities": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/NaturalPersonIdentityEntityWrite"
             },
             "description": "**Collaborator's identities**"
           },
-          "Nationality": {
+          "nationality": {
             "type": [
               "string",
               "null"
@@ -11974,10 +12051,10 @@
             "description": "**Collaborator's nationality**",
             "example": "<nacionalidade>"
           },
-          "MaritalStatus": {
+          "maritalStatus": {
             "$ref": "#/components/schemas/MaritalStatus"
           },
-          "Occupation": {
+          "occupation": {
             "type": [
               "string",
               "null"
@@ -11985,34 +12062,50 @@
             "description": "**Collaborator's occupation**",
             "example": "<profissao>"
           },
-          "Role": {
+          "role": {
             "$ref": "#/components/schemas/VinculoEmpregaticio"
           },
-          "Status": {
+          "status": {
             "$ref": "#/components/schemas/BooleanStatus"
           },
-          "Addresses": {
+          "externalServiceProviderId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Unique identifier of the external service provider the collaborator works for**. Cannot be sent together with `companyId`"
+          },
+          "companyId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid",
+            "description": "**Unique identifier of the company the collaborator works for**. Cannot be sent together with `externalServiceProviderId`"
+          },
+          "addresses": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/AddressEntityWrite"
             },
             "description": "**Collaborator's addresses**"
           },
-          "Emails": {
+          "emails": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EmailEntityWrite"
             },
             "description": "**Collaborator's emails**"
           },
-          "PhoneNumbers": {
+          "phoneNumbers": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PhoneNumberEntityWrite"
             },
             "description": "**Collaborator's phone numbers**"
           },
-          "CustomFields": {
+          "customFields": {
             "type": "object",
             "description": "**Collaborator's custom fields**"
           }
@@ -12077,6 +12170,36 @@
                 "type": "object",
                 "example": {},
                 "description": "**Custom fields for this item**"
+              },
+              "collaborators": {
+                "type": "array",
+                "description": "**Collaborators linked to this external service provider** (read-only, ordered by name, including inactive ones)",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "**Collaborator's unique identifier**"
+                    },
+                    "name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "**Collaborator's name**",
+                      "example": "<nome>"
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "description": "**Collaborator's e-mail**",
+                      "example": "<email>"
+                    }
+                  }
+                }
               }
             }
           }
@@ -12762,73 +12885,6 @@
           }
         ]
       },
-      "MetaQuery": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "ResourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "Created": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "LastModified": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "Location": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "Version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceQuery": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "ExternalId": {
-            "example": "<external_id>",
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**External identifier**"
-          },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/MetaQuery"
-          }
-        }
-      },
       "Instance": {
         "title": "Instance",
         "type": "string",
@@ -12858,875 +12914,6 @@
         "type": "string",
         "example": "PAUTA_DE_JULGAMENTO",
         "description": "PAUTA_DE_JULGAMENTO<br/>\nDESPACHO<br/>\nSENTENCA<br/>\nACORDAO<br/>\nDECISAO_MONOCRATICA<br/>\nDECISAO_INTERLOCUTORIA<br/>\n"
-      },
-      "OfficialGazette": {
-        "title": "OfficialGazette",
-        "description": "",
-        "properties": {
-          "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "GazetteSection": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Page": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Link": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          }
-        }
-      },
-      "DecisionGet": {
-        "title": "Decision",
-        "type": "object",
-        "properties": {
-          "ResolutionType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Date": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2025-01-01T12:00:00.000Z",
-            "description": ""
-          },
-          "Judge": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "ResolutionContent": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Excerpt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "SummaryOfFindings": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "DocumentType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "JudgementType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "IssuePreservation": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "JudgementContent": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "MotivationForInvoluntaryDismissal": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "RulingOnProceduralIssuesGroup": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "RulingOnMotionsGroup": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "RulingOnProceduralIssues": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "RulingOnProceduralIssuesHierarchy": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "ProvisionalMeasures": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "TransferOfVenue": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "RejectionOfProceduralObjections": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "AdmissibilityReviewOfAppeal": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "RulingOnMotions": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "PeriodForFilingResponse": {
-            "type": [
-              "boolean",
-              "null"
-            ],
-            "description": ""
-          },
-          "ProvisionalMeasuresObservation": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Result": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "GrantedValue": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "description": ""
-          },
-          "FinePlaintiff": {
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/FineDefeatCostGet"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "FineDefendant": {
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/FineDefeatCostGet"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "FineThirdParties": {
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/FineDefeatCostGet"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "DefeatCostPlaintiff": {
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/FineDefeatCostGet"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "DefeatCostDefendant": {
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/FineDefeatCostGet"
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        }
-      },
-      "ClassificationTypeCNJ": {
-        "title": "ClassificationTypeCNJ",
-        "description": "",
-        "properties": {
-          "Id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "ClassificationCode": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "Title": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "CourtNonStandardizedEntryTitle": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "string de exemplo",
-            "description": ""
-          }
-        }
-      },
-      "TipoDePush-2": {
-        "title": "TipoDePush",
-        "type": "string",
-        "example": "PUBLICACAO",
-        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
-      },
-      "SimpleEntityQuery": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<nome_do_item>",
-            "description": "**The object name**"
-          }
-        }
-      },
-      "CaseFlattenQuery": {
-        "title": "Dados simplificados do caso (CaseFlatten)",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The case unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Title": {
-            "type": "string",
-            "description": "**Nome jurídico do caso**",
-            "example": "<titulo_do_processo>"
-          },
-          "Identities": {
-            "type": "array",
-            "description": "**Identificação do caso, como número CNJ, ids de sistemas externos, etc**",
-            "items": {
-              "$ref": "#/components/schemas/CaseIdentityEntityGet"
-            }
-          }
-        }
-      },
-      "CourtOrderEntity": {
-        "title": "CourtOrderEntity",
-        "description": "",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "CourtLevel": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/Instance"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "Court": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "CourtSystem": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "Region": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "JurisdictionTitle": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "CourtHouse": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "AdjudicatingCourt": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "Provider": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/PushProvider"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "ExternalCnjId": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "SearchTerms": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "DateOfAvailability": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "format": "date-time",
-                "example": "2025-01-01T12:00:00.000Z",
-                "description": ""
-              },
-              "PublicationDate": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "format": "date-time",
-                "example": "2025-01-01T12:00:00.000Z",
-                "description": ""
-              },
-              "CaptureDate": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "format": "date-time",
-                "example": "2025-01-01T12:00:00.000Z",
-                "description": ""
-              },
-              "Content": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "CourtOrderCommunicationChannel": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "CourtOrderServiceType": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CourtOrderServiceType"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "CourtOrderType": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CourtOrderType"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "OfficialGazette": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/OfficialGazette"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "CourtDecision": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/DecisionGet"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "ExternalCnjClassification": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/ClassificationTypeCNJ"
-                }
-              },
-              "Type": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/TipoDePush-2"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "EventType": {
-                "type": [
-                  "string",
-                  "null"
-                ],
-                "example": "string de exemplo",
-                "description": ""
-              },
-              "CaseProcedure": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntityQuery"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "CaseInfo": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CaseFlattenQuery"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "CreatedBy": {
-                "description": "**Funcionário que criou a publicação (null quando o e-mail gravado não corresponde a um funcionário)**",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntityQuery"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              },
-              "UpdatedBy": {
-                "description": "**Funcionário que atualizou a publicação por último (null quando nunca foi atualizada ou o e-mail gravado não corresponde a um funcionário)**",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/SimpleEntityQuery"
-                  },
-                  {
-                    "type": "null"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "CourtOrderEntityWrite": {
-        "title": "Publicação (CourtOrder)",
-        "description": "**Dados para criar uma publicação**<br/>\n`Type` não é enviado: toda publicação é criada com o tipo PUBLICACAO.\n",
-        "type": "object",
-        "required": [
-          "provider",
-          "content",
-          "publicationDate"
-        ],
-        "properties": {
-          "provider": {
-            "$ref": "#/components/schemas/PushProvider"
-          },
-          "content": {
-            "type": "string",
-            "example": "string de exemplo",
-            "description": "**Conteúdo da publicação**"
-          },
-          "publicationDate": {
-            "type": "string",
-            "format": "date-time",
-            "example": "2025-01-01T12:00:00.000Z",
-            "description": ""
-          },
-          "captureDate": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "2025-01-01T12:00:00.000Z",
-            "description": "**Quando não enviada, usa a data e hora atual**"
-          },
-          "dateOfAvailability": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "2025-01-01T12:00:00.000Z",
-            "description": ""
-          },
-          "searchTerms": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 400,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "court": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 400,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "courtSystem": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 255,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "region": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 400,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "jurisdictionTitle": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 400,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "courtHouse": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 255,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "adjudicatingCourt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 400,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "externalCnjId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 40,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "eventType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "maxLength": 255,
-            "example": "string de exemplo",
-            "description": ""
-          },
-          "courtLevel": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Instance"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "courtOrderCommunicationChannel": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "courtOrderServiceType": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CourtOrderServiceType"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "courtOrderType": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/CourtOrderType"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "officialGazette": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "maxLength": 400,
-                    "example": "<nome_do_diario>",
-                    "description": ""
-                  },
-                  "gazetteSection": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "maxLength": 255,
-                    "example": "<caderno>",
-                    "description": ""
-                  },
-                  "page": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "maxLength": 255,
-                    "example": "<pagina>",
-                    "description": ""
-                  },
-                  "link": {
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "maxLength": 255,
-                    "example": "<link_da_publicacao>",
-                    "description": ""
-                  }
-                }
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "externalCnjClassification": {
-            "type": "array",
-            "description": "**Movimentos CNJ da publicação. Cada código deve existir no cadastro de movimentos CNJ**",
-            "items": {
-              "type": "object",
-              "required": [
-                "classificationCode"
-              ],
-              "properties": {
-                "classificationCode": {
-                  "type": "string",
-                  "example": "<codigo_do_movimento_cnj>",
-                  "description": "**Código do movimento CNJ (número inteiro)**"
-                }
-              }
-            }
-          },
-          "caseInfo": {
-            "description": "**Processo vinculado à publicação**<br/>\n`Apenas o Id é utilizado e o processo deve existir`\n",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/SimpleObjectIdWrite"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        }
       },
       "OfficialGazetteGet": {
         "title": "OfficialGazette",
@@ -13805,6 +12992,12 @@
             "description": ""
           }
         }
+      },
+      "TipoDePush-2": {
+        "title": "TipoDePush",
+        "type": "string",
+        "example": "PUBLICACAO",
+        "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
       },
       "CaseFlattenGet": {
         "title": "Dados simplificados do caso (CaseFlatten)",
@@ -14073,7 +13266,501 @@
           }
         ]
       },
-      "DocketEntryEntity": {
+      "CourtOrderEntityWrite": {
+        "title": "Publicação (CourtOrder)",
+        "description": "**Dados para criar uma publicação**<br/>\n`Type` não é enviado: toda publicação é criada com o tipo PUBLICACAO.\n",
+        "type": "object",
+        "required": [
+          "provider",
+          "content",
+          "publicationDate"
+        ],
+        "properties": {
+          "provider": {
+            "$ref": "#/components/schemas/PushProvider"
+          },
+          "content": {
+            "type": "string",
+            "example": "string de exemplo",
+            "description": "**Conteúdo da publicação**"
+          },
+          "publicationDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": ""
+          },
+          "captureDate": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": "**Quando não enviada, usa a data e hora atual**"
+          },
+          "dateOfAvailability": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": ""
+          },
+          "searchTerms": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "court": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtSystem": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "region": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "jurisdictionTitle": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtHouse": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "adjudicatingCourt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 400,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "externalCnjId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 40,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "eventType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 255,
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "courtLevel": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Instance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderCommunicationChannel": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderCommunicationChannel"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderServiceType": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderServiceType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "courtOrderType": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CourtOrderType"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "officialGazette": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 400,
+                    "example": "<nome_do_diario>",
+                    "description": ""
+                  },
+                  "gazetteSection": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<caderno>",
+                    "description": ""
+                  },
+                  "page": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<pagina>",
+                    "description": ""
+                  },
+                  "link": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "maxLength": 255,
+                    "example": "<link_da_publicacao>",
+                    "description": ""
+                  }
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "externalCnjClassification": {
+            "type": "array",
+            "description": "**Movimentos CNJ da publicação. Cada código deve existir no cadastro de movimentos CNJ**",
+            "items": {
+              "type": "object",
+              "required": [
+                "classificationCode"
+              ],
+              "properties": {
+                "classificationCode": {
+                  "type": "string",
+                  "example": "<codigo_do_movimento_cnj>",
+                  "description": "**Código do movimento CNJ (número inteiro)**"
+                }
+              }
+            }
+          },
+          "caseInfo": {
+            "description": "**Processo vinculado à publicação**<br/>\n`Apenas o Id é utilizado e o processo deve existir`\n",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/SimpleObjectIdWrite"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "DecisionGet": {
+        "title": "Decision",
+        "type": "object",
+        "properties": {
+          "resolutionType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-01-01T12:00:00.000Z",
+            "description": ""
+          },
+          "judge": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "resolutionContent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "excerpt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "summaryOfFindings": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "documentType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "judgementType": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "issuePreservation": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "judgementContent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "motivationForInvoluntaryDismissal": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "rulingOnProceduralIssuesGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "rulingOnMotionsGroup": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "rulingOnProceduralIssues": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "rulingOnProceduralIssuesHierarchy": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "provisionalMeasures": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "transferOfVenue": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "rejectionOfProceduralObjections": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "admissibilityReviewOfAppeal": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "rulingOnMotions": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "periodForFilingResponse": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": ""
+          },
+          "provisionalMeasuresObservation": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "result": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "string de exemplo",
+            "description": ""
+          },
+          "grantedValue": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": ""
+          },
+          "finePlaintiff": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FineDefeatCostGet"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fineDefendant": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FineDefeatCostGet"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "fineThirdParties": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FineDefeatCostGet"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "defeatCostPlaintiff": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FineDefeatCostGet"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "defeatCostDefendant": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FineDefeatCostGet"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "DocketEntryEntityGet": {
         "title": "DocketEntryEntity",
         "description": "",
         "allOf": [
@@ -14083,7 +13770,7 @@
           {
             "type": "object",
             "properties": {
-              "Provider": {
+              "provider": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/PushProvider"
@@ -14093,7 +13780,7 @@
                   }
                 ]
               },
-              "ExternalCnjId": {
+              "externalCnjId": {
                 "type": [
                   "string",
                   "null"
@@ -14101,7 +13788,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "CourtSystem": {
+              "courtSystem": {
                 "type": [
                   "string",
                   "null"
@@ -14109,7 +13796,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "CourtLevel": {
+              "courtLevel": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/Instance"
@@ -14119,7 +13806,7 @@
                   }
                 ]
               },
-              "Court": {
+              "court": {
                 "type": [
                   "string",
                   "null"
@@ -14127,7 +13814,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "Region": {
+              "region": {
                 "type": [
                   "string",
                   "null"
@@ -14135,7 +13822,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "JurisdictionTitle": {
+              "jurisdictionTitle": {
                 "type": [
                   "string",
                   "null"
@@ -14143,7 +13830,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "CourtHouse": {
+              "courtHouse": {
                 "type": [
                   "string",
                   "null"
@@ -14151,7 +13838,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "AdjudicatingCourt": {
+              "adjudicatingCourt": {
                 "type": [
                   "string",
                   "null"
@@ -14159,7 +13846,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "DateOfAvailability": {
+              "dateOfAvailability": {
                 "type": [
                   "string",
                   "null"
@@ -14168,7 +13855,7 @@
                 "example": "2025-01-01T12:00:00.000Z",
                 "description": ""
               },
-              "DocketEntryDate": {
+              "docketEntryDate": {
                 "type": [
                   "string",
                   "null"
@@ -14177,7 +13864,7 @@
                 "example": "2025-01-01T12:00:00.000Z",
                 "description": ""
               },
-              "CaptureDate": {
+              "captureDate": {
                 "type": [
                   "string",
                   "null"
@@ -14186,13 +13873,13 @@
                 "example": "2025-01-01T12:00:00.000Z",
                 "description": ""
               },
-              "ExternalCnjClassification": {
+              "externalCnjClassification": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/ClassificationTypeCNJ"
+                  "$ref": "#/components/schemas/ClassificationTypeCNJGet"
                 }
               },
-              "CaseProcedure": {
+              "caseProcedure": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/SimpleEntityGet"
@@ -14202,7 +13889,7 @@
                   }
                 ]
               },
-              "Content": {
+              "content": {
                 "type": [
                   "string",
                   "null"
@@ -14210,7 +13897,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "CourtDecision": {
+              "courtDecision": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/DecisionGet"
@@ -14220,7 +13907,7 @@
                   }
                 ]
               },
-              "Type": {
+              "type": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/TipoDePush"
@@ -14230,7 +13917,7 @@
                   }
                 ]
               },
-              "EventType": {
+              "eventType": {
                 "type": [
                   "string",
                   "null"
@@ -14238,7 +13925,7 @@
                 "example": "string de exemplo",
                 "description": ""
               },
-              "CaseInfo": {
+              "caseInfo": {
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/CaseFlattenGet"
@@ -14262,7 +13949,7 @@
           {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "object",
                 "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
                 "properties": {
@@ -14284,7 +13971,7 @@
                   "en-US": "<name_en_us>"
                 }
               },
-              "Instance": {
+              "instance": {
                 "type": [
                   "integer",
                   "null"
@@ -14292,7 +13979,7 @@
                 "example": 1,
                 "description": "**Instance number**<br />Filterable"
               },
-              "IsClosure": {
+              "isClosure": {
                 "type": [
                   "boolean",
                   "null"
@@ -14314,13 +14001,13 @@
           {
             "type": "object",
             "properties": {
-              "TrialTypeId": {
+              "trialTypeId": {
                 "type": "string",
                 "format": "uuid",
                 "example": "<trial_type_uuid>",
                 "description": "**Trial type unique identifier**<br />Filterable"
               },
-              "Name": {
+              "name": {
                 "type": "object",
                 "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
                 "properties": {
@@ -14356,7 +14043,7 @@
           {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": "object",
                 "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
                 "properties": {
@@ -14378,7 +14065,7 @@
                   "en-US": "<name_en_us>"
                 }
               },
-              "Acceptance": {
+              "acceptance": {
                 "type": "object",
                 "description": "**Accepted / not accepted labels**",
                 "properties": {
@@ -14400,7 +14087,7 @@
                   "no": "<not_accepted_label>"
                 }
               },
-              "Children": {
+              "children": {
                 "type": "array",
                 "description": "**Child procedural matters**<br />Only root items are returned in the list; children are nested here",
                 "items": {
@@ -14421,7 +14108,7 @@
           {
             "type": "object",
             "properties": {
-              "Name": {
+              "name": {
                 "type": [
                   "string",
                   "null"
@@ -14443,13 +14130,13 @@
           {
             "type": "object",
             "properties": {
-              "DecisionTypeId": {
+              "decisionTypeId": {
                 "type": "string",
                 "format": "uuid",
                 "example": "<decision_type_uuid>",
                 "description": "**Decision type unique identifier**<br />Filterable"
               },
-              "Name": {
+              "name": {
                 "type": "object",
                 "description": "**Localized name**<br />Chaves por idioma (`pt-BR`, `en-US`)",
                 "properties": {

@@ -4,7 +4,7 @@ allOf:
   - $ref: TaskContentWrite.yaml
   - type: object
     properties:
-      Descendants:
+      descendants:
         type: array
         items:
           $ref: TaskContentDescendantsWrite.yaml

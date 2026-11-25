@@ -1,127 +1,129 @@
 title: Dados da tarefa
 type: object
 properties:
-  ParentTaskId:
+  parentTaskId:
     type: [string, "null"]
     format: uuid
     description: "**Unique identifier of parent task**"
-  Type:
+  type:
     $ref: ../../enums/common/TaskType.yaml
     example: COURT_HEARING
-  SubType:
+  subType:
     type: [string, "null"]
     description: "**Subtype of the task**"
-  Title:
+  title:
     type: [string, "null"]
     description: "**Titulo**"
-  Description:
+  description:
     type: [string, "null"]
     description: "**Descrição**"
-  StartDate:
+  startDate:
     type: [string, "null"]
     format: date-time
     description: |
       **Data de Início**<br/>
       _Date in UTC timezone_
-  DueDate:
+  dueDate:
     type: [string, "null"]
     format: date-time
     description: |
       **Data de Vencimento**<br/>
       _Date in UTC timezone_
-  CreatedBy:
-    $ref: SimpleEntityQuery.yaml
+  createdBy:
+    $ref: SimpleEntityGet.yaml
     description: "**Criado por**"
-  UpdatedBy:
-    $ref: SimpleEntityQuery.yaml
+  updatedBy:
+    $ref: SimpleEntityGet.yaml
     description: "**Atualizado por**"
-  CompletedAt:
+  completedAt:
     type: [string, "null"]
     format: date-time
     description: "**Concluído em**"
-  CompletedBy:
-    $ref: SimpleEntityQuery.yaml
+  completedBy:
+    $ref: SimpleEntityGet.yaml
     description: "**Concluído por**"
-  Locale:
+  locale:
     type: [string, "null"]
     description: "**Local**"
-  TaskCode:
+  taskCode:
     type: [string, "null"]
     description: "**Código da Tarefa**"
-  ActivityCode:
+  activityCode:
     type: [string, "null"]
     description: "**Código da Atividade**"
-  TaskTemplate:
-    $ref: TaskTemplateSimpleEntityQuery.yaml
+  taskTemplate:
+    $ref: TaskTemplateSimpleEntityGet.yaml
     description: "**Modelo de Tarefa**"
-  Owner:
-    $ref: SimpleEntityQuery.yaml
+  owner:
+    $ref: SimpleEntityGet.yaml
     description: "**Responsável**"
-  OtherParticipants:
+  otherParticipants:
     description: "**Outros Participantes**"
     type: array
     items:
-      $ref: SimpleEntityQuery.yaml
-  Status:
+      $ref: SimpleEntityGet.yaml
+  status:
     $ref: ../../enums/common/StatusTarefa.yaml
     example: CREATED
-  Priority:
+  priority:
     example: LOW
     $ref: ../../enums/common/Prioridade.yaml
-  ConclusionNotes:
+  conclusionNotes:
     type: [string, "null"]
     description: "**Notas de Conclusão**"
-  CustomFields:
+  customFields:
     type: object
     example: {}
     description: "**Tasks's custom fields**"
-  Case:
+  case:
     description: "Caso de uma tarefa"
     type: object
     properties:
-      Id:
+      id:
         type: string
         format: uuid
         description: "**Case's unique identifier**"
-      Title:
+      title:
         type: string
         description: "**Case title**"
-      Identities:
+      identities:
         type: array
         items:
-          $ref: LegacyIdentityEntityQuery.yaml
-      Group:
+          $ref: LegacyIdentityEntityGet.yaml
+      group:
         type: string
         description: "Case's group"
-      ClientName:
+      clientName:
         type: string
         description: "Case's client name"
-      PrincipalActivePosition:
+      principalActivePosition:
         type: string
         description: "Case's principal active position"
-      PrincipalPassivePosition:
+      principalPassivePosition:
         type: string
         description: "Case's principal passive position"
-      Locale:
+      locale:
         type: string
         description: "Case's locale"
-      CourtVenue:
+      courtVenue:
         type: string
         description: "Case's court venue"
-      Type:
+      type: 
         type: string
         description: "Case's type"
-  Identities:
+  identities:
     type: array
     items:
-      $ref: LegacyIdentityEntityQuery.yaml
-  HasAncestor:
+      $ref: LegacyIdentityEntityGet.yaml
+  hasAncestor:
     type: boolean
     description: "**Indicates if the task has ancestor tasks**"
-  HasDescendants:
+  hasDescendants:
     type: boolean
     description: "**Indicates if the task has descendant tasks**"
-  Links:
+  links:
     type: array
     items:
-      $ref: ../v2_case-management/PushFlattenQuery.yaml
+      $ref: ../v2_case-management/PushFlattenGet.yaml
+  taskHierarchy:
+    $ref: TaskHierarchyGet.yaml

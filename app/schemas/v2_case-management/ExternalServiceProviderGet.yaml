@@ -32,3 +32,21 @@ allOf:
         type: object
         example: {}
         description: "**Custom fields for this item**"
+      collaborators:
+        type: array
+        description: "**Collaborators linked to this external service provider** (read-only, ordered by name, including inactive ones)"
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              description: "**Collaborator's unique identifier**"
+            name:
+              type: [string, "null"]
+              description: "**Collaborator's name**"
+              example: <nome>
+            email:
+              type: [string, "null"]
+              description: "**Collaborator's e-mail**"
+              example: <email>

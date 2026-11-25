@@ -66,7 +66,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TaskEntityRetrieve"
+                  "$ref": "#/components/schemas/TaskEntityGet"
                 }
               }
             }
@@ -257,7 +257,7 @@
                         "Resources": {
                           "type": "array",
                           "items": {
-                            "$ref": "#/components/schemas/TaskEntityQuery"
+                            "$ref": "#/components/schemas/TaskEntityGet"
                           }
                         }
                       }
@@ -351,7 +351,7 @@
       }
     },
     "schemas": {
-      "MetaRetrieve": {
+      "MetaGet": {
         "title": "Meta",
         "type": "object",
         "description": "**Resource's metadata**",
@@ -394,7 +394,7 @@
           }
         }
       },
-      "ResourceRetrieve": {
+      "ResourceGet": {
         "title": "Resource",
         "type": "object",
         "properties": {
@@ -414,7 +414,7 @@
           },
           "meta": {
             "description": "**Entity's information**",
-            "$ref": "#/components/schemas/MetaRetrieve"
+            "$ref": "#/components/schemas/MetaGet"
           }
         }
       },
@@ -423,7 +423,7 @@
         "type": "string",
         "description": "**Task type**<br/>\nMEETING<br/>\nCOURT_HEARING<br/>\nDEADLINE<br/>\nFIELD_TASK<br/>\n\n**Definitions:**<br />\n**COURT_HEARING (Audiência):** A session in which a case is heard in court. <br />\n**MEETING (Compromisso):** An assembly of people for a particular purpose, especially for formal discussion<br />\n**FIELD_TASK (Diligência):** Specific measure or action taken during a case (litigation, transactional or otherwise) to gather information, evidence, or ensure compliance with procedural requirements. <br />\n**DEADLINE (Prazo):** A date or time by which you have to do or complete something. <br />\n"
       },
-      "SimpleEntityRetrieve": {
+      "SimpleEntityGet": {
         "title": "Identificador",
         "type": "object",
         "properties": {
@@ -443,12 +443,12 @@
           }
         }
       },
-      "TaskTemplateSimpleEntityRetrieve": {
+      "TaskTemplateSimpleEntityGet": {
         "title": "Dados da tarefa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityGet",
             "type": "object",
             "properties": {
               "interviewTemplateLink": {
@@ -476,7 +476,7 @@
         "example": "<provider_type>",
         "description": "**The identity provider**<br/>\nLaw Office<br/>\nLaw Office ID\n"
       },
-      "LegacyIdentityEntityRetrieve": {
+      "LegacyIdentityEntityGet": {
         "title": "Identidade",
         "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
         "type": "object",
@@ -506,7 +506,7 @@
         "example": "ANDAMENTO",
         "description": "PUBLICACAO<br/>\nANDAMENTO<br/>\n"
       },
-      "PushFlattenRetrieve": {
+      "PushFlattenGet": {
         "title": "Dados simplificados do push (PushFlatten)",
         "type": "object",
         "properties": {
@@ -533,7 +533,7 @@
           }
         }
       },
-      "TaskContentRetrieve": {
+      "TaskContentGet": {
         "title": "Dados da tarefa",
         "type": "object",
         "properties": {
@@ -587,11 +587,11 @@
             "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
           },
           "createdBy": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityGet",
             "description": "**Criado por**"
           },
           "updatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityGet",
             "description": "**Atualizado por**"
           },
           "completedAt": {
@@ -603,7 +603,7 @@
             "description": "**Concluído em**"
           },
           "completedBy": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityGet",
             "description": "**Concluído por**"
           },
           "locale": {
@@ -628,18 +628,18 @@
             "description": "**Código da Atividade**"
           },
           "taskTemplate": {
-            "$ref": "#/components/schemas/TaskTemplateSimpleEntityRetrieve",
+            "$ref": "#/components/schemas/TaskTemplateSimpleEntityGet",
             "description": "**Modelo de Tarefa**"
           },
           "owner": {
-            "$ref": "#/components/schemas/SimpleEntityRetrieve",
+            "$ref": "#/components/schemas/SimpleEntityGet",
             "description": "**Responsável**"
           },
           "otherParticipants": {
             "description": "**Outros Participantes**",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/SimpleEntityRetrieve"
+              "$ref": "#/components/schemas/SimpleEntityGet"
             }
           },
           "status": {
@@ -678,7 +678,7 @@
               "identities": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/LegacyIdentityEntityRetrieve"
+                  "$ref": "#/components/schemas/LegacyIdentityEntityGet"
                 }
               },
               "group": {
@@ -714,7 +714,7 @@
           "identities": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LegacyIdentityEntityRetrieve"
+              "$ref": "#/components/schemas/LegacyIdentityEntityGet"
             }
           },
           "hasAncestor": {
@@ -728,55 +728,55 @@
           "links": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/PushFlattenRetrieve"
+              "$ref": "#/components/schemas/PushFlattenGet"
             }
           },
           "taskHierarchy": {
-            "$ref": "#/components/schemas/TaskHierarchyRetrieve"
+            "$ref": "#/components/schemas/TaskHierarchyGet"
           }
         }
       },
-      "TaskContentDescendantsRetrieve": {
+      "TaskContentDescendantsGet": {
         "title": "Dados da tarefa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/TaskContentRetrieve"
+            "$ref": "#/components/schemas/TaskContentGet"
           }
         ]
       },
-      "TaskHierarchyRetrieve": {
+      "TaskHierarchyGet": {
         "title": "Dados da tarefa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/TaskContentRetrieve"
+            "$ref": "#/components/schemas/TaskContentGet"
           },
           {
             "type": "object",
             "properties": {
-              "Descendants": {
+              "descendants": {
                 "type": "array",
                 "items": {
-                  "$ref": "#/components/schemas/TaskContentDescendantsRetrieve"
+                  "$ref": "#/components/schemas/TaskContentDescendantsGet"
                 }
               }
             }
           }
         ]
       },
-      "TaskEntityRetrieve": {
+      "TaskEntityGet": {
         "title": "Tarefa",
         "type": "object",
         "allOf": [
           {
-            "$ref": "#/components/schemas/ResourceRetrieve"
+            "$ref": "#/components/schemas/ResourceGet"
           },
           {
             "type": "object",
             "properties": {
-              "Data": {
-                "$ref": "#/components/schemas/TaskContentRetrieve"
+              "data": {
+                "$ref": "#/components/schemas/TaskContentGet"
               }
             }
           }
@@ -872,387 +872,17 @@
           }
         }
       },
-      "MetaQuery": {
-        "title": "Meta",
-        "type": "object",
-        "description": "**Resource's metadata**",
-        "properties": {
-          "ResourceType": {
-            "type": "string",
-            "description": "**The resource type**<br />\ne.g. Case, Task, Entry, etc.\n",
-            "example": "<tipo_do_recurso>"
-          },
-          "Created": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_criacao_do_recurso>",
-            "description": "**The resource creation date**"
-          },
-          "LastModified": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "example": "<data_de_atualizacao_do_recurso>",
-            "description": "**The resource last update time**"
-          },
-          "Location": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<local_do_recurso>",
-            "description": "**The resource url**"
-          },
-          "Version": {
-            "type": "string",
-            "example": "<versao_do_recurso>",
-            "description": "**The resource version**"
-          }
-        }
-      },
-      "ResourceQuery": {
-        "title": "Resource",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**Object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "ExternalId": {
-            "example": "<external_id>",
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**External identifier**"
-          },
-          "Meta": {
-            "description": "**Informações relacionadas à essa entity**",
-            "$ref": "#/components/schemas/MetaQuery"
-          }
-        }
-      },
-      "SimpleEntityQuery": {
-        "title": "Identificador",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": "string",
-            "format": "uuid",
-            "description": "**The object unique identifier**",
-            "example": "<global_unique_identifier>"
-          },
-          "Name": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "example": "<nome_do_item>",
-            "description": "**The object name**"
-          }
-        }
-      },
-      "TaskTemplateSimpleEntityQuery": {
-        "title": "Dados da tarefa",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
-            "type": "object",
-            "properties": {
-              "InterviewTemplateLink": {
-                "type": "string"
-              }
-            }
-          }
-        ]
-      },
-      "LegacyIdentityEntityQuery": {
-        "title": "Identidade",
-        "description": "**Identificação do caso, como número CNJ, NIRE, Número do contrato, ids de sistemas externos, etc**",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**The unique identifier of this value**",
-            "example": "<global_unique_identifier>"
-          },
-          "IdentityProviderType": {
-            "$ref": "#/components/schemas/LegacyIdentityProviderType"
-          },
-          "Value": {
-            "type": "string",
-            "description": "**The identity value**",
-            "example": "<value>"
-          }
-        }
-      },
-      "PushFlattenQuery": {
-        "title": "Dados simplificados do push (PushFlatten)",
-        "type": "object",
-        "properties": {
-          "Id": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**Identificador do push (publicação ou andamento)**",
-            "example": "<global_unique_identifier>"
-          },
-          "Type": {
-            "$ref": "#/components/schemas/TipoDePush"
-          },
-          "Date": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "description": "**Data**",
-            "example": "<data>"
-          }
-        }
-      },
-      "TaskContentQuery": {
-        "title": "Dados da tarefa",
-        "type": "object",
-        "properties": {
-          "ParentTaskId": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "uuid",
-            "description": "**Unique identifier of parent task**"
-          },
-          "Type": {
-            "$ref": "#/components/schemas/TaskType",
-            "example": "COURT_HEARING"
-          },
-          "SubType": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Subtype of the task**"
-          },
-          "Title": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Titulo**"
-          },
-          "Description": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Descrição**"
-          },
-          "StartDate": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "description": "**Data de Início**<br/>\n_Date in UTC timezone_\n"
-          },
-          "DueDate": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "description": "**Data de Vencimento**<br/>\n_Date in UTC timezone_\n"
-          },
-          "CreatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
-            "description": "**Criado por**"
-          },
-          "UpdatedBy": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
-            "description": "**Atualizado por**"
-          },
-          "CompletedAt": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time",
-            "description": "**Concluído em**"
-          },
-          "CompletedBy": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
-            "description": "**Concluído por**"
-          },
-          "Locale": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Local**"
-          },
-          "TaskCode": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Código da Tarefa**"
-          },
-          "ActivityCode": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Código da Atividade**"
-          },
-          "TaskTemplate": {
-            "$ref": "#/components/schemas/TaskTemplateSimpleEntityQuery",
-            "description": "**Modelo de Tarefa**"
-          },
-          "Owner": {
-            "$ref": "#/components/schemas/SimpleEntityQuery",
-            "description": "**Responsável**"
-          },
-          "OtherParticipants": {
-            "description": "**Outros Participantes**",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SimpleEntityQuery"
-            }
-          },
-          "Status": {
-            "$ref": "#/components/schemas/StatusTarefa",
-            "example": "CREATED"
-          },
-          "Priority": {
-            "example": "LOW",
-            "$ref": "#/components/schemas/Prioridade"
-          },
-          "ConclusionNotes": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "description": "**Notas de Conclusão**"
-          },
-          "CustomFields": {
-            "type": "object",
-            "example": {},
-            "description": "**Tasks's custom fields**"
-          },
-          "Case": {
-            "description": "Caso de uma tarefa",
-            "type": "object",
-            "properties": {
-              "Id": {
-                "type": "string",
-                "format": "uuid",
-                "description": "**Case's unique identifier**"
-              },
-              "Title": {
-                "type": "string",
-                "description": "**Case title**"
-              },
-              "Identities": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
-                }
-              },
-              "Group": {
-                "type": "string",
-                "description": "Case's group"
-              },
-              "ClientName": {
-                "type": "string",
-                "description": "Case's client name"
-              },
-              "PrincipalActivePosition": {
-                "type": "string",
-                "description": "Case's principal active position"
-              },
-              "PrincipalPassivePosition": {
-                "type": "string",
-                "description": "Case's principal passive position"
-              },
-              "Locale": {
-                "type": "string",
-                "description": "Case's locale"
-              },
-              "CourtVenue": {
-                "type": "string",
-                "description": "Case's court venue"
-              },
-              "Type": {
-                "type": "string",
-                "description": "Case's type"
-              }
-            }
-          },
-          "Identities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LegacyIdentityEntityQuery"
-            }
-          },
-          "HasAncestor": {
-            "type": "boolean",
-            "description": "**Indicates if the task has ancestor tasks**"
-          },
-          "HasDescendants": {
-            "type": "boolean",
-            "description": "**Indicates if the task has descendant tasks**"
-          },
-          "Links": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PushFlattenQuery"
-            }
-          }
-        }
-      },
-      "TaskEntityQuery": {
-        "title": "Tarefa",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/ResourceQuery"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "Data": {
-                "$ref": "#/components/schemas/TaskContentQuery"
-              }
-            }
-          }
-        ]
-      },
       "SimpleEntityWrite": {
         "title": "Identificador",
         "type": "object",
         "properties": {
-          "Id": {
+          "id": {
             "type": "string",
             "format": "uuid",
             "description": "**The item unique identifier**",
             "example": "<global_unique_identifier>"
           },
-          "Name": {
+          "name": {
             "type": "string",
             "example": "<nome_do_item>",
             "description": "**The item name**"
@@ -1263,7 +893,7 @@
         "title": "Dados da tarefa",
         "type": "object",
         "properties": {
-          "ParentTaskId": {
+          "parentTaskId": {
             "type": [
               "string",
               null
@@ -1272,11 +902,11 @@
             "description": "**Unique identifier of parent task**",
             "example": null
           },
-          "Type": {
+          "type": {
             "$ref": "#/components/schemas/TaskType",
             "example": "COURT_HEARING"
           },
-          "Title": {
+          "title": {
             "type": [
               "string",
               null
@@ -1284,7 +914,7 @@
             "example": "<title>",
             "description": "**Titulo**"
           },
-          "Description": {
+          "description": {
             "type": [
               "string",
               null
@@ -1292,7 +922,7 @@
             "example": "<description>",
             "description": "**Descrição**"
           },
-          "StartDate": {
+          "startDate": {
             "type": [
               "string",
               null
@@ -1301,7 +931,7 @@
             "example": "<start_date>",
             "description": "**Data de Início**<br/>\n_Date must be send in UTC timezone_\n"
           },
-          "DueDate": {
+          "dueDate": {
             "type": [
               "string",
               null
@@ -1310,7 +940,7 @@
             "example": "<due_date>",
             "description": "**Data de Vencimento**<br/>\n_Date must be send in UTC timezone_\n"
           },
-          "Locale": {
+          "locale": {
             "type": [
               "string",
               null
@@ -1318,7 +948,7 @@
             "example": "<locale>",
             "description": "**Local**"
           },
-          "TaskCode": {
+          "taskCode": {
             "type": [
               "string",
               null
@@ -1326,7 +956,7 @@
             "example": "<task_code>",
             "description": "**Código da Tarefa**"
           },
-          "ActivityCode": {
+          "activityCode": {
             "type": [
               "string",
               null
@@ -1334,39 +964,39 @@
             "example": "<activity_code>",
             "description": "**Código da Atividade**"
           },
-          "TaskTemplate": {
+          "taskTemplate": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**Modelo de Tarefa**"
           },
-          "Owner": {
+          "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**Responsável**"
           },
-          "OtherParticipants": {
+          "otherParticipants": {
             "description": "**Outros Participantes**",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SimpleEntityWrite"
             }
           },
-          "Status": {
+          "status": {
             "$ref": "#/components/schemas/StatusTarefa",
             "example": "<status>"
           },
-          "Priority": {
+          "priority": {
             "example": "<priority>",
             "$ref": "#/components/schemas/Prioridade"
           },
-          "CustomFields": {
+          "customFields": {
             "type": "object",
             "example": {},
             "description": "**Tasks's custom fields**"
           },
-          "Case": {
+          "case": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
             "description": "**Processo**"
           },
-          "TaskHierarchy": {
+          "taskHierarchy": {
             "$ref": "#/components/schemas/TaskHierarchyWrite"
           }
         }
@@ -1390,7 +1020,7 @@
           {
             "type": "object",
             "properties": {
-              "Descendants": {
+              "descendants": {
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TaskContentDescendantsWrite"
@@ -1407,7 +1037,7 @@
           {
             "type": "object",
             "properties": {
-              "Data": {
+              "data": {
                 "$ref": "#/components/schemas/TaskContentWrite"
               }
             }

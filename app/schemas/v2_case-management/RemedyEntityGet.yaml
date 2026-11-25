@@ -4,7 +4,7 @@ allOf:
   - $ref: ../../scim/ResourceGet.yaml
   - type: object
     properties:
-      Name:
+      name:
         type: [string, "null"]
         example: <remedy_name>
         description: "**Remedy name**<br />Filterable by `Name.pt-BR`"

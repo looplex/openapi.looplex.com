@@ -4,8 +4,8 @@ summary: "/addresses"
 description: |
   **Create Address**<br />
   Item created's guid is returned in **Location header**<br />
-  `StreetAddress`, `Type` (valor de `AddressType`, sem diferenciar maiúsculas), `Region.Name` (sigla do estado, 2 letras) e `PostalCode` (8 dígitos, qualquer máscara) são obrigatórios.<br />
-  **Atenção:** o contexto do endereço (`Context`) não é lido do corpo da requisição (`[JsonIgnore]`) e a criação exige `Context` e `ContextId`; conferido apenas no código, não em execução
+  `streetAddress`, `type` (valor de `AddressType`, sem diferenciar maiúsculas), `region.name` (sigla do estado, 2 letras) e `postalCode` (8 dígitos, qualquer máscara) são obrigatórios.<br />
+  **Atenção:** o contexto do endereço (`context`) não é lido do corpo da requisição (`[JsonIgnore]`) e a criação exige `context` e `contextId`; conferido apenas no código, não em execução
 operationId: addresses-post
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

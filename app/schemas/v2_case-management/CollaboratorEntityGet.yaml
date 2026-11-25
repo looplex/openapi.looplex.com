@@ -52,6 +52,36 @@ allOf:
         $ref: ../../enums/v2_case-management/VinculoEmpregaticio.yaml
       status:
         $ref: ../../enums/v2_case-management/BooleanStatus.yaml
+      externalServiceProviderId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Unique identifier of the external service provider the collaborator works for**; `null` when not linked to one"
+      companyId:
+        type: [string, "null"]
+        format: uuid
+        description: "**Unique identifier of the company the collaborator works for**; `null` when not linked to one"
+      affiliation:
+        type: object
+        description: |
+          **Who the collaborator works for** (read-only, always returned)<br/>
+          The external service provider, the company (name, CNPJ and e-mail of its branch) or, when the collaborator has no link, the law office itself, whose `id` is `null`.
+        properties:
+          id:
+            type: [string, "null"]
+            format: uuid
+            description: "**Provider's or company's unique identifier**; `null` for the law office"
+          name:
+            type: [string, "null"]
+            description: "**Name**"
+            example: <nome>
+          document:
+            type: [string, "null"]
+            description: "**CPF or CNPJ**"
+            example: <cpf_ou_cnpj>
+          email:
+            type: [string, "null"]
+            description: "**E-mail**"
+            example: <email>
       addresses:
         type: array
         items:
