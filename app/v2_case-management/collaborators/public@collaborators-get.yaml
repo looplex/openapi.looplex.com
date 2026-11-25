@@ -3,7 +3,8 @@ tags:
 summary: "/collaborators"
 description: |
   **Fetch items paginated**<br />
-  Valid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`
+  Valid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`, `Emails.Value`, `ExternalServiceProviderId`, `CompanyId`, `Affiliation.Id`, `Affiliation.Name`, `Affiliation.Document`, `Affiliation.Email`<br />
+  Collaborators of the law office itself (no provider or company): `Affiliation.Id eq "null"` (`null` must be quoted; `pr` is not supported).
 operationId: collaborators-get
 parameters:
   - $ref: ../../parameters/common/OcpApimSubscriptionKey.yaml

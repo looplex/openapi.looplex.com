@@ -2159,7 +2159,7 @@
           "Collaborator"
         ],
         "summary": "/collaborators",
-        "description": "**Fetch items paginated**<br />\nValid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`\n",
+        "description": "**Fetch items paginated**<br />\nValid filter properties: `Id`, `Name`, `NickName`, `Dob`, `Gender`, `MaritalStatus`, `Occupation`, `AdmissionDate`, `DemissionDate`, `Status`, `Role`, `Emails.Value`, `ExternalServiceProviderId`, `CompanyId`, `Affiliation.Id`, `Affiliation.Name`, `Affiliation.Document`, `Affiliation.Email`<br />\nCollaborators of the law office itself (no provider or company): `Affiliation.Id eq \"null\"` (`null` must be quoted; `pr` is not supported).\n",
         "operationId": "collaborators-get",
         "parameters": [
           {
