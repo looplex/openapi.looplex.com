@@ -1,7 +1,7 @@
 {
   "openapi": "3.1.1",
   "info": {
-    "version": "2.3.5",
+    "version": "3.0.0",
     "title": "Looplex Case Management",
     "termsOfService": "https://docs.looplex.com.br/legal/termos-de-uso",
     "contact": {
@@ -5366,7 +5366,7 @@
           "Timesheet"
         ],
         "summary": "/timesheets",
-        "description": "**Fetch timesheets paginated**\n",
+        "description": "**Fetch timesheets paginated**<br />\nFiltros SCIM aceitos: `Id`, `WorkDate`, `TaskCode`, `ActivityCode`, `CreatedAt`, `UpdatedAt`, `IsInvoiced`, `Owner.Id`, `ClientId`, `Area.Id`, `ClassificationId`<br />\n`Area.Id` é a área do lançamento, não a do caso\n",
         "operationId": "timesheets-get",
         "parameters": [
           {
@@ -5547,7 +5547,7 @@
           "Timesheet"
         ],
         "summary": "/timesheets/:id",
-        "description": "**Patch timesheet properties**<br />\nPropriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner` e `Applicant`.<br />\n`Description`, `Date`, `Hours`, `TaskType` e `Owner` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />\nUm lançamento que já está em faturamento não pode ser alterado (retorna erro)\n",
+        "description": "**Patch timesheet properties**<br />\nPropriedades que podem ser alteradas: `Description`, `Date`, `Hours` (`hh:mm:ss`, mínimo 1 minuto), `TaskType`, `TaskCode`, `ActivityCode`, `Owner`, `Applicant`, `Area` e `ClassificationId`.<br />\n`Area` precisa ser uma das áreas ativas do responsável e `ClassificationId` uma classificação ativa que valha para a área.<br />\n`Description`, `Date`, `Hours`, `TaskType`, `Owner`, `Area` e `ClassificationId` são obrigatórios e não podem ser removidos nem receber valor vazio.<br />\nUm lançamento que já está em faturamento não pode ser alterado (retorna erro)\n",
         "operationId": "timesheets-id-patch",
         "parameters": [
           {
@@ -6573,6 +6573,16 @@
             "format": "uuid",
             "description": "**Client unique identifier**",
             "example": "<global_unique_identifier>"
+          },
+          "classificationId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "**Identificador da classificação**<br />\nA lista de classificações vem de `/timesheetClassifications`. A classificação precisa ser ativa e valer para a área do lançamento\n",
+            "example": "<global_unique_identifier>"
+          },
+          "area": {
+            "$ref": "#/components/schemas/SimpleEntityWrite",
+            "description": "**Área do lançamento**<br />\nPrecisa ser uma das áreas ativas do responsável. Sem ela na criação, vale a área padrão do responsável\n"
           },
           "owner": {
             "$ref": "#/components/schemas/SimpleEntityWrite",
@@ -8795,6 +8805,19 @@
                 ],
                 "description": "**Classificação**",
                 "example": "<classificacao>"
+              },
+              "classificationId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "**Identificador da classificação**<br />\nA lista de classificações vem de `/timesheetClassifications`\n",
+                "example": "<global_unique_identifier>"
+              },
+              "area": {
+                "$ref": "#/components/schemas/SimpleEntityGet",
+                "description": "**Área do lançamento**"
               },
               "owner": {
                 "$ref": "#/components/schemas/SimpleEntityGet",
